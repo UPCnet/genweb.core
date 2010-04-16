@@ -5,15 +5,28 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="genweb.core">
 
-  <five:registerPackage package="." initialize=".initialize" />
+    <five:registerPackage package="." initialize=".initialize" />
 
-  <genericsetup:registerProfile
+    <genericsetup:registerProfile
       name="default"
-      title="genweb.core"
+      title="Genweb Core"
       directory="profiles/default"
       description="Installs the genweb.core package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  <!-- -*- extra stuff goes here -*- -->
+
+    <include package="upc.genweb.banners" />
+    <include package="upc.genweb.logosfooter" />
+    <include package="upc.genweb.meetings" />
+    <include package="upc.genweb.descriptorTIC" />
+    <include package="upc.genweb.kbpuc" />
+    <include package="upc.genweb.objectiusCG" />
+    <include package="upc.genweb.serveis" />
+    <include package="upc.permalink" />
+    <include package="upcnet.simpleTask" />
+    <include package="upcnet.cas" />
+    <include package="upc.remotecontrol" />
+   
+    <include package="archetypes.schemaextender" />
   
 </configure>
