@@ -16,6 +16,9 @@ TODO
 - Custom Workflows modifications of PloneBoard and Poi. It's needed to create a custom package for it.
 - Choose the custom structure/viewlets/CSS modifications made to all flavors may apply here (e.g DocumentActions)
 - Constraints to use in folders.
+- Check if the patches in gemweb.patcher are longer necessary for new versions of products.
+- Trim and make more sostenible utils.py.
+- Move language selector into a independent language selector.
 
 New Packages
 ------------
@@ -25,3 +28,7 @@ New Packages
 - upc.genweb.customfck
 - upc.genweb.initialcontent
 - upc.genweb.content
+
+Tests
+-----
+- setup_view (genweb.setup)

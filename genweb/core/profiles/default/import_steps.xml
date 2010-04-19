@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <import-steps>
- <import-step id="upc.genweb.core.various"
+ <import-step id="genweb.core.various"
                version="20100401-01"
-               handler="upc.genweb.core.setuphandlers.setupVarious"
+               handler="genweb.core.setuphandlers.setupVarious"
                title="Genweb UPC: miscellaneous import steps">
     <dependency step="various" />
     Various import steps that are not handled by GS import/export handlers.
