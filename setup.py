@@ -57,7 +57,8 @@ setup(name='genweb.core',
           'Products.windowZ',
           'Products.PlonePopoll',
           'archetypes.schemaextender',
-          'BeautifulSoup',          
+          'BeautifulSoup',
+          'zope.i18nmessageid',          
       ],
       entry_points="""
       # -*- Entry points: -*-
