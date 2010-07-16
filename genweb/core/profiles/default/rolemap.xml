@@ -228,12 +228,6 @@
       <role name="Owner"/>
       <role name="WebMaster"/>
     </permission>
-    <permission name="LogosFooter: Add Logos_Footer"
-                acquire="False">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="WebMaster"/>
-    </permission>
     <permission name="Manage properties" acquire="True">
       <role name="Editor"/>
       <role name="Manager"/>
@@ -417,12 +411,6 @@
       <role name="Editor"/>
       <role name="Manager"/>
       <role name="Owner"/>
-    </permission>
-    <permission name="plone.app.blob: Add Blob"
-                acquire="False">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="WebMaster"/>
     </permission>
     <permission name="simpleTask: Add simpleTask"
                 acquire="False">
