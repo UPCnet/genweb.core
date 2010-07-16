@@ -1,8 +1,7 @@
 import transaction
 from Products.CMFCore.utils import getToolByName
 
-PRODUCT_DEPENDENCIES = ('plone.app.blob',
-                        'upc.genweb.banners',
+PRODUCT_DEPENDENCIES = ('upc.genweb.banners',
                         'upc.genweb.logosfooter',
                         'Collage',
                         'FCKeditor',
@@ -12,7 +11,6 @@ PRODUCT_DEPENDENCIES = ('plone.app.blob',
                         'Ploneboard',
                         'Poi',
                         'upcnet.simpleTask',
-                        'upc.genweb.meetings',
                         'upc.permalink',
                         'AJAXAddRemoveWidget',
                         'windowZ',
