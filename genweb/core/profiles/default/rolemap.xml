@@ -77,12 +77,6 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
-    <permission name="ATContentTypes: Add Favorite"
-                acquire="True">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-    </permission>
     <permission name="ATContentTypes: Add File"
                 acquire="True">
       <role name="Contributor"/>
@@ -131,11 +125,11 @@
       <role name="Manager"/>
 	  <role name="Owner"/>            
       <role name="WebMaster"/>            
-    </permission>
+    </permission><!--
     <permission name="Add Collage content" acquire="True">
       <role name="Contributor"/>
     </permission>
-    <permission name="Add portal content" acquire="True">
+    --><permission name="Add portal content" acquire="True">
       <role name="Contributor"/>
       <role name="Manager"/>
       <role name="Owner"/>
@@ -228,6 +222,14 @@
       <role name="Owner"/>
       <role name="WebMaster"/>
     </permission>
+    <!--
+    <permission name="LogosFooter: Add Logos_Footer"
+                acquire="False">
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="WebMaster"/>
+    </permission>
+    -->
     <permission name="Manage properties" acquire="True">
       <role name="Editor"/>
       <role name="Manager"/>
@@ -242,6 +244,7 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
+    <!--
     <permission name="PloneSurvey: Reset Own Responses"
                 acquire="False">
       <role name="Editor"/>
@@ -257,6 +260,8 @@
       <role name="Owner"/>
       <role name="WebMaster"/>
     </permission>
+    -->
+    <!--
     <permission name="Ploneboard: Add Comment"
                 acquire="True">
       <role name="Contributor"/>
@@ -278,6 +283,7 @@
                 acquire="True">
       <role name="Contributor"/>
     </permission>
+    --><!--
     <permission name="Poi: Add Issue" acquire="True">
       <role name="Contributor"/>
     </permission>
@@ -328,7 +334,7 @@
       <role name="Manager"/>
       <role name="Member"/>
       <role name="Owner"/>
-    </permission>
+    </permission>-->
     <permission name="Portlets: Manage own portlets"
                 acquire="False">
       <role name="Editor"/>
@@ -412,6 +418,15 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
+    <!--
+    <permission name="plone.app.blob: Add Blob"
+                acquire="False">
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="WebMaster"/>
+    </permission>
+    -->
+    <!--
     <permission name="simpleTask: Add simpleTask"
                 acquire="False">
       <role name="Contributor"/>
@@ -421,6 +436,7 @@
     <permission name="windowZ: Add Window" acquire="True">
       <role name="Contributor"/>
     </permission>
+    -->
     <permission name="PloneFormGen: Add Content"
                 acquire="True">
       <role name="Editor"/>

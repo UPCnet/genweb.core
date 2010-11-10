@@ -1,85 +1,8 @@
 <?xml version="1.0" encoding='utf-8'?>
 <object name="portal_properties" meta_type="Plone Properties Tool">
-  
+
  <object name="site_properties" meta_type="Plone Property Sheet">
-
-  <property name="available_editors" type="lines">
-   <element value="FCKeditor"/>
-   <element value="Kupu"/>
-   <element value="None"/>
-  </property>
   <property name="external_links_open_new_window" type="string">True</property>
-  
  </object> 
- 
- <object name="fckeditor_properties" meta_type="Plone Property Sheet">
-  <property name="fck_default_skin" type="string">silver</property>
-  <property name="keyboard_entermode" type="string">br</property>
-  <property name="fck_menu_styles" type="text">
-	  &lt;Style name="Sense format" element="div"&gt; 
-		&lt;Attribute name="class" value="" /&gt;
-		&lt;/Style&gt;  
-		&lt;Style name="Text petit" element="p"&gt;  
-		&lt;Attribute name="class" value="small" /&gt; 
-		&lt;/Style&gt; 
-		&lt;Style name="Titular de Bloc" element="h2"&gt;  
-		&lt;Attribute name="class" value="" /&gt; 
-		&lt;/Style&gt;  
-		&lt;Style name="Titular 1" element="h4"&gt;  
-		&lt;Attribute name="class" value="" /&gt;  
-		&lt;/Style&gt;    
-		&lt;Style name="Titular 2" element="h5"&gt; 
-		&lt;Attribute name="class" value="" /&gt;  
-		&lt;/Style&gt;  
-		&lt;Style name="Titular 3" element="h6"&gt; 
-		&lt;Attribute name="class" value="" /&gt;  
-		&lt;/Style&gt;    
-		&lt;Style name="Text destacat" element="div"&gt;  
-		&lt;Attribute name="class" value="textDestacat" /&gt;  
-		&lt;/Style&gt;  
-		&lt;Style name="Imatge a l'esquerra" element="img"&gt;  
-		&lt;Attribute name="class" value="image-left" /&gt;  
-		&lt;/Style&gt; 
-		&lt;Style name="Imatge a la dreta" element="img"&gt;  
-		&lt;Attribute name="class" value="image-right" /&gt;  
-		&lt;/Style&gt;  
-		&lt;Style name="Fila marcada" element="tr"&gt;  
-		&lt;Attribute name="class" value="even" /&gt;  
-		&lt;/Style&gt;  
-		&lt;Style name="Cel·la normal" element="td"&gt;  
-		&lt;Attribute name="class" value="" /&gt;  
-		&lt;/Style&gt; 
-		&lt;Style name="Cel·la marcada" element="td"&gt;  
-		&lt;Attribute name="class" value="even" /&gt; 
-		&lt;/Style&gt; 
-		&lt;Style name="Cel·la destacada 1" element="td"&gt;  
-		&lt;Attribute name="class" value="fonsDestacat1" /&gt;  
-		&lt;/Style&gt; 
-		&lt;Style name="Cel·la destacada 2" element="td"&gt;  
-		&lt;Attribute name="class" value="fonsDestacat2" /&gt; 
-		&lt;/Style&gt;
-		&lt;Style name="Quadre de text Pre" element="pre"&gt;  
-		&lt;Attribute name="class" value="" /&gt;  
-		&lt;/Style&gt;
-		&lt;Style name="Text Code" element="code"&gt;
-		&lt;Attribute name="class" value="" /&gt;  
-		&lt;/Style&gt;</property>
-    <property name="fck_toolbar" type="string">Custom</property>
-    <property name="fck_custom_toolbar" type="text">[
-['FitWindow','Source','DocProps','-','Save','Preview','-','Templates'],
 
-['Cut','Copy','Paste','PasteText','PasteWord','-','Print','rtSpellCheck'],
-['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-
-['Bold','Italic','Underline','-','Subscript','Superscript'],
-['OrderedList','UnorderedList','-','Outdent','Indent'],
-['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-['Link','Unlink','Anchor'],
-
-['Image','Flash','Table','SpecialChar','UniversalKey','Smiley'],
-['Style'],
-['About']
-]</property>    
- </object> 
- 
 </object>

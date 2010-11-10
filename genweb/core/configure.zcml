@@ -15,15 +15,18 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-    <include package="upc.genweb.banners" />
+    <!-- <include package="upc.genweb.banners" />
+    <include package="upc.genweb.logosfooter" />
+    <include package="upc.genweb.meetings" />
+    <include package="upc.genweb.descriptorTIC" />
+    <include package="upc.genweb.kbpuc" />
+    <include package="upc.genweb.objectiusCG" />
+    <include package="upc.genweb.serveis" />
     <include package="upc.permalink" />
+    <include package="upcnet.simpleTask" />
     <include package="upcnet.cas" />
     <include package="upc.remotecontrol" />
-    <include package="archetypes.schemaextender" />
-    <include package="upcnet.simpleTask" />    
-    
-<!--    <include package="upc.genweb.logosfooter" />-->
-<!--    <include package="upc.genweb.meetings" />-->
-<!--    <include package="upcnet.cas" />-->
- 
+   
+    <include package="archetypes.schemaextender" /> -->
+  
 </configure>

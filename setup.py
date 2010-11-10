@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.5'
+version = '4.0b1'
 
 setup(name='genweb.core',
       version=version,
@@ -27,33 +27,23 @@ setup(name='genweb.core',
           'setuptools',
           # -*- Extra requirements: -*-
           'upc.genweb.banners',
-          'upc.genweb.logosfooter',
-          'upc.genweb.meetings',
-          'upc.genweb.patches',
-          'upc.permalink',
-          'upc.remotecontrol',
-          'upcnet.simpleTask',
-          'upcnet.cas',
-          'Products.AJAXAddRemoveWidget',
           'plone.app.ldap',
-          'Products.FCKEditor',
-          'Products.Ploneboard',
+#          'upc.remotecontrol',
+#          'upcnet.simpleTask',
+#          'upcnet.cas',
+#          'Products.AJAXAddRemoveWidget',
+#          'Products.PloneLDAP',
+#          'Products.FCKeditor',
+#          'Products.Ploneboard',
           'Products.PloneFormGen',
           'Products.LinguaPlone',
-          'Products.Collage',
-          'Products.Poi',
-          'Products.AddRemoveWidget',
-          'Products.DataGridField',
-          'Products.PythonField',
-          'Products.TemplateFields',
-          'Products.TALESField',
-          'Products.PloneSurvey',
-          'Products.ZMySQLDA',
-          'Products.windowZ',
-          'Products.PlonePopoll',
-          'archetypes.schemaextender',
-          'BeautifulSoup',
-          'zope.i18nmessageid',      
+#          'Products.Collage',
+#          'Products.Poi',
+#          'Products.PloneSurvey',
+#          'Products.windowZ',
+#          'Products.PlonePopoll',
+#          'archetypes.schemaextender',
+     
       ],
       entry_points="""
       # -*- Entry points: -*-

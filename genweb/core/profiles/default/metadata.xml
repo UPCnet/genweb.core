@@ -1,26 +1,16 @@
 <?xml version="1.0"?>
 <metadata>
   <version>4.0b1</version>
-  <!--
-  <dependencies>
-    <dependency>profile-plone.app.blob:default</dependency>
-    <dependency>profile-upc.genweb.banners:default</dependency>
-    <dependency>profile-upc.genweb.logosfooter:default</dependency>
+
+  <dependencies><!--
+    <dependency>profile-upc.genweb.banners:default</dependency> 
     <dependency>profile-Products.Collage:default</dependency>
-    <dependency>profile-Products.FCKeditor:default</dependency>
-    <dependency>profile-Products.PloneSurvey:default</dependency>
-    <dependency>profile-Products.PlonePopoll:default</dependency>
-    <dependency>profile-Products.Ploneboard:default</dependency>
+    <dependency>profile-collective.ckeditor:default</dependency>
     <dependency>profile-Products.PlonePopoll:default</dependency>
     <dependency>profile-Products.Poi:default</dependency>
-    <dependency>profile-upcnet.simpleTask:default</dependency>
-    <dependency>profile-upc.genweb.meetings:default</dependency>
-    <dependency>profile-upc.permalink:default</dependency>
-    <dependency>profile-Products.AJAXAddRemoveWidget:default</dependency>
-    <dependency>profile-Products.windowZ:default</dependency>
+      -->
     <dependency>profile-Products.PloneFormGen:default</dependency>
-    <dependency>profile-upcnet.cas:default</dependency>
-    <dependency>profile-Products.LinguaPlone:default</dependency>
-  </dependencies>
--->
+    <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
+</dependencies>
+
 </metadata>
