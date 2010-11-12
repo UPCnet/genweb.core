@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="genweb.core">
 
@@ -15,18 +16,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-    <!-- <include package="upc.genweb.banners" />
-    <include package="upc.genweb.logosfooter" />
-    <include package="upc.genweb.meetings" />
-    <include package="upc.genweb.descriptorTIC" />
-    <include package="upc.genweb.kbpuc" />
-    <include package="upc.genweb.objectiusCG" />
-    <include package="upc.genweb.serveis" />
-    <include package="upc.permalink" />
-    <include package="upcnet.simpleTask" />
-    <include package="upcnet.cas" />
-    <include package="upc.remotecontrol" />
-   
-    <include package="archetypes.schemaextender" /> -->
-  
+     <!-- Utilitats i funcions comunes -->
+    <browser:page
+      for="*"
+      name="genweb.utils"
+      class=".utils.utilitats"
+      permission="zope2.View"
+      />
+
 </configure>

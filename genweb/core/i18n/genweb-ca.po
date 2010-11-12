@@ -1,4 +1,4 @@
-# Gettext Message File for GenWeb.
+# Gettext Message File for the Genweb project.
 # Victor Fernandez de Alba (UPCnet)
 msgid ""
 msgstr "" 
@@ -14,7 +14,7 @@ msgstr ""
 "Language-Code: ca\n"
 "Language-Name: Catalan\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: upc.genwebupc\n"
+"Domain: genweb\n"
 
 #. "genweb_loginlocal"
 msgid "genweb_loginlocal"
