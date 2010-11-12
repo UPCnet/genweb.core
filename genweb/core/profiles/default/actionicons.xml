@@ -6,7 +6,8 @@
               title="genWeb Settings" priority="0"
               icon_expr="cpgenweb.png"
               i18n:attributes="title"/>
-
+<!-- Eliminat per a que no interfereixi amb altres coses. Si cal, fer el canvi mes tard. -->
+<!-- 
  <action-icon category="controlpanel" action_id="Collage"
               title="Collage" priority="0"
               icon_expr="collage_ico.gif"/>
@@ -15,4 +16,5 @@
               title="Permalink" priority="0"
               icon_expr="permalink_icon.gif"/>              
               
+-->
 </action-icons>

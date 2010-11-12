@@ -25,7 +25,6 @@ def havePermissionAtRoot(self):
      tools = getMultiAdapter((self.context, self.request),
                                         name=u'plone_tools')       
      proot = tools.url().getPortalObject()
-     #proot=pu.getPortalObject()
      sm = getSecurityManager()
      user = pm.getAuthenticatedMember()
      
@@ -39,6 +38,18 @@ def portal_url(self):
         return context_state.current_base_url()
 
 class utilitats(BrowserView):
+
+    def havePermissionAtRoot(self):
+         """Funcio que retorna si es Editor a l'arrel"""
+         
+         pm= getToolByName(self, 'portal_membership')   
+         tools = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_tools')       
+         proot = tools.url().getPortalObject()
+         sm = getSecurityManager()
+         user = pm.getAuthenticatedMember()
+         
+         return sm.checkPermission('Modify portal content', proot) or ('WebMaster' in user.getRoles())    
 
     def llistaEstats(self):
         """Retorna una llista dels estats dels workflows indicats
