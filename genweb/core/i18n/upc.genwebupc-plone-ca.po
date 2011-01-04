@@ -185,7 +185,7 @@ msgstr "Per entrar..."
 #. Default: "Put your UPC intranet username with a dot <strong>(name.surname)</strong> and <a href='https://gauss.upc.edu/gauss/canvicontrasenya/index.jsp' target='_blank'>change your password</a> if you haven’t already done so since 01/04/06."
 #: canvi-contrasenya.pt
 msgid "genweb-canvi_de_contrasenya2"
-msgstr "Escriviu el vostre nom d'usuari de la intranet UPC amb un punt <strong>(nom.cognom)</strong> i <a href='https://gauss.upc.edu/gauss/canvicontrasenya/index.jsp' target='_blank'>canvieu la contrasenya</a> si no ho heu fet des de l'01/04/06."
+msgstr "Escriviu el vostre nom d'usuari de la intranet UPC amb un punt <strong>(nom.cognom)</strong>"
 
 #. Default: "If you have forgotten your password..."
 #: canvi-contrasenya.pt
