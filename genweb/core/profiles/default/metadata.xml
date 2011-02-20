@@ -9,7 +9,7 @@
     <dependency>profile-Products.PlonePopoll:default</dependency>
     <dependency>profile-Products.Poi:default</dependency>
       -->
-    <dependency>profile-Products.PloneFormGen:default</dependency>
+    <!-- <dependency>profile-Products.PloneFormGen:default</dependency> -->
     <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
 </dependencies>
 

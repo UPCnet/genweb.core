@@ -437,7 +437,7 @@
       <role name="Contributor"/>
     </permission>
     -->
-    <permission name="PloneFormGen: Add Content"
+    <!-- <permission name="PloneFormGen: Add Content"
                 acquire="True">
       <role name="Editor"/>
       <role name="Manager"/>
@@ -499,6 +499,6 @@
       <role name="Manager"/>
       <role name="Owner"/>
       <role name="WebMaster"/>
-    </permission>
+    </permission> -->
   </permissions>
 </rolemap>
