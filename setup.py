@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.0b2'
+version = '4.0b3'
 
 setup(name='genweb.core',
       version=version,
       description="Genweb core package",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -26,8 +26,9 @@ setup(name='genweb.core',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'upc.genweb.banners',
           'plone.app.ldap',
+          'Products.LinguaPlone'
+#          'upc.genweb.banners',
 #          'upc.remotecontrol',
 #          'upcnet.simpleTask',
 #          'upcnet.cas',
@@ -36,7 +37,6 @@ setup(name='genweb.core',
 #          'Products.FCKeditor',
 #          'Products.Ploneboard',
 #          'Products.PloneFormGen',
-          'Products.LinguaPlone',
 #          'Products.Collage',
 #          'Products.Poi',
 #          'Products.PloneSurvey',
