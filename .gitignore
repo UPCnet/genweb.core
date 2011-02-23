@@ -10,5 +10,7 @@
 *.log
 *.mo
 *.project
+*.settings
+*.pydevproject
 passwd
 data
