@@ -28,22 +28,6 @@ setup(name='genweb.core',
           # -*- Extra requirements: -*-
           'plone.app.ldap',
           'Products.LinguaPlone'
-#          'upc.genweb.banners',
-#          'upc.remotecontrol',
-#          'upcnet.simpleTask',
-#          'upcnet.cas',
-#          'Products.AJAXAddRemoveWidget',
-#          'Products.PloneLDAP',
-#          'Products.FCKeditor',
-#          'Products.Ploneboard',
-#          'Products.PloneFormGen',
-#          'Products.Collage',
-#          'Products.Poi',
-#          'Products.PloneSurvey',
-#          'Products.windowZ',
-#          'Products.PlonePopoll',
-#          'archetypes.schemaextender',
-     
       ],
       entry_points="""
       # -*- Entry points: -*-
