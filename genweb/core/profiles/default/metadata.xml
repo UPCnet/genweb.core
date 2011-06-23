@@ -2,14 +2,7 @@
 <metadata>
   <version>4.0b2</version>
 
-  <dependencies><!--
-    <dependency>profile-upc.genweb.banners:default</dependency> 
-    <dependency>profile-Products.Collage:default</dependency>
-    <dependency>profile-collective.ckeditor:default</dependency>
-    <dependency>profile-Products.PlonePopoll:default</dependency>
-    <dependency>profile-Products.Poi:default</dependency>
-      -->
-    <!-- <dependency>profile-Products.PloneFormGen:default</dependency> -->
+  <dependencies>
     <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
 </dependencies>
 
