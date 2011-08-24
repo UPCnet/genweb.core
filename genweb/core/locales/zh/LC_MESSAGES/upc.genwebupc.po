@@ -4,21 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GenWebUPC\n"
 "POT-Creation-Date: 2007-08-21 09:05\n"
-"PO-Revision-Date: 2007-08-21 10:00\n"
-"Last-Translator:  Víctor Fernández de Alba <victor.fernandez@upcnet.es>\n"
+"PO-Revision-Date: 2010-06-04 11:35+0100\n"
+"Last-Translator: Roberto Diaz <roberto.diaz@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: zh\n"
+"Language-Name: Chinese\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: genweb\n"
-
-#. "genweb-accesarrel"
-msgid "genweb-accesarrel"
-msgstr "Root folder"
+"Domain: upc.genwebupc\n"
 
 #: browser/capsaleraSuperior.pt
 msgid "identificat"
@@ -63,16 +59,16 @@ msgid "genweb-noticies"
 msgstr "News"
 
 msgid "genweb-agenda"
-msgstr "Agenda" 
+msgstr "Agenda"
 
 msgid "cerca"
 msgstr "Search..."
 
 msgid "cerca_google"
-msgstr "Search Google..."
+msgstr "Search..."
 
 msgid "cerca_intranet"
-msgstr "Search the Intranet"
+msgstr "Intranet Search"
 
 msgid "label_text_seccio"
 msgstr "Label section"
@@ -80,3 +76,38 @@ msgstr "Label section"
 msgid "descripcio_text_seccio"
 msgstr "Label section display"
 
+msgid "Top_of_page"
+msgstr "Top of page"
+
+msgid "Planol_UPC"
+msgstr "Access map to UPC"
+
+msgid "sendto_accio"
+msgstr "Send"
+
+msgid "print_accio"
+msgstr "Print"
+
+msgid "permalink_accio"
+msgstr "Permalink"
+
+msgid "rss_accio"
+msgstr "Rss"
+
+msgid "submitGo"
+msgstr "Search"
+
+#. "genweb-accesarrel"
+msgid "genweb-accesarrel"
+msgstr "Root folder"
+
+#. "genweb-preferencies"
+msgid "genweb-preferencies"
+msgstr "Preferences"
+
+#. "genweb-ajuda"
+msgid "genweb-ajuda"
+msgstr "Help"
+
+msgid "obrir_link_finestra_nova"
+msgstr "Open link in a new window"

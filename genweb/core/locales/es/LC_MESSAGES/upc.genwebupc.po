@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GenWebUPC\n"
 "POT-Creation-Date: 2008-11-20 09:40\n"
-"PO-Revision-Date: 2008-11-20 10:00\n"
-"Last-Translator: Víctor Fernández de Alba <victor.fernandez@upcnet.es>\n"
+"PO-Revision-Date: 2010-06-04 11:35+0100\n"
+"Last-Translator: Roberto Diaz <roberto.diaz@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Language-Code: es\n"
 "Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: genweb\n"
+"Domain: upc.genwebupc\n"
 
 #. "genweb_loginlocal"
 msgid "genweb_loginlocal"
@@ -117,7 +117,6 @@ msgstr "Desconectar"
 msgid "master_curso"
 msgstr "Curso"
 
-
 #: ."genweb-description_sign_in"
 msgid "genweb-description_sign_in"
 msgstr "Para acceder a esta parte del web, tiene que identificarse usando su nombre y contraseña."
@@ -149,6 +148,12 @@ msgstr "más noticias"
 #. "genweb-sobre_aquest_web"
 msgid "genweb-sobre_aquest_web"
 msgstr "Sobre esta web"
+
+msgid "genweb-rss"
+msgstr "RSS"
+
+msgid "genweb-accessibility"
+msgstr "Accesibilidad"
 
 #. "genweb-heading_sign_in"
 msgid "genweb-heading_sign_in"
@@ -280,7 +285,7 @@ msgid "cerca"
 msgstr "Busca..."
 
 msgid "cerca_google"
-msgstr "Busca en Google..."
+msgstr "Busca..."
 
 msgid "cerca_intranet"
 msgstr "Busca en la Intranet"
@@ -290,3 +295,31 @@ msgstr "Etiqueta sección"
 
 msgid "descripcio_text_seccio"
 msgstr "Es como se vera la sección"
+
+msgid "Top_of_page"
+msgstr "Arriba"
+
+msgid "Planol_UPC"
+msgstr "Plano de acceso a la UPC"
+
+msgid "sendto_accio"
+msgstr "Envía"
+
+msgid "print_accio"
+msgstr "Imprimir"
+
+msgid "permalink_accio"
+msgstr "Enlace permanente"
+
+msgid "rss_accio"
+msgstr "Rss"
+
+msgid "submitGo"
+msgstr "Buscar"
+
+msgid "obrir_link_finestra_nova"
+msgstr "(abre en ventana nueva)"
+
+#: ."genweb-actualitatPDIPAS"
+msgid "genweb-actualitatPDIPAS"
+msgstr "Actualidad PDI/PAS"
