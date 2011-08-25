@@ -4,7 +4,11 @@
  <action-provider name="portal_workflow"/>
 
  <action-provider name="portal_actions"/>
-
+ 
+ <object name="document_actions" meta_type="CMF Action Category">
+  <object name="permalink" remove="True" />
+ </object>
+ 
  <object name="portal_tabs" meta_type="CMF Action Category">
   <property name="title"></property>
   <object name="index_html" meta_type="CMF Action" i18n:domain="plone">
