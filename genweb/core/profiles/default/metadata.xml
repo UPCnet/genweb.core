@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>4.0b2</version>
-
-  <dependencies>
-    <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
-</dependencies>
+  <version>4101</version>
 
 </metadata>
