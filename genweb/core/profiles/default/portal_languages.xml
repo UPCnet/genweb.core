@@ -3,7 +3,7 @@
  <default_language value="ca"/>
  <use_path_negotiation value="False"/>
  <use_cookie_negotiation value="True"/>
- <use_request_negotiation value="True"/>
+ <use_request_negotiation value="False"/>
  <use_cctld_negotiation value="False"/>
  <use_content_negotiation value="False"/>
  <use_combined_language_codes value="False"/>
