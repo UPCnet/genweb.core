@@ -284,3 +284,14 @@ msgstr "Por favor, escribe el texto mostrado en la imagen inferior"
 
 msgid "Send"
 msgstr "envía"
+
+
+
+msgid "A folder which can contain other items."
+msgstr "Una carpeta que puede contener otros elementos."
+
+msgid "An automatically updated stored search that can be used to display items matching criteria you specify."
+msgstr "Una búsqueda almacenada que se actualiza automáticamente y puede ser utilizada para mostrar los elementos que cumplan con los criterios especificados."
+
+msgid "A page in the site. Can contain rich text."
+msgstr "Una página en el portal, que puede contener texto enriquecido."
