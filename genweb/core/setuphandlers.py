@@ -23,9 +23,12 @@ def setupVarious(context):
     transform = getattr(transforms, 'safe_html')
     valid = transform.get_parameter_value('valid_tags')
     nasty = transform.get_parameter_value('nasty_tags')
+    valid['script'] = 1
     valid['embed'] = 1
     valid['object'] = 1
     valid['param'] = 1
+    if 'script' in nasty:
+        del nasty['script']
     if 'embed' in nasty:
         del nasty['embed']
     if 'object' in nasty:
