@@ -332,3 +332,27 @@ msgstr "Text de l'esdeveniment"
 #: ."genweb-actualitatPDIPAS"
 msgid "genweb-actualitatPDIPAS"
 msgstr "Actualitat PDI/PAS"
+
+#: ./browser/addthis.pt
+msgid "Comparteix"
+msgstr "Comparteix"
+
+#: ./browser/addthis.pt
+msgid "comparteix_facebook"
+msgstr "Comparteix a Facebook"
+
+#: ./browser/addthis.pt
+msgid "comparteix_linkedin"
+msgstr "Comparteix a Linkedin"
+
+#: ./browser/addthis.pt
+msgid "send_mail"
+msgstr "Envia per correu"
+
+#: ./browser/addthis.pt
+msgid "Print"
+msgstr "Imprimir"
+
+#: ./browser/addthis.pt
+msgid "comparteix_twitter"
+msgstr "Comparteix a Twitter"
