@@ -323,3 +323,27 @@ msgstr "(abre en ventana nueva)"
 #: ."genweb-actualitatPDIPAS"
 msgid "genweb-actualitatPDIPAS"
 msgstr "Actualidad PDI/PAS"
+
+#: ./browser/addthis.pt
+msgid "Comparteix"
+msgstr "Compartir"
+
+#: ./browser/addthis.pt
+msgid "comparteix_facebook"
+msgstr "Compartir en Facebook"
+
+#: ./browser/addthis.pt
+msgid "comparteix_linkedin"
+msgstr "Compartir en Linkedin"
+
+#: ./browser/addthis.pt
+msgid "send_mail"
+msgstr "Enviar por correo"
+
+#: ./browser/addthis.pt
+msgid "Print"
+msgstr "Imprimir"
+
+#: ./browser/addthis.pt
+msgid "comparteix_twitter"
+msgstr "Compartir en Twitter"
