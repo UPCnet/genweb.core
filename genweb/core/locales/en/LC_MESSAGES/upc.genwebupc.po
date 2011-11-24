@@ -124,3 +124,27 @@ msgstr "Open link in a new window"
 #: ."genweb-actualitatPDIPAS"
 msgid "genweb-actualitatPDIPAS"
 msgstr "PDI/PAS Today"
+
+#: ./browser/addthis.pt
+msgid "Comparteix"
+msgstr "Share"
+
+#: ./browser/addthis.pt
+msgid "comparteix_facebook"
+msgstr "Share on Facebook"
+
+#: ./browser/addthis.pt
+msgid "comparteix_linkedin"
+msgstr "Share on Linkedin"
+
+#: ./browser/addthis.pt
+msgid "send_mail"
+msgstr "Send by mail"
+
+#: ./browser/addthis.pt
+msgid "Print"
+msgstr "Print"
+
+#: ./browser/addthis.pt
+msgid "comparteix_twitter"
+msgstr "Share on Twitter"
