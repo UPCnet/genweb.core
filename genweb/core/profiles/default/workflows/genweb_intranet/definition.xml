@@ -154,6 +154,7 @@
  </state>
  <state state_id="restricted-to-managers" title="Restricted to managers">
   <description>Can only be seen and edited by the owner.</description>
+  <exit-transition transition_id="reject"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
