@@ -111,9 +111,6 @@ msgstr "Inici"
 msgid "nom_usuari"
 msgstr "Usuari"
 
-msgid "genweb-logout"
-msgstr "Desconnecta"
-
 msgid "master_curso"
 msgstr "Curs"
 
@@ -163,10 +160,6 @@ msgstr " per recuperar-la."
 msgid "canvi_de_contrasenya"
 msgstr "Canvi de contrasenya"
 
-#. "genweb-accesarrel"
-msgid "genweb-accesarrel"
-msgstr "Carpeta arrel"
-
 #. "genweb-ampliar_agenda"
 msgid "genweb-ampliar_agenda"
 msgstr "ampliar agenda"
@@ -183,14 +176,6 @@ msgstr "Vista per defecte"
 #. "usuari_connectat"
 msgid "usuari_connectat"
 msgstr "Usuari connectat:"
-
-#. "genweb-logout"
-msgid "genweb-logout"
-msgstr "Desconnecta"
-
-#. "genweb-opcionspathbar"
-msgid "genweb-opcionspathbar"
-msgstr "Opcions:"
 
 #. "login_form_detalls_del_compte"
 msgid "login_form_detalls_del_compte"

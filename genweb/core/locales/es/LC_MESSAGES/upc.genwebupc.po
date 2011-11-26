@@ -111,9 +111,6 @@ msgstr "Inicio"
 msgid "nom_usuari"
 msgstr "Usuario"
 
-msgid "genweb-logout"
-msgstr "Desconectar"
-
 msgid "master_curso"
 msgstr "Curso"
 
@@ -132,10 +129,6 @@ msgstr "No puedo entrar"
 #: ."genweb-universitat_politecnica_de_catalunya"
 msgid "genweb-universitat_politecnica_de_catalunya"
 msgstr "Universidad Politécnica de Cataluña"
-
-#. "genweb-accesarrel"
-msgid "genweb-accesarrel"
-msgstr "Carpeta raiz"
 
 #. "genweb-ampliar_agenda"
 msgid "genweb-ampliar_agenda"
@@ -183,14 +176,6 @@ msgstr "Vista por defecto"
 #. "usuari_connectat"
 msgid "usuari_connectat"
 msgstr "Usuario conectado:"
-
-#. "genweb-logout"
-msgid "genweb-logout"
-msgstr "Desconecta"
-
-#. "genweb-opcionspathbar"
-msgid "genweb-opcionspathbar"
-msgstr "Opciones:"
 
 #. "login_form_detalls_del_compte"
 msgid "login_form_detalls_del_compte"
