@@ -1,6 +1,10 @@
 Changelog
 =========
 
+4.1 (2011-11-25)
+----------------
+- Actualització a Plone 4.
+
 4.0b2 (dev)
 -------------------
 Nova versió del paquet, amb els viewlets updatats.
@@ -19,5 +23,4 @@ Nova versió del paquet, amb els viewlets updatats.
 
 3.3dev (unreleased)
 -------------------
-
 - Initial release
