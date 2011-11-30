@@ -19,22 +19,20 @@ def setupVarious(context):
 
     # Add additional setup code here
     #
-    transforms = getToolByName(context, 'portal_transforms')
+    portal = context.getSite()
+    transforms = getToolByName(portal, 'portal_transforms')
     transform = getattr(transforms, 'safe_html')
     valid = transform.get_parameter_value('valid_tags')
     nasty = transform.get_parameter_value('nasty_tags')
-    valid['script'] = 1
-    valid['embed'] = 1
-    valid['object'] = 1
-    valid['param'] = 1
-    if 'script' in nasty:
-        del nasty['script']
-    if 'embed' in nasty:
-        del nasty['embed']
-    if 'object' in nasty:
-        del nasty['object']
-    if 'param' in nasty:
-        del nasty['param']
+    # GW4 Valid tags
+    gw4_valid = ['script', 'object', 'embed', 'param', 'iframe', 'applet']
+    for tag in gw4_valid:
+        # Acceptar a la llista de valides
+        valid[tag] = 1
+        # Eliminar de la llista no desitjades
+        if tag in nasty:
+            del nasty[tag]
+
     kwargs = {}
     kwargs['valid_tags'] = valid
     kwargs['nasty_tags'] = nasty
@@ -47,7 +45,6 @@ def setupVarious(context):
     transform.set_parameters(**kwargs)
     transform._p_changed = True
     transform.reload()
-    portal = context.getSite()
     try:
             manage_addPloneLDAPMultiPlugin(portal.acl_users, "ldapUPC",
                 title="ldapUPC", use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
@@ -97,4 +94,6 @@ def setupVarious(context):
     # configurem els estats del calendari
     pct = getToolByName(portal, 'portal_calendar')
     pct.calendar_states = ('published', 'intranet')
+    # Fixem el primer dia de la setamana com dilluns (0)
+    pct.firstweekday = 0
     transaction.commit()
