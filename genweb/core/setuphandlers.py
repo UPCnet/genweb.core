@@ -24,6 +24,7 @@ def setupVarious(context):
     transform = getattr(transforms, 'safe_html')
     valid = transform.get_parameter_value('valid_tags')
     nasty = transform.get_parameter_value('nasty_tags')
+
     # GW4 Valid tags
     gw4_valid = ['script', 'object', 'embed', 'param', 'iframe', 'applet']
     for tag in gw4_valid:
@@ -33,9 +34,16 @@ def setupVarious(context):
         if tag in nasty:
             del nasty[tag]
 
+    stripped = transform.get_parameter_value('stripped_attributes')
+    # GW4 remove some stripped
+    for tag in ['cellspacing', 'cellpadding', 'valign']:
+        if tag in stripped:
+            stripped.remove(tag)
+
     kwargs = {}
     kwargs['valid_tags'] = valid
     kwargs['nasty_tags'] = nasty
+    kwargs['stripped_attributes'] = stripped
     for k in list(kwargs):
         if isinstance(kwargs[k], dict):
             v = kwargs[k]
