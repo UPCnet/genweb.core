@@ -205,6 +205,7 @@
       <role name="Manager"/>
     </permission>
     <permission name="Delete objects" acquire="True">
+      <role name="Editor"/>
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
