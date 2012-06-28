@@ -341,3 +341,6 @@ msgstr "Imprimir"
 #: ./browser/addthis.pt
 msgid "comparteix_twitter"
 msgstr "Comparteix a Twitter"
+
+msgid "genweb_info_gral"
+msdid "Informació General"
