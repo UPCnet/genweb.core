@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="upc.genwebupc">
+      
+<body>
+
+<h1 style="font-size: 110px; text-align: center; margin: 1em 0 0;" tal:content="view/nomDorsal" ></h1>
+<h2 style="font-size: 310px; text-align: center;margin: 0;" tal:content="view/dorsal"></h2>
+
+</body>
+</html>

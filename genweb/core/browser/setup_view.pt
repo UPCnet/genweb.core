@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="upc.genwebupc">
+      
+<body>
+<metal:block fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+         
+<div metal:fill-slot="main">
+ <metal:main-macro define-macro="main">
+
+<div>
+<h1 class="documentFirstHeading"><img height="16" width="16" src="site_icon.gif"/>Configuració inicial de GenWeb</h1>
+<p class="documentDescription">Vista per executar la creació de contingut per defecte del GenWeb.</p>
+<div> </div>
+<div class="visualClear"></div>
+
+<dl class="portalMessage info">
+<dt>Atenció</dt>
+<dd>Si es torna a executar el procés un cop creats els objectes, es sobreescriuran algunes dades dels objectes com el títol o la descripció</dd>
+</dl>
+
+<fieldset class="formPanel">
+<div class="field">
+<label>Estat dels objectes</label>
+<table class="listing">
+  <thead>
+   <tr>
+     <th class="nosort"></th>
+     <th class="nosort">ca</th>
+     <th class="nosort">es</th>
+     <th class="nosort">en</th>          
+   </tr>
+ </thead>  
+   <tal:block repeat="files view/contentStatus">
+     <tr tal:define="isodd repeat/files/odd" tal:attributes="class python:isodd and 'odd' or 'even'">
+      <td tal:repeat="columna files" >
+        <span tal:replace="columna"></span>
+      </td>
+     </tr> 
+   </tal:block> 
+</table>
+</div>
+<form method="get" action="@@setup-view">
+<input type="hidden" name="create" value="all">
+<input id="setup_view_submit" class="context" type="submit" value="Executar" name="setup_view_submit"/>
+</form>
+</fieldset>
+
+
+ </metal:main-macro>
+</div>
+</body>
+</html>

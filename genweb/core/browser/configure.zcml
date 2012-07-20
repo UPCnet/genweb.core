@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="upc.genwebupc">
+
+    <browser:page
+      name="setup-view"
+      for="*"
+      class=".setup_view.setup"
+      template="setup_view.pt"
+      permission="cmf.ManagePortal"
+      />
+
+    <browser:page
+      name="getZEO"
+      for="*"
+      class=".helpers.getZEO"
+      permission="zope2.View"
+      template="getzeo.pt"
+      />
+
+</configure>

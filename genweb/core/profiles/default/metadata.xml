@@ -1,5 +1,28 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>4101</version>
-
+  <version>42</version>
+  <dependencies>
+    <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
+    <dependency>profile-upc.genweb.banners:default</dependency>
+    <dependency>profile-upc.genweb.logosfooter:default</dependency>
+    <dependency>profile-upcnet.cas:default</dependency>
+    <dependency>profile-Products.PloneFormGen:default</dependency>
+    <dependency>profile-Products.Collage:default</dependency>
+    <dependency>profile-Products.PlonePopoll:default</dependency>
+    <dependency>profile-Products.windowZ:default</dependency>
+    <dependency>profile-Products.Ploneboard:ploneboard</dependency>
+    <dependency>profile-Products.Ploneboard:intranet</dependency>
+    <dependency>profile-Products.PloneSurvey:default</dependency>
+    <dependency>profile-upc.genweb.meetings:default</dependency>
+    <dependency>profile-upcnet.simpleTask:default</dependency>
+    <dependency>profile-collective.tinymcetemplates:default</dependency>
+    <dependency>profile-pfg.drafts:default</dependency>
+    <dependency>profile-plone.formwidget.recaptcha:default</dependency>
+    <dependency>profile-plone.app.caching:default</dependency>
+    <!-- <dependency>profile-plone.app.discussion:default</dependency> -->
+    <dependency>profile-upc.genwebupctheme:default</dependency>
+<!--
+    <dependency>profile-Products.Poi:default</dependency>
+-->
+</dependencies>
 </metadata>

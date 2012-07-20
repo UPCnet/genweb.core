@@ -123,8 +123,8 @@
                 acquire="True">
       <role name="Editor"/>
       <role name="Manager"/>
-    <role name="Owner"/>            
-      <role name="WebMaster"/>            
+    <role name="Owner"/>
+      <role name="WebMaster"/>
     </permission>
     <permission name="Add Collage content" acquire="True">
       <role name="Contributor"/>
@@ -284,7 +284,7 @@
                 acquire="True">
       <role name="Contributor"/>
     </permission>
-    <permission name="Poi: Add Issue" acquire="True">
+<!--     <permission name="Poi: Add Issue" acquire="True">
       <role name="Contributor"/>
     </permission>
     <permission name="Poi: Add Response" acquire="True">
@@ -318,7 +318,7 @@
     </permission>
     <permission name="Poi: Upload attachment" acquire="True">
       <role name="Contributor"/>
-    </permission>
+    </permission> -->
     <permission name="Popoll: Add polls" acquire="True">
       <role name="Contributor"/>
       <role name="Manager"/>
