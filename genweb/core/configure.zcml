@@ -8,8 +8,18 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
+    <!-- Compat amb Plone 4.1 -->
+    <include package="Products.CMFCore" file="permissions.zcml" />
+
+    <includeDependencies package="." />
+    <includeDependencies package="genweb.stack" />
+
+    <!-- redefinicions, per a que els tests funcionin -->
+    <include package="Products.CMFPlacefulWorkflow" />
+
     <i18n:registerTranslations directory="locales" />
 
+    <include package=".browser" />
     <include file="subscribers.zcml" />
 
     <!-- Utilitats i funcions comunes -->
@@ -20,16 +30,9 @@
       permission="zope2.View"
       />
 
-    <!-- Constrained items for folders -->
-    <subscriber
-      for=".interfaces.IConstrainedFolder
-           Products.Archetypes.interfaces.IObjectInitializedEvent"
-      handler=".events.folderAdded"
-    />
-
     <genericsetup:registerProfile
       name="default"
-      title="Genweb Core"
+      title="Genweb UPC Core"
       directory="profiles/default"
       description="Installs the genweb.core package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
