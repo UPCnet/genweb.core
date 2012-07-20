@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.interfaces import ISiteRoot
-from upc.genwebupctheme.browser import utils
-from upc.genwebupctheme.browser.interfaces import IgenWebControlPanelSchemaGeneral as gw_schema
 
-def folderAdded(folder,event):
+
+IMMEDIATELY_ADDABLE_TYPES = ("Document", "Event", "File", "Folder", "Image", "Link", "News Item", "Topic", "Collage", "Window")
+CONSTRAINED_TYPES = ('Document', 'Event', 'Favorite', 'File', 'Folder', 'Image', 'Link', 'News Item', 'Topic', 'Collage', 'Survey', 'PlonePopoll', 'Ploneboard', 'PoiTracker', 'simpleTask', 'Meeting', 'Window', 'FormFolder')
+
+
+def folderAdded(folder, event):
+    # In case we are creating a new first level folder, apply constrains
     if ISiteRoot.providedBy(folder.aq_parent):
         folder.context = folder.aq_parent
-        gw_util = utils.getGWConfig(folder)
         folder.setConstrainTypesMode(1)
-        folder.setLocallyAllowedTypes(tuple([i.value for i in gw_schema._v_attrs['constrains'].value_type.vocabulary.__iter__()]))
-        folder.setImmediatelyAddableTypes(tuple(gw_util.constrains))
+        folder.setLocallyAllowedTypes(CONSTRAINED_TYPES)
+        folder.setImmediatelyAddableTypes(IMMEDIATELY_ADDABLE_TYPES)

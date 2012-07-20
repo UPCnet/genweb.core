@@ -7,23 +7,32 @@
     i18n_domain="genweb.core">
 
     <five:registerPackage package="." initialize=".initialize" />
-    
+
     <i18n:registerTranslations directory="locales" />
-    
+
+    <include file="subscribers.zcml" />
+
+    <!-- Utilitats i funcions comunes -->
+    <browser:page
+      for="*"
+      name="genweb.utils"
+      class=".utils.utilitats"
+      permission="zope2.View"
+      />
+
+    <!-- Constrained items for folders -->
+    <subscriber
+      for=".interfaces.IConstrainedFolder
+           Products.Archetypes.interfaces.IObjectInitializedEvent"
+      handler=".events.folderAdded"
+    />
+
     <genericsetup:registerProfile
       name="default"
       title="Genweb Core"
       directory="profiles/default"
       description="Installs the genweb.core package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-     <!-- Utilitats i funcions comunes -->
-    <browser:page
-      for="*"
-      name="genweb.utils"
-      class=".utils.utilitats"
-      permission="zope2.View"
       />
 
 </configure>
