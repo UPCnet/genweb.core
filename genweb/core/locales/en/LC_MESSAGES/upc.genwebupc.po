@@ -150,4 +150,4 @@ msgid "comparteix_twitter"
 msgstr "Share on Twitter"
 
 msgid "genweb_info_gral"
-msdid "General Information"
+msgstr "General Information"
