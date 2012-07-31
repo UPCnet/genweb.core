@@ -343,4 +343,4 @@ msgid "comparteix_twitter"
 msgstr "Comparteix a Twitter"
 
 msgid "genweb_info_gral"
-msdid "Informació General"
+msgstr "Informació General"
