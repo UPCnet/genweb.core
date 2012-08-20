@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.2'
+version = '4.2b1'
 
 setup(name='genweb.core',
       version=version,
@@ -27,8 +27,8 @@ setup(name='genweb.core',
       install_requires=[
           'setuptools',
           'requests',
+          'genweb.theme',
           'genweb.stack',
-          'genweb.core',
           'genweb.portlets',
           'upc.genwebupctheme',
           'upc.genweb.banners',
@@ -42,7 +42,6 @@ setup(name='genweb.core',
           'upc.genweb.soa',
           'upc.genweb.recaptcha',
           'upc.cloudPrivat',
-          'upc.remotecontrol',
           'upcnet.cas',
           'upcnet.stats',
           'Products.LinguaPlone',
@@ -59,7 +58,6 @@ setup(name='genweb.core',
           'plone.app.workflowmanager',
           # Experimental GW4
           'Solgema.fullcalendar',
-          'plone.app.toolbar',
           'collective.panels',
       ],
       entry_points="""
