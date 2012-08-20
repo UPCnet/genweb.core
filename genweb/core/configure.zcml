@@ -8,13 +8,13 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
-    <!-- Compat amb Plone 4.1 -->
+    <!-- Compat with Plone 4.1 -->
     <include package="Products.CMFCore" file="permissions.zcml" />
 
     <includeDependencies package="." />
     <includeDependencies package="genweb.stack" />
 
-    <!-- redefinicions, per a que els tests funcionin -->
+    <!-- Redefinitions to make test pass -->
     <include package="Products.CMFPlacefulWorkflow" />
 
     <i18n:registerTranslations directory="locales" />
@@ -22,7 +22,10 @@
     <include package=".browser" />
     <include file="subscribers.zcml" />
 
-    <!-- Utilitats i funcions comunes -->
+    <!-- ATLink extender -->
+    <adapter factory=".extenders.ATLinkSchemaModifier" />
+
+    <!-- Utilities and common functions -->
     <browser:page
       for="*"
       name="genweb.utils"
