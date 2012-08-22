@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+    <index name="obrirEnFinestraNova" meta_type="FieldIndex">
+        <indexed_attr value="obrirEnFinestraNova"/>
+    </index>
+    <column value="obrirEnFinestraNova"/>
+    <index name="exclude_from_nav" meta_type="FieldIndex">
+        <indexed_attr value="exclude_from_nav"/>
+    </index>
+    <column value="get_size"/>
+</object>
