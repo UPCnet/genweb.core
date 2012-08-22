@@ -1,5 +1,11 @@
 Changelog
 =========
+
+4.2 (unreleased)
+----------------
+- Traspassada tota la funcionalitat del paquet upc.genwebupc
+- Traspassats configuració genérica del profile del paquet upc.genwebupctheme
+
 4.1.4 (2012-03-01)
 ------------------
 - Permissos del root
