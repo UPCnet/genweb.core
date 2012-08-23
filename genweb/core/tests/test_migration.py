@@ -53,3 +53,5 @@ class MigrationIntegrationTest(unittest.TestCase):
 
         self.assertEqual(genweb_settings.html_title_ca, genweb_props.titolespai_ca)
         self.assertEqual(genweb_settings.amaga_identificacio, False)
+
+        self.assertEqual(genweb_settings.treu_menu_horitzontal, False)

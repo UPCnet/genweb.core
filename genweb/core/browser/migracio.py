@@ -28,6 +28,12 @@ class migrateControlPanel(grok.View):
 
     def render(self):
         context = aq_inner(self.context)
+
+        logger = logging.getLogger('Genweb 4.2: Migration time!')
+        logger.error('======================================================================')
+        logger.error('%s' % context.id)
+        logger.error('Running control panel and flavour settings migration from GW4 to GW4.2 ... ')
+
         genweb_props = getToolByName(context, 'portal_properties').genwebupc_properties
         registry = queryUtility(IRegistry)
         genweb_settings = registry.forInterface(IGenwebControlPanelSettings)
@@ -56,6 +62,53 @@ class migrateControlPanel(grok.View):
 
         # Master section
         genweb_settings.idestudi_master = unicode(genweb_props.idestudiMaster)
+
+        # Translation flavour - GW4.2 settings
+        legacy_skin = getToolByName(context, 'portal_skins').getDefaultSkin()
+
+        # N3
+        if legacy_skin == 'GenwebUPC_Neutre3':
+            genweb_settings.contacte_BBBDD_or_page = False
+            genweb_settings.contacte_al_peu = False
+            genweb_settings.directori_upc = False
+            genweb_settings.contrast_colors_bn = False
+            genweb_settings.treu_imatge_capsalera = False
+            genweb_settings.treu_menu_horitzontal = False
+            genweb_settings.treu_icones_xarxes_socials = False
+
+        # N2
+        elif legacy_skin == 'GenwebUPC_Neutre2':
+            genweb_settings.contacte_BBBDD_or_page = False
+            genweb_settings.contacte_al_peu = False
+            genweb_settings.directori_upc = False
+            genweb_settings.contrast_colors_bn = False
+            genweb_settings.treu_imatge_capsalera = False
+            genweb_settings.treu_menu_horitzontal = True
+            genweb_settings.treu_icones_xarxes_socials = False
+
+        # Unitat
+        elif legacy_skin == 'GenwebUPC_Unitat':
+            genweb_settings.contacte_BBBDD_or_page = False
+            genweb_settings.contacte_al_peu = False
+            genweb_settings.directori_upc = False
+            genweb_settings.contrast_colors_bn = False
+            genweb_settings.treu_imatge_capsalera = False
+            genweb_settings.treu_menu_horitzontal = False
+            genweb_settings.treu_icones_xarxes_socials = False
+
+        # Master
+        elif legacy_skin == 'GenwebUPC_Master':
+            genweb_settings.contacte_BBBDD_or_page = False
+            genweb_settings.contacte_al_peu = False
+            genweb_settings.directori_upc = False
+            genweb_settings.contrast_colors_bn = False
+            genweb_settings.treu_imatge_capsalera = False
+            genweb_settings.treu_menu_horitzontal = True
+            genweb_settings.treu_icones_xarxes_socials = False
+
+        else:
+            logger.error("OJO! skin del site no reconegut! %s" % legacy_skin)
+            return "OJO! skin del site no reconegut!"
 
         return "Done!"
 
