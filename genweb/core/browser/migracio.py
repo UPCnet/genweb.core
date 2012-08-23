@@ -13,10 +13,51 @@ from plone.registry.interfaces import IRegistry
 from zope.component import queryUtility
 from plone.cachepurging.interfaces import ICachePurgingSettings
 
-from upc.genwebupc.browser.helpers import getDorsal
+from genweb.core.browser.helpers import getDorsal
+from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
 import logging
 import re
+
+
+class migrateControlPanel(grok.View):
+    """.."""
+    grok.name('migrateControlPanel')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        context = aq_inner(self.context)
+        genweb_props = getToolByName(context, 'portal_properties').genwebupc_properties
+        registry = queryUtility(IRegistry)
+        genweb_settings = registry.forInterface(IGenwebControlPanelSettings)
+
+        # General section
+        genweb_settings.html_title_ca = genweb_props.titolespai_ca
+        genweb_settings.html_title_es = genweb_props.titolespai_es
+        genweb_settings.html_title_en = genweb_props.titolespai_en
+
+        genweb_settings.signatura_unitat_ca = genweb_props.firmaunitat_ca
+        genweb_settings.signatura_unitat_es = genweb_props.firmaunitat_es
+        genweb_settings.signatura_unitat_en = genweb_props.firmaunitat_en
+
+        # Contact information section
+        genweb_settings.contacte_id = unicode(genweb_props.contacteid)
+        genweb_settings.contacte_no_upcmaps = genweb_props.boolmaps
+
+        # Specific section
+        genweb_settings.especific1 = unicode(genweb_props.especific1)
+        genweb_settings.especific2 = unicode(genweb_props.especific3)
+
+        if genweb_props.tipusintranet == 'Visible':
+            genweb_settings.amaga_identificacio = False
+        else:
+            genweb_settings.amaga_identificacio = True
+
+        # Master section
+        genweb_settings.idestudi_master = unicode(genweb_props.idestudiMaster)
+
+        return "Done!"
 
 
 def migracio3(context):
