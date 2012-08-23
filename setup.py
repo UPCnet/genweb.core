@@ -31,7 +31,6 @@ setup(name='genweb.core',
           'genweb.controlpanel',
           'genweb.stack',
           'genweb.portlets',
-          'upc.genwebupctheme',
           'upc.genweb.banners',
           'upc.genweb.logosfooter',
           'upc.genweb.meetings',
@@ -60,6 +59,10 @@ setup(name='genweb.core',
           # Experimental GW4
           'Solgema.fullcalendar',
           'collective.panels',
+          'wildcard.foldercontents',
+          # To extinct
+          'upc.genwebupc',
+          'upc.genwebupctheme',
       ],
       entry_points="""
       # -*- Entry points: -*-
