@@ -184,3 +184,45 @@ class listLDAPInfo(grok.View):
             except:
                 print "Plonesite %s doesn't have a valid ldapUPC instance." % plonesite.id
         return json.dumps(out)
+
+
+class matagetHTTPCacheheaders(grok.View):
+    """ Canvia el portal_type dels objectes del PloneSurvey que tinguin espais en el nom del tipus"""
+
+    grok.name('matagetHTTPCacheheaders')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        context = aq_inner(self.context)
+        portal = getToolByName(context, 'portal_url').getPortalObject()
+        ps = getToolByName(context, 'portal_setup')
+        toolset = ps.getToolsetRegistry()
+        required = toolset._required.copy()
+        existing = portal.keys()
+        changed = False
+        for name, info in required.items():
+            if name not in existing:
+                del required[name]
+                changed = True
+        if changed:
+            toolset._required = required
+            print 'Cleaned up the toolset registry.'
+
+        return required
+
+
+class removeBrokenCacheFu(grok.View):
+    """ Canvia el portal_type dels objectes del PloneSurvey que tinguin espais en el nom del tipus"""
+
+    grok.name('removeBrokenCacheFu')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        from plone.app.upgrade.v40.alphas import removeBrokenCacheFu
+        context = aq_inner(self.context)
+
+        removeBrokenCacheFu(context)
+
+        return 'done'
