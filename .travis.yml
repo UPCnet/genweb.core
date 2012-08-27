@@ -1,0 +1,8 @@
+language: python
+python: "2.7"
+install:
+  - touch /home/travis/virtualenv/python2.7/lib/python2.7/sitecustomize.py
+  - echo "import sys; sys.setdefaultencoding('utf-8')" > /home/travis/virtualenv/python2.7/lib/python2.7/sitecustomize.py
+  - python bootstrap.py -c travis.cfg
+  - bin/buildout -c travis.cfg -q
+script: bin/test -s genweb.core
