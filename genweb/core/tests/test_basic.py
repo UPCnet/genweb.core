@@ -16,6 +16,9 @@ class IntegrationTest(unittest.TestCase):
 
     layer = GENWEBUPC_INTEGRATION_TESTING
 
+    def setUp(self):
+        self.portal = self.layer['portal']
+
     def testSetupViewAvailable(self):
         portal = self.layer['portal']
         self.failUnless(portal.unrestrictedTraverse('@@setup-view'))
@@ -110,3 +113,21 @@ class IntegrationTest(unittest.TestCase):
         applyProfile(portal, 'upc.genweb.objectiusCG:default')
         f1.invokeFactory('ObjectiuGeneralCG', 'objectiuGeneralCG', title=u"Soc una objectiuGeneralCG")
         self.assertEqual(f1['objectiuGeneralCG'].Title(), u"Soc una objectiuGeneralCG")
+
+    def testFolderConstrains(self):
+        from genweb.core.events import CONSTRAINED_TYPES, IMMEDIATELY_ADDABLE_TYPES
+        from zope.event import notify
+        from Products.Archetypes.event import ObjectInitializedEvent
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.portal.invokeFactory('Folder', 'userfolder', title=u"Soc una carpeta")
+        folder = self.portal['userfolder']
+        notify(ObjectInitializedEvent(folder))
+        self.assertEqual(sorted(folder.getLocallyAllowedTypes()), sorted(CONSTRAINED_TYPES))
+        self.assertEqual(sorted(folder.getImmediatelyAddableTypes()), sorted(IMMEDIATELY_ADDABLE_TYPES))
+
+    def testPortalConstrains(self):
+        portal_allowed_types = ['Folder', 'File', 'Image', 'Document']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.assertEqual(sorted([ct.id for ct in self.portal.allowedContentTypes()]), sorted(portal_allowed_types))

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding='utf-8'?>
 <object>
  <resourcetypes>
   <linkable>
@@ -89,9 +89,9 @@
    <element value="Elimina marges|margezero"/>
    <element value="Text correcte|span|ins"/>
    <element value="Text incorrecte|span|del"/>
-   <element value="Fons cel·la color1|td|fonsDestacat1"/>
-   <element value="Fons cel·la color2|td|fonsDestacat2"/>
-   <element value="Capçalera taula|tr|cap"/>
+   <element value="Fons cel&amp;middot;la color1|td|fonsDestacat1"/>
+   <element value="Fons cel&amp;middot;la color2|td|fonsDestacat2"/>
+   <element value="Cap&amp;ccedil;alera taula|tr|cap"/>
   </styles>
   <tablestyles>
    <element value="Subdued grid|plain"/>

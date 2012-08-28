@@ -5,7 +5,7 @@
     i18n_domain="genweb.core">
 
     <!-- Constrained items for folders -->
-    <class class="Products.ATContentTypes.content.folder.ATFolder">
+    <class class="plone.app.folder.folder.ATFolder">
       <implements interface=".interfaces.IConstrainedFolder" />
     </class>
 
