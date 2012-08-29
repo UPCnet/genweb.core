@@ -1,18 +1,21 @@
+from five import grok
+from Acquisition import aq_inner
+from zope.component import queryUtility
+
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-
 from Products.CMFPlone.utils import _createObjectByType
-from five import grok
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Acquisition import aq_inner
-
-from upc.genwebupc.browser.plantilles import get_plantilles
 from Products.CMFPlone.utils import normalizeString
 
+from plone.app.folder.utils import findObjects
+from plone.locking.interfaces import ILockable
 from plone.registry.interfaces import IRegistry
-from zope.component import queryUtility
 from plone.cachepurging.interfaces import ICachePurgingSettings
 
+from Products.LinguaPlone.interfaces import ITranslatable
+
+from genweb.core.browser.plantilles import get_plantilles
 from genweb.core.browser.helpers import getDorsal
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
@@ -108,9 +111,64 @@ class migrateControlPanel(grok.View):
 
         else:
             logger.error("OJO! skin del site no reconegut! %s" % legacy_skin)
-            return "OJO! skin del site no reconegut!"
+            return "OJO! skin del site no reconegut!" % legacy_skin
 
         return "Done!"
+
+
+class migrateSeccioType(grok.View):
+    """.."""
+    grok.name('migrateSeccioType')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        context = aq_inner(self.context)
+        self.logger = logging.getLogger('Genweb 4.2: Migration time!')
+        pc = getToolByName(context, 'portal_catalog')
+        all_secccions = pc.searchResults(portal_type='Seccio')
+
+        if all_secccions is None:
+            self.logger.error("El site %s no te seccions." % self.context.id)
+            return "El site %s no te seccions." % self.context.id
+
+        for seccio_brain in all_secccions:
+            seccio = seccio_brain.getObject()
+            seccio_id = seccio.id
+
+            # Create the new folder, append '_new'
+            context.invokeFactory('Folder', seccio.id + '_new')
+            new_folder = context[seccio_id + '_new']
+
+            # Look for some possible locked objects inside section
+            self.stealLocks(seccio)
+
+            # Move all objects to the new location
+            ids_to_move = [childrenId for childrenId in seccio.objectIds()]
+
+            # Statistics
+            path = '/'.join(seccio.getPhysicalPath())
+            seccio_objs = pc.searchResults(object_provides=ITranslatable, path={'query': path})
+            self.logger.error("Migrant %s objectes a la nova carpeta dins de %s." % (len(seccio_objs), ids_to_move))
+
+            for childrenId in ids_to_move:
+                cp = seccio.manage_cutObjects(childrenId)
+                new_folder.manage_pasteObjects(cp)
+
+            # Rename objects
+            context.manage_renameObjects([seccio.id], [seccio.id + '_old'])
+            import transaction
+            transaction.commit()
+            context.manage_renameObjects([new_folder.id], [seccio_id])
+
+        return 'Done!'
+
+    def stealLocks(self, seccio):
+        for path, obj in findObjects(seccio):
+            lockable = ILockable(obj)
+            if lockable.locked():
+                lockable.unlock()
+                self.logger.error("Unlocking object %s." % obj)
 
 
 def migracio3(context):
