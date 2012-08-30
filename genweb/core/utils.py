@@ -18,38 +18,41 @@ from AccessControl import getSecurityManager
 
 PLMF = MessageFactory('plonelocales')
 
+
 def havePermissionAtRoot(self):
-     """Funcio que retorna si es Editor a l'arrel"""
-     
-     pm= getToolByName(self, 'portal_membership')   
-     tools = getMultiAdapter((self.context, self.request),
-                                        name=u'plone_tools')       
-     proot = tools.url().getPortalObject()
-     sm = getSecurityManager()
-     user = pm.getAuthenticatedMember()
-     
-     return sm.checkPermission('Modify portal content', proot) or ('WebMaster' in user.getRoles())    
+    """Funcio que retorna si es Editor a l'arrel"""
+
+    pm = getToolByName(self, 'portal_membership')
+    tools = getMultiAdapter((self.context, self.request),
+                                    name=u'plone_tools')
+    proot = tools.url().getPortalObject()
+    sm = getSecurityManager()
+    user = pm.getAuthenticatedMember()
+
+    return sm.checkPermission('Modify portal content', proot) or ('WebMaster' in user.getRoles())
+
 
 def portal_url(self):
-        """ Funcion a que retorna el path 
+        """ Funcion a que retorna el path
         """
         context_state = getMultiAdapter((self.context, self.request),
                                         name=u'plone_context_state')
         return context_state.current_base_url()
 
+
 class utilitats(BrowserView):
 
     def havePermissionAtRoot(self):
          """Funcio que retorna si es Editor a l'arrel"""
-         
-         pm= getToolByName(self, 'portal_membership')   
+
+         pm= getToolByName(self, 'portal_membership')
          tools = getMultiAdapter((self.context, self.request),
-                                            name=u'plone_tools')       
+                                            name=u'plone_tools')
          proot = tools.url().getPortalObject()
          sm = getSecurityManager()
          user = pm.getAuthenticatedMember()
-         
-         return sm.checkPermission('Modify portal content', proot) or ('WebMaster' in user.getRoles())    
+
+         return sm.checkPermission('Modify portal content', proot) or ('WebMaster' in user.getRoles())
 
     def llistaEstats(self):
         """Retorna una llista dels estats dels workflows indicats
@@ -59,11 +62,11 @@ class utilitats(BrowserView):
         estats = []
         for w in workflows:
             estats = estats + [s[0] for s in wtool.getWorkflowById(w).states.items()]
-    
+
         return [w for w in wtool.listWFStatesByTitle() if w[0] in estats]
 
     def llistaContents(self):
-        """Retorna tots els tipus de contingut, exclosos els de la llista types_to_exclude 
+        """Retorna tots els tipus de contingut, exclosos els de la llista types_to_exclude
         """
         types_to_exclude = ['Banner', 'BannerContainer', 'CollageAlias', 'CollageColumn', 'CollageRow', 'Favorite', 'Large Plone Folder', 'Logos_Container', 'Logos_Footer', 'PoiPscTracker', 'SubSurvey', 'SurveyMatrix', 'SurveyMatrixQuestion', 'SurveySelectQuestion', 'SurveyTextQuestion',]
         portal_state = getMultiAdapter((self.context, self.request),
@@ -72,11 +75,11 @@ class utilitats(BrowserView):
         for typeEx in types_to_exclude:
             if typeEx in ptypes:
                 ptypes.remove(typeEx)
-        
+
         return ptypes
-        
+
     def portal_url(self):
-        """ Funcion a que retorna el path 
+        """ Funcion a que retorna el path
         """
         context_state = getMultiAdapter((self.context, self.request),
                                         name=u'plone_context_state')
@@ -90,13 +93,13 @@ class utilitats(BrowserView):
         if dia == 7:
             dia = 0
         return PLMF(_ts. day_msgid(dia), default=_ts.weekday_english(dia, format='a'))
-        
+
     def mes(self,month):
         """ Funcion a la que le pasas el mes y te lo devuelve en modo texto
         """
         _ts = getToolByName(self, 'translation_service')
         return PLMF(_ts.month_msgid(month), default=_ts.month_english(month, format='a'))
-    
+
     def pref_lang(self):
         """Funcio que extreu idioma actiu
         """
@@ -108,13 +111,13 @@ class utilitats(BrowserView):
         """
         if  IATFolder.providedBy(self.context) or IPloneSiteRoot.providedBy(self.context):
             return True
-   
+
     def getSectionFromURL(self):
         context=self.context
         #portal_url=getToolByName(context, 'portal_url')
         tools = getMultiAdapter((self.context, self.request),
-                                        name=u'plone_tools')       
-        
+                                        name=u'plone_tools')
+
         portal_state = getMultiAdapter((self.context, self.request),
                                         name=u'plone_portal_state')
         contentPath = tools.url().getRelativeContentPath(context)
@@ -127,4 +130,4 @@ class utilitats(BrowserView):
         portal_skins=getToolByName(self.context, 'portal_skins')
         return portal_skins.getDefaultSkin()
 
-    
+
