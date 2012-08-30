@@ -215,6 +215,15 @@ class killBrokenTransforms(grok.View):
     def render(self):
         context = aq_inner(self.context)
         pt = getToolByName(context, 'portal_transforms')
+        pt_ids = pt.objectIds()
+
+        for m_in, m_out_dict in pt._mtmap.items():
+            for m_out, transforms in m_out_dict.items():
+                for transform in transforms:
+                    if transform.id not in pt_ids:
+                        m_out_dict[m_out].remove(transform)
+                        import transaction
+                        transaction.commit()
 
         return 'Done!'
 
