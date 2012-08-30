@@ -126,19 +126,40 @@ class migrateSeccioType(grok.View):
         context = aq_inner(self.context)
         self.logger = logging.getLogger('Genweb 4.2: Migration time!')
         pc = getToolByName(context, 'portal_catalog')
-        all_secccions = pc.searchResults(portal_type='Seccio')
+        pw = getToolByName(context, 'portal_workflow')
+        default_wf = pw.getDefaultChain()
+        ptypes = getToolByName(context, 'portal_types')
+        ptypes['Plone Site'].allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Seccio']
+        traverse = context.unrestrictedTraverse
 
-        if all_secccions is None:
+        all_seccions = pc.searchResults(portal_type='Seccio', Language="all")
+
+        if all_seccions is None:
             self.logger.error("El site %s no te seccions." % self.context.id)
             return "El site %s no te seccions." % self.context.id
 
-        for seccio_brain in all_secccions:
+        for seccio_brain in all_seccions:
             seccio = seccio_brain.getObject()
             seccio_id = seccio.id
 
-            # Create the new folder, append '_new'
+            # Create the new folder, append '_new', set Language and state
             context.invokeFactory('Folder', seccio.id + '_new')
             new_folder = context[seccio_id + '_new']
+            new_folder.setTitle(seccio.Title())
+            new_folder.setDescription(seccio.Description())
+            new_folder.setLanguage(seccio.getLanguage())
+            new_folder.setExcludeFromNav(seccio.getExcludeFromNav())
+
+            try:
+                state = pw.getInfoFor(seccio, 'review_state')
+                if state == 'published':
+                    pw.doActionFor(new_folder, 'publish')
+                elif state == 'private':
+                    pw.doActionFor(new_folder, 'hide')
+                elif state == 'intranet':
+                    pw.doActionFor(new_folder, 'publishtointranet')
+            except:
+                pass
 
             # Look for some possible locked objects inside section
             self.stealLocks(seccio)
@@ -148,7 +169,7 @@ class migrateSeccioType(grok.View):
 
             # Statistics
             path = '/'.join(seccio.getPhysicalPath())
-            seccio_objs = pc.searchResults(object_provides=ITranslatable, path={'query': path})
+            seccio_objs = pc.searchResults(object_provides=ITranslatable.__identifier__, path={'query': path}, Language="all")
             self.logger.error("Migrant %s objectes a la nova carpeta dins de %s." % (len(seccio_objs), ids_to_move))
 
             for childrenId in ids_to_move:
@@ -161,6 +182,20 @@ class migrateSeccioType(grok.View):
             transaction.commit()
             context.manage_renameObjects([new_folder.id], [seccio_id])
 
+        # Clone the link to translations of the new objects by id
+        all_seccions = pc.searchResults(portal_type='Seccio', Language="all")
+        base = '/'.join(context.getPhysicalPath())
+        for seccio_brain in all_seccions:
+            seccio = seccio_brain.getObject()
+            if seccio.isCanonical:
+                translations = seccio.getTranslations(include_canonical=False)
+                if translations:
+                    for language in translations.keys():
+                        try:
+                            traverse(translations[language][0].id.replace('_old', '')).addTranslationReference(traverse(base + '/' + seccio.id.replace('_old', '')))
+                        except:
+                            pass
+
         return 'Done!'
 
     def stealLocks(self, seccio):
@@ -169,6 +204,19 @@ class migrateSeccioType(grok.View):
             if lockable.locked():
                 lockable.unlock()
                 self.logger.error("Unlocking object %s." % obj)
+
+
+class killBrokenTransforms(grok.View):
+    """.."""
+    grok.name('killBrokenTransforms')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        context = aq_inner(self.context)
+        pt = getToolByName(context, 'portal_transforms')
+
+        return 'Done!'
 
 
 def migracio3(context):
