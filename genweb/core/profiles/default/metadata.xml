@@ -21,8 +21,11 @@
     <dependency>profile-plone.app.caching:default</dependency>
     <!-- <dependency>profile-plone.app.discussion:default</dependency> -->
     <!-- <dependency>profile-upc.genwebupctheme:default</dependency> -->
+    <dependency>profile-Solgema.fullcalendar:default</dependency>
+    <dependency>profile-wildcard.foldercontents:default</dependency>
+    <dependency>profile-collective.panels:default</dependency>
     <dependency>profile-genweb.controlpanel:default</dependency>
-    <dependency>profile-genweb.theme:default</dependency>
+    <!-- <dependency>profile-genweb.theme:default</dependency> -->
 <!--
     <dependency>profile-Products.Poi:default</dependency>
 -->
