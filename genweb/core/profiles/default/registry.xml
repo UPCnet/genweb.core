@@ -54,20 +54,5 @@
     </field>
     <value>6LeDfboSAAAAADITjxaiFYjQjsKP4t_2Ddiz-g9_</value>
   </record>
-  <!-- collective.panels -->
-  <record field="site_local_managers" interface="collective.panels.interfaces.IGlobalSettings" name="collective.panels.interfaces.IGlobalSettings.site_local_managers">
-    <field type="plone.registry.field.Set">
-      <description>The locations listed here will be assignable only at sites (typically Plone's site root, unless local sites are present).</description>
-      <required>False</required>
-      <title>Site-local panel managers</title>
-      <value_type type="plone.registry.field.Choice">
-        <vocabulary>collective.panels.vocabularies.Managers</vocabulary>
-      </value_type>
-    </field>
-    <value>
-      <element>&lt;InterfaceClass plone.app.layout.viewlets.interfaces.IPortalFooter&gt;</element>
-      <element>&lt;InterfaceClass plone.app.layout.viewlets.interfaces.IPortalTop&gt;</element>
-    </value>
-  </record>
 
 </registry>
