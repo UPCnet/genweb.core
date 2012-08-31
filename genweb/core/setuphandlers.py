@@ -1,8 +1,12 @@
+from zope.interface import alsoProvides
+
 from Products.CMFCore.utils import getToolByName
 from Products.PloneLDAP.factory import manage_addPloneLDAPMultiPlugin
 from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
 
 from plone.app.controlpanel.site import ISiteSchema
+
+from genweb.core.interfaces import IHomePage
 
 import transaction
 
@@ -104,4 +108,9 @@ def setupVarious(context):
     pct.calendar_states = ('published', 'intranet')
     # Fixem el primer dia de la setamana com dilluns (0)
     pct.firstweekday = 0
+
+    # Mark the home page
+    if getattr(portal, 'front-page', False):
+        alsoProvides(portal['front-page'], IHomePage)
+
     transaction.commit()
