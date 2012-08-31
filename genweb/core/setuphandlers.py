@@ -1,12 +1,17 @@
 from zope.interface import alsoProvides
+from zope.component import getUtility
 
 from Products.CMFCore.utils import getToolByName
 from Products.PloneLDAP.factory import manage_addPloneLDAPMultiPlugin
 from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
 
+from plone.registry.interfaces import IRegistry
+from plone.app.layout.viewlets import interfaces
 from plone.app.controlpanel.site import ISiteSchema
 
 from genweb.core.interfaces import IHomePage
+
+from collective.panels.interfaces import IGlobalSettings
 
 import transaction
 
@@ -112,5 +117,9 @@ def setupVarious(context):
     # Mark the home page
     if getattr(portal, 'front-page', False):
         alsoProvides(portal['front-page'], IHomePage)
+
+    # Configure the panels
+    settings = getUtility(IRegistry).forInterface(IGlobalSettings)
+    settings.site_local_managers = set([interfaces.IPortalTop, interfaces.IPortalFooter])
 
     transaction.commit()
