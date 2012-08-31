@@ -226,3 +226,13 @@ class removeBrokenCacheFu(grok.View):
         removeBrokenCacheFu(context)
 
         return 'done'
+
+
+class console(grok.View):
+    grok.name('console')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.View')
+
+    def render(self):
+        context = aq_inner(self.context)
+        import ipdb;ipdb.set_trace()

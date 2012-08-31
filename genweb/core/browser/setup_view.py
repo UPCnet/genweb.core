@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
-from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from zope.component import getMultiAdapter
 from cgi import parse_qs
+from Acquisition import aq_parent
+from zope.interface import alsoProvides
+from zope.component import getMultiAdapter
 
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import _createObjectByType
 from Products.CMFCore import permissions
+from Products.Five.browser import BrowserView
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import normalizeString
+from Products.CMFPlone.utils import _createObjectByType
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.controlpanel.mail import IMailSchema
 
-from Acquisition import aq_parent
-
-from plantilles import get_plantilles
-from Products.CMFPlone.utils import normalizeString
+from genweb.core.interfaces import IHomePage
+from genweb.core.browser.plantilles import get_plantilles
 
 
 class setup(BrowserView):
@@ -156,6 +157,14 @@ class setup(BrowserView):
         welcome.manage_permission(permissions.DeleteObjects, roles=["Manager"], acquire=False)
 
         self.setLanguageAndLink([(benvingut, 'ca'), (bienvenido, 'es'), (welcome, 'en')])
+
+        # Mark all homes with IHomePage marker interface
+        alsoProvides(benvingut, IHomePage)
+        alsoProvides(bienvenido, IHomePage)
+        alsoProvides(welcome, IHomePage)
+
+        # Set the default page to the 'ca' home page
+        portal.setDefaultPage('benvingut')
 
         # Templates TinyMCE
         templates = self.crearObjecte(portal, 'templates', 'Folder', 'Templates', 'Plantilles per defecte administrades per l\'SCP.', constrains=(['Document'], ['']))
