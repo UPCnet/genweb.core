@@ -11,3 +11,7 @@ class IGenwebLayer(Interface):
 
 class IConstrainedFolder(Interface):
     """ Marker interface for constrained folders """
+
+
+class IHomePage(Interface):
+    """ Marker interface for home page documents """
