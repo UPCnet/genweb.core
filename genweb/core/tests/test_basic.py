@@ -1,15 +1,18 @@
 import unittest2 as unittest
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
+from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter
 from Products.CMFCore.utils import getToolByName
 
+from plone.testing.z2 import Browser
 from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
-from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import login, logout
 from plone.app.testing import setRoles
 
 from plone.app.testing import applyProfile
+
+from genweb.core.interfaces import IHomePage
 
 
 class IntegrationTest(unittest.TestCase):
@@ -18,6 +21,7 @@ class IntegrationTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
+        self.request = self.layer['request']
 
     def testSetupViewAvailable(self):
         portal = self.layer['portal']
@@ -55,7 +59,6 @@ class IntegrationTest(unittest.TestCase):
 
     def testBasicProducts(self):
         portal = self.layer['portal']
-        request = self.layer['request']
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
         portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
@@ -93,7 +96,6 @@ class IntegrationTest(unittest.TestCase):
 
     def testAdditionalProducts(self):
         portal = self.layer['portal']
-        request = self.layer['request']
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
         portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
@@ -131,3 +133,39 @@ class IntegrationTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         login(self.portal, TEST_USER_NAME)
         self.assertEqual(sorted([ct.id for ct in self.portal.allowedContentTypes()]), sorted(portal_allowed_types))
+
+    def testHomePageMarkerInterface(self):
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        setupview = getMultiAdapter((self.portal, self.request), name='setup-view')
+        setupview.createContent()
+        logout()
+        self.assertTrue(IHomePage.providedBy(self.portal['benvingut']))
+
+
+class FunctionalTest(unittest.TestCase):
+
+    layer = GENWEBUPC_FUNCTIONAL_TESTING
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        self.request = self.layer['request']
+        self.app = self.layer['app']
+        self.browser = Browser(self.app)
+        # Let anz.casclient do not interfere in tests
+        self.portal.acl_users.manage_delObjects('CASUPC')
+        # Setup view, to put all default pages in place
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        setupview = getMultiAdapter((self.portal, self.request), name='setup-view')
+        setupview.createContent()
+        logout()
+        setRoles(self.portal, TEST_USER_ID, ['Member'])
+        import transaction
+        transaction.commit()
+
+    def testHomePage(self):
+        portalURL = self.portal.absolute_url()
+        self.browser.open(portalURL)
+
+        self.assertTrue(u"Benvingut" in self.browser.contents)
