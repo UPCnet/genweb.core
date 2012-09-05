@@ -1,3 +1,10 @@
+Catalan documentation
+=====================
+
+At the time of this writing, there is only a catalan version of the development documentation. You can find it in the `docs/*.rst` documents or at this site::
+
+    http://genweb.readthedocs.org/en/latest/
+
 Introduction
 ============
 
@@ -28,7 +35,3 @@ New Packages
 - genweb.setup
 - genweb.patches
 - genweb.content
-
-Tests
------
-- setup_view (genweb.setup)

@@ -13,3 +13,4 @@
 *.pydevproject
 passwd
 data
+docs/_build

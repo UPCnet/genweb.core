@@ -2,17 +2,40 @@
 Welcome to Genweb's documentation!
 ===================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
+
+.. note:: At the time of this writing, this documentation exist only in catalan.
 
 Introducció
 ===========
 
-Aquí podeu trobar la documentació oficial de desenvolupament de la col·lecció de paquets de software que composen Genweb.
+Aquesta és la documentació oficial de desenvolupament de la col·lecció de paquets de software que composen Genweb.
 
-Com a concepte, Genweb són dues coses: és un generador de webs institucionals inicialment orientat a donar servei a les unitats, serveis i facultats de la Universitat Politècnica de Catalunya i el servei de hosting associat a aquest servei.
+Genweb és un generador de webs institucionals inicialment orientat a donar servei a les unitats, serveis i facultats de la Universitat Politècnica de Catalunya (Barcelona Tech). Està basat en el gestor de continguts de software lliure Plone. Fa servir tecnologies HTML5, i està basat en el llenguatge de programació Python.
+
+El servei Genweb UPC és una iniciativa del `Servei de Comunicació i Promoció`_ de la `UPC`_ i `UPCnet`_ i abraça no només el desenvolupament del software base (Genweb), sino també el hosting de totes les instancies que actualment es troben en producció. Actualment qualsevol unitat, departament, servei i facultat de la UPC pot gaudir del servei via petició al Servei de Comunicació i Promoció de la UPC. Més de 400 entitats ja gaudeixen del servei. Amb més de 5 anys d'història, el servei ha viscut moltes actualitzacions a lo llarg d'aquests anys i està activament mantingut per UPCnet.
+
+.. _Servei de Comunicació i Promoció: http://www.upc.edu/comunicacio
+.. _UPCnet: http://www.upcnet.es
+.. _UPC: http://www.upc.edu
+
+Motivació
+=========
+
+Aquesta documentació ve motivada per la necessitat de tindre un punt únic d'entrada on compartir la informació relacionada amb com està desenvolupat Genweb i les bones pràctiques relacionades amb el seu desenvolupament.
+
+Continguts
+==========
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   codestyle
+
+Historial de canvis
+===================
 
 .. toctree::
    :maxdepth: 2
