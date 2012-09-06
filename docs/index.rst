@@ -33,6 +33,7 @@ Continguts
    :glob:
 
    codestyle
+   testing
 
 Historial de canvis
 ===================
