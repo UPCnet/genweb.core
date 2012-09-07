@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: zh\n"
+"Language-Name: Chinese\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: upc.genwebupc\n"
+"Domain: genweb\n"
 
 #: browser/capsaleraSuperior.pt
 msgid "identificat"
@@ -51,15 +51,6 @@ msgstr ""
 
 msgid "Activate"
 msgstr ""
-
-msgid "genweb-sobre_aquest_web"
-msgstr "About this web"
-
-msgid "genweb-rss"
-msgstr "RSS"
-
-msgid "genweb-accessibility"
-msgstr "Accessibility"
 
 msgid "genweb-actualitat"
 msgstr "UPC Today"
@@ -120,34 +111,3 @@ msgstr "Help"
 
 msgid "obrir_link_finestra_nova"
 msgstr "Open link in a new window"
-
-#: ."genweb-actualitatPDIPAS"
-msgid "genweb-actualitatPDIPAS"
-msgstr "PDI/PAS Today"
-
-#: ./browser/addthis.pt
-msgid "Comparteix"
-msgstr "Share"
-
-#: ./browser/addthis.pt
-msgid "comparteix_facebook"
-msgstr "Share on Facebook"
-
-#: ./browser/addthis.pt
-msgid "comparteix_linkedin"
-msgstr "Share on Linkedin"
-
-#: ./browser/addthis.pt
-msgid "send_mail"
-msgstr "Send by mail"
-
-#: ./browser/addthis.pt
-msgid "Print"
-msgstr "Print"
-
-#: ./browser/addthis.pt
-msgid "comparteix_twitter"
-msgstr "Share on Twitter"
-
-msgid "genweb_info_gral"
-msgstr "General Information"
