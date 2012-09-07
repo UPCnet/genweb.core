@@ -153,7 +153,7 @@ class FunctionalTest(unittest.TestCase):
         self.app = self.layer['app']
         self.browser = Browser(self.app)
         # Let anz.casclient do not interfere in tests
-        self.portal.acl_users.manage_delObjects('CASUPC')
+        # self.portal.acl_users.manage_delObjects('CASUPC')
         # Setup view, to put all default pages in place
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         login(self.portal, TEST_USER_NAME)
