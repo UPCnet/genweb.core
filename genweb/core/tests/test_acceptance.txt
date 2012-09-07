@@ -1,0 +1,35 @@
+*** Settings ***
+
+Library  genweb.core.tests.keywords.PloneLibrary
+Library  Selenium2Library  timeout=10  implicit_wait=0.5
+
+Suite Setup  Start browser
+Suite Teardown  Close All Browsers
+
+*** Test Cases ***
+
+Genweb Setup Viewlet
+    Log in as manager
+    Click link  aquest formulari
+    Click Button  Executar
+    Goto homepage
+    Page should contain  Benvingut
+
+*** Keywords ***
+
+Start browser
+    Open browser  http://localhost:55001/plone/
+
+Goto homepage
+    Go to  http://localhost:55001/plone/
+    Page should contain  Plone site
+
+Log in as manager
+    ${TEST_USER_NAME} =  Get site owner name
+    ${TEST_USER_PASSWORD} =  Get site owner password
+    Go to  http://localhost:55001/plone/login_form
+    Page should contain element  __ac_name
+    Input text  __ac_name  ${TEST_USER_NAME}
+    Input text  __ac_password  ${TEST_USER_PASSWORD}
+    Click Button  Identifica
+    Page should contain element  css=#user-name

@@ -1,6 +1,7 @@
 from zope.configuration import xmlconfig
 
 from plone.testing import z2
+from plone.testing.z2 import ZSERVER_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import applyProfile
 from plone.app.testing import PLONE_FIXTURE
@@ -46,6 +47,8 @@ class GenwebUPC(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup
         applyProfile(portal, 'genweb.core:default')
+        # Let anz.casclient do not interfere in tests
+        portal.acl_users.manage_delObjects('CASUPC')
 
     def tearDownZope(self, app):
         # Uninstall archetypes-based products
@@ -75,3 +78,6 @@ GENWEBUPC_INTEGRATION_TESTING = IntegrationTesting(
 GENWEBUPC_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(GENWEBUPC_FIXTURE,),
     name="GenwebUPC:Functional")
+GENWEBUPC_ACCEPTANCE_TESTING = FunctionalTesting(
+    bases=(GENWEBUPC_FIXTURE, ZSERVER_FIXTURE),
+    name="GenwebUPC:Acceptance")
