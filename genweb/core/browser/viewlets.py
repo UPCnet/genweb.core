@@ -1,11 +1,11 @@
 from five import grok
 from Acquisition import aq_inner
 
-from Products.ATContentTypes.interface.document import IATDocument
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
 
+from genweb.core.interfaces import IGenwebLayer
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import portal_url
 
@@ -13,6 +13,7 @@ from genweb.core.utils import portal_url
 class notConfiguredForHomes(grok.Viewlet):
     grok.viewletmanager(IAboveContent)
     grok.context(IHomePage)
+    grok.layer(IGenwebLayer)
 
     def existObjectsNeeded(self):
         """Funcio que mira si existeixen els objectes que son necessaris pel bon funcionament del espai
@@ -30,6 +31,7 @@ class notConfiguredForHomes(grok.Viewlet):
 class notConfiguredForRoots(grok.Viewlet):
     grok.viewletmanager(IAboveContent)
     grok.context(IPloneSiteRoot)
+    grok.layer(IGenwebLayer)
 
     def existObjectsNeeded(self):
         """Funcio que mira si existeixen els objectes que son necessaris pel bon funcionament del espai
