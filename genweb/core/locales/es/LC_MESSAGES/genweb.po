@@ -16,6 +16,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
+#. "genweb-escriptori"
+msgid "genweb-escriptori"
+msgstr "Escritorio"
+
 #. "genweb_loginlocal"
 msgid "genweb_loginlocal"
 msgstr "Identifícate sólo en esta web"
