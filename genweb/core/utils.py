@@ -29,21 +29,20 @@ def getGWConfig():
 def havePermissionAtRoot(self):
     """Funcio que retorna si es Editor a l'arrel"""
     pm = getToolByName(self, 'portal_membership')
-    tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
-    proot = tools.url().getPortalObject()
-    #proot=pu.getPortalObject()
+    proot = portal()
     sm = getSecurityManager()
     user = pm.getAuthenticatedMember()
 
-    return sm.checkPermission('Modify portal content', proot) or ('WebMaster' in user.getRoles())
+    return sm.checkPermission('Modify portal content', proot) \
+           or ('WebMaster' in user.getRoles()) \
+           or ('Site Administrator' in user.getRoles())
 
 
 def portal_url(self):
     """Get the Plone portal URL out of thin air without importing fancy
        interfaces and doing multi adapter lookups.
     """
-    portal = getSite()
-    return portal.absolute_url()
+    return portal().absolute_url()
 
 
 def portal():
@@ -51,6 +50,21 @@ def portal():
        interfaces and doing multi adapter lookups.
     """
     return getSite()
+
+
+def assignAltAcc(self):
+    """ Assignar alt per accessibilitat a links en finestra nova
+    """
+    lt = getToolByName(portal(), 'portal_languages')
+    idioma = lt.getPreferredLanguage()
+    label = "(obriu en una finestra nova)"
+    if idioma == 'ca':
+        label = "(obriu en una finestra nova)"
+    if idioma == 'es':
+        label = "(abre en ventana nueva)"
+    if idioma == 'en':
+        label = "(open in new window)"
+    return label
 
 
 class utilitats(BrowserView):
