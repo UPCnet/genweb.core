@@ -1,5 +1,5 @@
 from zope.i18nmessageid import MessageFactory
-GenwebMessageFactory = MessageFactory('genweb.core')
+GenwebMessageFactory = MessageFactory('genweb')
 
 
 def initialize(context):
