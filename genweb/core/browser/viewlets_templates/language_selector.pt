@@ -1,0 +1,21 @@
+<tal:languageselector define="languages view/languages">
+<li class="dropdown"
+    tal:condition="python:len(languages)>=2">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="icon-globe"></i>
+    <tal:selected content="python:view.get_selected_lang(languages)['native']">
+        Català
+    </tal:selected>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu pull-right adjust-langs"><!--afegit per mi pull-right-->
+    <li tal:repeat="lang languages">
+        <a tal:attributes="href lang/url;
+                           title lang/native"
+           tal:content="lang/native"
+           i18n:translate=""
+           i18n:attributes="title">Català</a>
+    </li>
+  </ul>
+</li>
+</tal:languageselector>

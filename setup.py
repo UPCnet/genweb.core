@@ -27,6 +27,7 @@ setup(name='genweb.core',
       install_requires=[
           'setuptools',
           'requests',
+          'five.grok',
           'genweb.theme',
           'genweb.controlpanel',
           'genweb.stack',
