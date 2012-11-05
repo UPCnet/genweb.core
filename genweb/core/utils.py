@@ -20,7 +20,7 @@ from genweb.controlpanel.interface import IGenwebControlPanelSettings
 PLMF = MessageFactory('plonelocales')
 
 
-def getGWConfig():
+def gw_config():
     """ Funcio que retorna les configuracions del controlpanel """
     registry = queryUtility(IRegistry)
     return registry.forInterface(IGenwebControlPanelSettings)
