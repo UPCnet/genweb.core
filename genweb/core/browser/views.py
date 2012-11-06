@@ -2,7 +2,6 @@ from five import grok
 
 from zope.interface import Interface
 from zope.interface import implements
-from zope.component import getMultiAdapter
 from zope.app.component.hooks import getSite
 from zope.publisher.interfaces import IPublishTraverse, NotFound
 
@@ -74,10 +73,6 @@ class selector_view(universalLink):
     def getDialogDestination(self):
         """Get the "not translated yet" dialog URL.
         """
-        state = getMultiAdapter(
-            (self.context, self.request),
-            name='plone_context_state'
-        )
         dialog_view = NOT_TRANSLATED_YET_VIEW
         postpath = False
         # The dialog view shouldn't appear on the site root
@@ -87,11 +82,9 @@ class selector_view(universalLink):
         if ISiteRoot.providedBy(self.context):
             dialog_view = ''
             postpath = True
-        try:
-            url = state.canonical_object_url()
-        # XXX: this copied over from LinguaPlone, not sure this is still needed
-        except AttributeError:
-            url = self.context.absolute_url()
+
+        url = self.context.absolute_url()
+
         return self.wrapDestination(url + '/' + dialog_view, postpath=postpath)
 
     def wrapDestination(self, url, postpath=True):
