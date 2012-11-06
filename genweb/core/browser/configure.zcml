@@ -19,4 +19,21 @@
       template="getzeo.pt"
       />
 
+    <!-- Universal Link -->
+    <browser:page
+      name="multilingual-universal-link"
+      for="*"
+      class=".views.universalLink"
+      permission="zope.Public"
+      />
+<!--       layer="..interfaces.IGenwebLayer" -->
+    <!-- Selector -->
+
+    <browser:page
+      name="multilingual-selector"
+      for="*"
+      class=".views.selector_view"
+      permission="zope.Public"
+      />
+
 </configure>
