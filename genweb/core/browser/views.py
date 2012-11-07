@@ -13,7 +13,7 @@ from Products.LinguaPlone.interfaces import ITranslatable
 from plone.app.uuid.utils import uuidToObject
 
 from genweb.core.browser.viewlets import addQuery
-from genweb.theme.browser.interfaces import IGenwebTheme
+from genweb.core.interfaces import IGenwebLayer
 
 NOT_TRANSLATED_YET_VIEW = 'not_translated_yet'
 
@@ -118,7 +118,7 @@ class not_translated_yet(grok.View):
     """
     grok.context(Interface)
     grok.require('zope2.View')
-    grok.layer(IGenwebTheme)
+    grok.layer(IGenwebLayer)
 
     def already_translated(self):
         return self.context.getTranslations().items()
