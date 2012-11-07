@@ -68,12 +68,12 @@ class universalLink(BrowserView):
         self.request.RESPONSE.redirect(destination.absolute_url())
 
 
-class selector_view(universalLink):
+class selectorView(universalLink):
 
     def getDialogDestination(self):
         """Get the "not translated yet" dialog URL.
         """
-        dialog_view = NOT_TRANSLATED_YET_VIEW
+        dialog_view = '/' + NOT_TRANSLATED_YET_VIEW
         postpath = False
         # The dialog view shouldn't appear on the site root
         # because that is untraslatable by default.
@@ -85,7 +85,7 @@ class selector_view(universalLink):
 
         url = self.context.absolute_url()
 
-        return self.wrapDestination(url + '/' + dialog_view, postpath=postpath)
+        return self.wrapDestination(url + dialog_view, postpath=postpath)
 
     def wrapDestination(self, url, postpath=True):
         """Fix the translation url appending the query

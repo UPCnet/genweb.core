@@ -21,7 +21,7 @@
 
     <!-- Universal Link -->
     <browser:page
-      name="multilingual-universal-link"
+      name="universal-link"
       for="*"
       class=".views.universalLink"
       permission="zope.Public"
@@ -30,9 +30,9 @@
     <!-- Selector -->
 
     <browser:page
-      name="multilingual-selector"
+      name="goto"
       for="*"
-      class=".views.selector_view"
+      class=".views.selectorView"
       permission="zope.Public"
       />
 
