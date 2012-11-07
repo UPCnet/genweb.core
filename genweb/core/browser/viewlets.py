@@ -4,6 +4,7 @@ from Acquisition import aq_inner
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.LinguaPlone.interfaces import ITranslatable
 
 from plone.uuid.interfaces import IUUID
 from plone.app.layout.viewlets.interfaces import IAboveContent
@@ -113,7 +114,7 @@ class gwLanguageSelectorViewletManager(grok.ViewletManager):
 
 
 class gwLanguageSelectorViewlet(LanguageSelector, grok.Viewlet):
-    grok.context(Interface)
+    grok.context(ITranslatable)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
     # Commented for testing purposes, enable on production
     # grok.layer(IGenwebLayer)
@@ -123,6 +124,7 @@ class gwLanguageSelectorViewlet(LanguageSelector, grok.Viewlet):
     def languages(self):
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
         results = []
+
         uuid = IUUID(self.context)
         if uuid is None:
             uuid = 'nouuid'
