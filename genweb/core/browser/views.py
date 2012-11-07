@@ -69,7 +69,9 @@ class universalLink(BrowserView):
 
 
 class selectorView(universalLink):
-
+    """ View that redirects to a concrete translation given an UUID and a
+        destination language.
+    """
     def getDialogDestination(self):
         """Get the "not translated yet" dialog URL.
         """
