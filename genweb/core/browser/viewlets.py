@@ -139,7 +139,7 @@ class gwLanguageSelectorViewlet(LanguageSelector, grok.Viewlet):
             data['url'] = addQuery(
                 self.request,
                 self.context.absolute_url().rstrip("/") + \
-                    "/@@multilingual-selector/%s/%s" % (
+                    "/@@goto/%s/%s" % (
                         uuid,
                         lang_info['code']
                     ),
