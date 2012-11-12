@@ -1,26 +1,33 @@
 # -*- coding: utf-8 -*-
+from five import grok
 from cgi import parse_qs
 from Acquisition import aq_parent
 from zope.interface import alsoProvides
 from zope.component import getMultiAdapter
 
 from Products.CMFCore import permissions
-from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import normalizeString
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFPlone.utils import _createObjectByType
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.controlpanel.mail import IMailSchema
 
 from genweb.core.interfaces import IHomePage
 from genweb.core.browser.plantilles import get_plantilles
 
+grok.templatedir('views_templates')
 
-class setup(BrowserView):
-    __call__ = ViewPageTemplateFile('setup_view.pt')
 
-    def __call__(self):
+class setup(grok.View):
+    grok.name('setup-view')
+    grok.template('setup_view')
+    grok.context(IPloneSiteRoot)
+    grok.require('cmf.ManagePortal')
+
+    # index = ViewPageTemplateFile('setup_view.pt')
+
+    def update(self):
         base_url = "%s/@@setup-view" % str(
                        getMultiAdapter((self.context, self.request),
                        name='absolute_url')
@@ -33,8 +40,6 @@ class setup(BrowserView):
                     if name == 'all':
                         self.createContent()
                         self.request.response.redirect(base_url)
-                        return ''
-        return self.index()
 
     def contentStatus(self):
         objects = [('Notícies', ['noticies', 'noticias', 'news']),

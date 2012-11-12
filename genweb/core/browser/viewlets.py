@@ -72,40 +72,34 @@ def getPostPath(context, request):
     return "/".join(append_path)
 
 
-class notConfiguredForHomes(grok.Viewlet):
+class notConfigured(grok.Viewlet):
+    grok.baseclass()
+
+    def existObjectsNeeded(self):
+        """Funcio que mira si existeixen els objectes que son necessaris pel bon funcionament del espai
+           TODO: Fer que comprovi mes objectes, per ara nomes comprova la pagina principal en catala
+        """
+        context = aq_inner(self.context)
+        return getattr(context, 'benvingut', False)
+
+    def getSetupLink(self):
+        """Funcio que dona l'enllas al formulari de creacio dels elements per defecte
+        """
+        return portal_url(self) + "/setup-view"
+
+
+class notConfiguredForHomes(notConfigured):
     grok.viewletmanager(IAboveContent)
     grok.context(IHomePage)
+    grok.template('notconfigured')
     grok.layer(IGenwebLayer)
 
-    def existObjectsNeeded(self):
-        """Funcio que mira si existeixen els objectes que son necessaris pel bon funcionament del espai
-           TODO: Fer que comprovi mes objectes, per ara nomes comprova la pagina principal en catala
-        """
-        context = aq_inner(self.context)
-        return getattr(context, 'benvingut', False)
 
-    def getSetupLink(self):
-        """Funcio que dona l'enllas al formulari de creacio dels elements per defecte
-        """
-        return portal_url(self) + "/setup-view"
-
-
-class notConfiguredForRoots(grok.Viewlet):
+class notConfiguredForRoots(notConfigured):
     grok.viewletmanager(IAboveContent)
     grok.context(IPloneSiteRoot)
+    grok.template('notconfigured')
     grok.layer(IGenwebLayer)
-
-    def existObjectsNeeded(self):
-        """Funcio que mira si existeixen els objectes que son necessaris pel bon funcionament del espai
-           TODO: Fer que comprovi mes objectes, per ara nomes comprova la pagina principal en catala
-        """
-        context = aq_inner(self.context)
-        return getattr(context, 'benvingut', False)
-
-    def getSetupLink(self):
-        """Funcio que dona l'enllas al formulari de creacio dels elements per defecte
-        """
-        return portal_url(self) + "/setup-view"
 
 
 class gwLanguageSelectorViewletManager(grok.ViewletManager):

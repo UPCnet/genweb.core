@@ -1,4 +1,0 @@
-<dl tal:condition="not: viewlet/existObjectsNeeded" class="portalMessage warning">
-<dt>Atenció</dt>
-<dd>No es troba un o alguns dels objectes necessaris pel bon funcionament de l'espai, si us plau, procediu a la creació dels objectes en <a tal:attributes="href viewlet/getSetupLink">aquest formulari</a>. Gràcies.</dd>
-</dl>
