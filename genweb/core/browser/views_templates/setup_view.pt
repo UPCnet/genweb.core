@@ -5,11 +5,11 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="upc.genwebupc">
-      
+
 <body>
 <metal:block fill-slot="top_slot"
              tal:define="dummy python:request.set('disable_border',1)" />
-         
+
 <div metal:fill-slot="main">
  <metal:main-macro define-macro="main">
 
@@ -19,10 +19,15 @@
 <div> </div>
 <div class="visualClear"></div>
 
-<dl class="portalMessage info">
-<dt>Atenció</dt>
-<dd>Si es torna a executar el procés un cop creats els objectes, es sobreescriuran algunes dades dels objectes com el títol o la descripció</dd>
-</dl>
+<div class="alert alert-warning">
+  <button data-dismiss="alert" class="close" type="button">×</button>
+  <strong i18n:translate="">
+            Warning
+  </strong>
+  <tal:msg i18n:translate="">
+    Si es torna a executar el procés un cop creats els objectes, es sobreescriuran algunes dades dels objectes com el títol o la descripció.
+  </tal:msg>
+</div>
 
 <fieldset class="formPanel">
 <div class="field">
@@ -33,16 +38,16 @@
      <th class="nosort"></th>
      <th class="nosort">ca</th>
      <th class="nosort">es</th>
-     <th class="nosort">en</th>          
+     <th class="nosort">en</th>
    </tr>
- </thead>  
+ </thead>
    <tal:block repeat="files view/contentStatus">
      <tr tal:define="isodd repeat/files/odd" tal:attributes="class python:isodd and 'odd' or 'even'">
       <td tal:repeat="columna files" >
         <span tal:replace="columna"></span>
       </td>
-     </tr> 
-   </tal:block> 
+     </tr>
+   </tal:block>
 </table>
 </div>
 <form method="get" action="@@setup-view">

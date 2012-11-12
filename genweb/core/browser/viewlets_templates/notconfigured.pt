@@ -1,0 +1,10 @@
+<div class="alert alert-warning"
+     tal:condition="not: viewlet/existObjectsNeeded">
+  <button data-dismiss="alert" class="close" type="button">×</button>
+  <strong i18n:translate="">
+            Warning
+  </strong>
+  <tal:msg i18n:translate="">
+        No es troba un o alguns dels objectes necessaris pel bon funcionament de l'espai, si us plau, procediu a la creació dels objectes en <a tal:attributes="href viewlet/getSetupLink">aquest formulari</a>. Gràcies.
+  </tal:msg>
+</div>
