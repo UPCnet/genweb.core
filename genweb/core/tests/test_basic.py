@@ -142,6 +142,17 @@ class IntegrationTest(unittest.TestCase):
         logout()
         self.assertTrue(IHomePage.providedBy(self.portal['benvingut']))
 
+    def testAdapters(self):
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.portal.invokeFactory('Document', 'test_adapter', title=u"Soc una pagina")
+        from genweb.core.adapters import IImportant
+        obj = IImportant(self.portal.test_adapter)
+        self.assertEqual(obj.is_important, False)
+
+        obj.is_important = True
+        self.assertEqual(obj.is_important, True)
+
 
 class FunctionalTest(unittest.TestCase):
 
