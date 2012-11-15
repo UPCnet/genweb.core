@@ -46,10 +46,11 @@ class ATLinkSchemaModifier(object):
         defaultSchemaFields = new['default']  # fields from the "default" schemata
         defaultSchemaFields.remove('obrirfinestra')
         defaultSchemaFields.insert(defaultSchemaFields.index('remoteUrl') + 1,
-                                   'obrirfinestra')  # stick "channel" after "description"
+                                   'obrirfinestra')  # stick "obrirfinestra" after "remoteUrl"
         return new
 
 
+# No fa falta GW 4.2, no hem de buscar per 'obrirfinestra'
 @indexer(IATLink)
 def obrirEnFinestraNova(obj):
     return obj.obrirfinestra

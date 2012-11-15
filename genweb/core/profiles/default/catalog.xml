@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
 <object name="portal_catalog">
-<!-- No cal que sigui index
     <index name="obrirEnFinestraNova" meta_type="FieldIndex">
         <indexed_attr value="obrirEnFinestraNova"/>
-    </index> -->
+    </index>
     <column value="obrirEnFinestraNova"/>
+    <index name="is_important" meta_type="BooleanIndex">
+        <indexed_attr value="is_important"/>
+    </index>
+    <column value="is_important"/>
     <index name="exclude_from_nav" meta_type="FieldIndex">
         <indexed_attr value="exclude_from_nav"/>
     </index>

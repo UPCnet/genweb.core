@@ -89,10 +89,25 @@ class IntegrationTest(unittest.TestCase):
         f1.invokeFactory('simpleTask', 'tasca', title=u"Soc una tasca")
         self.assertEqual(f1['tasca'].Title(), u"Soc una tasca")
 
-        # Extender dels links
-        f1.invokeFactory('Link', 'enllac', title=u"Soc un link")
-        link = f1['enllac']
+    def testLinkExtender(self):
+        """Test for ATLink extender and related index and metadata"""
+        portal = self.layer['portal']
+        setRoles(portal, TEST_USER_ID, ['Manager'])
+        login(portal, TEST_USER_NAME)
+        portal.invokeFactory('Folder', 'f2', title=u"Soc una carpeta")
+        f2 = portal['f2']
+        f2.invokeFactory('Link', 'enllac', title=u"Soc un link")
+        link = f2['enllac']
         self.assertEqual(link.obrirfinestra, False)
+
+        results = portal.portal_catalog.searchResults(portal_type='Link')
+        self.assertEqual(results[0].obrirEnFinestraNova, False)
+
+        link.obrirfinestra = True
+        link.reindexObject()
+
+        results = portal.portal_catalog.searchResults(portal_type='Link')
+        self.assertEqual(results[0].obrirEnFinestraNova, True)
 
     def testAdditionalProducts(self):
         portal = self.layer['portal']
