@@ -21,6 +21,7 @@
     <!-- Grok the package to initialise schema interfaces and content classes -->
     <include package="grokcore.component" file="meta.zcml" />
     <grok:grok package=".browser" />
+    <grok:grok package=".adapters" />
 
     <i18n:registerTranslations directory="locales" />
 
