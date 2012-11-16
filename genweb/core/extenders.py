@@ -50,7 +50,6 @@ class ATLinkSchemaModifier(object):
         return new
 
 
-# No fa falta GW 4.2, no hem de buscar per 'obrirfinestra'
 @indexer(IATLink)
 def obrirEnFinestraNova(obj):
     return obj.obrirfinestra
