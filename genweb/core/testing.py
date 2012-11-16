@@ -1,7 +1,7 @@
 from zope.configuration import xmlconfig
 
 from plone.testing import z2
-from plone.testing.z2 import ZSERVER_FIXTURE
+#from plone.testing.z2 import ZSERVER_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import applyProfile
 from plone.app.testing import PLONE_FIXTURE
@@ -78,6 +78,7 @@ GENWEBUPC_INTEGRATION_TESTING = IntegrationTesting(
 GENWEBUPC_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(GENWEBUPC_FIXTURE,),
     name="GenwebUPC:Functional")
-GENWEBUPC_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(GENWEBUPC_FIXTURE, ZSERVER_FIXTURE),
-    name="GenwebUPC:Acceptance")
+# Commented as acceptance tests are not needed for this product
+# GENWEBUPC_ACCEPTANCE_TESTING = FunctionalTesting(
+#     bases=(GENWEBUPC_FIXTURE, ZSERVER_FIXTURE),
+#     name="GenwebUPC:Acceptance")
