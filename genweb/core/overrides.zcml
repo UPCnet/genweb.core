@@ -6,5 +6,16 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="genweb.core">
 
+    <!-- XXX This is only needed in the innpass migration situation,
+         after that it can be safely removed as the IGenwebLayer will
+         be in place and the grokker will take precedence. During the
+         innpass the layer will not be enabled and the override has to
+         be enabled globaly. -->
+    <browser:page
+        for="*"
+        name="collective.tinymcetemplates.templatelist"
+        class=".browser.views.TemplateList"
+        permission="zope2.View"
+        />
 
 </configure>
