@@ -117,9 +117,10 @@ def setupVarious(context):
     # Mark the home page
     if getattr(portal, 'front-page', False):
         alsoProvides(portal['front-page'], IHomePage)
+        portal['front-page'].reindexObject()
 
-    # Configure the panels
-    settings = getUtility(IRegistry).forInterface(IGlobalSettings)
-    settings.site_local_managers = set([interfaces.IPortalTop, interfaces.IPortalFooter])
+    # Configure the panels (GW4.2) - Fridge
+    # settings = getUtility(IRegistry).forInterface(IGlobalSettings)
+    # settings.site_local_managers = set([interfaces.IPortalTop, interfaces.IPortalFooter])
 
     transaction.commit()
