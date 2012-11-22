@@ -105,7 +105,8 @@ class selectorView(universalLink):
         destination = self.getDestination()
         if destination:
             # We have a direct translation, full wrapping
-            url = self.wrapDestination(destination.absolute_url())
+            # Destination is a list
+            url = self.wrapDestination(destination[0].absolute_url())
         else:
             url = self.getDialogDestination()
 
