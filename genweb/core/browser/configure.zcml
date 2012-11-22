@@ -18,14 +18,17 @@
       class=".views.universalLink"
       permission="zope.Public"
       />
-<!--       layer="..interfaces.IGenwebLayer" -->
-    <!-- Selector -->
 
+    <!-- Selector -->
     <browser:page
       name="goto"
       for="*"
       class=".views.selectorView"
       permission="zope.Public"
       />
+
+    <!-- XXX Try to decide at the end if it's worth to restrict the last
+         two for a browser layer
+      layer="..interfaces.IGenwebLayer" -->
 
 </configure>
