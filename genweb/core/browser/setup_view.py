@@ -168,8 +168,13 @@ class setup(grok.View):
         alsoProvides(bienvenido, IHomePage)
         alsoProvides(welcome, IHomePage)
 
-        # Set the default page to the 'ca' home page
-        portal.setDefaultPage('benvingut')
+        # Reindex them to update object_provides index
+        benvingut.reindexObject()
+        bienvenido.reindexObject()
+        welcome.reindexObject()
+
+        # Set the default page to the homepage view
+        portal.setDefaultPage('homepage')
 
         # Templates TinyMCE
         templates = self.crearObjecte(portal, 'templates', 'Folder', 'Templates', 'Plantilles per defecte administrades per l\'SCP.', constrains=(['Document'], ['']))

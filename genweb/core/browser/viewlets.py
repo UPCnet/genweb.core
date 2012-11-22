@@ -107,13 +107,19 @@ class gwLanguageSelectorViewletManager(grok.ViewletManager):
     grok.name('genweb.language_selector_manager')
 
 
-class gwLanguageSelectorViewlet(LanguageSelector, grok.Viewlet):
-    grok.context(ITranslatable)
-    grok.viewletmanager(gwLanguageSelectorViewletManager)
-    # Commented for testing purposes, enable on production
-    # grok.layer(IGenwebLayer)
+class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
+    grok.baseclass()
 
     render = ViewPageTemplateFile('viewlets_templates/language_selector.pt')
+
+    def get_selected_lang(self, languages):
+        return [lang for lang in languages if lang['selected']][0]
+
+
+class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
+    grok.context(ITranslatable)
+    grok.viewletmanager(gwLanguageSelectorViewletManager)
+    grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
@@ -145,5 +151,31 @@ class gwLanguageSelectorViewlet(LanguageSelector, grok.Viewlet):
 
         return results
 
-    def get_selected_lang(self, languages):
-        return [lang for lang in languages if lang['selected']][0]
+
+class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
+    grok.context(IPloneSiteRoot)
+    grok.viewletmanager(gwLanguageSelectorViewletManager)
+    grok.layer(IGenwebLayer)
+
+    def languages(self):
+        languages_info = super(gwLanguageSelectorForRoot, self).languages()
+        results = []
+
+        for lang_info in languages_info:
+            # Avoid to modify the original language dict
+            data = lang_info.copy()
+            data['translated'] = True
+            query_extras = {
+                'set_language': data['code'],
+            }
+            post_path = getPostPath(self.context, self.request)
+            if post_path:
+                query_extras['post_path'] = post_path
+            data['url'] = addQuery(
+                self.request,
+                self.context.absolute_url(),
+                **query_extras
+            )
+            results.append(data)
+
+        return results

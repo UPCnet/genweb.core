@@ -38,7 +38,7 @@ def havePermissionAtRoot(self):
            or ('Site Administrator' in user.getRoles())
 
 
-def portal_url(self):
+def portal_url():
     """Get the Plone portal URL out of thin air without importing fancy
        interfaces and doing multi adapter lookups.
     """
@@ -50,6 +50,13 @@ def portal():
        interfaces and doing multi adapter lookups.
     """
     return getSite()
+
+
+def pref_lang():
+    """ Extracts the current language for the current user
+    """
+    lt = getToolByName(portal(), 'portal_languages')
+    return lt.getPreferredLanguage()
 
 
 def assignAltAcc(self):
