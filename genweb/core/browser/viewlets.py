@@ -85,7 +85,7 @@ class notConfigured(grok.Viewlet):
     def getSetupLink(self):
         """Funcio que dona l'enllas al formulari de creacio dels elements per defecte
         """
-        return portal_url(self) + "/setup-view"
+        return portal_url() + "/setup-view"
 
 
 class notConfiguredForHomes(notConfigured):
