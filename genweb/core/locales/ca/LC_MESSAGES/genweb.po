@@ -16,6 +16,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
+#. "genweb_content_actions_vista_de_carpeta"
+msgid "genweb_content_actions_vista_de_carpeta"
+msgstr "Vistes de la carpeta"
+
 #. "genweb-escriptori"
 msgid "genweb-escriptori"
 msgstr "Escriptori"
