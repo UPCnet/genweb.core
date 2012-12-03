@@ -17,6 +17,7 @@
 
     <!-- Redefinitions to make test pass -->
     <include package="Products.CMFPlacefulWorkflow" />
+    <include package="jarn.jsi18n" />
 
     <!-- Grok the package to initialise schema interfaces and content classes -->
     <include package="grokcore.component" file="meta.zcml" />
