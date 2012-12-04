@@ -114,4 +114,4 @@ msgid "genweb-ajuda"
 msgstr "Help"
 
 msgid "obrir_link_finestra_nova"
-msgstr "Open link in a new window"
+msgstr "(open link in a new window)"

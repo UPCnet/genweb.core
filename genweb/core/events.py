@@ -2,8 +2,13 @@
 from Products.CMFCore.interfaces import ISiteRoot
 
 
-IMMEDIATELY_ADDABLE_TYPES = ("Document", "Event", "File", "Folder", "Image", "Link", "News Item", "Collection", "Collage", "Window")
-CONSTRAINED_TYPES = ('Document', 'Event', 'File', 'Folder', 'Image', 'Link', 'News Item', 'Collection', 'Collage', 'Survey', 'PlonePopoll', 'Ploneboard', 'simpleTask', 'Meeting', 'Window', 'FormFolder')
+IMMEDIATELY_ADDABLE_TYPES = ("Document", "Event", "File", "Folder", "Image",
+                             "Link", "News Item", "Collection", "Collage",
+                             "Window")
+CONSTRAINED_TYPES = ('Document', 'Event', 'File', 'Folder', 'Image', 'Link',
+                     'News Item', 'Collection', 'Collage', 'Survey',
+                     'PlonePopoll', 'Ploneboard', 'simpleTask', 'Meeting',
+                     'Window', 'FormFolder', 'packet')
 
 
 def folderAdded(folder, event):

@@ -1,7 +1,8 @@
 import json
 import urllib2
-
+from five import grok
 from AccessControl import getSecurityManager
+from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.app.component.hooks import getSite
@@ -59,21 +60,27 @@ def pref_lang():
     return lt.getPreferredLanguage()
 
 
-def assignAltAcc(self):
-    """ Assignar alt per accessibilitat a links en finestra nova
-    """
-    lt = getToolByName(portal(), 'portal_languages')
-    idioma = lt.getPreferredLanguage()
-    label = "(obriu en una finestra nova)"
-    if idioma == 'ca':
-        label = "(obriu en una finestra nova)"
-    if idioma == 'es':
-        label = "(abre en ventana nueva)"
-    if idioma == 'en':
-        label = "(open in new window)"
-    return label
+class genwebUtils(grok.View):
+    grok.name('genweb.utils')
+    grok.context(Interface)
+    grok.require('zope2.View')
+
+    def render(self):
+        pass
+
+    def havePermissionAtRoot(self):
+        """Funcio que retorna si es Editor a l'arrel"""
+        pm = getToolByName(self, 'portal_membership')
+        proot = portal()
+        sm = getSecurityManager()
+        user = pm.getAuthenticatedMember()
+
+        return sm.checkPermission('Modify portal content', proot) \
+               or ('WebMaster' in user.getRoles()) \
+               or ('Site Administrator' in user.getRoles())
 
 
+# Per deprecar (not wired):
 class utilitats(BrowserView):
 
     _dadesUnitat = None

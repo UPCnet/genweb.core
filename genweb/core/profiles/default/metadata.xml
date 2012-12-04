@@ -24,6 +24,7 @@
     <!-- <dependency>profile-collective.panels:default</dependency> -->
     <dependency>profile-genweb.controlpanel:default</dependency>
     <dependency>profile-genweb.portlets:default</dependency>
+    <dependency>profile-genweb.packets:default</dependency>
     <dependency>profile-genweb.theme:default</dependency>
 </dependencies>
 </metadata>
