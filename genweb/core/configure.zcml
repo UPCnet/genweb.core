@@ -17,6 +17,7 @@
 
     <!-- Redefinitions to make test pass -->
     <include package="Products.CMFPlacefulWorkflow" />
+    <include package="jarn.jsi18n" />
 
     <!-- Grok the package to initialise schema interfaces and content classes -->
     <include package="grokcore.component" file="meta.zcml" />
@@ -29,14 +30,6 @@
 
     <!-- ATLink extender -->
     <adapter factory=".extenders.ATLinkSchemaModifier" />
-
-    <!-- Utilities and common functions -->
-    <browser:page
-      for="*"
-      name="genweb.utils"
-      class=".utils.utilitats"
-      permission="zope2.View"
-      />
 
     <genericsetup:registerProfile
       name="default"
