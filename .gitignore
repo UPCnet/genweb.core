@@ -14,3 +14,4 @@
 passwd
 data
 docs/_build
+*.mo
