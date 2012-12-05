@@ -59,7 +59,6 @@ setup(name='genweb.core',
           'plone.app.workflowmanager',
           # Experimental GW4
           'Solgema.fullcalendar',
-          'collective.panels',
           'wildcard.foldercontents',
           # To extinct
           'upc.genwebupc',
