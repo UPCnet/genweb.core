@@ -1,17 +1,12 @@
 from zope.interface import alsoProvides
-from zope.component import getUtility
 
 from Products.CMFCore.utils import getToolByName
 from Products.PloneLDAP.factory import manage_addPloneLDAPMultiPlugin
 from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
 
-from plone.registry.interfaces import IRegistry
-from plone.app.layout.viewlets import interfaces
 from plone.app.controlpanel.site import ISiteSchema
 
 from genweb.core.interfaces import IHomePage
-
-from collective.panels.interfaces import IGlobalSettings
 
 import transaction
 
@@ -78,7 +73,7 @@ def setupVarious(context):
             #Comentem la linia per a que no afegeixi
             #LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
 
-            LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapUPC.acl_users, ldap_names = ['sn'], REQUEST = None)
+            LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapUPC.acl_users, ldap_names=['sn'], REQUEST=None)
             LDAPUserFolder.manage_addLDAPSchemaItem(portal.acl_users.ldapUPC.acl_users, ldap_name='sn', friendly_name='Last Name', public_name='name')
 
             # Move the ldapUPC to the top of the active plugins.
@@ -118,9 +113,5 @@ def setupVarious(context):
     if getattr(portal, 'front-page', False):
         alsoProvides(portal['front-page'], IHomePage)
         portal['front-page'].reindexObject()
-
-    # Configure the panels (GW4.2) - Fridge
-    # settings = getUtility(IRegistry).forInterface(IGlobalSettings)
-    # settings.site_local_managers = set([interfaces.IPortalTop, interfaces.IPortalFooter])
 
     transaction.commit()
