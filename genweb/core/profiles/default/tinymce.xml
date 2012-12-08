@@ -25,8 +25,8 @@
   <customplugins>
    <element value="ploneimage"/>
    <element value="plonelink"/>
-   <element
-      value="plonetemplates|/++resource++collective.tinymcetemplates.plugin/editor_plugin.js"/>
+<!--    <element
+      value="plonetemplates|/++resource++collective.tinymcetemplates.plugin/editor_plugin.js"/> -->
   </customplugins>
   <containsanchors>
    <element value="Event"/>
@@ -109,7 +109,7 @@
   <editor_width value="100%"/>
   <contextmenu value="True"/>
   <resizing value="True"/>
-  <directionality value="ltr"/>
+  <!-- <directionality value="ltr"/> -->
   <autoresize value="False"/>
  </layout>
  <toolbar>
@@ -118,9 +118,9 @@
   <toolbar_insertdate value="False"/>
   <toolbar_cut value="True"/>
   <toolbar_definitionlist value="False"/>
-  <customtoolbarbuttons>
+<!--   <customtoolbarbuttons>
    <element value="plonetemplates"/>
-  </customtoolbarbuttons>
+  </customtoolbarbuttons> -->
   <toolbar_paste value="True"/>
   <toolbar_justifycenter value="True"/>
   <toolbar_inserttime value="False"/>
