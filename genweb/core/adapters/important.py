@@ -35,7 +35,16 @@ class ImportantMarker(grok.Adapter):
         self.context = context
 
         annotations = IAnnotations(context)
-        self.is_important = annotations.setdefault(IMPORTANT_KEY, False)
+        self._is_important = annotations.setdefault(IMPORTANT_KEY, False)
+
+    def get_important(self):
+        return self._is_important
+
+    def set_important(self, value):
+        self._is_important = value
+        self.context.reindexObject()
+
+    is_important = property(get_important, set_important)
 
 
 @grok.adapter(IBaseContent, name='is_important')
