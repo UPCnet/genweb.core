@@ -16,6 +16,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
+#. "genweb-perfil"
+msgid "genweb-perfil"
+msgstr "Perfil"
+
 #. "Vés al contingut (premeu Retorn)"
 msgid "Vés al contingut (premeu Retorn)"
 msgstr "Vés al contingut (premeu Retorn)"
