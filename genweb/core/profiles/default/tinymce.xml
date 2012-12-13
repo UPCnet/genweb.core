@@ -23,10 +23,6 @@
    <element value="PlonePopoll"/>
   </linkable>
   <customplugins>
-   <element value="ploneimage"/>
-   <element value="plonelink"/>
-<!--    <element
-      value="plonetemplates|/++resource++collective.tinymcetemplates.plugin/editor_plugin.js"/> -->
   </customplugins>
   <containsanchors>
    <element value="Event"/>
