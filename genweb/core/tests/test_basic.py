@@ -2,17 +2,22 @@ import unittest2 as unittest
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
 from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
 from AccessControl import Unauthorized
-from zope.component import getMultiAdapter
+from zope.component import getMultiAdapter, queryUtility
 from Products.CMFCore.utils import getToolByName
 
 from plone.testing.z2 import Browser
 from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
 from plone.app.testing import login, logout
 from plone.app.testing import setRoles
-
 from plone.app.testing import applyProfile
 
+from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletAssignmentMapping
+
 from genweb.core.interfaces import IHomePage
+from genweb.theme.portlets import homepage
+
+import transaction
 
 
 class IntegrationTest(unittest.TestCase):
@@ -185,13 +190,21 @@ class FunctionalTest(unittest.TestCase):
         login(self.portal, TEST_USER_NAME)
         setupview = getMultiAdapter((self.portal, self.request), name='setup-view')
         setupview.createContent()
-        logout()
-        setRoles(self.portal, TEST_USER_ID, ['Member'])
-        import transaction
         transaction.commit()
 
-    def testHomePage(self):
+        # Create a portlet in a slot
+        benvingut = self.portal['benvingut']
+        manager = queryUtility(IPortletManager, name='genweb.portlets.HomePortletManager2', context=benvingut)
+        assignments = getMultiAdapter((benvingut, manager), IPortletAssignmentMapping)
+        homepage_assignment = homepage.Assignment()
+        assignments['homepage'] = homepage_assignment
+        transaction.commit()
+        logout()
+        setRoles(self.portal, TEST_USER_ID, ['Member'])
+
+    def testHomePagePortlet(self):
         portalURL = self.portal.absolute_url()
+
         self.browser.open(portalURL)
 
-        self.assertTrue(u"Benvingut" in self.browser.contents)
+        self.assertTrue(u"Us donem la benvinguda a Genweb UPC" in self.browser.contents)

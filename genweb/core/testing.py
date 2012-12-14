@@ -36,6 +36,7 @@ class GenwebUPC(PloneSandboxLayer):
         z2.installProduct(app, 'Products.PloneSurvey')
         z2.installProduct(app, 'upc.genweb.meetings')
         z2.installProduct(app, 'upcnet.simpleTask')
+        z2.installProduct(app, 'genweb.packets')
         # z2.installProduct(app, 'Products.Poi')
 
         # Productes addicionals opcionals
@@ -62,6 +63,7 @@ class GenwebUPC(PloneSandboxLayer):
         z2.uninstallProduct(app, 'Products.PloneSurvey')
         z2.uninstallProduct(app, 'upc.genweb.meetings')
         z2.uninstallProduct(app, 'upcnet.simpleTask')
+        z2.uninstallProduct(app, 'genweb.packets')
         # z2.uninstallProduct(app, 'Products.Poi')
 
         # Productes addicionals opcionals
