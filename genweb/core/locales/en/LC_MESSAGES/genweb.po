@@ -16,6 +16,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
+#. "manage_homeportlets_link"
+msgid "manage_homeportlets_link"
+msgstr "Manage home page"
+
 #. "genweb-perfil"
 msgid "genweb-perfil"
 msgstr "Profile"

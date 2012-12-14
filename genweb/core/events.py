@@ -4,7 +4,7 @@ from Products.CMFCore.interfaces import ISiteRoot
 
 IMMEDIATELY_ADDABLE_TYPES = ("Document", "Event", "File", "Folder", "Image",
                              "Link", "News Item", "Collection", "Collage",
-                             "Window")
+                             "Window", "packet")
 CONSTRAINED_TYPES = ('Document', 'Event', 'File', 'Folder', 'Image', 'Link',
                      'News Item', 'Collection', 'Collage', 'Survey',
                      'PlonePopoll', 'Ploneboard', 'simpleTask', 'Meeting',
@@ -14,7 +14,6 @@ CONSTRAINED_TYPES = ('Document', 'Event', 'File', 'Folder', 'Image', 'Link',
 def folderAdded(folder, event):
     # In case we are creating a new first level folder, apply constrains
     if ISiteRoot.providedBy(folder.aq_parent):
-        folder.context = folder.aq_parent
         folder.setConstrainTypesMode(1)
         folder.setLocallyAllowedTypes(CONSTRAINED_TYPES)
         folder.setImmediatelyAddableTypes(IMMEDIATELY_ADDABLE_TYPES)
