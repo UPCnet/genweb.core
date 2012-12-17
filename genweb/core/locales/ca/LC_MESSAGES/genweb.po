@@ -16,6 +16,18 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
+#. "genweb-si_heu_oblidat_la_contrasenya_question"
+msgid "genweb-si_heu_oblidat_la_contrasenya_question"
+msgstr "Heu oblidat la contrasenya?"
+
+#. "genweb-heading_sign_in-v4"
+msgid "genweb-heading_sign_in-v4"
+msgstr "Identifiqueu-vos amb el nom d'usuari de la intranet UPC."
+
+#. "genweb-single-sign-on-v4"
+msgid "genweb-single-sign-on-v4"
+msgstr "Entra amb la identificació única UPC"
+
 #. "manage_homeportlets_link"
 msgid "manage_homeportlets_link"
 msgstr "Administra pàgina principal"
