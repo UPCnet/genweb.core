@@ -7,6 +7,7 @@ from zope.annotation.interfaces import IAnnotations
 from plone.indexer import indexer
 
 from Products.Archetypes.interfaces import IBaseContent
+from Products.ATContentTypes.interface import IATDocument
 
 from genweb.core import GenwebMessageFactory as _
 
@@ -38,19 +39,22 @@ class ImportantMarker(grok.Adapter):
         self._is_important = annotations.setdefault(IMPORTANT_KEY, False)
 
     def get_important(self):
+        annotations = IAnnotations(self.context)
+        self._is_important = annotations.setdefault(IMPORTANT_KEY, '')
         return self._is_important
 
     def set_important(self, value):
-        self._is_important = value
-        self.context.reindexObject()
+        annotations = IAnnotations(self.context)
+        annotations[IMPORTANT_KEY] = value
+        self.context.reindexObject(idxs=["is_important"])
 
     is_important = property(get_important, set_important)
 
 
-@grok.adapter(IBaseContent, name='is_important')
 @indexer(IBaseContent)
 def importantIndexer(context):
     """Create a catalogue indexer, registered as an adapter, which can
     populate the ``is_important`` index.
     """
     return IImportant(context).is_important
+grok.global_adapter(importantIndexer, name='is_important')
