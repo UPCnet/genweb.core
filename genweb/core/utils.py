@@ -1,5 +1,6 @@
 import json
 import urllib2
+import requests
 from five import grok
 from AccessControl import getSecurityManager
 from zope.interface import Interface
@@ -7,13 +8,14 @@ from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.app.component.hooks import getSite
 
+from plone.memoize import ram
+from plone.registry.interfaces import IRegistry
+
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
-
-from plone.registry.interfaces import IRegistry
 
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
@@ -60,6 +62,11 @@ def pref_lang():
     return lt.getPreferredLanguage()
 
 
+def _contact_ws_cachekey(method, self, unitat):
+    """Cache by the unitat value"""
+    return (unitat)
+
+
 class genwebUtils(grok.View):
     grok.name('genweb.utils')
     grok.context(Interface)
@@ -78,6 +85,18 @@ class genwebUtils(grok.View):
         return sm.checkPermission('Modify portal content', proot) \
                or ('WebMaster' in user.getRoles()) \
                or ('Site Administrator' in user.getRoles())
+
+    def getDadesUnitat(self):
+        """ Retorna les dades proporcionades pel WebService del SCP """
+        return self._queryInfoUnitatWS(genweb_config().contacte_id)
+
+    @ram.cache(_contact_ws_cachekey)
+    def _queryInfoUnitatWS(self, unitat):
+        try:
+            r = requests.get('https://bus-soa.upc.edu/SCP/InfoUnitatv1?id=%s' % unitat, timeout=10)
+            return r.json
+        except:
+            return {}
 
 
 # Per deprecar (not wired):
