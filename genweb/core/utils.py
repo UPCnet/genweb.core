@@ -88,7 +88,11 @@ class genwebUtils(grok.View):
 
     def getDadesUnitat(self):
         """ Retorna les dades proporcionades pel WebService del SCP """
-        return self._queryInfoUnitatWS(genweb_config().contacte_id)
+        unitat = genweb_config().contacte_id
+        if unitat:
+            return self._queryInfoUnitatWS(unitat)
+        else:
+            return {}
 
     @ram.cache(_contact_ws_cachekey)
     def _queryInfoUnitatWS(self, unitat):
