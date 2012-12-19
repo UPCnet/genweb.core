@@ -67,7 +67,13 @@ def _contact_ws_cachekey(method, self, unitat):
     return (unitat)
 
 
-class genwebUtils(BrowserView):
+class genwebUtils(grok.View):
+    grok.name('genweb.utils')
+    grok.context(Interface)
+    grok.require('zope2.View')
+
+    def render(self):
+        pass
 
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
