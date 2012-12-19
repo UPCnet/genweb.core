@@ -94,7 +94,7 @@ class genwebUtils(grok.View):
     def _queryInfoUnitatWS(self, unitat):
         try:
             r = requests.get('https://bus-soa.upc.edu/SCP/InfoUnitatv1?id=%s' % unitat, timeout=10)
-            return r.json
+            return r.json()
         except:
             return {}
 
