@@ -31,6 +31,14 @@
     <!-- ATLink extender -->
     <adapter factory=".extenders.ATLinkSchemaModifier" />
 
+    <!-- Convenience methods browser view -->
+    <browser:page
+     for="*"
+     name="genweb.utils"
+     class=".utils.genwebUtils"
+     permission="zope2.View"
+     />
+
     <genericsetup:registerProfile
       name="default"
       title="Genweb UPC Core"
