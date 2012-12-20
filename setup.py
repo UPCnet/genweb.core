@@ -42,7 +42,6 @@ setup(name='genweb.core',
           'upc.genweb.kbpuc',
           'upc.genweb.objectiusCG',
           'upc.genweb.soa',
-          'upc.genweb.recaptcha',
           'upc.cloudPrivat',
           'upcnet.cas',
           'upcnet.stats',
@@ -64,6 +63,7 @@ setup(name='genweb.core',
           # To extinct
           'upc.genwebupc',
           'upc.genwebupctheme',
+          'upc.genweb.recaptcha',
       ],
       entry_points="""
       # -*- Entry points: -*-
