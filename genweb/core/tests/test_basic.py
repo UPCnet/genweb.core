@@ -207,4 +207,4 @@ class FunctionalTest(unittest.TestCase):
 
         self.browser.open(portalURL)
 
-        self.assertTrue(u"Us donem la benvinguda a Genweb UPC" in self.browser.contents)
+        self.assertTrue("Us donem la benvinguda a Genweb UPC" in self.browser.contents)

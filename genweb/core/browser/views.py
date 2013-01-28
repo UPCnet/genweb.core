@@ -3,7 +3,7 @@ from five import grok
 from zope.interface import Interface
 from zope.interface import implements
 from zope.component import queryUtility
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.publisher.interfaces import IPublishTraverse, NotFound
 
 from Products.Five import BrowserView
