@@ -6,7 +6,7 @@ from AccessControl import getSecurityManager
 from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
