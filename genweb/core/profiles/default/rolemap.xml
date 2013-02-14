@@ -126,9 +126,6 @@
     <role name="Owner"/>
       <role name="WebMaster"/>
     </permission>
-    <permission name="Add Collage content" acquire="True">
-      <role name="Contributor"/>
-    </permission>
     <permission name="Add portal content" acquire="True">
       <role name="Contributor"/>
       <role name="Manager"/>
@@ -248,93 +245,6 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
-    <permission name="PloneSurvey: Reset Own Responses"
-                acquire="False">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="Reader"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneSurvey: View Survey Results"
-                acquire="False">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="Ploneboard: Add Comment"
-                acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="Ploneboard: Add Comment Attachment"
-                acquire="False">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="Member"/>
-    </permission>
-    <permission name="Ploneboard: Add Conversation"
-                acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="Ploneboard: Add Forum" acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="Ploneboard: Add Ploneboard"
-                acquire="True">
-      <role name="Contributor"/>
-    </permission>
-<!--     <permission name="Poi: Add Issue" acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="Poi: Add Response" acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="Poi: Add Tracker" acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="Poi: Modify issue assignment"
-                acquire="True">
-      <role name="Editor"/>
-    </permission>
-    <permission name="Poi: Modify issue severity"
-                acquire="True">
-      <role name="Editor"/>
-    </permission>
-    <permission name="Poi: Modify issue state"
-                acquire="True">
-      <role name="Editor"/>
-    </permission>
-    <permission name="Poi: Modify issue tags" acquire="True">
-      <role name="Editor"/>
-    </permission>
-    <permission name="Poi: Modify issue target release"
-                acquire="True">
-      <role name="Editor"/>
-    </permission>
-    <permission name="Poi: Modify issue watchers"
-                acquire="True">
-      <role name="Editor"/>
-    </permission>
-    <permission name="Poi: Upload attachment" acquire="True">
-      <role name="Contributor"/>
-    </permission> -->
-    <permission name="Popoll: Add polls" acquire="True">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-    </permission>
-    <permission name="Popoll: Edit polls" acquire="True">
-      <role name="Manager"/>
-      <role name="Owner"/>
-    </permission>
-    <permission name="Popoll: Vote" acquire="True">
-      <role name="Anonymous"/>
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="Member"/>
-      <role name="Owner"/>
-    </permission>
     <permission name="Portlets: Manage own portlets"
                 acquire="False">
       <role name="Editor"/>
@@ -426,78 +336,6 @@
                 acquire="False">
       <role name="Contributor"/>
       <role name="Manager"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="simpleTask: Add simpleTask"
-                acquire="False">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-    </permission>
-    <permission name="windowZ: Add Window" acquire="True">
-      <role name="Contributor"/>
-    </permission>
-    <permission name="PloneFormGen: Add Content"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Add Custom Scripts"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Add Data Savers"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Add Mailers"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Download Saved Input"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Edit Advanced Fields"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Edit Mail Addresses"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Edit Python Fields"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="PloneFormGen: Edit TALES Fields"
-                acquire="True">
-      <role name="Editor"/>
-      <role name="Manager"/>
-      <role name="Owner"/>
       <role name="WebMaster"/>
     </permission>
   </permissions>

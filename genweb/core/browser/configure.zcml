@@ -11,6 +11,22 @@
       template="views_templates/getzeo.pt"
       />
 
+    <browser:page
+        for="OFS.interfaces.IApplication"
+        name="addGenweb"
+        class="Products.CMFPlone.browser.admin.AddPloneSite"
+        permission="zope2.ViewManagementScreens"
+        template="views_templates/add_genweb.pt"
+        />
+
+    <browser:page
+        for="OFS.Folder.Folder"
+        name="addGenweb"
+        class="Products.CMFPlone.browser.admin.AddPloneSite"
+        permission="zope2.ViewManagementScreens"
+        template="views_templates/add_genweb.pt"
+        />
+
     <!-- Universal Link -->
     <browser:page
       name="universal-link"
