@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.2b1'
+version = '4.3b1'
 
 setup(name='genweb.core',
       version=version,
@@ -11,8 +11,13 @@ setup(name='genweb.core',
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
+        "Environment :: Web Environment",
         "Framework :: Plone",
+        "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='genweb',
       author='UPCnet Plone Team',
@@ -29,41 +34,19 @@ setup(name='genweb.core',
           'requests',
           'five.grok',
           'genweb.theme',
-          'genweb.controlpanel',
-          'genweb.stack',
-          'genweb.packets',
           'genweb.portlets',
-          'upc.genweb.banners',
-          'upc.genweb.logosfooter',
-          'upc.genweb.meetings',
-          'upcnet.simpleTask',
-          'upc.genweb.serveis',
-          'upc.genweb.descriptorTIC',
-          'upc.genweb.kbpuc',
-          'upc.genweb.objectiusCG',
-          'upc.genweb.soa',
-          'upc.cloudPrivat',
-          'upcnet.cas',
-          'upcnet.stats',
-          'Products.LinguaPlone',
-          'Products.PloneLDAP',
+          'genweb.controlpanel',
           'plone.app.caching',
-          'Products.DataGridField',
-          'Products.ZMySQLDA',
           'archetypes.schemaextender',
-          'plone.app.dexterity [grok]',
+          'plone.app.dexterity [grok,relations]',
           'plone.app.referenceablebehavior',
-          'plone.app.relationfield',
           'plone.namedfile [blobs]',
-          'collective.pfg.dexterity',
           'plone.app.workflowmanager',
           # Experimental GW4
-          'Solgema.fullcalendar',
           'wildcard.foldercontents',
-          # To extinct
-          'upc.genwebupc',
-          'upc.genwebupctheme',
-          'upc.genweb.recaptcha',
+          # Imprescidibles for testing
+          'upc.genweb.banners',
+          'upc.genweb.logosfooter',
       ],
       entry_points="""
       # -*- Entry points: -*-

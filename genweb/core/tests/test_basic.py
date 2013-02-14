@@ -62,37 +62,11 @@ class IntegrationTest(unittest.TestCase):
         login(portal, 'user1')
         self.assertRaises(Unauthorized, portal.manage_delObjects, 'templates')
 
-    def testBasicProducts(self):
-        portal = self.layer['portal']
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        login(portal, TEST_USER_NAME)
-        portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
-        f1 = portal['f1']
-
-        # Collage
-        f1.invokeFactory('Collage', 'collage', title=u"Soc un collage")
-        self.assertEqual(f1['collage'].Title(), u"Soc un collage")
-        # PloneFormGen
-        f1.invokeFactory('FormFolder', 'formulari', title=u"Soc un formulari")
-        self.assertEqual(f1['formulari'].Title(), u"Soc un formulari")
-        # PlonePopoll
-        f1.invokeFactory('PlonePopoll', 'enquesta', title=u"Soc una enquesta")
-        self.assertEqual(f1['enquesta'].Title(), u"Soc una enquesta")
-        # windowZ
-        f1.invokeFactory('Window', 'window', title=u"Soc un window")
-        self.assertEqual(f1['window'].Title(), u"Soc un window")
-        # Ploneboard
-        f1.invokeFactory('Ploneboard', 'forum', title=u"Soc un forum")
-        self.assertEqual(f1['forum'].Title(), u"Soc un forum")
-        # PloneSurvey
-        f1.invokeFactory('Survey', 'questionari', title=u"Soc un questionari")
-        self.assertEqual(f1['questionari'].Title(), u"Soc un questionari")
-        # Meeting
-        f1.invokeFactory('Meeting', 'reunio', title=u"Soc una reunio")
-        self.assertEqual(f1['reunio'].Title(), u"Soc una reunio")
-        # Tasques
-        f1.invokeFactory('simpleTask', 'tasca', title=u"Soc una tasca")
-        self.assertEqual(f1['tasca'].Title(), u"Soc una tasca")
+    def testPortalConstrains(self):
+        portal_allowed_types = ['Folder', 'File', 'Image', 'Document']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.assertEqual(sorted([ct.id for ct in self.portal.allowedContentTypes()]), sorted(portal_allowed_types))
 
     def testLinkExtender(self):
         """Test for ATLink extender and related index and metadata"""
@@ -113,46 +87,6 @@ class IntegrationTest(unittest.TestCase):
 
         results = portal.portal_catalog.searchResults(portal_type='Link')
         self.assertEqual(results[0].obrirEnFinestraNova, True)
-
-    def testAdditionalProducts(self):
-        portal = self.layer['portal']
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        login(portal, TEST_USER_NAME)
-        portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
-        f1 = portal['f1']
-
-        # Serveis
-        applyProfile(portal, 'upc.genweb.serveis:default')
-        f1.invokeFactory('Servei', 'servei', title=u"Soc un servei")
-        self.assertEqual(f1['servei'].Title(), u"Soc un servei")
-
-        # Descriptor TIC
-        applyProfile(portal, 'upc.genweb.descriptorTIC:default')
-        f1.invokeFactory('CarpetaTIC', 'carpetaTIC', title=u"Soc una carpetaTIC")
-        self.assertEqual(f1['carpetaTIC'].Title(), u"Soc una carpetaTIC")
-
-        # ObjectiusCG
-        applyProfile(portal, 'upc.genweb.objectiusCG:default')
-        f1.invokeFactory('ObjectiuGeneralCG', 'objectiuGeneralCG', title=u"Soc una objectiuGeneralCG")
-        self.assertEqual(f1['objectiuGeneralCG'].Title(), u"Soc una objectiuGeneralCG")
-
-    def testFolderConstrains(self):
-        from genweb.core.events import CONSTRAINED_TYPES, IMMEDIATELY_ADDABLE_TYPES
-        from zope.event import notify
-        from Products.Archetypes.event import ObjectInitializedEvent
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        login(self.portal, TEST_USER_NAME)
-        self.portal.invokeFactory('Folder', 'userfolder', title=u"Soc una carpeta")
-        folder = self.portal['userfolder']
-        notify(ObjectInitializedEvent(folder))
-        self.assertEqual(sorted(folder.getLocallyAllowedTypes()), sorted(CONSTRAINED_TYPES))
-        self.assertEqual(sorted(folder.getImmediatelyAddableTypes()), sorted(IMMEDIATELY_ADDABLE_TYPES))
-
-    def testPortalConstrains(self):
-        portal_allowed_types = ['Folder', 'File', 'Image', 'Document']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        login(self.portal, TEST_USER_NAME)
-        self.assertEqual(sorted([ct.id for ct in self.portal.allowedContentTypes()]), sorted(portal_allowed_types))
 
     def testHomePageMarkerInterface(self):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
