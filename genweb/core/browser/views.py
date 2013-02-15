@@ -9,7 +9,6 @@ from zope.publisher.interfaces import IPublishTraverse, NotFound
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces import ISiteRoot
-from Products.LinguaPlone.interfaces import ITranslatable
 from Products.ATContentTypes.interfaces.document import IATDocument
 
 from plone.app.uuid.utils import uuidToObject
@@ -18,10 +17,17 @@ from plone.registry.interfaces import IRegistry
 from genweb.core.browser.viewlets import addQuery
 from genweb.core.interfaces import IGenwebLayer
 
+import pkg_resources
+import json
+
 try:
-    import json
-except ImportError:
-    from simplejson import json
+    pkg_resources.get_distribution('Products.LinguaPlone')
+except pkg_resources.DistributionNotFound:
+    HAS_LINGUAPLONE = False
+    from genweb.core.interfaces import ITranslatable
+else:
+    HAS_LINGUAPLONE = True
+    from Products.LinguaPlone.interfaces import ITranslatable
 
 NOT_TRANSLATED_YET_VIEW = 'not_translated_yet'
 
