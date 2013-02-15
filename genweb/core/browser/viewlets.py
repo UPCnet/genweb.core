@@ -4,7 +4,6 @@ from Acquisition import aq_inner
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.LinguaPlone.interfaces import ITranslatable
 
 from plone.uuid.interfaces import IUUID
 from plone.app.layout.viewlets.interfaces import IAboveContent
@@ -14,6 +13,17 @@ from zope.interface import Interface
 from genweb.core.interfaces import IGenwebLayer
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import portal_url
+
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('Products.LinguaPlone')
+except pkg_resources.DistributionNotFound:
+    HAS_LINGUAPLONE = False
+    from genweb.core.interfaces import ITranslatable
+else:
+    HAS_LINGUAPLONE = True
+    from Products.LinguaPlone.interfaces import ITranslatable
 
 
 def addQuery(request, url, exclude=tuple(), **extras):
