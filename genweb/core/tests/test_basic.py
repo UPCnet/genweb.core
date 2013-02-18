@@ -28,40 +28,6 @@ class IntegrationTest(unittest.TestCase):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
 
-    def testSetupViewAvailable(self):
-        portal = self.layer['portal']
-        self.failUnless(portal.unrestrictedTraverse('@@setup-view'))
-
-    def testSetupViewNotAvailableForAnonymous(self):
-        portal = self.layer['portal']
-        self.assertRaises(Unauthorized, portal.restrictedTraverse, '@@setup-view')
-
-    def testSetupView(self):
-        portal = self.layer['portal']
-        request = self.layer['request']
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        login(portal, TEST_USER_NAME)
-        setupview = getMultiAdapter((portal, request), name='setup-view')
-        setupview.createContent()
-        self.assertEqual(portal['news'].Title(), u"News")
-        self.assertEqual(portal['banners-es'].Title(), u"Banners")
-        self.assertEqual(portal['logosfooter-ca'].Title(), u"Logos peu")
-
-    def testTemplatesFolderPermissions(self):
-        portal = self.layer['portal']
-        request = self.layer['request']
-        # Login as manager
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        login(portal, TEST_USER_NAME)
-        setupview = getMultiAdapter((portal, request), name='setup-view')
-        setupview.createContent()
-        logout()
-        acl_users = getToolByName(portal, 'acl_users')
-        acl_users.userFolderAddUser('user1', 'secret', ['Member', 'Contributor', 'Editor', 'Reader', 'Reviewer'], [])
-        # setRoles(portal, 'user1', ['Contributor', 'Editor', 'Reader', 'Reviewer'])
-        login(portal, 'user1')
-        self.assertRaises(Unauthorized, portal.manage_delObjects, 'templates')
-
     def testPortalConstrains(self):
         portal_allowed_types = ['Folder', 'File', 'Image', 'Document']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
@@ -89,12 +55,7 @@ class IntegrationTest(unittest.TestCase):
         self.assertEqual(results[0].obrirEnFinestraNova, True)
 
     def testHomePageMarkerInterface(self):
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        login(self.portal, TEST_USER_NAME)
-        setupview = getMultiAdapter((self.portal, self.request), name='setup-view')
-        setupview.createContent()
-        logout()
-        self.assertTrue(IHomePage.providedBy(self.portal['benvingut']))
+        self.assertTrue(IHomePage.providedBy(self.portal['front-page']))
 
     def testAdapters(self):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
@@ -117,23 +78,15 @@ class FunctionalTest(unittest.TestCase):
         self.request = self.layer['request']
         self.app = self.layer['app']
         self.browser = Browser(self.app)
-        # Let anz.casclient do not interfere in tests
-        # self.portal.acl_users.manage_delObjects('CASUPC')
-        # Setup view, to put all default pages in place
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        login(self.portal, TEST_USER_NAME)
-        setupview = getMultiAdapter((self.portal, self.request), name='setup-view')
-        setupview.createContent()
-        transaction.commit()
 
         # Create a portlet in a slot
-        benvingut = self.portal['benvingut']
+        benvingut = self.portal['front-page']
         manager = queryUtility(IPortletManager, name='genweb.portlets.HomePortletManager2', context=benvingut)
         assignments = getMultiAdapter((benvingut, manager), IPortletAssignmentMapping)
         homepage_assignment = homepage.Assignment()
         assignments['homepage'] = homepage_assignment
         transaction.commit()
-        logout()
         setRoles(self.portal, TEST_USER_ID, ['Member'])
 
     def testHomePagePortlet(self):

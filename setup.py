@@ -44,9 +44,6 @@ setup(name='genweb.core',
           'plone.app.workflowmanager',
           # Experimental GW4
           'wildcard.foldercontents',
-          # Imprescidibles for testing
-          'upc.genweb.banners',
-          'upc.genweb.logosfooter',
       ],
       entry_points="""
       # -*- Entry points: -*-
