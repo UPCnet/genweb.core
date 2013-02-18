@@ -148,11 +148,6 @@
       <role name="Manager"/>
       <role name="Member"/>
     </permission>
-    <permission name="Banners: Add Banner" acquire="False">
-      <role name="Contributor"/>
-      <role name="Manager"/>
-      <role name="WebMaster"/>
-    </permission>
     <permission name="CMFEditions: Access previous versions"
                 acquire="True">
       <role name="Contributor"/>
@@ -223,12 +218,6 @@
       <role name="Editor"/>
       <role name="Manager"/>
       <role name="Owner"/>
-      <role name="WebMaster"/>
-    </permission>
-    <permission name="LogosFooter: Add Logos_Footer"
-                acquire="False">
-      <role name="Contributor"/>
-      <role name="Manager"/>
       <role name="WebMaster"/>
     </permission>
     <permission name="Manage properties" acquire="True">

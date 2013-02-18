@@ -6,6 +6,10 @@ from plone.app.testing import applyProfile
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+
+import transaction
 
 
 class GenwebUPC(PloneSandboxLayer):
@@ -24,21 +28,22 @@ class GenwebUPC(PloneSandboxLayer):
                        upc.genwebupctheme,
                        context=configurationContext)
 
-        # Install archetypes-based products
-        z2.installProduct(app, 'upc.genweb.banners')
-        z2.installProduct(app, 'upc.genweb.logosfooter')
-
     def setUpPloneSite(self, portal):
+        # Create a document front-page
+        setRoles(portal, TEST_USER_ID, ['Manager'])
+        portal.invokeFactory('Document', 'front-page', title="Us donem la benvinguda a Genweb UPC")
+        transaction.commit()
+        setRoles(portal, TEST_USER_ID, ['Member'])
+
         # Install into Plone site using portal_setup
         applyProfile(portal, 'genweb.core:default')
+
         # Let anz.casclient do not interfere in tests
         # portal.acl_users.manage_delObjects('CASUPC')
 
     def tearDownZope(self, app):
         # Uninstall archetypes-based products
-        z2.uninstallProduct(app, 'upc.genweb.banners')
-        z2.uninstallProduct(app, 'upc.genweb.logosfooter')
-
+        pass
 
 GENWEBUPC_FIXTURE = GenwebUPC()
 GENWEBUPC_INTEGRATION_TESTING = IntegrationTesting(
