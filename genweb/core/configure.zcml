@@ -25,6 +25,11 @@
 
     <include package=".browser" />
 
+    <permission
+      id="genweb.authenticated"
+      title="Genweb: Authenticated Users"
+      />
+
     <!-- ATLink extender -->
     <adapter factory=".extenders.ATLinkSchemaModifier" />
 

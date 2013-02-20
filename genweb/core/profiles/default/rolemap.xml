@@ -13,6 +13,10 @@
     <role name="WebMaster"/>
   </roles>
   <permissions>
+    <permission name="Genweb: Authenticated Users"
+                acquire="True">
+      <role name="Authenticated"/>
+    </permission>
     <permission name="ATContentTypes Topic: Add ATBooleanCriterion"
                 acquire="True">
       <role name="Contributor"/>
