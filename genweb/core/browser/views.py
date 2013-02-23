@@ -14,20 +14,12 @@ from Products.ATContentTypes.interfaces.document import IATDocument
 from plone.app.uuid.utils import uuidToObject
 from plone.registry.interfaces import IRegistry
 
+from genweb.core import ITranslatable
 from genweb.core.browser.viewlets import addQuery
 from genweb.core.interfaces import IGenwebLayer
 
-import pkg_resources
 import json
 
-try:
-    pkg_resources.get_distribution('Products.LinguaPlone')
-except pkg_resources.DistributionNotFound:
-    HAS_LINGUAPLONE = False
-    from genweb.core.interfaces import ITranslatable
-else:
-    HAS_LINGUAPLONE = True
-    from Products.LinguaPlone.interfaces import ITranslatable
 
 NOT_TRANSLATED_YET_VIEW = 'not_translated_yet'
 

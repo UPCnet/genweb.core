@@ -10,16 +10,7 @@ from zope.interface import Interface
 
 from genweb.core.interfaces import IGenwebLayer
 
-import pkg_resources
-
-try:
-    pkg_resources.get_distribution('Products.LinguaPlone')
-except pkg_resources.DistributionNotFound:
-    HAS_LINGUAPLONE = False
-    from genweb.core.interfaces import ITranslatable
-else:
-    HAS_LINGUAPLONE = True
-    from Products.LinguaPlone.interfaces import ITranslatable
+from genweb.core import ITranslatable
 
 
 def addQuery(request, url, exclude=tuple(), **extras):
