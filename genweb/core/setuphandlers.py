@@ -38,7 +38,7 @@ def setupVarious(context):
     nasty = transform.get_parameter_value('nasty_tags')
 
     # GW4 Valid tags
-    gw4_valid = ['script', 'object', 'embed', 'param', 'iframe', 'applet']
+    gw4_valid = ['script', 'object', 'embed', 'param', 'iframe', 'applet', 'button']
     for tag in gw4_valid:
         # Acceptar a la llista de valides
         valid[tag] = 1

@@ -100,7 +100,7 @@
    <element value="Graella invisible|invisible"/>
    <element value="Graella invisible [ample 100%]|invisible w100"/>
   </tablestyles>
-  <content_css value=""/>
+  <content_css value="++genweb++stylesheets/genwebupc.css"/>
   <editor_height value="400"/>
   <editor_width value="100%"/>
   <contextmenu value="True"/>
