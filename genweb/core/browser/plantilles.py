@@ -38,66 +38,61 @@ def get_plantilles():
     titol = u"Dues columnes de text"
     resum = u"A cada columna s'hi poden afegir altres plantilles."
     cos = u"""<h2>Columnat 2 columnes</h2>
-<div class="fila">
-<div class="cella w1:2 p0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-<div class="cella w1:2 p1:2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="row">
+<div class="span6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
 </div>
-<div class="clearBoth"></div>"""
+"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
 
     titol = u"Combinacions de columnes"
     resum = u"Podeu fer d'1 a 4 columnes i fusionar-les entre elles. Elimineu les combinacions que no us interessin i treballeu amb el columnat que us agradi més."
     cos = u"""<h2>Columnat 4 columnes</h2>
-<div class="fila">
-<div class="cella w1:4 p0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-<div class="cella w1:4 p1:4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-<div class="cella w1:4 p2:4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-<div class="cella w1:4 p3:4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="row">
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 </div>
-<div class="visualClear"></div>
 <h2>Columnat de 4 columnes amb 2 i 3 fusionades</h2>
-<div class="fila">
-<div class="cella w1:4 p0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-<div class="cella w2:4 p1:4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.</div>
-<div class="cella w1:4 p3:4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="row">
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="span6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 </div>
-<div class="visualClear"></div>
 <h2>Columnat de 3 columnes</h2>
-<div class="fila">
-<div class="cella w1:3 p0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-<div class="cella w1:3 p1:3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-<div class="cella w1:3 p2:3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="row">
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 </div>
-<div class="visualClear"></div>
 <h2>Columnat de 2 columnes amb 1, 2 i 3 fusionades</h2>
-<div class="fila">
-<div class="cella w3:4 p0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type book.</div>
-<div class="cella w1:4 p3:4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="row">
+<div class="span9">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type book.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 </div>
-<div class="visualClear"></div>"""
+"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
 
     titol = u"Destacat"
     resum = u"Text destacat."
-    cos = u"""<div class="textDestacat">
-<p>In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam.  In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada  ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu  elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus  commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque  varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis  pellentesque risus.</p>
-</div>"""
+    cos = u"""<p class="lead">
+In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam.  In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada  ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu  elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus  commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque  varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis  pellentesque risus.
+</p>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
 
-    titol = u"Destacat de color"
+    titol = u"Destacat gran"
     resum = u"Destacat amb text més gran i color."
-    cos = u"""<div class="destacatBandejat">
-<p>In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar  quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium  interdum, malesuada ac, augue.</p>
-</div>"""
+    cos = u"""<p class="lead lead-large">
+In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar  quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium  interdum, malesuada ac, augue.
+</p>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
 
-    titol = u"Destacat ratllat"
-    resum = u"Destacat amb text petit i contorn ratllat."
-    cos = u"""<div class="destacatQuadres">
-<div class="destacatQuadresDins">
-<p>In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis pellentesque risus.</p>
-</div>
-</div>"""
+    titol = u"Destacat petit"
+    resum = u"Destacat amb text petit."
+    cos = u"""<p class="lead lead-small">
+In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis pellentesque risus.
+</p>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
     
     titol = u"Columna de suport"
@@ -125,10 +120,10 @@ def get_plantilles():
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
 
     titol = u"Llistat"
-    resum = u"Llistat d'ítems o enllaços."
-    cos = u"""<div class="llistat">
+    resum = u"Llistat d'ítems."
+    cos = u"""
 <h2>Sed ultricies cursus lectus</h2>
-<ul>
+<ul class="list">
 <li>Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</li>
 <li>Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</li>
 <li>Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</li>
@@ -137,258 +132,256 @@ def get_plantilles():
 <li>Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</li>
 <li><a href="http://gw4.beta.upcnet.es">At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</a></li>
 </ul>
-</div>
-<p> </p>"""
+"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+
+    titol = u"Llistat índex"
+    resum = u"Índex de continguts."
+    cos = u"""
+<h2>Sed ultricies cursus lectus</h2>
+<ul class="list list-index">
+<li>Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</li>
+<li>Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</li>
+<li>Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</li>
+<li>At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</li>
+<li><a href="http://gw4.beta.upcnet.es">Sed lacinia. Suspendisse potenti. Sed ultricies cursus lectus. In id magna sit amet nibh suscipit euismod.</a></li>
+<li>Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</li>
+<li><a href="http://gw4.beta.upcnet.es">At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</a></li>
+</ul>
+"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
-    titol = u"Enllaços relacionats"
-    resum = u"Per afegir manualment un apartat d'enllaços relacionats a qualsevol contingut."
-    cos = u"""<div class="llistatEnllacos">
+    titol = u"Llistat enllaços"
+    resum = u"Per afegir un llistat d'enllaços relacionats."
+    cos = u"""
 <h2>Enllaços relacionats</h2>
-<ul>
+<ul class="list list-links">
 <li><a href="#">JDuis tellus</a></li>
 <li><a href="#">Maecenas elit orci</a></li>
 <li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
 </ul>
-</div>"""
+"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
 
     titol = u"Enllaços destacats"
-    resum = u"Per afegir manualment un apartat d'enllaços destacats a qualsevol contingut."
-    cos = u"""<div class="llistatDestacat">
+    resum = u"Per afegir un llistat d'enllaços destacats."
+    cos = u"""
 <h2>Llistat destacat</h2>
-<ul>
+<ul class="list list-highlighted">
 <li><a href="#">JDuis tellus</a></li>
 <li><a href="#">Maecenas elit orci</a></li>
 <li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
 </ul>
-</div>"""
+"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
-    titol = u"Contenidor"
-    resum = u"Caixa per encabir-hi elements i limitar-los visualment."
-    cos = u"""<div class="gb">
+    titol = u"Taula"
+    resum = u"Taula estructurada per columnes."
+    cos = u"""<h2>Titular de la taula</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Columna 1</th>
+            <th class="error">Columna 2</th>
+            <th>Columna 3</th>
+            <th>Columna 4</th>
+            <th>Columna 5</th>
+            <th>Columna 6</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="7">Peu de la taula</td>
+        </tr>            
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Lorem ipsum</td>
+            <td>Dolor sum</td>
+            <td>Consecuteur est</td>
+            <td>Sit amet</td>
+            <td>Lorem ipsum</td>
+            <td>Dolor sum</td>
+            <td>Sit amet</td>           
+        </tr>
+        <tr>
+            <td class="warning">Consecuteur est</td>
+            <td>Lorem ipsum</td>
+            <td>Sit amet</td>
+            <td class="success">Dolor sum</td>
+            <td>Sit amet</td>                 
+            <td>Consecuteur est</td>
+            <td>Sit amet</td>              
+        </tr>
+        <tr>
+            <td>Sit amet</td>
+            <td>Consecuteur est</td>
+            <td>Dolor sum</td>
+            <td class="info">Lorem ipsum</td>
+            <td>Sit amet</td>                 
+            <td>Lorem ipsum</td>
+            <td>Dolor sum</td>               
+        </tr>
+    </tbody>
+</table>
+"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Taula"
+    resum = u"Taula ampliada imitant una llibreta i contornejada"
+    cos = u"""<h2>Titular de la taula</h2>
+<table class="table table-notebook table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Columna 1</th>
+            <th class="error">Columna 2</th>
+            <th>Columna 3</th>
+            <th>Columna 4</th>
+            <th>Columna 5</th>
+            <th>Columna 6</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="7">Peu de la taula</td>
+        </tr>            
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Lorem ipsum</td>
+            <td>Dolor sum</td>
+            <td>Consecuteur est</td>
+            <td>Sit amet</td>
+            <td>Lorem ipsum</td>
+            <td>Dolor sum</td>
+            <td>Sit amet</td>           
+        </tr>
+        <tr>
+            <td class="warning">Consecuteur est</td>
+            <td>Lorem ipsum</td>
+            <td>Sit amet</td>
+            <td class="success">Dolor sum</td>
+            <td>Sit amet</td>                 
+            <td>Consecuteur est</td>
+            <td>Sit amet</td>              
+        </tr>
+        <tr>
+            <td>Sit amet</td>
+            <td>Consecuteur est</td>
+            <td>Dolor sum</td>
+            <td class="info">Lorem ipsum</td>
+            <td>Sit amet</td>                 
+            <td>Lorem ipsum</td>
+            <td>Dolor sum</td>               
+        </tr>
+    </tbody>
+</table>
+"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Calendari"
+    resum = u"Per representar gràficament els esdeveniments o activitats d'un mes determinat. Es pot representar tot un any afegint successivament un mes darrera l'altre."
+    cos = u"""
+<table class="table table-bordered table-hover" role="presentation">
+ <caption>Calendari de febrer</caption>
+  <thead>
+    <tr>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Dilluns">DL</abbr></th>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Dimarts">DT</abbr></th>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Dimecres">DC</abbr></th>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Dijous">DJ</abbr></th>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Divendres">DV</abbr></th>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Dissabte">DS</abbr></th>
+      <th scope="col"><abbr rel="tooltip" data-placement="top" title="Diumenge">DG</abbr></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th colspan="7">Peu de la taula</th>
+    </tr>
+  </tfoot>
+  <tbody>
+  <tr>
+    <td>&nbsp;</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+    <td>11</td>
+    <td>12</td>
+    <td>13</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>15</td>
+    <td>16</td>
+    <td>17</td>
+    <td>18</td>
+    <td>19</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>22</td>
+    <td>23</td>
+    <td>24</td>
+    <td>25</td>
+    <td>26</td>
+    <td>27</td>
+  </tr>
+   <tr>
+    <td>28</td>
+    <td>29</td>
+    <td>30</td>
+    <td>31</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
+"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Caixa"
+    resum = u"Contenidor de caixa per encabir elements i limitar-los visualment."
+    cos = u"""<div class="box">
 <h2>Titular de l'apartat</h2>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing  elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.  Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu  egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer,  leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
 </div>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
-    titol = u"Taula de registres per files"
-    resum = u"Per definir una taula de registres estructurada per columnes. Es pot ampliar en files i columnes."
-    cos = u"""<h2>Titular de la taula</h2>
-<div class="taulaRegistres">
-<table summary="Detall d'estructura de la taula de registres">
-<caption>Taula registres</caption> 
-<tbody>
-<tr class="cap">
-<td>Item A<br /></td>
-<td>Item B<br /></td>
-<td>Total</td>
-</tr>
-<tr>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-</tbody>
-</table>
+    titol = u"Pou"
+    resum = u"Contenidor de pou per encabir elements i limitar-los visualment."
+    cos = u"""<div class="well">
+<h2>Titular de l'apartat</h2>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.  Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu  egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer,  leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
 </div>"""
+
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
-    titol = u"Taula de registres per files i columnes"
-    resum = u"Per definir una taula de registres estructurada per files i columnes. Es pot ampliar en files i columnes."
-    cos = u"""<h2>Titular de la taula</h2>
-<div class="taulaRegistres">
-<table summary="Detall d'estructura de la taula de registres">
-<caption>Taula resgistres</caption> 
-<tbody>
-<tr class="cap">
-<td></td>
-<td>Item A<br /></td>
-<td>Item B<br /></td>
-<td>Item C<br /></td>
-<td>Item D<br /></td>
-<td>Total</td>
-</tr>
-<tr>
-<td class="fonsDestacat1">DL</td>
-<td>34</td>
-<td>43</td>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td class="fonsDestacat1">DT</td>
-<td>34</td>
-<td>43</td>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td class="fonsDestacat1">DC</td>
-<td>34</td>
-<td>43</td>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td class="fonsDestacat1">DJ</td>
-<td>34</td>
-<td>43</td>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-<tr>
-<td class="fonsDestacat1">DV</td>
-<td>34</td>
-<td>43</td>
-<td>34</td>
-<td>43</td>
-<td>77</td>
-</tr>
-</tbody>
-</table>
-</div>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
-
-    titol = u"Calendari"
-    resum = u"Per representar gràficament els esdeveniments o activitats d'un mes determinat. Es pot representar tot un any afegint successivament un mes darrera l'altre."
-    cos = u"""<div class="calendari">
-<p class="titular2">Febrer 2012</p>
-<table summary="Detall d'estructura del calendari">
-<caption>Calendari</caption> 
-<tbody>
-<tr>
-<td class="fonsDestacat2">dl</td>
-<td class="fonsDestacat2">dm</td>
-<td class="fonsDestacat2">dc</td>
-<td class="fonsDestacat2">dj</td>
-<td class="fonsDestacat2">dv</td>
-<td class="fonsDestacat2">ds</td>
-<td class="fonsDestacat2">dg</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>12</td>
-</tr>
-<tr>
-<td>13</td>
-<td>14</td>
-<td>15</td>
-<td>16</td>
-<td>17</td>
-<td>18</td>
-<td>19</td>
-</tr>
-<tr>
-<td>20</td>
-<td>21</td>
-<td>22</td>
-<td>23</td>
-<td>24</td>
-<td>25</td>
-<td>26</td>
-</tr>
-<tr>
-<td>27</td>
-<td>28</td>
-<td>29</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="notesCalendari"><span class="titular2">dijous 4.</span> inauguració centre<br /> <span class="titular2">dimecres 17.</span> lliurament premis fotografia tecnociència<br /> <span class="titular2">dilluns 29.</span> conferència</div>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
-
-    titol = u"Fitxa amb imatge a l'esquerra"
-    resum = u"Per definir fitxes amb un títol, una imatge, una descripció o determinats atributs destacables."
-    cos = u"""<div class="fletxa_fitxa"></div>
-<div class="fitxa">
+    titol = u"Fitxa"
+    resum = u"Contenidor de fitxa."
+    cos = u"""
+<div class="sheet">
 <h2>Títol de la fitxa</h2>
 <h3>At ipsum vitae est lacinia tincidunt</h3>
-<div class="align_left"><img alt="fotoMostra" src="mostra.jpg" /></div>
+<img alt="" src="mostra.jpg" class="pull-right img-polaroid" />
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
-<br />
-<h4>Lorem Ipsum</h4>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-<br />
-<div class="separadorH"></div>
-<h5>Duis tellus</h5>
-<p>Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</p>
-<br />
-<div class="separadorH"></div>
-<h6>Mauris Vestibulum</h6>
-<p>Felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
-<div class="separadorH"></div>
-<h6>gravida ac</h6>
-<p>Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</p>
-</div>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
-
-    titol = u"Fitxa amb imatge a la dreta"
-    resum = u"Per definir fitxes amb un títol, una imatge, una descripció o determinats atributs destacables."
-    cos = u"""<div class="fletxa_fitxa"></div>
-<div class="fitxa">
-<h2>Títol de la fitxa</h2>
 <h3>At ipsum vitae est lacinia tincidunt</h3>
-<div class="align_right"><img alt="fotoMostra" src="mostra.jpg" /></div>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
-<br />
-<h4>Lorem Ipsum</h4>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-<br />
-<div class="separadorH"></div>
-<h5>Duis tellus</h5>
-<p>Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</p>
-<br />
-<div class="separadorH"></div>
-<h6>Mauris Vestibulum</h6>
-<p>Felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
-<div class="separadorH"></div>
-<h6>gravida ac</h6>
-<p>Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</p>
+<h3>At ipsum vitae est lacinia tincidunt</h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
 </div>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
