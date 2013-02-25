@@ -15,3 +15,7 @@ class IConstrainedFolder(Interface):
 
 class IHomePage(Interface):
     """ Marker interface for home page documents """
+
+
+class ITranslatable(Interface):
+    """ Fake marker interface in case Products.LinguaPlone is not installed """
