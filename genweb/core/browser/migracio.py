@@ -13,14 +13,21 @@ from plone.locking.interfaces import ILockable
 from plone.registry.interfaces import IRegistry
 from plone.cachepurging.interfaces import ICachePurgingSettings
 
-from Products.LinguaPlone.interfaces import ITranslatable
-
 from genweb.core.browser.plantilles import get_plantilles
 from genweb.core.browser.helpers import getDorsal
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
+import pkg_resources
 import logging
 import re
+
+try:
+    pkg_resources.get_distribution('Products.LinguaPlone')
+except pkg_resources.DistributionNotFound:
+    HAS_LINGUAPLONE = False
+else:
+    HAS_LINGUAPLONE = True
+    from Products.LinguaPlone.interfaces import ITranslatable
 
 
 class migrateControlPanel(grok.View):
