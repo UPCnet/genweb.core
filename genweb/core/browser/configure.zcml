@@ -27,6 +27,12 @@
       permission="zope.Public"
       />
 
+     <browser:resourceDirectory
+        name="collective.tinymcetemplates.plugin"
+        directory="tinytemplates_plugin"
+        layer="..interfaces.IGenwebLayer"
+        />
+
     <!-- XXX Try to decide at the end if it's worth to restrict the last
          two for a browser layer
       layer="..interfaces.IGenwebLayer" -->
