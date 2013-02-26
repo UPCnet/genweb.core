@@ -42,6 +42,7 @@ setup(name='genweb.core',
           'plone.app.referenceablebehavior',
           'plone.namedfile [blobs]',
           'plone.app.workflowmanager',
+          'collective.tinymcetemplates',
           # Experimental GW4
           'wildcard.foldercontents',
       ],
