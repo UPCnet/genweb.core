@@ -2,6 +2,7 @@ from five import grok
 
 from zope.interface import Interface
 from zope.interface import implements
+from zope.interface import alsoProvides
 from zope.component import queryUtility
 from zope.component.hooks import getSite
 from zope.publisher.interfaces import IPublishTraverse, NotFound
@@ -15,13 +16,47 @@ from plone.app.uuid.utils import uuidToObject
 from plone.registry.interfaces import IRegistry
 
 from genweb.core import ITranslatable
-from genweb.core.browser.viewlets import addQuery
+from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IGenwebLayer
+from genweb.core.browser.viewlets import addQuery
 
 import json
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('plone.app.contenttypes')
+except pkg_resources.DistributionNotFound:
+    HAS_DXCT = False
+else:
+    HAS_DXCT = True
+    from plone.dexterity.utils import createContentInContainer
 
 
 NOT_TRANSLATED_YET_VIEW = 'not_translated_yet'
+
+
+class setupDX(grok.View):
+    """ Setup View that fixes p.a.ct front-page
+    """
+    grok.name('setupdxctsite')
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        if HAS_DXCT:
+            portal = getSite()
+            pl = getToolByName(portal, 'portal_languages')
+            if getattr(portal, 'front-page', False):
+                portal.manage_delObjects('front-page')
+                frontpage = createContentInContainer(portal, 'Document', title=u"front-page", checkConstraints=False)
+                alsoProvides(frontpage, IHomePage)
+                frontpage.exclude_from_nav = True
+                frontpage.language = pl.getDefaultLanguage()
+                frontpage.reindexObject()
+            # Set the default page to the homepage view
+            portal.setDefaultPage('homepage')
+        else:
+            return 'This site has no p.a.contenttypes installed.'
 
 
 class universalLink(BrowserView):
