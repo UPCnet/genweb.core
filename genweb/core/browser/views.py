@@ -55,6 +55,7 @@ class setupDX(grok.View):
                 frontpage.reindexObject()
             # Set the default page to the homepage view
             portal.setDefaultPage('homepage')
+            return self.request.response.redirect(portal.absolute_url())
         else:
             return 'This site has no p.a.contenttypes installed.'
 
