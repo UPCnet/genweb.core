@@ -25,6 +25,16 @@
 
     <include package=".browser" />
 
+    <!-- The utilities browser view (can't be a grok view) -->
+    <browser:page
+      for="*"
+      name="genweb.utils"
+      class=".utils.genwebUtils"
+      permission="zope2.View"
+      allowed_interface=".interfaces.IGenwebUtils"
+      />
+
+    <!-- Convenience permission identifying authenticated users -->
     <permission
       id="genweb.authenticated"
       title="Genweb: Authenticated Users"
