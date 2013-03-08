@@ -1,8 +1,16 @@
 Changelog
 =========
 
-4.2 (unreleased)
+4.0b2 (unreleased)
+------------------
+- Un-grok the genweb.utils convenience view to BrowserView configured by ZCML,
+  added the *allowed_interfaces* needed to access unrestricted to all the
+  utilities methods.
+
+4.0b1 (unreleased)
 ----------------
+- New versioning number for the 2013 version of Genweb UPC, rovelló de pi.
+- New implementation from scratch, base of all the 2013 developments.
 - Traspassada tota la funcionalitat del paquet upc.genwebupc
 - Traspassats configuració genérica del profile del paquet upc.genwebupctheme
 

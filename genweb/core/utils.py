@@ -67,13 +67,7 @@ def _contact_ws_cachekey(method, self, unitat):
     return (unitat)
 
 
-class genwebUtils(grok.View):
-    grok.name('genweb.utils')
-    grok.context(Interface)
-    grok.require('zope2.View')
-
-    def render(self):
-        pass
+class genwebUtils(BrowserView):
 
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
@@ -101,6 +95,18 @@ class genwebUtils(grok.View):
             return r.json()
         except:
             return {}
+
+    def getContentClass(self, view=None):
+        plone_view = getMultiAdapter((self.context, self.request), name=u'plone')
+        sl = plone_view.have_portlets('plone.leftcolumn', view=view)
+        sr = plone_view.have_portlets('plone.rightcolumn', view=view)
+
+        if not sl and not sr:
+            return 'span12'
+        if (sl and not sr) or (not sl and sr):
+            return 'span9'
+        if sl and sr:
+            return 'span6'
 
 
 # Per deprecar (not wired):
