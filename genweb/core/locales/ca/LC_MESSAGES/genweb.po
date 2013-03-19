@@ -376,3 +376,96 @@ msgstr "Comparteix a Twitter"
 
 msgid "genweb_info_gral"
 msgstr "Informació General"
+
+#############
+# Workflows #
+#############
+
+msgid "Make private"
+msgstr "Privat"
+
+msgid "Private"
+msgstr "Privat"
+
+msgid "Draft"
+msgstr "Esborrany"
+
+msgid "Publish"
+msgstr "Públic"
+
+msgid "Published"
+msgstr "Públic"
+
+msgid "Restrict"
+msgstr "Manager"
+
+msgid "Make draft"
+msgstr "Esborrany"
+
+#. Default: "retracttointranet"
+#: workflow state defined in folder_workflow - title Published
+#: workflow state defined in plone_workflow - title Published
+msgid "Retract To Intranet"
+msgstr "Intranet"
+
+#. Default: "Publish To Intranet"
+#: workflow state defined in folder_workflow - title Published
+#: workflow state defined in plone_workflow - title Published
+msgid "Publish To Intranet"
+msgstr "Intranet"
+
+# genweb_review workflow
+msgid "publicaalaintranet"
+msgstr "Intranet"
+
+msgid "retiraaesborrany"
+msgstr "Esborrany"
+
+msgid "retiraalaintranet"
+msgstr "Intranet"
+
+msgid "enviaarevisar"
+msgstr "Revisió"
+
+msgid "Send the item back to draft."
+msgstr "Envia el contingut a l'estat de esborrany."
+
+msgid "Making an item private means that it will not be visible to anyone but the owner and the site administrator."
+msgstr "Fer un element privat significa que no serà visible per ninguna persona excepte el propietari."
+
+msgid "Promotes your private item to a draft."
+msgstr "Fer un element esborrany significa que només serà visible pels editors i pel seu propietari."
+
+msgid "Making an item published to intranet means that it will be visible to the members (readers)."
+msgstr "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
+
+msgid "Publishing the item makes it visible to other users."
+msgstr "Publica el element i el fa visible per tothom."
+
+# Noms de les vistes
+msgid "Extended view"
+msgstr "Estesa"
+
+msgid "Standard view"
+msgstr "Estàndard"
+
+msgid "Thumbnail view"
+msgstr "Miniatures"
+
+msgid "Summary view"
+msgstr "Resum"
+
+msgid "Tabular view"
+msgstr "Tabular"
+
+msgid "All content"
+msgstr "Tot el contingut"
+
+msgid "homepage"
+msgstr "Pàgina d'inici"
+
+msgid "genweb_content_actions_content_as_view"
+msgstr "Contingut com a vista"
+
+msgid "label_choose_template"
+msgstr "Escull contingut per defecte..."

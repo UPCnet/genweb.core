@@ -20,6 +20,7 @@ msgstr ""
 msgid "genweb-you_are_here"
 msgstr "Sou a:"
 
+# (Transferred to domain genweb)
 msgid "Extended view"
 msgstr "Vista estesa"
 
@@ -27,7 +28,7 @@ msgstr "Vista estesa"
 msgid "genWeb UPC settings"
 msgstr "Configuració del Genweb"
 
-###### Workflows
+###### Workflows (Transferred to domain genweb)
 #. Default: "Draft"
 msgid "Draft"
 msgstr "Esborrany"
