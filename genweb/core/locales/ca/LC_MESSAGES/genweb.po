@@ -469,3 +469,6 @@ msgstr "Contingut com a vista"
 
 msgid "label_choose_template"
 msgstr "Escull contingut per defecte..."
+
+msgid "label_change_default_item"
+msgstr "Canvia contingut per defecte..."
