@@ -464,10 +464,13 @@ msgstr "Tot el contingut"
 msgid "homepage"
 msgstr "Pàgina d'inici"
 
+msgid "label_choose_template"
+msgstr "Vistes"
+
 msgid "genweb_content_actions_content_as_view"
 msgstr "Contingut com a vista"
 
-msgid "label_choose_template"
+msgid "label_choose_item"
 msgstr "Escull contingut per defecte..."
 
 msgid "label_change_default_item"
