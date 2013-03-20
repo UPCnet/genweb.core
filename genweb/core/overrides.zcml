@@ -18,4 +18,11 @@
         permission="zope2.View"
         />
 
+    <!-- Own customization of the display menu (i18n issues mainly) -->
+    <adapter
+        for="* *"
+        name="plone.contentmenu.display"
+        factory=".overrides.gwDisplaySubMenuItem"
+        provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
 </configure>
