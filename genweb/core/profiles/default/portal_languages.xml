@@ -5,7 +5,7 @@
  <use_cookie_negotiation value="True"/>
  <use_request_negotiation value="False"/>
  <use_cctld_negotiation value="False"/>
- <use_content_negotiation value="False"/>
+ <use_content_negotiation value="True"/>
  <use_combined_language_codes value="False"/>
  <display_flags value="False"/>
  <start_neutral value="False"/>
