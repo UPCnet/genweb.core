@@ -476,6 +476,9 @@ msgstr "Escull contingut per defecte..."
 msgid "label_change_default_item"
 msgstr "Canvia contingut per defecte..."
 
+msgid "label_add_new_item"
+msgstr "Afegeix..."
+
 #################
 # Control Panel #
 #################
@@ -487,7 +490,7 @@ msgid "Contact information"
 msgstr "Informació general"
 
 msgid "Specific"
-msgstr "Informació general"
+msgstr "Específic"
 
 msgid "Master"
 msgstr "Master"
