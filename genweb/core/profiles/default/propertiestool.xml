@@ -19,4 +19,8 @@
   </property>
  </object>
 
+ <object name="navtree_properties" meta_type="Plone Property Sheet">
+  <property name="showAllParents" type="boolean">False</property>
+ </object>
+
 </object>
