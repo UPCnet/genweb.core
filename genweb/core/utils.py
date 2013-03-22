@@ -36,9 +36,9 @@ def havePermissionAtRoot(self):
     sm = getSecurityManager()
     user = pm.getAuthenticatedMember()
 
-    return sm.checkPermission('Modify portal content', proot) \
-           or ('WebMaster' in user.getRoles()) \
-           or ('Site Administrator' in user.getRoles())
+    return sm.checkPermission('Modify portal content', proot) or \
+        ('WebMaster' in user.getRoles()) or \
+        ('Site Administrator' in user.getRoles())
 
 
 def portal_url():
@@ -68,6 +68,7 @@ def _contact_ws_cachekey(method, self, unitat):
 
 
 class genwebUtils(BrowserView):
+    """ Convenience methods placeholder genweb.utils view. """
 
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
@@ -76,9 +77,9 @@ class genwebUtils(BrowserView):
         sm = getSecurityManager()
         user = pm.getAuthenticatedMember()
 
-        return sm.checkPermission('Modify portal content', proot) \
-               or ('WebMaster' in user.getRoles()) \
-               or ('Site Administrator' in user.getRoles())
+        return sm.checkPermission('Modify portal content', proot) or \
+            ('WebMaster' in user.getRoles()) or \
+            ('Site Administrator' in user.getRoles())
 
     def getDadesUnitat(self):
         """ Retorna les dades proporcionades pel WebService del SCP """
