@@ -86,7 +86,7 @@ msgstr "Personal"
 
 # Formulari de contacte
 msgid "genweb_formContacte"
-msgstr "Formulario de contacto"
+msgstr "Contacto"
 
 # Contacte
 msgid "genweb_contacte"

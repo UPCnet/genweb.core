@@ -86,7 +86,7 @@ msgstr "Personal"
 
 # Formulari de contacte
 msgid "genweb_formContacte"
-msgstr "Formulari de contacte"
+msgstr "Contacte"
 
 # Contacte
 msgid "genweb_contacte"
@@ -494,3 +494,10 @@ msgstr "Específic"
 
 msgid "Master"
 msgstr "Master"
+
+#########
+# Types #
+#########
+
+msgid "Window"
+msgstr "Finestra iFrame"
