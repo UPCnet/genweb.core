@@ -491,3 +491,43 @@ msgstr "Informació general"
 
 msgid "Master"
 msgstr "Master"
+
+#########
+# Dates #
+#########
+
+msgid "month_jan_abbr"
+msgstr "gen."
+
+msgid "month_feb_abbr"
+msgstr "febr."
+
+msgid "month_mar_abbr"
+msgstr "març"
+
+msgid "month_apr_abbr"
+msgstr "abr."
+
+msgid "month_may_abbr"
+msgstr "maig"
+
+msgid "month_jun_abbr"
+msgstr "juny"
+
+msgid "month_jul_abbr"
+msgstr "jul."
+
+msgid "month_aug_abbr"
+msgstr "ag."
+
+msgid "month_sept_abbr"
+msgstr "set."
+
+msgid "month_oct_abbr"
+msgstr "oct."
+
+msgid "month_nov_abbr"
+msgstr "nov."
+
+msgid "month_dec_abbr"
+msgstr "des."
