@@ -367,3 +367,43 @@ msgstr "Compartir en Twitter"
 
 msgid "genweb_info_gral"
 msgstr "Información General"
+
+##########
+# Fechas #
+##########
+
+msgid "month_jan_abbr"
+msgstr "en."
+
+msgid "month_feb_abbr"
+msgstr "feb."
+
+msgid "month_mar_abbr"
+msgstr "mzo."
+
+msgid "month_apr_abbr"
+msgstr "abr."
+
+msgid "month_may_abbr"
+msgstr "mayo"
+
+msgid "month_jun_abbr"
+msgstr "jun."
+
+msgid "month_jul_abbr"
+msgstr "jul."
+
+msgid "month_aug_abbr"
+msgstr "ag."
+
+msgid "month_sept_abbr"
+msgstr "sept."
+
+msgid "month_oct_abbr"
+msgstr "oct."
+
+msgid "month_nov_abbr"
+msgstr "nov."
+
+msgid "month_dec_abbr"
+msgstr "dec."
