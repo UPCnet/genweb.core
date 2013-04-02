@@ -3,7 +3,25 @@
 
  <object name="site_properties" meta_type="Plone Property Sheet">
   <property name="external_links_open_new_window" type="string">True</property>
-  <property name="icon_visibility" type="string">disabled</property>
+  <property name="icon_visibility" type="string">authenticated</property>
+  <property name="allowAnonymousViewAbout" type="boolean">True</property>
+ </object>
+
+ <object name="imaging_properties" meta_type="Plone Property Sheet">
+  <property name="allowed_sizes" type="lines">
+   <element value="full 978:978"/>
+   <element value="large 726:726"/>
+   <element value="preview 474:474"/>
+   <element value="mini 222:222"/>
+   <element value="thumb 138:138"/>
+   <element value="tile 54:54"/>
+   <element value="icon 32:32"/>
+   <element value="listing 16:16"/>
+  </property>
+ </object>
+
+ <object name="navtree_properties" meta_type="Plone Property Sheet">
+  <property name="showAllParents" type="boolean">False</property>
  </object>
 
 </object>

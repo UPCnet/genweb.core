@@ -10,11 +10,9 @@
   </a>
   <ul class="dropdown-menu pull-right adjust-langs">
     <li tal:repeat="lang languages">
-        <a tal:attributes="href lang/url;
-                           title lang/native"
+        <a tal:attributes="href lang/url"
            tal:content="lang/native"
-           i18n:translate=""
-           i18n:attributes="title">Català</a>
+           i18n:translate="">Català</a>
     </li>
   </ul>
 </li>
