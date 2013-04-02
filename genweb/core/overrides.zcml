@@ -25,4 +25,10 @@
         factory=".overrides.gwDisplaySubMenuItem"
         provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
 
+    <adapter
+        for="* *"
+        name="plone.contentmenu.factories"
+        factory=".overrides.gwFactoriesSubMenuItem"
+        provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
 </configure>

@@ -86,7 +86,7 @@ msgstr "Personal"
 
 # Formulari de contacte
 msgid "genweb_formContacte"
-msgstr "Formulari de contacte"
+msgstr "Contacte"
 
 # Contacte
 msgid "genweb_contacte"
@@ -476,6 +476,9 @@ msgstr "Escull contingut per defecte..."
 msgid "label_change_default_item"
 msgstr "Canvia contingut per defecte..."
 
+msgid "label_add_new_item"
+msgstr "Afegeix..."
+
 #################
 # Control Panel #
 #################
@@ -487,7 +490,7 @@ msgid "Contact information"
 msgstr "Informació general"
 
 msgid "Specific"
-msgstr "Informació general"
+msgstr "Específic"
 
 msgid "Master"
 msgstr "Master"
@@ -531,3 +534,10 @@ msgstr "nov."
 
 msgid "month_dec_abbr"
 msgstr "des."
+
+#########
+# Types #
+#########
+
+msgid "Window"
+msgstr "Finestra iFrame"
