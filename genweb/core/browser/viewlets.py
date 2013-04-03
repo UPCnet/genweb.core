@@ -1,4 +1,5 @@
 from five import grok
+from urllib import quote
 from ZTUtils import make_query
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -8,9 +9,9 @@ from plone.uuid.interfaces import IUUID
 from plone.app.i18n.locales.browser.selector import LanguageSelector
 from zope.interface import Interface
 
-from genweb.core.interfaces import IGenwebLayer
-
 from genweb.core import ITranslatable
+from genweb.core.utils import genweb_config
+from genweb.core.interfaces import IGenwebLayer
 
 
 def addQuery(request, url, exclude=tuple(), **extras):
@@ -82,14 +83,20 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
     def get_selected_lang(self, languages):
         return [lang for lang in languages if lang['selected']][0]
 
+    def get_google_translated_langs(self):
+        return dict(ca=genweb_config().idiomes_google_translate_link_ca,
+                    en=genweb_config().idiomes_google_translate_link_en,
+                    es=genweb_config().idiomes_google_translate_link_es)
+
 
 class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     grok.context(ITranslatable)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
-    grok.layer(IGenwebLayer)
+    #grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
+        google_translated = self.get_google_translated_langs()
         results = []
 
         uuid = IUUID(self.context)
@@ -99,21 +106,31 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
             # Avoid to modify the original language dict
             data = lang_info.copy()
             data['translated'] = True
-            query_extras = {
-                'set_language': data['code'],
-            }
-            post_path = getPostPath(self.context, self.request)
-            if post_path:
-                query_extras['post_path'] = post_path
-            data['url'] = addQuery(
-                self.request,
-                self.context.absolute_url().rstrip("/") + \
+            if google_translated.get(data['code']):
+                data['google_translated'] = True
+                google_query_string = dict(sl=self.tool.getPreferredLanguage(),
+                                           tl=data['code'],
+                                           u=quote(self.context.absolute_url())
+                                           )
+
+                data['url'] = 'http://translate.google.com/translate?hl={sl}&sl={sl}&tl={tl}&u={u}'.format(**google_query_string)
+            else:
+                query_extras = {
+                    'set_language': data['code'],
+                }
+                post_path = getPostPath(self.context, self.request)
+                if post_path:
+                    query_extras['post_path'] = post_path
+                data['url'] = addQuery(
+                    self.request,
+                    self.context.absolute_url().rstrip("/") +
                     "/@@goto/%s/%s" % (
                         uuid,
                         lang_info['code']
                     ),
-                **query_extras
-            )
+                    **query_extras
+                )
+
             results.append(data)
 
         return results
@@ -122,7 +139,7 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
 class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
     grok.context(IPloneSiteRoot)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
-    grok.layer(IGenwebLayer)
+    #grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorForRoot, self).languages()

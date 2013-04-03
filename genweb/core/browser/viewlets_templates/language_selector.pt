@@ -10,9 +10,14 @@
   </a>
   <ul class="dropdown-menu pull-right adjust-langs">
     <li tal:repeat="lang languages">
-        <a tal:attributes="href lang/url"
-           tal:content="lang/native"
-           i18n:translate="">Català</a>
+        <a tal:attributes="href lang/url">
+          <i class="icon-translate"
+             tal:condition="lang/google_translated | nothing"></i>
+          <tal:lang tal:content="lang/native"
+                    i18n:translate="">
+                      Català
+          </tal:lang>
+        </a>
     </li>
   </ul>
 </li>
