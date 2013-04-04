@@ -109,6 +109,17 @@ class genwebUtils(BrowserView):
         if sl and sr:
             return 'span6'
 
+    def getProgressBarName(self, number, view=None):
+        if number == 1:
+            return "progress progress-success"
+        elif number == 2:
+            return "progress progress-primary"
+        elif number == 3:
+            return "progress progress-warning"
+        elif number == 4:
+            return "progress progress-danger"
+        return "progress progress-info"
+
 
 # Per deprecar (not wired):
 class utilitats(BrowserView):
