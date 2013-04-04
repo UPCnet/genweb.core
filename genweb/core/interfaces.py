@@ -34,3 +34,6 @@ class IGenwebUtils(Interface):
 
     def getContentClass(self, view=None):
         """ Returns the correct class for content container (span) """
+
+    def getProgressBarName(self, view=None):
+        """ Returns the correct progress bar class in order to get the color """
