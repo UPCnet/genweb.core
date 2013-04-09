@@ -1,6 +1,7 @@
 from five import grok
 from Acquisition import aq_inner
 from zope.component import queryUtility
+from zope.component.hooks import getSite
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -233,6 +234,21 @@ class killBrokenTransforms(grok.View):
                         transaction.commit()
 
         return 'Done!'
+
+
+class unconstrainCTinFolders(grok.View):
+    grok.name('unconstrainCTinFolders')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        context = aq_inner(self.context)
+        portal = getSite()
+        pc = getToolByName(context, 'portal_catalog')
+        path = '/'.join(portal.getPhysicalPath())
+        folders = pc.searchResults(portal_type='Folder', path={'query': path, 'depth': 1})
+        for folder in folders:
+            folder.getObject().setConstrainTypesMode(0)
 
 
 def migracio3(context):
