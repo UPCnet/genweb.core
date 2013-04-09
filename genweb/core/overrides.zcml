@@ -11,6 +11,7 @@
          be in place and the grokker will take precedence. During the
          innpass the layer will not be enabled and the override has to
          be enabled globaly. -->
+    <!-- **** Not going to work if not refactored if coexistance -->
     <browser:page
         for="*"
         name="collective.tinymcetemplates.templatelist"
