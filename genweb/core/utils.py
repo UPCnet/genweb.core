@@ -29,14 +29,15 @@ def genweb_config():
     return registry.forInterface(IGenwebControlPanelSettings)
 
 
-def havePermissionAtRoot(self):
+def havePermissionAtRoot():
     """Funcio que retorna si es Editor a l'arrel"""
-    pm = getToolByName(self, 'portal_membership')
     proot = portal()
+    pm = getToolByName(proot, 'portal_membership')
     sm = getSecurityManager()
     user = pm.getAuthenticatedMember()
 
     return sm.checkPermission('Modify portal content', proot) or \
+        ('Manager' in user.getRoles()) or \
         ('WebMaster' in user.getRoles()) or \
         ('Site Administrator' in user.getRoles())
 

@@ -35,6 +35,14 @@ else:
 NOT_TRANSLATED_YET_VIEW = 'not_translated_yet'
 
 
+class debug(grok.View):
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        import ipdb;ipdb.set_trace()
+
+
 class setupDX(grok.View):
     """ Setup View that fixes p.a.ct front-page
     """

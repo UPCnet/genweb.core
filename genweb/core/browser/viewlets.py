@@ -10,7 +10,7 @@ from plone.app.i18n.locales.browser.selector import LanguageSelector
 from zope.interface import Interface
 
 from genweb.core import ITranslatable
-from genweb.core.utils import genweb_config
+from genweb.core.utils import genweb_config, havePermissionAtRoot
 from genweb.core.interfaces import IGenwebLayer
 
 
@@ -97,12 +97,17 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     def languages(self):
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
         google_translated = self.get_google_translated_langs()
+        idiomes_publicats = genweb_config().idiomes_publicats
+        user_has_permission_at_root = havePermissionAtRoot()
         results = []
 
         uuid = IUUID(self.context)
         if uuid is None:
             uuid = 'nouuid'
-        for lang_info in languages_info:
+
+        filtered_languages = [lang_info for lang_info in languages_info if user_has_permission_at_root or lang_info['code'] in idiomes_publicats]
+
+        for lang_info in filtered_languages:
             # Avoid to modify the original language dict
             data = lang_info.copy()
             data['translated'] = True
