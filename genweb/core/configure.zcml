@@ -24,6 +24,7 @@
     <i18n:registerTranslations directory="locales" />
 
     <include package=".browser" />
+    <include package=".widgets" />
     <include file="patches.zcml" />
 
     <!-- The utilities browser view (can't be a grok view) -->
