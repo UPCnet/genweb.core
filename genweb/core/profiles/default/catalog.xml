@@ -8,6 +8,10 @@
         <indexed_attr value="is_important"/>
     </index>
     <column value="is_important"/>
+    <index name="favoritedBy" meta_type="KeywordIndex">
+        <indexed_attr value="favoritedBy"/>
+    </index>
+    <column value="favoritedBy"/>
     <index name="exclude_from_nav" meta_type="FieldIndex">
         <indexed_attr value="exclude_from_nav"/>
     </index>
