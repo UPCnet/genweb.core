@@ -32,6 +32,7 @@ class Favorite(grok.Adapter):
         if not self.fans:
             # Initialize it
             self.fans = set([])
+            setattr(self.context, ATTRIBUTE_NAME, self.fans)
 
     def get(self):
         return getattr(self.context, ATTRIBUTE_NAME, None)
