@@ -121,6 +121,23 @@ class genwebUtils(BrowserView):
             return "progress progress-danger"
         return "progress progress-info"
 
+    def get_proper_menu_list_class(self, subMenuItem):
+        """ For use only in the menus to calculate the correct class value of
+            some f*cking elements
+        """
+        if subMenuItem['extra']['id'] == 'plone-contentmenu-settings':
+            return 'actionSeparator'
+        if subMenuItem['extra']['id'] != 'contextSetDefaultPage':
+            return subMenuItem['extra']['separator']
+        else:
+            return None
+
+    def get_state_label_class_mapping(self):
+        return {
+            'visible': 'label_success',
+
+        }
+
 
 # Per deprecar (not wired):
 class utilitats(BrowserView):
