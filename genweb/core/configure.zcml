@@ -36,10 +36,15 @@
       allowed_interface=".interfaces.IGenwebUtils"
       />
 
-    <!-- Convenience permission identifying authenticated users -->
+    <!-- Convenience permission identifying authenticated and member users -->
     <permission
       id="genweb.authenticated"
       title="Genweb: Authenticated Users"
+      />
+
+    <permission
+      id="genweb.member"
+      title="Genweb: Member Users"
       />
 
     <!-- ATLink extender -->

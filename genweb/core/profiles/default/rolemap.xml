@@ -17,6 +17,10 @@
                 acquire="True">
       <role name="Authenticated"/>
     </permission>
+    <permission name="Genweb: Member Users"
+                acquire="True">
+      <role name="Member"/>
+    </permission>
     <permission name="ATContentTypes Topic: Add ATBooleanCriterion"
                 acquire="True">
       <role name="Contributor"/>
