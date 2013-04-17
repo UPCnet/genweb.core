@@ -37,3 +37,10 @@ class IGenwebUtils(Interface):
 
     def getProgressBarName(self, view=None):
         """ Returns the correct progress bar class in order to get the color """
+
+    def get_proper_menu_list_class(self, subMenuItem):
+        """ For use only in the menus to calculate the correct class value of
+            some f*cking elements
+        """
+    def get_state_label_class_mapping(self):
+        """"""
