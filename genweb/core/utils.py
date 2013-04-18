@@ -134,8 +134,13 @@ class genwebUtils(BrowserView):
 
     def get_state_label_class_mapping(self):
         return {
-            'visible': 'label_success',
-
+            'visible': 'label-success',
+            'esborrany': 'label-success',
+            'published': 'label-primary',
+            'intranet': 'label-intranet',
+            'private': 'label-important',
+            'pending': 'label-warning',
+            'restricted-to-managers': 'label-inverse',
         }
 
 

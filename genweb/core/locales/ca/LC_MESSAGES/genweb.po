@@ -393,6 +393,9 @@ msgstr "Esborrany"
 msgid "Publish"
 msgstr "Públic"
 
+msgid "publish"
+msgstr "Públic"
+
 msgid "Published"
 msgstr "Públic"
 
@@ -401,6 +404,12 @@ msgstr "Manager"
 
 msgid "Make draft"
 msgstr "Esborrany"
+
+msgid "reject"
+msgstr "Esborrany"
+
+msgid "Pending review"
+msgstr "Revisió"
 
 #. Default: "retracttointranet"
 #: workflow state defined in folder_workflow - title Published
