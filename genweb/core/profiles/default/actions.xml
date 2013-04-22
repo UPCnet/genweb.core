@@ -4,11 +4,19 @@
  <action-provider name="portal_workflow"/>
 
  <action-provider name="portal_actions"/>
- 
+
+ <object name="object" meta_type="CMF Action Category">
+
+  <object name="contentrules" meta_type="CMF Action" i18n:domain="plone">
+   <property name="visible">False</property>
+  </object>
+
+ </object>
+
  <object name="document_actions" meta_type="CMF Action Category">
   <object name="permalink" remove="True" />
  </object>
- 
+
  <object name="portal_tabs" meta_type="CMF Action Category">
   <property name="title"></property>
   <object name="index_html" meta_type="CMF Action" i18n:domain="plone">
@@ -31,9 +39,9 @@
    <property name="visible">False</property>
   </object>
  </object>
- 
+
  <object name="user" meta_type="CMF Action Category">
- 
+
   <object name="dashboard" remove="True" />
 
   <object name="preferences" remove="True" />
@@ -47,7 +55,7 @@
   <object name="undo" remove="True" />
 
   <object name="logout" remove="True" />
- 
+
  <object name="genweb-accesarrel" meta_type="CMF Action" i18n:domain="genweb">
    <property name="title" i18n:translate="">genweb-accesarrel</property>
    <property name="description" i18n:translate=""></property>
@@ -152,7 +160,7 @@
    </property>
    <property name="visible">True</property>
   </object>
- 
+
  </object>
- 
+
 </object>
