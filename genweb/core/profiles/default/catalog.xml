@@ -1,19 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_catalog">
-    <index name="obrirEnFinestraNova" meta_type="FieldIndex">
-        <indexed_attr value="obrirEnFinestraNova"/>
-    </index>
+    <!-- Do not add any index definition here, do it in setuphandlers -->
+    <!-- see add_catalog_indexes method -->
     <column value="obrirEnFinestraNova"/>
-    <index name="is_important" meta_type="BooleanIndex">
-        <indexed_attr value="is_important"/>
-    </index>
     <column value="is_important"/>
-    <index name="favoritedBy" meta_type="KeywordIndex">
-        <indexed_attr value="favoritedBy"/>
-    </index>
     <column value="favoritedBy"/>
-    <index name="exclude_from_nav" meta_type="FieldIndex">
-        <indexed_attr value="exclude_from_nav"/>
-    </index>
     <column value="get_size"/>
 </object>
