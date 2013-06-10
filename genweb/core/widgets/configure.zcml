@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="genweb">
+
+    <class class=".token_input_widget.KeywordsTokenInputWidget">
+        <require
+            permission="zope.Public"
+            interface=".interfaces.ITokenInputWidget"
+        />
+    </class>
+
+    <class class=".token_input_widget.UsersTokenInputWidget">
+        <require
+            permission="zope.Public"
+            interface=".interfaces.ITokenInputWidget"
+        />
+    </class>
+
+</configure>

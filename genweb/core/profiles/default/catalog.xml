@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+    <!-- Do not add any index definition here, do it in setuphandlers -->
+    <!-- see add_catalog_indexes method -->
+    <column value="obrirEnFinestraNova"/>
+    <column value="is_important"/>
+    <column value="favoritedBy"/>
+    <column value="get_size"/>
+</object>

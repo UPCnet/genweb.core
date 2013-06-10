@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="genweb.core">
+
+    <!-- XXX This is only needed in the innpass migration situation,
+         after that it can be safely removed as the IGenwebLayer will
+         be in place and the grokker will take precedence. During the
+         innpass the layer will not be enabled and the override has to
+         be enabled globaly. -->
+    <!-- **** Not going to work if not refactored if coexistance -->
+    <browser:page
+        for="*"
+        name="collective.tinymcetemplates.templatelist"
+        class=".browser.views.TemplateList"
+        permission="zope2.View"
+        />
+
+    <!-- Own customization of the display menu (i18n issues mainly) -->
+    <adapter
+        for="* *"
+        name="plone.contentmenu.display"
+        factory=".overrides.gwDisplaySubMenuItem"
+        provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
+    <adapter
+        for="* *"
+        name="plone.contentmenu.factories"
+        factory=".overrides.gwFactoriesSubMenuItem"
+        provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
+</configure>

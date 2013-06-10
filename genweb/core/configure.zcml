@@ -3,27 +3,59 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="genweb.core">
 
     <five:registerPackage package="." initialize=".initialize" />
-    
-    <i18n:registerTranslations directory="locales" />
-    
-    <genericsetup:registerProfile
-      name="default"
-      title="Genweb Core"
-      directory="profiles/default"
-      description="Installs the genweb.core package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
 
-     <!-- Utilitats i funcions comunes -->
+    <!-- Compat with Plone 4.1 -->
+    <include package="Products.CMFCore" file="permissions.zcml" />
+
+    <includeDependencies package="." />
+
+    <!-- Redefinitions to make test pass -->
+    <include package="jarn.jsi18n" />
+
+    <!-- Grok the package to initialise schema interfaces and content classes -->
+    <include package="grokcore.component" file="meta.zcml" />
+    <grok:grok package="." />
+
+    <i18n:registerTranslations directory="locales" />
+
+    <include package=".browser" />
+    <include package=".widgets" />
+    <include file="patches.zcml" />
+
+    <!-- The utilities browser view (can't be a grok view) -->
     <browser:page
       for="*"
       name="genweb.utils"
-      class=".utils.utilitats"
+      class=".utils.genwebUtils"
       permission="zope2.View"
+      allowed_interface=".interfaces.IGenwebUtils"
+      />
+
+    <!-- Convenience permission identifying authenticated and member users -->
+    <permission
+      id="genweb.authenticated"
+      title="Genweb: Authenticated Users"
+      />
+
+    <permission
+      id="genweb.member"
+      title="Genweb: Member Users"
+      />
+
+    <!-- ATLink extender -->
+    <adapter factory=".extenders.ATLinkSchemaModifier" />
+
+    <genericsetup:registerProfile
+      name="default"
+      title="Genweb UPC Core"
+      directory="profiles/default"
+      description="Installs the genweb.core package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
 </configure>

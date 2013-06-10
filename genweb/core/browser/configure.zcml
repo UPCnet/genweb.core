@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="genweb">
+
+    <browser:page
+      name="getZEO"
+      for="*"
+      class=".helpers.getZEO"
+      permission="zope2.View"
+      template="views_templates/getzeo.pt"
+      />
+
+    <!-- Universal Link -->
+    <browser:page
+      name="universal-link"
+      for="*"
+      class=".views.universalLink"
+      permission="zope.Public"
+      />
+
+    <!-- Selector -->
+    <browser:page
+      name="goto"
+      for="*"
+      class=".views.selectorView"
+      permission="zope.Public"
+      />
+
+     <browser:resourceDirectory
+        name="collective.tinymcetemplates.plugin"
+        directory="tinytemplates_plugin"
+        layer="..interfaces.IGenwebLayer"
+        />
+
+    <!-- XXX Try to decide at the end if it's worth to restrict the last
+         two for a browser layer
+      layer="..interfaces.IGenwebLayer" -->
+
+</configure>

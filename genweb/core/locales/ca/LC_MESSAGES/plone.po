@@ -20,6 +20,7 @@ msgstr ""
 msgid "genweb-you_are_here"
 msgstr "Sou a:"
 
+# (Transferred to domain genweb)
 msgid "Extended view"
 msgstr "Vista estesa"
 
@@ -27,7 +28,7 @@ msgstr "Vista estesa"
 msgid "genWeb UPC settings"
 msgstr "Configuració del Genweb"
 
-###### Workflows
+###### Workflows (Transferred to domain genweb)
 #. Default: "Draft"
 msgid "Draft"
 msgstr "Esborrany"
@@ -286,8 +287,7 @@ msgid "Type the code from the picture shown below"
 msgstr "Si us plau, escriviu el text mostrat a la imatge inferior"
 
 msgid "Send"
-msgstr "envia"
-
+msgstr "Envia"
 
 msgid "A folder which can contain other items."
 msgstr "Una carpeta que pot contenir altres elements."
@@ -297,3 +297,25 @@ msgstr "Una cerca emmagatzemada actualitzada automàticament que es pot usar per
 
 msgid "A page in the site. Can contain rich text."
 msgstr "Una pàgina en el portal que pot contenir text enriquit."
+
+############
+# Contacte #
+############
+
+msgid "genweb_sender_fullname"
+msgstr "Nom"
+
+msgid "genweb_sender_from_address"
+msgstr "Adreça electrònica"
+
+msgid "genweb_subject"
+msgstr "Assumpte"
+
+msgid "genweb_help_message"
+msgstr "Escriviu el missatge que voleu enviar"
+
+msgid "genweb_type_the_code"
+msgstr "Codi de control"
+
+msgid "genweb_help_type_the_code"
+msgstr "Escriviu les paraules de la imatge inferior"
