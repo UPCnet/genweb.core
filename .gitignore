@@ -13,3 +13,5 @@
 *.pydevproject
 passwd
 data
+dist
+*.mo
