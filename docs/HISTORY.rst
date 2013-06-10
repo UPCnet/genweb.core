@@ -1,5 +1,24 @@
 Changelog
 =========
+
+4.3 (2013-06-10)
+----------------
+
+- First 4.3 (Plone 4.3 based) branch stable version
+
+4.3b2 (unreleased)
+------------------
+- Un-grok the genweb.utils convenience view to BrowserView configured by ZCML,
+  added the *allowed_interfaces* needed to access unrestricted to all the
+  utilities methods.
+
+4.3b1 (unreleased)
+----------------
+- New versioning number for the 2013 version of Genweb UPC: "rovelló de pi".
+- New implementation from scratch, base of all the 2013 developments.
+- Traspassada tota la funcionalitat del paquet upc.genwebupc
+- Traspassats configuració genérica del profile del paquet upc.genwebupctheme
+
 4.1.4 (2012-03-01)
 ------------------
 - Permissos del root
