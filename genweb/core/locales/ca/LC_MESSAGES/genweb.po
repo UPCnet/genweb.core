@@ -551,10 +551,16 @@ msgstr "des."
 msgid "Window"
 msgstr "Finestra iFrame"
 
-
 ########################################
 # Collage additional views for folders #
 ########################################
 
 msgid "Inherit"
 msgstr "Hereta"
+
+#########
+# Views #
+#########
+
+msgid "read_more"
+msgstr "Veure més"
