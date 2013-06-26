@@ -319,3 +319,10 @@ msgstr "Codi de control"
 
 msgid "genweb_help_type_the_code"
 msgstr "Escriviu les paraules de la imatge inferior"
+
+#########
+# Types #
+#########
+
+msgid "Document"
+msgstr "Document"
