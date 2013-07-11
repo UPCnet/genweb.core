@@ -44,6 +44,13 @@ msgstr "Saltar al contenido (pulsar Return)"
 msgid "genweb_content_actions_vista_de_carpeta"
 msgstr "Vistas de la carpeta"
 
+#. "genweb_content_actions_content_as_view"
+msgid "genweb_content_actions_content_as_view"
+msgstr "contenido como vista"
+
+msgid "label_choose_item"
+msgstr "Escoge un contenido por defecto..."
+
 #. "genweb-escriptori"
 msgid "genweb-escriptori"
 msgstr "Escritorio"
@@ -336,6 +343,9 @@ msgstr "Buscar"
 
 msgid "obrir_link_finestra_nova"
 msgstr "(abre en ventana nueva)"
+
+msgid "label_choose_template"
+msgstr "Vistas"
 
 #: ."genweb-actualitatPDIPAS"
 msgid "genweb-actualitatPDIPAS"
