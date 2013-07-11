@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.1 (unreleased)
+4.3.1 (2013-07-11)
 ------------------
 
-- Nothing changed yet.
-
+ * Traducciones [Corina Riba]
+ * New i18n strings [Victor Fernandez de Alba]
 
 4.3 (2013-06-10)
 ----------------
