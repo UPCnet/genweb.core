@@ -295,3 +295,6 @@ msgstr "Una búsqueda almacenada que se actualiza automáticamente y puede ser u
 
 msgid "A page in the site. Can contain rich text."
 msgstr "Una página en el portal, que puede contener texto enriquecido."
+
+msgid "label_related_items"
+msgstr "elementos relacionados"
