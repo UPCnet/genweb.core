@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.2 (unreleased)
+4.3.2 (2013-07-25)
 ------------------
 
-- Nothing changed yet.
-
+ * Remove shouter on TinyMCE template plugin [Victor Fernandez de Alba]
+ * traducciones [Corina Riba]
 
 4.3.1 (2013-07-11)
 ------------------
