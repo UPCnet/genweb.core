@@ -1,5 +1,4 @@
 from five import grok
-
 from zope.interface import Interface
 from zope.interface import implements
 from zope.interface import alsoProvides
@@ -33,14 +32,6 @@ else:
 
 
 NOT_TRANSLATED_YET_VIEW = 'not_translated_yet'
-
-
-class debug(grok.View):
-    grok.context(Interface)
-    grok.require('cmf.ManagePortal')
-
-    def render(self):
-        import ipdb;ipdb.set_trace()
 
 
 class setupDX(grok.View):
