@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
+from five import grok
 from Acquisition import aq_inner
 from App.config import getConfiguration
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from OFS.interfaces import IFolder
+from OFS.interfaces import IApplication
+from zope.interface import Interface
+from zope.component import queryUtility
+
+from plone.registry.interfaces import IRegistry
+
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from five import grok
-from OFS.interfaces import IApplication
-from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
+
 import json
 
 
 DORSALS = {"1": "Víctor Valdés", "2": "Dani Alves", "3": "Piqué",
-           "4": "Cesc", "5": "Puyol", "6": "Xavi", "7": "David Villa",
-           "8": "A. Iniesta", "9": "Alexis", "10": "Messi", "11": "Thiago",
-           "12": "Unknown", "13": "Pinto", "14": "Mascherano", "15": "Keita",
-           "16": "Sergio", "17": "Pedro"}
+           "4": "Cesc", "5": "Puyol", "6": "Xavi", "7": "Pedro",
+           "8": "A. Iniesta", "9": "Alexis", "10": "Messi", "11": "Neymar JR",
+           "12": "Unknown", "13": "Pinto", "14": "Mascherano", "16": "Sergio"}
 
 
 def getDorsal():
@@ -228,11 +231,21 @@ class removeBrokenCacheFu(grok.View):
         return 'done'
 
 
-class console(grok.View):
-    grok.name('console')
-    grok.context(IPloneSiteRoot)
-    grok.require('zope2.View')
+class debug(grok.View):
+    """ Convenience view for faster degugging. Needs to be manager. """
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
 
     def render(self):
         context = aq_inner(self.context)
         import ipdb;ipdb.set_trace()
+
+
+class monitoringView(grok.View):
+    """ Convenience view for monitoring software """
+    grok.name('ping')
+    grok.context(IApplication)
+    grok.require('zope2.View')
+
+    def render(self):
+        return '1'
