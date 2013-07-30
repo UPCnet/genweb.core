@@ -16,6 +16,9 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
+msgid "Document"
+msgstr "Documento"
+
 #: genweb.theme/genweb/theme/portlets/esdeveniments.py:180
 msgid "Add Events Portlet"
 msgstr "Añadir porlet de calendario"
@@ -974,7 +977,7 @@ msgstr "Inicio"
 #. Default: "Add new…"
 #: genweb.core/genweb/core/overrides.py:12
 msgid "label_add_new_item"
-msgstr ""
+msgstr "Añadir..."
 
 #. Default: "Advanced Search…"
 #: genweb.theme/genweb/theme/browser/views.py:230
@@ -1195,3 +1198,12 @@ msgstr ""
 #. Default: "Usuari connectat:"
 msgid "usuari_connectat"
 msgstr "Usuario conectado:"
+
+msgid "fitxer_no_seleccionat"
+msgstr "Ningún archivo seleccionado..."
+
+msgid "canvia"
+msgstr "Cambiar..."
+
+msgid "navegar"
+msgstr "Navegar..."

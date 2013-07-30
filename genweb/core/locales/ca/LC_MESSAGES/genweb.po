@@ -564,3 +564,16 @@ msgstr "Hereta"
 
 msgid "read_more"
 msgstr "Veure més"
+
+#######
+# .js #
+#######
+
+msgid "fitxer_no_seleccionat"
+msgstr "Cap fitxer seleccionat..."
+
+msgid "canvia"
+msgstr "Canvia..."
+
+msgid "navegar"
+msgstr "Navega..."
