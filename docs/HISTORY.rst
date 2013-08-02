@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.3 (unreleased)
+4.3.3 (2013-08-02)
 ------------------
 
-- Nothing changed yet.
-
+ * Traducciones [Corina Riba]
+ * New helper view for balancer monitoring, order [Victor Fernandez de Alba]
 
 4.3.2 (2013-07-25)
 ------------------
