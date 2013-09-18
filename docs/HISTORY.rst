@@ -1,10 +1,10 @@
 Changelog
 =========
 
-4.3.4 (unreleased)
+4.3.4 (2013-09-19)
 ------------------
 
-- Nothing changed yet.
+ * Fix for dexterity items in templates folders [Carles Bruguera]
 
 
 4.3.3 (2013-08-02)
