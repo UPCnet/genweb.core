@@ -181,7 +181,6 @@ class TemplateList(grok.View):
 
         registry = queryUtility(IRegistry)
         templates = []
-
         if registry is not None:
             templateDirectories = registry.get('collective.tinymcetemplates.templateLocations', None)
             if templateDirectories:
@@ -195,8 +194,11 @@ class TemplateList(grok.View):
                     if p.startswith('/'):
                         p = p[1:]
                     paths.append("%s/%s" % (portal_path, p,))
+                ats = portal_catalog(Language='all', path=paths, object_provides=IATDocument.__identifier__)
+                dext = portal_catalog(Language='all', path=paths, object_provides='Products.CMFCore.interfaces._content.IContentish')
 
-                for r in portal_catalog(Language='all', path=paths, object_provides=IATDocument.__identifier__):
+                results = ats + dexts
+                for r in results:
                     templates.append([r.Title, "%s/getText" % r.getURL(), r.Description])
 
         return u"var tinyMCETemplateList = %s;" % json.dumps(templates)
