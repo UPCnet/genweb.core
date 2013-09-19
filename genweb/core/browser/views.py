@@ -178,7 +178,6 @@ class TemplateList(grok.View):
 
     def render(self):
         self.request.response.setHeader('Content-Type', 'text/javascript')
-        import ipdb;ipdb.set_trace()
         registry = queryUtility(IRegistry)
         templates = []
         if registry is not None:
