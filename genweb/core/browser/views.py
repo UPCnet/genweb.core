@@ -178,7 +178,7 @@ class TemplateList(grok.View):
 
     def render(self):
         self.request.response.setHeader('Content-Type', 'text/javascript')
-
+        import ipdb;ipdb.set_trace()
         registry = queryUtility(IRegistry)
         templates = []
         if registry is not None:
@@ -195,7 +195,7 @@ class TemplateList(grok.View):
                         p = p[1:]
                     paths.append("%s/%s" % (portal_path, p,))
                 ats = portal_catalog(Language='all', path=paths, object_provides=IATDocument.__identifier__)
-                dext = portal_catalog(Language='all', path=paths, object_provides='Products.CMFCore.interfaces._content.IContentish')
+                dexts = portal_catalog(Language='all', path=paths, object_provides='Products.CMFCore.interfaces._content.IContentish')
 
                 results = ats + dexts
                 for r in results:
