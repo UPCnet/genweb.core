@@ -1152,7 +1152,7 @@ msgid "rss_accio"
 msgstr "Rss"
 
 #. Default: "Envia per correu"
-#: ./browser/addthis.pt
+#: ./browser/addthis.pt:
 msgid "send_mail"
 msgstr "Enviar por correo"
 
@@ -1198,6 +1198,19 @@ msgstr ""
 #. Default: "Usuari connectat:"
 msgid "usuari_connectat"
 msgstr "Usuario conectado:"
+
+msgid "fitxer_no_seleccionat"
+msgstr "Ningún archivo seleccionado..."
+
+msgid "canvia"
+msgstr "Cambiar..."
+
+msgid "navegar"
+msgstr "Navegar..."
+
+#######
+# .js #
+#######
 
 msgid "fitxer_no_seleccionat"
 msgstr "Ningún archivo seleccionado..."
