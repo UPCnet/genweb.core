@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.3.5 (unreleased)
+4.3.5 (2013-10-01)
 ------------------
 
-- Nothing changed yet.
-
+ * Traduccions [Corina Riba]
+ * Update ignores [Carles Bruguera]
+ * typo [Carles Bruguera]
 
 4.3.4 (2013-09-19)
 ------------------
