@@ -183,3 +183,225 @@ msgstr "Share on Twitter"
 
 msgid "genweb_info_gral"
 msgstr "General Information"
+
+####################
+# Contact settings #
+####################
+
+msgid "help_contacte_id"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Contact information"
+msgstr ""
+
+msgid "Specific"
+msgstr ""
+
+msgid "Master"
+msgstr ""
+
+#. "Títol del web amb HTML tags (negretes) [CA]"
+msgid "html_title_ca"
+msgstr ""
+
+#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+msgid "help_html_title_ca"
+msgstr ""
+
+#. "Títol del web amb HTML tags (negretes) [ES]"
+msgid "html_title_es"
+msgstr ""
+
+#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+msgid "help_html_title_es"
+msgstr ""
+
+#. "Títol del web amb HTML tags (negretes) [EN]"
+msgid "html_title_en"
+msgstr ""
+
+#. "Afegiu el títol del Genweb. Podeu incloure tags HTML."
+msgid "help_html_title_en"
+msgstr ""
+
+#. "Signatura de la unitat [CA]"
+msgid "signatura_unitat_ca"
+msgstr ""
+
+#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+msgid "help_signatura_unitat_ca"
+msgstr ""
+
+#. "Signatura de la unitat [ES]"
+msgid "signatura_unitat_es"
+msgstr ""
+
+#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+msgid "help_signatura_unitat_es"
+msgstr ""
+
+#. "Signatura de la unitat [EN]"
+msgid "signatura_unitat_en"
+msgstr ""
+
+#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+msgid "help_signatura_unitat_en"
+msgstr ""
+
+#. "Codi altra marca [CA]"
+msgid "codi_altre_marca_ca"
+msgstr ""
+
+#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
+msgid "help_codi_altre_marca_ca"
+msgstr ""
+
+#. "Codi altra marca [ES]"
+msgid "codi_altre_marca_es"
+msgstr ""
+
+#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
+msgid "help_codi_altre_marca_es"
+msgstr ""
+
+#. "Codi altra marca [EN]"
+msgid "codi_altre_marca_en"
+msgstr ""
+
+#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
+msgid "help_codi_altre_marca_en"
+msgstr ""
+
+#. "ID contacte de la unitat"
+msgid "contacte_id"
+msgstr ""
+
+#. "Afegiu el id de contacte de la base de dades de màsters."
+msgid "help_contacte_id"
+msgstr "Add the unit’s ID from the Communications Service’s database."
+
+#. "Página de contacte personalitzada"
+msgid "contacte_BBBDD_or_page"
+msgstr ""
+
+#. "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
+msgid "help_contacte_BBBDD_or_page"
+msgstr ""
+
+#. "Adreça de contacte al peu"
+msgid "contacte_al_peu"
+msgstr "The address and telephone number from the Communications Service’s database are shown at the bottom of the page."
+
+#. "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
+msgid "help_contacte_al_peu"
+msgstr "The link to the UPC directory will be shown at the top. "
+
+#. "Directori UPC a les eines"
+msgid "directori_upc"
+msgstr ""
+
+#. "Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."
+msgid "help_directori_upc"
+msgstr ""
+
+#. "Contacte sense UPCmaps"
+msgid "contacte_no_upcmaps"
+msgstr "UPCmaps information will be shown with the contact details."
+
+#. "Es mostra la informació d'UPCmaps al contacte."
+msgid "help_contacte_no_upcmaps"
+msgstr ""
+
+#. "Color específic 1"
+msgid "especific1"
+msgstr ""
+
+#. "Afegiu el color específic 1. És aquell que..."
+msgid "help_especific1"
+msgstr ""
+
+#. "Color específic 2"
+msgid "especific2"
+msgstr ""
+
+#. "Afegiu el color específic 2. És aquell que..."
+msgid "help_especific2"
+msgstr ""
+
+#. "Treu la imatge de la capçalera"
+msgid "treu_imatge_capsalera"
+msgstr ""
+
+#. "Treiem la imatge de la capçalera per ..."
+msgid "help_treu_imatge_capsalera"
+msgstr ""
+
+#. "Treu el menú horitzontal"
+msgid "treu_menu_horitzontal"
+msgstr ""
+
+#. "Treu el menú horitzontal ..."
+msgid "help_treu_menu_horitzontal"
+msgstr ""
+
+#. "Treu les icones per compartir en xarxes socials"
+msgid "treu_icones_xarxes_socials"
+msgstr ""
+
+#. "Treu les icones per compartir en xarxes socials ..."
+msgid "help_treu_icones_xarxes_socials"
+msgstr ""
+
+#. "Amaga de les eines l'enllaç d'identificació"
+msgid "amaga_identificacio"
+msgstr ""
+
+#. "Amaga de les eines l'enllaç d'identificació ..."
+msgid "help_amaga_identificacio"
+msgstr ""
+
+#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"
+msgid "idiomes_google_translate_link_ca"
+msgstr ""
+
+#. "Blabla ..."
+msgid "help_idiomes_google_translate_link_ca"
+msgstr ""
+
+#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [ES]"
+msgid "idiomes_google_translate_link_es"
+msgstr ""
+
+#. "Blabla ..."
+msgid "help_idiomes_google_translate_link_es"
+msgstr ""
+
+#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [EN]"
+msgid "idiomes_google_translate_link_en"
+msgstr ""
+
+#. "Blabla ..."
+msgid "help_idiomes_google_translate_link_en"
+msgstr ""
+
+#. "Idiomes publicats al web"
+msgid "idiomes_publicats"
+msgstr ""
+
+#. "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
+msgid "help_idiomes_publicats"
+msgstr ""
+
+#. "id_estudi"
+msgid "idestudi_master"
+msgstr ""
+
+#. "Afegiu el id de l'estudi de la base de dades de màsters."
+msgid "help_idestudi_master"
+msgstr ""
+
+msgid "homepage"
+msgstr "Welcome"

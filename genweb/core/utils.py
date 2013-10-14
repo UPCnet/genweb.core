@@ -55,7 +55,6 @@ def portal():
     """
     return getSite()
 
-
 def pref_lang():
     """ Extracts the current language for the current user
     """
@@ -89,6 +88,17 @@ class genwebUtils(BrowserView):
             return self._queryInfoUnitatWS(unitat)
         else:
             return {}
+
+    def getEdifici(self):
+        """Retorna edifici en l'idioma del portal
+        """
+        lang = pref_lang()
+        dades = self.getDadesUnitat()
+        if dades:
+            edifici = dades['edifici_' + lang]
+            return edifici
+        else:
+            return None
 
     @ram.cache(_contact_ws_cachekey)
     def _queryInfoUnitatWS(self, unitat):
@@ -261,15 +271,6 @@ class utilitats(BrowserView):
             c = c + 1
         return _dictResult
 
-    # def connectDatabase(self):
-    #     return MySQLdb.connect(host='nucli.upc.edu', user='cons-webupc', passwd='qstacll', db='www-webupc')
-
-    # def change2UTF(self, c):
-    #     c.execute('SET NAMES utf8;')
-    #     c.execute('SET CHARACTER SET utf8;')
-    #     c.execute('SET character_set_connection=utf8;')
-    #     return c
-
     def recodifica(self, str):
         return str.decode('iso-8859-1').encode('utf-8')
 
@@ -297,36 +298,6 @@ class utilitats(BrowserView):
         lang = self.pref_lang()
         campus = self._dadesUnitat['campus_' + lang]
         return campus
-
-    # def getContacteDireccion(self, id):
-    #     # db = self.connectDatabase()
-    #     # c = db.cursor()
-    #     # c = self.change2UTF(c)
-    #     # c.execute("""SELECT ue.codi_edifici, ue.nom_cat AS nomEdifici,ue.direccio, ue.codi_postal, ue.id_campus, uc.nom_cat AS nomCampus, ul.nom AS nomLocalitat FROM upc_unitat_edifici uue, upc_edifici ue, upc_campus uc, upc_localitats ul WHERE uue.id_unitat=%s AND uue.es_seu=1 AND uue.id_edifici=ue.id_edifici AND ue.id_campus=uc.id_campus AND uc.id_localitats=ul.id_localitats""", (id,))
-    #     try:
-    #         results = c.fetchone()
-    #         dictKeys = ('codi_edifici', 'nomEdifici', 'ue.direccio', 'ue.codi_postal', 'ue.id_campus', 'nomCampus', 'nomLocalitat')
-    #         return self.remapList2Dic(dictKeys, results)
-    #     except:
-    #         return None
-
-    # def getTextMaster(self, str, lang):
-
-    #     tmp = 'ing'
-    #     db = self.connectDatabase()
-    #     c = db.cursor()
-    #     c = self.change2UTF(c)
-    #     c.execute("""SELECT cat,esp,ing FROM upc_textos WHERE id = %s""", (str,))
-    #     results = c.fetchone()
-    #     dictKeys = ('cat', 'esp', 'ing',)
-    #     _result = self.remapList2Dic(dictKeys, results)
-
-    #     if lang == 'ca':
-    #         tmp = 'cat'
-    #     elif lang == 'es':
-    #         tmp = 'esp'
-
-    #     return _result[tmp]
 
     def fields2Dic(self, dc, de, di):
         tmp = (dc, de, di)
