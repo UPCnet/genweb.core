@@ -403,5 +403,5 @@ msgstr ""
 msgid "help_idestudi_master"
 msgstr ""
 
-msgid "homepage"
+msgid "homepage_portlet"
 msgstr "Welcome"
