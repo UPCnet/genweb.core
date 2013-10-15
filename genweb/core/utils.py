@@ -89,7 +89,7 @@ class genwebUtils(BrowserView):
         else:
             return {}
 
-    def getEdifici(self):
+    def getEdificiPeu(self):
         """Retorna edifici en l'idioma del portal
         """
         lang = pref_lang()
