@@ -32,6 +32,9 @@ class IGenwebUtils(Interface):
     def getDadesUnitat(self):
         """ Retorna les dades proporcionades pel WebService del SCP """
 
+    def getEdifici(self):
+        """ Retorna edifici en l'idioma del portal """
+
     def getContentClass(self, view=None):
         """ Returns the correct class for content container (span) """
 
