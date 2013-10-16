@@ -582,25 +582,6 @@ msgstr "Navega..."
 # Contact settings #
 ####################
 
-msgid "help_contacte_id"
-msgstr ""
-
-msgid "General"
-msgstr ""
-
-msgid "Contact information"
-msgstr ""
-
-msgid "Specific"
-msgstr ""
-
-msgid "Master"
-msgstr ""
-
-#. "Títol del web amb HTML tags (negretes) [CA]"
-msgid "html_title_ca"
-msgstr ""
-
 #. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
 msgid "help_html_title_ca"
 msgstr ""
