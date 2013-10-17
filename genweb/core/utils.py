@@ -89,17 +89,6 @@ class genwebUtils(BrowserView):
         else:
             return {}
 
-    def getEdificiPeu(self):
-        """Retorna edifici en l'idioma del portal
-        """
-        lang = pref_lang()
-        dades = self.getDadesUnitat()
-        if dades:
-            edifici = dades['edifici_' + lang]
-            return edifici
-        else:
-            return None
-
     @ram.cache(_contact_ws_cachekey)
     def _queryInfoUnitatWS(self, unitat):
         try:
