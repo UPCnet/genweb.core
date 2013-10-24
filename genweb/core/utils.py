@@ -85,7 +85,11 @@ class genwebUtils(BrowserView):
         """ Retorna les dades proporcionades pel WebService del SCP """
         unitat = genweb_config().contacte_id
         if unitat:
-            return self._queryInfoUnitatWS(unitat)
+            dades = self._queryInfoUnitatWS(unitat)
+            if dades.has_key('error'):
+                return {}
+            else:
+                return dades
         else:
             return {}
 

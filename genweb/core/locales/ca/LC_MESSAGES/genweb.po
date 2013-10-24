@@ -786,3 +786,6 @@ msgstr ""
 
 msgid "homepage_portlet"
 msgstr "Benvingut"
+
+msgid "Homepage"
+msgstr "Benvingut"
