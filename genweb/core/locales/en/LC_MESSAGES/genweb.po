@@ -285,35 +285,41 @@ msgstr "Add the unit’s ID from the Communications Service’s database."
 
 #. "Página de contacte personalitzada"
 msgid "contacte_BBBDD_or_page"
-msgstr ""
+msgstr "Alternative contact page"
 
 #. "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
 msgid "help_contacte_BBBDD_or_page"
-msgstr ""
+msgstr "By default, contact details are fed from the Communications Service’s database."
 
 #. "Adreça de contacte al peu"
 msgid "contacte_al_peu"
-msgstr "The address and telephone number from the Communications Service’s database are shown at the bottom of the page."
+msgstr "The link to the UPC directory will be shown at the top. "
 
 #. "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
 msgid "help_contacte_al_peu"
-msgstr "The link to the UPC directory will be shown at the top. "
+msgstr "The address and telephone number from the Communications Service’s database are shown at the bottom of the page."
 
 #. "Directori UPC a les eines"
 msgid "directori_upc"
-msgstr ""
+msgstr "UPC directory in the toolbar"
 
 #. "Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."
 msgid "help_directori_upc"
-msgstr ""
+msgstr "The link to the UPC directory will be shown at the top."
 
 #. "Contacte sense UPCmaps"
 msgid "contacte_no_upcmaps"
 msgstr "UPCmaps information will be shown with the contact details."
 
+msgid "help_directori_filtrat"
+msgstr "The UPC directory will open and show the unit’s details."
+
+msgid "directori_filtrat"
+msgstr ""
+
 #. "Es mostra la informació d'UPCmaps al contacte."
 msgid "help_contacte_no_upcmaps"
-msgstr ""
+msgstr "Directory filtered by unit?"
 
 #. "Color específic 1"
 msgid "especific1"
@@ -404,4 +410,7 @@ msgid "help_idestudi_master"
 msgstr ""
 
 msgid "homepage_portlet"
+msgstr "Welcome"
+
+msgid "Homepage"
 msgstr "Welcome"

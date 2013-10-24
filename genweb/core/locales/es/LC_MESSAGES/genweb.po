@@ -1210,3 +1210,12 @@ msgstr "Navegar..."
 
 msgid "homepage_portlet"
 msgstr "Bienvenido"
+
+msgid "Homepage"
+msgstr "Bienvenido"
+
+msgid "help_directori_filtrat"
+msgstr "Se abrirá el Directorio UPC cargando los datos de la unidad."
+
+msgid "directori_filtrat"
+msgstr "Directorio filtrado por unidad?"
