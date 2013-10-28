@@ -414,3 +414,6 @@ msgstr "Welcome"
 
 msgid "Homepage"
 msgstr "Welcome"
+
+msgid "box_upcoming_events"
+msgstr "All events"
