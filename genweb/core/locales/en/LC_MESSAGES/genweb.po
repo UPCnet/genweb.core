@@ -188,9 +188,6 @@ msgstr "General Information"
 # Contact settings #
 ####################
 
-msgid "help_contacte_id"
-msgstr ""
-
 msgid "General"
 msgstr ""
 
