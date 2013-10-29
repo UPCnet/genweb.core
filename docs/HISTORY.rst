@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.7 (unreleased)
+4.3.7 (2013-10-29)
 ------------------
 
-- Nothing changed yet.
-
+ * Missing translations
 
 4.3.6 (2013-10-29)
 ------------------
