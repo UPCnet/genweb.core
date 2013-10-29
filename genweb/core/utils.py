@@ -38,8 +38,10 @@ def havePermissionAtRoot():
 
     return sm.checkPermission('Modify portal content', proot) or \
         ('Manager' in user.getRoles()) or \
-        ('WebMaster' in user.getRoles()) or \
         ('Site Administrator' in user.getRoles())
+        # WebMaster used to have permission here, but not anymore since uLearn
+        # makes use of it
+        # ('WebMaster' in user.getRoles()) or \
 
 
 def portal_url():
@@ -54,6 +56,7 @@ def portal():
        interfaces and doing multi adapter lookups.
     """
     return getSite()
+
 
 def pref_lang():
     """ Extracts the current language for the current user
