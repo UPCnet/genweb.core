@@ -188,9 +188,6 @@ msgstr "General Information"
 # Contact settings #
 ####################
 
-msgid "help_contacte_id"
-msgstr ""
-
 msgid "General"
 msgstr ""
 
@@ -414,3 +411,6 @@ msgstr "Welcome"
 
 msgid "Homepage"
 msgstr "Welcome"
+
+msgid "box_upcoming_events"
+msgstr "All events"

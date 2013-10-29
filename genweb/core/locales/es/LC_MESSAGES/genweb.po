@@ -1219,3 +1219,6 @@ msgstr "Se abrirá el Directorio UPC cargando los datos de la unidad."
 
 msgid "directori_filtrat"
 msgstr "Directorio filtrado por unidad?"
+
+msgid "box_upcoming_events"
+msgstr "Todos los eventos"
