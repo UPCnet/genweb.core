@@ -789,3 +789,6 @@ msgstr "Benvingut"
 
 msgid "Homepage"
 msgstr "Benvingut"
+
+msgid "box_upcoming_events"
+msgstr "Tots els esdeveniments"
