@@ -1,11 +1,17 @@
 Changelog
 =========
 
-4.3.6 (unreleased)
+4.3.6 (2013-10-29)
 ------------------
 
-- Nothing changed yet.
-
+* Prevent role WebMaster to see the Root Folder link [Victor Fernandez de Alba]
+* Literales "informacio contacte" y solucionar error directori si la UE no existe [Corina Riba]
+* Get rid of getEdifici [Victor Fernandez de Alba]
+* Eliminar traducciones duplicadas [Corina Riba]
+* Merge de la 4.2 a develop de los últimos cambios [Corina Riba]
+* getEdificiPeu [Corina Riba]
+* Directori filtrado, cambio pie, pagina personalizada. Traducciones [Corina Riba]
+* Cambio pie. Traducciones [Corina Riba]
 
 4.3.5 (2013-10-01)
 ------------------
