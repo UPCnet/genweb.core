@@ -146,6 +146,10 @@ msgstr "Root folder"
 msgid "genweb-preferencies"
 msgstr "Preferences"
 
+#. "genweb-password"
+msgid "genweb-password"
+msgstr "Password change"
+
 #. "genweb-ajuda"
 msgid "genweb-ajuda"
 msgstr "Help"

@@ -589,6 +589,10 @@ msgstr "cambie la contraseña "
 msgid "genweb-preferencies"
 msgstr "Preferencias"
 
+#. "genweb-password"
+msgid "genweb-password"
+msgstr "Cambio de contraseña"
+
 #. Default: "No oblideu desconnectar-vos o tancar el navegador un cop hàgiu finalitzat."
 #: ."genweb-remember_to_log_out"
 msgid "genweb-remember_to_log_out"

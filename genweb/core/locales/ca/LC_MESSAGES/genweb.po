@@ -112,6 +112,10 @@ msgstr "Carpeta arrel"
 msgid "genweb-preferencies"
 msgstr "Preferències"
 
+#. "genweb-password"
+msgid "genweb-password"
+msgstr "Canvi de contrasenya"
+
 #. "genweb-ajuda"
 msgid "genweb-ajuda"
 msgstr "Ajuda"
