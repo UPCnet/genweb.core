@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.8 (unreleased)
+4.3.8 (2013-11-04)
 ------------------
 
-- Nothing changed yet.
-
+* Add new translations [Victor Fernandez de Alba]
 
 4.3.7 (2013-10-29)
 ------------------
