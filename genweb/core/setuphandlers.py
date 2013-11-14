@@ -175,6 +175,12 @@ def setupVarious(context):
         alsoProvides(portal['front-page'], IHomePage)
         portal['front-page'].reindexObject()
 
+    # Set mailhost
+    mh = getToolByName(portal, 'MailHost')
+    mh.smtp_host = 'localhost'
+    portal.email_from_name = 'Genweb Administrator'
+    portal.email_from_address = 'no-reply@upcnet.es'
+
     transaction.commit()
 
     add_catalog_indexes(portal, logger)
