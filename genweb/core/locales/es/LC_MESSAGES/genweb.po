@@ -382,7 +382,7 @@ msgstr "ID contacto de la unidad"
 #. Default: "Contacte sense UPCmaps"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:159
 msgid "contacte_no_upcmaps"
-msgstr "Contacto sin UPCmaps"
+msgstr "Desactivar UPCmaps"
 
 #. Default: "És com es veurà la secció"
 msgid "descripcio_text_seccio"
@@ -825,7 +825,7 @@ msgstr "Añadir el id de la base de datos del Servicio de Comunicación correspo
 #. Default: "Es mostra la informació d'UPCmaps al contacte."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:161
 msgid "help_contacte_no_upcmaps"
-msgstr "No se muestra la información de UPCmaps en el contacto."
+msgstr "Desactivar/Activar UPCmaps. Por defecto UPCmaps siempre se muestra, marque esta opción si desea desactivarlo."
 
 #. Default: "Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:152

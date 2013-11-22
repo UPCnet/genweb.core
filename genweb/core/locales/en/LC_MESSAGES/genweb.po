@@ -310,7 +310,7 @@ msgstr "The link to the UPC directory will be shown at the top."
 
 #. "Contacte sense UPCmaps"
 msgid "contacte_no_upcmaps"
-msgstr "UPCmaps information will be shown with the contact details."
+msgstr "Deactivate UPCmaps"
 
 msgid "help_directori_filtrat"
 msgstr "The UPC directory will open and show the unit’s details."
@@ -320,7 +320,7 @@ msgstr ""
 
 #. "Es mostra la informació d'UPCmaps al contacte."
 msgid "help_contacte_no_upcmaps"
-msgstr "Directory filtered by unit?"
+msgstr "Disable/Enable the UPCmaps. By default UPCmaps is always shown, check this option if you want to disable it."
 
 #. "Color específic 1"
 msgid "especific1"
