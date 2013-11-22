@@ -90,11 +90,11 @@ class genwebUtils(BrowserView):
         if unitat:
             dades = self._queryInfoUnitatWS(unitat)
             if dades.has_key('error'):
-                return {}
+                return False
             else:
                 return dades
         else:
-            return {}
+            return False
 
     @ram.cache(_contact_ws_cachekey)
     def _queryInfoUnitatWS(self, unitat):
