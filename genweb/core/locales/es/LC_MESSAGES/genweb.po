@@ -367,12 +367,12 @@ msgstr "Compartir en Twitter"
 #. Default: "Página de contacte personalitzada"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:132
 msgid "contacte_BBBDD_or_page"
-msgstr "Página de contacto personalizada"
+msgstr "Página de contacto alternativa"
 
 #. Default: "Adreça de contacte al peu"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:141
 msgid "contacte_al_peu"
-msgstr "Dirección de contacto en el pie"
+msgstr "Dirección de contacto al pie"
 
 #. Default: "ID contacte de la unitat"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:123
@@ -810,12 +810,12 @@ msgstr ""
 #. Default: "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:134
 msgid "help_contacte_BBBDD_or_page"
-msgstr ""
+msgstr "Por defecto, la información de contacto se alimenta de la base de datos del Servicio de Comunicación."
 
 #. Default: "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:143
 msgid "help_contacte_al_peu"
-msgstr ""
+msgstr "La dirección y teléfono provenientes de la base de datos del Servicio de Comunicación se visualizan al pie de página."
 
 #. Default: "Afegiu el id de contacte de la base de dades de màsters."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:125
@@ -825,7 +825,7 @@ msgstr "Añadir el id de la base de datos del Servicio de Comunicación correspo
 #. Default: "Es mostra la informació d'UPCmaps al contacte."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:161
 msgid "help_contacte_no_upcmaps"
-msgstr "Desactivar/Activar UPCmaps. Por defecto UPCmaps siempre se muestra, marque esta opción si desea desactivarlo."
+msgstr "Marque esta opción si desea ocultar la información de UPCmaps en el contacto."
 
 #. Default: "Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:152
@@ -1222,7 +1222,8 @@ msgid "help_directori_filtrat"
 msgstr "Se abrirá el Directorio UPC cargando los datos de la unidad."
 
 msgid "directori_filtrat"
-msgstr "Directorio filtrado por unidad?"
+msgstr "¿Filtrado por unidad?"
 
 msgid "box_upcoming_events"
 msgstr "Todos los eventos"
+

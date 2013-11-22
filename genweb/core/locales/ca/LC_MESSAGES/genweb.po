@@ -500,7 +500,7 @@ msgid "General"
 msgstr "General"
 
 msgid "Contact information"
-msgstr "Informació contacte"
+msgstr "Informació de contacte"
 
 msgid "Specific"
 msgstr "Específic"
@@ -664,7 +664,7 @@ msgstr "Afegiu l'id de la base de dades del Servei de Comunicació corresponent 
 
 #. "Página de contacte personalitzada"
 msgid "contacte_BBBDD_or_page"
-msgstr ""
+msgstr "Pàgina de contacte alternativa"
 
 #. "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
 msgid "help_contacte_BBBDD_or_page"
@@ -698,7 +698,7 @@ msgstr "Desactivar UPCmaps"
 
 #. "Es mostra la informació d'UPCmaps al contacte."
 msgid "help_contacte_no_upcmaps"
-msgstr "Desactivar/Activar la informació d'UPCmaps al contacte. Per defecte sempre surt UPCmaps, marcar aquesta opció per desactivar-ho."
+msgstr "Marqui aquesta opció si desitja amagar la informació de UPCmaps al contacte."
 
 #. "Color específic 1"
 msgid "especific1"
@@ -796,3 +796,6 @@ msgstr "Benvingut"
 
 msgid "box_upcoming_events"
 msgstr "Tots els esdeveniments"
+
+msgid "directori_filtrat"
+msgstr "Filtrat per unitat?"
