@@ -694,11 +694,11 @@ msgstr ""
 
 #. "Contacte sense UPCmaps"
 msgid "contacte_no_upcmaps"
-msgstr ""
+msgstr "Desactivar UPCmaps"
 
 #. "Es mostra la informació d'UPCmaps al contacte."
 msgid "help_contacte_no_upcmaps"
-msgstr "Es mostra la informació d'UPCmaps al contacte."
+msgstr "Desactivar/Activar la informació d'UPCmaps al contacte. Per defecte sempre surt UPCmaps, marcar aquesta opció per desactivar-ho."
 
 #. "Color específic 1"
 msgid "especific1"
