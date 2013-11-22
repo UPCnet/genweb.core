@@ -278,7 +278,7 @@ msgstr ""
 
 #. "ID contacte de la unitat"
 msgid "contacte_id"
-msgstr ""
+msgstr "The unit’s contact ID"
 
 #. "Afegiu el id de contacte de la base de dades de màsters."
 msgid "help_contacte_id"
@@ -294,7 +294,7 @@ msgstr "By default, contact details are fed from the Communications Service’s 
 
 #. "Adreça de contacte al peu"
 msgid "contacte_al_peu"
-msgstr "The link to the UPC directory will be shown at the top. "
+msgstr "Contact address at the bottom of the page"
 
 #. "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
 msgid "help_contacte_al_peu"
@@ -310,17 +310,17 @@ msgstr "The link to the UPC directory will be shown at the top."
 
 #. "Contacte sense UPCmaps"
 msgid "contacte_no_upcmaps"
-msgstr "UPCmaps information will be shown with the contact details."
+msgstr "Disable UPCmaps"
 
 msgid "help_directori_filtrat"
 msgstr "The UPC directory will open and show the unit’s details."
 
 msgid "directori_filtrat"
-msgstr ""
+msgstr "Filter by Unit?"
 
 #. "Es mostra la informació d'UPCmaps al contacte."
 msgid "help_contacte_no_upcmaps"
-msgstr "Directory filtered by unit?"
+msgstr "UPCmaps information will be hidden with the contact details."
 
 #. "Color específic 1"
 msgid "especific1"
