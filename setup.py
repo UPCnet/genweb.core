@@ -44,6 +44,7 @@ setup(name='genweb.core',
           'plone.app.workflowmanager',
           'collective.tinymcetemplates',
           'wildcard.foldercontents',
+          'jarn.jsi18n',
       ],
       entry_points="""
       # -*- Entry points: -*-
