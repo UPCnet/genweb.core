@@ -77,7 +77,6 @@ class gwLanguageSelectorViewletManager(grok.ViewletManager):
 
 class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
     grok.baseclass()
-
     render = ViewPageTemplateFile('viewlets_templates/language_selector.pt')
 
     def get_selected_lang(self, languages):
@@ -95,9 +94,12 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     #grok.layer(IGenwebLayer)
 
     def languages(self):
+
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
+
         google_translated = self.get_google_translated_langs()
         idiomes_publicats = genweb_config().idiomes_publicats
+
         user_has_permission_at_root = havePermissionAtRoot()
         results = []
 
@@ -142,15 +144,20 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
 
 
 class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
+    # Show link to languages published in control panel
     grok.context(IPloneSiteRoot)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
     #grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorForRoot, self).languages()
+        idiomes_publicats = genweb_config().idiomes_publicats
+        user_has_permission_at_root = havePermissionAtRoot()
         results = []
 
-        for lang_info in languages_info:
+        filtered_languages = [lang_info for lang_info in languages_info if user_has_permission_at_root or lang_info['code'] in idiomes_publicats]
+
+        for lang_info in filtered_languages:
             # Avoid to modify the original language dict
             data = lang_info.copy()
             data['translated'] = True
