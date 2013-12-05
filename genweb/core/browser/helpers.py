@@ -6,12 +6,15 @@ from OFS.interfaces import IFolder
 from OFS.interfaces import IApplication
 from zope.interface import Interface
 from zope.component import queryUtility
+from zope.interface import alsoProvides
 
 from plone.registry.interfaces import IRegistry
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+
+from genweb.core.interfaces import IProtectedContent
 
 import json
 
@@ -249,3 +252,13 @@ class monitoringView(grok.View):
 
     def render(self):
         return '1'
+
+
+class protectContent(grok.View):
+    """ Convenience view for faster degugging. Needs to be manager. """
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        alsoProvides(context, IProtectedContent)
