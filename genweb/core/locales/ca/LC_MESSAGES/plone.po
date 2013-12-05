@@ -326,3 +326,19 @@ msgstr "Escriviu les paraules de la imatge inferior"
 
 msgid "Document"
 msgstr "Document"
+
+############
+# portlets #
+############
+
+msgid "FullNews"
+msgstr "Notícies enriquides"
+
+msgid "NoticiesPropi"
+msgstr "Notícies GenWeb"
+
+msgid "AgendaGW"
+msgstr "Agenda Genweb"
+
+msgid "hompageportlet"
+msgstr "Benvinguda"

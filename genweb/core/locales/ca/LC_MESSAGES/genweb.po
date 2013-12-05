@@ -799,3 +799,13 @@ msgstr "Tots els esdeveniments"
 
 msgid "directori_filtrat"
 msgstr "Filtrat per unitat?"
+
+######################
+#  Portlet Full News #
+######################
+
+msgid "FullNews"
+msgstr "Notícies enriquides"
+
+msgid "homepage_portlet"
+msgstr "Benvingut"
