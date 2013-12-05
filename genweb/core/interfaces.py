@@ -44,3 +44,9 @@ class IGenwebUtils(Interface):
         """
     def get_state_label_class_mapping(self):
         """"""
+
+
+class IProtectedContent(Interface):
+    """Marker interface for preventing dumb users to delete system configuration
+       related content
+    """
