@@ -1,8 +1,11 @@
 from five import grok
+from itertools import chain
+
 from zope.interface import Interface
 from zope.interface import implements
 from zope.interface import alsoProvides
 from zope.component import queryUtility
+from zope.component import getMultiAdapter
 from zope.component.hooks import getSite
 from zope.publisher.interfaces import IPublishTraverse, NotFound
 
@@ -201,3 +204,24 @@ class TemplateList(grok.View):
                     templates.append([r.Title, "%s/getText" % r.getURL(), r.Description])
 
         return u"var tinyMCETemplateList = %s;" % json.dumps(templates)
+
+
+class AjaxUserSearch(grok.View):
+    grok.context(Interface)
+    grok.name('genweb.ajaxusersearch')
+    grok.require('genweb.authenticated')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        self.request.response.setHeader("Content-type", "application/json")
+        query = self.request.form.get('q', '')
+        results = dict(more=False, results=[])
+        if query:
+            portal = getSite()
+            hunter = getMultiAdapter((portal, self.request), name='pas_search')
+            fulluserinfo = hunter.merge(chain(*[hunter.searchUsers(**{field: query}) for field in ['name', 'fullname']]), 'userid')
+            values = [dict(id=userinfo.get('login'), text=userinfo.get('title')) for userinfo in fulluserinfo]
+            results['results'] = values
+            return json.dumps(results)
+        else:
+            return json.dumps({"error": "No query found"})
