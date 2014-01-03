@@ -17,6 +17,17 @@
     <!-- Redefinitions to make test pass -->
     <include package="jarn.jsi18n" />
 
+    <!-- Convenience permission identifying authenticated and member users -->
+    <permission
+      id="genweb.authenticated"
+      title="Genweb: Authenticated Users"
+      />
+
+    <permission
+      id="genweb.member"
+      title="Genweb: Member Users"
+      />
+
     <!-- Grok the package to initialise schema interfaces and content classes -->
     <include package="grokcore.component" file="meta.zcml" />
     <grok:grok package="." />
@@ -34,17 +45,6 @@
       class=".utils.genwebUtils"
       permission="zope2.View"
       allowed_interface=".interfaces.IGenwebUtils"
-      />
-
-    <!-- Convenience permission identifying authenticated and member users -->
-    <permission
-      id="genweb.authenticated"
-      title="Genweb: Authenticated Users"
-      />
-
-    <permission
-      id="genweb.member"
-      title="Genweb: Member Users"
       />
 
     <!-- ATLink extender -->

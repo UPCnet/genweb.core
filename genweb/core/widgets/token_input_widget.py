@@ -1,7 +1,3 @@
-import zope.component
-import zope.interface
-import zope.schema
-
 from zope.component.hooks import getSite
 from z3c.form import interfaces
 from z3c.form import widget
@@ -12,6 +8,10 @@ from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 from genweb.core.widgets.interfaces import ITokenInputWidget
+
+import zope.component
+import zope.interface
+import zope.schema
 
 
 class KeywordsTokenInputWidget(textarea.TextAreaWidget):
