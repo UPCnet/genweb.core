@@ -17,4 +17,13 @@
         />
     </class>
 
+    <class class=".select2_user_widget.Select2UserInputWidget">
+        <require
+            permission="zope.Public"
+            interface=".interfaces.IAjaxSelectWidget"
+        />
+    </class>
+
+    <adapter factory=".select2_user_widget.SelectWidgetConverter" />
+
 </configure>
