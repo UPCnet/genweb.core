@@ -12,4 +12,11 @@
         replacement=".patches.getToolbars"
         />
 
+    <monkey:patch
+        description="Unicode normalization aware searches"
+        class="Products.PlonePAS.plugins.property.ZODBMutablePropertyProvider"
+        original="testMemberData"
+        replacement=".patches.testMemberData"
+        />
+
 </configure>
