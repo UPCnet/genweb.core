@@ -26,16 +26,16 @@ class ATLinkSchemaModifier(object):
     implements(IOrderableSchemaExtender)
 
     _fields = [
-            _StringExtensionField('obrirfinestra',
-                required=False,
-                searchable=True,
-                widget=BooleanWidget(
-                       label='Open in a new window',
-                       label_msgid='upc.genweb.banners_label_Obrirennovafinestra',
-                       i18n_domain='upc.genweb.banners',
-                )
+        _StringExtensionField('obrirfinestra',
+            required=False,
+            searchable=True,
+            widget=BooleanWidget(
+                label='Open in a new window',
+                label_msgid='upc.genweb.banners_label_Obrirennovafinestra',
+                i18n_domain='upc.genweb.banners',
             )
-        ]
+        )
+    ]
 
     def __init__(self, newsItem):
         pass
@@ -57,10 +57,11 @@ def obrirEnFinestraNova(obj):
     return obj.obrirfinestra
 grok.global_adapter(obrirEnFinestraNova, name="obrirEnFinestraNova")
 
+
 @indexer(INewsItem)
 def newsImageFile(obj):
     """Create a catalogue indexer, registered as an adapter, which can
     populate the ``context.filename`` value and index it.
     """
     return obj.image.filename
-grok.global_adapter(newsImageFile, name='newsImageFile')
+grok.global_adapter(newsImageFile, name='news_image_filename')

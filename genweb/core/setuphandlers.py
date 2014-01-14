@@ -26,7 +26,7 @@ INDEXES = (('obrirEnFinestraNova', 'FieldIndex'),
            ('is_important', 'BooleanIndex'),
            ('favoritedBy', 'KeywordIndex'),
            ('exclude_from_nav', 'FieldIndex'),
-           ('newsImageFile', 'FieldIndex')
+           ('news_image_filename', 'FieldIndex')
            )
 
 
