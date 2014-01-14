@@ -6,6 +6,8 @@ from Products.Archetypes.atapi import BooleanWidget
 
 from Products.ATContentTypes.interface.link import IATLink
 
+from Products.CMFDefault.interfaces import INewsItem
+
 from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 
@@ -54,3 +56,11 @@ class ATLinkSchemaModifier(object):
 def obrirEnFinestraNova(obj):
     return obj.obrirfinestra
 grok.global_adapter(obrirEnFinestraNova, name="obrirEnFinestraNova")
+
+@indexer(INewsItem)
+def newsImageFile(obj):
+    """Create a catalogue indexer, registered as an adapter, which can
+    populate the ``context.filename`` value and index it.
+    """
+    return obj.image.filename
+grok.global_adapter(newsImageFile, name='newsImageFile')
