@@ -94,7 +94,7 @@ class SelectWidgetConverter(BaseDataConverter):
         :rtype: string
         """
         if not value:
-            return self.field.missing_value
+            return u''
         separator = getattr(self.widget, 'separator', ',')
         return separator.join(unicode(v) for v in value)
 
@@ -131,10 +131,16 @@ class fromUsername2DisplayName(grok.View):
             to_fullnames = []
             for username in usernames:
                 if pm.getMemberInfo(username):
-                    to_fullnames.append(
-                        dict(id=username,
-                             text=u'{} ({})'.format(pm.getMemberInfo(username).get('fullname', username).decode('utf-8'), username.decode('utf-8')))
-                    )
+                    if pm.getMemberInfo(username).get('fullname'):
+                        to_fullnames.append(
+                            dict(id=username,
+                                 text=u'{} ({})'.format(pm.getMemberInfo(username).get('fullname').decode('utf-8'), username.decode('utf-8')))
+                        )
+                    else:
+                        to_fullnames.append(
+                            dict(id=username,
+                                 text=u'{} ({})'.format(username.decode('utf-8'), username.decode('utf-8')))
+                        )
                 else:
                     to_fullnames.append(
                         dict(id=username,
