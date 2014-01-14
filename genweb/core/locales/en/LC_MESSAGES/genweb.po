@@ -193,16 +193,19 @@ msgstr "General Information"
 ####################
 
 msgid "General"
-msgstr ""
+msgstr "General"
 
 msgid "Contact information"
-msgstr ""
+msgstr "Contact information"
 
 msgid "Specific"
-msgstr ""
+msgstr "Specific"
 
 msgid "Master"
-msgstr ""
+msgstr "Master"
+
+#########
+
 
 #. "Títol del web amb HTML tags (negretes) [CA]"
 msgid "html_title_ca"
