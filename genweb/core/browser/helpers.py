@@ -241,7 +241,6 @@ class debug(grok.View):
 
     def render(self):
         context = aq_inner(self.context)
-        import ipdb;ipdb.set_trace()
 
 
 class monitoringView(grok.View):
