@@ -1,11 +1,35 @@
 Changelog
 =========
 
-4.3.9 (unreleased)
+4.3.9 (2014-01-20)
 ------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Corina Riba]
+* Nuevo indice paralas imagenes de las noticias [Corina Riba]
+* Add plone.api as dependency [Victor Fernandez de Alba]
+* Bug LDAPUserFolder when searching on non standard attributes [Victor Fernandez de Alba]
+* Index name field [Victor Fernandez de Alba]
+* Indexar imagen news [Corina Riba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Corina Riba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* protected content message [Roberto Diaz]
+* Improve conversor [Victor Fernandez de Alba]
+* Put same policy of field search order. [Victor Fernandez de Alba]
+* Patched mutable_properties for make it unicode normalization aware [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Corina Riba]
+* New user select widget based on Select2.js [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Corina Riba]
+* Traduccions [Corina Riba]
+* New subscriber for prevent deletion of protected content [Victor Fernandez de Alba]
+* New subscriber for prevent deletion of protected content [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* Show link to languages published in control panel [Roberto Diaz]
+* Update dependencies on jarn.jsi18n [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Corina Riba]
+* Cambio gestion "dades" cuando hay error [Corina Riba]
+* i18n contacte [Roberto Diaz]
+* Changed label for desactivate UPCmaps in contact form [Roberto Diaz]
+* Add mailhost config [Victor Fernandez de Alba]
 
 4.3.8 (2013-11-04)
 ------------------
