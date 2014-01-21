@@ -1227,3 +1227,8 @@ msgstr "¿Filtrado por unidad?"
 msgid "box_upcoming_events"
 msgstr "Todos los eventos"
 
+msgid "languages_link_to_root"
+msgstr "Redireccionar a la raíz del sitio web al clicar sobre los idiomas del portal"
+
+msgid "help_languages_link_to_root"
+msgstr "Esta opción seleccionada hace que el desplegable de idiomas siempre redireccione a la raíz del sitio web."

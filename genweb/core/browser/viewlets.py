@@ -99,6 +99,7 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
 
         google_translated = self.get_google_translated_langs()
         idiomes_publicats = genweb_config().idiomes_publicats
+        redirect_to_root = genweb_config().languages_link_to_root
 
         user_has_permission_at_root = havePermissionAtRoot()
         results = []
@@ -125,18 +126,22 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
                 query_extras = {
                     'set_language': data['code'],
                 }
-                post_path = getPostPath(self.context, self.request)
-                if post_path:
-                    query_extras['post_path'] = post_path
-                data['url'] = addQuery(
-                    self.request,
-                    self.context.absolute_url().rstrip("/") +
-                    "/@@goto/%s/%s" % (
-                        uuid,
-                        lang_info['code']
-                    ),
-                    **query_extras
-                )
+                if not redirect_to_root:    
+                    post_path = getPostPath(self.context, self.request)
+                    if post_path:
+                        query_extras['post_path'] = post_path
+
+                    data['url'] = addQuery(
+                        self.request,
+                        self.context.absolute_url().rstrip("/") +
+                        "/@@goto/%s/%s" % (
+                            uuid,
+                            lang_info['code']
+                        ),
+                        **query_extras
+                    )
+                else: # Redirect to root when make a language click
+                    data['url'] = self.portal_url() + '?set_language=' + data['code']
 
             results.append(data)
 
@@ -152,6 +157,8 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
     def languages(self):
         languages_info = super(gwLanguageSelectorForRoot, self).languages()
         idiomes_publicats = genweb_config().idiomes_publicats
+        redirect_to_root = genweb_config().languages_link_to_root
+
         user_has_permission_at_root = havePermissionAtRoot()
         results = []
 
@@ -164,14 +171,18 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
             query_extras = {
                 'set_language': data['code'],
             }
-            post_path = getPostPath(self.context, self.request)
-            if post_path:
-                query_extras['post_path'] = post_path
-            data['url'] = addQuery(
-                self.request,
-                self.context.absolute_url(),
-                **query_extras
-            )
+            if not redirect_to_root:
+                post_path = getPostPath(self.context, self.request)
+                if post_path:
+                    query_extras['post_path'] = post_path
+                data['url'] = addQuery(
+                    self.request,
+                    self.context.absolute_url(),
+                    **query_extras
+                )
+            else: # Redirect to root when make a language click
+                data['url'] = self.portal_url() + '?set_language=' + data['code']
+
             results.append(data)
 
         return results
