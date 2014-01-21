@@ -421,3 +421,9 @@ msgstr "Welcome"
 
 msgid "box_upcoming_events"
 msgstr "All events"
+
+msgid "languages_link_to_root"
+msgstr "Redirect to site root when the user clicks on the languages availables on the site"
+
+msgid "help_languages_link_to_root"
+msgstr "Selecting this option makes that all the clicks on the languages combo always redirects to the site root."
