@@ -427,3 +427,6 @@ msgstr "Redirect to site root when the user clicks on the languages availables o
 
 msgid "help_languages_link_to_root"
 msgstr "Selecting this option makes that all the clicks on the languages combo always redirects to the site root."
+
+msgid "return_to_view"
+msgstr "Return"
