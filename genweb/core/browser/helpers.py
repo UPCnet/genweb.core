@@ -19,10 +19,10 @@ from genweb.core.interfaces import IProtectedContent
 import json
 
 
-DORSALS = {"1": "Víctor Valdés", "2": "Dani Alves", "3": "Piqué",
+DORSALS = {"1": "Valdés", "2": "Montoya", "3": "Piqué",
            "4": "Cesc", "5": "Puyol", "6": "Xavi", "7": "Pedro",
-           "8": "A. Iniesta", "9": "Alexis", "10": "Messi", "11": "Neymar JR",
-           "12": "Unknown", "13": "Pinto", "14": "Mascherano", "16": "Sergio"}
+           "8": "Iniesta", "9": "Alexis", "10": "Messi", "11": "Neymar JR",
+           "12": "Dos Santos", "13": "Pinto", "14": "Mascherano", "16": "Busquets"}
 
 
 def getDorsal():
