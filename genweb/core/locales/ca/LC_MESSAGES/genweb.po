@@ -819,3 +819,6 @@ msgstr "Redireccionar a l'arrel del lloc al clicar sobre els idiomes del portal"
 
 msgid "help_languages_link_to_root"
 msgstr "Aquesta opció marcada fa que el desplegable d'idiomes, sempre redirigeixi a l'arrel del lloc web."
+
+msgid "return_to_view"
+msgstr "Torna"
