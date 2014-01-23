@@ -83,10 +83,10 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
         return [lang for lang in languages if lang['selected']][0]
 
     def get_google_translated_langs(self):
-        return dict(ca=genweb_config().idiomes_google_translate_link_ca,
-                    en=genweb_config().idiomes_google_translate_link_en,
-                    es=genweb_config().idiomes_google_translate_link_es)
-
+        # return dict(ca=genweb_config().idiomes_google_translate_link_ca,
+        #             en=genweb_config().idiomes_google_translate_link_en,
+        #             es=genweb_config().idiomes_google_translate_link_es)
+        return False
 
 class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     grok.context(ITranslatable)
