@@ -1232,3 +1232,6 @@ msgstr "Redireccionar a la raíz del sitio web al clicar sobre los idiomas del p
 
 msgid "help_languages_link_to_root"
 msgstr "Esta opción seleccionada hace que el desplegable de idiomas siempre redireccione a la raíz del sitio web."
+
+msgid "return_to_view"
+msgstr "Regresa"
