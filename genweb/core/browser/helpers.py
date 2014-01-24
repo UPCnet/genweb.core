@@ -25,6 +25,39 @@ DORSALS = {"1": "Valdés", "2": "Montoya", "3": "Piqué",
            "12": "Dos Santos", "13": "Pinto", "14": "Mascherano", "16": "Busquets"}
 
 
+class debug(grok.View):
+    """ Convenience view for faster degugging. Needs to be manager. """
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        # Magic Victor debug view do not delete!
+        import ipdb; ipdb.set_trace()
+
+
+class monitoringView(grok.View):
+    """ Convenience view for monitoring software """
+    grok.name('ping')
+    grok.context(IApplication)
+    grok.require('zope2.View')
+
+    def render(self):
+        return '1'
+
+
+class protectContent(grok.View):
+    """ Makes the context a content protected. It could only be deleted by
+        managers.
+    """
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        alsoProvides(context, IProtectedContent)
+
+
 def getDorsal():
     config = getConfiguration()
     configuration = config.product_config.get('genwebconfig', dict())
@@ -43,12 +76,13 @@ def listPloneSites(zope):
 
 
 class getZEO(BrowserView):
-    """ Funció que agafa el numero de zeo al que esta assignat la instancia de genweb.
-        Per aixo, el buildout s'ha d'afegir una linea a la zope-conf-additional:
+    """ Funció que agafa el numero de zeo al que esta assignat la instancia de
+        genweb. Per aixo, el buildout s'ha d'afegir una linea a la zope-conf-
+        additional:
         zope-conf-additional =
-           <product-config genweb>
-               zeo 9
-           </product-config>
+                <product-config genweb>
+                    zeo 9
+                </product-config>
     """
 
     def dorsal(self):
@@ -232,34 +266,3 @@ class removeBrokenCacheFu(grok.View):
         removeBrokenCacheFu(context)
 
         return 'done'
-
-
-class debug(grok.View):
-    """ Convenience view for faster degugging. Needs to be manager. """
-    grok.context(Interface)
-    grok.require('cmf.ManagePortal')
-
-    def render(self):
-        context = aq_inner(self.context)
-        # Magic Victor debug view do not delete!
-        import ipdb;ipdb.set_trace()
-
-
-class monitoringView(grok.View):
-    """ Convenience view for monitoring software """
-    grok.name('ping')
-    grok.context(IApplication)
-    grok.require('zope2.View')
-
-    def render(self):
-        return '1'
-
-
-class protectContent(grok.View):
-    """ Convenience view for faster degugging. Needs to be manager. """
-    grok.context(Interface)
-    grok.require('cmf.ManagePortal')
-
-    def render(self):
-        context = aq_inner(self.context)
-        alsoProvides(context, IProtectedContent)
