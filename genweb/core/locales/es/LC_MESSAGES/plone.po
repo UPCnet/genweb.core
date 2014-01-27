@@ -286,7 +286,6 @@ msgid "Send"
 msgstr "envía"
 
 
-
 msgid "A folder which can contain other items."
 msgstr "Una carpeta que puede contener otros elementos."
 
@@ -301,3 +300,4 @@ msgstr "elementos relacionados"
 
 msgid "The link is used almost verbatim, relative links become absolute and the strings \"${navigation_root_url}\" and \"${portal_url}\" get replaced with the real navigation_root_url or portal_url. If in doubt which one to use, please use navigation_root_url"
 msgstr "lalalala"
+

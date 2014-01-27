@@ -31,3 +31,4 @@ msgstr "Type the code from the picture shown below"
 
 msgid "Send"
 msgstr "send"
+

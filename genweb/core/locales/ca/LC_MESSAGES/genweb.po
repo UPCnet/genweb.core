@@ -822,3 +822,6 @@ msgstr "Aquesta opció marcada fa que el desplegable d'idiomes, sempre redirigei
 
 msgid "return_to_view"
 msgstr "Torna"
+
+msgid "language not visible"
+msgstr "Idioma no visible"
