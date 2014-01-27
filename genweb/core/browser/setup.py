@@ -139,32 +139,6 @@ class setupLDAPExterns(grok.View):
         #     pass
 
         #Add LDAP plugin cache
-        plugin = portal.acl_users['ldapUPC']
+        plugin = portal.acl_users['ldapexterns']
         plugin.ZCacheable_setManagerId('RAMCache')
         return 'Done.'
-
-
-class ldapkillah(grok.View):
-    grok.context(IPloneSiteRoot)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        portal = getSite()
-
-        if getattr(portal.acl_users, 'ldapUPC', None):
-            portal.acl_users.manage_delObjects('ldapUPC')
-
-        if getattr(portal.acl_users, 'ldapexterns', None):
-            portal.acl_users.manage_delObjects('ldapexterns')
-
-
-# class memberFolderSetup(grok.View):
-#     grok.context(IPloneSiteRoot)
-#     grok.require('zope2.ViewManagementScreens')
-
-#     def render(self):
-#         portal = getSite()
-#         if not getattr(portal, 'users', None):
-#             users_folder = createContentInContainer(portal, 'Folder', title='users', checkConstraints=False)
-#             users_folder.setDefaultPage('member_search_form')
-#             portal.manage_delObjects('Members')
