@@ -12,7 +12,7 @@ from zope.interface import Interface
 from genweb.core import ITranslatable
 from genweb.core.utils import genweb_config, havePermissionAtRoot
 from genweb.core.interfaces import IGenwebLayer
-
+from genweb.core import GenwebMessageFactory as _
 
 def addQuery(request, url, exclude=tuple(), **extras):
     """Adds the incoming GET query to the end of the url
@@ -80,7 +80,14 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
     render = ViewPageTemplateFile('viewlets_templates/language_selector.pt')
 
     def get_selected_lang(self, languages):
-        return [lang for lang in languages if lang['selected']][0]
+        # If someone calls an inexistent os hidden language from this site, the selector shows "invalid lang"
+        lang_in_param = self.context.REQUEST.environ['QUERY_STRING'].split('=')[1]
+        idiomes_publicats = genweb_config().idiomes_publicats
+
+        if lang_in_param not in idiomes_publicats:
+            return {u'native': _(u'language not visible')}
+        else:
+            return [lang for lang in languages if lang['selected']][0]
 
     def get_google_translated_langs(self):
         # return dict(ca=genweb_config().idiomes_google_translate_link_ca,

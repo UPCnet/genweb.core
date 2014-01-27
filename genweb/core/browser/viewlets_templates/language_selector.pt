@@ -1,3 +1,4 @@
+
 <tal:languageselector define="languages view/languages">
 <li class="dropdown"
     tal:condition="python:len(languages)>=2">
@@ -20,5 +21,10 @@
         </a>
     </li>
   </ul>
-</li>
+</li> 
 </tal:languageselector>
+ 
+
+ <!-- [{'code': u'en', u'name': u'English', 'url': 'http://gollum.estacions.upcnet.es:8080/comunitat/comunitat?set_language=en', 'selected': False, u'flag': u'/++resource++country-flags/gb.gif', 'translated': True, u'native': u'English'}, 
+
+ {'code': u'es', u'name': u'Spanish', 'url': 'http://gollum.estacions.upcnet.es:8080/comunitat/comunitat?set_language=es', 'selected': False, u'flag': u'/++resource++country-flags/es.gif', 'translated': True, u'native': u'Espa\xf1ol'}] -->

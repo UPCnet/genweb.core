@@ -1235,3 +1235,6 @@ msgstr "Esta opción seleccionada hace que el desplegable de idiomas siempre red
 
 msgid "return_to_view"
 msgstr "Regresa"
+
+msgid "language not visible"
+msgstr "Idioma no visible"
