@@ -124,34 +124,34 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
             # Avoid to modify the original language dict
             data = lang_info.copy()
             data['translated'] = True
-            if google_translated.get(data['code']):
-                data['google_translated'] = True
-                google_query_string = dict(sl=self.tool.getPreferredLanguage(),
-                                           tl=data['code'],
-                                           u=quote(self.context.absolute_url())
-                                           )
+            # if google_translated.get(data['code']):
+            #     data['google_translated'] = True
+            #     google_query_string = dict(sl=self.tool.getPreferredLanguage(),
+            #                                tl=data['code'],
+            #                                u=quote(self.context.absolute_url())
+            #                                )
 
-                data['url'] = 'http://translate.google.com/translate?hl={sl}&sl={sl}&tl={tl}&u={u}'.format(**google_query_string)
-            else:
-                query_extras = {
-                    'set_language': data['code'],
-                }
-                if not redirect_to_root:    
-                    post_path = getPostPath(self.context, self.request)
-                    if post_path:
-                        query_extras['post_path'] = post_path
+            #     data['url'] = 'http://translate.google.com/translate?hl={sl}&sl={sl}&tl={tl}&u={u}'.format(**google_query_string)
+            # else:
+            query_extras = {
+                'set_language': data['code'],
+            }
+            if not redirect_to_root:    
+                post_path = getPostPath(self.context, self.request)
+                if post_path:
+                    query_extras['post_path'] = post_path
 
-                    data['url'] = addQuery(
-                        self.request,
-                        self.context.absolute_url().rstrip("/") +
-                        "/@@goto/%s/%s" % (
-                            uuid,
-                            lang_info['code']
-                        ),
-                        **query_extras
-                    )
-                else: # Redirect to root when make a language click
-                    data['url'] = self.portal_url() + '?set_language=' + data['code']
+                data['url'] = addQuery(
+                    self.request,
+                    self.context.absolute_url().rstrip("/") +
+                    "/@@goto/%s/%s" % (
+                        uuid,
+                        lang_info['code']
+                    ),
+                    **query_extras
+                )
+            else: # Redirect to root when make a language click
+                data['url'] = self.portal_url() + '?set_language=' + data['code']
 
             results.append(data)
 
