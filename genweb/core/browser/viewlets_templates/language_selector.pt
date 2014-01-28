@@ -1,4 +1,3 @@
-
 <tal:languageselector define="languages view/languages">
 <li class="dropdown"
     tal:condition="python:len(languages)>=2">

@@ -20,7 +20,7 @@
               <tal:defines define="code python: trans_content[0];
                               trans_obj python: trans_content[1];">
                 
-                <div style="font-weight:bold;"> [CATALÀ]
+                
                 <li tal:condition="python:trans_obj[0].Title()">
                   
                   <a tal:attributes="href python:trans_obj[0].absolute_url() + '?set_language=' + code"
@@ -28,7 +28,7 @@
                      Translation Link
                    </a>
                 </li>
-                </div>
+                
                 <li tal:condition="python:not trans_obj[0].Title()">
                   <a tal:attributes="href python:trans_obj[0].absolute_url() + '?set_language=' + code">
                     (No Title)
