@@ -81,10 +81,12 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
 
     def get_selected_lang(self, languages):
         # If someone calls an inexistent os hidden language from this site, the selector shows "invalid lang"
+        lang_in_param = ''
         try: 
             lang_in_param = self.context.REQUEST.environ['QUERY_STRING'].split('=')[1]
         except:
-            lang_in_param = 'unknown'
+            lang_in_param =self.context.REQUEST.environ['HTTP_COOKIE'].split('I18N_LANGUAGE=')[-1:][0].replace('"','')
+
         idiomes_publicats = genweb_config().idiomes_publicats
 
         if lang_in_param not in idiomes_publicats:
