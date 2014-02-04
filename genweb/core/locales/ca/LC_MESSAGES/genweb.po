@@ -474,6 +474,9 @@ msgstr "Tabular"
 msgid "All content"
 msgstr "Tot el contingut"
 
+msgid "newscollection_view"
+msgstr "Notícies"
+
 msgid "homepage"
 msgstr "Pàgina d'inici"
 
@@ -805,7 +808,7 @@ msgstr "Filtrat per unitat?"
 ######################
 
 msgid "FullNews"
-msgstr "Notícies enriquides"
+msgstr "Notícies amb foto"
 
 msgid "homepage_portlet"
 msgstr "Benvingut"

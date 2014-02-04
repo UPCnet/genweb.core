@@ -1238,3 +1238,6 @@ msgstr "Regresa"
 
 msgid "language not visible"
 msgstr "Idioma no visible"
+
+msgid "FullNews"
+msgstr "Noticias con foto"
