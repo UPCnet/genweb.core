@@ -1241,3 +1241,6 @@ msgstr "(Idioma no publicado)"
 
 msgid "FullNews"
 msgstr "Noticias con foto"
+
+msgid "not a valid language"
+msgstr "[${results} no es un idioma válido]"
