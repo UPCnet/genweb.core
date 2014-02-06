@@ -81,18 +81,27 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
 
     def get_selected_lang(self, languages):
         # If someone calls an inexistent os hidden language from this site, the selector shows "invalid lang"
-        lang_in_param = ''
-        try: 
-            lang_in_param = self.context.REQUEST.environ['QUERY_STRING'].split('=')[1]
-        except:
-            lang_in_param =self.context.REQUEST.environ['HTTP_COOKIE'].split('I18N_LANGUAGE=')[-1:][0].replace('"','')
+        # lang_in_param = ''
+        # import ipdb;ipdb.set_trace()
+        if self.context.REQUEST.form.get('set_language'):
+            idiomes_publicats = genweb_config().idiomes_publicats
 
-        idiomes_publicats = genweb_config().idiomes_publicats
+            if self.context.REQUEST.form.get('set_language') not in idiomes_publicats:
+                return {u'native': _(u'language not visible')}
 
-        if lang_in_param not in idiomes_publicats:
-            return {u'native': _(u'language not visible')}
-        else:
-            return [lang for lang in languages if lang['selected']][0]
+        return [lang for lang in languages if lang['selected']][0]
+
+        # try:
+        #     lang_in_param = self.context.REQUEST.environ['QUERY_STRING'].split('=')[1]
+        # except:
+        #     lang_in_param =self.context.REQUEST.environ['HTTP_COOKIE'].split('I18N_LANGUAGE=')[-1:][0].replace('"','')
+
+        # idiomes_publicats = genweb_config().idiomes_publicats
+
+        # if lang_in_param not in idiomes_publicats:
+        #     return {u'native': _(u'language not visible')}
+        # else:
+        #     return [lang for lang in languages if lang['selected']][0]
 
     def get_google_translated_langs(self):
         # return dict(ca=genweb_config().idiomes_google_translate_link_ca,
@@ -138,7 +147,7 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
             query_extras = {
                 'set_language': data['code'],
             }
-            if not redirect_to_root:    
+            if not redirect_to_root:
                 post_path = getPostPath(self.context, self.request)
                 if post_path:
                     query_extras['post_path'] = post_path
