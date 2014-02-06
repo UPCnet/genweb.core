@@ -6,6 +6,7 @@
     <tal:selected content="python:view.get_selected_lang(languages)['native']">
         Català
     </tal:selected>
+    <tal:published content="view/lang_published"></tal:published>
     <b class="caret"></b>
   </a>
   <ul class="dropdown-menu pull-right adjust-langs">

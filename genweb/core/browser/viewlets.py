@@ -8,6 +8,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.uuid.interfaces import IUUID
 from plone.app.i18n.locales.browser.selector import LanguageSelector
 from zope.interface import Interface
+from Products.CMFCore.utils import getToolByName
 
 from genweb.core import ITranslatable
 from genweb.core.utils import genweb_config, havePermissionAtRoot
@@ -80,28 +81,31 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
     render = ViewPageTemplateFile('viewlets_templates/language_selector.pt')
 
     def get_selected_lang(self, languages):
-        # If someone calls an inexistent os hidden language from this site, the selector shows "invalid lang"
-        # lang_in_param = ''
-        # import ipdb;ipdb.set_trace()
+        # Show all languages in language selector
+        all_languages = super(gwLanguageSelectorBase, self).languages()
+        
         if self.context.REQUEST.form.get('set_language'):
             idiomes_publicats = genweb_config().idiomes_publicats
 
-            if self.context.REQUEST.form.get('set_language') not in idiomes_publicats:
-                return {u'native': _(u'language not visible')}
+        return [lang for lang in all_languages if lang['selected']][0]
 
-        return [lang for lang in languages if lang['selected']][0]
 
-        # try:
-        #     lang_in_param = self.context.REQUEST.environ['QUERY_STRING'].split('=')[1]
-        # except:
-        #     lang_in_param =self.context.REQUEST.environ['HTTP_COOKIE'].split('I18N_LANGUAGE=')[-1:][0].replace('"','')
+    def lang_published(self):
+        # show if the selected lang is published or not in language selector
+        lang = dict(getToolByName(self, 'portal_languages').listAvailableLanguages())
+        published_lang = genweb_config().idiomes_publicats
+        params_lang = self.context.REQUEST.form.get('set_language')
+        cookie_lang =  getToolByName(self, 'portal_languages').getPreferredLanguage()
 
-        # idiomes_publicats = genweb_config().idiomes_publicats
+        if params_lang:
+            if params_lang not in lang:
+                return "[" + params_lang + " - not a valid language]"
+            if params_lang not in published_lang:
+                return _(u"Not published")
+        else:
+            if cookie_lang not in published_lang:
+                return _(u"Not published")
 
-        # if lang_in_param not in idiomes_publicats:
-        #     return {u'native': _(u'language not visible')}
-        # else:
-        #     return [lang for lang in languages if lang['selected']][0]
 
     def get_google_translated_langs(self):
         # return dict(ca=genweb_config().idiomes_google_translate_link_ca,
