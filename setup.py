@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.1.6'
+version = '4.1.7.dev0'
 
 setup(name='genweb.core',
       version=version,
