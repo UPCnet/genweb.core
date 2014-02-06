@@ -1,0 +1,6 @@
+include *.txt *.rst
+
+recursive-include genweb *
+recursive-include docs *
+
+global-exclude *.pyc
