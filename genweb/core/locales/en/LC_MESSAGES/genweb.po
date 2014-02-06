@@ -431,5 +431,5 @@ msgstr "Selecting this option makes that all the clicks on the languages combo a
 msgid "return_to_view"
 msgstr "Return"
 
-msgid "language not visible"
-msgstr "Language not visible"
+msgid "Not published"
+msgstr "(Language not published)"
