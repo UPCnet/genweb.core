@@ -61,6 +61,9 @@ msgstr "RSS"
 msgid "genweb-accessibility"
 msgstr "Accessibility"
 
+msgid "genweb-disclaimer"
+msgstr "Disclaimer"
+
 msgid "genweb-actualitat"
 msgstr "UPC Today"
 
@@ -150,4 +153,4 @@ msgid "comparteix_twitter"
 msgstr "Share on Twitter"
 
 msgid "genweb_info_gral"
-msgstr "General Information"
+msgstr "General information on the master's degree"

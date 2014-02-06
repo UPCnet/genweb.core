@@ -140,6 +140,9 @@ msgstr "RSS"
 msgid "genweb-accessibility"
 msgstr "Accessibilitat"
 
+msgid "genweb-disclaimer"
+msgstr "Avís legal"
+
 #. "genweb-heading_sign_in"
 msgid "genweb-heading_sign_in"
 msgstr "Si us plau, identifiqueu-vos amb el <strong>nom d'usuari de la intranet UPC</strong>"
@@ -343,4 +346,4 @@ msgid "comparteix_twitter"
 msgstr "Comparteix a Twitter"
 
 msgid "genweb_info_gral"
-msgstr "Informació General"
+msgstr "Informació general del màster"
