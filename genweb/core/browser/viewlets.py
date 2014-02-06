@@ -99,7 +99,7 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
 
         if params_lang:
             if params_lang not in lang:
-                return "[" + params_lang + " - not a valid language]"
+                return _(u"not a valid language", default=u"${results} not a valid language", mapping={ u"results" : params_lang})
             if params_lang not in published_lang:
                 return _(u"Not published")
         else:

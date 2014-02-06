@@ -828,3 +828,6 @@ msgstr "Torna"
 
 msgid "Not published"
 msgstr "(Idioma no publicat)"
+
+msgid "not a valid language"
+msgstr "[${results} no és un idioma vàlid]"

@@ -433,3 +433,6 @@ msgstr "Return"
 
 msgid "Not published"
 msgstr "(Language not published)"
+
+msgid "not a valid language"
+msgstr "[${results} is not a valid language]"
