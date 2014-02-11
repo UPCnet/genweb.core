@@ -126,7 +126,7 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
         idiomes_publicats = genweb_config().idiomes_publicats
         redirect_to_root = genweb_config().languages_link_to_root
 
-        user_has_permission_at_root = havePermissionAtRoot()
+        user_has_permission_at_root = havePermissionAtRoot(self)
         results = []
 
         uuid = IUUID(self.context)
@@ -184,7 +184,7 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
         idiomes_publicats = genweb_config().idiomes_publicats
         redirect_to_root = genweb_config().languages_link_to_root
 
-        user_has_permission_at_root = havePermissionAtRoot()
+        user_has_permission_at_root = havePermissionAtRoot(self)
         results = []
 
         filtered_languages = [lang_info for lang_info in languages_info if user_has_permission_at_root or lang_info['code'] in idiomes_publicats]

@@ -9,7 +9,7 @@ def preventDeletionOnProtectedContent(content, event):
     """ Community added handler
     """
     # Only administrators can delete packet content from root folder
-    user_has_permission_at_root = havePermissionAtRoot()
+    user_has_permission_at_root = havePermissionAtRoot(content)
 
     if not user_has_permission_at_root:
 	    raise(Unauthorized, u"Cannot delete protected content.")
