@@ -33,7 +33,7 @@ class debug(grok.View):
     def render(self):
         context = aq_inner(self.context)
         # Magic Victor debug view do not delete!
-        import ipdb; ipdb.set_trace()
+        import ipdb; ipdb.set_trace() # Magic! Do not delete!!! :)
 
 
 class monitoringView(grok.View):
