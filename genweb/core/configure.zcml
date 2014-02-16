@@ -12,9 +12,17 @@
     <!-- Compat with Plone 4.1 -->
     <include package="Products.CMFCore" file="permissions.zcml" />
 
-    <includeDependencies package="." />
-
-    <!-- Redefinitions to make test pass -->
+    <!-- Includes from dependencies to make test pass -->
+    <include package="plone.api" />
+    <include package="plone.app.iterate" />
+    <include package="plone.app.caching" />
+    <include package="plone.app.dexterity" />
+    <include package="plone.app.workflowmanager" />
+    <include package="collective.tinymcetemplates" />
+    <include package="wildcard.foldercontents" />
+    <include package="genweb.controlpanel" />
+    <include package="genweb.portlets" />
+    <include package="genweb.theme" />
     <include package="jarn.jsi18n" />
 
     <!-- Convenience permission identifying authenticated and member users -->
@@ -52,7 +60,7 @@
 
     <genericsetup:registerProfile
       name="default"
-      title="Genweb UPC Core"
+      title="Genweb Core (genweb.core)"
       directory="profiles/default"
       description="Installs the genweb.core package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
