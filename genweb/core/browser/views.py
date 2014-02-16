@@ -166,7 +166,6 @@ class not_translated_yet(grok.View):
     grok.layer(IGenwebLayer)
 
     def already_translated(self):
-        #import ipdb;ipdb.set_trace()
         return self.context.getTranslations().items()
 
     def has_any_translation(self):
