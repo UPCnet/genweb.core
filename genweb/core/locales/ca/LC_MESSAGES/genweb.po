@@ -358,6 +358,9 @@ msgstr "Actualitat PDI/PAS"
 msgid "Comparteix"
 msgstr "Comparteix"
 
+msgid "comparteix_google"
+msgstr "Comparteix a Google+"
+
 #: ./browser/addthis.pt
 msgid "comparteix_facebook"
 msgstr "Comparteix a Facebook"
@@ -810,9 +813,6 @@ msgstr "Filtrat per unitat?"
 msgid "FullNews"
 msgstr "Notícies amb foto"
 
-msgid "homepage_portlet"
-msgstr "Benvingut"
-
 #############################################
 #  Contropanel option to redirect languages #
 #############################################
@@ -831,3 +831,6 @@ msgstr "(Idioma no publicat)"
 
 msgid "not a valid language"
 msgstr "[${results} no és un idioma vàlid]"
+
+msgid "inici_page"
+msgstr "Inici de la pàgina"
