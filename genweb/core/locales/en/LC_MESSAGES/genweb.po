@@ -165,6 +165,9 @@ msgstr "PDI/PAS Today"
 msgid "Comparteix"
 msgstr "Share"
 
+msgid "comparteix_google"
+msgstr "Share on Google+"
+
 #: ./browser/addthis.pt
 msgid "comparteix_facebook"
 msgstr "Share on Facebook"
@@ -436,3 +439,6 @@ msgstr "(Language not published)"
 
 msgid "not a valid language"
 msgstr "[${results} is not a valid language]"
+
+msgid "inici_page"
+msgstr "Top of page"
