@@ -349,6 +349,9 @@ msgstr "Código otra marca [EN]"
 msgid "codi_altre_marca_es"
 msgstr "Código otra marca [ES]"
 
+msgid "comparteix_google"
+msgstr "Compartir en Google+"
+
 #. Default: "Comparteix a Facebook"
 #: ./browser/addthis.pt
 msgid "comparteix_facebook"
@@ -1244,3 +1247,6 @@ msgstr "Noticias con foto"
 
 msgid "not a valid language"
 msgstr "[${results} no es un idioma válido]"
+
+msgid "inici_page"
+msgstr "Inicio de la página"
