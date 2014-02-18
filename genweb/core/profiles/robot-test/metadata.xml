@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>42</version>
+  <dependencies>
+    <dependency>profile-plone.app.caching:default</dependency>
+    <dependency>profile-plone.app.contenttypes:default</dependency>
+    <dependency>profile-collective.tinymcetemplates:default</dependency>
+    <dependency>profile-wildcard.foldercontents:default</dependency>
+    <dependency>profile-genweb.controlpanel:default</dependency>
+    <dependency>profile-genweb.portlets:default</dependency>
+    <dependency>profile-genweb.theme:default</dependency>
+</dependencies>
+</metadata>
