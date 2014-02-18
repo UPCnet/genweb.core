@@ -1,9 +1,14 @@
 from five import grok
+from zope.interface import Interface
+from zope.interface import alsoProvides
 from zope.component.hooks import getSite
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.CMFCore.utils import getToolByName
 from Products.PluggableAuthService.interfaces.plugins import IUserAdderPlugin
 from Products.PlonePAS.interfaces.group import IGroupManagement
+
+from genweb.core.interfaces import IHomePage
 
 import pkg_resources
 import logging
@@ -17,7 +22,41 @@ else:
     from Products.PloneLDAP.factory import manage_addPloneLDAPMultiPlugin
     from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
 
+try:
+    pkg_resources.get_distribution('plone.app.contenttypes')
+except pkg_resources.DistributionNotFound:
+    HAS_DXCT = False
+else:
+    HAS_DXCT = True
+    from plone.dexterity.utils import createContentInContainer
+
+
 logger = logging.getLogger(__name__)
+
+
+class setupDX(grok.View):
+    """ Setup View that fixes p.a.ct front-page
+    """
+    grok.name('setupdxctsite')
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        if HAS_DXCT:
+            portal = getSite()
+            pl = getToolByName(portal, 'portal_languages')
+            if getattr(portal, 'front-page', False):
+                portal.manage_delObjects('front-page')
+                frontpage = createContentInContainer(portal, 'Document', title=u"front-page", checkConstraints=False)
+                alsoProvides(frontpage, IHomePage)
+                frontpage.exclude_from_nav = True
+                frontpage.language = pl.getDefaultLanguage()
+                frontpage.reindexObject()
+            # Set the default page to the homepage view
+            portal.setDefaultPage('homepage')
+            return self.request.response.redirect(portal.absolute_url())
+        else:
+            return 'This site has no p.a.contenttypes installed.'
 
 
 class setupLDAPUPC(grok.View):
