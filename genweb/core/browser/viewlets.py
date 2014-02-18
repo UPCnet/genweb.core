@@ -83,7 +83,7 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
     def get_selected_lang(self, languages):
         # Show all languages in language selector
         all_languages = super(gwLanguageSelectorBase, self).languages()
-        
+
         if self.context.REQUEST.form.get('set_language'):
             idiomes_publicats = genweb_config().idiomes_publicats
 
@@ -106,12 +106,12 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
             if cookie_lang not in published_lang:
                 return _(u"Not published")
 
-
     def get_google_translated_langs(self):
         # return dict(ca=genweb_config().idiomes_google_translate_link_ca,
         #             en=genweb_config().idiomes_google_translate_link_en,
         #             es=genweb_config().idiomes_google_translate_link_es)
         return False
+
 
 class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     grok.context(ITranslatable)
@@ -126,7 +126,7 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
         idiomes_publicats = genweb_config().idiomes_publicats
         redirect_to_root = genweb_config().languages_link_to_root
 
-        user_has_permission_at_root = havePermissionAtRoot(self)
+        user_has_permission_at_root = havePermissionAtRoot()
         results = []
 
         uuid = IUUID(self.context)
@@ -184,7 +184,7 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
         idiomes_publicats = genweb_config().idiomes_publicats
         redirect_to_root = genweb_config().languages_link_to_root
 
-        user_has_permission_at_root = havePermissionAtRoot(self)
+        user_has_permission_at_root = havePermissionAtRoot()
         results = []
 
         filtered_languages = [lang_info for lang_info in languages_info if user_has_permission_at_root or lang_info['code'] in idiomes_publicats]

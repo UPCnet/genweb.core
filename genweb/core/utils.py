@@ -29,10 +29,10 @@ def genweb_config():
     return registry.forInterface(IGenwebControlPanelSettings)
 
 
-def havePermissionAtRoot(self):
+def havePermissionAtRoot():
     """Funcio que retorna si es Editor a l'arrel"""
     proot = portal()
-    pm = getToolByName(self, 'portal_membership')
+    pm = getToolByName(proot, 'portal_membership')
     sm = getSecurityManager()
     user = pm.getAuthenticatedMember()
 

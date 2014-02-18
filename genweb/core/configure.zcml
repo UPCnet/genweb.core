@@ -17,6 +17,7 @@
     <include package="plone.app.iterate" />
     <include package="plone.app.caching" />
     <include package="plone.app.dexterity" />
+    <include package="plone.app.contenttypes" />
     <include package="plone.app.workflowmanager" />
     <include package="collective.tinymcetemplates" />
     <include package="wildcard.foldercontents" />
@@ -63,6 +64,14 @@
       title="Genweb Core (genweb.core)"
       directory="profiles/default"
       description="Installs the genweb.core package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+    <genericsetup:registerProfile
+      name="robot-test"
+      title="Genweb Core Robot Test Profile"
+      directory="profiles/robot-test"
+      description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
