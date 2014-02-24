@@ -1,11 +1,37 @@
 Changelog
 =========
 
-4.3.10 (unreleased)
+4.3.10 (2014-02-24)
 -------------------
 
-- Nothing changed yet.
-
+* Fix gitignore [Victor Fernandez de Alba]
+* Un-dependency on p.a.contenttypes. [Victor Fernandez de Alba]
+* Move some helpful methods into the g.core [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into rob [Victor Fernandez de Alba]
+* Updated util method to use getSite and make it work for robot framework tests [Victor Fernandez de Alba]
+* added share and top of page i18n [Roberto Diaz]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Change from includeDependencies to explicitly declare them for make robot tests pass [Victor Fernandez de Alba]
+* add descr in ipdb line. useful in greps ;) [Roberto Diaz]
+* solved bug trying to delete a previously created Plone Site [Roberto Diaz]
+* added params i18n in language bar [Roberto Diaz]
+* Solved: header language selector [Roberto Diaz]
+* WIP header language selector [Victor Fernandez de Alba]
+* Traducció nova vista [Corina Riba]
+* corrected bug: error coding langs show/hidden in dropdown by cookie [Roberto Diaz]
+* remove comments [Roberto Diaz]
+* Modified template - Not Translated yet [Roberto Diaz]
+* remove traces of GoogleTranslate [Roberto Diaz]
+* if lang is not passed by url, but is innexistent and in a cookie [Roberto Diaz]
+* solved error in lang selector if someone calls an inexistent or hidden lang [Roberto Diaz]
+* Fix ldap setup views [Victor Fernandez de Alba]
+* Final touches [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Add setup helpers [Victor Fernandez de Alba]
+* Disable from ControlPanel GoogleTranslate option [Roberto Diaz]
+* added button translation [Roberto Diaz]
+* update dorsals ;) [Roberto Diaz]
+* added language option "link to root" in control panel [Roberto Diaz]
 
 4.3.9 (2014-01-20)
 ------------------
