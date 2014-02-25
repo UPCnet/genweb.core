@@ -16,6 +16,14 @@ from plone.app.testing import setRoles
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('upc.genwebupctheme')
+    MIGRATION_TEST_AVAILABLE = True
+except pkg_resources.DistributionNotFound:
+    MIGRATION_TEST_AVAILABLE = False
+
 
 class MigrationIntegrationTest(unittest.TestCase):
 
@@ -33,6 +41,7 @@ class MigrationIntegrationTest(unittest.TestCase):
         portal = self.layer['portal']
         self.assertRaises(Unauthorized, portal.restrictedTraverse, '@@migrateControlPanel')
 
+    @unittest.skipUnless(MIGRATION_TEST_AVAILABLE, 'Skipping migration test')
     def test_migrateControlPanel(self):
         portal = self.layer['portal']
         request = self.layer['request']
