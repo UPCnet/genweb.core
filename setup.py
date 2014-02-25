@@ -46,6 +46,7 @@ setup(name='genweb.core',
           'collective.tinymcetemplates',
           'wildcard.foldercontents',
           'jarn.jsi18n',
+          'Products.PloneLDAP'
       ],
       entry_points="""
       # -*- Entry points: -*-
