@@ -9,6 +9,7 @@ from plone.app.testing import FunctionalTesting
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 
+import pkg_resources
 import transaction
 
 
@@ -23,10 +24,14 @@ class GenwebUPC(PloneSandboxLayer):
                        genweb.core,
                        context=configurationContext)
 
-        import upc.genwebupctheme
-        xmlconfig.file('configure.zcml',
-                       upc.genwebupctheme,
-                       context=configurationContext)
+        try:
+            pkg_resources.get_distribution('upc.genwebupctheme')
+            import upc.genwebupctheme
+            xmlconfig.file('configure.zcml',
+                           upc.genwebupctheme,
+                           context=configurationContext)
+        except pkg_resources.DistributionNotFound:
+            pass
 
     def setUpPloneSite(self, portal):
         # Create a document front-page
