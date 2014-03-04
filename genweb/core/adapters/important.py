@@ -7,6 +7,7 @@ from zope.annotation.interfaces import IAnnotations
 from plone.indexer import indexer
 
 from Products.Archetypes.interfaces import IBaseObject
+from plone.dexterity.interfaces import IDexterityContent
 
 from genweb.core import GenwebMessageFactory as _
 
@@ -29,7 +30,7 @@ class ImportantMarker(grok.Adapter):
         It is available through IImportant adapter.
     """
     grok.provides(IImportant)
-    grok.context(IBaseObject)
+    grok.context(Interface)
 
     def __init__(self, context):
         self.context = context
@@ -50,10 +51,17 @@ class ImportantMarker(grok.Adapter):
     is_important = property(get_important, set_important)
 
 
-@indexer(IBaseObject)
+@indexer(IDexterityContent)
 def importantIndexer(context):
+    """Create a catalogue indexer, registered as an adapter for DX content. """
+    return IImportant(context).is_important
+grok.global_adapter(importantIndexer, name='is_important')
+
+
+@indexer(IBaseObject)
+def importantIndexerAT(context):
     """Create a catalogue indexer, registered as an adapter, which can
     populate the ``is_important`` index.
     """
     return IImportant(context).is_important
-grok.global_adapter(importantIndexer, name='is_important')
+grok.global_adapter(importantIndexerAT, name='is_important')
