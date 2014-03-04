@@ -8,19 +8,19 @@
    <element value="ImageAttachment"/>
    <element value="Topic"/>
    <element value="File"/>
-   <element value="Large Plone Folder"/>
    <element value="Folder"/>
    <element value="News Item"/>
    <element value="Event"/>
    <element value="FileAttachment"/>
-   <element value="Seccio"/>
-   <element value="simpleTask"/>
-   <element value="Meeting"/>
-   <element value="Survey"/>
    <element value="Ploneboard"/>
    <element value="PloneboardForum"/>
    <element value="Collage"/>
    <element value="PlonePopoll"/>
+   <element value="Large Plone Folder" remove="True"/>
+   <element value="Seccio" remove="True"/>
+   <element value="simpleTask" remove="True"/>
+   <element value="Meeting" remove="True"/>
+   <element value="Survey" remove="True"/>
   </linkable>
   <customplugins>
   </customplugins>
@@ -33,10 +33,10 @@
   <allow_captioned_images value="False"/>
   <containsobjects>
    <element value="Folder"/>
-   <element value="Seccio"/>
    <element value="Ploneboard"/>
-   <element value="Large Plone Folder"/>
    <element value="Plone Site"/>
+   <element value="Seccio" remove="True"/>
+   <element value="Large Plone Folder" remove="True"/>
   </containsobjects>
   <entity_encoding value="raw"/>
   <imageobjects>
