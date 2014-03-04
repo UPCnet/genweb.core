@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.3.11 (unreleased)
+4.3.11 (2014-03-04)
 -------------------
 
-- Nothing changed yet.
-
+* Update TinyMCE config [Victor Fernandez de Alba]
+* Enable IImportant for DX types. [Victor Fernandez de Alba]
+* Make tests work again even if there is no upc.genwebtheme for migration tests available. [Victor Fernandez de Alba]
+* Make robot auto test run again [Victor Fernandez de Alba]
 
 4.3.10 (2014-02-24)
 -------------------
