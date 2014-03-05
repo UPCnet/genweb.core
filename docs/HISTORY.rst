@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.12 (unreleased)
+4.3.12 (2014-03-05)
 -------------------
 
-- Nothing changed yet.
-
+* Make p.a.c include conditional [Victor Fernandez de Alba]
 
 4.3.11 (2014-03-04)
 -------------------
