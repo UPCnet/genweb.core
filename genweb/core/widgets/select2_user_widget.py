@@ -36,6 +36,7 @@ class Select2UserInputWidget(textarea.TextAreaWidget):
         $().ready(function() {
             $('#'+'%(id)s').select2({
                 tags: [],
+                tokenSeparators: [","],
                 minimumInputLength: 3,
                 ajax: {
                     url: portal_url + '/genweb.ajaxusersearch',
