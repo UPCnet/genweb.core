@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.13 (unreleased)
+4.3.13 (2014-03-24)
 -------------------
 
-- Nothing changed yet.
-
+* AutoTokenizer [Victor Fernandez de Alba]
 
 4.3.12 (2014-03-05)
 -------------------
