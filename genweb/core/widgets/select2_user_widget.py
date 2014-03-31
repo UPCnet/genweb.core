@@ -47,7 +47,6 @@ class Select2UserInputWidget(textarea.TextAreaWidget):
                         };
                     },
                     results: function (data, page) {
-                        console.log(data);
                         return data;
                     },
                 },
