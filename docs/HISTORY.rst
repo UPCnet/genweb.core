@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.14 (unreleased)
+4.3.14 (2014-03-31)
 -------------------
 
-- Nothing changed yet.
-
+* New tags widget for DX. [Victor Fernandez de Alba]
+* Add new zope permission for webmasters [Victor Fernandez de Alba]
 
 4.3.13 (2014-03-24)
 -------------------
