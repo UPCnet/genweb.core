@@ -25,5 +25,7 @@
     </class>
 
     <adapter factory=".select2_user_widget.SelectWidgetConverter" />
+    <adapter factory=".select2_tags_widget.TagsSelectWidgetConverter" />
+    <adapter factory=".select2_tags_widget.SubjectsFieldWidget" />
 
 </configure>

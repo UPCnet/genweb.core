@@ -33,6 +33,15 @@
         layer="..interfaces.IGenwebLayer"
         />
 
+      <browser:page
+        name="getVocabulary"
+        for="*"
+        class=".vocabulary.VocabularyView"
+        permission="zope2.View"
+        />
+
+      <adapter factory=".vocabulary.DXFieldPermissionChecker" />
+
     <!-- XXX Try to decide at the end if it's worth to restrict the last
          two for a browser layer
       layer="..interfaces.IGenwebLayer" -->

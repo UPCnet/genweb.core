@@ -7,3 +7,7 @@ class ITokenInputWidget(interfaces.ITextLinesWidget):
 
 class IAjaxSelectWidget(interfaces.ITextWidget):
     """Marker interface for the Select2Widget."""
+
+
+class ITagsSelectWidget(interfaces.ITextWidget):
+    """Marker interface for the tags Select2Widget."""
