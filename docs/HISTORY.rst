@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.3.15 (unreleased)
+4.3.15 (2014-04-02)
 -------------------
 
-- Nothing changed yet.
-
+* added vocabulary to exclusion [Roberto Diaz]
+* Add getVocabulary view if plone.app.widgets is not installed [Roberto Diaz]
+* Fix permissions for keywords [Victor Fernandez de Alba]
 
 4.3.14 (2014-03-31)
 -------------------
