@@ -41,9 +41,11 @@
           class=".vocabulary.VocabularyView"
           permission="zope2.View"
           />
-      </configure>
 
-      <adapter factory=".vocabulary.DXFieldPermissionChecker" />
+        <adapter factory=".vocabulary.DXFieldPermissionChecker" />
+
+      </configure>
+     
 
     <!-- XXX Try to decide at the end if it's worth to restrict the last
          two for a browser layer
