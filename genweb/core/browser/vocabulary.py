@@ -37,7 +37,7 @@ logger = getLogger(__name__)
 _permissions = {
     'plone.app.vocabularies.Users': 'Modify portal content',
     'plone.app.vocabularies.Catalog': 'View',
-    'plone.app.vocabularies.Keywords': 'Modify portal content',
+    'plone.app.vocabularies.Keywords': 'View',
     'plone.app.vocabularies.SyndicatableFeedItems': 'Modify portal content'
 }
 
