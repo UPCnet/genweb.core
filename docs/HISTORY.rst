@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.16 (unreleased)
+4.3.16 (2014-04-08)
 -------------------
 
-- Nothing changed yet.
-
+* Add file widget translate [Victor Fernandez de Alba]
 
 4.3.15 (2014-04-02)
 -------------------
