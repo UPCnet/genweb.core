@@ -442,3 +442,6 @@ msgstr "[${results} is not a valid language]"
 
 msgid "inici_page"
 msgstr "Top of page"
+
+msgid "fitxer_no_seleccionat"
+msgstr "No file selected..."
