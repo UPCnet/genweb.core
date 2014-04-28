@@ -17,6 +17,7 @@ from Products.CMFCore.utils import getToolByName
 from genweb.core.interfaces import IProtectedContent
 
 import json
+import plone.api
 
 
 DORSALS = {"1": "Valdés", "2": "Montoya", "3": "Piqué",
@@ -56,6 +57,17 @@ class protectContent(grok.View):
     def render(self):
         context = aq_inner(self.context)
         alsoProvides(context, IProtectedContent)
+
+
+class instanceindevelmode(grok.View):
+    """ This instance is in development mode """
+    grok.context(Interface)
+    grok.require('zope2.View')
+
+    __allow_access_to_unprotected_subobjects__ = True
+
+    def render(self):
+        return plone.api.env.debug_mode()
 
 
 def getDorsal():
