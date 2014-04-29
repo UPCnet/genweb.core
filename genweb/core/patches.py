@@ -162,3 +162,20 @@ def searchUsers(self, attrs=(), exact_match=False, **kw):
             users.append(rec_dict)
 
     return users
+
+
+def generate_user_id(self, data):
+    """Generate a user id from data.
+
+    The data is the data passed in the form.  Note that when email
+    is used as login, the data will not have a username.
+
+    There are plans to add some more options and add a hook here
+    so it is possible to use a different scheme here, for example
+    creating a uuid or creating bob-jones-1 based on the fullname.
+
+    This will update the 'username' key of the data that is passed.
+    """
+    default = data.get('username').lower() or data.get('email').lower() or ''
+    data['username'] = default
+    return default

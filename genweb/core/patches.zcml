@@ -26,4 +26,11 @@
         replacement=".patches.searchUsers"
         />
 
+    <monkey:patch
+        description="Force the creation of users to lowercase"
+        class="plone.app.users.browser.register.BaseRegistrationForm"
+        original="generate_user_id"
+        replacement=".patches.generate_user_id"
+        />
+
 </configure>
