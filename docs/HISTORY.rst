@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.3.17 (unreleased)
+4.3.17 (2014-05-07)
 -------------------
 
-- Nothing changed yet.
-
+* Lowercase all user creations [Victor Fernandez de Alba]
+* Update travis build and bootstrap [Victor Fernandez de Alba]
+* New helper to detect development mode [Victor Fernandez de Alba]
 
 4.3.16 (2014-04-08)
 -------------------
