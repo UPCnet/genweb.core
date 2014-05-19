@@ -14,6 +14,8 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
+from genweb.core import HAS_DXCT
+from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
 
 import json
@@ -278,3 +280,31 @@ class removeBrokenCacheFu(grok.View):
         removeBrokenCacheFu(context)
 
         return 'done'
+
+
+class MakeMeaHomePage(grok.View):
+    grok.name('makemeahomepage')
+    grok.context(Interface)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        alsoProvides(self.context, IHomePage)
+        if HAS_DXCT:
+            from plone.app.contenttypes.interfaces import IFolder
+            if IFolder.providedBy(self.context):
+                self.context.setLayout('homepage')
+        return self.request.response.redirect(self.context.absolute_url())
+
+
+class MakeMeaSubHomePage(grok.View):
+    grok.name('makemeasubhomepage')
+    grok.context(Interface)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        alsoProvides(self.context, IHomePage)
+        if HAS_DXCT:
+            from plone.app.contenttypes.interfaces import IFolder
+            if IFolder.providedBy(self.context):
+                self.context.setLayout('subhomepage')
+        return self.request.response.redirect(self.context.absolute_url())
