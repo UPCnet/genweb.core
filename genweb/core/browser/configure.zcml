@@ -34,6 +34,29 @@
         layer="..interfaces.IGenwebLayer"
         />
 
+      <configure zcml:condition="installed plone.app.multilingual">
+
+        <!-- PAM Language Switcher ViewletManager -->
+        <browser:viewletManager
+          name="genweb.pamls"
+          provides="..interfaces.IPAMLSManager"
+          permission="zope2.View"
+          class="plone.app.viewletmanager.manager.BaseOrderedViewletManager"
+          />
+
+        <!-- Viewlet for switching language -->
+        <browser:viewlet
+          name="genweb.multilingual.languageselector"
+          template="viewlets_templates/pamlanguageselector.pt"
+          manager="..interfaces.IPAMLSManager"
+          class="plone.app.multilingual.browser.selector.LanguageSelectorViewlet"
+          permission="zope2.View"
+          for="plone.multilingual.interfaces.ITranslatable"
+          layer="plone.app.multilingual.interfaces.IPloneAppMultilingualInstalled"
+          />
+
+      </configure>
+
       <configure zcml:condition="not-installed plone.app.widgets">
         <browser:page
           name="getVocabulary"
@@ -45,7 +68,7 @@
         <adapter factory=".vocabulary.DXFieldPermissionChecker" />
 
       </configure>
-     
+
 
     <!-- XXX Try to decide at the end if it's worth to restrict the last
          two for a browser layer

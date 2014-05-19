@@ -1,4 +1,5 @@
 from zope.interface import Interface
+from zope.viewlet.interfaces import IViewletManager
 
 
 class IGenwebLayer(Interface):
@@ -45,8 +46,15 @@ class IGenwebUtils(Interface):
     def get_state_label_class_mapping(self):
         """"""
 
+    def pref_lang_native(self):
+        """ Get the current language selected """
+
 
 class IProtectedContent(Interface):
     """Marker interface for preventing dumb users to delete system configuration
        related content
     """
+
+
+class IPAMLSManager(IViewletManager):
+    """ Marker for the PAM language switcher manager """
