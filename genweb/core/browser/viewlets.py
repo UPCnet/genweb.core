@@ -119,7 +119,7 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     #grok.layer(IGenwebLayer)
 
     def languages(self):
-
+        import ipdb;ipdb.set_trace()
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
 
         google_translated = self.get_google_translated_langs()

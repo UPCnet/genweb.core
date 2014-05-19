@@ -149,6 +149,12 @@ class genwebUtils(BrowserView):
             'restricted-to-managers': 'label-inverse',
         }
 
+    def pref_lang_native(self):
+        """ Extracts the current language for the current user in native
+        """
+        lt = getToolByName(portal(), 'portal_languages')
+        return lt.getAvailableLanguages()[lt.getPreferredLanguage()]['native']
+
 
 # Per deprecar (not wired):
 class utilitats(BrowserView):
