@@ -49,6 +49,9 @@ class IGenwebUtils(Interface):
     def pref_lang_native(self):
         """ Get the current language selected """
 
+    def get_published_languages(self):
+        """ Get the current published languages """
+
 
 class IProtectedContent(Interface):
     """Marker interface for preventing dumb users to delete system configuration
