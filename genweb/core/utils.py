@@ -155,6 +155,9 @@ class genwebUtils(BrowserView):
         lt = getToolByName(portal(), 'portal_languages')
         return lt.getAvailableLanguages()[lt.getPreferredLanguage()]['native']
 
+    def get_published_languages(self):
+        return genweb_config().idiomes_publicats
+
 
 # Per deprecar (not wired):
 class utilitats(BrowserView):
