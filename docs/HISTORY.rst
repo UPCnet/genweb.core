@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.18 (unreleased)
+4.3.18 (2014-05-26)
 -------------------
 
-- Nothing changed yet.
-
+* Make home and subhome pages helpers. HAS_DXCT global helper too. [Victor Fernandez de Alba]
+* Add new language selector viewlet and viewlet manager for PAM version, and make them conditionals [Victor Fernandez de Alba]
 
 4.3.17 (2014-05-07)
 -------------------
