@@ -1,6 +1,7 @@
 <tal:language tal:condition="view/available">
 <div class="dropdown" id="portal-languageselector"
     tal:define="pref_lang view/@@genweb.utils/pref_lang_native;
+                published_langs view/@@genweb.utils/get_published_languages;
                 showFlags view/showFlags;
                 languages view/languages;
                 portal_url view/portal_url;"
@@ -17,30 +18,30 @@
   <ul class="dropdown-menu pull-right adjust-langs">
 
     <tal:language repeat="lang languages">
-    <li
-        tal:define="code lang/code;
-                    selected lang/selected;
-                    codeclass string:language-${code};
-                    current python: selected and 'currentLanguage ' or '';"
-        tal:attributes="class string:${current}${codeclass}">
-        <a href=""
-           tal:define="flag lang/flag|nothing;
-                       name lang/native|lang/name;
-                       showflag python:showFlags and flag;"
-           tal:attributes="href lang/url;
-                           title name"
-            ><tal:flag condition="showflag">
-                <img width="14"
-                     height="11"
-                     alt=""
-                     tal:attributes="src string:${portal_url}${flag};
-                                     alt name;
-                                     title name;" />
-            </tal:flag
-            ><tal:nonflag condition="not: showflag"
-                          replace="name">language name</tal:nonflag
-        ></a>
-    </li>
+      <li tal:condition="python: code in published_langs"
+          tal:define="code lang/code;
+                      selected lang/selected;
+                      codeclass string:language-${code};
+                      current python: selected and 'currentLanguage ' or '';"
+          tal:attributes="class string:${current}${codeclass}">
+          <a href=""
+             tal:define="flag lang/flag|nothing;
+                         name lang/native|lang/name;
+                         showflag python:showFlags and flag;"
+             tal:attributes="href lang/url;
+                             title name"
+              ><tal:flag condition="showflag">
+                  <img width="14"
+                       height="11"
+                       alt=""
+                       tal:attributes="src string:${portal_url}${flag};
+                                       alt name;
+                                       title name;" />
+              </tal:flag
+              ><tal:nonflag condition="not: showflag"
+                            replace="name">language name</tal:nonflag
+          ></a>
+      </li>
     </tal:language>
   </ul>
 </div>

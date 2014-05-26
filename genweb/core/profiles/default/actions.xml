@@ -163,4 +163,11 @@
 
  </object>
 
+ <object name="object_buttons" meta_type="CMF Action Category">
+  <object name="ical_import_enable" meta_type="CMF Action" i18n:domain="plone.app.event">
+   <property name="title" i18n:translate="title_ical_import_enable">Enable icalendar import</property>
+   <property name="visible">False</property>
+  </object>
+ </object>
+
 </object>
