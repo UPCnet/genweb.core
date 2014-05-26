@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.19 (unreleased)
+4.3.19 (2014-05-26)
 -------------------
 
-- Nothing changed yet.
-
+ * Add published languages feature to PAM LS [Victor Fernandez de Alba]
 
 4.3.18 (2014-05-26)
 -------------------
