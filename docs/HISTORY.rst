@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.3.20 (unreleased)
+4.3.20 (2014-05-27)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Change permission schema with utils. [Victor Fernandez de Alba]
+* traducciones [corina.riba]
+* Traducción formulario contacto [corina.riba]
 
 4.3.19 (2014-05-26)
 -------------------
