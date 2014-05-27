@@ -311,6 +311,9 @@ msgstr "Adreça electrònica"
 msgid "genweb_subject"
 msgstr "Assumpte"
 
+msgid "genweb_message"
+msgstr "Missatge"
+
 msgid "genweb_help_message"
 msgstr "Escriviu el missatge que voleu enviar"
 
