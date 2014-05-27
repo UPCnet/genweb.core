@@ -301,3 +301,27 @@ msgstr "elementos relacionados"
 msgid "The link is used almost verbatim, relative links become absolute and the strings \"${navigation_root_url}\" and \"${portal_url}\" get replaced with the real navigation_root_url or portal_url. If in doubt which one to use, please use navigation_root_url"
 msgstr "lalalala"
 
+############
+# Contacto #
+############
+
+msgid "genweb_sender_fullname"
+msgstr "Nombre"
+
+msgid "genweb_sender_from_address"
+msgstr "Correo electrónico"
+
+msgid "genweb_subject"
+msgstr "Asunto"
+
+msgid "genweb_message"
+msgstr "Mensaje"
+
+msgid "genweb_help_message"
+msgstr "Escriba el mensaje que quiera enviar"
+
+msgid "genweb_type_the_code"
+msgstr "Código de control"
+
+msgid "genweb_help_type_the_code"
+msgstr "Escriba las palabras de la imagen inferior"
