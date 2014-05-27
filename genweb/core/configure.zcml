@@ -63,7 +63,7 @@
       for="*"
       name="genweb.utils"
       class=".utils.genwebUtils"
-      permission="zope2.View"
+      permission="zope2.Public"
       allowed_interface=".interfaces.IGenwebUtils"
       />
 
