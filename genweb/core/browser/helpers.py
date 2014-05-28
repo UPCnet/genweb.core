@@ -308,3 +308,165 @@ class MakeMeaSubHomePage(grok.View):
             if IFolder.providedBy(self.context):
                 self.context.setLayout('subhomepage')
         return self.request.response.redirect(self.context.absolute_url())
+
+
+class BulkUserCreator(grok.View):
+    grok.name('bulkusercreator')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        users = ['joan.giralt',
+                'gemma.baldris',
+                'carme.jimenez',
+                'lluis.malvis',
+                'joaquim.fernandez',
+                'pau.cabanyol',
+                'sandra.franch',
+                'jose.alberola',
+                'pedro.alvarez',
+                'francesc.guasch',
+                'angel.aguilera',
+                'javier.trueba',
+                'jesus.galceran',
+                'merce.oller',
+                'jordi.aguilar',
+                'david.figueres',
+                'josep.maria.jordana',
+                'annibal.manyas',
+                'alfredo.soldevilla',
+                'alex.muntada',
+                'albert.obiols',
+                'boris.martinez',
+                'carles.espadas',
+                'pepe.martinez',
+                'roberto.molina',
+                'raul.pastor',
+                'belen.lalueza',
+                'tonyi.gomez',
+                'rosa.ma.martin',
+                'jordi.enric.martinez',
+                'sandra.marsa',
+                'antoni.mayans',
+                'yolanda.blanc',
+                'susy.tur',
+                'toni.font',
+                'anna.casas',
+                'manoli.cano',
+                'andres.arco',
+                'esther.nadal',
+                'jose.angel.fernandez',
+                'elena.lopez.romera',
+                'eulalia.formenti',
+                'ignasi.mallafre',
+                'amador.alvarez',
+                'josep.m.haro',
+                'jose.luis.roncero',
+                'katty.torla',
+                'cristina.dantart',
+                'sara.perez',
+                'antonio.fernandez',
+                'jesus.otero',
+                'eulalia.font',
+                'rosa.martin',
+                'ruben.menendez',
+                'francesc.bassas',
+                'jordi.bofill',
+                'alicia.ruiz',
+                'cesc.garcia',
+                'manel.campano',
+                'david.ortin',
+                'jose.lazaro',
+                'sofia.pascual',
+                'luisa.vicente',
+                'enric.ribot',
+                'jose.marcos.lopez',]
+
+        for user in users:
+            # password = user[0].upper() + user.split('.')[1][0].upper() + user.split('.')[1][1:]
+
+            if not plone.api.user.get(username=user):
+                plone.api.user.create(email=user+'@upc.edu',
+                                      username=user,
+                                      password='1234')
+        return 'Done.'
+
+
+class BulkUserEraser(grok.View):
+    grok.name('bulkusereraser')
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        users = ['joan.giralt',
+                'gemma.baldris',
+                'carme.jimenez',
+                'lluis.malvis',
+                'joaquim.fernandez',
+                'pau.cabanyol',
+                'sandra.franch',
+                'jose.alberola',
+                'pedro.alvarez',
+                'francesc.guasch',
+                'angel.aguilera',
+                'javier.trueba',
+                'jesus.galceran',
+                'merce.oller',
+                'jordi.aguilar',
+                'david.figueres',
+                'josep.maria.jordana',
+                'annibal.manyas',
+                'alfredo.soldevilla',
+                'alex.muntada',
+                'albert.obiols',
+                'boris.martinez',
+                'carles.espadas',
+                'pepe.martinez',
+                'roberto.molina',
+                'raul.pastor',
+                'belen.lalueza',
+                'tonyi.gomez',
+                'rosa.ma.martin',
+                'jordi.enric.martinez',
+                'sandra.marsa',
+                'antoni.mayans',
+                'yolanda.blanc',
+                'susy.tur',
+                'toni.font',
+                'anna.casas',
+                'manoli.cano',
+                'andres.arco',
+                'esther.nadal',
+                'jose.angel.fernandez',
+                'elena.lopez.romera',
+                'eulalia.formenti',
+                'ignasi.mallafre',
+                'amador.alvarez',
+                'josep.m.haro',
+                'jose.luis.roncero',
+                'katty.torla',
+                'cristina.dantart',
+                'sara.perez',
+                'antonio.fernandez',
+                'jesus.otero',
+                'eulalia.font',
+                'rosa.martin',
+                'ruben.menendez',
+                'francesc.bassas',
+                'jordi.bofill',
+                'alicia.ruiz',
+                'cesc.garcia',
+                'manel.campano',
+                'david.ortin',
+                'jose.lazaro',
+                'sofia.pascual',
+                'luisa.vicente',
+                'enric.ribot',
+                'jose.marcos.lopez',]
+
+        for user in users:
+            if plone.api.user.get(username=user):
+                plone.api.user.delete(username=user)
+                print("Deleted user {}".format(user))
+
+        return 'Done.'
