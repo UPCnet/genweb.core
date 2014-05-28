@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.21 (unreleased)
+4.3.21 (2014-05-28)
 -------------------
 
-- Nothing changed yet.
-
+* User bulk creator for debug [Victor Fernandez de Alba]
 
 4.3.20 (2014-05-27)
 -------------------
