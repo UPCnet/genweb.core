@@ -26,6 +26,12 @@ except pkg_resources.DistributionNotFound:
 else:
     HAS_DXCT = True
 
+try:
+    pkg_resources.get_distribution('plone.app.multilingual')
+except pkg_resources.DistributionNotFound:
+    HAS_PAM = False
+else:
+    HAS_PAM = True
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
