@@ -79,6 +79,14 @@
       />
 
     <genericsetup:registerProfile
+      name="alternatheme"
+      title="Genweb Core with alternatheme (genweb.core)"
+      directory="profiles/alternatheme"
+      description="Installs the genweb.core package with the alternatheme theme"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+    <genericsetup:registerProfile
       name="robot-test"
       title="Genweb Core Robot Test Profile"
       directory="profiles/robot-test"
