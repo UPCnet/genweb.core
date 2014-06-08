@@ -72,17 +72,9 @@
 
     <genericsetup:registerProfile
       name="default"
-      title="Genweb Core (genweb.core)"
+      title="Genweb Core standard"
       directory="profiles/default"
       description="Installs the genweb.core package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-    <genericsetup:registerProfile
-      name="alternatheme"
-      title="Genweb Core with alternatheme (genweb.core)"
-      directory="profiles/alternatheme"
-      description="Installs the genweb.core package with the alternatheme theme"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
