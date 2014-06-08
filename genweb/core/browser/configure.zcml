@@ -1,8 +1,19 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="genweb">
+
+<!-- genweb.core with aternatheme GS profile -->
+<!-- Should be in other module than the default GS profile -->
+    <genericsetup:registerProfile
+      name="alternatheme"
+      title="Genweb Core with AlternaTheme"
+      directory="../profiles/alternatheme"
+      description="Installs the genweb.core package with the alternatheme theme"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
     <browser:page
       name="getZEO"
@@ -68,10 +79,5 @@
         <adapter factory=".vocabulary.DXFieldPermissionChecker" />
 
       </configure>
-
-
-    <!-- XXX Try to decide at the end if it's worth to restrict the last
-         two for a browser layer
-      layer="..interfaces.IGenwebLayer" -->
 
 </configure>
