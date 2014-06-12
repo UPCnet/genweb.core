@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.3.22 (unreleased)
+4.3.22 (2014-06-12)
 -------------------
 
-- Nothing changed yet.
-
+* New profile for genweb.core with alternatheme [Victor Fernandez de Alba]
+* Added alternatheme profile [Victor Fernandez de Alba]
+* Added PAM global check [Victor Fernandez de Alba]
 
 4.3.21 (2014-05-28)
 -------------------
