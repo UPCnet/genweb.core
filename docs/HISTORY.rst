@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.23 (unreleased)
+4.3.23 (2014-07-07)
 -------------------
 
-- Nothing changed yet.
-
+* Fix deletion of Plone site from Zope root with a Protected content. [Victor Fernandez de Alba]
+* Delete missing ipdb [Victor Fernandez de Alba]
 
 4.3.22 (2014-06-12)
 -------------------
