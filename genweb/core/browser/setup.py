@@ -135,7 +135,7 @@ class setupLDAPExterns(grok.View):
             users_base="ou=users,ou=upcnet,dc=upcnet,dc=es", users_scope=2,
             roles="Authenticated,Member", groups_base="ou=groups,ou=upcnet,dc=upcnet,dc=es",
             groups_scope=2, read_only=True, binduid="cn=ldap,ou=upcnet,dc=upcnet,dc=es", bindpwd="conldapnexio",
-            rdn_attr="cn", LDAP_server="oauth.upcnet.es", encryption="SSHA")
+            rdn_attr="cn", LDAP_server="ldap.upcnet.es", encryption="SSHA")
         portal.acl_users.ldapexterns.acl_users.manage_edit("ldapexterns", "cn", "cn", "ou=users,ou=upcnet,dc=upcnet,dc=es", 2, "Authenticated,Member",
             "ou=groups,ou=upcnet,dc=upcnet,dc=es", 2, "cn=ldap,ou=upcnet,dc=upcnet,dc=es", "conldapnexio", 1, "cn",
             "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
