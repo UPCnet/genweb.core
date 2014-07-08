@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.24 (unreleased)
+4.3.24 (2014-07-08)
 -------------------
 
-- Nothing changed yet.
-
+* Change ldap externs url [Carles Bruguera]
 
 4.3.23 (2014-07-07)
 -------------------
