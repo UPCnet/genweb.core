@@ -445,3 +445,6 @@ msgstr "Top of page"
 
 msgid "fitxer_no_seleccionat"
 msgstr "No file selected..."
+
+msgid "filtered_contents_search_view"
+msgstr "Filtered view"

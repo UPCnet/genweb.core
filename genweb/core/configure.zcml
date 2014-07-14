@@ -13,6 +13,22 @@
     <!-- Compat with Plone 4.1 -->
     <include package="Products.CMFCore" file="permissions.zcml" />
 
+    <!-- Convenience permission identifying authenticated and member users -->
+    <permission
+      id="genweb.authenticated"
+      title="Genweb: Authenticated Users"
+      />
+
+    <permission
+      id="genweb.member"
+      title="Genweb: Member Users"
+      />
+
+    <permission
+      id="genweb.webmaster"
+      title="Genweb: Webmaster Users"
+      />
+
     <!-- Includes from dependencies to make test pass -->
     <include package="plone.api" />
     <include package="plone.app.iterate" />
@@ -29,24 +45,9 @@
     <include package="genweb.controlpanel" />
     <include package="genweb.portlets" />
     <include package="genweb.theme" />
+    <include package="genweb.alternatheme" />
     <include package="jarn.jsi18n" />
     <include package="Products.PloneLDAP" />
-
-    <!-- Convenience permission identifying authenticated and member users -->
-    <permission
-      id="genweb.authenticated"
-      title="Genweb: Authenticated Users"
-      />
-
-    <permission
-      id="genweb.member"
-      title="Genweb: Member Users"
-      />
-
-    <permission
-      id="genweb.webmaster"
-      title="Genweb: Webmaster Users"
-      />
 
     <!-- Grok the package to initialise schema interfaces and content classes -->
     <include package="grokcore.component" file="meta.zcml" />
