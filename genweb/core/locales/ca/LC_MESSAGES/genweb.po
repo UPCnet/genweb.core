@@ -575,6 +575,9 @@ msgstr "Hereta"
 msgid "read_more"
 msgstr "Veure més"
 
+msgid "filtered_contents_search_view"
+msgstr "Vista filtrada"
+
 #######
 # .js #
 #######
