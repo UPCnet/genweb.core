@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.3.25 (unreleased)
+4.3.25 (2014-07-15)
 -------------------
 
-- Nothing changed yet.
-
+* Add i18n strings for filtered_search_view and put more preference on permissions declarations [Victor Fernandez de Alba]
+* New widget for searching in MAX user base directly. [Victor Fernandez de Alba]
 
 4.3.24 (2014-07-08)
 -------------------
