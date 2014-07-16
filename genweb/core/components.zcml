@@ -1,0 +1,45 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    i18n_domain="genweb.core">
+
+  <include package="plone.resource" file="meta.zcml"/>
+
+  <!-- Resource traversers -->
+  <adapter
+      name="components"
+      for="* zope.publisher.interfaces.IRequest"
+      provides="zope.traversing.interfaces.ITraversable"
+      factory=".traversal.ComponentsTraverser"
+      />
+
+  <adapter
+      name="genweb"
+      for="* zope.publisher.interfaces.IRequest"
+      provides="zope.traversing.interfaces.ITraversable"
+      factory=".traversal.GenwebTraverser"
+      />
+
+  <plone:static
+      directory="components"
+      type="components"
+      name="root"
+      />
+
+  <plone:static
+      directory="static"
+      type="genweb"
+      name="static"
+      />
+
+  <!-- Addon packages resource overrides -->
+  <!-- Custom jsi18n.js for including a trigger -->
+  <browser:resource
+    name="jsi18n.js"
+    file="static/js/jsi18n.js"
+    layer=".interfaces.IGenwebLayer"
+    />
+
+</configure>
