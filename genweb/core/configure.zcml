@@ -58,6 +58,7 @@
     <include package=".browser" />
     <include package=".widgets" />
     <include file="patches.zcml" />
+    <include file="components.zcml" />
 
     <!-- The utilities browser view (can't be a grok view) -->
     <browser:page
