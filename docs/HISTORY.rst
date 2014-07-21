@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.26 (unreleased)
+4.3.26 (2014-07-21)
 -------------------
 
-- Nothing changed yet.
-
+* Sanitize the static resources for the whole Genweb project [Victor Fernandez de Alba]
 
 4.3.25 (2014-07-15)
 -------------------
