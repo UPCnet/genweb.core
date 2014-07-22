@@ -14,7 +14,7 @@
 *.pydevproject
 passwd
 data
-dist
+./dist
 docs/_build
 *.mo
 build
