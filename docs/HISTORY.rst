@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.27 (unreleased)
+4.3.27 (2014-07-22)
 -------------------
 
-- Nothing changed yet.
-
+* Add missing dist files [Victor Fernandez de Alba]
 
 4.3.26 (2014-07-21)
 -------------------
