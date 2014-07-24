@@ -21,6 +21,10 @@ from genweb.controlpanel.interface import IGenwebControlPanelSettings
 import pkg_resources
 import logging
 import re
+import os
+
+LDAP_PASSWORD = os.environ.get('ldapbindpasswd', '')
+
 
 try:
     pkg_resources.get_distribution('Products.LinguaPlone')
@@ -314,7 +318,7 @@ def migracio3(context):
     # Canviem el rol per defecte dels usuaris autenticats via LDAP
     acl_users = getToolByName(context, 'acl_users')
     acl_users.ldapUPC.acl_users.manage_edit("ldapUPC", "cn", "cn", "ou=Users,dc=upc,dc=edu", 2, "Authenticated",
-            "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.upc,ou=Users,dc=upc,dc=edu", "secret", 1, "cn",
+            "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.upc,ou=Users,dc=upc,dc=edu", LDAP_PASSWORD, 1, "cn",
             "top,person", 0, 0, "SSHA", 1, '')
     logger.info("S'ha canviat el rol dels usuaris autenticats via LDAP")
 
