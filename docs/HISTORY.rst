@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.29 (unreleased)
+4.3.29 (2014-07-24)
 -------------------
 
-- Nothing changed yet.
-
+* Merge [Victor Fernandez de Alba]
 4.3.28 (2014-07-24)
 -------------------
 
