@@ -389,6 +389,7 @@ class BulkUserCreator(grok.View):
                 api.user.create(email=user+'@upc.edu',
                                 username=user,
                                 password='1234')
+
         return 'Done.'
 
 
@@ -465,6 +466,7 @@ class BulkUserEraser(grok.View):
                 'jose.marcos.lopez',]
 
         for user in users:
+
             if api.user.get(username=user):
                 api.user.delete(username=user)
                 print("Deleted user {}".format(user))

@@ -6,7 +6,6 @@ Changelog
 
 - Nothing changed yet.
 
-
 4.3.28 (2014-07-24)
 -------------------
 

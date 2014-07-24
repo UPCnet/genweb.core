@@ -33,6 +33,10 @@ else:
 
 logger = logging.getLogger(__name__)
 
+import os
+
+LDAP_PASSWORD = os.environ.get('ldapbindpasswd', '')
+
 
 class setupDX(grok.View):
     """ Setup View that fixes p.a.ct front-page
@@ -72,10 +76,10 @@ class setupLDAPUPC(grok.View):
                     title="ldapUPC", use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
                     users_base="ou=Users,dc=upc,dc=edu", users_scope=2,
                     roles="Authenticated", groups_base="ou=Groups,dc=upc,dc=edu",
-                    groups_scope=2, read_only=True, binduid="cn=ldap.upc,ou=Users,dc=upc,dc=edu", bindpwd="conldapnexio",
+                    groups_scope=2, read_only=True, binduid="cn=ldap.upc,ou=Users,dc=upc,dc=edu", bindpwd=LDAP_PASSWORD,
                     rdn_attr="cn", LDAP_server="ldap.upc.edu", encryption="SSHA")
                 portal.acl_users.ldapUPC.acl_users.manage_edit("ldapUPC", "cn", "cn", "ou=Users,dc=upc,dc=edu", 2, "Authenticated",
-                    "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.upc,ou=Users,dc=upc,dc=edu", "conldapnexio", 1, "cn",
+                    "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.upc,ou=Users,dc=upc,dc=edu", LDAP_PASSWORD, 1, "cn",
                     "top,person", 0, 0, "SSHA", 1, '')
                 plugin = portal.acl_users['ldapUPC']
 
@@ -134,10 +138,10 @@ class setupLDAPExterns(grok.View):
             title="ldapexterns", use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
             users_base="ou=users,ou=upcnet,dc=upcnet,dc=es", users_scope=2,
             roles="Authenticated,Member", groups_base="ou=groups,ou=upcnet,dc=upcnet,dc=es",
-            groups_scope=2, read_only=True, binduid="cn=ldap,ou=upcnet,dc=upcnet,dc=es", bindpwd="conldapnexio",
+            groups_scope=2, read_only=True, binduid="cn=ldap,ou=upcnet,dc=upcnet,dc=es", bindpwd=LDAP_PASSWORD,
             rdn_attr="cn", LDAP_server="ldap.upcnet.es", encryption="SSHA")
         portal.acl_users.ldapexterns.acl_users.manage_edit("ldapexterns", "cn", "cn", "ou=users,ou=upcnet,dc=upcnet,dc=es", 2, "Authenticated,Member",
-            "ou=groups,ou=upcnet,dc=upcnet,dc=es", 2, "cn=ldap,ou=upcnet,dc=upcnet,dc=es", "conldapnexio", 1, "cn",
+            "ou=groups,ou=upcnet,dc=upcnet,dc=es", 2, "cn=ldap,ou=upcnet,dc=upcnet,dc=es", LDAP_PASSWORD, 1, "cn",
             "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
 
         plugin = portal.acl_users['ldapexterns']
