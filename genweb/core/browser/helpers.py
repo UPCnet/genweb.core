@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from five import grok
+from plone import api
 from Acquisition import aq_inner
 from App.config import getConfiguration
 from OFS.interfaces import IFolder
@@ -19,7 +20,6 @@ from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
 
 import json
-import plone.api
 
 
 DORSALS = {"1": "Valdés", "2": "Montoya", "3": "Piqué",
@@ -69,7 +69,7 @@ class instanceindevelmode(grok.View):
     __allow_access_to_unprotected_subobjects__ = True
 
     def render(self):
-        return plone.api.env.debug_mode()
+        return api.env.debug_mode()
 
 
 def getDorsal():
@@ -385,10 +385,10 @@ class BulkUserCreator(grok.View):
         for user in users:
             # password = user[0].upper() + user.split('.')[1][0].upper() + user.split('.')[1][1:]
 
-            if not plone.api.user.get(username=user):
-                plone.api.user.create(email=user+'@upc.edu',
-                                      username=user,
-                                      password='1234')
+            if not api.user.get(username=user):
+                api.user.create(email=user+'@upc.edu',
+                                username=user,
+                                password='1234')
         return 'Done.'
 
 
@@ -465,8 +465,28 @@ class BulkUserEraser(grok.View):
                 'jose.marcos.lopez',]
 
         for user in users:
-            if plone.api.user.get(username=user):
-                plone.api.user.delete(username=user)
+            if api.user.get(username=user):
+                api.user.delete(username=user)
                 print("Deleted user {}".format(user))
 
         return 'Done.'
+
+
+class ListLastLogin(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.require('genweb.webmaster')
+
+    def render(self):
+        pmd = api.portal.get_tool(name='portal_memberdata')
+        pm = api.portal.get_tool(name='portal_membership')
+
+        output = []
+        for user in pmd._members.items():
+            wrapped_user = pm.getMemberById(user[0])
+            if wrapped_user:
+                fullname = wrapped_user.getProperty('fullname')
+                if not fullname:
+                    fullname = wrapped_user.getProperty('id')
+                last_login = wrapped_user.getProperty('last_login_time')
+                output.append('{}; {}'.format(fullname, last_login))
+        return '\n'.join(output)
