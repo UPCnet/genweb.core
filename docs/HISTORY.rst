@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.3.28 (unreleased)
+4.3.28 (2014-07-24)
 -------------------
 
-- Nothing changed yet.
-
+* List last login users [Victor Fernandez de Alba]
 
 4.3.27 (2014-07-22)
 -------------------
