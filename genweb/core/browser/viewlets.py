@@ -15,6 +15,10 @@ from genweb.core.utils import genweb_config, havePermissionAtRoot
 from genweb.core.interfaces import IGenwebLayer
 from genweb.core import GenwebMessageFactory as _
 
+# [DEPRECATED] All this viewlets and associated code are deprecated in favor of
+# the PAM aware viewlet genweb.pamls
+
+
 def addQuery(request, url, exclude=tuple(), **extras):
     """Adds the incoming GET query to the end of the url
     so that is propagated through the redirect hoops
@@ -176,7 +180,7 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
     # Show link to languages published in control panel
     grok.context(IPloneSiteRoot)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
-    #grok.layer(IGenwebLayer)
+    # grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorForRoot, self).languages()

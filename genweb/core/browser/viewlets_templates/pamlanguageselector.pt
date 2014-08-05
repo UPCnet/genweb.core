@@ -1,5 +1,5 @@
 <tal:language tal:condition="view/available">
-<div class="dropdown" id="portal-languageselector"
+<li class="dropdown" id="portal-languageselector"
     tal:define="pref_lang view/@@genweb.utils/pref_lang_native;
                 published_langs view/@@genweb.utils/get_published_languages;
                 showFlags view/showFlags;
@@ -44,5 +44,5 @@
       </li>
     </tal:language>
   </ul>
-</div>
+</li>
 </tal:language>
