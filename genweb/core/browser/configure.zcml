@@ -62,7 +62,7 @@
           manager="..interfaces.IPAMLSManager"
           class="plone.app.multilingual.browser.selector.LanguageSelectorViewlet"
           permission="zope2.View"
-          for="plone.multilingual.interfaces.ITranslatable"
+          for="plone.app.multilingual.interfaces.ITranslatable"
           layer="plone.app.multilingual.interfaces.IPloneAppMultilingualInstalled"
           />
 
