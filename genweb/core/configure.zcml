@@ -34,11 +34,8 @@
     <include package="plone.app.iterate" />
     <include package="plone.app.caching" />
     <include package="plone.app.dexterity" />
-
-    <configure zcml:condition="installed plone.app.contenttypes">
-      <include package="plone.app.contenttypes" />
-    </configure>
-
+    <include package="plone.app.contenttypes" />
+    <include package="plone.app.event" />
     <include package="plone.app.workflowmanager" />
     <include package="collective.tinymcetemplates" />
     <include package="wildcard.foldercontents" />

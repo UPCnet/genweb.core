@@ -24,24 +24,21 @@ class GenwebUPC(PloneSandboxLayer):
                        genweb.core,
                        context=configurationContext)
 
-        try:
-            pkg_resources.get_distribution('upc.genwebupctheme')
-            import upc.genwebupctheme
-            xmlconfig.file('configure.zcml',
-                           upc.genwebupctheme,
-                           context=configurationContext)
-        except pkg_resources.DistributionNotFound:
-            pass
+        # prepare installing plone.app.contenttypes
+        z2.installProduct(app, 'Products.DateRecurringIndex')
 
     def setUpPloneSite(self, portal):
-        # Create a document front-page
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        portal.invokeFactory('Document', 'front-page', title="Us donem la benvinguda a Genweb UPC")
-        transaction.commit()
-        setRoles(portal, TEST_USER_ID, ['Member'])
+        # Needed for PAC not complain about not having one... T_T
+        portal.portal_workflow.setDefaultChain("simple_publication_workflow")
 
         # Install into Plone site using portal_setup
         applyProfile(portal, 'genweb.core:default')
+
+        # Create a document front-page
+        # setRoles(portal, TEST_USER_ID, ['Manager'])
+        # portal.invokeFactory('Document', 'front-page', title="Us donem la benvinguda a Genweb")
+        # transaction.commit()
+        # setRoles(portal, TEST_USER_ID, ['Member'])
 
         # Let anz.casclient do not interfere in tests
         # portal.acl_users.manage_delObjects('CASUPC')
