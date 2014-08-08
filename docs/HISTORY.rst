@@ -1,11 +1,19 @@
 Changelog
 =========
 
-4.3.30 (unreleased)
--------------------
+4.4.0 (2014-08-08)
+------------------
 
-- Nothing changed yet.
-
+* Update to pam 2.0 [Victor Fernandez de Alba]
+* Try fix Travis 5 [Victor Fernandez de Alba]
+* Try fix Travis 4 [Victor Fernandez de Alba]
+* Try fix Travis 3 [Victor Fernandez de Alba]
+* Try fix Travis 2 [Victor Fernandez de Alba]
+* Try fix Travis [Victor Fernandez de Alba]
+* Try to fix Travis [Victor Fernandez de Alba]
+* Fix tests [Victor Fernandez de Alba]
+* Install PAC and PAE by default on every Genweb site. Deprecate old language selector. [Victor Fernandez de Alba]
+* [*** NON AT Genweb UPC ***] Updated to meet the new requirements agreed SC. From here, the Genweb core works with Dexterity CT by default. [Victor Fernandez de Alba]
 
 4.3.29 (2014-07-24)
 -------------------
