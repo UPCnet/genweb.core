@@ -345,6 +345,12 @@ msgstr "Cerca"
 msgid "obrir_link_finestra_nova"
 msgstr "(obriu en una finestra nova)"
 
+msgid "open_link_in_new_window"
+msgstr "Obrir en una nova finestra?"
+
+msgid "help_open_link_in_new_window"
+msgstr "Comença la url per http:// si vols enllaçar fora del teu espai."
+
 #. Default: "Event body text"
 #: ATContentTypes/content/event.py:101
 msgid "label_event_announcement"

@@ -1118,6 +1118,12 @@ msgstr ""
 msgid "obrir_link_finestra_nova"
 msgstr "(abre en ventana nueva)"
 
+msgid "open_link_in_new_window"
+msgstr "Abrir en una ventana nueva?"
+
+msgid "help_open_link_in_new_window"
+msgstr "Empieza la URL con http:// si quieres enlazar con un elemento fuera de tu sitio web."
+
 #. Default: "Enllaç permanent"
 msgid "permalink_accio"
 msgstr "Enlace permanente"

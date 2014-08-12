@@ -157,6 +157,12 @@ msgstr "Help"
 msgid "obrir_link_finestra_nova"
 msgstr "(open link in a new window)"
 
+msgid "open_link_in_new_window"
+msgstr "Open in a new window?"
+
+msgid "help_open_link_in_new_window"
+msgstr "You must include http:// at the beginning to make an external link"
+
 #: ."genweb-actualitatPDIPAS"
 msgid "genweb-actualitatPDIPAS"
 msgstr "PDI/PAS Today"

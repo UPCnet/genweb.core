@@ -15,6 +15,7 @@ from five import grok
 from plone.indexer import indexer
 
 
+# TODO: Deprecate all this
 # Any field you tack on must have ExtensionField as its first subclass:
 class _StringExtensionField(ExtensionField, BooleanField):
     pass

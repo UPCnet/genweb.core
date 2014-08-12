@@ -56,6 +56,7 @@
     <include package=".widgets" />
     <include file="patches.zcml" />
     <include file="components.zcml" />
+    <include file="behaviors.zcml" />
 
     <!-- The utilities browser view (can't be a grok view) -->
     <browser:page
@@ -65,9 +66,6 @@
       permission="zope2.Public"
       allowed_interface=".interfaces.IGenwebUtils"
       />
-
-    <!-- ATLink extender -->
-    <adapter factory=".extenders.ATLinkSchemaModifier" />
 
     <genericsetup:registerProfile
       name="default"
