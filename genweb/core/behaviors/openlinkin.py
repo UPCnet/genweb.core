@@ -16,6 +16,7 @@ class IOpenLinkInNewWindow(form.Schema):
     """Add open in new window field to link content
     """
 
+    form.order_after(open_link_in_new_window='remoteUrl')
     open_link_in_new_window = schema.Bool(
         title=_(u"open_link_in_new_window"),
         description=_(u"help_open_link_in_new_window"),
