@@ -1,3 +1,6 @@
+from five import grok
+from plone.indexer import indexer
+
 from zope.component import adapts
 from zope.interface import implements, alsoProvides
 from zope import schema
@@ -9,23 +12,37 @@ from plone.app.contenttypes.interfaces import ILink
 from genweb.core import _
 
 
-class IOpenlinkin(form.Schema):
+class IOpenLinkInNewWindow(form.Schema):
     """Add open in new window field to link content
     """
 
-    openlinkin = schema.Bool(
+    open_link_in_new_window = schema.Bool(
         title=_(u"open_link_in_new_window"),
         description=_(u"help_open_link_in_new_window"),
         required=False,
         default=False
     )
 
-alsoProvides(IOpenlinkin, form.IFormFieldProvider)
+alsoProvides(IOpenLinkInNewWindow, form.IFormFieldProvider)
 
 
-class Openlinkin(object):
-    implements(IOpenlinkin)
+class OpenLinkInNewWindow(object):
+    implements(IOpenLinkInNewWindow)
     adapts(ILink)
 
     def __init__(self, context):
         self.context = context
+
+    def _set_open_link_in_new_window(self, value):
+        self.context.open_link_in_new_window = value
+
+    def _get_open_link_in_new_window(self):
+        return getattr(self.context, 'open_link_in_new_window', None)
+
+    open_link_in_new_window = property(_get_open_link_in_new_window, _set_open_link_in_new_window)
+
+
+@indexer(ILink)
+def open_link_in_new_window(obj):
+    return obj.open_link_in_new_window
+grok.global_adapter(open_link_in_new_window, name="open_link_in_new_window")

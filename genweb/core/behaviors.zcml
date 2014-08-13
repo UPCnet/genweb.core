@@ -8,8 +8,8 @@
   <plone:behavior
       title="Optional open link in a new window"
       description="Add field to mark a link to open in a new window when clicked."
-      provides=".behaviors.IOpenlinkin"
-      factory=".behaviors.Openlinkin"
+      provides=".behaviors.openlinkin.IOpenLinkInNewWindow"
+      factory=".behaviors.openlinkin.OpenLinkInNewWindow"
       for="plone.dexterity.interfaces.IDexterityContent"
       />
 

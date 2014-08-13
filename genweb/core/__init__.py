@@ -1,5 +1,5 @@
 from zope.i18nmessageid import MessageFactory
-GenwebMessageFactory = MessageFactory('genweb')
+_ = GenwebMessageFactory = MessageFactory('genweb')
 
 import pkg_resources
 

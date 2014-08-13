@@ -2,7 +2,7 @@
 <object name="portal_catalog">
     <!-- Do not add any index definition here, do it in setuphandlers -->
     <!-- see add_catalog_indexes method -->
-    <column value="obrirEnFinestraNova"/>
+    <column value="open_link_in_new_window"/>
     <column value="news_image_filename"/>
     <column value="is_important"/>
     <column value="favoritedBy"/>
