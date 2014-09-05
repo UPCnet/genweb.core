@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.4.1 (unreleased)
+4.4.1 (2014-09-05)
 ------------------
 
-- Nothing changed yet.
-
+* Force p.a.robotframework into setup [Victor Fernandez de Alba]
+* Order of field [Victor Fernandez de Alba]
+* Extender into behavior, related tests [Victor Fernandez de Alba]
+* Add open link in new folder behavior. [Victor Fernandez de Alba]
 
 4.4.0 (2014-08-08)
 ------------------
