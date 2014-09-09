@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.2 (unreleased)
+4.4.2 (2014-09-09)
 ------------------
 
-- Nothing changed yet.
-
+* Fix rare error compiling template. [Victor Fernandez de Alba]
 
 4.4.1 (2014-09-05)
 ------------------
