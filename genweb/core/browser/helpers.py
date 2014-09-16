@@ -22,10 +22,10 @@ from genweb.core.interfaces import IProtectedContent
 import json
 
 
-DORSALS = {"1": "Valdés", "2": "Montoya", "3": "Piqué",
-           "4": "Cesc", "5": "Puyol", "6": "Xavi", "7": "Pedro",
-           "8": "Iniesta", "9": "Alexis", "10": "Messi", "11": "Neymar JR",
-           "12": "Dos Santos", "13": "Pinto", "14": "Mascherano", "16": "Busquets"}
+DORSALS = {"1": "Ter Stegen", "2": "Montoya", "3": "Piqué",
+           "4": "Rakitic", "5": "Busquets", "6": "Xavi", "7": "Pedro",
+           "8": "Iniesta", "9": "Suárez", "10": "Messi", "11": "Neymar JR",
+           "12": "Rafinha", "13": "Bravo", "14": "Mascherano", "15": "Bartra"}
 
 
 class debug(grok.View):
