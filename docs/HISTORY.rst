@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.3 (unreleased)
+4.4.3 (2014-09-16)
 ------------------
 
-- Nothing changed yet.
-
+* Update dorsals for this season [Victor Fernandez de Alba]
 
 4.4.2 (2014-09-09)
 ------------------
