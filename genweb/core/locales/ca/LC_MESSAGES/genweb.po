@@ -843,3 +843,6 @@ msgstr "[${results} no és un idioma vàlid]"
 
 msgid "inici_page"
 msgstr "Inici de la pàgina"
+
+msgid "root_folder_neutral"
+msgstr "Neutre"

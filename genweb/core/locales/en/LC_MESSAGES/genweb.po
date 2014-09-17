@@ -454,3 +454,6 @@ msgstr "No file selected..."
 
 msgid "filtered_contents_search_view"
 msgstr "Filtered view"
+
+msgid "root_folder_neutral"
+msgstr "Neutral"

@@ -1259,3 +1259,6 @@ msgstr "Inicio de la página"
 
 msgid "filtered_contents_search_view"
 msgstr "Vista filtrada"
+
+msgid "root_folder_neutral"
+msgstr "Neutral"
