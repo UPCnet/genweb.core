@@ -335,14 +335,34 @@ msgstr "Document"
 ############
 
 msgid "FullNews"
-msgstr "Notícies enriquides"
+msgstr "Notícies amb foto"
 
 msgid "NoticiesPropi"
-msgstr "Notícies GenWeb"
+msgstr "Notícies"
 
 msgid "AgendaGW"
-msgstr "Agenda Genweb"
+msgstr "Agenda"
 
-msgid "hompageportlet"
+msgid "portlet_homepage_title"
 msgstr "Benvinguda"
 
+msgid "portlet_calendar_title"
+msgstr "Calendari"
+
+msgid "portlet_collection_title"
+msgstr "Col·lecció"
+
+msgid "portlet_login_title"
+msgstr "Identificació"
+
+msgid "portlet_navigation_title"
+msgstr "Menú de navegació"
+
+msgid "portlet_rss_title"
+msgstr "RSS"
+
+msgid "portlet_static_title"
+msgstr "Pàgina"
+
+msgid "portlet_poll_title"
+msgstr "Enquesta"

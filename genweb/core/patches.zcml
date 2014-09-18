@@ -33,4 +33,11 @@
         replacement=".patches.generate_user_id"
         />
 
+    <monkey:patch
+        description="Force the search of the site to be wild always"
+        class="plone.app.search.browser.Search"
+        original="filter_query"
+        replacement=".patches.filter_query"
+        />
+
 </configure>

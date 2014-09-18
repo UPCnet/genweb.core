@@ -14,7 +14,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: upc.genwebupc\n"
+"Domain: plone\n"
 
 # desc_type_collage
 msgid "desc_type_collage"
