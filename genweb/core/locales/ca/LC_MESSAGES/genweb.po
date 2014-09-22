@@ -846,3 +846,6 @@ msgstr "Inici de la pàgina"
 
 msgid "root_folder_neutral"
 msgstr "Neutre"
+
+msgid "button_sendevent"
+msgstr "Envia a l'agenda general de la UPC"

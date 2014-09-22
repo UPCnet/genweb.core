@@ -305,7 +305,7 @@ msgstr "Desmarca como importante"
 #. Default: "Envia a l'Agenda general de la UPC"
 #: genweb.theme/genweb/theme/browser/viewlets_templates/send_event.pt:7
 msgid "button_sendevent"
-msgstr "Envia a la Agenda general de la UPC"
+msgstr "Envia a la agenda general de la UPC"
 
 #. Default: "Calendari"
 #: browser/calendar.pt
