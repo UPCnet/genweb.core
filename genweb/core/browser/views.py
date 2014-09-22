@@ -49,7 +49,7 @@ class TemplateList(grok.View):
                         p = p[1:]
                     paths.append("%s/%s" % (portal_path, p,))
 
-                results = portal_catalog.searchResults(language='all', path=paths, object_provides=IDocument.__identifier__)
+                results = portal_catalog.searchResults(Language='', path=paths, object_provides=IDocument.__identifier__)
 
                 for r in results:
                     templates.append([r.Title, "%s/genweb.get.dxdocument.text" % r.getURL(), r.Description])
