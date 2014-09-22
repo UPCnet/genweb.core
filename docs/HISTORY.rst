@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.6 (unreleased)
+4.4.6 (2014-09-22)
 ------------------
 
-- Nothing changed yet.
-
+* New i18n [Victor Fernandez de Alba]
 
 4.4.5 (2014-09-22)
 ------------------
