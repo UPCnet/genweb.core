@@ -61,3 +61,11 @@ class IProtectedContent(Interface):
 
 class IPAMLSManager(IViewletManager):
     """ Marker for the PAM language switcher manager """
+
+
+class INewsFolder(Interface):
+    """ Marker interface for the news folders """
+
+
+class IEventFolder(Interface):
+    """ Marker interface for the event folders """
