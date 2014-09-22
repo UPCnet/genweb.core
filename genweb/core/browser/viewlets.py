@@ -10,10 +10,20 @@ from plone.app.i18n.locales.browser.selector import LanguageSelector
 from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
 
-from genweb.core import ITranslatable
 from genweb.core.utils import genweb_config, havePermissionAtRoot
 from genweb.core.interfaces import IGenwebLayer
 from genweb.core import GenwebMessageFactory as _
+
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('Products.LinguaPlone')
+except pkg_resources.DistributionNotFound:
+    HAS_LINGUAPLONE = False
+    from genweb.core.interfaces import ITranslatable
+else:
+    HAS_LINGUAPLONE = True
+    from Products.LinguaPlone.interfaces import ITranslatable
 
 # [DEPRECATED] All this viewlets and associated code are deprecated in favor of
 # the PAM aware viewlet genweb.pamls

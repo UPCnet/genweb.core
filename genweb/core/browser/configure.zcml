@@ -23,22 +23,6 @@
       template="views_templates/getzeo.pt"
       />
 
-    <!-- Universal Link -->
-    <browser:page
-      name="universal-link"
-      for="*"
-      class=".views.universalLink"
-      permission="zope.Public"
-      />
-
-    <!-- Selector -->
-    <browser:page
-      name="goto"
-      for="*"
-      class=".views.selectorView"
-      permission="zope.Public"
-      />
-
      <browser:resourceDirectory
         name="collective.tinymcetemplates.plugin"
         directory="tinytemplates_plugin"
