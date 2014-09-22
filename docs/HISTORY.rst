@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.4.5 (unreleased)
+4.4.5 (2014-09-22)
 ------------------
 
-- Nothing changed yet.
-
+* New interfaces for the news and events folders [Victor Fernandez de Alba]
+* Fix listing of available templates [Victor Fernandez de Alba]
+* Erase some unused backported from PAM utilities and views. [Victor Fernandez de Alba]
+* Search patch and i18n [Victor Fernandez de Alba]
 
 4.4.4 (2014-09-17)
 ------------------
