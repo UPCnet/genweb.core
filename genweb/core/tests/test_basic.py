@@ -3,6 +3,7 @@ from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
 from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter, queryUtility
+from zope.interface import alsoProvides
 from Products.CMFCore.utils import getToolByName
 
 from plone.testing.z2 import Browser
@@ -70,6 +71,19 @@ class IntegrationTest(unittest.TestCase):
         obj.is_important = True
         obj2 = IImportant(self.portal.test_adapter)
         self.assertEqual(obj2.is_important, True)
+
+    def test_protected_content(self):
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.portal.invokeFactory('Folder', 'test_folder', title=u"Soc una carpeta")
+        self.portal.test_folder.invokeFactory('Document', 'test_document', title=u"Soc un document")
+        from genweb.core.interfaces import IProtectedContent
+        alsoProvides(self.portal.test_folder, IProtectedContent)
+        setRoles(self.portal, TEST_USER_ID, ['Member'])
+
+        self.portal.test_folder.manage_delObjects('test_document')
+
+        self.assertRaises(Unauthorized, self.portal.manage_delObjects, 'test_folder')
 
 
 class FunctionalTest(unittest.TestCase):
