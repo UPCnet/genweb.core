@@ -43,7 +43,7 @@
 <!-- TOREMOVE as soon 4.3.4 goes live. -->
     <monkey:patch
         description="wc.fc can't delete the items in the case the site is in a mount point"
-        class="Products.CMFPlone.PloneTool"
+        class="Products.CMFPlone.PloneTool.PloneTool"
         original="deleteObjectsByPaths"
         replacement=".patches.deleteObjectsByPaths"
         />
