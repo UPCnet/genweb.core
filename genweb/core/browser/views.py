@@ -1,6 +1,7 @@
 from five import grok
 from plone import api
 from itertools import chain
+from zExceptions import NotFound
 
 from zope.interface import Interface
 from zope.component import queryUtility
@@ -76,3 +77,13 @@ class AjaxUserSearch(grok.View):
             return json.dumps(results)
         else:
             return json.dumps({"error": "No query found"})
+
+
+class SendToFormOverride(grok.View):
+    grok.context(Interface)
+    grok.name('sendto_form')
+    grok.require('zope2.Public')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        raise NotFound
