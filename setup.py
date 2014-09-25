@@ -51,7 +51,8 @@ setup(name='genweb.core',
           'collective.tinymcetemplates',
           'wildcard.foldercontents',
           'jarn.jsi18n',
-          'Products.PloneLDAP'
+          'Products.PloneLDAP',
+          'quintagroup.seoptimizer'
       ],
       entry_points="""
       # -*- Entry points: -*-
