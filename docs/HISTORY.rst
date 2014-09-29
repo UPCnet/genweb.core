@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.4.7 (unreleased)
+4.4.7 (2014-09-29)
 ------------------
 
-- Nothing changed yet.
-
+* New custom font for Genweb. Fix resizer.js. Added SEO optimizer. [Victor Fernandez de Alba]
+* Override of the default sendto_form redirecting to NotFound [Victor Fernandez de Alba]
+* Patch for fixing the wcfc error on deleting objects. [Victor Fernandez de Alba]
+* Patch for fixing the wcfc error on deleting objects. [Victor Fernandez de Alba]
+* Test for IProtectedContent [Victor Fernandez de Alba]
 
 4.4.6 (2014-09-22)
 ------------------
