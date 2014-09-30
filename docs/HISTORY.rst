@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.8 (unreleased)
+4.4.8 (2014-09-30)
 ------------------
 
-- Nothing changed yet.
-
+* Fix path of example images [Victor Fernandez de Alba]
+* Fix protected content [Victor Fernandez de Alba]
 
 4.4.7 (2014-09-29)
 ------------------
