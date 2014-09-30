@@ -19,7 +19,7 @@ def get_plantilles():
 <li><a href="#">FusceLli tincidunt</a></li>
 </ul>
 </div>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Text amb tots els titulars"
     resum = u"Com utilitzar la jerarquia de títols. És  important respectar aquesta jerarquia si volem ser accessibles i millorar el nostre posicionament a Internet."
@@ -33,7 +33,7 @@ def get_plantilles():
 <p>Morbi dictum. Vestibulum adipiscing pulvinar quam.  In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada  ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu  elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus  commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque  varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis  pellentesque risus.</p>
 <h6>In hac habitasse platea dictumst</h6>
 <p>Nulla non orci. In egestas porttitor quam. Duis nec diam eget nibh mattis  tempus. Curabitur accumsan pede id odio. Nunc vitae libero. Aenean condimentum  diam et turpis. Vestibulum non risus. Ut consectetuer gravida elit. Aenean est  nunc, varius sed, aliquam eu, feugiat sit amet, metus. Sed venenatis odio id  eros. Phasellus placerat purus vel mi. In hac habitasse platea dictumst. Donec  aliquam porta odio. Ut facilisis. Donec ornare ipsum ut massa.</p>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Dues columnes de text"
     resum = u"A cada columna s'hi poden afegir altres plantilles."
@@ -43,7 +43,7 @@ def get_plantilles():
 <div class="span6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
 </div>
 """
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Combinacions de columnes"
     resum = u"Podeu fer d'1 a 4 columnes i fusionar-les entre elles. Elimineu les combinacions que no us interessin i treballeu amb el columnat que us agradi més."
@@ -72,29 +72,29 @@ def get_plantilles():
 <div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 </div>
 """
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Destacat"
     resum = u"Text destacat."
     cos = u"""<p class="lead">
 In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam.  In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada  ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu  elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus  commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque  varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis  pellentesque risus.
 </p>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Destacat gran"
     resum = u"Destacat amb text més gran i color."
     cos = u"""<p class="lead lead-large">
 In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar  quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium  interdum, malesuada ac, augue.
 </p>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Destacat petit"
     resum = u"Destacat amb text petit."
     cos = u"""<p class="lead lead-small">
 In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis pellentesque risus.
 </p>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
-    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
     titol = u"Columna de suport"
     resum = u"Afegiu enllaços i contingut de suport a la columna de la dreta."
     cos = u"""<h2>Titular del bloc de text</h2>
@@ -117,7 +117,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 </div>
 </div>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Llistat"
     resum = u"Llistat d'ítems."
@@ -133,7 +133,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
 <li><a href="http://gw4.beta.upcnet.es">At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</a></li>
 </ul>
 """
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Llistat índex"
     resum = u"Índex de continguts."
@@ -161,7 +161,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
 <li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
 </ul>
 """
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})    
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Enllaços destacats"
     resum = u"Per afegir un llistat d'enllaços destacats."
@@ -193,7 +193,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
     <tfoot>
         <tr>
             <td colspan="7">Peu de la taula</td>
-        </tr>            
+        </tr>
     </tfoot>
     <tbody>
         <tr>
@@ -203,25 +203,25 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
             <td>Sit amet</td>
             <td>Lorem ipsum</td>
             <td>Dolor sum</td>
-            <td>Sit amet</td>           
+            <td>Sit amet</td>
         </tr>
         <tr>
             <td class="warning">Consecuteur est</td>
             <td>Lorem ipsum</td>
             <td>Sit amet</td>
             <td class="success">Dolor sum</td>
-            <td>Sit amet</td>                 
+            <td>Sit amet</td>
             <td>Consecuteur est</td>
-            <td>Sit amet</td>              
+            <td>Sit amet</td>
         </tr>
         <tr>
             <td>Sit amet</td>
             <td>Consecuteur est</td>
             <td>Dolor sum</td>
             <td class="info">Lorem ipsum</td>
-            <td>Sit amet</td>                 
+            <td>Sit amet</td>
             <td>Lorem ipsum</td>
-            <td>Dolor sum</td>               
+            <td>Dolor sum</td>
         </tr>
     </tbody>
 </table>
@@ -246,7 +246,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
     <tfoot>
         <tr>
             <td colspan="7">Peu de la taula</td>
-        </tr>            
+        </tr>
     </tfoot>
     <tbody>
         <tr>
@@ -256,25 +256,25 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
             <td>Sit amet</td>
             <td>Lorem ipsum</td>
             <td>Dolor sum</td>
-            <td>Sit amet</td>           
+            <td>Sit amet</td>
         </tr>
         <tr>
             <td class="warning">Consecuteur est</td>
             <td>Lorem ipsum</td>
             <td>Sit amet</td>
             <td class="success">Dolor sum</td>
-            <td>Sit amet</td>                 
+            <td>Sit amet</td>
             <td>Consecuteur est</td>
-            <td>Sit amet</td>              
+            <td>Sit amet</td>
         </tr>
         <tr>
             <td>Sit amet</td>
             <td>Consecuteur est</td>
             <td>Dolor sum</td>
             <td class="info">Lorem ipsum</td>
-            <td>Sit amet</td>                 
+            <td>Sit amet</td>
             <td>Lorem ipsum</td>
-            <td>Dolor sum</td>               
+            <td>Dolor sum</td>
         </tr>
     </tbody>
 </table>
@@ -376,7 +376,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
 <div class="sheet">
 <h2>Títol de la fitxa</h2>
 <h3>At ipsum vitae est lacinia tincidunt</h3>
-<img alt="" src="mostra.jpg" class="pull-right img-polaroid" />
+<img alt="" src="++genweb++static/example-images/mostra.jpg" class="pull-right img-polaroid" />
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
 <h3>At ipsum vitae est lacinia tincidunt</h3>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
@@ -389,17 +389,17 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
     resum = u"Crea un àlbum amb les miniatures de fotografies."
     cos = u"""<h2>Àlbum de Fotografies</h2>
 <div>
-<div class="photoAlbumEntry"><a href="sampleimg1.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg1.jpg" class="estilImgPhotoAlbum3" src="sampleimg1.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg1.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg2.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg2.jpg" class="estilImgPhotoAlbum1" src="sampleimg2.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg2.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg3.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg3.jpg" class="estilImgPhotoAlbum1" src="sampleimg3.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg3.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg4.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg4.jpg" class="estilImgPhotoAlbum1" src="sampleimg4.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg4.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg5.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg5.jpg" class="estilImgPhotoAlbum1" src="sampleimg5.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg5.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg6.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg6.jpg" class="estilImgPhotoAlbum1" src="sampleimg6.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg6.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg7.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg7.jpg" class="estilImgPhotoAlbum1" src="sampleimg7.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg7.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg8.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg8.jpg" class="estilImgPhotoAlbum1" src="sampleimg8.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg8.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg9.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg9.jpg" class="estilImgPhotoAlbum1" src="sampleimg9.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg9.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg10.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg10.jpg" class="estilImgPhotoAlbum2" src="sampleimg10.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg10.jpg</span> </a></div>
-<div class="photoAlbumEntry"><a href="sampleimg11.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg11.jpg" class="estilImgPhotoAlbum1" src="sampleimg11.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg11.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg1.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg1.jpg" class="estilImgPhotoAlbum3" src="++genweb++static/example-images/sampleimg1.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg1.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg2.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg2.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg2.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg2.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg3.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg3.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg3.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg3.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg4.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg4.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg4.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg4.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg5.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg5.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg5.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg5.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg6.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg6.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg6.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg6.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg7.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg7.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg7.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg7.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg8.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg8.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg8.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg8.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg9.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg9.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg9.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg9.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg10.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg10.jpg" class="estilImgPhotoAlbum2" src="++genweb++static/example-images/sampleimg10.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg10.jpg</span> </a></div>
+<div class="photoAlbumEntry"><a href="sampleimg11.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg11.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg11.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg11.jpg</span> </a></div>
 <div class="visualClear"><!-- --></div>
 </div>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
@@ -407,7 +407,7 @@ In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In al
     titol = u"Imatge amb text lateral"
     resum = u"Imatge damunt la qual hi apareix un text."
     cos = u"""<h2>Títol [opcional]</h2>
-<div id="FCKTdiv1imatgedamunttext"><img alt="foto mostra" src="sampleimg9.jpg" />
+<div id="FCKTdiv1imatgedamunttext"><img alt="foto mostra" src="++genweb++static/example-images/sampleimg9.jpg" />
 <div id="FCKTdiv2imatgedamunttext">
 <div id="FCKTdiv3imatgedamunttext">Lorem ipsum dolor sit amet consectetuer Vestibulum neque dolor felis malesuada. Id dolor magna enim pellentesque condimentum ante ullamcorper urna tellus id. At non Ut commodo consequat gravida sem vel tempus metus eleifend. Ridiculus pretium sit mauris pellentesque interdum tellus at id ante see interdum tellus at id ante semper.</div>
 </div>
