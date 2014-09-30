@@ -3,7 +3,6 @@ from plone import api
 from AccessControl import Unauthorized
 from zope.lifecycleevent.interfaces import IObjectRemovedEvent
 from genweb.core.interfaces import IProtectedContent
-from genweb.core.utils import havePermissionAtRoot
 
 
 @grok.subscribe(IProtectedContent, IObjectRemovedEvent)
@@ -17,10 +16,9 @@ def preventDeletionOnProtectedContent(content, event):
         # Site so grant it unconditionally
         return
 
-    # Only administrators can delete packet content from root folder
-    user_has_permission_at_root = havePermissionAtRoot()
+    # Only (global) site managers can delete packet content from root folder
 
-    if not user_has_permission_at_root:
+    if 'Manager' not in api.user.get_roles():
         raise(Unauthorized, u"Cannot delete protected content.")
     else:
         return

@@ -79,7 +79,7 @@ class IntegrationTest(unittest.TestCase):
         self.portal.test_folder.invokeFactory('Document', 'test_document', title=u"Soc un document")
         from genweb.core.interfaces import IProtectedContent
         alsoProvides(self.portal.test_folder, IProtectedContent)
-        setRoles(self.portal, TEST_USER_ID, ['Member'])
+        setRoles(self.portal, TEST_USER_ID, ['Reader', 'Editor'])
 
         self.portal.test_folder.manage_delObjects('test_document')
 
