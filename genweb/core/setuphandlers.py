@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from zope.interface import alsoProvides
 
 from Products.CMFCore.utils import getToolByName
@@ -127,6 +128,10 @@ def setupVarious(context):
     mh.smtp_host = 'localhost'
     portal.email_from_name = 'Genweb Administrator'
     portal.email_from_address = 'no-reply@upcnet.es'
+
+    # Set default TimeZone (p.a.event)
+    api.portal.set_registry_record('plone.app.event.portal_timezone', 'Europe/Madrid')
+    api.portal.set_registry_record('plone.app.event.first_weekday', 0)
 
     transaction.commit()
 
