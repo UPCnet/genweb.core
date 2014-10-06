@@ -849,3 +849,6 @@ msgstr "Neutre"
 
 msgid "button_sendevent"
 msgstr "Envia a l'agenda general de la UPC"
+
+msgid "personalbar_default_language"
+msgstr "(per defecte)"

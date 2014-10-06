@@ -1262,3 +1262,6 @@ msgstr "Vista filtrada"
 
 msgid "root_folder_neutral"
 msgstr "Neutral"
+
+msgid "personalbar_default_language"
+msgstr "(por defecto)"
