@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.9 (unreleased)
+4.4.9 (2014-10-06)
 ------------------
 
-- Nothing changed yet.
-
+* Fix calendar [Victor Fernandez de Alba]
+* Default language [Victor Fernandez de Alba]
 
 4.4.8 (2014-09-30)
 ------------------
