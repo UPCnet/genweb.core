@@ -142,3 +142,6 @@ msgstr "(open link in a new window)"
 
 msgid "root_folder_neutral"
 msgstr "Neutral"
+
+msgid "shared_folder"
+msgstr "Shared folder"
