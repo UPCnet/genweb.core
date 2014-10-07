@@ -52,7 +52,8 @@ setup(name='genweb.core',
           'wildcard.foldercontents',
           'jarn.jsi18n',
           'Products.PloneLDAP',
-          'quintagroup.seoptimizer'
+          'quintagroup.seoptimizer',
+          'pyquery'
       ],
       entry_points="""
       # -*- Entry points: -*-
