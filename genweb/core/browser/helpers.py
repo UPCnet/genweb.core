@@ -82,10 +82,12 @@ def getDorsal():
 def listPloneSites(zope):
     out = []
     for item in zope.values():
-        if IFolder.providedBy(item):
+        if IFolder.providedBy(item) and not IPloneSiteRoot.providedBy(item):
             for site in item.values():
                 if IPloneSiteRoot.providedBy(site):
                     out.append(site)
+        elif IPloneSiteRoot.providedBy(item):
+            out.append(item)
     return out
 
 
@@ -491,4 +493,21 @@ class ListLastLogin(grok.View):
                     fullname = wrapped_user.getProperty('id')
                 last_login = wrapped_user.getProperty('last_login_time')
                 output.append('{}; {}'.format(fullname, last_login))
+        return '\n'.join(output)
+
+
+class ReinstallGWControlPanel(grok.View):
+    grok.context(IApplication)
+    grok.name('reinstall_gwcontrolpanel')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        plonesites = listPloneSites(context)
+        output = []
+        for plonesite in plonesites:
+            qi = getToolByName(plonesite, 'portal_quickinstaller')
+            if qi.isProductInstalled('genweb.controlpanel'):
+                qi.reinstallProducts(['genweb.controlpanel'])
+                output.append('{}: Successfully reinstalled control panel'.format(plonesite))
         return '\n'.join(output)
