@@ -497,18 +497,17 @@ class ListLastLogin(grok.View):
 
 
 class ReinstallGWControlPanel(grok.View):
-    grok.context(IApplication)
+    grok.context(IPloneSiteRoot)
     grok.name('reinstall_gwcontrolpanel')
     grok.require('cmf.ManagePortal')
 
     def render(self):
         context = aq_inner(self.context)
-        plonesites = listPloneSites(context)
         output = []
-        for plonesite in plonesites:
-            qi = getToolByName(plonesite, 'portal_quickinstaller')
-            if qi.isProductInstalled('genweb.controlpanel'):
-                qi.uninstallProducts(['genweb.controlpanel'])
-                qi.installProducts(['genweb.controlpanel'])
-                output.append('{}: Successfully reinstalled control panel'.format(plonesite))
+        qi = getToolByName(context, 'portal_quickinstaller')
+
+        if qi.isProductInstalled('genweb.controlpanel'):
+            qi.uninstallProducts(['genweb.controlpanel'], reinstall=True)
+            qi.installProducts(['genweb.controlpanel'], reinstall=True)
+            output.append('{}: Successfully reinstalled control panel'.format(context))
         return '\n'.join(output)
