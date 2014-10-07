@@ -508,6 +508,7 @@ class ReinstallGWControlPanel(grok.View):
         for plonesite in plonesites:
             qi = getToolByName(plonesite, 'portal_quickinstaller')
             if qi.isProductInstalled('genweb.controlpanel'):
-                qi.reinstallProducts(['genweb.controlpanel'])
+                qi.uninstallProducts(['genweb.controlpanel'])
+                qi.installProducts(['genweb.controlpanel'])
                 output.append('{}: Successfully reinstalled control panel'.format(plonesite))
         return '\n'.join(output)
