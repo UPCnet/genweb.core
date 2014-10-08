@@ -3,16 +3,23 @@ from plone import api
 from itertools import chain
 from zExceptions import NotFound
 
+from Acquisition import aq_inner
+
 from zope.interface import Interface
 from zope.component import queryUtility
 from zope.component import getMultiAdapter
 from zope.component.hooks import getSite
 
 from plone.app.contenttypes.interfaces import IDocument
-
+from plone.dexterity.interfaces import IDexterityContent
 from plone.registry.interfaces import IRegistry
 
+from Products.statusmessages.interfaces import IStatusMessage
+
 from genweb.core.interfaces import IGenwebLayer
+from genweb.core.adapters import IImportant
+
+from genweb.core import GenwebMessageFactory as _
 
 import json
 
@@ -87,3 +94,23 @@ class SendToFormOverride(grok.View):
 
     def render(self):
         raise NotFound
+
+
+class gwToggleIsImportant(grok.View):
+    grok.context(IDexterityContent)
+    grok.name('toggle_important')
+    grok.require('cmf.ModifyPortalContent')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        context = aq_inner(self.context)
+        is_important = IImportant(context).is_important
+        if is_important:
+            IImportant(context).is_important = False
+            confirm = _(u"L'element s'ha desmarcat com important")
+        else:
+            IImportant(context).is_important = True
+            confirm = _(u"L'element s'ha marcat com important")
+
+        IStatusMessage(self.request).addStatusMessage(confirm, type='info')
+        self.request.response.redirect(self.context.absolute_url())
