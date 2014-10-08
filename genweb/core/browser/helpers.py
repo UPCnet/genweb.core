@@ -9,6 +9,7 @@ from zope.interface import Interface
 from zope.component import queryUtility
 from zope.interface import alsoProvides
 
+from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -313,6 +314,10 @@ class MakeMeaSubHomePage(grok.View):
 
 
 class BulkUserCreator(grok.View):
+    """
+        Convenience bulk user creator. It requires parametrization in code and
+        eventually, run this over a debug instance in production.
+    """
     grok.name('bulkusercreator')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
@@ -396,6 +401,10 @@ class BulkUserCreator(grok.View):
 
 
 class BulkUserEraser(grok.View):
+    """
+        Convenience bulk user eraser. It requires parametrization in code and
+        eventually, run this over a debug instance in production.
+    """
     grok.name('bulkusereraser')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
@@ -477,6 +486,7 @@ class BulkUserEraser(grok.View):
 
 
 class ListLastLogin(grok.View):
+    """ List the last_login information for all the users in this site. """
     grok.context(IPloneSiteRoot)
     grok.require('genweb.webmaster')
 
@@ -497,6 +507,7 @@ class ListLastLogin(grok.View):
 
 
 class ReinstallGWControlPanel(grok.View):
+    """ Reinstalls genweb.controlpanel in the current Plone site. """
     grok.context(IPloneSiteRoot)
     grok.name('reinstall_gwcontrolpanel')
     grok.require('cmf.ManagePortal')
@@ -510,4 +521,24 @@ class ReinstallGWControlPanel(grok.View):
             qi.uninstallProducts(['genweb.controlpanel'], reinstall=True)
             qi.installProducts(['genweb.controlpanel'], reinstall=True)
             output.append('{}: Successfully reinstalled control panel'.format(context))
+        return '\n'.join(output)
+
+
+class BulkReinstallGWControlPanel(grok.View):
+    """
+        Reinstall genweb.controlpanel in all the Plone instance of this Zope.
+        Useful when added some parameter to the control panel and you want to
+        apply it at the same time in all the existing Plone sites in the Zope.
+    """
+    grok.context(IApplication)
+    grok.name('bulk_reinstall_gwcontrolpanel')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        plonesites = listPloneSites(context)
+        output = []
+        for plonesite in plonesites:
+            response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/reinstall_gwcontrolpanel')
+            output.append(response.getBody())
         return '\n'.join(output)
