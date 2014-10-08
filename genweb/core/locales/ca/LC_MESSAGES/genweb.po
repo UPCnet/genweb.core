@@ -852,3 +852,6 @@ msgstr "Envia a l'agenda general de la UPC"
 
 msgid "personalbar_default_language"
 msgstr "(per defecte)"
+
+msgid "shared_folder"
+msgstr "Continguts compartits"

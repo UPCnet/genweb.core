@@ -1,3 +1,5 @@
+from pyquery import PyQuery as pq
+from plone import api
 from plone.app.search.browser import quote_chars
 from plone.app.search.browser import EVER
 
@@ -284,3 +286,54 @@ def deleteObjectsByPaths(self, paths, handle_errors=True, REQUEST=None):
                 raise
     transaction_note('Deleted %s' % (', '.join(success)))
     return success, failure
+
+
+# TOREMOVE AS SOON AS THIS GOT PROPERLY FIXED
+# This fixes CMFEditions to work with Dexterity combined with five.pt that
+# doesn't exposes "macros" property, also fix bug in retrieving the correct
+# version
+
+def get_macros(self, vdata):
+    context = aq_inner(self.context)
+    # We need to get the view appropriate for the object in the
+    # history, not the current object, which may differ due to
+    # some migration.
+    type_info = context.portal_types.getTypeInfo(vdata.object)
+
+    # build the name of special versions views
+    if getattr(type_info, 'getViewMethod', None) is not None:
+        # Should use IBrowserDefault.getLayout ?
+        def_method_name = type_info.getViewMethod(context)
+    else:
+        def_method_name = type_info.getActionInfo(
+            'object/view')['url'].split('/')[-1] or \
+            getattr(type_info, 'default_view', 'view')
+    versionPreviewMethodName = 'version_%s' % def_method_name
+    versionPreviewTemplate = getattr(
+        context, versionPreviewMethodName, None)
+
+    # check if a special version view exists
+    if getattr(versionPreviewTemplate, 'macros', None) is None:
+        # Use the Plone's default view template
+        versionPreviewTemplate = vdata.object.restrictedTraverse(
+            def_method_name)
+
+    if getattr(versionPreviewTemplate, 'macros', None) is None:
+        # We assume we are using Dexterity Content Types along with five.pt
+        content = pq(versionPreviewTemplate.index())
+        return content('#content-core').html()
+
+    macro_names = ['content-core', 'main']
+
+    try:
+        return versionPreviewTemplate.macros['content-core']
+    except KeyError:
+        pass  # No content-core macro could mean that we are in plone3 land
+    try:
+        return versionPreviewTemplate.macros['main']
+    except KeyError:
+        context.plone_log(
+            "(CMFEditions: @@get_macros) Internal error: Missing TAL "
+            "macros %s in template '%s'." % (', '.join(macro_names),
+                                              versionPreviewMethodName))
+        return None

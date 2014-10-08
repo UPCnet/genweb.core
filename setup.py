@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.4.10.dev0'
+version = '4.4.11.dev0'
 
 README = open("README.rst").read()
 HISTORY = open(os.path.join("docs", "HISTORY.rst")).read()
@@ -52,7 +52,8 @@ setup(name='genweb.core',
           'wildcard.foldercontents',
           'jarn.jsi18n',
           'Products.PloneLDAP',
-          'quintagroup.seoptimizer'
+          'quintagroup.seoptimizer',
+          'pyquery'
       ],
       entry_points="""
       # -*- Entry points: -*-

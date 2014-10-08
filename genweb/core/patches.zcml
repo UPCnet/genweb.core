@@ -48,4 +48,12 @@
         replacement=".patches.deleteObjectsByPaths"
         />
 
+<!-- TOREMOVE as soon it got fixed -->
+    <monkey:patch
+        description="CMFEditions versions_history_form doesn't show the preview for DX and five.pt"
+        class="Products.CMFEditions.browser.utils.GetMacros"
+        original="get_macros"
+        replacement=".patches.get_macros"
+        />
+
 </configure>

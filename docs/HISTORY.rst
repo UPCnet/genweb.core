@@ -1,11 +1,22 @@
 Changelog
 =========
 
-4.4.10 (unreleased)
+4.4.11 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.4.10 (2014-10-07)
+-------------------
+
+* i18n [Victor Fernandez de Alba]
+* Reinstall controlpanel helper finished [Victor Fernandez de Alba]
+* Fix helper [Victor Fernandez de Alba]
+* Helper for reinstall control panel in all Plone instances of a Zope [Victor Fernandez de Alba]
+* Add dependency [Victor Fernandez de Alba]
+* Upload new example images [Victor Fernandez de Alba]
+* Fix versioning preview of the selected version. [Victor Fernandez de Alba]
 
 4.4.9 (2014-10-06)
 ------------------
