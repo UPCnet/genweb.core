@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.11 (unreleased)
+4.4.11 (2014-10-08)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Añadir poder marcar contenidos como importantes [hanirok]
 
 4.4.10 (2014-10-07)
 -------------------
