@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.13 (unreleased)
+4.4.13 (2014-10-09)
 -------------------
 
-- Nothing changed yet.
-
+* Update the BLACK_LIST_IDS for the inheriting elements. Make portal_url work again with our code [Victor Fernandez de Alba]
 
 4.4.12 (2014-10-09)
 -------------------
