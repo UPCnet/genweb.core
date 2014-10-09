@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.12 (unreleased)
+4.4.12 (2014-10-09)
 -------------------
 
-- Nothing changed yet.
-
+* Improved clouseau [Victor Fernandez de Alba]
 
 4.4.11 (2014-10-08)
 -------------------
