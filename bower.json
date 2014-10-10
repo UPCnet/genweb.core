@@ -26,6 +26,8 @@
     "fontawesome": "latest",
     "modernizr": "~2.8.2",
     "underscore": "~1.6.0",
+    "handlebars": "latest",
+    "typeahead.js": "latest",
     "select2": "https://github.com/ivaynberg/select2.git#master",
     "wookmark-jquery": "latest"
   }
