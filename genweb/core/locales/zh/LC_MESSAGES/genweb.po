@@ -144,4 +144,4 @@ msgid "root_folder_neutral"
 msgstr "Neutral"
 
 msgid "shared_folder"
-msgstr "Shared folder"
+msgstr "Shared files"

@@ -854,4 +854,4 @@ msgid "personalbar_default_language"
 msgstr "(per defecte)"
 
 msgid "shared_folder"
-msgstr "Continguts compartits"
+msgstr "Fitxers compartits"

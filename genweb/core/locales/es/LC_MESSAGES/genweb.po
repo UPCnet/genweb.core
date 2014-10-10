@@ -1267,4 +1267,4 @@ msgid "personalbar_default_language"
 msgstr "(por defecto)"
 
 msgid "shared_folder"
-msgstr "Contenidos compartidos"
+msgstr "Ficheros compartidos"
