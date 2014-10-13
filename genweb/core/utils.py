@@ -2,6 +2,7 @@ import json
 import urllib2
 import requests
 from five import grok
+from plone import api
 from AccessControl import getSecurityManager
 from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
@@ -157,6 +158,13 @@ class genwebUtils(BrowserView):
 
     def get_published_languages(self):
         return genweb_config().idiomes_publicats
+
+    def is_ldap_upc_site(self):
+        acl_users = api.portal.get_tool(name='acl_users')
+        if 'ldapUPC' in acl_users:
+            return True
+        else:
+            return False
 
 
 # Per deprecar (not wired):

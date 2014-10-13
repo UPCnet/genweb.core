@@ -52,6 +52,9 @@ class IGenwebUtils(Interface):
     def get_published_languages(self):
         """ Get the current published languages """
 
+    def is_ldap_upc_site(self):
+        """ Boolean if site is configured with LDAP UPC auth"""
+
 
 class IProtectedContent(Interface):
     """Marker interface for preventing dumb users to delete system configuration
