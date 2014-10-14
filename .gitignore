@@ -18,3 +18,4 @@ data
 docs/_build
 *.mo
 build
+node_modules
