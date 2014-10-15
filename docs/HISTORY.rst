@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.4.14 (unreleased)
+4.4.14 (2014-10-15)
 -------------------
 
-- Nothing changed yet.
-
+* Ignore node modules [Carles Bruguera]
+* Apply changes to minified version [Carles Bruguera]
+* Add new detection in case LDAP UPC is configured, fridge to the portal_url banid [Victor Fernandez de Alba]
+* Update LDAP username [Victor Fernandez de Alba]
+* Add typeahead and handlebars [Carles Bruguera]
+* Migration cleanup and i18n [Victor Fernandez de Alba]
 
 4.4.13 (2014-10-09)
 -------------------
