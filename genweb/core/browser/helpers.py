@@ -542,3 +542,25 @@ class BulkReinstallGWControlPanel(grok.View):
             response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/reinstall_gwcontrolpanel')
             output.append(response.getBody())
         return '\n'.join(output)
+
+
+class ResetLanguage(grok.View):
+    """
+        Re-set the language of each LRF according to its name. Execute in an LRF.
+    """
+    grok.context(Interface)
+    grok.name('resetlanguage')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        from plone.app.multilingual.interfaces import ILanguage
+        context = aq_inner(self.context)
+        pc = api.portal.get_tool('portal_catalog')
+        results = pc.unrestrictedSearchResults(path='/'.join(context.getPhysicalPath()))
+
+        for brain in results:
+            ob = brain._unrestrictedGetObject()
+            language_aware = ILanguage(ob, None)
+            if language_aware is not None:
+                language_aware.set_language(self.context.id)
+                ob.reindexObject(idxs=['Language', 'TranslationGroup'])
