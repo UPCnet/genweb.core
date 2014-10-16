@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.4.15 (unreleased)
+4.4.15 (2014-10-16)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Update and modernize some parts. Awesomeness from Plone5 [Victor Fernandez de Alba]
+* New helper for re-setting a branch language [Victor Fernandez de Alba]
 
 4.4.14 (2014-10-15)
 -------------------
