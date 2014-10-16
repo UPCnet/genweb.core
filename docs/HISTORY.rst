@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.16 (unreleased)
+4.4.16 (2014-10-16)
 -------------------
 
-- Nothing changed yet.
-
+* New templates, i18n [Victor Fernandez de Alba]
 
 4.4.15 (2014-10-16)
 -------------------
