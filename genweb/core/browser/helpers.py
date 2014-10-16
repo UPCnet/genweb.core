@@ -92,7 +92,7 @@ def listPloneSites(zope):
     return out
 
 
-class getZEO(BrowserView):
+class getZEO(grok.View):
     """ Funció que agafa el numero de zeo al que esta assignat la instancia de
         genweb. Per aixo, el buildout s'ha d'afegir una linea a la zope-conf-
         additional:
@@ -101,6 +101,9 @@ class getZEO(BrowserView):
                     zeo 9
                 </product-config>
     """
+    grok.name('getZEO')
+    grok.context(Interface)
+    grok.require('zope2.View')
 
     def dorsal(self):
         config = getConfiguration()

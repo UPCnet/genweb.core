@@ -15,19 +15,25 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-    <browser:page
+<!--     <browser:page
       name="getZEO"
       for="*"
       class=".helpers.getZEO"
       permission="zope2.View"
       template="views_templates/getzeo.pt"
+      /> -->
+
+    <browser:resourceDirectory
+      name="collective.tinymcetemplates.plugin"
+      directory="tinytemplates_plugin"
+      layer="..interfaces.IGenwebLayer"
       />
 
-     <browser:resourceDirectory
-        name="collective.tinymcetemplates.plugin"
-        directory="tinytemplates_plugin"
-        layer="..interfaces.IGenwebLayer"
-        />
+    <!-- Adding awesomeness since 2006 -->
+    <browser:resource
+      file="templates/plone-admin-ui.css"
+      name="genweb-plone-admin-ui.css"
+      />
 
       <configure zcml:condition="installed plone.app.multilingual">
 
