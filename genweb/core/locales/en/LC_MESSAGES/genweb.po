@@ -459,4 +459,16 @@ msgid "root_folder_neutral"
 msgstr "Neutral"
 
 msgid "shared_folder"
-msgstr "Shared files"
+msgstr "Common files"
+
+msgid "templates_folder"
+msgstr "Customize templates"
+
+msgid "manage_site_permissions"
+msgstr "Grant access"
+
+msgid "genweb-eines"
+msgstr "Tools"
+
+msgid "genweb-roots"
+msgstr "Root folders"

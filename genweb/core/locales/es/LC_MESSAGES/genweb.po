@@ -426,7 +426,7 @@ msgstr "Color específico 2"
 #: genweb.core/genweb/core/profiles/default/actions.xml
 #: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:53
 msgid "genweb-accesarrel"
-msgstr "Carpeta raiz"
+msgstr "Carpeta raíz"
 
 #. Default: "Accessibilitat"
 #: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:50
@@ -1267,4 +1267,16 @@ msgid "personalbar_default_language"
 msgstr "(por defecto)"
 
 msgid "shared_folder"
-msgstr "Ficheros compartidos"
+msgstr "Ficheros comunes"
+
+msgid "templates_folder"
+msgstr "Personaliza plantillas"
+
+msgid "manage_site_permissions"
+msgstr "Conceder permisos"
+
+msgid "genweb-eines"
+msgstr "Herramientas"
+
+msgid "genweb-roots"
+msgstr "Carpetas raíz"

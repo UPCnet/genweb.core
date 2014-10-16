@@ -854,4 +854,16 @@ msgid "personalbar_default_language"
 msgstr "(per defecte)"
 
 msgid "shared_folder"
-msgstr "Fitxers compartits"
+msgstr "Fitxers comuns"
+
+msgid "templates_folder"
+msgstr "Personalitza plantilles"
+
+msgid "manage_site_permissions"
+msgstr "Concedir permisos"
+
+msgid "genweb-eines"
+msgstr "Eines"
+
+msgid "genweb-roots"
+msgstr "Carpetes arrel"
