@@ -11,12 +11,14 @@ from zope.interface import alsoProvides
 
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
+from plone.uuid.interfaces import IMutableUUID
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
 from genweb.core import HAS_DXCT
+from genweb.core import HAS_PAM
 from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
 
@@ -567,3 +569,33 @@ class ResetLanguage(grok.View):
             if language_aware is not None:
                 language_aware.set_language(self.context.id)
                 ob.reindexObject(idxs=['Language', 'TranslationGroup'])
+
+
+class MirrorUIDs(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.name('mirroruids')
+    grok.require('cmf.ManagePortal')
+
+    def update(self):
+        portal = self.context
+        form = self.request.form
+        self.output = []
+        if self.request['method'] == 'POST' and form.get('origin_root_path', False):
+            origin_root_path = form.get('origin_root_path')
+            destination_root_path = '/'.join(portal.getPhysicalPath())
+            origin_portal = portal.restrictedTraverse(origin_root_path)
+            # Get all eligible objects
+            if HAS_PAM:
+                all_objects = origin_portal.portal_catalog.searchResults(path=origin_root_path)
+            else:
+                all_objects = origin_portal.portal_catalog.searchResults(path=origin_root_path, Language='all')
+            for obj in all_objects:
+                # Check if exist a match object by path in destination
+                destination_obj = portal.unrestrictedTraverse(obj.getPath().replace(origin_root_path, destination_root_path), False)
+                if destination_obj:
+                    origin_uuid = obj.UID
+                    IMutableUUID(destination_obj).set(str(origin_uuid))
+                    destination_obj.reindexObject()
+                    self.output.append('{0} -> {1}'.format(destination_obj.absolute_url(), origin_uuid))
+                    print '{0} -> {1}'.format(destination_obj.absolute_url(), origin_uuid)
+            self.output = '<br/>'.join(self.output)
