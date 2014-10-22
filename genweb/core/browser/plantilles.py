@@ -6,19 +6,35 @@ def get_plantilles():
     Declaració de les pàgines que es faràn servir com plantilles
     """
     plantilles = []
-    titol = u"Índex de contingut"
-    resum = u"Per definir un índex amb enllaços al contingut de la mateixa pàgina. Enllaços definits amb àncores."
-    cos = u"""<div class="llistatIndex">
-<h2>Títol de l'índex [opcional]</h2>
-<ul>
+    titol = u"Llistat índex"
+    resum = u"Índex de continguts."
+    cos = u"""<h2>Sed ultricies cursus lectus</h2>
+<ul class="list list-index">
+<li><a href="#">Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</a></li>
+<li><a href="#">Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</a></li>
+<li><a href="#">Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</a></li>
+<li><a href="#">At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</a></li>
+</ul>"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Llistat enllaços"
+    resum = u"Per afegir un llistat d'enllaços relacionats."
+    cos = u"""<h2>Enllaços relacionats</h2>
+<ul class="list list-links">
 <li><a href="#">JDuis tellus</a></li>
 <li><a href="#">Maecenas elit orci</a></li>
 <li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
-<li><a href="#">Eget suscipit eros purus in ante</a></li>
-<li><a href="#">Sed ultricies cursus lectus</a></li>
-<li><a href="#">FusceLli tincidunt</a></li>
-</ul>
-</div>"""
+</ul>"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Llistat destacat"
+    resum = u"Per afegir un llistat d'enllaços destacats."
+    cos = u"""  <h2>Llistat destacat</h2>
+<ul class="list list-highlighted">
+<li><a href="#">JDuis tellus</a></li>
+<li><a href="#">Maecenas elit orci</a></li>
+<li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
+</ul>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Text amb tots els titulars"
@@ -72,6 +88,28 @@ def get_plantilles():
 </div>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
+    titol = u"Columna de suport"
+    resum = u"Afegiu enllaços i contingut de suport a la columna de la dreta."
+    cos = u"""<h2>Titular del bloc de text</h2>
+<div class="row-fluid">
+<div class="span8">
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+</div>
+<div class="span4">
+<div class="box pull-right">
+<h3 class="xic gris">Enllaços relacionats</h3>
+<ul class="list list-links">
+<li><a href="#">JDuis tellus</a></li>
+<li><a href="#">Maecenas elit orci</a></li>
+<li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
+</ul>
+<h3 class="xic gris">Bàners</h3>
+<a href="#"><img alt="mostra" src="++genweb++static/example-images/banerMostra1linia_gw3.png" /></a> <a href="#"><img alt="mostra" src="++genweb++static/example-images/banerMostra1linia_gw3.png" /></a></div>
+</div>
+</div>"""
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
     titol = u"Destacat"
     resum = u"Text destacat."
     cos = u"""<p class="lead">In aliquam rhoncus sem. Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi erat, sodales eget, pretium interdum, malesuada ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu elementum purus, eget vehicula lorem metus vel libero. Sed in dui id lectus commodo elementum. Etiam rhoncus tortor. Proin a lorem. Ut nec velit. Quisque varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis pellentesque risus.</p>"""
@@ -93,65 +131,35 @@ def get_plantilles():
 </div>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
-    titol = u"Columna de suport"
-    resum = u"Afegiu enllaços i contingut de suport a la columna de la dreta."
-    cos = u"""<h2>Titular del bloc de text</h2>
-<h3>Enllaços relacionats</h3>
-<ul>
-<li><a href="#">Primer</a></li>
-<li><a href="#">Segon</a></li>
-<li><a href="#">Tercer</a></li>
-</ul>
-<h2>Bàners</h2>
-<p><a href="#"><img alt="mostra" src="++genweb++static/example-images/banerMostra1linia_gw3.png" /></a> <a href="#"><img alt="mostra" src="++genweb++static/example-images/banerMostra1linia_gw3.png" /></a></p>
-<div class="row-fluid">
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    titol = u"Pou"
+    resum = u"Contenidor de pou per encabir elements i limitar-los visualment."
+    cos = u"""<div class="well">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
+</div>"""
+
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Pou degradat"
+    resum = u"Contenidor de pou per encabir elements i limitar-los visualment amb fons degradat."
+    cos = u"""<div class="well well-gradient">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
+</div>"""
+
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
+    titol = u"Caixa"
+    resum = u"Contenidor de caixa per encabir elements i limitar-los visualment."
+    cos = u"""<div class="box">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
 </div>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
-    titol = u"Llistat"
-    resum = u"Llistat d'ítems."
-    cos = u"""<h2>Sed ultricies cursus lectus</h2>
-<ul class="list">
-<li>Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</li>
-<li>Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</li>
-<li>Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</li>
-<li>At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</li>
-<li><a href="http://gw4.beta.upcnet.es">Sed lacinia. Suspendisse potenti. Sed ultricies cursus lectus. In id magna sit amet nibh suscipit euismod.</a></li>
-<li>Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</li>
-<li><a href="http://gw4.beta.upcnet.es">At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</a></li>
-</ul>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+    titol = u"Caixa degradat"
+    resum = u"Contenidor de caixa per encabir elements i limitar-los visualment amb fons degradat."
+    cos = u"""<div class="box box-gradient">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
+</div>"""
 
-    titol = u"Llistat índex"
-    resum = u"Índex de continguts."
-    cos = u"""<h2>Sed ultricies cursus lectus</h2>
-<ul class="list list-index">
-<li><a href="#">Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros.</a></li>
-<li><a href="#">Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</a></li>
-<li><a href="#">Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</a></li>
-<li><a href="#">At ipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel, lorem.</a></li>
-</ul>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
-
-    titol = u"Llistat enllaços"
-    resum = u"Per afegir un llistat d'enllaços relacionats."
-    cos = u"""<h2>Enllaços relacionats</h2>
-<ul class="list list-links">
-<li><a href="#">JDuis tellus</a></li>
-<li><a href="#">Maecenas elit orci</a></li>
-<li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
-</ul>"""
-    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
-
-    titol = u"Enllaços destacats"
-    resum = u"Per afegir un llistat d'enllaços destacats."
-    cos = u"""<h2>Llistat destacat</h2>
-<ul class="list list-highlighted">
-<li><a href="#">JDuis tellus</a></li>
-<li><a href="#">Maecenas elit orci</a></li>
-<li><a href="#">At ipsum vitae est lacinia tincidunt</a></li>
-</ul>"""
     plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Taula colors destacats"
@@ -237,7 +245,7 @@ def get_plantilles():
 </tbody>
 </table>
 </div>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Taula de registres per files i columnes"
     resum = u"Per definir una taula de registres estructurada per files i columnes. Es pot ampliar en files i columnes."
@@ -297,7 +305,7 @@ def get_plantilles():
 </table>
 </div>"""
 
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Calendari"
     resum = u"Per representar gràficament els esdeveniments o activitats d'un mes determinat. Es pot representar tot un any afegint successivament un mes darrera l'altre."
@@ -356,38 +364,7 @@ def get_plantilles():
 </tr>
 </tbody>
 </table>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
-
-    titol = u"Caixa"
-    resum = u"Contenidor de caixa per encabir elements i limitar-los visualment."
-    cos = u"""<div class="box">
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
-</div>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
-
-    titol = u"Caixa degradat"
-    resum = u"Contenidor de caixa per encabir elements i limitar-los visualment amb fons degradat."
-    cos = u"""<div class="box box-gradient">
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
-</div>"""
-
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
-
-    titol = u"Pou"
-    resum = u"Contenidor de pou per encabir elements i limitar-los visualment."
-    cos = u"""<div class="well">
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
-</div>"""
-
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
-
-    titol = u"Pou degradat"
-    resum = u"Contenidor de pou per encabir elements i limitar-los visualment amb fons degradat."
-    cos = u"""<div class="well well-gradient">
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, <a href="javascript:;">purus nibh vehicula sem</a>, eu egestas ante nisl non justo. Fusce tincidunt, lorem nec dapibus consectetuer, leo orci mollis ipsum, eget suscipit eros purus in ante.</p>
-</div>"""
-
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Fitxa"
     resum = u"Contenidor de fitxa."
@@ -401,7 +378,7 @@ def get_plantilles():
 <h3>At ipsum vitae est lacinia tincidunt</h3>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis tellus. Donec ante dolor, iaculis nec, gravida ac, cursus in, eros. Mauris vestibulum, felis et egestas ullamcorper, purus nibh vehicula sem, eu egestas ante nisl non justo.</p>
 </div>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Àlbum de fotografies"
     resum = u"Crea un àlbum amb les miniatures de fotografies."
@@ -420,7 +397,7 @@ def get_plantilles():
 <div class="photoAlbumEntry"><a href="sampleimg11.jpg"> <span class="photoAlbumEntryWrapper"> <img alt="sampleimg11.jpg" class="estilImgPhotoAlbum1" src="++genweb++static/example-images/sampleimg11.jpg" /> </span> <span class="photoAlbumEntryTitle">sampleimg11.jpg</span> </a></div>
 <div class="visualClear"></div>
 </div>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Imatge amb text lateral"
     resum = u"Imatge damunt la qual hi apareix un text."
@@ -430,14 +407,14 @@ def get_plantilles():
 <div id="FCKTdiv3imatgedamunttext">Lorem ipsum dolor sit amet consectetuer Vestibulum neque dolor felis malesuada. Id dolor magna enim pellentesque condimentum ante ullamcorper urna tellus id. At non Ut commodo consequat gravida sem vel tempus metus eleifend. Ridiculus pretium sit mauris pellentesque interdum tellus at id ante see interdum tellus at id ante semper.</div>
 </div>
 </div>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Assenyalar enllaços"
     resum = u"Classes que es poden afegir als enllaços per indicar el tipus d'element enllaçat."
     cos = u"""<h2>Classes especials per assenyalar enllaços</h2>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore <a class="pdf" href="#">magna</a> aliquam erat volutpat. Ut wisi enim ad minim veniam, ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse <a class="doc" href="#">molestie</a> consequat, vel illum dolore eu te feugait nulla facilisi. Nam liber tempor nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non <a class="ppt" href="#">habent claritatem</a> insitam; est usus legentis in iis qui. Investigationes demonstraverunt lectores legere me lius <a class="xlsdf" href="#">quod ii</a> legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. <a class="down" href="#">Mirum est notare</a> quam littera gothica, parum claram, anteposuerit litterarum formas humanitatis <a class="txt" href="#">per seacula</a> quarta decima et quinta decima. <a class="https" href="#"> Eodem modo typi</a>, qui nunc nobis <a class="vid" href="#">videntur</a> parum clari, fiant <a class="img" href="#">sollemnes</a> in futurum.</p>
 <p><strong>Les classes són: pdf, doc, ppt, xls, down, txt, https, down, vid, img.</strong></p>"""
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Carousel d'imatges"
     resum = u"Carousel d'imatges navegables."
@@ -473,7 +450,7 @@ def get_plantilles():
 <!--fi de active item --></div>
 <!-- Carousel nav --> <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a> <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a></div>"""
 
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Pestanyes"
     resum = u"Contingut segmentat per pestanyes."
@@ -489,8 +466,7 @@ def get_plantilles():
 <div class="tab-pane" id="tercera">Contingut de la tercera pestanya...</div>
 <div class="tab-pane" id="quarta">Contingut de la quarta pestanya...</div>
 </div>"""
-
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Acordió"
     resum = u"Acordió d'opcions."
@@ -515,7 +491,7 @@ def get_plantilles():
 </div>
 </div>"""
 
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
 
     titol = u"Zoom imatge"
     resum = u"Imatge que s'amplia."
@@ -528,6 +504,8 @@ def get_plantilles():
 <img src="++genweb++static/example-images/anecs-gran.jpg" /></div>
 </div>"""
 
-    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+    plantilles.append({'titol':titol, 'resum':resum, 'cos':cos})
+
 
     return plantilles
+

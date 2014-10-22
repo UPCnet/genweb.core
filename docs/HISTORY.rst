@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.17 (unreleased)
+4.4.17 (2014-10-22)
 -------------------
 
-- Nothing changed yet.
-
+* New helper for mirror UUIDs from one site to another (in the same zope instance) [Victor Fernandez de Alba]
 
 4.4.16 (2014-10-16)
 -------------------

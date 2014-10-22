@@ -599,3 +599,76 @@ class MirrorUIDs(grok.View):
                     self.output.append('{0} -> {1}'.format(destination_obj.absolute_url(), origin_uuid))
                     print '{0} -> {1}'.format(destination_obj.absolute_url(), origin_uuid)
             self.output = '<br/>'.join(self.output)
+
+
+class MirrorStates(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.name('mirrorstates')
+    grok.require('cmf.ManagePortal')
+    grok.template('mirroruids')
+
+    def update(self):
+        portal = self.context
+        form = self.request.form
+        self.output = []
+        if self.request['method'] == 'POST' and form.get('origin_root_path', False):
+            origin_root_path = form.get('origin_root_path')
+            destination_root_path = '/'.join(portal.getPhysicalPath())
+            origin_portal = portal.restrictedTraverse(origin_root_path)
+
+            # States translation table from genweb_review to genweb_simple
+            states = {'esborrany': 'visible', 'intranet': 'intranet', 'pending': 'pending', 'private': 'private', 'published': 'published', 'restricted-to-managers': 'restricted-to-managers'}
+
+            # Get all eligible objects
+            if HAS_PAM:
+                all_objects = origin_portal.portal_catalog.searchResults(path=origin_root_path)
+            else:
+                all_objects = origin_portal.portal_catalog.searchResults(path=origin_root_path, Language='all')
+            for obj in all_objects:
+                # Check if exist a match object by path in destination
+                destination_obj = portal.unrestrictedTraverse(obj.getPath().replace(origin_root_path, destination_root_path), False)
+                if destination_obj:
+                    origin_state = obj.review_state
+                    if origin_state and origin_state != 'Missing.Value' and origin_state in states.keys():
+                        api.content.transition(obj=destination_obj, to_state=states[origin_state])
+
+                    try:
+                        destination_obj.reindexObject()
+                    except:
+                        print "##### Not able to reindex %s" % obj.getURL()
+
+                    self.output.append('{0} -> {1}'.format(destination_obj.absolute_url(), origin_state))
+                    print '{0} -> {1}'.format(destination_obj.absolute_url(), origin_state)
+            self.output = '<br/>'.join(self.output)
+
+
+    def __call__(self):
+        portal = self.context
+        form = self.request.form
+        self.output = []
+        HAS_PAM = False
+        states = {'esborrany': 'visible', 'intranet': 'intranet', 'pending': 'pending', 'private': 'private', 'published': 'published', 'restricted-to-managers': 'restricted-to-managers'}
+        if self.request['method'] == 'POST' and form.get('origin_root_path', False):
+            origin_root_path = form.get('origin_root_path')
+            destination_root_path = '/'.join(portal.getPhysicalPath())
+            origin_portal = portal.restrictedTraverse(origin_root_path)
+            # Get all eligible objects
+            if HAS_PAM:
+                all_objects = origin_portal.portal_catalog.searchResults(path=origin_root_path)
+            else:
+                all_objects = origin_portal.portal_catalog.searchResults(path=origin_root_path, Language='all')
+            for obj in all_objects:
+                # Check if exist a match object by path in destination
+                destination_obj = portal.unrestrictedTraverse(obj.getPath().replace(origin_root_path, destination_root_path), False)
+                if destination_obj:
+                    origin_state = obj.review_state
+                    if origin_state and origin_state != 'Missing.Value' and origin_state in states.keys():
+                        api.content.transition(obj=destination_obj, to_state=states[origin_state])
+
+                    try:
+                        destination_obj.reindexObject()
+                    except:
+                        print "##### Not able to reindex %s" % obj.getURL()
+                    self.output.append('{0} -> {1}'.format(destination_obj.absolute_url(), origin_state))
+                    print '{0} -> {1}'.format(destination_obj.absolute_url(), origin_state)
+            self.output = '<br/>'.join(self.output)
