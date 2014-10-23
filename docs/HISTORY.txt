@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.1.7 (unreleased)
+4.1.7 (2014-10-23)
 ------------------
 
-- Nothing changed yet.
-
+* Cookies translations [hanirok]
+* New ldap user [hanirok]
+* Change LDAP password retrieval method [Carles Bruguera]
+* Added missing manifest [Victor Fernandez de Alba]
 
 4.1.6 (2014-02-06)
 ------------------
