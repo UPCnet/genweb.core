@@ -347,3 +347,9 @@ msgstr "Comparteix a Twitter"
 
 msgid "genweb_info_gral"
 msgstr "Informació general del màster"
+
+msgid "cookie_policy_this_site"
+msgstr "Aquest web utilitza <em>cookies</em> pròpies per oferir una millor experiència i servei. En continuar amb la navegació entenem que acceptes la nostra "
+
+msgid "cookie_policy"
+msgstr "política de <em>cookies</em>"

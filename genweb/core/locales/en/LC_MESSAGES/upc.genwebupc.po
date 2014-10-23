@@ -154,3 +154,9 @@ msgstr "Share on Twitter"
 
 msgid "genweb_info_gral"
 msgstr "General information on the master's degree"
+
+msgid "cookie_policy_this_site"
+msgstr "This website uses cookies to offer you the best experience and service. If you continue browsing, it is understood that you accept our "
+
+msgid "cookie_policy"
+msgstr "cookies policy"
