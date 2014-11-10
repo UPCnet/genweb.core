@@ -867,3 +867,12 @@ msgstr "Eines"
 
 msgid "genweb-roots"
 msgstr "Carpetes arrel"
+
+msgid "cookie_policy_this_site"
+msgstr "Aquest web utilitza <em>cookies</em> pròpies per oferir una millor experiència i servei. En continuar amb la navegació entenem que acceptes la nostra "
+
+msgid "cookie_policy"
+msgstr "política de <em>cookies</em>"
+
+msgid "genweb-disclaimer"
+msgstr "Avís legal"

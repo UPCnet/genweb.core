@@ -1280,3 +1280,12 @@ msgstr "Herramientas"
 
 msgid "genweb-roots"
 msgstr "Carpetas raíz"
+
+msgid "cookie_policy_this_site"
+msgstr "Esta web utiliza <em>cookies</em> propias para ofrecerle una mejor experiencia y servicio. Si continúa la navegación, entendemos que acepta nuestra "
+
+msgid "cookie_policy"
+msgstr "política de <em>cookies</em>"
+
+msgid "genweb-disclaimer"
+msgstr "Aviso legal"
