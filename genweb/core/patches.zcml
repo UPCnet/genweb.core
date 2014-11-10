@@ -56,4 +56,10 @@
         replacement=".patches.get_macros"
         />
 
+    <adapter
+        for="plone.dexterity.interfaces.IDexterityContent"
+        provides="Products.TinyMCE.adapters.interfaces.Save.ISave"
+        factory=".patches.Save"
+        />
+
 </configure>

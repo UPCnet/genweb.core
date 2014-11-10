@@ -337,3 +337,30 @@ def get_macros(self, vdata):
             "macros %s in template '%s'." % (', '.join(macro_names),
                                               versionPreviewMethodName))
         return None
+
+
+# TOREMOVE AS SOON AS THIS GOT PROPERLY FIXED
+# This fixes the save button on TinyMCE for dexterity content types with
+# Richtext fields. This should be solved on Plone 5 or with the new version of
+# TinyMCE
+from zope.interface import implements
+from Products.TinyMCE.adapters.interfaces.Save import ISave
+from plone.app.contenttypes.behaviors.richtext import IRichText
+
+
+class Save(object):
+    """Saves the richedit field"""
+
+    implements(ISave)
+
+    def __init__(self, context):
+        """Constructor"""
+
+        self.context = context
+
+    def save(self, text, fieldname):
+        """Saves the specified richedit field"""
+        fieldname = fieldname.split('.')[-1]
+        setattr(self.context, fieldname, IRichText['text'].fromUnicode(text))
+
+        return "saved"
