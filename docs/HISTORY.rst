@@ -1,11 +1,17 @@
 Changelog
 =========
 
-4.4.18 (unreleased)
+4.4.18 (2014-11-10)
 -------------------
 
-- Nothing changed yet.
-
+* Fix tiny templates preview [Victor Fernandez de Alba]
+* Add syndication enabled by default [Victor Fernandez de Alba]
+* Update linkable Tiny objects list [Victor Fernandez de Alba]
+* Fix link behavior [Victor Fernandez de Alba]
+* Add c.indexing to build [Victor Fernandez de Alba]
+* Updated templates for Tiny [Victor Fernandez de Alba]
+* Regain Tiny save button functionality [Victor Fernandez de Alba]
+* Get contact data [hanirok]
 
 4.4.17 (2014-10-22)
 -------------------
