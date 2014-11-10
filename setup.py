@@ -53,7 +53,8 @@ setup(name='genweb.core',
           'jarn.jsi18n',
           'Products.PloneLDAP',
           'quintagroup.seoptimizer',
-          'pyquery'
+          'pyquery',
+          'collective.indexing'
       ],
       entry_points="""
       # -*- Entry points: -*-
