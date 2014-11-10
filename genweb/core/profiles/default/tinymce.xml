@@ -3,24 +3,18 @@
  <resourcetypes>
   <linkable>
    <element value="Document"/>
-   <element value="FormFolder"/>
+   <element value="Collection"/>
    <element value="Image"/>
-   <element value="ImageAttachment"/>
-   <element value="Topic"/>
+   <element value="Link"/>
    <element value="File"/>
    <element value="Folder"/>
    <element value="News Item"/>
    <element value="Event"/>
-   <element value="FileAttachment"/>
-   <element value="Ploneboard"/>
-   <element value="PloneboardForum"/>
+   <element value="packet"/>
+   <element value="FormFolder"/>
    <element value="Collage"/>
-   <element value="PlonePopoll"/>
-   <element value="Large Plone Folder" remove="True"/>
-   <element value="Seccio" remove="True"/>
-   <element value="simpleTask" remove="True"/>
-   <element value="Meeting" remove="True"/>
-   <element value="Survey" remove="True"/>
+   <element value="collective.polls.poll"/>
+   <element value="Window"/>
   </linkable>
   <customplugins>
   </customplugins>
@@ -28,20 +22,15 @@
    <element value="Event"/>
    <element value="News Item"/>
    <element value="Document"/>
-   <element value="ATRelativePathCriterion"/>
   </containsanchors>
   <allow_captioned_images value="False"/>
   <containsobjects>
    <element value="Folder"/>
-   <element value="Ploneboard"/>
    <element value="Plone Site"/>
-   <element value="Seccio" remove="True"/>
-   <element value="Large Plone Folder" remove="True"/>
   </containsobjects>
   <entity_encoding value="raw"/>
   <imageobjects>
    <element value="Image"/>
-   <element value="ImageAttachment"/>
   </imageobjects>
   <link_using_uids value="True"/>
   <rooted value="False"/>
