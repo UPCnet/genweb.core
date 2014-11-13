@@ -26,12 +26,14 @@ class IGenwebUtils(Interface):
     """ Marker describing the functionality of the convenience methods
         placeholder genweb.utils view.
     """
+    def portal(self):
+        """ Returns the portal object """
 
     def havePermissionAtRoot(self):
-        """Funcio que retorna si es Editor a l'arrel"""
+        """ Returns if the user have permission at root """
 
     def getDadesUnitat(self):
-        """ Retorna les dades proporcionades pel WebService del SCP """
+        """ Returns the data provided by the SC WebService """
 
     def getContentClass(self, view=None):
         """ Returns the correct class for content container (span) """
@@ -54,6 +56,11 @@ class IGenwebUtils(Interface):
 
     def is_ldap_upc_site(self):
         """ Boolean if site is configured with LDAP UPC auth"""
+
+    def redirect_to_root_always_lang_selector(self):
+        """ Gets the Genweb configuration property for redirect to root on
+            language selector.
+        """
 
 
 class IProtectedContent(Interface):

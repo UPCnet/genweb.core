@@ -2,6 +2,8 @@
 <li class="dropdown" id="portal-languageselector"
     tal:define="pref_lang view/@@genweb.utils/pref_lang_native;
                 published_langs view/@@genweb.utils/get_published_languages;
+                redirect_to_root_always_lang_selector view/@@genweb.utils/redirect_to_root_always_lang_selector;
+                portal view/@@genweb.utils/portal;
                 showFlags view/showFlags;
                 languages view/languages;
                 portal_url view/portal_url;"
@@ -28,7 +30,7 @@
              tal:define="flag lang/flag|nothing;
                          name lang/native|lang/name;
                          showflag python:showFlags and flag;"
-             tal:attributes="href lang/url;
+             tal:attributes="href python: '{}/{}'.format(portal.absolute_url(), code) if redirect_to_root_always_lang_selector else lang['url'];
                              title name">
             <tal:flag condition="showflag">
               <img width="14"

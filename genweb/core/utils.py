@@ -74,6 +74,9 @@ def _contact_ws_cachekey(method, self, unitat):
 class genwebUtils(BrowserView):
     """ Convenience methods placeholder genweb.utils view. """
 
+    def portal(self):
+        return api.portal.get()
+
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
         pm = getToolByName(self, 'portal_membership')
@@ -219,6 +222,9 @@ class genwebUtils(BrowserView):
             return True
         else:
             return False
+
+    def redirect_to_root_always_lang_selector(self):
+        return genweb_config().languages_link_to_root
 
 
 # Per deprecar (not wired):
