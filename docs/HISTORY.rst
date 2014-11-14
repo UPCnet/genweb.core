@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.19 (unreleased)
+4.4.19 (2014-11-14)
 -------------------
 
-- Nothing changed yet.
-
+* Working language selector conditional behavior [Victor Fernandez de Alba]
+* Footer translations [hanirok]
 
 4.4.18 (2014-11-10)
 -------------------
