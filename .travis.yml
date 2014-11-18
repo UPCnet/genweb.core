@@ -3,6 +3,7 @@ python: "2.7"
 install:
 #  - touch /home/travis/virtualenv/python2.7/lib/python2.7/sitecustomize.py
 #  - echo "import sys; sys.setdefaultencoding('utf-8')" > /home/travis/virtualenv/python2.7/lib/python2.7/sitecustomize.py
+  - /home/travis/virtualenv/python2.7/bin/pip install setuptools -U
   - touch customizeme.cfg
   - echo "[ldapconfig]" > customizeme.cfg
   - echo "bindpasswd = secret" >> customizeme.cfg
