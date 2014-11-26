@@ -326,7 +326,7 @@ msgstr "Código de control"
 msgid "genweb_help_type_the_code"
 msgstr "Escriba las palabras de la imagen inferior"
 
-msgid "UPCnews"
+msgid "UPCNews"
 msgstr "Actualidad UPC"
 
 msgid "more_news_link"

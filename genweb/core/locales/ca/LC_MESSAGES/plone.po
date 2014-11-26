@@ -367,7 +367,7 @@ msgstr "Pàgina"
 msgid "portlet_poll_title"
 msgstr "Enquesta"
 
-msgid "UPCnews"
+msgid "UPCNews"
 msgstr "Actualitat UPC"
 
 msgid "more_news_link"
