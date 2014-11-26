@@ -9,13 +9,15 @@ from plone.app.testing import FunctionalTesting
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 
+from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
+
 import pkg_resources
 import transaction
 
 
 class GenwebUPC(PloneSandboxLayer):
 
-    defaultBases = (PLONE_FIXTURE,)
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
         # Load ZCML
@@ -23,9 +25,6 @@ class GenwebUPC(PloneSandboxLayer):
         xmlconfig.file('configure.zcml',
                        genweb.core,
                        context=configurationContext)
-
-        # prepare installing plone.app.contenttypes
-        z2.installProduct(app, 'Products.DateRecurringIndex')
 
     def setUpPloneSite(self, portal):
         # Needed for PAC not complain about not having one... T_T
