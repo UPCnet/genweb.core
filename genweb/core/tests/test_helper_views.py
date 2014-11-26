@@ -33,6 +33,7 @@ class HelperViewsIntegrationTest(unittest.TestCase):
         self.failUnless(portal.unrestrictedTraverse('@@configuraSiteCache'))
 
     def testHelperViewsNotAvailableForAnonymous(self):
+        logout()
         portal = self.layer['portal']
         self.assertRaises(Unauthorized, portal.restrictedTraverse, '@@configuraSiteCache')
 
