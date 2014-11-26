@@ -1,10 +1,9 @@
 import json
 import urllib2
 import requests
-from five import grok
 from plone import api
 from AccessControl import getSecurityManager
-from zope.interface import Interface
+# from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.component.hooks import getSite
@@ -13,7 +12,7 @@ from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
+# from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
@@ -40,9 +39,9 @@ def havePermissionAtRoot():
     return sm.checkPermission('Modify portal content', proot) or \
         ('Manager' in user.getRoles()) or \
         ('Site Administrator' in user.getRoles())
-        # WebMaster used to have permission here, but not anymore since uLearn
-        # makes use of it
-        # ('WebMaster' in user.getRoles()) or \
+    # WebMaster used to have permission here, but not anymore since uLearn
+    # makes use of it
+    # ('WebMaster' in user.getRoles()) or \
 
 
 def portal_url():
@@ -121,7 +120,9 @@ class genwebUtils(BrowserView):
             return False
 
     def getDadesContact(self):
-        """ Retorna les dades proporcionades pel WebService del SCP """
+        """ Retorna les dades proporcionades pel WebService del SCP
+            per al contacte
+        """
         unitat = genweb_config().contacte_id
         if unitat:
             dades = self.getDadesUnitat()
@@ -226,6 +227,17 @@ class genwebUtils(BrowserView):
     def redirect_to_root_always_lang_selector(self):
         return genweb_config().languages_link_to_root
 
+    def premsa_url(self):
+        """Funcio que extreu les noticies de Sala de Premsa
+        """
+        idioma = pref_lang()
+
+        if idioma == 'zh':
+            url = 'http://www.upc.edu/saladepremsa/?set_language=en'
+        else:
+            url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
+        return url
+
 
 # Per deprecar (not wired):
 class utilitats(BrowserView):
@@ -245,7 +257,7 @@ class utilitats(BrowserView):
         """
         id = self.getGWConfig().contacteid
         if id:
-            if self._dadesUnitat == None:
+            if self._dadesUnitat is None:
                 try:
                     url = urllib2.urlopen('https://bus-soa.upc.edu/SCP/InfoUnitatv1?id=' + id, timeout=10)
                     respuesta = url.read()
@@ -282,8 +294,7 @@ class utilitats(BrowserView):
     def llistaContents(self):
         """Retorna tots els tipus de contingut, exclosos els de la llista types_to_exclude"""
         types_to_exclude = ['Banner', 'BannerContainer', 'CollageAlias', 'CollageColumn', 'CollageRow', 'Favorite', 'Large Plone Folder', 'Logos_Container', 'Logos_Footer', 'PoiPscTracker', 'SubSurvey', 'SurveyMatrix', 'SurveyMatrixQuestion', 'SurveySelectQuestion', 'SurveyTextQuestion', ]
-        portal_state = getMultiAdapter((self.context, self.request),
-                                        name=u'plone_portal_state')
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         ptypes = portal_state.friendly_types()
         for typeEx in types_to_exclude:
             if typeEx in ptypes:
@@ -331,7 +342,7 @@ class utilitats(BrowserView):
     def isFolder(self):
         """ Funcio que retorna si es carpeta per tal de mostrar o no el last modified
         """
-        if  IATFolder.providedBy(self.context) or IPloneSiteRoot.providedBy(self.context):
+        if IATFolder.providedBy(self.context) or IPloneSiteRoot.providedBy(self.context):
             return True
 
     def remapList2Dic(self, dictkeys, results):
@@ -388,12 +399,10 @@ class utilitats(BrowserView):
 
     def getSectionFromURL(self):
         context = self.context
-        #portal_url=getToolByName(context, 'portal_url')
-        tools = getMultiAdapter((self.context, self.request),
-                                 name = u'plone_tools')
+        # portal_url=getToolByName(context, 'portal_url')
+        tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
 
-        portal_state = getMultiAdapter((self.context, self.request),
-                                        name=u'plone_portal_state')
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         contentPath = tools.url().getRelativeContentPath(context)
         if not contentPath:
             return ''
@@ -403,31 +412,6 @@ class utilitats(BrowserView):
     def getFlavour(self):
         portal_skins = getToolByName(self.context, 'portal_skins')
         return portal_skins.getDefaultSkin()
-
-    def assignAltAcc(self):
-        """ Assignar alt per accessibilitat a links en finestra nova
-        """
-        lt = getToolByName(self, 'portal_languages')
-        idioma = lt.getPreferredLanguage()
-        label = "(obriu en una finestra nova)"
-        if idioma == 'ca':
-            label = "(obriu en una finestra nova)"
-        if idioma == 'es':
-            label = "(abre en ventana nueva)"
-        if idioma == 'en':
-            label = "(open in new window)"
-        return label
-
-    def premsa_url(self):
-        """Funcio que extreu idioma actiu
-        """
-        lt = getToolByName(self, 'portal_languages')
-        idioma = lt.getPreferredLanguage()
-        if idioma == 'zh':
-            url = 'http://www.upc.edu/saladepremsa/?set_language=en'
-        else:
-            url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
-        return url
 
     def premsa_PDIPAS_url(self):
         """Funcio que extreu idioma actiu
