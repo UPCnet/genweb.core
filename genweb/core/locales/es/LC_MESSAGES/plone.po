@@ -330,4 +330,4 @@ msgid "UPCNews"
 msgstr "Actualidad UPC"
 
 msgid "more_news_link"
-msgstr "Más noticias"
+msgstr "<i class=\"icon-rss\"></i> Más noticias"

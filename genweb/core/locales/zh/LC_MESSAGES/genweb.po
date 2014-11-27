@@ -81,7 +81,7 @@ msgid "Activate"
 msgstr ""
 
 msgid "genweb-actualitat"
-msgstr "UPC Today"
+msgstr "UPC Today <i class=\"icon-news large-icon pull-right\"></i>"
 
 msgid "genweb-noticies"
 msgstr "News"

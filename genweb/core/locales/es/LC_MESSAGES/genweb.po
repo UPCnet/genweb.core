@@ -436,7 +436,7 @@ msgstr "Accesibilidad"
 #. Default: "Actualitat UPC"
 #: ."genweb-actualitat"
 msgid "genweb-actualitat"
-msgstr "Actualidad UPC"
+msgstr "Actualidad UPC <i class=\"icon-news large-icon pull-right\"></i>"
 
 #. Default: "Actualitat PDI/PAS"
 #: ."genweb-actualitatPDIPAS"

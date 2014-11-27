@@ -228,7 +228,7 @@ class genwebUtils(BrowserView):
         return genweb_config().languages_link_to_root
 
     def premsa_url(self):
-        """Funcio que extreu les noticies de Sala de Premsa
+        """Funcio que extreu la URL de Sala de Premsa
         """
         idioma = pref_lang()
 
