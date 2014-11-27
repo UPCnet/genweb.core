@@ -300,7 +300,7 @@ msgstr "Actualitat UPC <i class=\"icon-news large-icon pull-right\"></i>"
 
 #: ."genweb-noticies"
 msgid "genweb-noticies"
-msgstr "Notícies"
+msgstr "Notícies <i class=\"icon-news large-icon pull-right\"></i>"
 
 #: ."genweb-agenda"
 msgid "genweb-agenda"

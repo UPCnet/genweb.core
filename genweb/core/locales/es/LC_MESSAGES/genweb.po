@@ -545,7 +545,7 @@ msgstr "No puedo entrar"
 #. Default: "Notícies"
 #: ."genweb-noticies"
 msgid "genweb-noticies"
-msgstr "Noticias"
+msgstr "Noticias <i class=\"icon-news large-icon pull-right\"></i>"
 
 #. "genweb-opcionspathbar"
 #. Default: "Opcions:"
