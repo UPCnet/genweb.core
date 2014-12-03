@@ -1,11 +1,20 @@
 Changelog
 =========
 
-4.4.20 (unreleased)
+4.4.20 (2014-12-03)
 -------------------
 
-- Nothing changed yet.
-
+* Disable the patch that patched the searchUsers fuction on LDAPMultiPlugin. [Victor Fernandez de Alba]
+* Cambios en traducciones [Francisco Gregori]
+* Translations [hanirok]
+* News translations [hanirok]
+* Translations [hanirok]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translation news [hanirok]
+* Fix test [Victor Fernandez de Alba]
+* Moved to g.upc [Victor Fernandez de Alba]
+* Update to Plone 4.3.4 [Victor Fernandez de Alba]
+* Try to fix Travis [Victor Fernandez de Alba]
 
 4.4.19 (2014-11-14)
 -------------------
