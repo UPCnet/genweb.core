@@ -601,49 +601,60 @@ msgstr "Navega..."
 # Contact settings #
 ####################
 
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
-msgid "help_html_title_ca"
-msgstr ""
+#. Default: "Títol del web amb HTML tags (negretes) [CA]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:40
+msgid "html_title_ca"
+msgstr "Títol del web amb HTML tags (negretes) [CA]"
 
-#. "Títol del web amb HTML tags (negretes) [ES]"
-msgid "html_title_es"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
-msgid "help_html_title_es"
-msgstr ""
-
-#. "Títol del web amb HTML tags (negretes) [EN]"
+#. Default: "Títol del web amb HTML tags (negretes) [EN]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:58
 msgid "html_title_en"
-msgstr ""
+msgstr "Títol del web amb HTML tags (negretes) [EN]"
 
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML."
+#. Default: "Títol del web amb HTML tags (negretes) [ES]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:49
+msgid "html_title_es"
+msgstr "Títol del web amb HTML tags (negretes) [ES]"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:42
+msgid "help_html_title_ca"
+msgstr "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:60
 msgid "help_html_title_en"
-msgstr ""
+msgstr "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:51
+msgid "help_html_title_es"
+msgstr "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+
 
 #. "Signatura de la unitat [CA]"
 msgid "signatura_unitat_ca"
-msgstr ""
+msgstr "Signatura de la unitat [CA]"
 
 #. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 msgid "help_signatura_unitat_ca"
-msgstr ""
+msgstr "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 
 #. "Signatura de la unitat [ES]"
 msgid "signatura_unitat_es"
-msgstr ""
+msgstr "Signatura de la unitat [ES]"
 
 #. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 msgid "help_signatura_unitat_es"
-msgstr ""
+msgstr "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 
 #. "Signatura de la unitat [EN]"
 msgid "signatura_unitat_en"
-msgstr ""
+msgstr "Signatura de la unitat [EN]"
 
 #. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 msgid "help_signatura_unitat_en"
-msgstr ""
+msgstr "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 
 #. "Codi altra marca [CA]"
 msgid "codi_altre_marca_ca"
@@ -717,51 +728,51 @@ msgstr "Marqui aquesta opció si desitja amagar la informació de UPCmaps al con
 
 #. "Color específic 1"
 msgid "especific1"
-msgstr ""
+msgstr "Color específic 1"
 
 #. "Afegiu el color específic 1. És aquell que..."
 msgid "help_especific1"
-msgstr ""
+msgstr "Afegiu el color específic 1. És aquell que..."
 
 #. "Color específic 2"
 msgid "especific2"
-msgstr ""
+msgstr "Color específic 2"
 
 #. "Afegiu el color específic 2. És aquell que..."
 msgid "help_especific2"
-msgstr ""
+msgstr "Afegiu el color específic 2. És aquell que..."
 
 #. "Treu la imatge de la capçalera"
 msgid "treu_imatge_capsalera"
-msgstr ""
+msgstr "Treu la imatge de la capçalera"
 
 #. "Treiem la imatge de la capçalera per ..."
 msgid "help_treu_imatge_capsalera"
-msgstr ""
+msgstr "Treiem la imatge de la capçalera per ..."
 
 #. "Treu el menú horitzontal"
 msgid "treu_menu_horitzontal"
-msgstr ""
+msgstr "Treu el menú horitzontal"
 
 #. "Treu el menú horitzontal ..."
 msgid "help_treu_menu_horitzontal"
-msgstr ""
+msgstr "Treu el menú horitzontal ..."
 
 #. "Treu les icones per compartir en xarxes socials"
 msgid "treu_icones_xarxes_socials"
-msgstr ""
+msgstr "Treu les icones per compartir en xarxes socials"
 
 #. "Treu les icones per compartir en xarxes socials ..."
 msgid "help_treu_icones_xarxes_socials"
-msgstr ""
+msgstr "Treu les icones per compartir en xarxes socials ..."
 
 #. "Amaga de les eines l'enllaç d'identificació"
 msgid "amaga_identificacio"
-msgstr ""
+msgstr "Amaga de les eines l'enllaç d'identificació"
 
 #. "Amaga de les eines l'enllaç d'identificació ..."
 msgid "help_amaga_identificacio"
-msgstr ""
+msgstr "Amaga de les eines l'enllaç d'identificació ..."
 
 #. "Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"
 msgid "idiomes_google_translate_link_ca"
@@ -789,19 +800,19 @@ msgstr ""
 
 #. "Idiomes publicats al web"
 msgid "idiomes_publicats"
-msgstr ""
+msgstr "Idiomes publicats al web"
 
 #. "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
 msgid "help_idiomes_publicats"
-msgstr ""
+msgstr "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
 
 #. "id_estudi"
 msgid "idestudi_master"
-msgstr ""
+msgstr "id_estudi"
 
 #. "Afegiu el id de l'estudi de la base de dades de màsters."
 msgid "help_idestudi_master"
-msgstr ""
+msgstr "add the id of the study of master database"
 
 msgid "homepage_portlet"
 msgstr "Benvingut"
@@ -876,3 +887,54 @@ msgstr "política de <em>cookies</em>"
 
 msgid "genweb-disclaimer"
 msgstr "Avís legal"
+
+msgid "heading_not_found_suggestions"
+msgstr "Segurament estàveu buscant…"
+
+msgid "description_site_error"
+msgstr "Aquesta pàgina no existeix..."
+
+msgid "description_site_error_mail_site_admin"
+msgstr "Verifiqueu l'adreça web a la què voleu accedir i consulteu el ${site_web_map} o utilitzeu el cercador per a localitzar-ne el contingut. Si l'adreça web és correcta, però retorna un error, contacteu amb ${site_admin}"
+
+msgid "label_web_map"
+msgstr "mapa del web"
+
+msgid "label_site_admin"
+msgstr "lloc de administració"
+
+msgid "label_other_contents_web"
+msgstr "Altres continguts al web"
+
+msgid "label_dir_upc"
+msgstr "Directori UPC"
+
+msgid "label_indetify"
+msgstr "Identifica't"
+
+msgid "label_about"
+msgstr "Sobre aquesta web"
+
+msgid "label_accessibility"
+msgstr "Accessibilitat"
+
+msgid "create_packet"
+msgstr "Crear informació general del màster"
+
+msgid "layout_banda_logos"
+msgstr "Banda d'enllaços del peu"
+
+msgid "right_logo_enabled"
+msgstr "Mostrar logo dret"
+
+msgid "help_right_logo_enabled"
+msgstr "Mostra o no el logo dret de la capçalera."
+
+msgid "right_logo_alt"
+msgstr "Text alternatiu del logo dret "
+
+msgid "help_right_logo_alt"
+msgstr "Afegiu el text alternatiu (alt) del logo dret de la capçalera."
+
+
+

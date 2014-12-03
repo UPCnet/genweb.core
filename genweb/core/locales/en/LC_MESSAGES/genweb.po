@@ -42,7 +42,7 @@ msgstr "Profile"
 
 #. "Vés al contingut (premeu Retorn)"
 msgid "Vés al contingut (premeu Retorn)"
-msgstr "Jump to content (press Return)"
+msgstr "Skip to content"
 
 #. "genweb_content_actions_vista_de_carpeta"
 msgid "genweb_content_actions_vista_de_carpeta"
@@ -216,53 +216,29 @@ msgstr "Master"
 #########
 
 
-#. "Títol del web amb HTML tags (negretes) [CA]"
-msgid "html_title_ca"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
-msgid "help_html_title_ca"
-msgstr ""
-
-#. "Títol del web amb HTML tags (negretes) [ES]"
-msgid "html_title_es"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
-msgid "help_html_title_es"
-msgstr ""
-
-#. "Títol del web amb HTML tags (negretes) [EN]"
-msgid "html_title_en"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML."
-msgid "help_html_title_en"
-msgstr ""
-
 #. "Signatura de la unitat [CA]"
 msgid "signatura_unitat_ca"
-msgstr ""
+msgstr "Signature unit [CA]"
 
 #. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 msgid "help_signatura_unitat_ca"
-msgstr ""
+msgstr "It is the literal that appears at the bottom of the page or in the alternative text of the logo (educational centers)."
 
 #. "Signatura de la unitat [ES]"
 msgid "signatura_unitat_es"
-msgstr ""
+msgstr "Signature unit [ES]"
 
 #. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 msgid "help_signatura_unitat_es"
-msgstr ""
+msgstr "It is the literal that appears at the bottom of the page or in the alternative text of the logo (educational centers)."
 
 #. "Signatura de la unitat [EN]"
 msgid "signatura_unitat_en"
-msgstr ""
+msgstr "Signature unit [EN]"
 
 #. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 msgid "help_signatura_unitat_en"
-msgstr ""
+msgstr "It is the literal that appears at the bottom of the page or in the alternative text of the logo (educational centers)."
 
 #. "Codi altra marca [CA]"
 msgid "codi_altre_marca_ca"
@@ -336,51 +312,51 @@ msgstr "UPCmaps information will be hidden with the contact details."
 
 #. "Color específic 1"
 msgid "especific1"
-msgstr ""
+msgstr "Specific color 1"
 
 #. "Afegiu el color específic 1. És aquell que..."
 msgid "help_especific1"
-msgstr ""
+msgstr "Add the specific color 1"
 
 #. "Color específic 2"
 msgid "especific2"
-msgstr ""
+msgstr "Specific color 2"
 
 #. "Afegiu el color específic 2. És aquell que..."
 msgid "help_especific2"
-msgstr ""
+msgstr "Add the specific color 2"
 
 #. "Treu la imatge de la capçalera"
 msgid "treu_imatge_capsalera"
-msgstr ""
+msgstr "Show the header image"
 
 #. "Treiem la imatge de la capçalera per ..."
 msgid "help_treu_imatge_capsalera"
-msgstr ""
+msgstr "Show the header image by .."
 
 #. "Treu el menú horitzontal"
 msgid "treu_menu_horitzontal"
-msgstr ""
+msgstr "Show horizontal menu"
 
 #. "Treu el menú horitzontal ..."
 msgid "help_treu_menu_horitzontal"
-msgstr ""
+msgstr "Show horizontal menu ..."
 
 #. "Treu les icones per compartir en xarxes socials"
 msgid "treu_icones_xarxes_socials"
-msgstr ""
+msgstr "Show icons to share in social networks"
 
 #. "Treu les icones per compartir en xarxes socials ..."
 msgid "help_treu_icones_xarxes_socials"
-msgstr ""
+msgstr "Show icons to share in social networks ..."
 
 #. "Amaga de les eines l'enllaç d'identificació"
 msgid "amaga_identificacio"
-msgstr ""
+msgstr "Hide tools with identification link"
 
 #. "Amaga de les eines l'enllaç d'identificació ..."
 msgid "help_amaga_identificacio"
-msgstr ""
+msgstr "Hide tools with identification link ..."
 
 #. "Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"
 msgid "idiomes_google_translate_link_ca"
@@ -408,19 +384,19 @@ msgstr ""
 
 #. "Idiomes publicats al web"
 msgid "idiomes_publicats"
-msgstr ""
+msgstr "Languages activated on the website"
 
 #. "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
 msgid "help_idiomes_publicats"
-msgstr ""
+msgstr "These languages will be published on the website, languages not specified not be public but will be visible to managers (editors)."
 
 #. "id_estudi"
 msgid "idestudi_master"
-msgstr ""
+msgstr "id_study"
 
 #. "Afegiu el id de l'estudi de la base de dades de màsters."
 msgid "help_idestudi_master"
-msgstr ""
+msgstr "add the id of the study  of master database"
 
 msgid "homepage_portlet"
 msgstr "Welcome"
@@ -481,3 +457,90 @@ msgstr "cookies policy"
 
 msgid "genweb-disclaimer"
 msgstr "Disclaimer"
+
+msgid "description_site_error"
+msgstr "Page does not exist..."
+
+msgid "description_site_error_mail_site_admin"
+msgstr "Please check the web address you want to access or use ${site_web_map} to find it. If the web address is correct but returns an error, please contact ${site_admin}."
+
+msgid "label_web_map"
+msgstr "web map"
+
+msgid "label_site_admin"
+msgstr "site administration"
+
+# Contact
+msgid "genweb_contacte"
+msgstr "Contact"
+
+msgid "label_other_contents_web"
+msgstr "Other contents"
+
+msgid "label_dir_upc"
+msgstr "UPC directory"
+
+msgid "label_indetify"
+msgstr "Login"
+
+msgid "label_about"
+msgstr "About web"
+
+msgid "label_accessibility"
+msgstr "accessibility"
+
+msgid "create_packet"
+msgstr "Create general information of Master"
+
+msgid "layout_banda_logos"
+msgstr "Footer links"
+
+#. Default: "Configuració de Genweb UPC ..."
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:21
+msgid "help_genweb_settings_editform"
+msgstr "settings Genweb UPC ..."
+
+#. Default: "Títol del web amb HTML tags (negretes) [CA]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:40
+msgid "html_title_ca"
+msgstr "Web title with HTML tags (bolds) [CA]"
+
+#. Default: "Títol del web amb HTML tags (negretes) [EN]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:58
+msgid "html_title_en"
+msgstr "Web title with HTML tags (bolds) [EN]"
+
+#. Default: "Títol del web amb HTML tags (negretes) [ES]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:49
+msgid "html_title_es"
+msgstr "Web title with HTML tags (bolds) [ES]"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:42
+msgid "help_html_title_ca"
+msgstr "Add title of Genweb. You can include tags HTML"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:60
+msgid "help_html_title_en"
+msgstr "Add title of Genweb. You can include tags HTML"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:51
+msgid "help_html_title_es"
+msgstr "Add title of Genweb. You can include tags HTML"
+
+msgid "right_logo_enabled"
+msgstr "Show right logo"
+
+msgid "help_right_logo_enabled"
+msgstr "Show or not the right header logo"
+
+msgid "right_logo_alt"
+msgstr "Alternative text to right logo"
+
+msgid "help_right_logo_alt"
+msgstr "Add alternative text (alt) to the right logo of the header"
+
+
+

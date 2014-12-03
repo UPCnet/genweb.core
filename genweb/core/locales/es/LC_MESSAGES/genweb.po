@@ -287,6 +287,10 @@ msgstr "Estado del circuito de trabajo"
 msgid "amaga_identificacio"
 msgstr "Esconde las herramientas del enlace de identificación"
 
+#. "Amaga de les eines l'enllaç d'identificació ..."
+msgid "help_amaga_identificacio"
+msgstr "Esconde las herramientas del enlace de identificación ..."
+
 #. Default: "Avui"
 #: browser/calendar.pt
 msgid "avui"
@@ -838,37 +842,37 @@ msgstr "Se mostrará en la parte superior el enlace al Directorio UPC."
 #. Default: "Afegiu el color específic 1. És aquell que..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:172
 msgid "help_especific1"
-msgstr ""
+msgstr "Añade el color específico 1.Es aquel que.."
 
 #. Default: "Afegiu el color específic 2. És aquell que..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:181
 msgid "help_especific2"
-msgstr ""
+msgstr "Añade el color específico 2.Es aquel que.."
 
 #. Default: "Configuració de Genweb UPC ..."
 #: genweb.controlpanel/genweb/controlpanel/controlpanel.py:21
 msgid "help_genweb_settings_editform"
-msgstr ""
+msgstr "Configuración de Genweb UPC ..."
 
 #. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:42
 msgid "help_html_title_ca"
-msgstr ""
+msgstr "Añade el titulo de Genweb. Se pueden incluir tags HTML"
 
 #. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:60
 msgid "help_html_title_en"
-msgstr ""
+msgstr "Añade el titulo de Genweb. Se pueden incluir tags HTML"
 
 #. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:51
 msgid "help_html_title_es"
-msgstr ""
+msgstr "Añade el titulo de Genweb. Se pueden incluir tags HTML"
 
 #. Default: "Afegiu el id de l'estudi de la base de dades de màsters."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:265
 msgid "help_idestudi_master"
-msgstr ""
+msgstr "Añadir el id del estudio de la base de datos de másters."
 
 #. Default: "Blabla ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:226
@@ -888,37 +892,37 @@ msgstr ""
 #. Default: "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:253
 msgid "help_idiomes_publicats"
-msgstr ""
+msgstr "Estos serán los idiomas publicados en la web, los idiomas no espeficiados no serán públicos pero serán visibles para los gestores (editors)."
 
 #. Default: "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:69
 msgid "help_signatura_unitat_ca"
-msgstr ""
+msgstr "Es el literal que aparece al pie de la página o en el texto alternativo del logotipo (centros docentes)."
 
 #. Default: "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:87
 msgid "help_signatura_unitat_en"
-msgstr ""
+msgstr "Es el literal que aparece al pie de la página o en el texto alternativo del logotipo (centros docentes)."
 
 #. Default: "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:78
 msgid "help_signatura_unitat_es"
-msgstr ""
+msgstr "Es el literal que aparece al pie de la página o en el texto alternativo del logotipo (centros docentes)."
 
 #. Default: "Treu les icones per compartir en xarxes socials ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:208
 msgid "help_treu_icones_xarxes_socials"
-msgstr ""
+msgstr "Mostrar los iconos para compartir las redes sociales ..."
 
 #. Default: "Treiem la imatge de la capçalera per ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:190
 msgid "help_treu_imatge_capsalera"
-msgstr ""
+msgstr "Mostrar la imagen de la cabecera"
 
 #. Default: "Treu el menú horitzontal ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:199
 msgid "help_treu_menu_horitzontal"
-msgstr ""
+msgstr "Mostrar el menu horizontal"
 
 #. Default: "Homepage"
 #: genweb.theme/genweb/theme/portlets/homepage.py:26
@@ -928,17 +932,17 @@ msgstr ""
 #. Default: "Títol del web amb HTML tags (negretes) [CA]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:40
 msgid "html_title_ca"
-msgstr ""
+msgstr "Título de la web con HTML tags (negritas) [CA]"
 
 #. Default: "Títol del web amb HTML tags (negretes) [EN]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:58
 msgid "html_title_en"
-msgstr ""
+msgstr "Título de la web con HTML tags (negritas) [EN]"
 
 #. Default: "Títol del web amb HTML tags (negretes) [ES]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:49
 msgid "html_title_es"
-msgstr ""
+msgstr "Título de la web con HTML tags (negritas) [ES]"
 
 #. Default: "Identifica't"
 #: genweb.theme/genweb/theme/browser/viewlets_templates/header.pt:35
@@ -948,7 +952,7 @@ msgstr "Identifícate"
 #. Default: "id_estudi"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:263
 msgid "idestudi_master"
-msgstr ""
+msgstr "id_estudio"
 
 #. Default: "Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:224
@@ -968,7 +972,7 @@ msgstr ""
 #. Default: "Idiomes publicats al web"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:251
 msgid "idiomes_publicats"
-msgstr ""
+msgstr "Idiomas publicados en la web"
 
 #. Default: "${sendevent_button}"
 #: genweb.theme/genweb/theme/browser/viewlets_templates/important.pt:5
@@ -1176,17 +1180,17 @@ msgstr "Envía"
 #. Default: "Signatura de la unitat [CA]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:67
 msgid "signatura_unitat_ca"
-msgstr ""
+msgstr "Firma de la unidad [CA]"
 
 #. Default: "Signatura de la unitat [EN]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:85
 msgid "signatura_unitat_en"
-msgstr ""
+msgstr "Firma de la unidad [EN]"
 
 #. Default: "Signatura de la unitat [ES]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:76
 msgid "signatura_unitat_es"
-msgstr ""
+msgstr "Firma de la unidad [ES]"
 
 #. Default: "Cerca"
 msgid "submitGo"
@@ -1195,17 +1199,17 @@ msgstr "Buscar"
 #. Default: "Treu les icones per compartir en xarxes socials"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:206
 msgid "treu_icones_xarxes_socials"
-msgstr ""
+msgstr "Mostrar los iconos para compartir las redes sociales"
 
 #. Default: "Treu la imatge de la capçalera"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:188
 msgid "treu_imatge_capsalera"
-msgstr ""
+msgstr "Mostrar las imagenes de cabecera"
 
 #. Default: "Treu el menú horitzontal"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:197
 msgid "treu_menu_horitzontal"
-msgstr ""
+msgstr "Mostrar el menu horizontal"
 
 #. "usuari_connectat"
 #. Default: "Usuari connectat:"
@@ -1289,3 +1293,52 @@ msgstr "política de <em>cookies</em>"
 
 msgid "genweb-disclaimer"
 msgstr "Aviso legal"
+
+msgid "heading_not_found_suggestions"
+msgstr "Quizás estabas buscando..."
+
+msgid "description_site_error"
+msgstr "La página no existe..."
+
+msgid "description_site_error_mail_site_admin"
+msgstr "Verificad la dirección web a la que se quiere acceder y consultad el ${site_web_map} o utilizad el buscador para encontrar el contenido. Si la dirección web es correcta pero devuelve un error, por favor pongase en contacto con el ${site_admin}."
+
+msgid "label_web_map"
+msgstr "mapa de la web"
+
+msgid "label_site_admin"
+msgstr "sitio de administración"
+
+msgid "label_other_contents_web"
+msgstr "Otros contenidos en la web"
+
+msgid "label_dir_upc"
+msgstr "Directorio UPC"
+
+msgid "label_indetify"
+msgstr "Identificate"
+
+msgid "label_about"
+msgstr "Acerca de la web"
+
+msgid "label_accessibility"
+msgstr "Accesibilidad"
+
+msgid "create_packet"
+msgstr "Crear información general del máster"
+
+msgid "layout_banda_logos"
+msgstr "Banda de enlaces del pié"
+
+msgid "right_logo_enabled"
+msgstr "Mostrar logo derecho"
+
+msgid "help_right_logo_enabled"
+msgstr "Mostrar o no el logo derecho de la cabecera."
+
+msgid "right_logo_alt"
+msgstr "Texto alternativo del logo derecho"
+
+msgid "help_right_logo_alt"
+msgstr "Añade el texto alternativo (alt) del logo derecho de la cabecera"
+

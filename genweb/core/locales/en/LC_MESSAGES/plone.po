@@ -37,3 +37,4 @@ msgstr "UPC Today"
 
 msgid "more_news_link"
 msgstr "More news"
+

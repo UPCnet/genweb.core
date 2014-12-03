@@ -372,3 +372,6 @@ msgstr "Actualitat UPC"
 
 msgid "more_news_link"
 msgstr "Més notícies"
+
+msgid "heading_not_found_suggestions"
+msgstr "Segurament estàveu buscant…"
