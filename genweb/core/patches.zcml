@@ -19,12 +19,12 @@
         replacement=".patches.testMemberData"
         />
 
-    <monkey:patch
+<!--     <monkey:patch
         description="Bug when searching with no standard attributes on LDAPUserFolder"
         class="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
         original="searchUsers"
         replacement=".patches.searchUsers"
-        />
+        /> -->
 
     <monkey:patch
         description="Force the creation of users to lowercase"
