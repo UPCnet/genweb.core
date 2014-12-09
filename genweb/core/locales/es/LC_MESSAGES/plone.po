@@ -334,3 +334,7 @@ msgstr "Más noticias"
 
 msgid "heading_not_found_suggestions"
 msgstr "Quizás estabas buscando..."
+
+msgid "label_full_size"
+msgstr "Tamaño original imagen:"
+

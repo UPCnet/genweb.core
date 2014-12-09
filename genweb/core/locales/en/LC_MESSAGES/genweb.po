@@ -542,5 +542,15 @@ msgstr "Alternative text to right logo"
 msgid "help_right_logo_alt"
 msgstr "Add alternative text (alt) to the right logo of the header"
 
+msgid "genweb-settings"
+msgstr "Settings"
 
+msgid "genweb-views"
+msgstr "Views"
+
+msgid "label_share"
+msgstr "Share"
+
+msgid "label_start_session"
+msgstr "Log in"
 

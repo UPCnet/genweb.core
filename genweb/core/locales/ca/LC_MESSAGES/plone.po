@@ -375,3 +375,8 @@ msgstr "Més notícies"
 
 msgid "heading_not_found_suggestions"
 msgstr "Segurament estàveu buscant…"
+
+msgid "label_full_size"
+msgstr "Mida original imatge:"
+
+

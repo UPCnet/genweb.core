@@ -936,5 +936,22 @@ msgstr "Text alternatiu del logo dret "
 msgid "help_right_logo_alt"
 msgstr "Afegiu el text alternatiu (alt) del logo dret de la capçalera."
 
+msgid "genweb-settings"
+msgstr "Configuració"
 
+msgid "genweb-views"
+msgstr "Vistes"
+
+#. "genweb-heading_sign_in-v4"
+#. Default: "Please log in using your UPC intranet user."
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:73
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:61
+msgid "genweb-heading_sign_in-v4"
+msgstr "Si us plau, identifiqueu amb el nom d'usuari de la intranet UPC."
+
+msgid "label_share"
+msgstr "Comparteix"
+
+msgid "label_start_session"
+msgstr "Inicia la sessió"
 

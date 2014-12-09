@@ -794,10 +794,6 @@ msgstr "Teléfono"
 msgid "genweb_type_the_code"
 msgstr ""
 
-#. Default: "Amaga de les eines l'enllaç d'identificació ..."
-#: genweb.controlpanel/genweb/controlpanel/interface.py:217
-msgid "help_amaga_identificacio"
-msgstr ""
 
 #. Default: "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:96
@@ -1341,4 +1337,19 @@ msgstr "Texto alternativo del logo derecho"
 
 msgid "help_right_logo_alt"
 msgstr "Añade el texto alternativo (alt) del logo derecho de la cabecera"
+
+msgid "genweb-settings"
+msgstr "Configuración"
+
+msgid "genweb-views"
+msgstr "Vistas"
+
+msgid "label_copy_object"
+msgstr "copiarF"
+
+msgid "label_share"
+msgstr "Compartir"
+
+msgid "label_start_session"
+msgstr "Iniciar sesión"
 
