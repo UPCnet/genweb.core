@@ -955,3 +955,8 @@ msgstr "Comparteix"
 msgid "label_start_session"
 msgstr "Inicia la sessió"
 
+msgid "label_alt_logo"
+msgstr "Universitat Politècnica de Catalunya, (obriu en finestra nova)"
+
+msgid "label_title_logo"
+msgstr "Universitat Politècnica de Catalunya, (obriu en finestra nova)"

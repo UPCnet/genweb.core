@@ -554,3 +554,8 @@ msgstr "Share"
 msgid "label_start_session"
 msgstr "Log in"
 
+msgid "label_alt_logo"
+msgstr "Universitat Politècnica de Catalunya, (Open in new window)"
+
+msgid "label_title_logo"
+msgstr "Universitat Politècnica de Catalunya, (Open in new window)"
