@@ -268,7 +268,7 @@ msgstr "Arriba"
 
 #. "Vés al contingut (premeu Retorn)"
 #: genweb.theme/genweb/theme/templates/plone.app.layout.viewlets.portal_header.pt:2
-msgid "Vés al contingut (premeu Retorn)"
+msgid "skip_to_content"
 msgstr "Saltar al contenido (pulsar Return)"
 
 #########

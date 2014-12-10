@@ -37,8 +37,8 @@ msgid "genweb-perfil"
 msgstr "Perfil"
 
 #. "Vés al contingut (premeu Retorn)"
-msgid "Vés al contingut (premeu Retorn)"
-msgstr "Jump to content (press Return)"
+msgid "skip_to_content"
+msgstr "Skip to content"
 
 #. "genweb_content_actions_vista_de_carpeta"
 msgid "genweb_content_actions_vista_de_carpeta"
