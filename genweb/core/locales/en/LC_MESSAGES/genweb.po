@@ -561,7 +561,7 @@ msgid "label_title_logo"
 msgstr "Universitat Politècnica de Catalunya, (Open in new window)"
 
 msgid "help_create_packet"
-msgstr 'Per crear el contingut "Informació general del màster" cal comprovar que no existeix en cap dels tres idiomes. Si no fos així cal esborrar-los prèviament.'
+msgstr 'To create content "Create Master of general information" necessary to check that does not exist in any of the other languages. Otherwise must remove them before.'
 
 msgid "label_eines_usuari"
 msgstr "User tools"
@@ -577,3 +577,12 @@ msgstr "User name"
 
 msgid "label_password"
 msgstr "Password"
+
+msgid "title_dir_upc"
+msgstr "Click to open UPC directory"
+
+msgid "title_upcmaps"
+msgstr "Click to open UPCmaps"
+
+
+

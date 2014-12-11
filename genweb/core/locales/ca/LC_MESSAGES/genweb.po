@@ -979,3 +979,9 @@ msgstr "Nom usuari"
 msgid "label_password"
 msgstr "Contrasenya"
 
+msgid "title_dir_upc"
+msgstr "Clica el marcador per anar al Directori UPC"
+
+msgid "title_upcmaps"
+msgstr "Clica el marcador per anar a UPCmaps"
+
