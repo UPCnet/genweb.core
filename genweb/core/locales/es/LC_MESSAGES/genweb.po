@@ -1358,3 +1358,21 @@ msgstr "Universitat Politècnica de Catalunya, (Abrir en ventana nueva)"
 
 msgid "label_title_logo"
 msgstr "Universitat Politècnica de Catalunya, (Abrir en ventana nueva)"
+
+msgid "help_create_packet"
+msgstr 'Per crear el contingut "Informació general del màster" cal comprovar que no existeix en cap dels tres idiomes. Si no fos així cal esborrar-los prèviament.'
+
+msgid "label_eines_usuari"
+msgstr "Herramientas de usuario"
+
+msgid "label_menu_usuari"
+msgstr "Menú de usuario"
+
+msgid "label_menu_eines_genweb"
+msgstr "Menú de herramientas Genweb UPC"
+
+msgid "label_user_name"
+msgstr "Nombre usuario"
+
+msgid "label_password"
+msgstr "Contraseña"
