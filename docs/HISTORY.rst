@@ -1,11 +1,18 @@
 Changelog
 =========
 
-4.4.21 (unreleased)
+4.4.21 (2014-12-15)
 -------------------
 
-- Nothing changed yet.
-
+* Make Wbmasters able to manage portlets [Victor Fernandez de Alba]
+* Add pref_lang to utils view [Victor Fernandez de Alba]
+* Missing console.log [Victor Fernandez de Alba]
+* View about only for editors [hanirok]
+* és traduccions [Paco Gregori]
+* és traduccions [Paco Gregori]
+* Traducciones [hanirok]
+* Traducció xarxes socials [Paco Gregori]
+* Traducciones. Ficheros .po [Paco Gregori]
 
 4.4.20 (2014-12-03)
 -------------------
