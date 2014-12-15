@@ -1324,7 +1324,7 @@ msgid "create_packet"
 msgstr "Crear información general del máster"
 
 msgid "layout_banda_logos"
-msgstr "Banda de enlaces del pié"
+msgstr "Banda de enlaces del pie"
 
 msgid "right_logo_enabled"
 msgstr "Mostrar logo derecho"
