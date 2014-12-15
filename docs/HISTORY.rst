@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.23 (unreleased)
+4.4.23 (2014-12-15)
 -------------------
 
-- Nothing changed yet.
-
+* Add i18n for missing Plone translations [Victor Fernandez de Alba]
 
 4.4.22 (2014-12-15)
 -------------------
