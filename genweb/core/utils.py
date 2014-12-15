@@ -87,6 +87,12 @@ class genwebUtils(BrowserView):
             ('WebMaster' in user.getRoles()) or \
             ('Site Administrator' in user.getRoles())
 
+    def pref_lang(self):
+        """ Extracts the current language for the current user
+        """
+        lt = api.portal.get_tool('portal_languages')
+        return lt.getPreferredLanguage()
+
     # def getDadesUnitat(self):
     #     """ Retorna les dades proporcionades pel WebService del SCP """
     #     unitat = genweb_config().contacte_id

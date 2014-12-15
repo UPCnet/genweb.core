@@ -32,6 +32,9 @@ class IGenwebUtils(Interface):
     def havePermissionAtRoot(self):
         """ Returns if the user have permission at root """
 
+    def pref_lang(self):
+        """ Returns the user preferred language """
+
     def getDadesUnitat(self):
         """ Returns the data provided by the SC WebService """
 
