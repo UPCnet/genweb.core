@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.24 (unreleased)
+4.4.24 (2014-12-16)
 -------------------
 
-- Nothing changed yet.
-
+* Preemptive retire c.indexing from buildout [Victor Fernandez de Alba]
 
 4.4.23 (2014-12-15)
 -------------------
