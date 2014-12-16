@@ -54,7 +54,6 @@ setup(name='genweb.core',
           'Products.PloneLDAP',
           'quintagroup.seoptimizer',
           'pyquery',
-          'collective.indexing',
           'souper.plone'
       ],
       entry_points="""
