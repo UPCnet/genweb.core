@@ -1,35 +1,30 @@
 Changelog
 =========
 
-4.4.27 (unreleased)
+4.4.27 (2014-12-16)
 -------------------
 
-- Nothing changed yet.
-
+* New permissions for special portlets [Victor Fernandez de Alba]
 
 4.4.26 (2014-12-16)
 -------------------
 
-- Nothing changed yet.
-
+* New permissions for special portlets [Victor Fernandez de Alba]
 
 4.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+* New permissions for special portlets [Victor Fernandez de Alba]
 
 4.5 (2014-12-16)
 ----------------
 
-- Nothing changed yet.
-
+* New permissions for special portlets [Victor Fernandez de Alba]
 
 4.4.25 (2014-12-16)
 -------------------
 
-- Nothing changed yet.
-
+* New permissions for special portlets [Victor Fernandez de Alba]
 
 4.4.24 (2014-12-16)
 -------------------
