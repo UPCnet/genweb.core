@@ -1,0 +1,17 @@
+Generar el pot: Para ello nos situamos en la carpeta src/ y desde ahí recorremos todos los paquetes de genweb.
+
+ /var/plone/python2.7/bin/i18ndude rebuild-pot --pot genweb.pot --create genweb genweb.banners  genweb.controlpanel  genweb.core   genweb.jsonify  genweb.logosfooter  genweb.migrations  genweb.packets  genweb.portlets   genweb.smartportlet   genweb.stack  genweb.theme  genweb.upc 
+
+Una vez creado el pot, nos situamos en locales y lanzamos el script merge_sync_po.sh el cual actualiza el .pot con las traducciones que no ha cogido pero se encuentran en los .po, y posteriormente actualiza los .po desde el .pot completo.
+
+################################################################################################
+#Añadimos al .pot las traducciones que se encuentren en los .po y no estén en el .pot aún.
+for mpo in */LC_MESSAGES/genweb.po; do
+        /var/plone/python2.7/bin/i18ndude merge --pot genweb.pot --merge $mpo
+done
+
+#Añadimos a los .po las traducciones que les falten.
+for spo in */LC_MESSAGES/genweb.po; do
+        /var/plone/python2.7/bin/i18ndude sync --pot genweb.pot $spo
+done
+################################################################################################
