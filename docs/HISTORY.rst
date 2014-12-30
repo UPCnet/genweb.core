@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.28 (unreleased)
+4.4.28 (2014-12-30)
 -------------------
 
-- Nothing changed yet.
-
+* info [Paco Gregori]
+* traducciones [Paco Gregori]
 
 4.4.27 (2014-12-16)
 -------------------
