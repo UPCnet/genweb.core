@@ -10,6 +10,7 @@ from zope.component.hooks import getSite
 
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
+from plone.app.multilingual.interfaces import ITranslationManager
 
 from Products.CMFCore.utils import getToolByName
 # from Products.CMFPlone import PloneMessageFactory as _
@@ -63,6 +64,20 @@ def pref_lang():
     """
     lt = getToolByName(portal(), 'portal_languages')
     return lt.getPreferredLanguage()
+
+
+def link_translations(items):
+    """
+        Links the translations with the declared items with the form:
+        [(obj1, lang1), (obj2, lang2), ...] assuming that the first element
+        is the 'canonical' (in PAM there is no such thing).
+    """
+    # Grab the first item object and get its canonical handler
+    canonical = ITranslationManager(items[0][0])
+
+    for obj, language in items:
+        if not canonical.has_translation(language):
+            canonical.register_translation(language, obj)
 
 
 def _contact_ws_cachekey(method, self, unitat):
