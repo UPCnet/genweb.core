@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.4.29 (unreleased)
+4.4.29 (2015-01-08)
 -------------------
 
-- Nothing changed yet.
-
+* Fixing Travis [Victor Fernandez de Alba]
+* Fix Travis [Victor Fernandez de Alba]
+* New utils for link translations [Victor Fernandez de Alba]
+* Fixing travis [Victor Fernandez de Alba]
 
 4.4.28 (2014-12-30)
 -------------------
