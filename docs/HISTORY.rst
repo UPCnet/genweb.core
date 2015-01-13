@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.30 (unreleased)
+4.4.30 (2015-01-13)
 -------------------
 
-- Nothing changed yet.
-
+* Fix translations for homepage portlets [Victor Fernandez de Alba]
 
 4.4.29 (2015-01-08)
 -------------------
