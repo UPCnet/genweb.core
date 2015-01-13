@@ -1324,8 +1324,14 @@ msgstr "Menu L2"
 
 #. Default: "1a Fila"
 #: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:83
-msgid "homeportlets_title_2"
+msgid "homeportlets_title_f1"
 msgstr "1a Fila"
+
+msgid "homeportlets_title_f2"
+msgstr "2a Fila"
+
+msgid "homeportlets_title_f3"
+msgstr "3a Fila"
 
 ####################
 # Contact settings #
