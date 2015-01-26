@@ -42,7 +42,7 @@ msgstr "No obstant això, aquesta és la llista dels idiomes ja traduïts pel co
 
 #: ./browser/controlpanel.py:417
 msgid "If you are installing PAM for the first time in a Plone site, either if it's on an existing or a brand new one you should run the following procedures in order to move the default site content to its right root language folder and be sure that all the content have the language attribute set up correctly. Previous to run them, please be sure that you have set up your site's languages in the 'Site languages' tab and have saved that setting. Finally, in case you have an existing Plone site with Products.LinguaPlone installed, please do not run this steps and refer directly to the 'Migration' tab."
-msgstr "Si aneu a instal·lar PAM per primera vegada en un lloc Plone, ja sigui si està en una ja existent o un de nou, ha d'executar els següents procediments per tal de moure el contingut del lloc per defecte a la seva carpeta d'idioma arrel correcte i assegureu-vos que tots el contingut té l'atribut idioma configurat correctament. Anterior a executar-los, si us plau assegureu-vos que ha configurat idiomes del seu lloc a la pestanya "Idiomes del lloc 'i ha guardat aquest entorn. Finalment, en cas de tenir un lloc Plone existent amb Products.LinguaPlone instal·lat, per favor no executar aquests passos i es refereixen directament a la pestanya 'migració'"
+msgstr "Si aneu a instal·lar PAM per primera vegada en un lloc Plone, ja sigui si està en una ja existent o un de nou, ha d'executar els següents procediments per tal de moure el contingut del lloc per defecte a la seva carpeta d'idioma arrel correcte i assegureu-vos que tots el contingut té l'atribut idioma configurat correctament. Anterior a executar-los, si us plau assegureu-vos que ha configurat idiomes del seu lloc a la pestanya Idiomes del lloc 'i ha guardat aquest entorn. Finalment, en cas de tenir un lloc Plone existent amb Products.LinguaPlone instal·lat, per favor no executar aquests passos i es refereixen directament a la pestanya 'migració'"
 
 #: ./browser/translate.py:75
 msgid "Invalid field"
@@ -273,7 +273,7 @@ msgstr "Establir o canviar l'idioma del contingut actual"
 #. Default: "Set the language cookie always, i.e. also when the 'set_language' request parameter is absent."
 #: ./browser/controlpanel.py:156
 msgid "description_set_language_cookie_always"
-msgstr "Indiqueu la galeta d'idioma sempre, és a dir, també quan el paràmetre de la petició "set_language 'està absent."
+msgstr "Indiqueu la galeta d'idioma sempre, és a dir, també quan el paràmetre de la petició set_language està absent."
 
 #. Default: "Show the language shared (neutral language) folder"
 #: ./browser/menu.py:191
@@ -423,7 +423,7 @@ msgstr "Ajusteu el idioma per defecte"
 #. Default: "Set the language cookie always, i.e. also when the 'set_language' request parameter is absent."
 #: ./browser/controlpanel.py:152
 msgid "heading_set_language_cookie_always"
-msgstr "Indiqueu la galeta d'idioma sempre, és a dir, també quan el paràmetre de la petició "set_language 'està absent."
+msgstr "Indiqueu la galeta d'idioma sempre, és a dir, també quan el paràmetre de la petició set_language està absent."
 
 #. Default: "Default site language"
 #: ./browser/controlpanel.py:51
