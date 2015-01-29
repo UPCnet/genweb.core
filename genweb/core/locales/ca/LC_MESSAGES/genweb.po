@@ -1843,3 +1843,5 @@ msgstr "url"
 msgid "usuari_connectat"
 msgstr "Usuari connectat:"
 
+msgid "No hi ha elements"
+msgstr "No hi ha elements"

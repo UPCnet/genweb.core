@@ -1776,3 +1776,5 @@ msgstr ""
 msgid "usuari_connectat"
 msgstr ""
 
+msgid "No hi ha elements"
+msgstr "No items"
