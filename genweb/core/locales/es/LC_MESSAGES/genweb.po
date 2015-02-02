@@ -1839,3 +1839,6 @@ msgstr "Más información"
 
 msgid "contact_name"
 msgstr "Persona de contacto"
+
+msgid "No hi ha elements"
+msgstr "No hay elementos"

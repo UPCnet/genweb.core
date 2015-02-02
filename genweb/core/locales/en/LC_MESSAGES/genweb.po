@@ -1820,4 +1820,5 @@ msgstr "User online:"
 msgid "event_url"
 msgstr "More information"
 
-
+msgid "No hi ha elements"
+msgstr "No items"
