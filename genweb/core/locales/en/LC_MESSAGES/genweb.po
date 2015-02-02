@@ -1817,3 +1817,7 @@ msgstr "url"
 msgid "usuari_connectat"
 msgstr "User online:"
 
+msgid "event_url"
+msgstr "More information"
+
+

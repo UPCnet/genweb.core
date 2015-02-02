@@ -1833,3 +1833,9 @@ msgstr "${startdate} a ${enddate}"
 #: plone/app/event/browser/formatted_date.pt:71
 msgid "event_when_sameday"
 msgstr "${date} de ${starttime} a ${endtime}"
+
+msgid "event_url"
+msgstr "Más información"
+
+msgid "contact_name"
+msgstr "Persona de contacto"
