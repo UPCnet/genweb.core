@@ -495,7 +495,7 @@ msgstr "Top of page"
 
 #: genweb.theme/genweb/theme/portlets/upcnews.py:25
 msgid "UPCNews"
-msgstr "UPCNews"
+msgstr "UPC Today"
 
 #: genweb.banners/genweb/banners/content/banner.py:24
 msgid "URL to open"
