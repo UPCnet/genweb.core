@@ -1843,5 +1843,11 @@ msgstr "url"
 msgid "usuari_connectat"
 msgstr "Usuari connectat:"
 
+msgid "event_url"
+msgstr "Més informació"
+
+msgid "contact_name"
+msgstr "Persona de contacte"
+
 msgid "No hi ha elements"
 msgstr "No hi ha elements"

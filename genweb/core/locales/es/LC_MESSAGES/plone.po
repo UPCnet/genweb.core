@@ -326,9 +326,6 @@ msgstr "Código de control"
 msgid "genweb_help_type_the_code"
 msgstr "Escriba las palabras de la imagen inferior"
 
-msgid "UPCNews"
-msgstr "Actualidad UPC"
-
 msgid "more_news_link"
 msgstr "Más noticias"
 
@@ -338,3 +335,42 @@ msgstr "Quizás estabas buscando..."
 msgid "label_full_size"
 msgstr "Tamaño original imagen:"
 
+############
+# portlets #
+############
+
+msgid "FullNews"
+msgstr "Noticias con foto"
+
+msgid "NoticiesPropi"
+msgstr "Noticias"
+
+msgid "AgendaGW"
+msgstr "Agenda"
+
+msgid "portlet_homepage_title"
+msgstr "Bienvenida"
+
+msgid "portlet_calendar_title"
+msgstr "Calendario"
+
+msgid "portlet_collection_title"
+msgstr "Colección"
+
+msgid "portlet_login_title"
+msgstr "Identificación"
+
+msgid "portlet_navigation_title"
+msgstr "Menú de navegación"
+
+msgid "portlet_rss_title"
+msgstr "RSS"
+
+msgid "portlet_static_title"
+msgstr "Portlet HTML"
+
+msgid "portlet_poll_title"
+msgstr "Encuesta"
+
+msgid "UPCNews"
+msgstr "Actualidad UPC"

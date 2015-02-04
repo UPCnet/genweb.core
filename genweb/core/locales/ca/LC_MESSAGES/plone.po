@@ -362,7 +362,7 @@ msgid "portlet_rss_title"
 msgstr "RSS"
 
 msgid "portlet_static_title"
-msgstr "Pàgina"
+msgstr "Portlet HTML"
 
 msgid "portlet_poll_title"
 msgstr "Enquesta"

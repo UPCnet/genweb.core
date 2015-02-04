@@ -495,7 +495,7 @@ msgstr "Top of page"
 
 #: genweb.theme/genweb/theme/portlets/upcnews.py:25
 msgid "UPCNews"
-msgstr "UPCNews"
+msgstr "UPC Today"
 
 #: genweb.banners/genweb/banners/content/banner.py:24
 msgid "URL to open"
@@ -1816,6 +1816,9 @@ msgstr "url"
 #. "usuari_connectat"
 msgid "usuari_connectat"
 msgstr "User online:"
+
+msgid "event_url"
+msgstr "More information"
 
 msgid "No hi ha elements"
 msgstr "No items"
