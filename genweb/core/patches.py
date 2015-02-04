@@ -9,6 +9,13 @@ from Products.LDAPUserFolder.LDAPDelegate import filter_format
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 
+from zope.event import notify
+from Products.PluggableAuthService.events import PropertiesUpdated
+
+from Products.CMFCore.MemberDataTool import MemberData as BaseMemberData
+from Products.PluggableAuthService.interfaces.authservice import IPluggableAuthService
+from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
+
 import unicodedata
 
 import logging
@@ -364,3 +371,50 @@ class Save(object):
         setattr(self.context, fieldname, IRichText['text'].fromUnicode(text))
 
         return "saved"
+
+
+def setMemberProperties(self, mapping, force_local=0):
+    """PAS-specific method to set the properties of a
+    member. Ignores 'force_local', which is not reliably present.
+    """
+    sheets = None
+
+    # We could pay attention to force_local here...
+    if not IPluggableAuthService.providedBy(self.acl_users):
+        # Defer to base impl in absence of PAS, a PAS user, or
+        # property sheets
+        return BaseMemberData.setMemberProperties(self, mapping)
+    else:
+        # It's a PAS! Whee!
+        user = self.getUser()
+        sheets = getattr(user, 'getOrderedPropertySheets', lambda: None)()
+
+        # We won't always have PlonePAS users, due to acquisition,
+        # nor are guaranteed property sheets
+        if not sheets:
+            # Defer to base impl if we have a PAS but no property
+            # sheets.
+            return BaseMemberData.setMemberProperties(self, mapping)
+
+    # If we got this far, we have a PAS and some property sheets.
+    # XXX track values set to defer to default impl
+    # property routing?
+    modified = False
+    for k, v in mapping.items():
+        if v == None:
+            continue
+        for sheet in sheets:
+            if not sheet.hasProperty(k):
+                continue
+            if IMutablePropertySheet.providedBy(sheet):
+                sheet.setProperty(user, k, v)
+                modified = True
+            else:
+                break
+                # raise RuntimeError, ("Mutable property provider "
+                #                     "shadowed by read only provider")
+    if modified:
+        self.notifyModified()
+
+        # Genweb: Updated by patch
+        notify(PropertiesUpdated(user, mapping))
