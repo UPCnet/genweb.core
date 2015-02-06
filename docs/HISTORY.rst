@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.33 (unreleased)
+4.4.33 (2015-02-06)
 -------------------
 
-- Nothing changed yet.
-
+* Add LRF to tinyMCE [Victor Fernandez de Alba]
 
 4.4.32 (2015-02-06)
 -------------------
