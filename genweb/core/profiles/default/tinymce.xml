@@ -27,6 +27,7 @@
   <containsobjects>
    <element value="Folder"/>
    <element value="Plone Site"/>
+   <element value="LRF"/>
   </containsobjects>
   <entity_encoding value="raw"/>
   <imageobjects>
