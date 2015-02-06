@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.32 (unreleased)
+4.4.32 (2015-02-06)
 -------------------
 
-- Nothing changed yet.
-
+* New directory repoze.catalog based user properties [Victor Fernandez de Alba]
 
 4.4.31 (2015-02-05)
 -------------------
