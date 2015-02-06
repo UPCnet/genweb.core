@@ -69,4 +69,11 @@
         replacement=".patches.setMemberProperties"
         />
 
+    <monkey:patch
+        description="getMemberById SHOUT!"
+        class="Products.CMFCore.MembershipTool.MembershipTool"
+        original="getMemberById"
+        replacement=".patches.getMemberById"
+        />
+
 </configure>

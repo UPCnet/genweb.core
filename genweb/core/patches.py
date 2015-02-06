@@ -8,6 +8,7 @@ from Products.LDAPUserFolder.utils import guid2string
 from Products.LDAPUserFolder.LDAPDelegate import filter_format
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.navtree import getNavigationRoot
+from Products.PluggableAuthService.PropertiedUser import PropertiedUser
 
 from zope.event import notify
 from Products.PluggableAuthService.events import PropertiesUpdated
@@ -16,11 +17,14 @@ from Products.CMFCore.MemberDataTool import MemberData as BaseMemberData
 from Products.PluggableAuthService.interfaces.authservice import IPluggableAuthService
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
 
-import unicodedata
+from genweb.core.utils import get_safe_member_by_id
 
+import unicodedata
+import inspect
 import logging
 
 logger = logging.getLogger('event.LDAPUserFolder')
+genweb_log = logging.getLogger('genweb.core')
 
 
 def getToolbars(self, config):
@@ -71,7 +75,7 @@ def testMemberData(self, memberdata, criteria, exact_match=False):
 
     return True
 
-
+# DISABLED UNTIL FURTHER NOTICE
 def searchUsers(self, attrs=(), exact_match=False, **kw):
     """ Look up matching user records based on one or mmore attributes
 
@@ -418,3 +422,37 @@ def setMemberProperties(self, mapping, force_local=0):
 
         # Genweb: Updated by patch
         notify(PropertiesUpdated(user, mapping))
+
+
+BLACKLISTED_CALLERS = ['getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+                       'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+                       'getMemberById/getMemberInfo/author/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+                       'getMemberById/getMemberInfo/info/memogetter/render_listitem/render_entries/render_listing/render_content_core/__fill_content_core/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__']
+
+# from profilehooks import timecall
+# Patch for shout the evidence of using a getMemberById!
+#@timecall
+def getMemberById(self, id):
+    '''
+    Returns the given member.
+    '''
+    stack = inspect.stack()
+    upstream_callers = '/'.join([a[3] for a in stack])
+
+    if upstream_callers in BLACKLISTED_CALLERS:
+        user = get_safe_member_by_id(id)
+        if user is not None:
+            user_towrap = PropertiedUser(id)
+            user_towrap.addPropertysheet('omega13', user)
+            user = self.wrapUser(user_towrap)
+    else:
+        if api.env.debug_mode():
+            genweb_log.warning('')
+            genweb_log.warning('Warning! Using getMemberById')
+            genweb_log.warning('from: {}'.format(upstream_callers))
+            genweb_log.warning('')
+
+        user = self._huntUser(id, self)
+        if user is not None:
+            user = self.wrapUser(user)
+    return user

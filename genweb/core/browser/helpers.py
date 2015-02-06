@@ -7,15 +7,28 @@ from OFS.interfaces import IFolder
 from OFS.interfaces import IApplication
 from zope.interface import Interface
 from zope.component import queryUtility
+from zope.component import getUtility
 from zope.interface import alsoProvides
+from zope.event import notify
 
+from plone.dexterity.interfaces import IDexterityContent
+from Products.Archetypes.interfaces import IBaseObject
+
+from plone.dexterity.content import Container
+from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
 
+from Products.PluggableAuthService.events import PropertiesUpdated
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+
+from repoze.catalog.query import Eq
+from souper.interfaces import ICatalogFactory
+from souper.soup import get_soup
+from souper.soup import Record
 
 from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
@@ -672,3 +685,163 @@ class MirrorStates(grok.View):
                     self.output.append('{0} -> {1}'.format(destination_obj.absolute_url(), origin_state))
                     print '{0} -> {1}'.format(destination_obj.absolute_url(), origin_state)
             self.output = '<br/>'.join(self.output)
+
+
+class MigrateRLF(grok.View):
+    """ Used to migrate from old PAM sites to the current (Container based) one.
+        This is the version as of February 2015
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('old_migrate_rlf')
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        portal = api.portal.get()
+        pc = api.portal.get_tool(name="portal_catalog")
+        lrfs = pc.searchResults(portal_type="LRF")
+
+        text = []
+        for brain in lrfs:
+            lrf = portal[brain.id]
+            if lrf.__class__ != Container:
+                portal._delOb(brain.id)
+
+                lrf.__class__ = Container
+                portal._setOb(lrf.id, lrf)
+
+                text.append('Migrated lrf {}\n'.format(lrf.absolute_url()))
+        return ''.join(text) + '\nDone!'
+
+
+class MigrateRLF2roundFIGHT(grok.View):
+    """ Used to migrate from old PAM sites to the current (Container based) one.
+        This is the version as of February 2015
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('migrate_rlf')
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        portal = api.portal.get()
+        pc = api.portal.get_tool(name="portal_catalog")
+
+        lrfs = pc.searchResults(portal_type="LRF")
+        original_lrfs_ids = [lang.id for lang in lrfs]
+
+        # Disable constrains
+        pt = api.portal.get_tool('portal_types')
+        pt['Plone Site'].filter_content_types = False
+        PS_ALLOWED = pt['Plone Site'].allowed_content_types
+        pt['Plone Site'].allowed_content_types = PS_ALLOWED + ('LRF',)
+        pt['LRF'].global_allow = True
+        pt['LIF'].global_allow = True
+        LRF_ALLOWED = pt['LRF'].allowed_content_types
+        pt['LRF'].allowed_content_types = LRF_ALLOWED + ('LIF', 'BannerContainer', 'Logos_Container')
+
+        for lrf in lrfs:
+            api.content.rename(obj=lrf.getObject(), new_id='{}_old'.format(lrf.id))
+
+        setupTool = SetupMultilingualSite()
+        setupTool.setupSite(self.context, False)
+
+        for old_lrf in original_lrfs_ids:
+            # If a 'media' folder exists, delete it as we are going to put it
+            # back later
+            if portal[old_lrf + '_old'].get('media', False):
+                api.content.delete(obj=portal[old_lrf + '_old']['media'])
+            if portal[old_lrf].get('media', False):
+                api.content.delete(obj=portal[old_lrf]['media'])
+
+            for obj in portal[old_lrf + '_old'].objectIds():
+                # Only to contentish objects as the original LRF is leaking root
+                # objects
+                if portal[old_lrf + '_old'].get(obj, False):
+                    origin = portal[old_lrf + '_old'][obj].id
+                    api.content.move(source=portal[old_lrf + '_old'][obj], target=portal[old_lrf])
+                    print '{} ==> {}'.format(origin, portal[old_lrf])
+
+        # Assert things are moved correctly and no object remains in old folders
+        for old_lrf in original_lrfs_ids:
+            assert not portal[old_lrf + '_old'].get(obj, False)
+
+        # If so, delete original LRFs
+        for old_lrf in original_lrfs_ids:
+            api.content.delete(obj=portal[old_lrf + '_old'])
+
+        # Rename original 'shared' folder
+        if portal.get('shared', False):
+            api.content.rename(obj=portal['shared'], new_id='shared_old')
+
+        # Put back 'shared' folder
+        # for lrf in lrfs:
+        #     api.content.create(container=portal[lrf.id], type='LIF', id='shared')
+        #     portal[lrf.id]['shared'].title = 'Fitxers compartits'
+        #     if lrf == 'es':
+        #         portal[lrf.id]['shared'].title = 'Ficheros compartidos'
+        #     if lrf == 'en':
+        #         portal[lrf.id]['shared'].title = 'Shared files'
+
+        # Move shared folder content
+        # if portal.get('shared', False):
+        #     for obj_id in portal['shared']:
+        #         api.content.move(source=portal['shared'][obj_id], target=portal['ca']['shared'])
+        #         print '{} ==> {}'.format(obj_id, portal['ca']['shared'].id)
+
+        # Put back constrains
+        pt['Plone Site'].filter_content_types = True
+        pt['Plone Site'].allowed_content_types = PS_ALLOWED
+        pt['LRF'].global_allow = False
+        pt['LIF'].global_allow = False
+        pt['LRF'].allowed_content_types = LRF_ALLOWED
+
+        # Finally, clear and rebuild catalog
+        pc.clearFindAndRebuild()
+
+
+class ReBuildUserPropertiesCatalog(grok.View):
+    """
+        Rebuild the OMEGA13 repoze.catalog for user properties data.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('rebuild_user_catalog')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        all_user_properties = context.acl_users.mutable_properties.enumerateUsers()
+        for user in all_user_properties:
+            user.update(dict(username=user['id']))
+            user.update(dict(fullname=user['title']))
+            user_obj = api.user.get(user['id'])
+
+            if user_obj:
+                self.add_user_to_catalog(user_obj, user)
+            else:
+                print('No user found in user repository (LDAP) {}'.format(user['id']))
+
+            print('Updated properties catalog for {}'.format(user['id']))
+
+    def add_user_to_catalog(self, principal, properties):
+        """ Basically the same as the subscriber does if the notify doesn't
+            refuse to work properly from this grok view T_T
+        """
+        portal = api.portal.get()
+        soup = get_soup('user_properties', portal)
+        exist = [r for r in soup.query(Eq('username', principal.getUserName()))]
+        user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+        indexed_attrs = user_properties_utility(portal).keys()
+
+        if exist:
+            user_record = exist[0]
+        else:
+            record = Record()
+            record_id = soup.add(record)
+            user_record = soup.get(record_id)
+
+        user_record.attrs['username'] = principal.getUserName()
+
+        for attr in indexed_attrs:
+            if attr in properties:
+                user_record.attrs[attr] = properties[attr]
+
+        soup.reindex(records=[user_record])

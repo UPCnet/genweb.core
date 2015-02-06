@@ -7,6 +7,7 @@ from AccessControl import getSecurityManager
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.component.hooks import getSite
+from zope.component import getUtility
 
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
@@ -17,6 +18,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
+from souper.interfaces import ICatalogFactory
+from repoze.catalog.query import Eq
+from souper.soup import get_soup
 
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
@@ -83,6 +87,27 @@ def link_translations(items):
 def _contact_ws_cachekey(method, self, unitat):
     """Cache by the unitat value"""
     return (unitat)
+
+
+def get_safe_member_by_id(username):
+    """Gets user info from the repoze.catalog based user properties catalog.
+       This is a safe implementation for getMemberById portal_membership to
+       avoid useless searches to the LDAP server. It gets only exact matches (as
+       the original does) and returns a dict. It DOES NOT return a Member
+       object.
+    """
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+    indexed_attrs = user_properties_utility(portal).keys()
+    properties = None
+    records = [r for r in soup.query(Eq('username', username))]
+    if records:
+        properties = {}
+        for attr in indexed_attrs:
+            if records[0].attrs.get(attr, False):
+                properties[attr] = records[0].attrs[attr]
+    return properties
 
 
 class genwebUtils(BrowserView):
