@@ -314,7 +314,7 @@ msgstr "Número de elementos a mostrar"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:25
 #: genweb.theme/genweb/theme/portlets/news.py:25
 msgid "Numero de noticies a mostrar"
-msgstr "Número de noticies a mostra"
+msgstr "Número de noticias a mostrar"
 
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:90
 msgid "Override query sort order using folder order"

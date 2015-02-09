@@ -379,4 +379,23 @@ msgstr "Segurament estàveu buscant…"
 msgid "label_full_size"
 msgstr "Mida original imatge:"
 
+#: plone/app/event/portlets/portlet_calendar.py:218
+msgid "This portlet displays events in a calendar."
+msgstr "Aquest portlet mostra els esdeveniments del calendari"
 
+#. Default: "Select search base folder to search for events. This folder will also be used to link to in calendar searches. If empty, the whole site will be searched and the event listing view will be called on the site root."
+#: plone/app/event/portlets/portlet_calendar.py:42
+#: plone/app/event/portlets/portlet_events.py:43
+msgid "portlet_help_search_base"
+msgstr ""
+"Selecciona la carpeta on cerca els esdeveniments. Aquesta carpeta es farà "
+"servir per enllaçar en les cerques del calendari. Si no s'especifica, es "
+"cercaran a tot el lloc i la llista serà cridada des de l'arrel."
+
+#: plone.portlet.collection/plone/portlet/collection/collection.py:71
+msgid "Exclude the Current Context"
+msgstr "Excloure el context actual"
+
+#: plone.portlet.collection/plone/portlet/collection/collection.py:72
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "Si s'activa, la llista no inclourà l'element actual. El portlet es renderitza per si en cas contrari es mostra."
