@@ -1,11 +1,30 @@
 Changelog
 =========
 
-4.4.31 (unreleased)
+4.4.34 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.4.33 (2015-02-06)
+-------------------
+
+* Add LRF to tinyMCE [Victor Fernandez de Alba]
+
+4.4.32 (2015-02-06)
+-------------------
+
+* New directory repoze.catalog based user properties [Victor Fernandez de Alba]
+
+4.4.31 (2015-02-05)
+-------------------
+
+* Increase reaction to keypress for select2user JS plugin [Victor Fernandez de Alba]
+* Patch to make user PropertiesUpdated event work [Victor Fernandez de Alba]
+* Translate portlets name [hanirok]
+* Traduir No hi ha elements js cerca [Pilar Marinas]
+* traducciones [Paco Gregori]
 
 4.4.30 (2015-01-13)
 -------------------

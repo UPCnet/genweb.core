@@ -8,12 +8,23 @@ from Products.LDAPUserFolder.utils import guid2string
 from Products.LDAPUserFolder.LDAPDelegate import filter_format
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.navtree import getNavigationRoot
+from Products.PluggableAuthService.PropertiedUser import PropertiedUser
+
+from zope.event import notify
+from Products.PluggableAuthService.events import PropertiesUpdated
+
+from Products.CMFCore.MemberDataTool import MemberData as BaseMemberData
+from Products.PluggableAuthService.interfaces.authservice import IPluggableAuthService
+from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
+
+from genweb.core.utils import get_safe_member_by_id
 
 import unicodedata
-
+import inspect
 import logging
 
 logger = logging.getLogger('event.LDAPUserFolder')
+genweb_log = logging.getLogger('genweb.core')
 
 
 def getToolbars(self, config):
@@ -64,7 +75,7 @@ def testMemberData(self, memberdata, criteria, exact_match=False):
 
     return True
 
-
+# DISABLED UNTIL FURTHER NOTICE
 def searchUsers(self, attrs=(), exact_match=False, **kw):
     """ Look up matching user records based on one or mmore attributes
 
@@ -364,3 +375,84 @@ class Save(object):
         setattr(self.context, fieldname, IRichText['text'].fromUnicode(text))
 
         return "saved"
+
+
+def setMemberProperties(self, mapping, force_local=0):
+    """PAS-specific method to set the properties of a
+    member. Ignores 'force_local', which is not reliably present.
+    """
+    sheets = None
+
+    # We could pay attention to force_local here...
+    if not IPluggableAuthService.providedBy(self.acl_users):
+        # Defer to base impl in absence of PAS, a PAS user, or
+        # property sheets
+        return BaseMemberData.setMemberProperties(self, mapping)
+    else:
+        # It's a PAS! Whee!
+        user = self.getUser()
+        sheets = getattr(user, 'getOrderedPropertySheets', lambda: None)()
+
+        # We won't always have PlonePAS users, due to acquisition,
+        # nor are guaranteed property sheets
+        if not sheets:
+            # Defer to base impl if we have a PAS but no property
+            # sheets.
+            return BaseMemberData.setMemberProperties(self, mapping)
+
+    # If we got this far, we have a PAS and some property sheets.
+    # XXX track values set to defer to default impl
+    # property routing?
+    modified = False
+    for k, v in mapping.items():
+        if v == None:
+            continue
+        for sheet in sheets:
+            if not sheet.hasProperty(k):
+                continue
+            if IMutablePropertySheet.providedBy(sheet):
+                sheet.setProperty(user, k, v)
+                modified = True
+            else:
+                break
+                # raise RuntimeError, ("Mutable property provider "
+                #                     "shadowed by read only provider")
+    if modified:
+        self.notifyModified()
+
+        # Genweb: Updated by patch
+        notify(PropertiesUpdated(user, mapping))
+
+
+BLACKLISTED_CALLERS = ['getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+                       'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+                       'getMemberById/getMemberInfo/author/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+                       'getMemberById/getMemberInfo/info/memogetter/render_listitem/render_entries/render_listing/render_content_core/__fill_content_core/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__']
+
+# from profilehooks import timecall
+# Patch for shout the evidence of using a getMemberById!
+#@timecall
+def getMemberById(self, id):
+    '''
+    Returns the given member.
+    '''
+    stack = inspect.stack()
+    upstream_callers = '/'.join([a[3] for a in stack])
+
+    if upstream_callers in BLACKLISTED_CALLERS:
+        user = get_safe_member_by_id(id)
+        if user is not None:
+            user_towrap = PropertiedUser(id)
+            user_towrap.addPropertysheet('omega13', user)
+            user = self.wrapUser(user_towrap)
+    else:
+        if api.env.debug_mode():
+            genweb_log.warning('')
+            genweb_log.warning('Warning! Using getMemberById')
+            genweb_log.warning('from: {}'.format(upstream_callers))
+            genweb_log.warning('')
+
+        user = self._huntUser(id, self)
+        if user is not None:
+            user = self.wrapUser(user)
+    return user

@@ -326,9 +326,6 @@ msgstr "Código de control"
 msgid "genweb_help_type_the_code"
 msgstr "Escriba las palabras de la imagen inferior"
 
-msgid "UPCNews"
-msgstr "Actualidad UPC"
-
 msgid "more_news_link"
 msgstr "Más noticias"
 
@@ -337,6 +334,10 @@ msgstr "Quizás estabas buscando..."
 
 msgid "label_full_size"
 msgstr "Tamaño original imagen:"
+
+############
+# portlets #
+############
 
 msgid "FullNews"
 msgstr "Noticias con foto"
@@ -348,7 +349,7 @@ msgid "AgendaGW"
 msgstr "Agenda"
 
 msgid "portlet_homepage_title"
-msgstr "Bienvenido"
+msgstr "Bienvenida"
 
 msgid "portlet_calendar_title"
 msgstr "Calendario"
@@ -366,7 +367,7 @@ msgid "portlet_rss_title"
 msgstr "RSS"
 
 msgid "portlet_static_title"
-msgstr "Página"
+msgstr "Portlet HTML"
 
 msgid "portlet_poll_title"
 msgstr "Encuesta"
@@ -392,4 +393,5 @@ msgstr "Excluir el contexto actual"
 msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
 msgstr "Si se activa, la lista no incluirá el elemento actual. El portlet se renderiza por si de lo contrario se muestra."
 
-
+msgid "UPCNews"
+msgstr "Actualidad UPC"

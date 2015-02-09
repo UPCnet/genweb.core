@@ -32,9 +32,6 @@ msgstr "Type the code from the picture shown below"
 msgid "Send"
 msgstr "send"
 
-msgid "UPCNews"
-msgstr "UPC Today"
-
 msgid "more_news_link"
 msgstr "More news"
 
@@ -53,6 +50,22 @@ msgstr "Full-size image:"
 msgid "portlet_homepage_title"
 msgstr "Wellcome"
 
+############
+# portlets #
+############
+
+msgid "FullNews"
+msgstr "News with image"
+
+msgid "NoticiesPropi"
+msgstr "News"
+
+msgid "AgendaGW"
+msgstr "Events"
+
+msgid "portlet_homepage_title"
+msgstr "Welcome"
+
 msgid "portlet_calendar_title"
 msgstr "Calendar"
 
@@ -60,7 +73,7 @@ msgid "portlet_collection_title"
 msgstr "Collection"
 
 msgid "portlet_login_title"
-msgstr "Identification"
+msgstr "Login"
 
 msgid "portlet_navigation_title"
 msgstr "Navigation menu"
@@ -69,7 +82,7 @@ msgid "portlet_rss_title"
 msgstr "RSS"
 
 msgid "portlet_static_title"
-msgstr "Page"
+msgstr "HTML Portlet"
 
 msgid "portlet_poll_title"
 msgstr "Survey"
@@ -92,4 +105,9 @@ msgstr ""
 msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
 msgstr ""
 
+msgid "portlet_poll_title"
+msgstr "Poll"
+
+msgid "UPCNews"
+msgstr "UPC Today"
 

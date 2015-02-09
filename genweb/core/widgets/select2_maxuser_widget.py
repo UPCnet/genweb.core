@@ -40,6 +40,7 @@ class Select2MAXUserInputWidget(textarea.TextAreaWidget):
                 minimumInputLength: 3,
                 ajax: {
                     url: portal_url + '/max.ajaxusersearch',
+                    quietMillis: 700,
                     data: function (term, page) {
                         return {
                             q: term,

@@ -62,4 +62,18 @@
         factory=".patches.Save"
         />
 
+    <monkey:patch
+        description="Enable event of update user member data properties"
+        class="Products.PlonePAS.tools.memberdata.MemberData"
+        original="setMemberProperties"
+        replacement=".patches.setMemberProperties"
+        />
+
+    <monkey:patch
+        description="getMemberById SHOUT!"
+        class="Products.CMFCore.MembershipTool.MembershipTool"
+        original="getMemberById"
+        replacement=".patches.getMemberById"
+        />
+
 </configure>
