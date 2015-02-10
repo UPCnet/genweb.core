@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.35 (unreleased)
+4.4.35 (2015-02-10)
 -------------------
 
-- Nothing changed yet.
-
+* Fix unicodeerrors [Victor Fernandez de Alba]
 
 4.4.34 (2015-02-10)
 -------------------
