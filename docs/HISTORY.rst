@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.34 (unreleased)
+4.4.34 (2015-02-10)
 -------------------
 
-- Nothing changed yet.
-
+* trad portlets [Paco Gregori]
+* trad portlets [Paco Gregori]
 
 4.4.33 (2015-02-06)
 -------------------
