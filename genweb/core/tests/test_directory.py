@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest2 as unittest
 from plone import api
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
@@ -70,3 +71,16 @@ class TestOmega13(unittest.TestCase):
 
         view = getMultiAdapter((self.portal, self.request), name='rebuild_user_catalog')
         view.render()
+
+    def test_directory_self_updates_on_user_creation_with_unicode(self):
+        api.user.create(email='test@upcnet.es', username='testdirectory',
+                        properties=dict(fullname=u'Víctor',
+                                        location=u'Barcelona',
+                                        ubicacio=u'NX',
+                                        telefon=u'44002, 54390'))
+        portal = api.portal.get()
+        soup = get_soup('user_properties', portal)
+        exist = [r for r in soup.query(Eq('username', 'testdirectory'))]
+        self.assertEqual('44002, 54390', exist[0].attrs['telefon'])
+        exist = [r for r in soup.query(Eq('fullname', u'Ví*'))]
+        self.assertEqual(u'Víctor', exist[0].attrs['fullname'])

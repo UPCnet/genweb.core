@@ -31,6 +31,9 @@ def add_user_to_catalog(principal, event):
 
     for attr in indexed_attrs:
         if attr in event.properties:
-            user_record.attrs[attr] = event.properties[attr]
+            if isinstance(event.properties[attr], str):
+                user_record.attrs[attr] = event.properties[attr].decode('utf-8')
+            else:
+                user_record.attrs[attr] = event.properties[attr]
 
     soup.reindex(records=[user_record])

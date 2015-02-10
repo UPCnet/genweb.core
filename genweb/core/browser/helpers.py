@@ -842,6 +842,8 @@ class ReBuildUserPropertiesCatalog(grok.View):
 
         for attr in indexed_attrs:
             if attr in properties:
-                user_record.attrs[attr] = properties[attr]
-
+                if isinstance(properties[attr], str):
+                    user_record.attrs[attr] = properties[attr].decode('utf-8')
+                else:
+                    user_record.attrs[attr] = properties[attr]
         soup.reindex(records=[user_record])
