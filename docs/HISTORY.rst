@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.36 (unreleased)
+4.4.36 (2015-02-11)
 -------------------
 
-- Nothing changed yet.
-
+* New util for preserving UUIDs and retrieve them back [Victor Fernandez de Alba]
 
 4.4.35 (2015-02-10)
 -------------------
