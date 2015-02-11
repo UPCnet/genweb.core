@@ -112,6 +112,7 @@ def get_safe_member_by_id(username):
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
     indexed_attrs = user_properties_utility(portal).keys()
     properties = None
+    username = username.lower()
     records = [r for r in soup.query(Eq('username', username))]
     if records:
         properties = {}
