@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.38 (unreleased)
+4.4.38 (2015-02-11)
 -------------------
 
-- Nothing changed yet.
-
+* Ensure username is on lowercase always as we always assume that [Victor Fernandez de Alba]
+* Fix procedure [Victor Fernandez de Alba]
 
 4.4.37 (2015-02-11)
 -------------------
