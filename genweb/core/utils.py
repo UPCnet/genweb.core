@@ -337,8 +337,13 @@ class rebuildUUIDs(grok.View):
         for result in results:
             obj = [r for r in soup.query(Eq('path', result.getPath()))]
             if obj:
-                IMutableUUID(result.getObject()).set(str(obj[0].attrs['uuid']))
-                logger.warning('Set UUID per {}'.format(result.getPath()))
+                try:
+                    realobj = result.getObject()
+                    IMutableUUID(realobj).set(str(obj[0].attrs['uuid']))
+                    realobj.reindexObject(idxs=['UID'])
+                    logger.warning('Set UUID per {}'.format(result.getPath()))
+                except:
+                    logger.warning('Can\'t set UUID for {}'.format(result.getPath()))
 
 
 # Per deprecar (not wired):
