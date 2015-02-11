@@ -1,6 +1,7 @@
 import json
 import urllib2
 import requests
+from five import grok
 from plone import api
 from AccessControl import getSecurityManager
 # from zope.interface import Interface
@@ -21,9 +22,19 @@ from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from souper.interfaces import ICatalogFactory
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
+from souper.soup import Record
+from zope.interface import implementer
+from zope.component import provideUtility
+from repoze.catalog.catalog import Catalog
+from repoze.catalog.indexes.field import CatalogFieldIndex
+from souper.soup import NodeAttributeIndexer
+from plone.uuid.interfaces import IMutableUUID
 
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 PLMF = MessageFactory('plonelocales')
 
@@ -283,6 +294,51 @@ class genwebUtils(BrowserView):
         else:
             url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
         return url
+
+
+@implementer(ICatalogFactory)
+class UserPropertiesSoupCatalogFactory(object):
+    def __call__(self, context):
+        catalog = Catalog()
+        path = NodeAttributeIndexer('path')
+        catalog['path'] = CatalogFieldIndex(path)
+        uuid = NodeAttributeIndexer('uuid')
+        catalog['uuid'] = CatalogFieldIndex(uuid)
+        return catalog
+provideUtility(UserPropertiesSoupCatalogFactory(), name="uuid_preserver")
+
+
+class preserveUUIDs(grok.View):
+    grok.context(IPloneSiteRoot)
+
+    def render(self):
+        portal = api.portal.get()
+        soup = get_soup('uuid_preserver', portal)
+        pc = api.portal.get_tool('portal_catalog')
+        results = pc.searchResults()
+
+        for result in results:
+            record = Record()
+            record.attrs['uuid'] = result.UID
+            record.attrs['path'] = result.getPath()
+            soup.add(record)
+            logger.warning('Preserving {}: {}'.format(result.getPath(), result.UID))
+
+
+class rebuildUUIDs(grok.View):
+    grok.context(IPloneSiteRoot)
+
+    def render(self):
+        portal = api.portal.get()
+        soup = get_soup('uuid_preserver', portal)
+        pc = api.portal.get_tool('portal_catalog')
+        results = pc.searchResults()
+
+        for result in results:
+            obj = [r for r in soup.query(Eq('path', result.getPath()))]
+            if obj:
+                IMutableUUID(result.getObject()).set(str(obj[0].attrs['uuid']))
+                logger.warning('Set UUID per {}'.format(result.getPath()))
 
 
 # Per deprecar (not wired):
