@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.39 (unreleased)
+4.4.39 (2015-02-12)
 -------------------
 
-- Nothing changed yet.
-
+* Fix use case when the user searched is not on the local catalog but in a caller whitelisted [Victor Fernandez de Alba]
 
 4.4.38 (2015-02-11)
 -------------------
