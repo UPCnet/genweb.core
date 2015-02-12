@@ -34,6 +34,7 @@ from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
 from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
+from genweb.core.directory import METADATA_USER_ATTRS
 
 import json
 
@@ -840,10 +841,11 @@ class ReBuildUserPropertiesCatalog(grok.View):
 
         user_record.attrs['username'] = principal.getUserName()
 
-        for attr in indexed_attrs:
+        for attr in indexed_attrs + METADATA_USER_ATTRS:
             if attr in properties:
                 if isinstance(properties[attr], str):
                     user_record.attrs[attr] = properties[attr].decode('utf-8')
                 else:
                     user_record.attrs[attr] = properties[attr]
+
         soup.reindex(records=[user_record])

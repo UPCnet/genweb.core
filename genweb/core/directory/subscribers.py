@@ -8,6 +8,8 @@ from souper.soup import get_soup
 from souper.soup import Record
 from zope.component import getUtility
 
+from genweb.core.directory import METADATA_USER_ATTRS
+
 
 @grok.subscribe(IPropertiedUser, IPropertiesUpdatedEvent)
 def add_user_to_catalog(principal, event):
@@ -29,7 +31,7 @@ def add_user_to_catalog(principal, event):
 
     user_record.attrs['username'] = principal.getUserName()
 
-    for attr in indexed_attrs:
+    for attr in indexed_attrs + METADATA_USER_ATTRS:
         if attr in event.properties:
             if isinstance(event.properties[attr], str):
                 user_record.attrs[attr] = event.properties[attr].decode('utf-8')
