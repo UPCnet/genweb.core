@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.42 (unreleased)
+4.4.42 (2015-02-12)
 -------------------
 
-- Nothing changed yet.
-
+* Add missing metadata (non-indexed) user properties and fix patches [Victor Fernandez de Alba]
 
 4.4.41 (2015-02-12)
 -------------------
