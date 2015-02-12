@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.43 (unreleased)
+4.4.43 (2015-02-12)
 -------------------
 
-- Nothing changed yet.
-
+* Add more patches [Victor Fernandez de Alba]
 
 4.4.42 (2015-02-12)
 -------------------
