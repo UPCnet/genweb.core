@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.41 (unreleased)
+4.4.41 (2015-02-12)
 -------------------
 
-- Nothing changed yet.
-
+* Update patches whitelisted callers [Victor Fernandez de Alba]
 
 4.4.40 (2015-02-12)
 -------------------
