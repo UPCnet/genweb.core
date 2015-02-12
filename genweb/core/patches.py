@@ -424,7 +424,7 @@ def setMemberProperties(self, mapping, force_local=0):
         notify(PropertiesUpdated(user, mapping))
 
 
-BLACKLISTED_CALLERS = ['getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+WHITELISTED_CALLERS = ['getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
                        'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
                        'getMemberById/getMemberInfo/author/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
                        'getMemberById/getMemberInfo/info/memogetter/render_listitem/render_entries/render_listing/render_content_core/__fill_content_core/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__']
@@ -439,20 +439,24 @@ def getMemberById(self, id):
     stack = inspect.stack()
     upstream_callers = '/'.join([a[3] for a in stack])
 
-    if upstream_callers in BLACKLISTED_CALLERS:
+    # If the requested callers is in the whitelist
+    if upstream_callers in WHITELISTED_CALLERS:
         user = get_safe_member_by_id(id)
         if user is not None:
             user_towrap = PropertiedUser(id)
             user_towrap.addPropertysheet('omega13', user)
             user = self.wrapUser(user_towrap)
-    else:
-        if api.env.debug_mode():
-            genweb_log.warning('')
-            genweb_log.warning('Warning! Using getMemberById')
-            genweb_log.warning('from: {}'.format(upstream_callers))
-            genweb_log.warning('')
+            return user
 
-        user = self._huntUser(id, self)
-        if user is not None:
-            user = self.wrapUser(user)
+    # If the user is not on the new catalog, then fallback anyway
+    if api.env.debug_mode():
+        genweb_log.warning('')
+        genweb_log.warning('Warning! Using getMemberById')
+        genweb_log.warning('from: {}'.format(upstream_callers))
+        genweb_log.warning('')
+
+    user = self._huntUser(id, self)
+    if user is not None:
+        user = self.wrapUser(user)
+
     return user
