@@ -37,59 +37,58 @@
   <rooted value="False"/>
  </resourcetypes>
  <layout>
+
   <styles>
-   <element value="Heading|h2"/>
-   <element value="Subheading|h3"/>
-   <element value="Literal|pre"/>
-   <element value="Discreet|span|discreet"/>
-   <element value="Pull-quote|blockquote|pullquote"/>
-   <element value="Call-out|p|callout"/>
-   <element value="Highlight|span|visualHighlight"/>
-   <element value="Disc|ul|listTypeDisc"/>
-   <element value="Square|ul|listTypeSquare"/>
-   <element value="Circle|ul|listTypeCircle"/>
-   <element value="Numbers|ol|listTypeDecimal"/>
-   <element value="Lower Alpha|ol|listTypeLowerAlpha"/>
-   <element value="Upper Alpha|ol|listTypeUpperAlpha"/>
-   <element value="Lower Roman|ol|listTypeLowerRoman"/>
-   <element value="Upper Roman|ol|listTypeUpperRoman"/>
-   <element value="Definition term|dt"/>
-   <element value="Definition description|dd"/>
-   <element value="Odd row|tr|odd"/>
-   <element value="Even row|tr|even"/>
-   <element value="Heading cell|th|"/>
-   <element value="Page break (print only)|div|pageBreak"/>
-   <element value="Clear floats|div|visualClear"/>
-   <element value="Arxiu PDF|span|pdf"/>
    <element value="Arxiu DOC|span|doc"/>
+   <element value="Arxiu PDF|span|pdf"/>
    <element value="Arxiu PPT|span|ppt"/>
-   <element value="Arxiu XLS|span|xls"/>
    <element value="Arxiu TXT|span|txt"/>
+   <element value="Arxiu XLS|span|xls"/>
    <element value="Arxiu video|span|vid"/>
    <element value="Arxiu imatge|span|img"/>
    <element value="Cadenat HTTPS|span|https"/>
    <element value="Descarrega fitxer|span|down"/>
-   <element value="Text petit|span|small"/>
-   <element value="Imatge dreta|span|imgDreta"/>
-   <element value="Imatge esquerra|span|imgEsquerra"/>
-   <element value="Elimina marges|margezero"/>
-   <element value="Text correcte|span|ins"/>
-   <element value="Text incorrecte|span|del"/>
-   <element value="Fons cel&amp;middot;la color1|td|fonsDestacat1"/>
-   <element value="Fons cel&amp;middot;la color2|td|fonsDestacat2"/>
-   <element value="Cap&amp;ccedil;alera taula|tr|cap"/>
+   <element value="H2 línia dalt|h2|liniaDalt"/>
+   <element value="H2 línia baix|h2|liniaBaix"/>
+   <element value="H3 línia dalt|h3|liniaDalt"/>
+   <element value="H3 línia baix|h3|liniaBaix"/>
+   <element value="H4 línia dalt|h4|liniaDalt"/>
+   <element value="H4 línia baix|h4|liniaBaix"/>
+   <element value="Text XXXL|p|xxxl"/>
+   <element value="Text XXL|p|xxl"/>
+   <element value="Text XL|p|xl"/>
+   <element value="Text L|p|l"/>
+   <element value="Text M|p|m"/>
+   <element value="Text S|p|s"/>
+   <element value="Text XS|p|xs"/>
+   <element value="Text XXS|p|xxs"/>
+   <element value="Text XXXS|p|xxxs"/>
+   <element value="Llista ul hover|ul|list-hover"/>
+   <element value="Llista ul ratllada|ul|list-striped"/>
+   <element value="Llista ul comprimida|ul|list-condensed"/>
+   <element value="Llista ul amb vores|ul|list-bordered"/>
+   <element value="Imatge dreta|span|image-right"/>
+   <element value="Imatge esquerra|span|image-left"/>
+   <element value="Fons color info|td|info"/>
+   <element value="Fons color success|td|success"/>
+   <element value="Fons color warning|td|warning"/>
+   <element value="Fons color error|td|error"/>
+   <element value="Page break(print only)|div|pageBreak"/>
   </styles>
+
   <tablestyles>
-   <element value="Subdued grid|plain"/>
-   <element value="Invisible grid|invisible"/>
-   <element value="Fancy listing|listing"/>
-   <element value="Fancy grid listing|grid listing"/>
-   <element value="Fancy vertical listing|vertical listing"/>
-   <element value="Taula simple|minimal"/>
-   <element value="Taula simple [ample 100%]|minimal w100"/>
-   <element value="Graella invisible|invisible"/>
-   <element value="Graella invisible [ample 100%]|invisible w100"/>
+   <element value="Taula bàsica|table"/>
+   <element value="Taula ratllada|table table-striped"/>
+   <element value="Taula amb vora|table table-bordered"/>
+   <element value="Taula amb hover|table table-hover"/>
+   <element value="Taula comprimida|table table-condensed"/>
   </tablestyles>
+
+<!--   <formats>
+    <element value="header5|h5"/>
+    <element value="header6|h6"/>
+  </formats> -->
+  
   <content_css value="++genweb++stylesheets/genwebupc.css"/>
   <editor_height value="400"/>
   <editor_width value="100%"/>
@@ -98,6 +97,8 @@
   <!-- <directionality value="ltr"/> -->
   <autoresize value="False"/>
  </layout>
+
+
  <toolbar>
   <toolbar_anchor value="True"/>
   <toolbar_hr value="False"/>
