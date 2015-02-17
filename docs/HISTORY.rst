@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.44 (unreleased)
+4.4.44 (2015-02-17)
 -------------------
 
-- Nothing changed yet.
-
+* cambios en tinymce (modificación de estilos) [Paco Gregori]
+* traduccions dates event [Paco Gregori]
 
 4.4.43 (2015-02-12)
 -------------------
