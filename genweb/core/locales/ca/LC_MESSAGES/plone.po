@@ -399,3 +399,12 @@ msgstr "Excloure el context actual"
 #: plone.portlet.collection/plone/portlet/collection/collection.py:72
 msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
 msgstr "Si s'activa, la llista no inclourà l'element actual. El portlet es renderitza per si en cas contrari es mostra."
+
+### portlets assigned
+
+msgid "FullNews"
+msgstr "Notícies amb foto"
+
+#: CMFPlone/skins/plone_login/registered.pt:92
+msgid "label_log_in"
+msgstr "Identificació"

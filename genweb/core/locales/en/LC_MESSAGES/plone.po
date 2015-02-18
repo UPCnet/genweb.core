@@ -36,7 +36,7 @@ msgid "more_news_link"
 msgstr "More news"
 
 msgid "FullNews"
-msgstr "News with picture"
+msgstr "News with image"
 
 msgid "NoticiesPropi"
 msgstr "News"

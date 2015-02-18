@@ -107,7 +107,7 @@ msgstr "Edit portlet noticias"
 
 #: genweb.banners/genweb/banners/portlets/bannersportlet.py:114
 msgid "Edit banners portlet"
-msgstr "Editar portlet banners"
+msgstr "Editar portlet báners"
 
 #: genweb.controlpanel/genweb/controlpanel/controlpanel.py:140
 msgid "Edit cancelled"
@@ -115,7 +115,7 @@ msgstr "Edición cancelada"
 
 #: genweb.theme/genweb/theme/portlets/esdeveniments.py:60
 msgid "Events"
-msgstr "Eventos"
+msgstr "Agenda"
 
 # Noms de les vistes
 #. Default: "Estesa"
@@ -149,7 +149,7 @@ msgstr "Preferencias del Genweb"
 
 #: genweb.banners/genweb/banners/portlets/bannersportlet.py:55
 msgid "Genweb banners"
-msgstr "Banners del Genweb"
+msgstr "Báners"
 
 #: genweb.upc/genweb/upc/adapters.py:89
 msgid "Grups de recerca"
@@ -165,7 +165,7 @@ msgstr "Gracias por su colaboración. Los datos de la actividad se han enviado c
 
 #. Default: "Benvingut"
 msgid "Homepage"
-msgstr "Bienvenido"
+msgstr "Bienvenida"
 
 #: genweb.banners/genweb/banners/portlets/bannersportlet.py:30
 msgid "How many banners to list."
@@ -1306,7 +1306,7 @@ msgstr "Página de inicio"
 
 #. Default: "Benvingut"
 msgid "homepage_portlet"
-msgstr "Bienvenido"
+msgstr "Bienvenida"
 
 #. Default: "Menu L2"
 #: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:77
