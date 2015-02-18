@@ -199,6 +199,7 @@ class setupLDAP(grok.View):
         base_dn = self.request.form.get('base_dn')
         branch_admin_cn = self.request.form.get('branch_admin_cn')
         branch_admin_password = self.request.form.get('branch_admin_password')
+        allow_manage_users = self.request.form.get('allow_manage_users', False)
 
         users_base = "ou=users,ou={},{}".format(branch_name, base_dn)
         groups_base = "ou=groups,ou={},{}".format(branch_name, base_dn)
@@ -228,12 +229,16 @@ class setupLDAP(grok.View):
 
         plugin = portal.acl_users[ldap_name]
 
-        # Activate plugins (all)
-        plugin.manage_activateInterfaces([
+        active_plugins = [
             'IAuthenticationPlugin', 'ICredentialsResetPlugin', 'IGroupEnumerationPlugin',
             'IGroupIntrospection', 'IGroupManagement', 'IGroupsPlugin',
             'IPropertiesPlugin', 'IRoleEnumerationPlugin', 'IRolesPlugin',
-            'IUserAdderPlugin', 'IUserEnumerationPlugin'])
+            'IUserAdderPlugin', 'IUserEnumerationPlugin']
+
+        if allow_manage_users:
+            active_plugins.append('IUserManagement')
+
+        plugin.manage_activateInterfaces(active_plugins)
 
         # Redefine some schema properties
 
