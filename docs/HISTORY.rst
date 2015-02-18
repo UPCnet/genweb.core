@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.46 (unreleased)
+4.4.46 (2015-02-18)
 -------------------
 
-- Nothing changed yet.
-
+* Add a generic ldap creator [Carles Bruguera]
 
 4.4.45 (2015-02-18)
 -------------------
