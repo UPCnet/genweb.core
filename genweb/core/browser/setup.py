@@ -193,7 +193,6 @@ class setupLDAP(grok.View):
 
     def render(self):
         portal = getSite()
-
         ldap_name = self.request.form.get('ldap_name', 'ldap')
         ldap_server = self.request.form.get('ldap_server')
         branch_name = self.request.form.get('branch_name')
@@ -221,7 +220,8 @@ class setupLDAP(grok.View):
             binduid=bind_uid,
             bindpwd=branch_admin_password)
 
-        portal.acl_users.ldapexterns.acl_users.manage_edit(
+        ldap_acl_users = getattr(portal.acl_users, ldap_name).acl_users
+        ldap_acl_users.manage_edit(
             ldap_name, "cn", "cn", users_base, 2, "Authenticated,Member",
             groups_base, 2, bind_uid, branch_admin_password, 1, "cn",
             "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
@@ -237,7 +237,6 @@ class setupLDAP(grok.View):
 
         # Redefine some schema properties
 
-        ldap_acl_users = getattr(portal.acl_users, ldap_name).acl_users
         LDAPUserFolder.manage_deleteLDAPSchemaItems(ldap_acl_users, ldap_names=['sn'], REQUEST=None)
         LDAPUserFolder.manage_deleteLDAPSchemaItems(ldap_acl_users, ldap_names=['cn'], REQUEST=None)
         LDAPUserFolder.manage_addLDAPSchemaItem(ldap_acl_users, ldap_name='sn', friendly_name='Last Name', public_name='fullname')
