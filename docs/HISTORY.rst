@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.45 (unreleased)
+4.4.45 (2015-02-18)
 -------------------
 
-- Nothing changed yet.
-
+* Add missing transform [Victor Fernandez de Alba]
+* Portlets translations [hanirok]
 
 4.4.44 (2015-02-17)
 -------------------
