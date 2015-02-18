@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.4.47 (unreleased)
+4.4.47 (2015-02-18)
 -------------------
 
-- Nothing changed yet.
-
+* Conditional allow users [Carles Bruguera]
 
 4.4.46 (2015-02-18)
 -------------------
