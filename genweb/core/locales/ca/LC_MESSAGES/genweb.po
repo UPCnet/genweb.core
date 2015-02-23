@@ -1773,7 +1773,7 @@ msgstr "Envia"
 
 #. Default: "Fitxers comuns"
 msgid "shared_folder"
-msgstr "Fitxers comuns"
+msgstr "Fitxers compartits"
 
 #. "Signatura de la unitat [CA]"
 #. Default: "Signatura de la unitat [CA]"

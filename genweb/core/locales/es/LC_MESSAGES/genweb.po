@@ -1760,7 +1760,7 @@ msgstr "Envía"
 
 #. Default: "Fitxers comuns"
 msgid "shared_folder"
-msgstr "Ficheros comunes"
+msgstr "Ficheros compartidos"
 
 #. Default: "Signatura de la unitat [CA]"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:66

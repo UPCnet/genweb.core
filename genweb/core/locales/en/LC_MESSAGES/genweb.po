@@ -1746,7 +1746,7 @@ msgstr "Send"
 
 #. Default: "Fitxers comuns"
 msgid "shared_folder"
-msgstr "Common files"
+msgstr "Shared files"
 
 #########
 #. "Signatura de la unitat [CA]"
