@@ -24,6 +24,7 @@ from Products.PluggableAuthService.events import PropertiesUpdated
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
 
 from repoze.catalog.query import Eq
 from souper.interfaces import ICatalogFactory
@@ -849,3 +850,15 @@ class ReBuildUserPropertiesCatalog(grok.View):
                     user_record.attrs[attr] = properties[attr]
 
         soup.reindex(records=[user_record])
+
+
+class enablePDFIndexing(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.name('enable_pdf_transform')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        pt = api.portal.get_tool('portal_transforms')
+        pt.registerTransform(pdf_to_text())
+
+        return 'Done'

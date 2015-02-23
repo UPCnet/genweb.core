@@ -1,11 +1,33 @@
 Changelog
 =========
 
-4.4.44 (unreleased)
+4.4.48 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.4.47 (2015-02-18)
+-------------------
+
+* Conditional allow users [Carles Bruguera]
+
+4.4.46 (2015-02-18)
+-------------------
+
+* Add a generic ldap creator [Carles Bruguera]
+
+4.4.45 (2015-02-18)
+-------------------
+
+* Add missing transform [Victor Fernandez de Alba]
+* Portlets translations [hanirok]
+
+4.4.44 (2015-02-17)
+-------------------
+
+* cambios en tinymce (modificación de estilos) [Paco Gregori]
+* traduccions dates event [Paco Gregori]
 
 4.4.43 (2015-02-12)
 -------------------

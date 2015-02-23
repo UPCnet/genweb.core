@@ -129,14 +129,15 @@ msgstr "Master’s degree file"
 
 #: genweb.theme/genweb/theme/portlets/fullnews.py:50
 msgid "Full News"
-msgstr "Full News"
+msgstr "News with image"
 
 ######################
 # Portlet Full News #
 ######################
 #. Default: "Notícies amb foto"
+#: genweb.theme/genweb/theme/portlets/fullnews.py:50
 msgid "FullNews"
-msgstr "FullNews"
+msgstr "News with image"
 
 ####################
 # Contact settings #
@@ -151,7 +152,7 @@ msgstr "Genweb UPC settings"
 
 #: genweb.banners/genweb/banners/portlets/bannersportlet.py:55
 msgid "Genweb banners"
-msgstr "Genweb banners"
+msgstr "Banners"
 
 #: genweb.upc/genweb/upc/adapters.py:89
 msgid "Grups de recerca"

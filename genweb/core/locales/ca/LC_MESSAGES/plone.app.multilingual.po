@@ -153,7 +153,7 @@ msgstr "Per afegir traduccions"
 #. Default: "This step will fix some lost dependencies to the ITranslatable interface hidden in the relation catalog and it gets rid of them. It must be run only when LinguaPlone is already uninstalled."
 #: ./browser/templates/migration.pt:225
 msgid "description_after_migration_cleanup"
-msgstr "quest pas serà per a marcar algunes dependències perdudes a la interfície ITranslatable en el catàleg de relació. S'ha d'executar només quan LinguaPlone ja es desinstal.la"
+msgstr "Aquest pas serà per marcar algunes dependències perdudes a la interfície ITranslatable en el catàleg de relació. S'ha d'executar només quan LinguaPlone ja es desinstal·la"
 
 #. Default: "Authenticated users only. Use cookie for manual override. (Required for the language selector viewlet to be rendered.)"
 #: ./browser/controlpanel.py:143
@@ -592,7 +592,7 @@ msgstr "El seu lloc no està configurat amb més d'un idioma permès, però el c
 #. Default: "It's not possible to execute this step without uninstalling completely LinguaPlone: uninstall in the add-ons control panel, delete it from your buildout and re-run buildout. Then come here and try again."
 #: ./browser/templates/migration.pt:234
 msgid "relation_migration_with_lp_not_posible"
-msgstr "No és possible executar aquest pas sense desinstal·lar completament LinguaPlone: desinstal.la al tauler de control de complements, esborri'l del seu buildout i tornar a executar buildout. Després torni a intentar-ho."
+msgstr "No és possible executar aquest pas sense desinstal·lar completament LinguaPlone: desinstal·la al tauler de control de complements, esborri'l del seu buildout i tornar a executar buildout. Després torni a intentar-ho."
 
 #. Default: "Your site has no relation catalog, and therefore this migration step is not needed"
 #: ./browser/templates/migration.pt:242
