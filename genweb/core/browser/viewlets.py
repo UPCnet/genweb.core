@@ -224,3 +224,8 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
             results.append(data)
 
         return results
+
+
+class gwJSViewletManager(grok.ViewletManager):
+    grok.context(Interface)
+    grok.name('genweb.js')

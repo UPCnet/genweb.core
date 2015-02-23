@@ -35,7 +35,7 @@ from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
 from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
-from genweb.core.directory import METADATA_USER_ATTRS
+from genweb.core.utils import add_user_to_catalog
 
 import json
 
@@ -817,39 +817,11 @@ class ReBuildUserPropertiesCatalog(grok.View):
             user_obj = api.user.get(user['id'])
 
             if user_obj:
-                self.add_user_to_catalog(user_obj, user)
+                add_user_to_catalog(user_obj, user)
             else:
                 print('No user found in user repository (LDAP) {}'.format(user['id']))
 
             print('Updated properties catalog for {}'.format(user['id']))
-
-    def add_user_to_catalog(self, principal, properties):
-        """ Basically the same as the subscriber does if the notify doesn't
-            refuse to work properly from this grok view T_T
-        """
-        portal = api.portal.get()
-        soup = get_soup('user_properties', portal)
-        exist = [r for r in soup.query(Eq('username', principal.getUserName()))]
-        user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
-        indexed_attrs = user_properties_utility(portal).keys()
-
-        if exist:
-            user_record = exist[0]
-        else:
-            record = Record()
-            record_id = soup.add(record)
-            user_record = soup.get(record_id)
-
-        user_record.attrs['username'] = principal.getUserName()
-
-        for attr in indexed_attrs + METADATA_USER_ATTRS:
-            if attr in properties:
-                if isinstance(properties[attr], str):
-                    user_record.attrs[attr] = properties[attr].decode('utf-8')
-                else:
-                    user_record.attrs[attr] = properties[attr]
-
-        soup.reindex(records=[user_record])
 
 
 class enablePDFIndexing(grok.View):

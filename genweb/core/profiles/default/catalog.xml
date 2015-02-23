@@ -7,4 +7,5 @@
     <column value="is_important"/>
     <column value="favoritedBy"/>
     <column value="get_size"/>
+    <column value="gwuuid"/>
 </object>

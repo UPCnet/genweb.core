@@ -34,6 +34,9 @@
     "typeahead.js": "latest",
     "select2": "https://github.com/ivaynberg/select2.git#master",
     "wookmark-jquery": "latest",
-    "angular-ui-select": "~0.9.9"
+    "angular-ui-select": "~0.9.9",
+    "alertify": "0.3",
+    "mixitup": "1",
+    "angular-datatables": "~0.4.0"
   }
 }

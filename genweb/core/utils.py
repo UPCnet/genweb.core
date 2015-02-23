@@ -19,6 +19,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
+from Products.PlonePAS.tools.memberdata import MemberData
 from souper.interfaces import ICatalogFactory
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
@@ -30,6 +31,7 @@ from repoze.catalog.indexes.field import CatalogFieldIndex
 from souper.soup import NodeAttributeIndexer
 from plone.uuid.interfaces import IMutableUUID
 
+from genweb.core.directory import METADATA_USER_ATTRS
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
 import logging
@@ -120,6 +122,46 @@ def get_safe_member_by_id(username):
             if records[0].attrs.get(attr, False):
                 properties[attr] = records[0].attrs[attr]
     return properties
+
+
+def add_user_to_catalog(user, properties):
+    """ Adds user to the user catalog even if it's a MemberData wrapped one or a
+        new (string) username.
+    """
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    if isinstance(user, MemberData):
+        username = user.getUserName()
+    else:
+        username = user
+    exist = [r for r in soup.query(Eq('username', username))]
+    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+    indexed_attrs = user_properties_utility(portal).keys()
+
+    if exist:
+        user_record = exist[0]
+    else:
+        record = Record()
+        record_id = soup.add(record)
+        user_record = soup.get(record_id)
+
+    user_record.attrs['username'] = username
+
+    for attr in indexed_attrs + METADATA_USER_ATTRS:
+        # Only update it if user has already not property set or it's empty
+        if attr in properties and user_record.attrs.get(attr, u'') == u'':
+            if isinstance(properties[attr], str):
+                user_record.attrs[attr] = properties[attr].decode('utf-8')
+            else:
+                user_record.attrs[attr] = properties[attr]
+
+    soup.reindex(records=[user_record])
+
+
+def reset_user_catalog():
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    soup.clear()
 
 
 class genwebUtils(BrowserView):
@@ -295,6 +337,9 @@ class genwebUtils(BrowserView):
         else:
             url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
         return url
+
+    def is_debug_mode(self):
+        return api.env.debug_mode()
 
 
 @implementer(ICatalogFactory)
