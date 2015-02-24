@@ -19,9 +19,11 @@ from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
 
 from genweb.core.utils import get_safe_member_by_id
 
+
 import unicodedata
 import inspect
 import logging
+
 
 logger = logging.getLogger('event.LDAPUserFolder')
 genweb_log = logging.getLogger('genweb.core')
@@ -470,3 +472,54 @@ def getMemberById(self, id):
         user = self.wrapUser(user)
 
     return user
+
+#TinyMCE install. To remove default values in styles and tablestyles
+def _importNode(self, node):
+    """Import the object from the DOM node"""
+    if self.environ.shouldPurge() or node.getAttribute("purge").lower() == 'true':
+        self._purgeAttributes()
+
+    for categorynode in node.childNodes:
+        if categorynode.nodeName != '#text' and categorynode.nodeName != '#comment':
+            for fieldnode in categorynode.childNodes:
+                if fieldnode.nodeName != '#text' and fieldnode.nodeName != '#comment':
+                    if self.attributes[categorynode.nodeName][fieldnode.nodeName]['type'] == 'Bool':
+                        if fieldnode.hasAttribute('value'):
+                            setattr(self.context, fieldnode.nodeName, self._convertToBoolean(fieldnode.getAttribute('value')))
+                    elif self.attributes[categorynode.nodeName][fieldnode.nodeName]['type'] == 'Text':
+                        if fieldnode.hasAttribute('value'):
+                            setattr(self.context, fieldnode.nodeName, fieldnode.getAttribute('value'))
+                    elif self.attributes[categorynode.nodeName][fieldnode.nodeName]['type'] == 'List':
+                        field = getattr(self.context, fieldnode.nodeName)
+                        if field is None or fieldnode.getAttribute("purge").lower() == 'true':
+                            items = {}
+                        else:
+                            if fieldnode.nodeName == 'styles' or fieldnode.nodeName == 'tablestyles':
+                                items = {}
+                            else:
+                                items = dict.fromkeys(field.split('\n'))
+                        for element in fieldnode.childNodes:
+                            if element.nodeName != '#text' and element.nodeName != '#comment':
+                                if element.getAttribute('remove').lower() == 'true' and \
+                                        element.getAttribute('value') in items:
+                                    del(items[element.getAttribute('value')])
+                                elif element.getAttribute('remove').lower() != 'true' and \
+                                        element.getAttribute('value') not in items:
+                                    items[element.getAttribute('value')] = None
+                        string = '\n'.join(sorted(items.keys()))
+
+                        # Don't break on international characters or otherwise
+                        # funky data -
+                        if type(string) == str:
+                            # On Plone 4.1 this should not be reached
+                            # as string is unicode in any case
+                            string = string.decode("utf-8", "ignore")
+
+                        setattr(self.context, fieldnode.nodeName, string)
+
+    self._logger.info('TinyMCE Settings imported.')
+
+
+
+
+

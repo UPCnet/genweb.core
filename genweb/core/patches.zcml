@@ -13,6 +13,13 @@
         />
 
     <monkey:patch
+        description="TinyMCE. To remove default values in styles and tablestyle"
+        class="Products.TinyMCE.exportimport.TinyMCESettingsXMLAdapter"
+        original="_importNode"
+        replacement=".patches._importNode"
+        />        
+
+    <monkey:patch
         description="Unicode normalization aware searches"
         class="Products.PlonePAS.plugins.property.ZODBMutablePropertyProvider"
         original="testMemberData"
