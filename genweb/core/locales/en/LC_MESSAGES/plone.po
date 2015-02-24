@@ -84,6 +84,9 @@ msgstr "RSS"
 msgid "portlet_static_title"
 msgstr "HTML Portlet"
 
+msgid "portlet_static"
+msgstr "HTML Portlet"
+
 msgid "portlet_poll_title"
 msgstr "Survey"
 
