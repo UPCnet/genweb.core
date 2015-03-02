@@ -362,10 +362,10 @@ msgid "portlet_rss_title"
 msgstr "RSS"
 
 msgid "portlet_static_title"
-msgstr "Portlet HTML"
+msgstr "Portlet estàtic"
 
 msgid "portlet_static"
-msgstr "Portlet HTML"
+msgstr "Portlet estàtic"
 
 msgid "portlet_poll_title"
 msgstr "Enquesta"
