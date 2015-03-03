@@ -28,7 +28,7 @@ class Omega13UserSearch(grok.View):
             searching_surname = len(re.match(r'^[^\ \.]+(?: |\.)*(.*?)$', query).groups()[0])
 
             normalized_query = query.replace('.', ' ') + '*'
-            users_in_soup = [dict(username=r.attrs.get('username'),
+            users_in_soup = [dict(id=r.attrs.get('username'),
                                   displayName=r.attrs.get('fullname'))
                                   for r in soup.query(Or(Eq('username', normalized_query),
                                                          Eq('fullname', normalized_query)))]
@@ -45,10 +45,10 @@ class Omega13UserSearch(grok.View):
                 maxclient.setToken(oauth_token)
 
                 max_users = maxclient.people.get(qs={'limit': 0, 'username': query})
-                users_in_max = [dict(username=user.get('username'), displayName=user.get('displayName')) for user in max_users]
+                users_in_max = [dict(id=user.get('username'), displayName=user.get('displayName')) for user in max_users]
 
                 for user in users_in_max:
-                    add_user_to_catalog(user['username'], dict(displayName=user['displayName']))
+                    add_user_to_catalog(user['id'], dict(displayName=user['displayName']))
 
                 return json.dumps(dict(results=users_in_max,
                                        last_query=query,

@@ -17,7 +17,8 @@ PROFILE_ID = 'profile-genweb.core:default'
 INDEXES = (('is_important', 'BooleanIndex'),
            ('favoritedBy', 'KeywordIndex'),
            ('exclude_from_nav', 'FieldIndex'),
-           ('news_image_filename', 'FieldIndex')
+           ('news_image_filename', 'FieldIndex'),
+           ('gwuuid', 'UUIDIndex')
            )
 
 

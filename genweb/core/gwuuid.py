@@ -75,3 +75,10 @@ class MutableAttributeUUID(object):
 def gwUUID(context):
     return IGWUUID(context, None)
 grok.global_adapter(gwUUID, name='gwuuid')
+
+
+class GWUUIDView(grok.View):
+    grok.context(Interface)
+
+    def render(self):
+        return IGWUUID(self.context)
