@@ -111,14 +111,12 @@ def get_safe_member_by_id(username):
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
-    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
-    indexed_attrs = user_properties_utility(portal).keys()
     properties = None
     username = username.lower()
     records = [r for r in soup.query(Eq('username', username))]
     if records:
         properties = {}
-        for attr in indexed_attrs:
+        for attr in records[0].attrs:
             if records[0].attrs.get(attr, False):
                 properties[attr] = records[0].attrs[attr]
     return properties
@@ -127,6 +125,9 @@ def get_safe_member_by_id(username):
 def add_user_to_catalog(user, properties):
     """ Adds user to the user catalog even if it's a MemberData wrapped one or a
         new (string) username.
+
+        If some of this method is modified, you should update the
+        genweb.core.directory.subscriber module one.
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
