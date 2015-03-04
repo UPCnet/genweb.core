@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.4.49 (unreleased)
+4.4.48 (2015-03-04)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* sort order in Tiny Templates [Roberto Diaz]
 
 4.4.48 (2015-03-04)
 -------------------
