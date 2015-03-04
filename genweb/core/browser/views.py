@@ -51,13 +51,24 @@ class TemplateList(grok.View):
                 portal_catalog = api.portal.get_tool('portal_catalog')
                 portal_path = '/'.join(api.portal.get().getPhysicalPath())
                 paths = []
-
                 for p in templateDirectories:
                     if p.startswith('/'):
                         p = p[1:]
                     paths.append("%s/%s" % (portal_path, p,))
 
-                results = portal_catalog.searchResults(Language='', path=paths, object_provides=IDocument.__identifier__)
+                # Primer les de SCP i després les custom (templates)
+                templatesSCP = portal_catalog.searchResults(Language='',
+                                                            path=paths[0],
+                                                            object_provides=IDocument.__identifier__,
+                                                            sort_on='getObjPositionInParent')
+
+                # I després les custom (plantilles)
+                templatesCustom = portal_catalog.searchResults(Language='',
+                                                               path=paths[1],
+                                                               object_provides=IDocument.__identifier__,
+                                                               sort_on='getObjPositionInParent')
+
+                results = templatesSCP + templatesCustom
 
                 for r in results:
                     templates.append([r.Title, "%s/genweb.get.dxdocument.text" % r.getURL(), r.Description])
