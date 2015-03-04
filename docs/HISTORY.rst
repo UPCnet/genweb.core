@@ -1,11 +1,20 @@
 Changelog
 =========
 
-4.4.48 (unreleased)
+4.4.49 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.4.48 (2015-03-04)
+-------------------
+
+* Change name static portlet [hanirok]
+* TinyMCE. Quitar de style y tablestyle los valores por defecto [Paco Gregori]
+* Translate static portlet [hanirok]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Paco Gregori]
+* modificación literal fitxers compartits [Paco Gregori]
 
 4.4.47 (2015-02-18)
 -------------------
