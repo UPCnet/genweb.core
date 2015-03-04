@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from five import grok
 from plone import api
 from itertools import chain
