@@ -1,10 +1,9 @@
 Changelog
 =========
 
-4.4.50 (unreleased)
+4.4.50 (2015-03-04)
 -------------------
-
-- Nothing changed yet.
+* Re-released.
 
 
 4.4.49 (2015-03-04)
