@@ -165,6 +165,12 @@ def reset_user_catalog():
     soup.clear()
 
 
+def reset_group_catalog():
+    portal = api.portal.get()
+    soup = get_soup('ldap_groups', portal)
+    soup.clear()
+
+
 class genwebUtils(BrowserView):
     """ Convenience methods placeholder genweb.utils view. """
 

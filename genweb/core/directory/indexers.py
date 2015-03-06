@@ -27,3 +27,15 @@ class UserPropertiesSoupCatalogFactory(object):
         catalog['twitter_username'] = CatalogTextIndex(twitter_username)
         return catalog
 provideUtility(UserPropertiesSoupCatalogFactory(), name="user_properties")
+
+
+@implementer(ICatalogFactory)
+class GroupsSoupCatalogFactory(object):
+    def __call__(self, context):
+        catalog = Catalog()
+        groupindexer = NodeAttributeIndexer('id')
+        catalog['id'] = CatalogFieldIndex(groupindexer)
+        idsearchableindexer = NodeAttributeIndexer('searchable_id')
+        catalog['searchable_id'] = CatalogTextIndex(idsearchableindexer)
+        return catalog
+provideUtility(GroupsSoupCatalogFactory(), name="ldap_groups")

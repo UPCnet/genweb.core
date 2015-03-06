@@ -6,12 +6,21 @@ from repoze.catalog.query import Eq
 from repoze.catalog.query import Or
 from souper.soup import get_soup
 from zope.component import getUtility
+from souper.soup import Record
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from genweb.core.utils import add_user_to_catalog
 from mrs.max.utilities import IMAXClient
 
 import json
+import ldap
 import re
+import os
+
+ALT_LDAP_URI = os.environ.get('alt_ldap_uri', '')
+ALT_LDAP_DN = os.environ.get('alt_bind_dn', '')
+ALT_LDAP_PASSWORD = os.environ.get('alt_bindpasswd', '')
+BASEDN = os.environ.get('alt_base_dn', '')
 
 
 class Omega13UserSearch(grok.View):
@@ -62,3 +71,60 @@ class Omega13UserSearch(grok.View):
             return json.dumps(dict(error='No query found',
                                    last_query='',
                                    last_query_count=0))
+
+
+class Omega13GroupSearch(grok.View):
+    grok.context(Interface)
+
+    def render(self):
+        query = self.request.form.get('q', '')
+        if query:
+            portal = api.portal.get()
+            soup = get_soup('ldap_groups', portal)
+            normalized_query = query.replace('.', ' ') + '*'
+
+            results = [dict(id=r.attrs.get('id')) for r in soup.query(Eq('searchable_id', normalized_query))]
+            return json.dumps(dict(results=results))
+        else:
+            return json.dumps(dict(id='No results yet.'))
+
+
+class SyncLDAPGroups(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        conn = ldap.initialize(ALT_LDAP_URI)
+        conn.simple_bind_s(ALT_LDAP_DN, ALT_LDAP_PASSWORD)
+
+        try:
+            results = conn.search_s(BASEDN, ldap.SCOPE_SUBTREE, '(objectClass=groupOfNames)', ['cn'])
+        except:
+            # Just in case the user raise a "SIZE_LIMIT_EXCEEDED"
+            api.portal.send_email(
+                recipient="plone.team@upcnet.es",
+                sender="noreply@ulearn.upcnet.es",
+                subject="[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED",
+                body="The sync view on the uLearn instance has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated",
+            )
+
+        if results:
+            portal = api.portal.get()
+            soup = get_soup('ldap_groups', portal)
+            to_print = []
+
+            for dn, attrs in results:
+                group_id = attrs['cn'][0]
+                exist = [r for r in soup.query(Eq('id', group_id))]
+                if exist:
+                    to_print.append('* Already existing record for group: {}'.format(group_id))
+                else:
+                    record = Record()
+                    record.attrs['id'] = group_id
+                    record.attrs['searchable_id'] = group_id
+                    soup.add(record)
+                    to_print.append('Added record for group: {}'.format(group_id))
+
+            return '\n'.join(to_print)
+        else:
+            return 'No results'
