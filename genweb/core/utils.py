@@ -111,15 +111,19 @@ def get_safe_member_by_id(username):
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
-    properties = None
     username = username.lower()
-    records = [r for r in soup.query(Eq('username', username))]
+    records = [r for r in soup.query(Eq('id', username))]
     if records:
         properties = {}
         for attr in records[0].attrs:
             if records[0].attrs.get(attr, False):
                 properties[attr] = records[0].attrs[attr]
-    return properties
+        return properties
+    else:
+        # No such member: removed?  We return something useful anyway.
+        return {'username': username, 'description': '', 'language': '',
+                'home_page': '', 'name_or_id': username, 'location': '',
+                'fullname': ''}
 
 
 def add_user_to_catalog(user, properties):
@@ -135,7 +139,7 @@ def add_user_to_catalog(user, properties):
         username = user.getUserName()
     else:
         username = user
-    exist = [r for r in soup.query(Eq('username', username))]
+    exist = [r for r in soup.query(Eq('id', username))]
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
     indexed_attrs = user_properties_utility(portal).keys()
 
@@ -147,6 +151,7 @@ def add_user_to_catalog(user, properties):
         user_record = soup.get(record_id)
 
     user_record.attrs['username'] = username
+    user_record.attrs['id'] = username
 
     for attr in indexed_attrs + METADATA_USER_ATTRS:
         # Only update it if user has already not property set or it's empty

@@ -11,6 +11,8 @@ from souper.soup import NodeAttributeIndexer
 class UserPropertiesSoupCatalogFactory(object):
     def __call__(self, context):
         catalog = Catalog()
+        idindexer = NodeAttributeIndexer('id')
+        catalog['id'] = CatalogFieldIndex(idindexer)
         userindexer = NodeAttributeIndexer('username')
         catalog['username'] = CatalogTextIndex(userindexer)
         fullname = NodeAttributeIndexer('fullname')

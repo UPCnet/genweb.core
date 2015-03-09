@@ -32,6 +32,7 @@ def add_user_to_catalog(principal, event):
         user_record = soup.get(record_id)
 
     user_record.attrs['username'] = principal.getUserName()
+    user_record.attrs['id'] = principal.getUserName()
 
     if IPropertiesUpdatedEvent.providedBy(event):
         for attr in indexed_attrs + METADATA_USER_ATTRS:

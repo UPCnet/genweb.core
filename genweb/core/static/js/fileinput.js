@@ -8,6 +8,32 @@
  */
 
 $.fn.customFileInput = function(){
+	var i18n_strings = {
+		ca: {
+				canvia: 'Canvia...',
+				navegar: 'Navega...',
+				fitxer_no_seleccionat: 'Cap fitxer seleccionat...'
+			},
+		en: {
+				canvia: 'Change...',
+				navegar: 'Browse...',
+				fitxer_no_seleccionat: 'No file selected...'
+			},
+		es: {
+				canvia: 'Cambiar...',
+				navegar: 'Navegar...',
+				fitxer_no_seleccionat: 'Ningún archivo seleccionado...'
+		}
+	};
+	var gwtranslate = function(i18n_id) {
+		var lang = $('html').attr('lang');
+		var translation = i18n_strings[lang][i18n_id];
+		if (translation === undefined) {
+			return i18n_strings['en'][i18n_id];
+		} else {
+			return translation;
+		}
+	};
 	//apply events and styles for file input element
 	var fileInput = $(this)
 		.addClass('customfile-input') //add class for CSS
@@ -47,7 +73,7 @@ $.fn.customFileInput = function(){
 				.data('fileExt', fileExt) //store file extension for class removal on next change
 				.addClass('customfile-feedback-populated'); //add class to show populated state
 			//change text of button
-			uploadButton.text(_gw_i18n('canvia'));
+			uploadButton.text(gwtranslate('canvia'));
 		})
 		.click(function(){ //for IE and Opera, make sure change fires after choosing a file, using an async callback
 			fileInput.data('val', fileInput.val());
@@ -59,9 +85,9 @@ $.fn.customFileInput = function(){
 	//create custom control container
 	var upload = $('<div class="customfile well well-small"></div>');
 	//create custom control button
-	var uploadButton = $('<span class="customfile-button btn pull-right" aria-hidden="true"><i class="icon-upload"></i>'+_gw_i18n("navegar")+'</span>').appendTo(upload);
+	var uploadButton = $('<span class="customfile-button btn pull-right" aria-hidden="true"><i class="icon-upload"></i>'+gwtranslate("navegar")+'</span>').appendTo(upload);
 	//create custom control feedback
-	var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true">'+_gw_i18n("fitxer_no_seleccionat")+'</span>').appendTo(upload);
+	var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true">'+gwtranslate("fitxer_no_seleccionat")+'</span>').appendTo(upload);
 
 	//match disabled state
 	if(fileInput.is('[disabled]')){

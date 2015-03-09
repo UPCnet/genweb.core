@@ -2,6 +2,7 @@ from pyquery import PyQuery as pq
 from plone import api
 from plone.app.search.browser import quote_chars
 from plone.app.search.browser import EVER
+from plone.memoize.instance import memoize
 
 from Products.PlonePAS.utils import safe_unicode
 from Products.LDAPUserFolder.utils import guid2string
@@ -426,19 +427,14 @@ def setMemberProperties(self, mapping, force_local=0):
         notify(PropertiesUpdated(user, mapping))
 
 
-WHITELISTED_CALLERS = ['getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
-                       'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
+WHITELISTED_CALLERS = ['getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
                        'getMemberById/getMemberInfo/author/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
                        'getMemberById/getMemberInfo/info/memogetter/render_listitem/render_entries/render_listing/render_content_core/__fill_content_core/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__',
                        'getMemberById/getMemberInfo/info/memogetter/render_listitem/__fill_entry/render_entries/__fill_entries/render_listing/render_content_core/render_listing/__fill_content_core/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
-                       'getMemberById/get_thinnkins/memogetter/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/safe_render/render/render/render/render/__call__/pt_render/__call__/__call__/render/renderProviderByName/__fill_main/render_content/render_master/render/render/render/render/__call__/pt_render/render/_render_template/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
-                       'getMemberById/get_thinnkers/render/render/render/render/__call__/pt_render/__call__/__call__/safe_render/render/render/render/render/__call__/pt_render/__call__/__call__/render/render_content_provider/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
-                       'getMemberById/get_thinnkers/render/render/render/render/__call__/pt_render/__call__/__call__/safe_render/render/render/render/render/__call__/pt_render/__call__/__call__/render/renderProviderByName/__fill_main/render_content/render_master/render/render/render/render/__call__/pt_render/render/_render_template/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
-                       'getMemberById/get_thinnkers/render/render/render/render/__call__/pt_render/__call__/__call__/safe_render/render/render/render/render/__call__/pt_render/__call__/__call__/render/render_content_provider/render_master/render/render/render/render/__call__/pt_render/render/_render_template/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__,',
-                       'getMemberById/get_context_activities/memogetter/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/safe_render/render/render/render/render/__call__/pt_render/__call__/__call__/render/render_content_provider/render_master/render/render/render/render/__call__/pt_render/render/_render_template/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
                        'getMemberById/getMemberInfo/author/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
                        'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
-                       'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__'
+                       'getMemberById/getMemberInfo/author/authorname/__call__/render/render/render/render/__call__/pt_render/__call__/__call__/render/render/render/render_content_provider/render_content/render_master/render/render/render/render/__call__/pt_render/__call__/__call__/__call__/__call__/__call__/call_object/mapply/publish/publish_module_standard/wrapper/publish_module/__init__',
+                       'getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/render/_render_template/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__'
                        ]
 
 # from profilehooks import timecall
@@ -462,6 +458,7 @@ def getMemberById(self, id):
 
     # If the user is not on the new catalog, then fallback anyway
     if api.env.debug_mode():
+        # import ipdb;ipdb.set_trace()
         genweb_log.warning('')
         genweb_log.warning('Warning! Using getMemberById')
         genweb_log.warning('from: {}'.format(upstream_callers))
@@ -472,6 +469,7 @@ def getMemberById(self, id):
         user = self.wrapUser(user)
 
     return user
+
 
 #TinyMCE install. To remove default values in styles and tablestyles
 def _importNode(self, node):
@@ -520,6 +518,21 @@ def _importNode(self, node):
     self._logger.info('TinyMCE Settings imported.')
 
 
+# Patching the custom pas_member view that is called from some templates of p.a.c.
+@memoize
+def info(self, userid=None):
+    user = get_safe_member_by_id(userid)
+    if user is None:
+        # No such member: removed?  We return something useful anyway.
+        return {'username': userid, 'description': '', 'language': '',
+                'home_page': '', 'name_or_id': userid, 'location': '',
+                'fullname': ''}
+    user['name_or_id'] = user.get('fullname') or \
+        user.get('username') or userid
+    return user
 
 
+# Patching the method that calls getMemberById in DocumentByLine
+def author(self):
+    return get_safe_member_by_id(self.creator())
 
