@@ -118,6 +118,12 @@ def get_safe_member_by_id(username):
         for attr in records[0].attrs:
             if records[0].attrs.get(attr, False):
                 properties[attr] = records[0].attrs[attr]
+
+        # Make sure that the key 'fullname' is returned anyway for it's used in
+        # the wild without guards
+        if 'fullname' not in properties:
+            properties['fullname'] = ''
+
         return properties
     else:
         # No such member: removed?  We return something useful anyway.
