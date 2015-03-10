@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GenWebUPC\n"
 "POT-Creation-Date: 2008-11-20 09:40\n"
-"PO-Revision-Date: 2010-06-04 11:36+0100\n"
+"PO-Revision-Date: 2015-03-09 11:36+0100\n"
 "Last-Translator: Roberto Diaz <roberto.diaz@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
 "MIME-Version: 1.0\n"
@@ -80,12 +80,6 @@ msgstr "Navigation menu"
 
 msgid "portlet_rss_title"
 msgstr "RSS"
-
-msgid "portlet_static_title"
-msgstr "HTML Portlet"
-
-msgid "portlet_static"
-msgstr "HTML Portlet"
 
 msgid "portlet_poll_title"
 msgstr "Survey"
