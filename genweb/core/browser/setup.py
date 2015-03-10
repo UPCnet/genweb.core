@@ -83,18 +83,18 @@ class setupLDAPUPC(grok.View):
                     "top,person", 0, 0, "SSHA", 1, '')
                 plugin = portal.acl_users['ldapUPC']
 
-                plugin.manage_activateInterfaces(['IGroupEnumerationPlugin', 'IGroupsPlugin', 'IPropertiesPlugin', 'IGroupIntrospection', 'IAuthenticationPlugin', 'IRolesPlugin', 'IUserEnumerationPlugin', 'IRoleEnumerationPlugin'])
-                #Comentem la linia per a que no afegeixi
-                #LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
+                plugin.manage_activateInterfaces(['IGroupEnumerationPlugin', 'IGroupsPlugin', 'IGroupIntrospection', 'IAuthenticationPlugin', 'IUserEnumerationPlugin'])
+                # Comentem la linia per a que no afegeixi
+                # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
 
                 LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapUPC.acl_users, ldap_names=['sn'], REQUEST=None)
                 LDAPUserFolder.manage_addLDAPSchemaItem(portal.acl_users.ldapUPC.acl_users, ldap_name='sn', friendly_name='Last Name', public_name='name')
 
                 # Move the ldapUPC to the top of the active plugins.
                 # Otherwise member.getProperty('email') won't work properly.
-                from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
-                portal.acl_users.plugins.movePluginsUp(IPropertiesPlugin, ['ldapUPC'])
-                #portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
+                # from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
+                # portal.acl_users.plugins.movePluginsUp(IPropertiesPlugin, ['ldapUPC'])
+                # portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
 
             except:
                 logger.debug("Something bad happened and the LDAP has not been created properly")
@@ -153,15 +153,12 @@ class setupLDAPExterns(grok.View):
                                           'IGroupIntrospection',
                                           'IGroupManagement',
                                           'IGroupsPlugin',
-                                          'IPropertiesPlugin',
-                                          'IRoleEnumerationPlugin',
-                                          'IRolesPlugin',
                                           'IUserAdderPlugin',
                                           'IUserEnumerationPlugin',
                                           'IUserManagement'])
 
         # In case to have more than one server for fault tolerance
-        #LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
+        # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
 
         # Redefine some schema properties
         LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapexterns.acl_users, ldap_names=['sn'], REQUEST=None)
@@ -177,11 +174,11 @@ class setupLDAPExterns(grok.View):
         # Otherwise member.getProperty('email') won't work properly.
         # from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
         # portal.acl_users.plugins.movePluginsUp(IPropertiesPlugin, ['ldapUPC'])
-        #portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
+        # portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
         # except:
         #     pass
 
-        #Add LDAP plugin cache
+        # Add LDAP plugin cache
         plugin = portal.acl_users['ldapexterns']
         plugin.ZCacheable_setManagerId('RAMCache')
         return 'Done.'
