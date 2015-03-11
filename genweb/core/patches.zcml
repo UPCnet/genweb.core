@@ -13,17 +13,88 @@
         />
 
     <monkey:patch
+        description="TinyMCE. To remove default values in styles and tablestyle"
+        class="Products.TinyMCE.exportimport.TinyMCESettingsXMLAdapter"
+        original="_importNode"
+        replacement=".patches._importNode"
+        />        
+
+    <monkey:patch
         description="Unicode normalization aware searches"
         class="Products.PlonePAS.plugins.property.ZODBMutablePropertyProvider"
         original="testMemberData"
         replacement=".patches.testMemberData"
         />
 
-    <monkey:patch
+<!--     <monkey:patch
         description="Bug when searching with no standard attributes on LDAPUserFolder"
         class="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
         original="searchUsers"
         replacement=".patches.searchUsers"
+        /> -->
+
+    <monkey:patch
+        description="Force the creation of users to lowercase"
+        class="plone.app.users.browser.register.BaseRegistrationForm"
+        original="generate_user_id"
+        replacement=".patches.generate_user_id"
+        />
+
+    <monkey:patch
+        description="Force the search of the site to be wild always"
+        class="plone.app.search.browser.Search"
+        original="filter_query"
+        replacement=".patches.filter_query"
+        />
+
+<!-- TOREMOVE as soon 4.3.4 goes live. -->
+<!--     <monkey:patch
+        description="wc.fc can't delete the items in the case the site is in a mount point"
+        class="Products.CMFPlone.PloneTool.PloneTool"
+        original="deleteObjectsByPaths"
+        replacement=".patches.deleteObjectsByPaths"
+        /> -->
+
+<!-- TOREMOVE as soon it got fixed -->
+    <monkey:patch
+        description="CMFEditions versions_history_form doesn't show the preview for DX and five.pt"
+        class="Products.CMFEditions.browser.utils.GetMacros"
+        original="get_macros"
+        replacement=".patches.get_macros"
+        />
+
+    <adapter
+        for="plone.dexterity.interfaces.IDexterityContent"
+        provides="Products.TinyMCE.adapters.interfaces.Save.ISave"
+        factory=".patches.Save"
+        />
+
+    <monkey:patch
+        description="Enable event of update user member data properties"
+        class="Products.PlonePAS.tools.memberdata.MemberData"
+        original="setMemberProperties"
+        replacement=".patches.setMemberProperties"
+        />
+
+    <monkey:patch
+        description="getMemberById SHOUT!"
+        class="Products.CMFCore.MembershipTool.MembershipTool"
+        original="getMemberById"
+        replacement=".patches.getMemberById"
+        />
+
+    <monkey:patch
+        description="pas_member view override to user the user local catalog"
+        class="Products.PlonePAS.browser.member.PASMemberView"
+        original="info"
+        replacement=".patches.info"
+        />
+
+    <monkey:patch
+        description="DocumentByLine method override to user the user local catalog"
+        class="plone.app.layout.viewlets.content.DocumentBylineViewlet"
+        original="author"
+        replacement=".patches.author"
         />
 
 </configure>

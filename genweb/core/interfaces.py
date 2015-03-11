@@ -1,4 +1,5 @@
 from zope.interface import Interface
+from zope.viewlet.interfaces import IViewletManager
 
 
 class IGenwebLayer(Interface):
@@ -25,12 +26,17 @@ class IGenwebUtils(Interface):
     """ Marker describing the functionality of the convenience methods
         placeholder genweb.utils view.
     """
+    def portal(self):
+        """ Returns the portal object """
 
     def havePermissionAtRoot(self):
-        """Funcio que retorna si es Editor a l'arrel"""
+        """ Returns if the user have permission at root """
+
+    def pref_lang(self):
+        """ Returns the user preferred language """
 
     def getDadesUnitat(self):
-        """ Retorna les dades proporcionades pel WebService del SCP """
+        """ Returns the data provided by the SC WebService """
 
     def getContentClass(self, view=None):
         """ Returns the correct class for content container (span) """
@@ -45,8 +51,34 @@ class IGenwebUtils(Interface):
     def get_state_label_class_mapping(self):
         """"""
 
+    def pref_lang_native(self):
+        """ Get the current language selected """
+
+    def get_published_languages(self):
+        """ Get the current published languages """
+
+    def is_ldap_upc_site(self):
+        """ Boolean if site is configured with LDAP UPC auth"""
+
+    def redirect_to_root_always_lang_selector(self):
+        """ Gets the Genweb configuration property for redirect to root on
+            language selector.
+        """
+
 
 class IProtectedContent(Interface):
     """Marker interface for preventing dumb users to delete system configuration
        related content
     """
+
+
+class IPAMLSManager(IViewletManager):
+    """ Marker for the PAM language switcher manager """
+
+
+class INewsFolder(Interface):
+    """ Marker interface for the news folders """
+
+
+class IEventFolder(Interface):
+    """ Marker interface for the event folders """

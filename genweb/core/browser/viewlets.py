@@ -10,10 +10,24 @@ from plone.app.i18n.locales.browser.selector import LanguageSelector
 from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
 
-from genweb.core import ITranslatable
 from genweb.core.utils import genweb_config, havePermissionAtRoot
 from genweb.core.interfaces import IGenwebLayer
 from genweb.core import GenwebMessageFactory as _
+
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('Products.LinguaPlone')
+except pkg_resources.DistributionNotFound:
+    HAS_LINGUAPLONE = False
+    from genweb.core.interfaces import ITranslatable
+else:
+    HAS_LINGUAPLONE = True
+    from Products.LinguaPlone.interfaces import ITranslatable
+
+# [DEPRECATED] All this viewlets and associated code are deprecated in favor of
+# the PAM aware viewlet genweb.pamls
+
 
 def addQuery(request, url, exclude=tuple(), **extras):
     """Adds the incoming GET query to the end of the url
@@ -119,7 +133,6 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     #grok.layer(IGenwebLayer)
 
     def languages(self):
-
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
 
         google_translated = self.get_google_translated_langs()
@@ -177,7 +190,7 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
     # Show link to languages published in control panel
     grok.context(IPloneSiteRoot)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
-    #grok.layer(IGenwebLayer)
+    # grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorForRoot, self).languages()
@@ -211,3 +224,8 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
             results.append(data)
 
         return results
+
+
+class gwJSViewletManager(grok.ViewletManager):
+    grok.context(Interface)
+    grok.name('genweb.js')

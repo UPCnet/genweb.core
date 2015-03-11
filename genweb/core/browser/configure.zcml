@@ -1,49 +1,73 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="genweb">
 
-    <browser:page
+<!-- genweb.core with aternatheme GS profile -->
+<!-- Should be in other module than the default GS profile -->
+    <genericsetup:registerProfile
+      name="alternatheme"
+      title="Genweb Core with AlternaTheme"
+      directory="../profiles/alternatheme"
+      description="Installs the genweb.core package with the alternatheme theme"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+<!--     <browser:page
       name="getZEO"
       for="*"
       class=".helpers.getZEO"
       permission="zope2.View"
       template="views_templates/getzeo.pt"
+      /> -->
+
+    <browser:resourceDirectory
+      name="collective.tinymcetemplates.plugin"
+      directory="tinytemplates_plugin"
+      layer="..interfaces.IGenwebLayer"
       />
 
-    <!-- Universal Link -->
-    <browser:page
-      name="universal-link"
-      for="*"
-      class=".views.universalLink"
-      permission="zope.Public"
+    <!-- Adding awesomeness since 2006 -->
+    <browser:resource
+      file="templates/plone-admin-ui.css"
+      name="genweb-plone-admin-ui.css"
       />
 
-    <!-- Selector -->
-    <browser:page
-      name="goto"
-      for="*"
-      class=".views.selectorView"
-      permission="zope.Public"
-      />
+      <configure zcml:condition="installed plone.app.multilingual">
 
-     <browser:resourceDirectory
-        name="collective.tinymcetemplates.plugin"
-        directory="tinytemplates_plugin"
-        layer="..interfaces.IGenwebLayer"
-        />
+        <!-- PAM Language Switcher ViewletManager -->
+        <browser:viewletManager
+          name="genweb.pamls"
+          provides="..interfaces.IPAMLSManager"
+          permission="zope2.View"
+          class="plone.app.viewletmanager.manager.BaseOrderedViewletManager"
+          />
 
-      <browser:page
-        name="getVocabulary"
-        for="*"
-        class=".vocabulary.VocabularyView"
-        permission="zope2.View"
-        />
+        <!-- Viewlet for switching language -->
+        <browser:viewlet
+          name="genweb.multilingual.languageselector"
+          template="viewlets_templates/pamlanguageselector.pt"
+          manager="..interfaces.IPAMLSManager"
+          class="plone.app.multilingual.browser.selector.LanguageSelectorViewlet"
+          permission="zope2.View"
+          for="plone.app.multilingual.interfaces.ITranslatable"
+          layer="plone.app.multilingual.interfaces.IPloneAppMultilingualInstalled"
+          />
 
-      <adapter factory=".vocabulary.DXFieldPermissionChecker" />
+      </configure>
 
-    <!-- XXX Try to decide at the end if it's worth to restrict the last
-         two for a browser layer
-      layer="..interfaces.IGenwebLayer" -->
+      <configure zcml:condition="not-installed plone.app.widgets">
+        <browser:page
+          name="getVocabulary"
+          for="*"
+          class=".vocabulary.VocabularyView"
+          permission="zope2.View"
+          />
+
+        <adapter factory=".vocabulary.DXFieldPermissionChecker" />
+
+      </configure>
 
 </configure>

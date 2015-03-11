@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "css_prefix_text": "fontello-icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "m3m8301t2xdy30x4lp7txm0vztl67tcl",
+      "css": "mobile",
+      "code": 59392,
+      "src": "modernpics"
+    },
+    {
+      "uid": "r36ey62e6pi493s139u528739kjr3o8w",
+      "css": "tablet",
+      "code": 59393,
+      "src": "modernpics"
+    }
+  ]
+}

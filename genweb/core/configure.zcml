@@ -13,25 +13,6 @@
     <!-- Compat with Plone 4.1 -->
     <include package="Products.CMFCore" file="permissions.zcml" />
 
-    <!-- Includes from dependencies to make test pass -->
-    <include package="plone.api" />
-    <include package="plone.app.iterate" />
-    <include package="plone.app.caching" />
-    <include package="plone.app.dexterity" />
-
-    <configure zcml:condition="installed plone.app.contenttypes">
-      <include package="plone.app.contenttypes" />
-    </configure>
-
-    <include package="plone.app.workflowmanager" />
-    <include package="collective.tinymcetemplates" />
-    <include package="wildcard.foldercontents" />
-    <include package="genweb.controlpanel" />
-    <include package="genweb.portlets" />
-    <include package="genweb.theme" />
-    <include package="jarn.jsi18n" />
-    <include package="Products.PloneLDAP" />
-
     <!-- Convenience permission identifying authenticated and member users -->
     <permission
       id="genweb.authenticated"
@@ -48,6 +29,24 @@
       title="Genweb: Webmaster Users"
       />
 
+    <!-- Includes from dependencies to make test pass -->
+    <include package="plone.api" />
+    <include package="plone.app.iterate" />
+    <include package="plone.app.caching" />
+    <include package="plone.app.dexterity" />
+    <include package="plone.app.contenttypes" />
+    <include package="plone.app.event" />
+    <include package="plone.app.workflowmanager" />
+    <include package="collective.tinymcetemplates" />
+    <include package="wildcard.foldercontents" />
+    <include package="genweb.controlpanel" />
+    <include package="genweb.portlets" />
+    <include package="genweb.theme" />
+    <include package="genweb.alternatheme" />
+    <include package="jarn.jsi18n" />
+    <include package="Products.PloneLDAP" />
+    <include package="souper.plone" />
+
     <!-- Grok the package to initialise schema interfaces and content classes -->
     <include package="grokcore.component" file="meta.zcml" />
     <grok:grok package="." />
@@ -57,22 +56,21 @@
     <include package=".browser" />
     <include package=".widgets" />
     <include file="patches.zcml" />
+    <include file="components.zcml" />
+    <include file="behaviors.zcml" />
 
     <!-- The utilities browser view (can't be a grok view) -->
     <browser:page
       for="*"
       name="genweb.utils"
       class=".utils.genwebUtils"
-      permission="zope2.View"
+      permission="zope2.Public"
       allowed_interface=".interfaces.IGenwebUtils"
       />
 
-    <!-- ATLink extender -->
-    <adapter factory=".extenders.ATLinkSchemaModifier" />
-
     <genericsetup:registerProfile
       name="default"
-      title="Genweb Core (genweb.core)"
+      title="Genweb Core standard"
       directory="profiles/default"
       description="Installs the genweb.core package"
       provides="Products.GenericSetup.interfaces.EXTENSION"

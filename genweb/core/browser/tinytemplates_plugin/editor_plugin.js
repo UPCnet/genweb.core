@@ -10,7 +10,6 @@
     tinymce.create('tinymce.plugins.PloneTemplatesPlugin', {
         init : function(ed, url) {
             var t = this;
-            console.log(url);
             t.editor = ed;
 
             // Register css

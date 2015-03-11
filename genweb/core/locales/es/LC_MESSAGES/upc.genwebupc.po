@@ -256,7 +256,7 @@ msgstr "Otros colectivos"
 
 #: ."genweb-actualitat"
 msgid "genweb-actualitat"
-msgstr "Actualidad UPC"
+msgstr "Actualidad UPC <i class=\"icon-news large-icon pull-right\"></i>"
 
 #: ."genweb-noticies"
 msgid "genweb-noticies"

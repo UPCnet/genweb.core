@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="mobile" unicode="&#xe800;" d="m238-31c27 0 47 23 47 48 0 27-20 47-47 47s-48-20-48-47c0-25 20-48 48-48z m-154 794l307 0c50 0 84-34 84-81l0-670c0-42-34-75-75-75l-325 0c-41 0-75 33-75 75l0 670c0 47 34 81 84 81z m91-54c-9 0-15-7-15-16s6-16 15-16l125 0c9 0 15 7 15 16s-6 16-15 16l-125 0z m255-607l0 496-385 0 0-496 385 0z" horiz-adv-x="475" />
+<glyph glyph-name="tablet" unicode="&#xe801;" d="m613 788c55 0 98-45 98-100l0-675c0-56-43-101-98-101l-514 0c-55 0-99 45-99 101l0 675c0 55 44 100 99 100l514 0z m-22-720l0 600-471 0 0-600 471 0z m-235-123c28 0 48 22 48 47 0 28-20 48-48 48s-47-20-47-48c0-25 20-47 47-47z" horiz-adv-x="711" />
+</font>
+</defs>
+</svg>

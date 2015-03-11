@@ -54,4 +54,13 @@
     </field>
     <value>6LeDfboSAAAAADITjxaiFYjQjsKP4t_2Ddiz-g9_</value>
   </record>
+  <!-- Syndication enabled by default -->
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.default_enabled" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="default_enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>If syndication should be enabled by default for all folders and collections.</description>
+      <title>Enabled by default</title>
+    </field>
+    <value>True</value>
+  </record>
 </registry>

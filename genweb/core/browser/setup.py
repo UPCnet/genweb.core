@@ -76,25 +76,25 @@ class setupLDAPUPC(grok.View):
                     title="ldapUPC", use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
                     users_base="ou=Users,dc=upc,dc=edu", users_scope=2,
                     roles="Authenticated", groups_base="ou=Groups,dc=upc,dc=edu",
-                    groups_scope=2, read_only=True, binduid="cn=ldap.upc,ou=Users,dc=upc,dc=edu", bindpwd=LDAP_PASSWORD,
+                    groups_scope=2, read_only=True, binduid="cn=ldap.serveis,ou=users,dc=upc,dc=edu", bindpwd=LDAP_PASSWORD,
                     rdn_attr="cn", LDAP_server="ldap.upc.edu", encryption="SSHA")
                 portal.acl_users.ldapUPC.acl_users.manage_edit("ldapUPC", "cn", "cn", "ou=Users,dc=upc,dc=edu", 2, "Authenticated",
-                    "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.upc,ou=Users,dc=upc,dc=edu", LDAP_PASSWORD, 1, "cn",
+                    "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.serveis,ou=users,dc=upc,dc=edu", LDAP_PASSWORD, 1, "cn",
                     "top,person", 0, 0, "SSHA", 1, '')
                 plugin = portal.acl_users['ldapUPC']
 
-                plugin.manage_activateInterfaces(['IGroupEnumerationPlugin', 'IGroupsPlugin', 'IPropertiesPlugin', 'IGroupIntrospection', 'IAuthenticationPlugin', 'IRolesPlugin', 'IUserEnumerationPlugin', 'IRoleEnumerationPlugin'])
-                #Comentem la linia per a que no afegeixi
-                #LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
+                plugin.manage_activateInterfaces(['IGroupEnumerationPlugin', 'IGroupsPlugin', 'IGroupIntrospection', 'IAuthenticationPlugin', 'IUserEnumerationPlugin'])
+                # Comentem la linia per a que no afegeixi
+                # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
 
                 LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapUPC.acl_users, ldap_names=['sn'], REQUEST=None)
                 LDAPUserFolder.manage_addLDAPSchemaItem(portal.acl_users.ldapUPC.acl_users, ldap_name='sn', friendly_name='Last Name', public_name='name')
 
                 # Move the ldapUPC to the top of the active plugins.
                 # Otherwise member.getProperty('email') won't work properly.
-                from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
-                portal.acl_users.plugins.movePluginsUp(IPropertiesPlugin, ['ldapUPC'])
-                #portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
+                # from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
+                # portal.acl_users.plugins.movePluginsUp(IPropertiesPlugin, ['ldapUPC'])
+                # portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
 
             except:
                 logger.debug("Something bad happened and the LDAP has not been created properly")
@@ -139,7 +139,7 @@ class setupLDAPExterns(grok.View):
             users_base="ou=users,ou=upcnet,dc=upcnet,dc=es", users_scope=2,
             roles="Authenticated,Member", groups_base="ou=groups,ou=upcnet,dc=upcnet,dc=es",
             groups_scope=2, read_only=True, binduid="cn=ldap,ou=upcnet,dc=upcnet,dc=es", bindpwd=LDAP_PASSWORD,
-            rdn_attr="cn", LDAP_server="oauth.upcnet.es", encryption="SSHA")
+            rdn_attr="cn", LDAP_server="ldap.upcnet.es", encryption="SSHA")
         portal.acl_users.ldapexterns.acl_users.manage_edit("ldapexterns", "cn", "cn", "ou=users,ou=upcnet,dc=upcnet,dc=es", 2, "Authenticated,Member",
             "ou=groups,ou=upcnet,dc=upcnet,dc=es", 2, "cn=ldap,ou=upcnet,dc=upcnet,dc=es", LDAP_PASSWORD, 1, "cn",
             "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
@@ -153,15 +153,12 @@ class setupLDAPExterns(grok.View):
                                           'IGroupIntrospection',
                                           'IGroupManagement',
                                           'IGroupsPlugin',
-                                          'IPropertiesPlugin',
-                                          'IRoleEnumerationPlugin',
-                                          'IRolesPlugin',
                                           'IUserAdderPlugin',
                                           'IUserEnumerationPlugin',
                                           'IUserManagement'])
 
         # In case to have more than one server for fault tolerance
-        #LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
+        # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
 
         # Redefine some schema properties
         LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapexterns.acl_users, ldap_names=['sn'], REQUEST=None)
@@ -177,11 +174,81 @@ class setupLDAPExterns(grok.View):
         # Otherwise member.getProperty('email') won't work properly.
         # from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
         # portal.acl_users.plugins.movePluginsUp(IPropertiesPlugin, ['ldapUPC'])
-        #portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
+        # portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
         # except:
         #     pass
 
-        #Add LDAP plugin cache
+        # Add LDAP plugin cache
         plugin = portal.acl_users['ldapexterns']
+        plugin.ZCacheable_setManagerId('RAMCache')
+        return 'Done.'
+
+
+class setupLDAP(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.require('zope2.ViewManagementScreens')
+
+    def render(self):
+        portal = getSite()
+        ldap_name = self.request.form.get('ldap_name', 'ldap')
+        ldap_server = self.request.form.get('ldap_server')
+        branch_name = self.request.form.get('branch_name')
+        base_dn = self.request.form.get('base_dn')
+        branch_admin_cn = self.request.form.get('branch_admin_cn')
+        branch_admin_password = self.request.form.get('branch_admin_password')
+        allow_manage_users = self.request.form.get('allow_manage_users', False)
+
+        users_base = "ou=users,ou={},{}".format(branch_name, base_dn)
+        groups_base = "ou=groups,ou={},{}".format(branch_name, base_dn)
+        bind_uid = "cn={},ou={},{}".format(branch_admin_cn, branch_name, base_dn)
+
+        # Delete if exists
+        if getattr(portal.acl_users, ldap_name, None):
+            portal.acl_users.manage_delObjects('ldapUPC')
+
+        manage_addPloneLDAPMultiPlugin(
+            portal.acl_users, ldap_name,
+            use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
+            rdn_attr="cn", encryption="SSHA", read_only=True,
+            roles="Authenticated,Member", groups_scope=2, users_scope=2,
+            title=ldap_name,
+            LDAP_server=ldap_server,
+            users_base=users_base,
+            groups_base=groups_base,
+            binduid=bind_uid,
+            bindpwd=branch_admin_password)
+
+        ldap_acl_users = getattr(portal.acl_users, ldap_name).acl_users
+        ldap_acl_users.manage_edit(
+            ldap_name, "cn", "cn", users_base, 2, "Authenticated,Member",
+            groups_base, 2, bind_uid, branch_admin_password, 1, "cn",
+            "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
+
+        plugin = portal.acl_users[ldap_name]
+
+        active_plugins = [
+            'IAuthenticationPlugin', 'ICredentialsResetPlugin', 'IGroupEnumerationPlugin',
+            'IGroupIntrospection', 'IGroupManagement', 'IGroupsPlugin',
+            'IPropertiesPlugin', 'IRoleEnumerationPlugin', 'IRolesPlugin',
+            'IUserAdderPlugin', 'IUserEnumerationPlugin']
+
+        if allow_manage_users:
+            active_plugins.append('IUserManagement')
+
+        plugin.manage_activateInterfaces(active_plugins)
+
+        # Redefine some schema properties
+
+        LDAPUserFolder.manage_deleteLDAPSchemaItems(ldap_acl_users, ldap_names=['sn'], REQUEST=None)
+        LDAPUserFolder.manage_deleteLDAPSchemaItems(ldap_acl_users, ldap_names=['cn'], REQUEST=None)
+        LDAPUserFolder.manage_addLDAPSchemaItem(ldap_acl_users, ldap_name='sn', friendly_name='Last Name', public_name='fullname')
+        LDAPUserFolder.manage_addLDAPSchemaItem(ldap_acl_users, ldap_name='cn', friendly_name='Canonical Name')
+
+        # Update the preference of the plugins
+        portal.acl_users.plugins.movePluginsUp(IUserAdderPlugin, [ldap_name])
+        portal.acl_users.plugins.movePluginsUp(IGroupManagement, [ldap_name])
+
+        # Add LDAP plugin cache
+        plugin = portal.acl_users[ldap_name]
         plugin.ZCacheable_setManagerId('RAMCache')
         return 'Done.'

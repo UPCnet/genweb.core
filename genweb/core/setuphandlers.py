@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from zope.interface import alsoProvides
 
 from Products.CMFCore.utils import getToolByName
@@ -13,11 +14,11 @@ import transaction
 
 PROFILE_ID = 'profile-genweb.core:default'
 # Specify the indexes you want, with ('index_name', 'index_type')
-INDEXES = (('obrirEnFinestraNova', 'FieldIndex'),
-           ('is_important', 'BooleanIndex'),
+INDEXES = (('is_important', 'BooleanIndex'),
            ('favoritedBy', 'KeywordIndex'),
            ('exclude_from_nav', 'FieldIndex'),
-           ('news_image_filename', 'FieldIndex')
+           ('news_image_filename', 'FieldIndex'),
+           ('gwuuid', 'UUIDIndex')
            )
 
 
@@ -128,6 +129,10 @@ def setupVarious(context):
     mh.smtp_host = 'localhost'
     portal.email_from_name = 'Genweb Administrator'
     portal.email_from_address = 'no-reply@upcnet.es'
+
+    # Set default TimeZone (p.a.event)
+    api.portal.set_registry_record('plone.app.event.portal_timezone', 'Europe/Madrid')
+    api.portal.set_registry_record('plone.app.event.first_weekday', 0)
 
     transaction.commit()
 

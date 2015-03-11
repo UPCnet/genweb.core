@@ -1,11 +1,455 @@
 Changelog
 =========
 
-4.3.15 (unreleased)
--------------------
+4.5.1 (unreleased)
+------------------
 
 - Nothing changed yet.
 
+
+4.5.0 (2015-03-11)
+------------------
+
+* Update the new settings on LDAP plugins [Victor Fernandez de Alba]
+* Improvements to the get_safe_member_by_id [Victor Fernandez de Alba]
+* Optimizations and improvements on templates and getMemberById [Victor Fernandez de Alba]
+* Groups LDAP internal catalog [Victor Fernandez de Alba]
+* Update Omega13 user search view. [Victor Fernandez de Alba]
+* Do user catalog on creation too (for the case the user creation does not modifythe user properties. [Victor Fernandez de Alba]
+* New components, GWUUID [Victor Fernandez de Alba]
+* Add angular dependencies [Victor Fernandez de Alba]
+* Add angular dependencies [Victor Fernandez de Alba]
+* traduccion portlet estatico [hanirok]
+
+4.4.50 (2015-03-04)
+-------------------
+* Re-released.
+
+
+4.4.49 (2015-03-04)
+-------------------
+
+
+
+4.4.48 (2015-03-04)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* added utf codification to py [Roberto Diaz]
+
+4.4.48 (2015-03-04)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* sort order in Tiny Templates [Roberto Diaz]
+
+4.4.48 (2015-03-04)
+-------------------
+
+* Change name static portlet [hanirok]
+* TinyMCE. Quitar de style y tablestyle los valores por defecto [Paco Gregori]
+* Translate static portlet [hanirok]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Paco Gregori]
+* modificación literal fitxers compartits [Paco Gregori]
+
+4.4.47 (2015-02-18)
+-------------------
+
+* Conditional allow users [Carles Bruguera]
+
+4.4.46 (2015-02-18)
+-------------------
+
+* Add a generic ldap creator [Carles Bruguera]
+
+4.4.45 (2015-02-18)
+-------------------
+
+* Add missing transform [Victor Fernandez de Alba]
+* Portlets translations [hanirok]
+
+4.4.44 (2015-02-17)
+-------------------
+
+* cambios en tinymce (modificación de estilos) [Paco Gregori]
+* traduccions dates event [Paco Gregori]
+
+4.4.43 (2015-02-12)
+-------------------
+
+* Add more patches [Victor Fernandez de Alba]
+
+4.4.42 (2015-02-12)
+-------------------
+
+* Add missing metadata (non-indexed) user properties and fix patches [Victor Fernandez de Alba]
+
+4.4.41 (2015-02-12)
+-------------------
+
+* Update patches whitelisted callers [Victor Fernandez de Alba]
+
+4.4.40 (2015-02-12)
+-------------------
+
+* Update patches whitelisted callers [Victor Fernandez de Alba]
+
+4.4.39 (2015-02-12)
+-------------------
+
+* Fix use case when the user searched is not on the local catalog but in a caller whitelisted [Victor Fernandez de Alba]
+
+4.4.38 (2015-02-11)
+-------------------
+
+* Ensure username is on lowercase always as we always assume that [Victor Fernandez de Alba]
+* Fix procedure [Victor Fernandez de Alba]
+
+4.4.37 (2015-02-11)
+-------------------
+
+
+
+4.4.36 (2015-02-11)
+-------------------
+
+* New util for preserving UUIDs and retrieve them back [Victor Fernandez de Alba]
+
+4.4.35 (2015-02-10)
+-------------------
+
+* Fix unicodeerrors [Victor Fernandez de Alba]
+
+4.4.34 (2015-02-10)
+-------------------
+
+* trad portlets [Paco Gregori]
+* trad portlets [Paco Gregori]
+
+4.4.33 (2015-02-06)
+-------------------
+
+* Add LRF to tinyMCE [Victor Fernandez de Alba]
+
+4.4.32 (2015-02-06)
+-------------------
+
+* New directory repoze.catalog based user properties [Victor Fernandez de Alba]
+
+4.4.31 (2015-02-05)
+-------------------
+
+* Increase reaction to keypress for select2user JS plugin [Victor Fernandez de Alba]
+* Patch to make user PropertiesUpdated event work [Victor Fernandez de Alba]
+* Translate portlets name [hanirok]
+* Traduir No hi ha elements js cerca [Pilar Marinas]
+* traducciones [Paco Gregori]
+
+4.4.30 (2015-01-13)
+-------------------
+
+* Fix translations for homepage portlets [Victor Fernandez de Alba]
+
+4.4.29 (2015-01-08)
+-------------------
+
+* Fixing Travis [Victor Fernandez de Alba]
+* Fix Travis [Victor Fernandez de Alba]
+* New utils for link translations [Victor Fernandez de Alba]
+* Fixing travis [Victor Fernandez de Alba]
+
+4.4.28 (2014-12-30)
+-------------------
+
+* info [Paco Gregori]
+* traducciones [Paco Gregori]
+
+4.4.27 (2014-12-16)
+-------------------
+
+* New permissions for special portlets [Victor Fernandez de Alba]
+
+4.4.26 (2014-12-16)
+-------------------
+
+* New permissions for special portlets [Victor Fernandez de Alba]
+
+4.4.25 (2014-12-16)
+-------------------
+
+* Bad version
+
+4.4.24 (2014-12-16)
+-------------------
+
+* Preemptive retire c.indexing from buildout [Victor Fernandez de Alba]
+
+4.4.23 (2014-12-15)
+-------------------
+
+* Add i18n for missing Plone translations [Victor Fernandez de Alba]
+
+4.4.22 (2014-12-15)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+
+4.4.21 (2014-12-15)
+-------------------
+
+* Make Wbmasters able to manage portlets [Victor Fernandez de Alba]
+* Add pref_lang to utils view [Victor Fernandez de Alba]
+* Missing console.log [Victor Fernandez de Alba]
+* View about only for editors [hanirok]
+* és traduccions [Paco Gregori]
+* és traduccions [Paco Gregori]
+* Traducciones [hanirok]
+* Traducció xarxes socials [Paco Gregori]
+* Traducciones. Ficheros .po [Paco Gregori]
+
+4.4.20 (2014-12-03)
+-------------------
+
+* Disable the patch that patched the searchUsers fuction on LDAPMultiPlugin. [Victor Fernandez de Alba]
+* Cambios en traducciones [Francisco Gregori]
+* Translations [hanirok]
+* News translations [hanirok]
+* Translations [hanirok]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translation news [hanirok]
+* Fix test [Victor Fernandez de Alba]
+* Moved to g.upc [Victor Fernandez de Alba]
+* Update to Plone 4.3.4 [Victor Fernandez de Alba]
+* Try to fix Travis [Victor Fernandez de Alba]
+
+4.4.19 (2014-11-14)
+-------------------
+
+* Working language selector conditional behavior [Victor Fernandez de Alba]
+* Footer translations [hanirok]
+
+4.4.18 (2014-11-10)
+-------------------
+
+* Fix tiny templates preview [Victor Fernandez de Alba]
+* Add syndication enabled by default [Victor Fernandez de Alba]
+* Update linkable Tiny objects list [Victor Fernandez de Alba]
+* Fix link behavior [Victor Fernandez de Alba]
+* Add c.indexing to build [Victor Fernandez de Alba]
+* Updated templates for Tiny [Victor Fernandez de Alba]
+* Regain Tiny save button functionality [Victor Fernandez de Alba]
+* Get contact data [hanirok]
+
+4.4.17 (2014-10-22)
+-------------------
+
+* New helper for mirror UUIDs from one site to another (in the same zope instance) [Victor Fernandez de Alba]
+
+4.4.16 (2014-10-16)
+-------------------
+
+* New templates, i18n [Victor Fernandez de Alba]
+
+4.4.15 (2014-10-16)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Update and modernize some parts. Awesomeness from Plone5 [Victor Fernandez de Alba]
+* New helper for re-setting a branch language [Victor Fernandez de Alba]
+
+4.4.14 (2014-10-15)
+-------------------
+
+* Ignore node modules [Carles Bruguera]
+* Apply changes to minified version [Carles Bruguera]
+* Add new detection in case LDAP UPC is configured, fridge to the portal_url banid [Victor Fernandez de Alba]
+* Update LDAP username [Victor Fernandez de Alba]
+* Add typeahead and handlebars [Carles Bruguera]
+* Migration cleanup and i18n [Victor Fernandez de Alba]
+
+4.4.13 (2014-10-09)
+-------------------
+
+* Update the BLACK_LIST_IDS for the inheriting elements. Make portal_url work again with our code [Victor Fernandez de Alba]
+
+4.4.12 (2014-10-09)
+-------------------
+
+* Improved clouseau [Victor Fernandez de Alba]
+
+4.4.11 (2014-10-08)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Añadir poder marcar contenidos como importantes [hanirok]
+
+4.4.10 (2014-10-07)
+-------------------
+
+* i18n [Victor Fernandez de Alba]
+* Reinstall controlpanel helper finished [Victor Fernandez de Alba]
+* Fix helper [Victor Fernandez de Alba]
+* Helper for reinstall control panel in all Plone instances of a Zope [Victor Fernandez de Alba]
+* Add dependency [Victor Fernandez de Alba]
+* Upload new example images [Victor Fernandez de Alba]
+* Fix versioning preview of the selected version. [Victor Fernandez de Alba]
+
+4.4.9 (2014-10-06)
+------------------
+
+* Fix calendar [Victor Fernandez de Alba]
+* Default language [Victor Fernandez de Alba]
+
+4.4.8 (2014-09-30)
+------------------
+
+* Fix path of example images [Victor Fernandez de Alba]
+* Fix protected content [Victor Fernandez de Alba]
+
+4.4.7 (2014-09-29)
+------------------
+
+* New custom font for Genweb. Fix resizer.js. Added SEO optimizer. [Victor Fernandez de Alba]
+* Override of the default sendto_form redirecting to NotFound [Victor Fernandez de Alba]
+* Patch for fixing the wcfc error on deleting objects. [Victor Fernandez de Alba]
+* Patch for fixing the wcfc error on deleting objects. [Victor Fernandez de Alba]
+* Test for IProtectedContent [Victor Fernandez de Alba]
+
+4.4.6 (2014-09-22)
+------------------
+
+* New i18n [Victor Fernandez de Alba]
+
+4.4.5 (2014-09-22)
+------------------
+
+* New interfaces for the news and events folders [Victor Fernandez de Alba]
+* Fix listing of available templates [Victor Fernandez de Alba]
+* Erase some unused backported from PAM utilities and views. [Victor Fernandez de Alba]
+* Search patch and i18n [Victor Fernandez de Alba]
+
+4.4.4 (2014-09-17)
+------------------
+
+* Add i18n [Victor Fernandez de Alba]
+
+4.4.3 (2014-09-16)
+------------------
+
+* Update dorsals for this season [Victor Fernandez de Alba]
+
+4.4.2 (2014-09-09)
+------------------
+
+* Fix rare error compiling template. [Victor Fernandez de Alba]
+
+4.4.1 (2014-09-05)
+------------------
+
+* Force p.a.robotframework into setup [Victor Fernandez de Alba]
+* Order of field [Victor Fernandez de Alba]
+* Extender into behavior, related tests [Victor Fernandez de Alba]
+* Add open link in new folder behavior. [Victor Fernandez de Alba]
+
+4.4.0 (2014-08-08)
+------------------
+
+* Update to pam 2.0 [Victor Fernandez de Alba]
+* Try fix Travis 5 [Victor Fernandez de Alba]
+* Try fix Travis 4 [Victor Fernandez de Alba]
+* Try fix Travis 3 [Victor Fernandez de Alba]
+* Try fix Travis 2 [Victor Fernandez de Alba]
+* Try fix Travis [Victor Fernandez de Alba]
+* Try to fix Travis [Victor Fernandez de Alba]
+* Fix tests [Victor Fernandez de Alba]
+* Install PAC and PAE by default on every Genweb site. Deprecate old language selector. [Victor Fernandez de Alba]
+* [*** NON AT Genweb UPC ***] Updated to meet the new requirements agreed SC. From here, the Genweb core works with Dexterity CT by default. [Victor Fernandez de Alba]
+
+4.3.29 (2014-07-24)
+-------------------
+
+* Merge [Victor Fernandez de Alba]
+4.3.28 (2014-07-24)
+-------------------
+
+* List last login users [Victor Fernandez de Alba]
+
+4.3.27 (2014-07-22)
+-------------------
+
+* Add missing dist files [Victor Fernandez de Alba]
+
+4.3.26 (2014-07-21)
+-------------------
+
+* Sanitize the static resources for the whole Genweb project [Victor Fernandez de Alba]
+
+4.3.25 (2014-07-15)
+-------------------
+
+* Add i18n strings for filtered_search_view and put more preference on permissions declarations [Victor Fernandez de Alba]
+* New widget for searching in MAX user base directly. [Victor Fernandez de Alba]
+
+4.3.24 (2014-07-08)
+-------------------
+
+* Change ldap externs url [Carles Bruguera]
+
+4.3.23 (2014-07-07)
+-------------------
+
+* Fix deletion of Plone site from Zope root with a Protected content. [Victor Fernandez de Alba]
+* Delete missing ipdb [Victor Fernandez de Alba]
+
+4.3.22 (2014-06-12)
+-------------------
+
+* New profile for genweb.core with alternatheme [Victor Fernandez de Alba]
+* Added alternatheme profile [Victor Fernandez de Alba]
+* Added PAM global check [Victor Fernandez de Alba]
+
+4.3.21 (2014-05-28)
+-------------------
+
+* User bulk creator for debug [Victor Fernandez de Alba]
+
+4.3.20 (2014-05-27)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Change permission schema with utils. [Victor Fernandez de Alba]
+* traducciones [corina.riba]
+* Traducción formulario contacto [corina.riba]
+
+4.3.19 (2014-05-26)
+-------------------
+
+ * Add published languages feature to PAM LS [Victor Fernandez de Alba]
+
+4.3.18 (2014-05-26)
+-------------------
+
+* Make home and subhome pages helpers. HAS_DXCT global helper too. [Victor Fernandez de Alba]
+* Add new language selector viewlet and viewlet manager for PAM version, and make them conditionals [Victor Fernandez de Alba]
+
+4.3.17 (2014-05-07)
+-------------------
+
+* Lowercase all user creations [Victor Fernandez de Alba]
+* Update travis build and bootstrap [Victor Fernandez de Alba]
+* New helper to detect development mode [Victor Fernandez de Alba]
+
+4.3.16 (2014-04-08)
+-------------------
+
+* Add file widget translate [Victor Fernandez de Alba]
+
+4.3.15 (2014-04-02)
+-------------------
+
+* added vocabulary to exclusion [Roberto Diaz]
+* Add getVocabulary view if plone.app.widgets is not installed [Roberto Diaz]
+* Fix permissions for keywords [Victor Fernandez de Alba]
 
 4.3.14 (2014-03-31)
 -------------------

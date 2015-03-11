@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.3.15.dev0'
+version = '4.5.1.dev0'
 
 README = open("README.rst").read()
 HISTORY = open(os.path.join("docs", "HISTORY.rst")).read()
@@ -28,25 +28,33 @@ setup(name='genweb.core',
       namespace_packages=['genweb'],
       include_package_data=True,
       zip_safe=False,
-      extras_require={'test': ['plone.app.testing']},
+      extras_require={'test': ['plone.app.robotframework', 'plone.app.testing[robot] >= 4.2.4']},
       install_requires=[
           'setuptools',
           'requests',
           'five.grok',
+          'five.pt',
           'plone.api',
           'genweb.theme',
+          'genweb.alternatheme',
           'genweb.portlets',
           'genweb.controlpanel',
           'plone.app.caching',
           'archetypes.schemaextender',
           'plone.app.dexterity [grok,relations]',
+          'plone.app.contenttypes',
+          'plone.app.event[dexterity]',
+          'plone.app.multilingual[archetypes]',
           'plone.app.referenceablebehavior',
           'plone.namedfile [blobs]',
           'plone.app.workflowmanager',
           'collective.tinymcetemplates',
           'wildcard.foldercontents',
           'jarn.jsi18n',
-          'Products.PloneLDAP'
+          'Products.PloneLDAP',
+          'quintagroup.seoptimizer',
+          'pyquery',
+          'souper.plone'
       ],
       entry_points="""
       # -*- Entry points: -*-

@@ -2,23 +2,41 @@ import json
 import urllib2
 import requests
 from five import grok
+from plone import api
 from AccessControl import getSecurityManager
-from zope.interface import Interface
+# from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.component.hooks import getSite
+from zope.component import getUtility
 
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
+from plone.app.multilingual.interfaces import ITranslationManager
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
+# from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
+from Products.PlonePAS.tools.memberdata import MemberData
+from souper.interfaces import ICatalogFactory
+from repoze.catalog.query import Eq
+from souper.soup import get_soup
+from souper.soup import Record
+from zope.interface import implementer
+from zope.component import provideUtility
+from repoze.catalog.catalog import Catalog
+from repoze.catalog.indexes.field import CatalogFieldIndex
+from souper.soup import NodeAttributeIndexer
+from plone.uuid.interfaces import IMutableUUID
 
+from genweb.core.directory import METADATA_USER_ATTRS
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 PLMF = MessageFactory('plonelocales')
 
@@ -39,9 +57,9 @@ def havePermissionAtRoot():
     return sm.checkPermission('Modify portal content', proot) or \
         ('Manager' in user.getRoles()) or \
         ('Site Administrator' in user.getRoles())
-        # WebMaster used to have permission here, but not anymore since uLearn
-        # makes use of it
-        # ('WebMaster' in user.getRoles()) or \
+    # WebMaster used to have permission here, but not anymore since uLearn
+    # makes use of it
+    # ('WebMaster' in user.getRoles()) or \
 
 
 def portal_url():
@@ -65,13 +83,110 @@ def pref_lang():
     return lt.getPreferredLanguage()
 
 
+def link_translations(items):
+    """
+        Links the translations with the declared items with the form:
+        [(obj1, lang1), (obj2, lang2), ...] assuming that the first element
+        is the 'canonical' (in PAM there is no such thing).
+    """
+    # Grab the first item object and get its canonical handler
+    canonical = ITranslationManager(items[0][0])
+
+    for obj, language in items:
+        if not canonical.has_translation(language):
+            canonical.register_translation(language, obj)
+
+
 def _contact_ws_cachekey(method, self, unitat):
     """Cache by the unitat value"""
     return (unitat)
 
 
+def get_safe_member_by_id(username):
+    """Gets user info from the repoze.catalog based user properties catalog.
+       This is a safe implementation for getMemberById portal_membership to
+       avoid useless searches to the LDAP server. It gets only exact matches (as
+       the original does) and returns a dict. It DOES NOT return a Member
+       object.
+    """
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    username = username.lower()
+    records = [r for r in soup.query(Eq('id', username))]
+    if records:
+        properties = {}
+        for attr in records[0].attrs:
+            if records[0].attrs.get(attr, False):
+                properties[attr] = records[0].attrs[attr]
+
+        # Make sure that the key 'fullname' is returned anyway for it's used in
+        # the wild without guards
+        if 'fullname' not in properties:
+            properties['fullname'] = ''
+
+        return properties
+    else:
+        # No such member: removed?  We return something useful anyway.
+        return {'username': username, 'description': '', 'language': '',
+                'home_page': '', 'name_or_id': username, 'location': '',
+                'fullname': ''}
+
+
+def add_user_to_catalog(user, properties):
+    """ Adds user to the user catalog even if it's a MemberData wrapped one or a
+        new (string) username.
+
+        If some of this method is modified, you should update the
+        genweb.core.directory.subscriber module one.
+    """
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    if isinstance(user, MemberData):
+        username = user.getUserName()
+    else:
+        username = user
+    exist = [r for r in soup.query(Eq('id', username))]
+    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+    indexed_attrs = user_properties_utility(portal).keys()
+
+    if exist:
+        user_record = exist[0]
+    else:
+        record = Record()
+        record_id = soup.add(record)
+        user_record = soup.get(record_id)
+
+    user_record.attrs['username'] = username
+    user_record.attrs['id'] = username
+
+    for attr in indexed_attrs + METADATA_USER_ATTRS:
+        # Only update it if user has already not property set or it's empty
+        if attr in properties and user_record.attrs.get(attr, u'') == u'':
+            if isinstance(properties[attr], str):
+                user_record.attrs[attr] = properties[attr].decode('utf-8')
+            else:
+                user_record.attrs[attr] = properties[attr]
+
+    soup.reindex(records=[user_record])
+
+
+def reset_user_catalog():
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    soup.clear()
+
+
+def reset_group_catalog():
+    portal = api.portal.get()
+    soup = get_soup('ldap_groups', portal)
+    soup.clear()
+
+
 class genwebUtils(BrowserView):
     """ Convenience methods placeholder genweb.utils view. """
+
+    def portal(self):
+        return api.portal.get()
 
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
@@ -84,17 +199,23 @@ class genwebUtils(BrowserView):
             ('WebMaster' in user.getRoles()) or \
             ('Site Administrator' in user.getRoles())
 
-    def getDadesUnitat(self):
-        """ Retorna les dades proporcionades pel WebService del SCP """
-        unitat = genweb_config().contacte_id
-        if unitat:
-            dades = self._queryInfoUnitatWS(unitat)
-            if dades.has_key('error'):
-                return False
-            else:
-                return dades
-        else:
-            return False
+    def pref_lang(self):
+        """ Extracts the current language for the current user
+        """
+        lt = api.portal.get_tool('portal_languages')
+        return lt.getPreferredLanguage()
+
+    # def getDadesUnitat(self):
+    #     """ Retorna les dades proporcionades pel WebService del SCP """
+    #     unitat = genweb_config().contacte_id
+    #     if unitat:
+    #         dades = self._queryInfoUnitatWS(unitat)
+    #         if dades.has_key('error'):
+    #             return False
+    #         else:
+    #             return dades
+    #     else:
+    #         return False
 
     @ram.cache(_contact_ws_cachekey)
     def _queryInfoUnitatWS(self, unitat):
@@ -103,6 +224,62 @@ class genwebUtils(BrowserView):
             return r.json()
         except:
             return {}
+
+    def getDadesUnitat(self):
+        """ Retorna les dades proporcionades pel WebService del SCP """
+        unitat = genweb_config().contacte_id
+        if unitat:
+            dades = self._queryInfoUnitatWS(unitat)
+            if 'error' in dades:
+                return False
+            else:
+                return dades
+        else:
+            return False
+
+    def getDadesContact(self):
+        """ Retorna les dades proporcionades pel WebService del SCP
+            per al contacte
+        """
+        unitat = genweb_config().contacte_id
+        if unitat:
+            dades = self.getDadesUnitat()
+            if 'error' in dades:
+                return False
+            else:
+                idioma = self.context.Language()
+                dict_contact = {
+                    "ca": {
+                        "adreca_sencera": dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
+                        "nom": dades.get('nom_ca', ''),
+                        "telefon": dades.get('telefon', ''),
+                        "fax": dades.get('fax', ''),
+                        "email": dades.get('email', ''),
+                        "id_scp": dades.get('id', ''),
+                        "codi_upc": dades.get('codi_upc', ''),
+                    },
+                    "es": {
+                        "adreca_sencera": dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
+                        "nom": dades.get('nom_es', ''),
+                        "telefon": dades.get('telefon', ''),
+                        "fax": dades.get('fax', ''),
+                        "email": dades.get('email', ''),
+                        "id_scp": dades.get('id', ''),
+                        "codi_upc": dades.get('codi_upc', ''),
+                    },
+                    "en": {
+                        "adreca_sencera": dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
+                        "nom": dades.get('nom_en', ''),
+                        "telefon": dades.get('telefon', ''),
+                        "fax": dades.get('fax', ''),
+                        "email": dades.get('email', ''),
+                        "id_scp": dades.get('id', ''),
+                        "codi_upc": dades.get('codi_upc', ''),
+                    }
+                }
+                return dict_contact[idioma]
+        else:
+            return False
 
     def getContentClass(self, view=None):
         plone_view = getMultiAdapter((self.context, self.request), name=u'plone')
@@ -149,6 +326,89 @@ class genwebUtils(BrowserView):
             'restricted-to-managers': 'label-inverse',
         }
 
+    def pref_lang_native(self):
+        """ Extracts the current language for the current user in native
+        """
+        lt = getToolByName(portal(), 'portal_languages')
+        return lt.getAvailableLanguages()[lt.getPreferredLanguage()]['native']
+
+    def get_published_languages(self):
+        return genweb_config().idiomes_publicats
+
+    def is_ldap_upc_site(self):
+        acl_users = api.portal.get_tool(name='acl_users')
+        if 'ldapUPC' in acl_users:
+            return True
+        else:
+            return False
+
+    def redirect_to_root_always_lang_selector(self):
+        return genweb_config().languages_link_to_root
+
+    def premsa_url(self):
+        """Funcio que extreu la URL de Sala de Premsa
+        """
+        idioma = pref_lang()
+
+        if idioma == 'zh':
+            url = 'http://www.upc.edu/saladepremsa/?set_language=en'
+        else:
+            url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
+        return url
+
+    def is_debug_mode(self):
+        return api.env.debug_mode()
+
+
+@implementer(ICatalogFactory)
+class UserPropertiesSoupCatalogFactory(object):
+    def __call__(self, context):
+        catalog = Catalog()
+        path = NodeAttributeIndexer('path')
+        catalog['path'] = CatalogFieldIndex(path)
+        uuid = NodeAttributeIndexer('uuid')
+        catalog['uuid'] = CatalogFieldIndex(uuid)
+        return catalog
+provideUtility(UserPropertiesSoupCatalogFactory(), name="uuid_preserver")
+
+
+class preserveUUIDs(grok.View):
+    grok.context(IPloneSiteRoot)
+
+    def render(self):
+        portal = api.portal.get()
+        soup = get_soup('uuid_preserver', portal)
+        pc = api.portal.get_tool('portal_catalog')
+        results = pc.searchResults()
+
+        for result in results:
+            record = Record()
+            record.attrs['uuid'] = result.UID
+            record.attrs['path'] = result.getPath()
+            soup.add(record)
+            logger.warning('Preserving {}: {}'.format(result.getPath(), result.UID))
+
+
+class rebuildUUIDs(grok.View):
+    grok.context(IPloneSiteRoot)
+
+    def render(self):
+        portal = api.portal.get()
+        soup = get_soup('uuid_preserver', portal)
+        pc = api.portal.get_tool('portal_catalog')
+        results = pc.searchResults()
+
+        for result in results:
+            obj = [r for r in soup.query(Eq('path', result.getPath()))]
+            if obj:
+                try:
+                    realobj = result.getObject()
+                    IMutableUUID(realobj).set(str(obj[0].attrs['uuid']))
+                    realobj.reindexObject(idxs=['UID'])
+                    logger.warning('Set UUID per {}'.format(result.getPath()))
+                except:
+                    logger.warning('Can\'t set UUID for {}'.format(result.getPath()))
+
 
 # Per deprecar (not wired):
 class utilitats(BrowserView):
@@ -168,7 +428,7 @@ class utilitats(BrowserView):
         """
         id = self.getGWConfig().contacteid
         if id:
-            if self._dadesUnitat == None:
+            if self._dadesUnitat is None:
                 try:
                     url = urllib2.urlopen('https://bus-soa.upc.edu/SCP/InfoUnitatv1?id=' + id, timeout=10)
                     respuesta = url.read()
@@ -205,8 +465,7 @@ class utilitats(BrowserView):
     def llistaContents(self):
         """Retorna tots els tipus de contingut, exclosos els de la llista types_to_exclude"""
         types_to_exclude = ['Banner', 'BannerContainer', 'CollageAlias', 'CollageColumn', 'CollageRow', 'Favorite', 'Large Plone Folder', 'Logos_Container', 'Logos_Footer', 'PoiPscTracker', 'SubSurvey', 'SurveyMatrix', 'SurveyMatrixQuestion', 'SurveySelectQuestion', 'SurveyTextQuestion', ]
-        portal_state = getMultiAdapter((self.context, self.request),
-                                        name=u'plone_portal_state')
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         ptypes = portal_state.friendly_types()
         for typeEx in types_to_exclude:
             if typeEx in ptypes:
@@ -254,7 +513,7 @@ class utilitats(BrowserView):
     def isFolder(self):
         """ Funcio que retorna si es carpeta per tal de mostrar o no el last modified
         """
-        if  IATFolder.providedBy(self.context) or IPloneSiteRoot.providedBy(self.context):
+        if IATFolder.providedBy(self.context) or IPloneSiteRoot.providedBy(self.context):
             return True
 
     def remapList2Dic(self, dictkeys, results):
@@ -311,12 +570,10 @@ class utilitats(BrowserView):
 
     def getSectionFromURL(self):
         context = self.context
-        #portal_url=getToolByName(context, 'portal_url')
-        tools = getMultiAdapter((self.context, self.request),
-                                 name = u'plone_tools')
+        # portal_url=getToolByName(context, 'portal_url')
+        tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
 
-        portal_state = getMultiAdapter((self.context, self.request),
-                                        name=u'plone_portal_state')
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         contentPath = tools.url().getRelativeContentPath(context)
         if not contentPath:
             return ''
@@ -326,31 +583,6 @@ class utilitats(BrowserView):
     def getFlavour(self):
         portal_skins = getToolByName(self.context, 'portal_skins')
         return portal_skins.getDefaultSkin()
-
-    def assignAltAcc(self):
-        """ Assignar alt per accessibilitat a links en finestra nova
-        """
-        lt = getToolByName(self, 'portal_languages')
-        idioma = lt.getPreferredLanguage()
-        label = "(obriu en una finestra nova)"
-        if idioma == 'ca':
-            label = "(obriu en una finestra nova)"
-        if idioma == 'es':
-            label = "(abre en ventana nueva)"
-        if idioma == 'en':
-            label = "(open in new window)"
-        return label
-
-    def premsa_url(self):
-        """Funcio que extreu idioma actiu
-        """
-        lt = getToolByName(self, 'portal_languages')
-        idioma = lt.getPreferredLanguage()
-        if idioma == 'zh':
-            url = 'http://www.upc.edu/saladepremsa/?set_language=en'
-        else:
-            url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
-        return url
 
     def premsa_PDIPAS_url(self):
         """Funcio que extreu idioma actiu

@@ -4,7 +4,7 @@
  <object name="site_properties" meta_type="Plone Property Sheet">
   <property name="external_links_open_new_window" type="string">True</property>
   <property name="icon_visibility" type="string">authenticated</property>
-  <property name="allowAnonymousViewAbout" type="boolean">True</property>
+  <property name="allowAnonymousViewAbout" type="boolean">False</property>
  </object>
 
  <object name="imaging_properties" meta_type="Plone Property Sheet">

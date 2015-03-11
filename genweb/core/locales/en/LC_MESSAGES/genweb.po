@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GenWebUPC\n"
-"POT-Creation-Date: 2007-08-21 09:05\n"
+"POT-Creation-Date: 2014-12-16 10:30+0000\n"
 "PO-Revision-Date: 2010-06-04 11:35+0100\n"
-"Last-Translator: Roberto Diaz <roberto.diaz@upcnet.es>\n"
+"Last-Translator: Paco Gregori <francisco.gregori@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -16,429 +16,1810 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb\n"
 
-#. "genweb-si_heu_oblidat_la_contrasenya_question"
-msgid "genweb-si_heu_oblidat_la_contrasenya_question"
-msgstr "Have you forgotten your password?"
-
-#. "genweb-heading_sign_in-v4"
-msgid "genweb-heading_sign_in-v4"
-msgstr "Log in using your UPC intranet user."
-
-#. "genweb-single-sign-on-v4"
-msgid "genweb-single-sign-on-v4"
-msgstr "Single sign on log in"
-
-#. "genweb_loginlocal"
-msgid "genweb_loginlocal"
-msgstr "Log in only in this site"
-
-#. "manage_homeportlets_link"
-msgid "manage_homeportlets_link"
-msgstr "Manage home page"
-
-#. "genweb-perfil"
-msgid "genweb-perfil"
-msgstr "Profile"
-
-#. "Vés al contingut (premeu Retorn)"
-msgid "Vés al contingut (premeu Retorn)"
-msgstr "Jump to content (press Return)"
-
-#. "genweb_content_actions_vista_de_carpeta"
-msgid "genweb_content_actions_vista_de_carpeta"
-msgstr "Folder views"
-
-#: browser/capsaleraSuperior.pt
-msgid "identificat"
-msgstr "Log In"
-
-#: browser/capsaleraSuperior.pt
-msgid "cercaavancada"
-msgstr "Advanced search"
-
-#: browser/calendar.pt
-msgid "calendari_title"
-msgstr "Calendar"
-
-#: browser/calendar.pt
-msgid "esdeveniments_reunions"
-msgstr "Events and meetings."
-
-#: browser/calendar.pt
-msgid "avui"
-msgstr "Today"
-
-#: browser/calendar.pt
-msgid "inici"
-msgstr "Home"
-
-msgid "nom_usuari"
-msgstr "User"
-
-msgid "genweb-logout"
-msgstr "Log out"
-
-msgid "master_curso"
-msgstr ""
-
 msgid "Activate"
-msgstr ""
+msgstr "Activate"
 
-msgid "genweb-sobre_aquest_web"
-msgstr "About this web"
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:182
+msgid "Add Events Portlet"
+msgstr "Add Events Portlet"
 
-msgid "genweb-rss"
-msgstr "RSS"
+#: genweb.theme/genweb/theme/portlets/fullnews.py:128
+#: genweb.theme/genweb/theme/portlets/news.py:117
+msgid "Add Noticies portlet"
+msgstr "Add Noticies portlet"
 
-msgid "genweb-accessibility"
-msgstr "Accessibility"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:249
+msgid "Add Query Portlet"
+msgstr "Add Query Portlet"
 
-msgid "genweb-actualitat"
-msgstr "UPC Today"
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:100
+msgid "Add banners portlet"
+msgstr "Add banners portlet"
 
-msgid "genweb-noticies"
-msgstr "News"
+#: genweb.stack/genweb/stack/browser/collage.py:80
+msgid "All content"
+msgstr "All content"
 
-msgid "genweb-agenda"
-msgstr "Agenda"
+#: genweb.theme/genweb/theme/portlets/fullnews.py:129
+#: genweb.theme/genweb/theme/portlets/news.py:118
+msgid "Aquest portlet mostra noticies"
+msgstr "This portlet show news"
 
-msgid "cerca"
-msgstr "Search..."
+#. Default: "Pàgina alternativa"
+msgid "Body text"
+msgstr "Body text"
 
-msgid "cerca_google"
-msgstr "Search..."
+#: genweb.theme/genweb/theme/portlets/fullnews.py:35
+#: genweb.theme/genweb/theme/portlets/news.py:35
+msgid "Boolea que indica si s'ha de mostrar la data en les noticies"
+msgstr "Boolean indicating whether to display the date in the news"
 
-msgid "cerca_intranet"
-msgstr "Intranet Search"
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:138
+msgid "Cancel"
+msgstr "Cancel"
 
-msgid "label_text_seccio"
-msgstr "Label section"
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:135
+msgid "Changes saved"
+msgstr "Changes saved"
 
-msgid "descripcio_text_seccio"
-msgstr "Label section display"
-
-msgid "Top_of_page"
-msgstr "Top of page"
-
-msgid "Planol_UPC"
-msgstr "Access map to UPC"
-
-msgid "sendto_accio"
-msgstr "Send"
-
-msgid "print_accio"
-msgstr "Print"
-
-msgid "permalink_accio"
-msgstr "Permalink"
-
-msgid "rss_accio"
-msgstr "Rss"
-
-msgid "submitGo"
-msgstr "Search"
-
-#. "genweb-accesarrel"
-msgid "genweb-accesarrel"
-msgstr "Root folder"
-
-#. "genweb-preferencies"
-msgid "genweb-preferencies"
-msgstr "Preferences"
-
-#. "genweb-password"
-msgid "genweb-password"
-msgstr "Password change"
-
-#. "genweb-ajuda"
-msgid "genweb-ajuda"
-msgstr "Help"
-
-msgid "obrir_link_finestra_nova"
-msgstr "(open link in a new window)"
-
-#: ."genweb-actualitatPDIPAS"
-msgid "genweb-actualitatPDIPAS"
-msgstr "PDI/PAS Today"
-
-#: ./browser/addthis.pt
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:8
 msgid "Comparteix"
 msgstr "Share"
 
-msgid "comparteix_google"
-msgstr "Share on Google+"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:20
+msgid "Contact information"
+msgstr "Contact information"
 
-#: ./browser/addthis.pt
-msgid "comparteix_facebook"
-msgstr "Share on Facebook"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:54
+msgid "Description of the portlet"
+msgstr "Description of the portlet"
 
-#: ./browser/addthis.pt
-msgid "comparteix_linkedin"
-msgstr "Share on Linkedin"
+#: genweb.upc/genweb/upc/browser/viewlets_templates/important.pt:17
+msgid "Desmarca com a important"
+msgstr "Uncheck as important"
 
-#: ./browser/addthis.pt
-msgid "send_mail"
-msgstr "Send by mail"
+#. Default: "Documento"
+msgid "Document"
+msgstr "Document"
 
-#: ./browser/addthis.pt
-msgid "Print"
-msgstr "Print"
+#. Default: "Esborrany"
+msgid "Draft"
+msgstr "Draft"
 
-#: ./browser/addthis.pt
-msgid "comparteix_twitter"
-msgstr "Share on Twitter"
+#: genweb.packets/genweb/packets/browser/views.py:73
+msgid "ERROR: Unknown identifier. This page does not exist."
+msgstr "ERROR: Unknown identifier. This page does not exist."
 
-msgid "genweb_info_gral"
-msgstr "General Information"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:264
+msgid "Edit Collection Portlet"
+msgstr "Edit Collection Portlet"
+
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:191
+msgid "Edit Events Portlet"
+msgstr "Edit Events Portlet"
+
+#: genweb.theme/genweb/theme/portlets/fullnews.py:137
+#: genweb.theme/genweb/theme/portlets/news.py:126
+msgid "Edit News Portlet"
+msgstr "Edit News Portlet"
+
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:114
+msgid "Edit banners portlet"
+msgstr "Edit banners portlet"
+
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:140
+msgid "Edit cancelled"
+msgstr "Edit cancelled"
+
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:60
+msgid "Events"
+msgstr "Events"
+
+#: genweb.stack/genweb/stack/browser/collage.py:88
+msgid "Extended view"
+msgstr "Extended view"
+
+#: genweb.upc/genweb/upc/adapters.py:21
+msgid "Fitxa de grau"
+msgstr "Bachelor’s degree file"
+
+#: genweb.upc/genweb/upc/adapters.py:55
+msgid "Fitxa de màster"
+msgstr "Master’s degree file"
+
+#: genweb.theme/genweb/theme/portlets/fullnews.py:50
+msgid "Full News"
+msgstr "News with image"
+
+######################
+# Portlet Full News #
+######################
+#. Default: "Notícies amb foto"
+#: genweb.theme/genweb/theme/portlets/fullnews.py:50
+msgid "FullNews"
+msgstr "News with image"
 
 ####################
 # Contact settings #
 ####################
-
+#: genweb.controlpanel/genweb/controlpanel/interface.py:14
 msgid "General"
 msgstr "General"
 
-msgid "Contact information"
-msgstr "Contact information"
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:35
+msgid "Genweb UPC settings"
+msgstr "Genweb UPC settings"
 
-msgid "Specific"
-msgstr "Specific"
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:55
+msgid "Genweb banners"
+msgstr "Banners"
 
-msgid "Master"
-msgstr "Master"
+#: genweb.upc/genweb/upc/adapters.py:89
+msgid "Grups de recerca"
+msgstr "Research groups"
 
-#########
+#: genweb.upc/genweb/upc/adapters.py:90
+msgid "Grups de recerca d'un departament específic"
+msgstr "<p>List of the research groups belonging to a department.</p><p class=\"muted\"><strong>Parameter:</strong> UPC code of the department.</p><p class=\"muted\">For example, the code of the Department of Electronic Engineering is <strong>710.</strong></p><p><a target=\"_blank\" href=\"https://gpaq.upc.edu/eines/?op=unitats\" class=\"external-link\">UPC codes<img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>UPC code</p>"
 
+#: genweb.theme/genweb/theme/browser/views.py:644
+msgid "Gràcies per la vostra col·laboració. Les dades de l'activitat s'han enviat correctament i seran publicades com més aviat millor."
+msgstr "Thanks for your cooperation. The activity data have been sent and will be published as soon as possible."
 
-#. "Títol del web amb HTML tags (negretes) [CA]"
-msgid "html_title_ca"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
-msgid "help_html_title_ca"
-msgstr ""
-
-#. "Títol del web amb HTML tags (negretes) [ES]"
-msgid "html_title_es"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML"
-msgid "help_html_title_es"
-msgstr ""
-
-#. "Títol del web amb HTML tags (negretes) [EN]"
-msgid "html_title_en"
-msgstr ""
-
-#. "Afegiu el títol del Genweb. Podeu incloure tags HTML."
-msgid "help_html_title_en"
-msgstr ""
-
-#. "Signatura de la unitat [CA]"
-msgid "signatura_unitat_ca"
-msgstr ""
-
-#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
-msgid "help_signatura_unitat_ca"
-msgstr ""
-
-#. "Signatura de la unitat [ES]"
-msgid "signatura_unitat_es"
-msgstr ""
-
-#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
-msgid "help_signatura_unitat_es"
-msgstr ""
-
-#. "Signatura de la unitat [EN]"
-msgid "signatura_unitat_en"
-msgstr ""
-
-#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
-msgid "help_signatura_unitat_en"
-msgstr ""
-
-#. "Codi altra marca [CA]"
-msgid "codi_altre_marca_ca"
-msgstr ""
-
-#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
-msgid "help_codi_altre_marca_ca"
-msgstr ""
-
-#. "Codi altra marca [ES]"
-msgid "codi_altre_marca_es"
-msgstr ""
-
-#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
-msgid "help_codi_altre_marca_es"
-msgstr ""
-
-#. "Codi altra marca [EN]"
-msgid "codi_altre_marca_en"
-msgstr ""
-
-#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
-msgid "help_codi_altre_marca_en"
-msgstr ""
-
-#. "ID contacte de la unitat"
-msgid "contacte_id"
-msgstr "The unit’s contact ID"
-
-#. "Afegiu el id de contacte de la base de dades de màsters."
-msgid "help_contacte_id"
-msgstr "Add the unit’s ID from the Communications Service’s database."
-
-#. "Página de contacte personalitzada"
-msgid "contacte_BBBDD_or_page"
-msgstr "Alternative contact page"
-
-#. "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
-msgid "help_contacte_BBBDD_or_page"
-msgstr "By default, contact details are fed from the Communications Service’s database."
-
-#. "Adreça de contacte al peu"
-msgid "contacte_al_peu"
-msgstr "Contact address at the bottom of the page"
-
-#. "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
-msgid "help_contacte_al_peu"
-msgstr "The address and telephone number from the Communications Service’s database are shown at the bottom of the page."
-
-#. "Directori UPC a les eines"
-msgid "directori_upc"
-msgstr "UPC directory in the toolbar"
-
-#. "Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."
-msgid "help_directori_upc"
-msgstr "The link to the UPC directory will be shown at the top."
-
-#. "Contacte sense UPCmaps"
-msgid "contacte_no_upcmaps"
-msgstr "Disable UPCmaps"
-
-msgid "help_directori_filtrat"
-msgstr "The UPC directory will open and show the unit’s details."
-
-msgid "directori_filtrat"
-msgstr "Filter by Unit?"
-
-#. "Es mostra la informació d'UPCmaps al contacte."
-msgid "help_contacte_no_upcmaps"
-msgstr "UPCmaps information will be hidden with the contact details."
-
-#. "Color específic 1"
-msgid "especific1"
-msgstr ""
-
-#. "Afegiu el color específic 1. És aquell que..."
-msgid "help_especific1"
-msgstr ""
-
-#. "Color específic 2"
-msgid "especific2"
-msgstr ""
-
-#. "Afegiu el color específic 2. És aquell que..."
-msgid "help_especific2"
-msgstr ""
-
-#. "Treu la imatge de la capçalera"
-msgid "treu_imatge_capsalera"
-msgstr ""
-
-#. "Treiem la imatge de la capçalera per ..."
-msgid "help_treu_imatge_capsalera"
-msgstr ""
-
-#. "Treu el menú horitzontal"
-msgid "treu_menu_horitzontal"
-msgstr ""
-
-#. "Treu el menú horitzontal ..."
-msgid "help_treu_menu_horitzontal"
-msgstr ""
-
-#. "Treu les icones per compartir en xarxes socials"
-msgid "treu_icones_xarxes_socials"
-msgstr ""
-
-#. "Treu les icones per compartir en xarxes socials ..."
-msgid "help_treu_icones_xarxes_socials"
-msgstr ""
-
-#. "Amaga de les eines l'enllaç d'identificació"
-msgid "amaga_identificacio"
-msgstr ""
-
-#. "Amaga de les eines l'enllaç d'identificació ..."
-msgid "help_amaga_identificacio"
-msgstr ""
-
-#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"
-msgid "idiomes_google_translate_link_ca"
-msgstr ""
-
-#. "Blabla ..."
-msgid "help_idiomes_google_translate_link_ca"
-msgstr ""
-
-#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [ES]"
-msgid "idiomes_google_translate_link_es"
-msgstr ""
-
-#. "Blabla ..."
-msgid "help_idiomes_google_translate_link_es"
-msgstr ""
-
-#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [EN]"
-msgid "idiomes_google_translate_link_en"
-msgstr ""
-
-#. "Blabla ..."
-msgid "help_idiomes_google_translate_link_en"
-msgstr ""
-
-#. "Idiomes publicats al web"
-msgid "idiomes_publicats"
-msgstr ""
-
-#. "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
-msgid "help_idiomes_publicats"
-msgstr ""
-
-#. "id_estudi"
-msgid "idestudi_master"
-msgstr ""
-
-#. "Afegiu el id de l'estudi de la base de dades de màsters."
-msgid "help_idestudi_master"
-msgstr ""
-
-msgid "homepage_portlet"
-msgstr "Welcome"
-
+#. Default: "Benvingut"
 msgid "Homepage"
 msgstr "Welcome"
 
-msgid "box_upcoming_events"
-msgstr "All events"
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:30
+msgid "How many banners to list."
+msgstr "How many banners to list."
 
-msgid "languages_link_to_root"
-msgstr "Redirect to site root when the user clicks on the languages availables on the site"
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:35
+msgid "How many items to list."
+msgstr "How many items to list."
 
-msgid "help_languages_link_to_root"
-msgstr "Selecting this option makes that all the clicks on the languages combo always redirects to the site root."
+#. Default: "Esta es la lista de los idiomas del contenido solicitado"
+#: genweb.core/genweb/core/browser/views_templates/not_translated_yet.pt:17
+msgid "However, this is the list of the already translated languages for the requested content."
+msgstr "However, this is the list of the already translated languages for the requested content."
 
-msgid "return_to_view"
-msgstr "Return"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:102
+msgid "If enabled, items will be selected randomly from the collection, rather than based on its sort order."
+msgstr "If enabled, items will be selected randomly from the collection, rather than based on its sort order."
 
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:62
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:50
+msgid "Info"
+msgstr "Info"
+
+#: genweb.upc/genweb/upc/adapters.py:38
+msgid "Informació sobre el pla d'estudis d'un grau específic"
+msgstr "<p>Curriculum for a bachelor’s degree and access to the course guide.</p><p class=\"muted\"><strong>Parameter:</strong> UPC code of the bachelor’s degree for PRISMA.</p><p class=\"muted\">For example, the UPC code of the bachelor's degree in Engineering Physics is <strong>23010611.</strong></p><p><a target=\"_blank\" href=\"http://www.upc.edu/comunicacio/www/continguts-upc/codis-upc-del-estudis-de-grau\" class=\"external-link\">UPC codes of the bachelor’s degree <img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>UPC code</p>"
+
+#: genweb.upc/genweb/upc/adapters.py:22
+msgid "Informació sobre un estudi d'un grau específic"
+msgstr "<p>File containing basic information on a bachelor’s degree</p><p class=\"muted\"><strong>Parameter:</strong> UPC code of the bachelor’s degree for PRISMA</p><p class=\"muted\">For example, the UPC code of the bachelor's degree in Engineering Physics is <strong>23010611.</strong></p><p><a target=\"_blank\" href=\"http://www.upc.edu/comunicacio/www/continguts-upc/codis-upc-del-estudis-de-grau\" class=\"external-link\">UPC codes of the bachelor’s degree <img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a><strong>.<br></strong></p><p class=\"muted\"><strong>Select: </strong>UPC code</p></p>"
+
+#: genweb.upc/genweb/upc/adapters.py:56
+msgid "Informació sobre un màster específic"
+msgstr "<p>File containing basic information on a master’s degree.</p><p class=\"muted\"><strong>Parameter:</strong> Identifier of the master’s degree.</p><p><a target=\"_blank\" href=\"https://www.upc.edu/comunicacio/www/continguts-upc/identificadors-dels-estudis-de-master\" class=\"external-link\">Identifiers of the master’s degree<img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>Identifier</p>"
+
+#: genweb.upc/genweb/upc/adapters.py:74
+msgid "Informació sobre un pla d'estudis de màster específic"
+msgstr "<p>Available for all master except interuniversity</p><p>Curriculum for a master’s degree and access to the course guide.</p><p class=\"muted\"><strong>Parameter:</strong> Identifier of the master’s degree.</p><p><a target=\"_blank\" href=\"https://www.upc.edu/comunicacio/www/continguts-upc/identificadors-dels-estudis-de-master\" class=\"external-link\">Identifiers of the master’s degree<img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>Identifier</p>"
+
+#: genweb.stack/genweb/stack/browser/collage.py:29
+msgid "Inherit"
+msgstr "Inherit"
+
+#: genweb.theme/genweb/theme/browser/contact.py:47
+msgid "Invalid email address"
+msgstr "Invalid email address"
+
+#: genweb.upc/genweb/upc/adapters.py:105
+msgid "Investigadors d'un grup de recerca"
+msgstr "Researchers in a research group"
+
+#: genweb.upc/genweb/upc/adapters.py:106
+msgid "Investigadors d'un grup de recerca d'un departament específic"
+msgstr "<p>List of the researchers in a research group.</p><p class=\"muted\"><strong>Parameter:</strong> Acronym for the research group as published in DRAC.</p><p class=\"muted\">For example, the acronym for the Architecture, Energy and the Environment research group is AIEM</p><p><a target=\"_blank\" href=\"http://futur.upc.edu/organitzacio/os/Z3J1cHJlY2VyY2E=#produccio\" class=\"external-link\">Research group acronyms<img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>Acronym</p>"
+
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:43
+msgid "Items in which workflow state to show."
+msgstr "Items in which workflow state to show."
+
+#: genweb.core/genweb/core/browser/views.py:110
+msgid "L'element s'ha desmarcat com important"
+msgstr "The item has been marked as important"
+
+#: genweb.core/genweb/core/browser/views.py:113
+msgid "L'element s'ha marcat com important"
+msgstr "The item has been unmarked as important"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:114
+msgid "Label the 'Show more link' defined avobe"
+msgstr "Label the 'Show more link' defined avobe"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:95
+msgid "Limit"
+msgstr "Limit"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:109
+msgid "Link to display in the footer, leave empty to hide it"
+msgstr "Link to display in the footer, leave empty to hide it"
+
+#: genweb.theme/genweb/theme/browser/contact.py:140
+msgid "Mail sent."
+msgstr "Mail sent."
+
+#. Default: "Esborrany"
+msgid "Make draft"
+msgstr "Make draft"
+
+#############
+# Workflows #
+#############
+#. Default: "Privat"
+msgid "Make private"
+msgstr "Make private"
+
+#. Default: "Fer un element privat significa que no serà visible per ninguna persona excepte el propietari."
+msgid "Making an item private means that it will not be visible to anyone but the owner and the site administrator."
+msgstr "Making an item private means that it will not be visible to anyone but the owner and the site administrator."
+
+#. Default: "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
+msgid "Making an item published to intranet means that it will be visible to the members (readers)."
+msgstr "Making an item published to intranet means that it will be visible to the members (readers)."
+
+#: genweb.upc/genweb/upc/browser/viewlets_templates/important.pt:7
+msgid "Marca com a important"
+msgstr "Check as important"
+
+#: genweb.controlpanel/genweb/controlpanel/interface.py:33
+msgid "Master"
+msgstr "Master"
+
+#: genweb.theme/genweb/theme/portlets/fullnews.py:26
+#: genweb.theme/genweb/theme/portlets/news.py:26
+msgid "Maxim numero de noticies a mostrar (5 o 7)"
+msgstr "Maximum number of news show (5 or 7)"
+
+#: genweb.theme/genweb/theme/portlets/fullnews.py:34
+#: genweb.theme/genweb/theme/portlets/news.py:34
+msgid "Mostra data?"
+msgstr "Show date?"
+
+#: genweb.theme/genweb/theme/portlets/news.py:50
+msgid "News"
+msgstr "News"
+
+#: genweb.core/genweb/core/browser/viewlets.py:118
 msgid "Not published"
 msgstr "(Language not published)"
 
+#. Default: "Noticies"
+#: genweb.theme/genweb/theme/portlets/news.py:44
+msgid "Noticies"
+msgstr "News"
+
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:29
+msgid "Number of banners to display"
+msgstr "Number of banners to display"
+
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:34
+msgid "Number of items to display"
+msgstr "Number of items to display"
+
+#: genweb.theme/genweb/theme/portlets/fullnews.py:25
+#: genweb.theme/genweb/theme/portlets/news.py:25
+msgid "Numero de noticies a mostrar"
+msgstr "Number of news to display"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:90
+msgid "Override query sort order using folder order"
+msgstr "Override query sort order using folder order"
+
+#. Default: "Revisió"
+msgid "Pending review"
+msgstr "Pending review"
+
+#: genweb.banners/genweb/banners/content/banner.py:17
+msgid "Picture"
+msgstr "Picture"
+
+#: genweb.upc/genweb/upc/adapters.py:37
+msgid "Pla d'estudi de grau"
+msgstr "Bachelor’s degree curriculum"
+
+#: genweb.upc/genweb/upc/adapters.py:73
+msgid "Pla d'estudis de màster"
+msgstr "Master’s degree curriculum"
+
+#. Default: "Plànol d'accés a la UPC"
+msgid "Planol_UPC"
+msgstr "Access map to UPC"
+
+#: genweb.banners/genweb/banners/content/banner.py:18
+msgid "Please upload an image"
+msgstr "Please upload an image"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:53
+msgid "Portlet description"
+msgstr "Portlet description"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:41
+msgid "Portlet header"
+msgstr "Portlet header"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:59
+msgid "Portlet view to use"
+msgstr "Portlet view to use"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:41
+msgid "Print"
+msgstr "Print"
+
+#. Default: "Privat"
+msgid "Private"
+msgstr "Private"
+
+#. Default: "Fer un element esborrany significa que només serà visible pels editors i pel seu propietari."
+msgid "Promotes your private item to a draft."
+msgstr "Promotes your private item to a draft."
+
+#. Default: "Públic"
+msgid "Publish"
+msgstr "Publish"
+
+#. Default: "Publish To Intranet"
+#: workflow state defined in folder_workflow - title Published
+#: workflow state defined in plone_workflow - title Published
+msgid "Publish To Intranet"
+msgstr "Publish To Intranet"
+
+#. Default: "Públic"
+msgid "Published"
+msgstr "Published"
+
+#. Default: "Publica el element i el fa visible per tothom."
+msgid "Publishing the item makes it visible to other users."
+msgstr "Publishing the item makes it visible to other users."
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:47
+msgid "Renders the header"
+msgstr "Renders the header"
+
+#. Default: "Manager"
+msgid "Restrict"
+msgstr "Restrict"
+
+#. Default: "retracttointranet"
+#: workflow state defined in folder_workflow - title Published
+#: workflow state defined in plone_workflow - title Published
+msgid "Retract To Intranet"
+msgstr "Retract To Intranet"
+
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:74
+msgid "Save"
+msgstr "Save"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:101
+msgid "Select random items"
+msgstr "Select random items"
+
+#: genweb.theme/genweb/theme/browser/contact.py:98
+msgid "Send"
+msgstr "Send"
+
+#. Default: "Envia el contingut a l'estat de esborrany."
+msgid "Send the item back to draft."
+msgstr "Send the item back to draft."
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:108
+msgid "Show more link"
+msgstr "Show more link"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:113
+msgid "Show more link text"
+msgstr "Show more link text"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:77
+msgid "Sort the collection on this index"
+msgstr "Sort the collection on this index"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:84
+msgid "Sort the results in reversed order"
+msgstr "Sort the results in reversed order"
+
+#: genweb.controlpanel/genweb/controlpanel/interface.py:25
+msgid "Specific"
+msgstr "Specific"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:96
+msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
+msgstr "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
+
+#. Default: "Estàndard"
+msgid "Standard view"
+msgstr "Standard view"
+
+#: genweb.stack/genweb/stack/browser/collage.py:76
+msgid "Summary view"
+msgstr "Summary view"
+
+#: genweb.stack/genweb/stack/browser/collage.py:72
+msgid "Tabular view"
+msgstr "Tabular view"
+
+#: genweb.core/genweb/core/adapters/important.py:22
+msgid "Tells if an object is marked as important"
+msgstr "Tells if an object is marked as important"
+
+#. Default: "Este contenido no está traducido todavía al idioma solicitado."
+#: genweb.core/genweb/core/browser/views_templates/not_translated_yet.pt:12
+msgid "This content is not translated yet to the language requested."
+msgstr "This content is not translated yet to the language requested."
+
+#. Default: "Este elemento todavía no tiene ninguna traducción. Puede volver al idioma original:"
+#: genweb.core/genweb/core/browser/views_templates/not_translated_yet.pt:33
+msgid "This item doesn't have any translation yet. You can return to the original language:"
+msgstr "This item doesn't have any translation yet. You can return to the original language:"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:250
+msgid "This portlet displays a listing of items from a Collection."
+msgstr "This portlet displays a listing of items from a Collection."
+
+#: genweb.theme/genweb/theme/portlets/fullnews.py:138
+#: genweb.theme/genweb/theme/portlets/news.py:127
+msgid "This portlet displays recent News Items."
+msgstr "This portlet displays recent News Items."
+
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:101
+msgid "This portlet displays the site banners."
+msgstr "This portlet displays the site banners."
+
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:183
+msgid "This portlet lists upcoming Events."
+msgstr "This portlet lists upcoming Events."
+
+#: genweb.stack/genweb/stack/browser/collage.py:84
+msgid "Thumbnail view"
+msgstr "Thumbnail view"
+
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:42
+msgid "Title of the rendered portlet"
+msgstr "Title of the rendered portlet"
+
+#. Default: "Amunt"
+msgid "Top_of_page"
+msgstr "Top of page"
+
+#: genweb.theme/genweb/theme/portlets/upcnews.py:25
+msgid "UPCNews"
+msgstr "UPC Today"
+
+#: genweb.banners/genweb/banners/content/banner.py:24
+msgid "URL to open"
+msgstr "URL to open"
+
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:42
+msgid "Warning"
+msgstr "Warning"
+
+#: genweb.upc/genweb/upc/profiles/default/types/Window.xml
+msgid "Window"
+msgstr "Window"
+
+#: genweb.theme/genweb/theme/portlets/esdeveniments.py:42
+msgid "Workflow state"
+msgstr "Workflow state"
+
+#: genweb.upc/genweb/upc/adapters.py:108
+msgid "acrònim"
+msgstr "acronym"
+
+#. Default: "add them to the folder itself"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:53
+msgid "add_them_to_the_folder_itself"
+msgstr "add_them_to_the_folder_itself"
+
+#. "Amaga de les eines l'enllaç d'identificació"
+#. Default: "Amaga de les eines l'enllaç d'identificació"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:213
+msgid "amaga_identificacio"
+msgstr "Hide tools with identification link"
+
+#. Default: "Avui"
+#: browser/calendar.pt
+msgid "avui"
+msgstr "Today"
+
+#. Default: "Més esdeveniments"
+#: genweb.theme/genweb/theme/portlets/templates/esdeveniments.pt:64
+msgid "box_upcoming_events"
+msgstr "All events"
+
+#. Default: "Marca com a improtant"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/important.pt:5
+msgid "button_important"
+msgstr "Important"
+
+#. Default: "Desmarca com a important"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/important.pt:17
+msgid "button_notimportant"
+msgstr "Not important"
+
+#. Default: "Send to the general UPC calendar"
+#: genweb.upc/genweb/upc/browser/viewlets_templates/send_event.pt:11
+msgid "button_sendevent"
+msgstr "Send event"
+
+#. Default: "Calendari"
+#: browser/calendar.pt
+msgid "calendari_title"
+msgstr "Calendar"
+
+#. Default: "Canvi de contrasenya"
+#. "canvi_de_contrasenya"
+msgid "canvi_de_contrasenya"
+msgstr "Change password"
+
+#. Default: "Canvia..."
+msgid "canvia"
+msgstr "Change..."
+
+#. Default: "Cerca..."
+msgid "cerca"
+msgstr "Search..."
+
+#. Default: "Cerca..."
+msgid "cerca_google"
+msgstr "Search..."
+
+#. Default: "Cerca a la Intranet"
+msgid "cerca_intranet"
+msgstr "Intranet Search"
+
+#. Default: "Cerca avançada"
+#: browser/capsaleraSuperior.pt
+msgid "cercaavancada"
+msgstr "Advanced search"
+
+#. "Codi altra marca [CA]"
+msgid "codi_altre_marca_ca"
+msgstr "Code another brand [CA]"
+
+#. "Codi altra marca [EN]"
+msgid "codi_altre_marca_en"
+msgstr "Code another brand [EN]"
+
+#. "Codi altra marca [ES]"
+msgid "codi_altre_marca_es"
+msgstr "Code another brand [ES]"
+
+#: genweb.upc/genweb/upc/adapters.py:92
+msgid "codi_departament"
+msgstr "Department code"
+
+#: genweb.upc/genweb/upc/adapters.py:24
+msgid "codi_grau"
+msgstr "Bachelor’s degree code"
+
+#: genweb.upc/genweb/upc/adapters.py:58
+msgid "codi_master"
+msgstr "Master’s degree code"
+
+#: genweb.upc/genweb/upc/adapters.py:76
+msgid "codi_pla_master"
+msgstr "Master’s degree code"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:24
+msgid "comparteix_facebook"
+msgstr "Share on Facebook"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:18
+msgid "comparteix_google"
+msgstr "Share on Google+"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:30
+msgid "comparteix_linkedin"
+msgstr "Share on Linkedin"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:36
+msgid "comparteix_twitter"
+msgstr "Share on Twitter"
+
+#. "Página de contacte personalitzada"
+#. Default: "Página de contacte personalitzada"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:121
+msgid "contacte_BBBDD_or_page"
+msgstr "Alternative contact page"
+
+#. "Adreça de contacte al peu"
+#. Default: "Adreça de contacte al peu"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:130
+msgid "contacte_al_peu"
+msgstr "Contact address at the bottom of the page"
+
+#. "ID contacte de la unitat"
+#. Default: "ID contacte de la unitat"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:112
+msgid "contacte_id"
+msgstr "The unit’s contact ID"
+
+#. "Contacte sense UPCmaps"
+#. Default: "Contacte sense UPCmaps"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:157
+msgid "contacte_no_upcmaps"
+msgstr "Disable UPCmaps"
+
+#. Default: "política de cookies"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:14
+msgid "cookie_policy"
+msgstr "cookies policy"
+
+#. Default: "Aquest web utilitza cookies pròpies per oferir-li una millor experiència i servei. En continuar amb la navegació entenem que accepta la nostra"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:11
+msgid "cookie_policy_this_site"
+msgstr "This website uses cookies to offer you the best experience and service. If you continue browsing, it is understood that you accept our "
+
+#. Default: "Create packet UPC at root"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:253
+msgid "create_packet"
+msgstr "Create general information of Master"
+
+#. Default: "És com es veurà la secció"
+msgid "descripcio_text_seccio"
+msgstr "Label section display"
+
+#. Default: "Aquesta pàgina no existeix..."
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.skins.plone_templates.default_error_message.pt:43
+msgid "description_site_error"
+msgstr "Page does not exist..."
+
+#. Default: "Verifiqueu l'adreça web a què voleu accedir i consulteu el ${site_web_map} o utilitzeu el cercador per a localitzar-ne el contingut. Si l'adreça web és correcta, però retorna un error, contacteu amb ${site_admin}."
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.skins.plone_templates.default_error_message.pt:55
+msgid "description_site_error_mail_site_admin"
+msgstr "Please check the web address you want to access or use ${site_web_map} to find it. If the web address is correct but returns an error, please contact ${site_admin}."
+
+#. Default: "Directori UPC filtrat a les eines"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:148
+msgid "directori_filtrat"
+msgstr "Filter by Unit?"
+
+#. "Directori UPC a les eines"
+#. Default: "Directori UPC a les eines"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:139
+msgid "directori_upc"
+msgstr "UPC directory in the toolbar"
+
+#. Default: "Cookies are not enabled. You must enable cookies before you can log in."
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:65
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:53
+msgid "enable_cookies_message_before_login"
+msgstr "Cookies are not enabled. You must enable cookies before you can log in."
+
+#. Default: "Revisió"
+msgid "enviaarevisar"
+msgstr "send to review"
+
+#. Default: "Esdeveniments i reunions."
+#: browser/calendar.pt
+msgid "esdeveniments_reunions"
+msgstr "Events and meetings."
+
+#. "Color específic 1"
+#. Default: "Color específic 1"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:168
+msgid "especific1"
+msgstr "Specific color 1"
+
+#. "Color específic 2"
+#. Default: "Color específic 2"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:177
+msgid "especific2"
+msgstr "Specific color 2"
+
+#. Default: "Vista filtrada"
+msgid "filtered_contents_search_view"
+msgstr "Filtered view"
+
+#. Default: "Cap fitxer seleccionat..."
+msgid "fitxer_no_seleccionat"
+msgstr "No file selected..."
+
+#. "genweb-accesarrel"
+#: genweb.core/genweb/core/profiles/alternatheme/actions.xml
+#: genweb.core/genweb/core/profiles/default/actions.xml
+#: genweb.core/genweb/core/profiles/robot-test/actions.xml
+msgid "genweb-accesarrel"
+msgstr "Root folder"
+
+#. Default: "Accessibilitat"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:53
+msgid "genweb-accessibility"
+msgstr "Accessibility"
+
+#. Default: "Actualitat UPC"
+#: genweb.theme/genweb/theme/portlets/templates/upcnews.pt:9
+msgid "genweb-actualitat"
+msgstr "UPC Today <i class=\"icon-news large-icon pull-right\"></i>"
+
+#. Default: "Actualitat PDI/PAS"
+#: ."genweb-actualitatPDIPAS"
+msgid "genweb-actualitatPDIPAS"
+msgstr "PDI/PAS Today"
+
+#. Default: "Agenda"
+#: ."genweb-agenda"
+msgid "genweb-agenda"
+msgstr "Agenda"
+
+#. "genweb-ajuda"
+#. Default: "Ajuda"
+msgid "genweb-ajuda"
+msgstr "Help"
+
+#. Default: "ampliar agenda"
+#. "genweb-ampliar_agenda"
+msgid "genweb-ampliar_agenda"
+msgstr "Expand schedule"
+
+#. Default: "aquí"
+#. "genweb-aqui"
+msgid "genweb-aqui"
+msgstr "Here"
+
+#. Default: "canvieu la contrasenya"
+#: ."genweb-canvieucontrasenya"
+msgid "genweb-canvieucontrasenya"
+msgstr "Change password"
+
+#. Default: "Canvi de contrasenya per al PDI-PAS de la UPC i per a la Fundació UPC"
+#: ."genweb-canvipasupc1"
+msgid "genweb-canvipasupc1"
+msgstr "Change password for the PDI-PAS for UPC and UPC fundation"
+
+#. Default: "Canvi de contrasenya per als estudiants de la UPC"
+#: ."genweb-canvipasupc2"
+msgid "genweb-canvipasupc2"
+msgstr "Change password for UPC students"
+
+#. Default: "Canvi de contrasenya per a altres col·lectius"
+#: ."genweb-canvipasupc3"
+msgid "genweb-canvipasupc3"
+msgstr "Change password for other groups"
+
+#. Default: "PDI-PAS UPC i Fundació UPC"
+#: ."genweb-canvipasupc_titol1"
+msgid "genweb-canvipasupc_titol1"
+msgstr "PDI-PAS UPC and Fundació UPC"
+
+#. Default: "Estudiants de la UPC"
+#: ."genweb-canvipasupc_titol2"
+msgid "genweb-canvipasupc_titol2"
+msgstr "UPC students"
+
+#. Default: "Altres col·lectius"
+#: ."genweb-canvipasupc_titol3"
+msgid "genweb-canvipasupc_titol3"
+msgstr "Other groups"
+
+#. Default: "Per accedir a aquesta part del web, cal que us identifiqueu amb el vostre nom d'usuari i la contrasenya."
+#: ."genweb-description_sign_in"
+msgid "genweb-description_sign_in"
+msgstr "To access this part of the site, you need to log in with your username and password."
+
+#. Default: "Disclaimer"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:60
+msgid "genweb-disclaimer"
+msgstr "Disclaimer"
+
+#. Default: "Eines"
+msgid "genweb-eines"
+msgstr "Tools"
+
+#. Default: "Dashboard"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:30
+msgid "genweb-escriptori"
+msgstr "Dashboard"
+
+#. Default: "Si us plau, identifiqueu-vos amb el <strong>nom d'usuari de la intranet UPC</strong>"
+#. "genweb-heading_sign_in"
+msgid "genweb-heading_sign_in"
+msgstr "Please login with <strong> UPC intranet username </ strong>"
+
+#. "genweb-heading_sign_in-v4"
+#. Default: "Please log in using your UPC intranet user."
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:74
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:62
+msgid "genweb-heading_sign_in-v4"
+msgstr "Log in using your UPC intranet user."
+
+#. Default: "identificació única UPC."
+#. "genweb-log-in"
+msgid "genweb-log-in"
+msgstr "UPC identification"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:45
+msgid "genweb-logout"
+msgstr "Log out"
+
+#. Default: "més notícies"
+#. "genweb-mes_noticies"
+msgid "genweb-mes_noticies"
+msgstr "More news"
+
+#. Default: "No puc entrar"
+#: ."genweb-no_puc_entrar"
+msgid "genweb-no_puc_entrar"
+msgstr "I can't enter"
+
+#. Default: "Notícies"
+#: genweb.theme/genweb/theme/portlets/templates/fullnews.pt:10
+#: genweb.theme/genweb/theme/portlets/templates/news.pt:9
+msgid "genweb-noticies"
+msgstr "News <i class=\"icon-news large-icon pull-right\"></i>"
+
+#. Default: "Opcions:"
+#. "genweb-opcionspathbar"
+msgid "genweb-opcionspathbar"
+msgstr "Options:"
+
+#. "genweb-password"
+#. Default: "Canvi de contrasenya"
+msgid "genweb-password"
+msgstr "Password change"
+
+#. Default: "click here to retrieve it"
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:200
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:181
+msgid "genweb-per_recuperarla"
+msgstr "click here to retrieve it"
+
+#. "genweb-perfil"
+#. Default: "Profile"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:35
+msgid "genweb-perfil"
+msgstr "Profile"
+
+# Modificat (Abril2008)
+#. Default: "Per entrar..."
+#: ."genweb-perpoderentrar"
+msgid "genweb-perpoderentrar"
+msgstr "To enter..."
+
+#. Default: "Escriu el teu nom d'usuari amb un punt (nom.cognom) i "
+#: ."genweb-perpoderentrar"
+msgid "genweb-perpoderentrar11"
+msgstr "Enter your user name with a dot (name.surname) and "
+
+#. Default: " si no ho has fet des del 01/04/06."
+#: ."genweb-perpoderentrar2"
+msgid "genweb-perpoderentrar2"
+msgstr "if you have not done since 01/04/06."
+
+#. Default: "canvia el teu password"
+#: ."genweb-perpoderentrar21"
+msgid "genweb-perpoderentrar21"
+msgstr "change your password"
+
+#. "genweb-preferencies"
+#. Default: "Preferències d'usuari"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:40
+msgid "genweb-preferencies"
+msgstr "Preferences"
+
+#. Default: "No oblideu desconnectar-vos o tancar el navegador un cop hàgiu finalitzat."
+#: ."genweb-remember_to_log_out"
+msgid "genweb-remember_to_log_out"
+msgstr "Please log out or close the browser when you're done."
+
+#. Default: "Carpetes arrel"
+msgid "genweb-roots"
+msgstr "Root folders"
+
+#. Default: "RSS"
+msgid "genweb-rss"
+msgstr "RSS"
+
+#. Default: "Configuració"
+msgid "genweb-settings"
+msgstr "Settings"
+
+#. Default: "If you have forgotten your password, ${click_here}"
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:199
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:180
+msgid "genweb-si_heu_oblidat_la_contrasenya"
+msgstr "If you have forgotten your password, ${click_here}"
+
+#. "genweb-si_heu_oblidat_la_contrasenya_question"
+#. Default: "Have you forgotten your password?"
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:192
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:173
+msgid "genweb-si_heu_oblidat_la_contrasenya_question"
+msgstr "Have you forgotten your password?"
+
+#. Default: "Si ets un usuari nou... "
+#: ."genweb-sietsusuarinou"
+msgid "genweb-sietsusuarinou"
+msgstr "If you are a new user ..."
+
+#. Default: "i pertanys al PDI/PAS o personal vinculat de la universitat, "
+#: ."genweb-sietsusuarinou2"
+msgid "genweb-sietsusuarinou2"
+msgstr "and belong to PDI / PAS or associated staff of the university,"
+
+#. Default: "enregistra't "
+#: ."genweb-sietsusuarinou3"
+msgid "genweb-sietsusuarinou3"
+msgstr "register"
+
+#. Default: "a la intranet UPC."
+#: ."genweb-sietsusuarinou4"
+msgid "genweb-sietsusuarinou4"
+msgstr "to UPC intranet"
+
+#. Default: "Si has oblidat la contrasenya..."
+#: ."genweb-sihasoblidat"
+msgid "genweb-sihasoblidat"
+msgstr "If you have forgotten your password ..."
+
+#. Default: "Entreu a la "
+#: ."genweb-sihasoblidat2"
+msgid "genweb-sihasoblidat2"
+msgstr "Enter to"
+
+#. Default: "gestió de contrasenyes "
+#: ."genweb-sihasoblidat3"
+msgid "genweb-sihasoblidat3"
+msgstr "password options"
+
+#. Default: "per recordar-la o modificar-la."
+#: ."genweb-sihasoblidat4"
+msgid "genweb-sihasoblidat4"
+msgstr "to remember it or change it."
+
+#. Default: "Entra amb la ${genweb-log-in-title}"
+#. "genweb-single-sign-on"
+msgid "genweb-single-sign-on"
+msgstr "Enter with ${genweb-log-in-title}"
+
+#. "genweb-single-sign-on-v4"
+#. Default: "Single sign on log in"
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:86
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:73
+msgid "genweb-single-sign-on-v4"
+msgstr "Single sign on log in"
+
+#. Default: "Sobre aquest web"
+#. "genweb-sobre_aquest_web"
+msgid "genweb-sobre_aquest_web"
+msgstr "About this web"
+
+#. Default: "Universitat Politècnica de Catalunya"
+#: ."genweb-universitat_politecnica_de_catalunya"
+msgid "genweb-universitat_politecnica_de_catalunya"
+msgstr ""
+
+#. Default: "Usuari connectat:"
+#. "usuari_connectat"
+msgid "genweb-usuari_connectat"
+msgstr "User Online:"
+
+#. Default: "Vistes"
+msgid "genweb-views"
+msgstr "Views"
+
+# Adreça
+#. Default: "Adreça"
+msgid "genweb_adreca"
+msgstr "Address"
+
+#. Default: "A/e"
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:73
+msgid "genweb_ae"
+msgstr "A/e"
+
+# Contact
+#. Default: "Contacte"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:42
+msgid "genweb_contacte"
+msgstr "Contact"
+
+#. Default: "Select default content"
+#: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:50
+msgid "genweb_content_actions_content_as_view"
+msgstr "Select default content"
+
+#. "genweb_content_actions_vista_de_carpeta"
+#. Default: "Folder views"
+#: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:42
+msgid "genweb_content_actions_vista_de_carpeta"
+msgstr "Folder views"
+
+# Direccio
+#. Default: "Direcció"
+msgid "genweb_direccio"
+msgstr "Address"
+
+#. Default: "Fax"
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:65
+msgid "genweb_fax"
+msgstr "Fax"
+
+#. Default: "Contact"
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:24
+msgid "genweb_formContacte"
+msgstr "Contact"
+
+#. Default: "Please enter the message you want to send."
+#: genweb.theme/genweb/theme/browser/contact.py:73
+msgid "genweb_help_message"
+msgstr "Please enter the message you want to send."
+
+#. Default: "Type the code from the picture shown below"
+#: genweb.theme/genweb/theme/browser/contact.py:77
+msgid "genweb_help_type_the_code"
+msgstr "Type the code from the picture shown below"
+
+#. Default: "Informació General"
+msgid "genweb_info_gral"
+msgstr "General Information"
+
+#. "genweb_loginlocal"
+#. Default: "Log in only in this site"
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:101
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:85
+msgid "genweb_loginlocal"
+msgstr "Log in only in this site"
+
+#. Default: "Message"
+#: genweb.theme/genweb/theme/browser/contact.py:72
+msgid "genweb_message"
+msgstr "Message"
+
+# Personal
+#. Default: "Personal"
+msgid "genweb_personal"
+msgstr "Personal"
+
+#. Default: "E-Mail"
+#: genweb.theme/genweb/theme/browser/contact.py:65
+msgid "genweb_sender_from_address"
+msgstr "E-Mail"
+
+#. Default: "Name"
+#: genweb.theme/genweb/theme/browser/contact.py:62
+msgid "genweb_sender_fullname"
+msgstr "Name"
+
+#. Default: "Subject"
+#: genweb.theme/genweb/theme/browser/contact.py:69
+msgid "genweb_subject"
+msgstr "Subject"
+
+#. Default: "Telèfon"
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:57
+msgid "genweb_telefon"
+msgstr "Phone"
+
+#. Default: "Type the code"
+#: genweb.theme/genweb/theme/browser/contact.py:76
+msgid "genweb_type_the_code"
+msgstr "Type the code"
+
+#. Default: "You might have been looking for…"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.skins.plone_templates.default_error_message.pt:77
+msgid "heading_not_found_suggestions"
+msgstr "You might have been looking for…"
+
+#. Default: "Mmm..."
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.skins.plone_templates.default_error_message.pt:36
+msgid "heading_site_error"
+msgstr "Mmm..."
+
+#. "Amaga de les eines l'enllaç d'identificació ..."
+#. Default: "Amaga de les eines l'enllaç d'identificació ..."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:215
+msgid "help_amaga_identificacio"
+msgstr "Hide tools with identification link ..."
+
+#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
+msgid "help_codi_altre_marca_ca"
+msgstr "HTML code with link and logo images to the right of the header."
+
+#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
+msgid "help_codi_altre_marca_en"
+msgstr "HTML code with link and logo images to the right of the header."
+
+#. "Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."
+msgid "help_codi_altre_marca_es"
+msgstr "HTML code with link and logo images to the right of the header."
+
+#. "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
+#. Default: "Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:123
+msgid "help_contacte_BBBDD_or_page"
+msgstr "By default, contact details are fed from the Communications Service’s database."
+
+#. "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
+#. Default: "La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:132
+msgid "help_contacte_al_peu"
+msgstr "The address and telephone number from the Communications Service’s database are shown at the bottom of the page."
+
+#. "Afegiu el id de contacte de la base de dades de màsters."
+#. Default: "Afegiu el id de contacte de la base de dades de màsters."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:114
+msgid "help_contacte_id"
+msgstr "Add the unit’s ID from the Communications Service’s database."
+
+#. "Es mostra la informació d'UPCmaps al contacte."
+#. Default: "Es mostra la informació d'UPCmaps al contacte."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:159
+msgid "help_contacte_no_upcmaps"
+msgstr "UPCmaps information will be hidden with the contact details."
+
+#. Default: "contingut de la pàgina de contacte alternativa"
+msgid "help_contacte_page"
+msgstr "Alternate contact page contents"
+
+#. Default: "help_create_packet"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:255
+msgid "help_create_packet"
+msgstr "Create Master of general information"
+
+#. Default: "S'obrirà el Directori UPC, carregant les dades de la unitat."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:150
+msgid "help_directori_filtrat"
+msgstr "The UPC directory will open and show the unit’s details."
+
+#. "Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."
+#. Default: "Es mostrarà a la part superior l'enllaç al Directori UPC."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:141
+msgid "help_directori_upc"
+msgstr "The link to the UPC directory will be shown at the top."
+
+#. "Afegiu el color específic 1. És aquell que..."
+#. Default: "Afegiu el color específic 1. És aquell que..."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:170
+msgid "help_especific1"
+msgstr "Add the specific color 1"
+
+#. "Afegiu el color específic 2. És aquell que..."
+#. Default: "Afegiu el color específic 2. És aquell que..."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:179
+msgid "help_especific2"
+msgstr "Add the specific color 2"
+
+#. Default: "Configuració de Genweb UPC ..."
+#: genweb.controlpanel/genweb/controlpanel/controlpanel.py:36
+msgid "help_genweb_settings_editform"
+msgstr "settings Genweb UPC ..."
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:41
+msgid "help_html_title_ca"
+msgstr "Add title of Genweb. You can include tags HTML"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:59
+msgid "help_html_title_en"
+msgstr "Add title of Genweb. You can include tags HTML"
+
+#. Default: "Afegiu el títol del Genweb. Podeu incloure tags HTML"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:50
+msgid "help_html_title_es"
+msgstr "Add title of Genweb. You can include tags HTML"
+
+#. "Afegiu el id de l'estudi de la base de dades de màsters."
+#. Default: "Afegiu el id de l'estudi de la base de dades de màsters."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:245
+msgid "help_idestudi_master"
+msgstr "add the id of the study  of master database"
+
+#. "Blabla ..."
+msgid "help_idiomes_google_translate_link_ca"
+msgstr "Blabla ..."
+
+#. "Blabla ..."
+msgid "help_idiomes_google_translate_link_en"
+msgstr "Blabla ..."
+
+#. "Blabla ..."
+msgid "help_idiomes_google_translate_link_es"
+msgstr "Blabla ..."
+
+#. "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
+#. Default: "Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:224
+msgid "help_idiomes_publicats"
+msgstr "These languages will be published on the website, languages not specified not be public but will be visible to managers (editors)."
+
+#. Default: "help_languages_link_to_root"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:234
+msgid "help_languages_link_to_root"
+msgstr "Selecting this option makes that all the clicks on the languages combo always redirects to the site root."
+
+#: genweb.core/genweb/core/behaviors/openlinkin.py:22
+msgid "help_open_link_in_new_window"
+msgstr "You must include http:// at the beginning to make an external link"
+
+#. Default: "Afegiu el text alternatiu (alt) del logo dret de la capçalera."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:104
+msgid "help_right_logo_alt"
+msgstr "Add alternative text (alt) to the right logo of the header"
+
+#. Default: "Mostra o no el logo dret de la capçalera."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:95
+msgid "help_right_logo_enabled"
+msgstr "Show or not the right header logo"
+
+#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+#. Default: "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:68
+msgid "help_signatura_unitat_ca"
+msgstr "It is the literal that appears at the bottom of the page or in the alternative text of the logo (educational centers)."
+
+#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+#. Default: "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:86
+msgid "help_signatura_unitat_en"
+msgstr "It is the literal that appears at the bottom of the page or in the alternative text of the logo (educational centers)."
+
+#. "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+#. Default: "És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:77
+msgid "help_signatura_unitat_es"
+msgstr "It is the literal that appears at the bottom of the page or in the alternative text of the logo (educational centers)."
+
+#. "Treu les icones per compartir en xarxes socials ..."
+#. Default: "Treu les icones per compartir en xarxes socials ..."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:206
+msgid "help_treu_icones_xarxes_socials"
+msgstr "Show icons to share in social networks ..."
+
+#. "Treiem la imatge de la capçalera per ..."
+#. Default: "Treiem la imatge de la capçalera per ..."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:188
+msgid "help_treu_imatge_capsalera"
+msgstr "Show the header image by .."
+
+#. "Treu el menú horitzontal ..."
+#. Default: "Treu el menú horitzontal ..."
+#: genweb.controlpanel/genweb/controlpanel/interface.py:197
+msgid "help_treu_menu_horitzontal"
+msgstr "Show horizontal menu ..."
+
+#. Default: "Pàgina d'inici"
+msgid "homepage"
+msgstr "Homepage"
+
+#. Default: "Benvingut"
+msgid "homepage_portlet"
+msgstr "Welcome"
+
+#. Default: "Menu L2"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:77
+msgid "homeportlets_title_1"
+msgstr "Menu L2"
+
+#. Default: "1a Fila"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:83
+msgid "homeportlets_title_f1"
+msgstr "First row"
+
+msgid "homeportlets_title_f2"
+msgstr "Second row"
+
+msgid "homeportlets_title_f3"
+msgstr "Third Fila"
+
+#. Default: "Títol del web amb HTML tags (negretes) [CA]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:39
+msgid "html_title_ca"
+msgstr "Web title with HTML tags (bolds) [CA]"
+
+#. Default: "Títol del web amb HTML tags (negretes) [EN]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:57
+msgid "html_title_en"
+msgstr "Web title with HTML tags (bolds) [EN]"
+
+#. Default: "Títol del web amb HTML tags (negretes) [ES]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:48
+msgid "html_title_es"
+msgstr "Web title with HTML tags (bolds) [ES]"
+
+#. Default: "Identifica't"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/header.pt:56
+msgid "identificat"
+msgstr "Log In"
+
+#. "id_estudi"
+#. Default: "id_estudi"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:243
+msgid "idestudi_master"
+msgstr "id_study"
+
+#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"
+msgid "idiomes_google_translate_link_ca"
+msgstr "Enable link to the automatic translation of Google Translate [ES]"
+
+#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [EN]"
+msgid "idiomes_google_translate_link_en"
+msgstr "Enable link to the automatic translation of Google Translate [ES]"
+
+#. "Habilitar l'enllaç a la traducció automàtica de Google Translate [ES]"
+msgid "idiomes_google_translate_link_es"
+msgstr "Enable link to the automatic translation of Google Translate [ES]"
+
+#. "Idiomes publicats al web"
+#. Default: "Idiomes publicats al web"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:222
+msgid "idiomes_publicats"
+msgstr "Languages activated on the website"
+
+#. Default: "${sendevent_button}"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/important.pt:5
+#: genweb.theme/genweb/theme/browser/viewlets_templates/send_event.pt:7
+msgid "important_buttons"
+msgstr "${sendevent_button}"
+
+#. Default: "Inici"
+#: browser/calendar.pt
+msgid "inici"
+msgstr "Home"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:67
+msgid "inici_page"
+msgstr "Top of page"
+
+#. Default: "Sobre aquest web"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:48
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:74
+msgid "label_about"
+msgstr "About web"
+
+#. Default: "Accessibilitat"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:82
+msgid "label_accessibility"
+msgstr "accessibility"
+
+#. Default: "Add new…"
+#: genweb.core/genweb/core/overrides.py:12
+msgid "label_add_new_item"
+msgstr "Add new…"
+
+#. Default: "Advanced Search…"
+#: genweb.theme/genweb/theme/browser/views.py:230
+msgid "label_advanced_search"
+msgstr "Advanced Search…"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/header.pt:6
+msgid "label_alt_logo"
+msgstr "Universitat Politècnica de Catalunya, (Open in new window)"
+
+#. Default: "Another elusive title of the choose menu"
+#: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:74
+msgid "label_change_default_item"
+msgstr "Another elusive title of the choose menu"
+
+#. Default: "The elusive title of the choose menu"
+#: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:70
+msgid "label_choose_item"
+msgstr "The elusive title of the choose menu"
+
+#. Default: "Display"
+#: genweb.core/genweb/core/overrides.py:7
+msgid "label_choose_template"
+msgstr ""
+
+#. Default: "Portlet view to use"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:58
+msgid "label_container_view"
+msgstr "Portlet view to use"
+
+#. Default: "copiarF"
+msgid "label_copy_object"
+msgstr "Copy"
+
+#. Default: "Directori UPC"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/header.pt:37
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:91
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:50
+msgid "label_dir_upc"
+msgstr "UPC directory"
+
+#. Default: "Eines d'usuari"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:3
+msgid "label_eines_usuari"
+msgstr "User tools"
+
+#. Default: "Event body text"
+#: ATContentTypes/content/event.py:101
+msgid "label_event_announcement"
+msgstr "Event body text"
+
+#. Default: "Identifica't"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:58
+msgid "label_indetify"
+msgstr "Login"
+
+#. Default: "Menú d'eines Genweb UPC"
+msgid "label_menu_eines_genweb"
+msgstr "Tools menu Genweb UPC"
+
+#. Default: "Menú d'usuari"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/personal_bar.pt:15
+msgid "label_menu_usuari"
+msgstr "User menu"
+
+#. Default: "No matching results found."
+#: genweb.theme/genweb/theme/browser/views.py:228
+msgid "label_no_results_found"
+msgstr "No matching results found."
+
+#. Default: "Altres continguts al web"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:34
+msgid "label_other_contents_web"
+msgstr "Other contents"
+
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:179
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:160
+msgid "label_password"
+msgstr "Password"
+
+#. Default: "Search terms"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:65
+msgid "label_query"
+msgstr "Search terms"
+
+#. Default: "RSS"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:66
+msgid "label_rss"
+msgstr "RSS"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:5
+msgid "label_share"
+msgstr "Share"
+
+#. Default: "Show all items"
+#: genweb.theme/genweb/theme/browser/views.py:253
+msgid "label_show_all"
+msgstr "Show all items"
+
+#. Default: "Show header"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:46
+msgid "label_show_header"
+msgstr "Show header"
+
+#. Default: "Site Administration"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.skins.plone_templates.default_error_message.pt:56
+msgid "label_site_admin"
+msgstr "site administration"
+
+#. Default: "Order as in folder"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:89
+msgid "label_sort_folderorder"
+msgstr "Order as in folder"
+
+#. Default: "Sort on"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:76
+msgid "label_sort_on"
+msgstr "Sort on"
+
+#. Default: "Reversed order"
+#: genweb.smartportlet/genweb/smartportlet/__init__.py:83
+msgid "label_sort_reversed"
+msgstr "Reversed order"
+
+#. Default: "Inicia la sessió"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/header.pt:94
+msgid "label_start_session"
+msgstr "Log in"
+
+#. Default: "Etiqueta Secció"
+msgid "label_text_seccio"
+msgstr "Label section"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/header.pt:6
+msgid "label_title_logo"
+msgstr "Universitat Politècnica de Catalunya, (Open in new window)"
+
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:163
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:144
+msgid "label_user_name"
+msgstr "User name"
+
+#. Default: "mapa del web"
+#: genweb.theme/genweb/theme/templates/Products.CMFPlone.skins.plone_templates.default_error_message.pt:50
+msgid "label_web_map"
+msgstr "web map"
+
+#. Default: "languages_link_to_root"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:232
+msgid "languages_link_to_root"
+msgstr "Redirect to site root when the user clicks on the languages availables on the site"
+
+#. Default: "Banda de d'enllacos de peu"
+#: genweb.logosfooter/genweb/logosfooter/browser/viewlet_templates/logosfooter.pt:5
+msgid "layout_banda_logos"
+msgstr "Footer links"
+
+#. Default: "Vista per defecte"
+#. "llistat_continguts"
+#: ./skins/plone_templates/global_pathbar.pt:11
+msgid "llistat_continguts"
+msgstr "Default view"
+
+#. Default: "Detalls del compte"
+#. "login_form_detalls_del_compte"
+msgid "login_form_detalls_del_compte"
+msgstr "Account Details"
+
+#. Default: "Since cookie authentication is disabled, cookie-based login is not available."
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/login_form.cpt:70
+#: genweb.theme/genweb/theme/skins/genwebtheme_custom/popup_login_form.cpt:58
+msgid "login_form_disabled"
+msgstr "Since cookie authentication is disabled, cookie-based login is not available."
+
+#. "manage_homeportlets_link"
+#. Default: "Manage home page"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/manage_portlets_fallback.pt:5
+msgid "manage_homeportlets_link"
+msgstr "Manage home page"
+
+#. Default: "Manage home portlets"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:59
+msgid "manage_portlets_footer"
+msgstr "Manage home portlets"
+
+#. Default: "Concedir permisos"
+msgid "manage_site_permissions"
+msgstr "Grant access"
+
+#. Default: "Curs"
+msgid "master_curso"
+msgstr "Course"
+
+#. Default: "If you add portlets here, they will only appear on this item. If instead you want portlets to appear on all items in this folder, ${manage-footerportlets_link}"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:50
+msgid "message_warning_footer_area_dd"
+msgstr "If you add portlets here, they will only appear on this item. If instead you want portlets to appear on all items in this folder, ${manage-footerportlets_link}"
+
+#. Default: "Is this really where you want to add portlets in the footer area?"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:45
+msgid "message_warning_footer_area_dt"
+msgstr "Is this really where you want to add portlets in the footer area?"
+
+#. Default: "abr."
+msgid "month_apr_abbr"
+msgstr "abr."
+
+#. Default: "ag."
+msgid "month_aug_abbr"
+msgstr "ag."
+
+#. Default: "des."
+msgid "month_dec_abbr"
+msgstr "des."
+
+#. Default: "febr."
+msgid "month_feb_abbr"
+msgstr "febr."
+
+#########
+# Dates #
+#########
+#. Default: "gen."
+msgid "month_jan_abbr"
+msgstr "gen."
+
+#. Default: "jul."
+msgid "month_jul_abbr"
+msgstr "jul."
+
+#. Default: "juny"
+msgid "month_jun_abbr"
+msgstr "july"
+
+#. Default: "març"
+msgid "month_mar_abbr"
+msgstr "march"
+
+#. Default: "maig"
+msgid "month_may_abbr"
+msgstr "may"
+
+#. Default: "nov."
+msgid "month_nov_abbr"
+msgstr "nov."
+
+#. Default: "oct."
+msgid "month_oct_abbr"
+msgstr "oct."
+
+#. Default: "set."
+msgid "month_sept_abbr"
+msgstr "sept."
+
+#. Default: "Navega..."
+msgid "navegar"
+msgstr "Browse"
+
+#. Default: "Notícies"
+msgid "newscollection_view"
+msgstr "News"
+
+#. Default: "Usuari"
+msgid "nom_usuari"
+msgstr "User"
+
+#. Default: "${results} not a valid language"
+#: genweb.core/genweb/core/browser/viewlets.py:116
 msgid "not a valid language"
 msgstr "[${results} is not a valid language]"
 
-msgid "inici_page"
-msgstr "Top of page"
+#. Default: "${notimportant_button}"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/important.pt:17
+msgid "notimportant_buttons"
+msgstr "${notimportant_button}"
+
+#: genweb.banners/genweb/banners/portlets/bannersportlet.py:87
+#: genweb.logosfooter/genweb/logosfooter/browser/viewlet.py:41
+#: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:21
+msgid "obrir_link_finestra_nova"
+msgstr "(open link in a new window)"
+
+#: genweb.core/genweb/core/behaviors/openlinkin.py:21
+msgid "open_link_in_new_window"
+msgstr "Open in a new window?"
+
+#. Default: "Enllaç permanent"
+msgid "permalink_accio"
+msgstr "Permalink"
+
+#. Default: "(per defecte)"
+msgid "personalbar_default_language"
+msgstr "(Default)"
+
+#. Default: "Imprimeix"
+msgid "print_accio"
+msgstr "Print"
+
+# genweb_review workflow
+#. Default: "Intranet"
+msgid "publicaalaintranet"
+msgstr "Intranet"
+
+#. Default: "Públic"
+msgid "publish"
+msgstr "Publish"
+
+#. Default: "Read More…"
+#: genweb.theme/genweb/theme/browser/ajaxviews_templates/folder_summary_view.pt:93
+msgid "read_more"
+msgstr "Read More…"
+
+#. Default: "Esborrany"
+msgid "reject"
+msgstr "reject"
+
+#. Default: "Esborrany"
+msgid "retiraaesborrany"
+msgstr "reject"
+
+#. Default: "Intranet"
+msgid "retiraalaintranet"
+msgstr "Intranet"
+
+#. Default: "Return"
+#: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:63
+msgid "return_to_view"
+msgstr "Return"
+
+#. Default: "Text alternatiu del logo dret"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:102
+msgid "right_logo_alt"
+msgstr "Alternative text to right logo"
+
+#. Default: "Mostrar logo dret"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:93
+msgid "right_logo_enabled"
+msgstr "Show right logo"
+
+#. Default: "Neutre"
+msgid "root_folder_neutral"
+msgstr "Neutral"
+
+#. Default: "Rss"
+msgid "rss_accio"
+msgstr "Rss"
+
+#: genweb.theme/genweb/theme/browser/viewlets_templates/socialtools.pt:46
+msgid "send_mail"
+msgstr "Send by mail"
+
+#. Default: "Envia"
+msgid "sendto_accio"
+msgstr "Send"
+
+#. Default: "Fitxers comuns"
+msgid "shared_folder"
+msgstr "Shared files"
+
+#########
+#. "Signatura de la unitat [CA]"
+#. Default: "Signatura de la unitat [CA]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:66
+msgid "signatura_unitat_ca"
+msgstr "Signature unit [CA]"
+
+#. "Signatura de la unitat [EN]"
+#. Default: "Signatura de la unitat [EN]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:84
+msgid "signatura_unitat_en"
+msgstr "Signature unit [EN]"
+
+#. "Signatura de la unitat [ES]"
+#. Default: "Signatura de la unitat [ES]"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:75
+msgid "signatura_unitat_es"
+msgstr "Signature unit [ES]"
+
+#. "Vés al contingut (premeu Retorn)"
+#. Default: "Vés al contingut (premeu Retorn)"
+#: genweb.theme/genweb/theme/templates/plone.app.layout.viewlets.portal_header.pt:2
+msgid "skip_to_content"
+msgstr "Skip to content"
+
+#. Default: "Cerca"
+#: genweb.theme/genweb/theme/browser/viewlets_templates/searchbox.pt:7
+msgid "submitGo"
+msgstr "Search"
+
+#. Default: "Personalitza plantilles"
+msgid "templates_folder"
+msgstr "Customize templates"
+
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:87
+msgid "title_dir_upc"
+msgstr "Click to open UPC directory"
+
+#: genweb.theme/genweb/theme/browser/views_templates/contact.pt:100
+msgid "title_upcmaps"
+msgstr "Click to open UPCmaps"
+
+#. "Treu les icones per compartir en xarxes socials"
+#. Default: "Treu les icones per compartir en xarxes socials"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:204
+msgid "treu_icones_xarxes_socials"
+msgstr "Show icons to share in social networks"
+
+#. "Treu la imatge de la capçalera"
+#. Default: "Treu la imatge de la capçalera"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:186
+msgid "treu_imatge_capsalera"
+msgstr "Show the header image"
+
+#. "Treu el menú horitzontal"
+#. Default: "Treu el menú horitzontal"
+#: genweb.controlpanel/genweb/controlpanel/interface.py:195
+msgid "treu_menu_horitzontal"
+msgstr "Show horizontal menu"
+
+#: genweb.banners/genweb/banners/content/banner.py:23
+msgid "url"
+msgstr "url"
+
+#. Default: "Usuari connectat:"
+#. "usuari_connectat"
+msgid "usuari_connectat"
+msgstr "User online:"
+
+msgid "event_url"
+msgstr "More information"
+
+msgid "No hi ha elements"
+msgstr "No items"

@@ -3,6 +3,7 @@ from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
 from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter, queryUtility
+from zope.interface import alsoProvides
 from Products.CMFCore.utils import getToolByName
 
 from plone.testing.z2 import Browser
@@ -34,8 +35,8 @@ class IntegrationTest(unittest.TestCase):
         login(self.portal, TEST_USER_NAME)
         self.assertEqual(sorted([ct.id for ct in self.portal.allowedContentTypes()]), sorted(portal_allowed_types))
 
-    def testLinkExtender(self):
-        """Test for ATLink extender and related index and metadata"""
+    def testLinkBehavior(self):
+        """Test for Link behavior and related index and metadata"""
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
@@ -43,16 +44,19 @@ class IntegrationTest(unittest.TestCase):
         f2 = portal['f2']
         f2.invokeFactory('Link', 'enllac', title=u"Soc un link")
         link = f2['enllac']
-        self.assertEqual(link.obrirfinestra, False)
+        link.open_link_in_new_window = False
+        link.reindexObject()
+
+        self.assertEqual(link.open_link_in_new_window, False)
 
         results = portal.portal_catalog.searchResults(portal_type='Link')
-        self.assertEqual(results[0].obrirEnFinestraNova, False)
+        self.assertEqual(results[0].open_link_in_new_window, False)
 
-        link.obrirfinestra = True
+        link.open_link_in_new_window = True
         link.reindexObject()
 
         results = portal.portal_catalog.searchResults(portal_type='Link')
-        self.assertEqual(results[0].obrirEnFinestraNova, True)
+        self.assertEqual(results[0].open_link_in_new_window, True)
 
     def testHomePageMarkerInterface(self):
         self.assertTrue(IHomePage.providedBy(self.portal['front-page']))
@@ -67,6 +71,19 @@ class IntegrationTest(unittest.TestCase):
         obj.is_important = True
         obj2 = IImportant(self.portal.test_adapter)
         self.assertEqual(obj2.is_important, True)
+
+    def test_protected_content(self):
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.portal.invokeFactory('Folder', 'test_folder', title=u"Soc una carpeta")
+        self.portal.test_folder.invokeFactory('Document', 'test_document', title=u"Soc un document")
+        from genweb.core.interfaces import IProtectedContent
+        alsoProvides(self.portal.test_folder, IProtectedContent)
+        setRoles(self.portal, TEST_USER_ID, ['Reader', 'Editor'])
+
+        self.portal.test_folder.manage_delObjects('test_document')
+
+        self.assertRaises(Unauthorized, self.portal.manage_delObjects, 'test_folder')
 
 
 class FunctionalTest(unittest.TestCase):
@@ -94,4 +111,4 @@ class FunctionalTest(unittest.TestCase):
 
         self.browser.open(portalURL)
 
-        self.assertTrue("Us donem la benvinguda a Genweb UPC" in self.browser.contents)
+        self.assertTrue("Congratulations! You have successfully installed Plone." in self.browser.contents)

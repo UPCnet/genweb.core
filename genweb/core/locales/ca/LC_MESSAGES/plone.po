@@ -311,6 +311,9 @@ msgstr "Adreça electrònica"
 msgid "genweb_subject"
 msgstr "Assumpte"
 
+msgid "genweb_message"
+msgstr "Missatge"
+
 msgid "genweb_help_message"
 msgstr "Escriviu el missatge que voleu enviar"
 
@@ -332,14 +335,79 @@ msgstr "Document"
 ############
 
 msgid "FullNews"
-msgstr "Notícies enriquides"
+msgstr "Notícies amb foto"
 
 msgid "NoticiesPropi"
-msgstr "Notícies GenWeb"
+msgstr "Notícies"
 
 msgid "AgendaGW"
-msgstr "Agenda Genweb"
+msgstr "Agenda"
 
-msgid "hompageportlet"
+msgid "portlet_homepage_title"
 msgstr "Benvinguda"
 
+msgid "portlet_calendar_title"
+msgstr "Calendari"
+
+msgid "portlet_collection_title"
+msgstr "Col·lecció"
+
+msgid "portlet_login_title"
+msgstr "Identificació"
+
+msgid "portlet_navigation_title"
+msgstr "Menú de navegació"
+
+msgid "portlet_rss_title"
+msgstr "RSS"
+
+msgid "portlet_static_title"
+msgstr "Portlet estàtic"
+
+msgid "portlet_static"
+msgstr "Portlet estàtic"
+
+msgid "portlet_poll_title"
+msgstr "Enquesta"
+
+msgid "UPCNews"
+msgstr "Actualitat UPC"
+
+msgid "more_news_link"
+msgstr "Més notícies"
+
+msgid "heading_not_found_suggestions"
+msgstr "Segurament estàveu buscant…"
+
+msgid "label_full_size"
+msgstr "Mida original imatge:"
+
+#: plone/app/event/portlets/portlet_calendar.py:218
+msgid "This portlet displays events in a calendar."
+msgstr "Aquest portlet mostra els esdeveniments del calendari"
+
+#. Default: "Select search base folder to search for events. This folder will also be used to link to in calendar searches. If empty, the whole site will be searched and the event listing view will be called on the site root."
+#: plone/app/event/portlets/portlet_calendar.py:42
+#: plone/app/event/portlets/portlet_events.py:43
+msgid "portlet_help_search_base"
+msgstr ""
+"Selecciona la carpeta on cerca els esdeveniments. Aquesta carpeta es farà "
+"servir per enllaçar en les cerques del calendari. Si no s'especifica, es "
+"cercaran a tot el lloc i la llista serà cridada des de l'arrel."
+
+#: plone.portlet.collection/plone/portlet/collection/collection.py:71
+msgid "Exclude the Current Context"
+msgstr "Excloure el context actual"
+
+#: plone.portlet.collection/plone/portlet/collection/collection.py:72
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "Si s'activa, la llista no inclourà l'element actual. El portlet es renderitza per si en cas contrari es mostra."
+
+### portlets assigned
+
+msgid "FullNews"
+msgstr "Notícies amb foto"
+
+#: CMFPlone/skins/plone_login/registered.pt:92
+msgid "label_log_in"
+msgstr "Identificació"

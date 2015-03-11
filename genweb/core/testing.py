@@ -9,13 +9,15 @@ from plone.app.testing import FunctionalTesting
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 
+from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
+
 import pkg_resources
 import transaction
 
 
 class GenwebUPC(PloneSandboxLayer):
 
-    defaultBases = (PLONE_FIXTURE,)
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
         # Load ZCML
@@ -24,24 +26,18 @@ class GenwebUPC(PloneSandboxLayer):
                        genweb.core,
                        context=configurationContext)
 
-        try:
-            pkg_resources.get_distribution('upc.genwebupctheme')
-            import upc.genwebupctheme
-            xmlconfig.file('configure.zcml',
-                           upc.genwebupctheme,
-                           context=configurationContext)
-        except pkg_resources.DistributionNotFound:
-            pass
-
     def setUpPloneSite(self, portal):
-        # Create a document front-page
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        portal.invokeFactory('Document', 'front-page', title="Us donem la benvinguda a Genweb UPC")
-        transaction.commit()
-        setRoles(portal, TEST_USER_ID, ['Member'])
+        # Needed for PAC not complain about not having one... T_T
+        portal.portal_workflow.setDefaultChain("simple_publication_workflow")
 
         # Install into Plone site using portal_setup
         applyProfile(portal, 'genweb.core:default')
+
+        # Create a document front-page
+        # setRoles(portal, TEST_USER_ID, ['Manager'])
+        # portal.invokeFactory('Document', 'front-page', title="Us donem la benvinguda a Genweb")
+        # transaction.commit()
+        # setRoles(portal, TEST_USER_ID, ['Member'])
 
         # Let anz.casclient do not interfere in tests
         # portal.acl_users.manage_delObjects('CASUPC')

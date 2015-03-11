@@ -1,0 +1,42 @@
+{
+  "name": "genweb.core.components",
+  "version": "0.0.1",
+  "homepage": "https://github.com/UPCnet/genweb.core",
+  "authors": [
+    "Victor Fernandez de Alba <sneridagh@gmail.com>"
+  ],
+  "description": "Genweb third party web-components",
+  "keywords": [
+    "genweb",
+    "components",
+    "core",
+    "theme"
+  ],
+  "license": "GPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "~1.3.13",
+    "angular-resource": "~1.3.13",
+    "angular-sanitize": "~1.3.13",
+    "bootstrap": "~3.3.2",
+    "fontawesome": "latest",
+    "underscore": "~1.7.0",
+    "modernizr": "~2.8.3",
+    "handlebars": "latest",
+    "typeahead.js": "latest",
+    "select2": "https://github.com/ivaynberg/select2.git#master",
+    "wookmark-jquery": "latest",
+    "angular-ui-select": "~0.9.9",
+    "alertify": "0.3",
+    "mixitup": "1",
+    "angular-datatables": "~0.4.0"
+  }
+}
