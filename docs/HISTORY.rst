@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.5.1 (unreleased)
+4.5.1 (2015-03-11)
 ------------------
 
-- Nothing changed yet.
-
+* Fix mixed dependency on mrs.max, transferred to ulearn.core [Victor Fernandez de Alba]
 
 4.5.0 (2015-03-11)
 ------------------
