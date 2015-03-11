@@ -1,11 +1,19 @@
 Changelog
 =========
 
-4.4.51 (unreleased)
--------------------
+4.5.0 (2015-03-11)
+------------------
 
-- Nothing changed yet.
-
+* Update the new settings on LDAP plugins [Victor Fernandez de Alba]
+* Improvements to the get_safe_member_by_id [Victor Fernandez de Alba]
+* Optimizations and improvements on templates and getMemberById [Victor Fernandez de Alba]
+* Groups LDAP internal catalog [Victor Fernandez de Alba]
+* Update Omega13 user search view. [Victor Fernandez de Alba]
+* Do user catalog on creation too (for the case the user creation does not modifythe user properties. [Victor Fernandez de Alba]
+* New components, GWUUID [Victor Fernandez de Alba]
+* Add angular dependencies [Victor Fernandez de Alba]
+* Add angular dependencies [Victor Fernandez de Alba]
+* traduccion portlet estatico [hanirok]
 
 4.4.50 (2015-03-04)
 -------------------
