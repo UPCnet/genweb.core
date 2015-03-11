@@ -31,11 +31,13 @@ from souper.interfaces import ICatalogFactory
 from souper.soup import get_soup
 from souper.soup import Record
 
+
 from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
 from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
 from genweb.core.utils import add_user_to_catalog
+from genweb.core.utils import reset_user_catalog
 
 import json
 
@@ -822,6 +824,18 @@ class ReBuildUserPropertiesCatalog(grok.View):
                 print('No user found in user repository (LDAP) {}'.format(user['id']))
 
             print('Updated properties catalog for {}'.format(user['id']))
+
+
+class ResetUserPropertiesCatalog(grok.View):
+    """
+        Reset the OMEGA13 repoze.catalog for user properties data.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('reset_user_catalog')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        reset_user_catalog()
 
 
 class enablePDFIndexing(grok.View):
