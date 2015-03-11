@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.5.2 (unreleased)
+4.5.2 (2015-03-11)
 ------------------
 
-- Nothing changed yet.
-
+* add missing reset user catalog view [Victor Fernandez de Alba]
 
 4.5.1 (2015-03-11)
 ------------------
