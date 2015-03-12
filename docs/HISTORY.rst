@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.5.3 (unreleased)
+4.5.3 (2015-03-12)
 ------------------
 
-- Nothing changed yet.
-
+* Removed hard dependency on p.a.m. [Victor Fernandez de Alba]
 
 4.5.2 (2015-03-11)
 ------------------
