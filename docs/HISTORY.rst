@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.5.4 (unreleased)
+4.5.4 (2015-03-12)
 ------------------
 
-- Nothing changed yet.
-
+* Updated for not directly depend on PAM [Victor Fernandez de Alba]
 
 4.5.3 (2015-03-12)
 ------------------
