@@ -12,7 +12,6 @@ from zope.component import getUtility
 
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
-from plone.app.multilingual.interfaces import ITranslationManager
 
 from Products.CMFCore.utils import getToolByName
 # from Products.CMFPlone import PloneMessageFactory as _
@@ -31,6 +30,7 @@ from repoze.catalog.indexes.field import CatalogFieldIndex
 from souper.soup import NodeAttributeIndexer
 from plone.uuid.interfaces import IMutableUUID
 
+from genweb.core import HAS_PAM
 from genweb.core.directory import METADATA_USER_ATTRS
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
@@ -39,6 +39,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 PLMF = MessageFactory('plonelocales')
+
+if HAS_PAM:
+    from plone.app.multilingual.interfaces import ITranslationManager
 
 
 def genweb_config():
