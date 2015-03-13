@@ -15,7 +15,6 @@ from plone.dexterity.interfaces import IDexterityContent
 from Products.Archetypes.interfaces import IBaseObject
 
 from plone.dexterity.content import Container
-from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
@@ -40,6 +39,9 @@ from genweb.core.utils import add_user_to_catalog
 from genweb.core.utils import reset_user_catalog
 
 import json
+
+if HAS_PAM:
+    from plone.app.multilingual.browser.setup import SetupMultilingualSite
 
 
 DORSALS = {"1": "Ter Stegen", "2": "Montoya", "3": "Piqué",

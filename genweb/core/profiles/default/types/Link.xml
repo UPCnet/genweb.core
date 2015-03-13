@@ -8,7 +8,6 @@
   <element value="plone.app.content.interfaces.INameFromTitle"/>
   <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
   <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
-  <element value="plone.app.multilingual.dx.interfaces.IDexterityTranslatable" />
   <element value="genweb.core.behaviors.openlinkin.IOpenLinkInNewWindow" />
  </property>
 
