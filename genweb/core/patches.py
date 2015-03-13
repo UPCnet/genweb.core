@@ -455,7 +455,7 @@ def getMemberById(self, id):
             # As we added the key 'id' into the local user catalog, we need to
             # get rid of the get_safe_member_by_id result to make
             # addPropertyShit (pun intended) happy
-            del user['id']
+            user.pop('id', None)
             user_towrap.addPropertysheet('omega13', user)
             user = self.wrapUser(user_towrap)
             return user
