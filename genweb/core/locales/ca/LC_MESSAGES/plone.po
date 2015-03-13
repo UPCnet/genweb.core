@@ -411,3 +411,6 @@ msgstr "Notícies amb foto"
 #: CMFPlone/skins/plone_login/registered.pt:92
 msgid "label_log_in"
 msgstr "Identificació"
+
+msgid "serveistic_view"
+msgstr "Vista ServeisTIC"
