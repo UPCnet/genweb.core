@@ -462,7 +462,6 @@ def getMemberById(self, id):
 
     # If the user is not on the new catalog, then fallback anyway
     if api.env.debug_mode():
-        # import ipdb;ipdb.set_trace()
         genweb_log.warning('')
         genweb_log.warning('Warning! Using getMemberById')
         genweb_log.warning('from: {}'.format(upstream_callers))
