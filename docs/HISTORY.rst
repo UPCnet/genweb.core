@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.5.5 (unreleased)
+4.5.5 (2015-03-13)
 ------------------
 
-- Nothing changed yet.
-
+* Fix error introduced due to the new local user catalog index [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate ServeisTIC view [hanirok]
 
 4.5.4 (2015-03-12)
 ------------------
