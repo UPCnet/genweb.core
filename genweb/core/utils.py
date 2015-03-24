@@ -185,6 +185,24 @@ def reset_group_catalog():
     soup.clear()
 
 
+def json_response(func):
+    """ Decorator to return all values as json, it extract the status from the
+        result and applies it to the response.
+    """
+    def decorator(*args, **kwargs):
+        instance = args[0]
+        request = getattr(instance, 'request', None)
+        request.response.setHeader(
+            'Content-Type',
+            'application/json; charset=utf-8'
+        )
+        result = func(*args, **kwargs)
+        request.response.setStatus(result.get('status', 200))
+        return json.dumps(result, indent=2, sort_keys=True)
+
+    return decorator
+
+
 class genwebUtils(BrowserView):
     """ Convenience methods placeholder genweb.utils view. """
 
