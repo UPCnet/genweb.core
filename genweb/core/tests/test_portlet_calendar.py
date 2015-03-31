@@ -18,6 +18,7 @@ from zope.component.hooks import setSite
 
 from plone.app.event.dx.behaviors import EventAccessor
 
+from datetime import timedelta
 import unittest2 as unittest
 
 TZNAME = "Europe/Vienna"
@@ -43,22 +44,14 @@ class RendererTest(unittest.TestCase):
         )
 
     def create_event(self, context, id='e1', title='New event', days=(1, 1), start=0, end=1, whole_day=False, open_end=False):
-        now = localized_now().replace(minute=0, second=0, microsecond=0)
-        if now.day > 30:
-            target_day_start = 1
-            target_day_end = 1 + days[1]
-        else:
-            target_day_start = now.day + days[0]
-            target_day_end = now.day + days[1]
-        if now.hour == 23:
-            target_hour_start = 1
-            target_hour_end = 2
-        else:
-            target_hour_start = now.hour + start
-            target_hour_end = now.hour + end
+        """ Creates an event with delta days tuple (start, end) beggining from
+            now. The start and end arguments are also treated as delta hours.
+        """
+        delta_start = timedelta(hours=start, days=days[0])
+        delta_end = timedelta(hours=end, days=days[1])
 
-        start = localized_now().replace(day=target_day_start, hour=target_hour_start)
-        end = localized_now().replace(day=target_day_end, hour=target_hour_end)
+        start = localized_now() + delta_start
+        end = localized_now() + delta_end
 
         EventAccessor.event_type = 'Event'
         acc = EventAccessor.create(
