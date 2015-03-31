@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.5.7 (unreleased)
+4.5.7 (2015-03-31)
 ------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+*  [hanirok]
+* Traducciones [hanirok]
+* Traucción workflow objectius [hanirok]
+* Fix tests [Victor Fernandez de Alba]
+* Images for content samples [hanirok]
 
 4.5.6 (2015-03-13)
 ------------------
