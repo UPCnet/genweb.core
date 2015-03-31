@@ -1862,3 +1862,32 @@ msgstr "${startdate} a ${enddate}"
 #: plone/app/event/browser/formatted_date.pt:71
 msgid "event_when_sameday"
 msgstr "${date} de ${starttime} a ${endtime}"
+
+# Objectius workflow
+
+msgid "enCreacio"
+msgstr "Objectius en creació"
+
+msgid "enRevisioInicial"
+msgstr "Objectius en revisió"
+
+msgid "enRevisioValoracio"
+msgstr "Valoració en revisió"
+
+msgid "validatInicial"
+msgstr "Objectius validats"
+
+msgid "validatValoracio"
+msgstr "Valoració validada"
+
+msgid "aRevisarInicial"
+msgstr "A revisar objectius"
+
+msgid "aRevisarValoracio"
+msgstr "A revisar valoració"
+
+msgid "aValidarInicial"
+msgstr "A validar"
+
+msgid "aValidarValoracio"
+msgstr "A validar valoració"
