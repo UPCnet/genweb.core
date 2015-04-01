@@ -24,15 +24,16 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
+from Products.PythonScripts.standard import url_quote
 
 from repoze.catalog.query import Eq
 from souper.interfaces import ICatalogFactory
 from souper.soup import get_soup
 from souper.soup import Record
 
-
 from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
+from genweb.core.utils import json_response
 from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
 from genweb.core.utils import add_user_to_catalog
@@ -850,3 +851,50 @@ class enablePDFIndexing(grok.View):
         pt.registerTransform(pdf_to_text())
 
         return 'Done'
+
+
+class GetRenderedStylesheets(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.name('get_rendered_stylesheets')
+    grok.require('cmf.ManagePortal')
+
+    @json_response
+    def render(self):
+        registry = self.context.portal_css
+        registry_url = registry.absolute_url()
+        context = aq_inner(self.context)
+
+        styles = registry.getEvaluatedResources(context)
+        skinname = url_quote(self.skinname())
+        result = []
+        for style in styles:
+            rendering = style.getRendering()
+            if style.isExternalResource():
+                src = "%s" % style.getId()
+            else:
+                src = "%s/%s/%s" % (registry_url, skinname, style.getId())
+            if rendering == 'link':
+                data = {'rendering': rendering,
+                        'media': style.getMedia(),
+                        'rel': style.getRel(),
+                        'title': style.getTitle(),
+                        'conditionalcomment': style.getConditionalcomment(),
+                        'src': src}
+            elif rendering == 'import':
+                data = {'rendering': rendering,
+                        'media': style.getMedia(),
+                        'conditionalcomment': style.getConditionalcomment(),
+                        'src': src}
+            elif rendering == 'inline':
+                content = registry.getInlineResource(style.getId(), context)
+                data = {'rendering': rendering,
+                        'media': style.getMedia(),
+                        'conditionalcomment': style.getConditionalcomment(),
+                        'content': content}
+            else:
+                raise ValueError("Unkown rendering method '%s' for style '%s'" % (rendering, style.getId()))
+            result.append(data)
+        return result
+
+    def skinname(self):
+        return aq_inner(self.context).getCurrentSkinName()
