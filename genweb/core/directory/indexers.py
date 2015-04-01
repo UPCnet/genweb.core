@@ -9,6 +9,21 @@ from souper.soup import NodeAttributeIndexer
 
 @implementer(ICatalogFactory)
 class UserPropertiesSoupCatalogFactory(object):
+    """ The local user catalog (LUC) properties index factory. Almost all the
+        properties have a field type "FullTextIndex" to allow wildcard queries
+        on them. However, the FullTextIndex has a limitation its supported type
+        of queries, so for certain operations is needed a FieldIndex for the
+        username.
+
+        :index id: FieldIndex - The username id for exact queries
+        :index username: FullTextIndex - The username id for wildcard queries
+        :index fullname: FullTextIndex - The user display name
+        :index email: FullTextIndex - The user e-mail
+        :index location: FullTextIndex - The user location
+        :index ubicacio: FullTextIndex - The user ubicacio
+        :index telefon: FullTextIndex - The user telephone
+        :index twitter_username: FullTextIndex - The user Twitter username
+    """
     def __call__(self, context):
         catalog = Catalog()
         idindexer = NodeAttributeIndexer('id')
@@ -33,6 +48,16 @@ provideUtility(UserPropertiesSoupCatalogFactory(), name="user_properties")
 
 @implementer(ICatalogFactory)
 class GroupsSoupCatalogFactory(object):
+    """ The local user catalog (LUC) properties index factory. Almost all the
+        properties have a field type "FullTextIndex" to allow wildcard queries
+        on them. However, the FullTextIndex has a limitation its supported type
+        of queries, so for certain operations is needed a FieldIndex for the
+        username.
+
+        :index id: FieldIndex - The group id for exact queries
+        :index searchable_id: FullTextIndex - The group id used for wildcard
+            queries
+    """
     def __call__(self, context):
         catalog = Catalog()
         groupindexer = NodeAttributeIndexer('id')
