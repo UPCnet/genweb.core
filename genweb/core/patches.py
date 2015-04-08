@@ -541,7 +541,7 @@ def author(self):
 
 
 
-# Add subjects and creators to searchableText
+# Add subjects and creators to searchableText Dexterity objects
 def SearchableText(obj, text=False):
     subjList = []
     creatorList = []
