@@ -97,4 +97,11 @@
         replacement=".patches.author"
         />
 
+    <monkey:patch
+        description="Add subjects to searchableText"
+        module="plone.app.contenttypes.indexers"
+        original="SearchableText"
+        replacement=".patches.SearchableText"
+        />
+
 </configure>

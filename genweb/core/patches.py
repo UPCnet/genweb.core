@@ -539,3 +539,26 @@ def info(self, userid=None):
 def author(self):
     return get_safe_member_by_id(self.creator())
 
+
+
+# Add subjects and creators to searchableText
+def SearchableText(obj, text=False):
+    subjList = []
+    creatorList = []
+
+    for sub in obj.subject:
+        subjList.append(sub)
+    subjects = ",".join(subjList)
+
+    for creator in obj.creators:
+        creatorList.append(creator)
+    creators = ",".join(creatorList)
+
+    return u" ".join((
+        safe_unicode(obj.id),
+        safe_unicode(obj.title) or u"",
+        safe_unicode(obj.description) or u"",
+        safe_unicode(subjects) or u"",
+        safe_unicode(creators) or u"",
+    ))
+
