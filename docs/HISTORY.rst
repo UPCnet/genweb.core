@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.5.8 (unreleased)
+4.5.8 (2015-04-13)
 ------------------
 
-- Nothing changed yet.
-
+* translate label back to previous page [Paco Gregori]
+* Translate label back to previous page [Paco Gregori]
+* add subject and creator to searchableText [Paco Gregori]
+* add subject and creator to searchableText [Paco Gregori]
 
 4.5.7 (2015-03-31)
 ------------------
