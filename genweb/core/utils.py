@@ -1,6 +1,8 @@
 import json
 import urllib2
 import requests
+import unicodedata
+
 from five import grok
 from plone import api
 from AccessControl import getSecurityManager
@@ -139,8 +141,8 @@ def add_user_to_catalog(user, properties):
     """ Adds user to the user catalog even if it's a MemberData wrapped one or a
         new (string) username.
 
-        If some of this method is modified, you should update the
-        genweb.core.directory.subscriber module one.
+        If some parts of this method is modified, you should update the
+        genweb.core.directory.subscriber module twin one.
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
@@ -150,7 +152,6 @@ def add_user_to_catalog(user, properties):
         username = user
     exist = [r for r in soup.query(Eq('id', username))]
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
-    indexed_attrs = user_properties_utility(portal).keys()
 
     if exist:
         user_record = exist[0]
@@ -159,16 +160,23 @@ def add_user_to_catalog(user, properties):
         record_id = soup.add(record)
         user_record = soup.get(record_id)
 
-    user_record.attrs['username'] = username
-    user_record.attrs['id'] = username
+    if isinstance(username, str):
+        user_record.attrs['username'] = username.decode('utf-8')
+        user_record.attrs['id'] = username.decode('utf-8')
+    else:
+        user_record.attrs['username'] = username
+        user_record.attrs['id'] = username
 
-    for attr in indexed_attrs + METADATA_USER_ATTRS:
+    for attr in user_properties_utility.properties + METADATA_USER_ATTRS:
         # Only update it if user has already not property set or it's empty
         if attr in properties and user_record.attrs.get(attr, u'') == u'':
             if isinstance(properties[attr], str):
                 user_record.attrs[attr] = properties[attr].decode('utf-8')
             else:
                 user_record.attrs[attr] = properties[attr]
+
+    # Build the searchable_text field for wildcard searchs
+    user_record.attrs['searchable_text'] = ' '.join([unicodedata.normalize('NFKD', user_record.attrs[key]).encode('ascii', errors='ignore') for key in user_properties_utility.properties if user_record.attrs.get(key, False)])
 
     soup.reindex(records=[user_record])
 

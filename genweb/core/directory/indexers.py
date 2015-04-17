@@ -23,11 +23,19 @@ class UserPropertiesSoupCatalogFactory(object):
         :index ubicacio: FullTextIndex - The user ubicacio
         :index telefon: FullTextIndex - The user telephone
         :index twitter_username: FullTextIndex - The user Twitter username
+
+        The properties attribute is used to know in advance which properties are
+        listed as 'editable' or user accessible.
     """
+    properties = ['username', 'fullname', 'email', 'location', 'ubicacio', 'telefon', 'twitter_username']
+
     def __call__(self, context):
         catalog = Catalog()
         idindexer = NodeAttributeIndexer('id')
         catalog['id'] = CatalogFieldIndex(idindexer)
+        searchable_blob = NodeAttributeIndexer('searchable_text')
+        catalog['searchable_text'] = CatalogTextIndex(searchable_blob)
+
         userindexer = NodeAttributeIndexer('username')
         catalog['username'] = CatalogTextIndex(userindexer)
         fullname = NodeAttributeIndexer('fullname')
