@@ -10,17 +10,10 @@ from souper.soup import Record
 from zope.component import getUtility
 from zope.component import getUtilitiesFor
 
+from genweb.core import IAMULEARN
 from genweb.core.directory import METADATA_USER_ATTRS
 
-import pkg_resources
 import unicodedata
-
-try:
-    pkg_resources.get_distribution('ulearn.core')
-except pkg_resources.DistributionNotFound:
-    IAMULEARN = False
-else:
-    IAMULEARN = True
 
 
 @grok.subscribe(IPropertiedUser, IPrincipalCreatedEvent)
@@ -31,7 +24,7 @@ def add_user_to_catalog(principal, event):
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
-    exist = [r for r in soup.query(Eq('username', principal.getUserName()))]
+    exist = [r for r in soup.query(Eq('id', principal.getUserName()))]
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
 
     if exist:
@@ -73,11 +66,11 @@ def add_user_to_catalog(principal, event):
         except:
             client = ''
 
-        if 'user_properties_'.format(client) in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
-            extended_soup = get_soup('user_properties_'.format(client), portal)
+        if 'user_properties_{}'.format(client) in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_soup = get_soup('user_properties_{}'.format(client), portal)
             exist = []
-            exist = [r for r in extended_soup.query(Eq('username', principal.getUserName()))]
-            extended_user_properties_utility = getUtility(ICatalogFactory, name='user_properties_'.format(client))
+            exist = [r for r in extended_soup.query(Eq('id', principal.getUserName()))]
+            extended_user_properties_utility = getUtility(ICatalogFactory, name='user_properties_{}'.format(client))
 
             if exist:
                 extended_user_record = exist[0]
@@ -104,6 +97,15 @@ def add_user_to_catalog(principal, event):
             # Update the searchable_text of the standard user record field with
             # the ones in the extended catalog
             user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.properties if extended_user_record.attrs.get(key, False)])
+
+            # Save for free the extended properties in the main user_properties soup
+            # for easy access with one query
+            for attr in extended_user_properties_utility.properties:
+                if attr in event.properties:
+                    if isinstance(event.properties[attr], str):
+                        user_record.attrs[attr] = event.properties[attr].decode('utf-8')
+                    else:
+                        user_record.attrs[attr] = event.properties[attr]
 
             soup.reindex(records=[user_record])
             extended_soup.reindex(records=[extended_user_record])

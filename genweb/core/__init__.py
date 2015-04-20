@@ -24,6 +24,13 @@ except pkg_resources.DistributionNotFound:
 else:
     HAS_PAM = True
 
+try:
+    pkg_resources.get_distribution('ulearn.core')
+except pkg_resources.DistributionNotFound:
+    IAMULEARN = False
+else:
+    IAMULEARN = True
+
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
