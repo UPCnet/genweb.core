@@ -29,6 +29,8 @@ def add_user_to_catalog(principal, event):
 
     if exist:
         user_record = exist[0]
+        # Just in case that a user became a legit one and previous was a nonlegit
+        user_record.attrs['notlegit'] = False
     else:
         record = Record()
         record_id = soup.add(record)

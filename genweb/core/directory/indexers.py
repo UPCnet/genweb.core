@@ -16,6 +16,7 @@ class UserPropertiesSoupCatalogFactory(object):
         username.
 
         :index id: FieldIndex - The username id for exact queries
+        :index notlegit: FieldIndex - Boolean, if the username is not legit
         :index username: FullTextIndex - The username id for wildcard queries
         :index fullname: FullTextIndex - The user display name
         :index email: FullTextIndex - The user e-mail
@@ -35,6 +36,8 @@ class UserPropertiesSoupCatalogFactory(object):
         catalog['id'] = CatalogFieldIndex(idindexer)
         searchable_blob = NodeAttributeIndexer('searchable_text')
         catalog['searchable_text'] = CatalogTextIndex(searchable_blob)
+        notlegit = NodeAttributeIndexer('notlegit')
+        catalog['notlegit'] = CatalogFieldIndex(notlegit)
 
         userindexer = NodeAttributeIndexer('username')
         catalog['username'] = CatalogTextIndex(userindexer)

@@ -139,9 +139,14 @@ def get_safe_member_by_id(username):
                 'fullname': ''}
 
 
-def add_user_to_catalog(user, properties):
+def add_user_to_catalog(user, properties, notlegit=False):
     """ Adds user to the user catalog even if it's a MemberData wrapped one or a
         new (string) username.
+
+        The 'notlegit' argument is used when you can add the user for its use in
+        the ACL user search facility. If so, the user would not have
+        'searchable_text' and therefore not searchable. It would have an extra
+        'notlegit' index.
 
         If some parts of this method is modified, you should update the
         genweb.core.directory.subscriber module twin one.
@@ -161,6 +166,11 @@ def add_user_to_catalog(user, properties):
         record = Record()
         record_id = soup.add(record)
         user_record = soup.get(record_id)
+        # If the user do not exist, and the notlegit is set (created by other
+        # means, e.g. a test or ACL) then set notlegit to True This is because
+        # in non legit mode, maybe existing legit users got unaffected by it
+        if notlegit:
+            user_record.attrs['notlegit'] = True
 
     if isinstance(username, str):
         user_record.attrs['username'] = username.decode('utf-8')
@@ -176,6 +186,13 @@ def add_user_to_catalog(user, properties):
                 user_record.attrs[attr] = properties[attr].decode('utf-8')
             else:
                 user_record.attrs[attr] = properties[attr]
+
+    # If notlegit mode, then reindex without setting the 'searchable_text' This
+    # is because in non legit mode, maybe existing legit users got unaffected by
+    # it
+    if notlegit:
+        soup.reindex(records=[user_record])
+        return
 
     # Build the searchable_text field for wildcard searchs
     user_record.attrs['searchable_text'] = ' '.join([unicodedata.normalize('NFKD', user_record.attrs[key]).encode('ascii', errors='ignore') for key in user_properties_utility.properties if user_record.attrs.get(key, False)])
