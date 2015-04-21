@@ -60,7 +60,7 @@ setup(name='genweb.core',
       [z3c.autoinclude.plugin]
       target = plone
       [console_scripts]
-      install_pre_commit_hook = genweb.core:install_pre_commit_hook
+      do_install_pre_commit_hook = genweb.core:install_pre_commit_hook
       uninstall_pre_commit_hook = genweb.core:uninstall_pre_commit_hook
       """,
       )
