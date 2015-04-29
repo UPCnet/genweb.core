@@ -72,6 +72,19 @@ class IntegrationTest(unittest.TestCase):
         obj2 = IImportant(self.portal.test_adapter)
         self.assertEqual(obj2.is_important, True)
 
+    def test_favorites(self):
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.portal.invokeFactory('Folder', 'prova', title=u"Soc una carpeta")
+        prova = self.portal['prova']
+        prova.invokeFactory('Folder', 'prova', title=u"Soc una carpeta")
+        prova2 = prova['prova']
+
+        from genweb.core.adapters.favorites import IFavorite
+        IFavorite(prova2).add(TEST_USER_NAME)
+        self.assertTrue(TEST_USER_NAME in IFavorite(prova2).get())
+        self.assertTrue(TEST_USER_NAME not in IFavorite(prova).get())
+
     def test_protected_content(self):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         login(self.portal, TEST_USER_NAME)
