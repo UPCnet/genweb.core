@@ -28,11 +28,19 @@ class UserPropertiesSoupCatalogFactory(object):
         The properties attribute is used to know in advance which properties are
         listed as 'editable' or user accessible.
 
-        The profile_properties is the list od the properties displayed on the
-        profile page, ordered.
+        The profile_properties is the list of the user properties displayed on
+        the profile page, ordered.
+
+        The directory_properties is the list of the user properties directory
+        properties for display on the directory views, ordered.
+
+        The directory_icons is the dict containing the correspondency with the
+        field names and the icon.
     """
     properties = ['username', 'fullname', 'email', 'location', 'ubicacio', 'telefon', 'twitter_username']
     profile_properties = ['email', 'description', 'location', 'ubicacio', 'telefon', 'twitter_username', 'home_page']
+    directory_properties = ['email', 'telefon', 'location', 'ubicacio']
+    directory_icons = {'email': 'fa fa-envelope', 'telefon': 'fa fa-mobile', 'location': 'fa fa-building-o', 'ubicacio': 'fa fa-user'}
 
     def __call__(self, context):
         catalog = Catalog()
