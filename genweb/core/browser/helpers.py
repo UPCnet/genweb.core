@@ -841,6 +841,28 @@ class ResetUserPropertiesCatalog(grok.View):
         reset_user_catalog()
 
 
+class UserPropertiesCatalogViewer(grok.View):
+    """
+        Rebuild the OMEGA13 repoze.catalog for user properties data.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('view_user_catalog')
+    grok.require('cmf.ManagePortal')
+
+    @json_response
+    def render(self):
+        context = aq_inner(self.context)
+        portal = api.portal.get()
+        soup = get_soup('user_properties', portal)
+        records = [r for r in soup.query()]
+
+        result = []
+        for record in records:
+            result.append(record.attrs.items())
+
+        return result
+
+
 class enablePDFIndexing(grok.View):
     grok.context(IPloneSiteRoot)
     grok.name('enable_pdf_transform')
