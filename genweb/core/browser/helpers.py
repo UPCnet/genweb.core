@@ -858,7 +858,7 @@ class UserPropertiesCatalogViewer(grok.View):
 
         result = []
         for record in records:
-            result.append(record.attrs.items())
+            result.append(record[1].attrs.items())
 
         return result
 
