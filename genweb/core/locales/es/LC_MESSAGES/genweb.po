@@ -1842,3 +1842,6 @@ msgstr "Persona de contacto"
 
 msgid "No hi ha elements"
 msgstr "No hay elementos"
+
+msgid "contents_pretty_view"
+msgstr "Vista contenidos"
