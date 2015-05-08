@@ -856,9 +856,13 @@ class UserPropertiesCatalogViewer(grok.View):
         soup = get_soup('user_properties', portal)
         records = [r for r in soup.data.items()]
 
-        result = []
+        result = {}
         for record in records:
-            result.append(record[1].attrs.items())
+            item = {}
+            for key in record[1].attrs:
+                item[key] = record[1].attrs[key]
+
+            result[record[1].attrs['id']] = item
 
         return result
 
