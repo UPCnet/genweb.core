@@ -241,7 +241,7 @@ def add_user_to_catalog(user, properties, notlegit=False):
 
             # Update the searchable_text of the standard user record field with
             # the ones in the extended catalog
-            user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.properties if extended_user_record.attrs.get(key, False)])
+            user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' ' + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.properties if extended_user_record.attrs.get(key, False)])
 
             # Save for free the extended properties in the main user_properties soup
             # for easy access with one query
