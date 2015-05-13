@@ -1,6 +1,8 @@
 from five import grok
 from zope.interface import Interface
 from zope.component import queryUtility
+from zope import interface
+from zope import component
 
 from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 from zope.lifecycleevent.interfaces import IObjectCopiedEvent
@@ -32,8 +34,8 @@ class IMutableGWUUID(Interface):
         """
 
 
-@grok.implementer(IGWUUID)
-@grok.adapter(IAttributeUUID)
+@interface.implementer(IGWUUID)
+@component.adapter(IAttributeUUID)
 def attributeUUID(context):
     return getattr(context, ATTRIBUTE_NAME, None)
 
