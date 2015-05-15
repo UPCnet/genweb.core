@@ -3,21 +3,21 @@ import os
 
 version = '4.5.9.dev0'
 
-README = open("README.rst").read()
-HISTORY = open(os.path.join("docs", "HISTORY.rst")).read()
+README = open('README.rst').read()
+HISTORY = open(os.path.join('docs', 'HISTORY.rst')).read()
 
 setup(name='genweb.core',
       version=version,
-      description="Genweb core package",
-      long_description=README + "\n" + HISTORY,
+      description='Genweb core package',
+      long_description=README + '\n' + HISTORY,
       classifiers=[
-          "Environment :: Web Environment",
-          "Framework :: Plone",
-          "Operating System :: OS Independent",
-          "Programming Language :: Python",
-          "Programming Language :: Python :: 2.6",
-          "Programming Language :: Python :: 2.7",
-          "Topic :: Software Development :: Libraries :: Python Modules",
+          'Environment :: Web Environment',
+          'Framework :: Plone',
+          'Operating System :: OS Independent',
+          'Programming Language :: Python',
+          'Programming Language :: Python :: 2.6',
+          'Programming Language :: Python :: 2.7',
+          'Topic :: Software Development :: Libraries :: Python Modules',
       ],
       keywords='genweb',
       author='UPCnet Plone Team',
@@ -45,6 +45,7 @@ setup(name='genweb.core',
           'plone.app.contenttypes',
           'plone.app.event[dexterity]',
           'plone.app.referenceablebehavior',
+          'plone.app.lockingbehavior',
           'plone.namedfile [blobs]',
           'plone.app.workflowmanager',
           'collective.tinymcetemplates',
