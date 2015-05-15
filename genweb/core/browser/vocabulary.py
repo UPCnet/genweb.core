@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -155,7 +154,7 @@ class BaseVocabularyView(BrowserView):
         }
         """
         context = self.get_context()
-        self.request.response.setHeader("Content-type", "application/json")
+        self.request.response.setHeader('Content-type', 'application/json')
 
         try:
             vocabulary = self.get_vocabulary()

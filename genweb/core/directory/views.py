@@ -28,10 +28,10 @@ class SyncLDAPGroups(grok.View):
         except:
             # Just in case the user raise a "SIZE_LIMIT_EXCEEDED"
             api.portal.send_email(
-                recipient="plone.team@upcnet.es",
-                sender="noreply@ulearn.upcnet.es",
-                subject="[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED",
-                body="The sync view on the uLearn instance has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated",
+                recipient='plone.team@upcnet.es',
+                sender='noreply@ulearn.upcnet.es',
+                subject='[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED',
+                body='The sync view on the uLearn instance has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated',
             )
 
         if results:

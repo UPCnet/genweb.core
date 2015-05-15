@@ -19,7 +19,6 @@ from souper.interfaces import ICatalogFactory
 from zope.component import getUtility
 
 from repoze.catalog.query import Eq
-from repoze.catalog.query import Contains
 from souper.soup import get_soup
 
 import logging
@@ -170,7 +169,7 @@ class ActivateOmega13(grok.View):
 
         installed = pas.objectIds()
         if pluginid in installed:
-            return "Omega 13 already installed."
+            return 'Omega 13 already installed.'
 
         plugin = Omega13Helper(pluginid, title='Omega13 plugin')
         pas._setObject(pluginid, plugin)

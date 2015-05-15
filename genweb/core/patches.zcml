@@ -17,7 +17,7 @@
         class="Products.TinyMCE.exportimport.TinyMCESettingsXMLAdapter"
         original="_importNode"
         replacement=".patches._importNode"
-        />        
+        />
 
     <monkey:patch
         description="Unicode normalization aware searches"
@@ -46,14 +46,6 @@
         original="filter_query"
         replacement=".patches.filter_query"
         />
-
-<!-- TOREMOVE as soon 4.3.4 goes live. -->
-<!--     <monkey:patch
-        description="wc.fc can't delete the items in the case the site is in a mount point"
-        class="Products.CMFPlone.PloneTool.PloneTool"
-        original="deleteObjectsByPaths"
-        replacement=".patches.deleteObjectsByPaths"
-        /> -->
 
 <!-- TOREMOVE as soon it got fixed -->
     <monkey:patch

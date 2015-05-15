@@ -6,7 +6,6 @@ import unicodedata
 from five import grok
 from plone import api
 from AccessControl import getSecurityManager
-# from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.component.hooks import getSite
@@ -16,7 +15,6 @@ from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
 
 from Products.CMFCore.utils import getToolByName
-# from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
@@ -360,32 +358,32 @@ class genwebUtils(BrowserView):
             else:
                 idioma = self.context.Language()
                 dict_contact = {
-                    "ca": {
-                        "adreca_sencera": dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
-                        "nom": dades.get('nom_ca', ''),
-                        "telefon": dades.get('telefon', ''),
-                        "fax": dades.get('fax', ''),
-                        "email": dades.get('email', ''),
-                        "id_scp": dades.get('id', ''),
-                        "codi_upc": dades.get('codi_upc', ''),
+                    'ca': {
+                        'adreca_sencera': dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                        'nom': dades.get('nom_ca', ''),
+                        'telefon': dades.get('telefon', ''),
+                        'fax': dades.get('fax', ''),
+                        'email': dades.get('email', ''),
+                        'id_scp': dades.get('id', ''),
+                        'codi_upc': dades.get('codi_upc', ''),
                     },
-                    "es": {
-                        "adreca_sencera": dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
-                        "nom": dades.get('nom_es', ''),
-                        "telefon": dades.get('telefon', ''),
-                        "fax": dades.get('fax', ''),
-                        "email": dades.get('email', ''),
-                        "id_scp": dades.get('id', ''),
-                        "codi_upc": dades.get('codi_upc', ''),
+                    'es': {
+                        'adreca_sencera': dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                        'nom': dades.get('nom_es', ''),
+                        'telefon': dades.get('telefon', ''),
+                        'fax': dades.get('fax', ''),
+                        'email': dades.get('email', ''),
+                        'id_scp': dades.get('id', ''),
+                        'codi_upc': dades.get('codi_upc', ''),
                     },
-                    "en": {
-                        "adreca_sencera": dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
-                        "nom": dades.get('nom_en', ''),
-                        "telefon": dades.get('telefon', ''),
-                        "fax": dades.get('fax', ''),
-                        "email": dades.get('email', ''),
-                        "id_scp": dades.get('id', ''),
-                        "codi_upc": dades.get('codi_upc', ''),
+                    'en': {
+                        'adreca_sencera': dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                        'nom': dades.get('nom_en', ''),
+                        'telefon': dades.get('telefon', ''),
+                        'fax': dades.get('fax', ''),
+                        'email': dades.get('email', ''),
+                        'id_scp': dades.get('id', ''),
+                        'codi_upc': dades.get('codi_upc', ''),
                     }
                 }
                 return dict_contact[idioma]
@@ -406,14 +404,14 @@ class genwebUtils(BrowserView):
 
     def getProgressBarName(self, number, view=None):
         if number == 1:
-            return "progress progress-success"
+            return 'progress progress-success'
         elif number == 2:
-            return "progress progress-primary"
+            return 'progress progress-primary'
         elif number == 3:
-            return "progress progress-warning"
+            return 'progress progress-warning'
         elif number == 4:
-            return "progress progress-danger"
-        return "progress progress-info"
+            return 'progress progress-danger'
+        return 'progress progress-info'
 
     def get_proper_menu_list_class(self, subMenuItem):
         """ For use only in the menus to calculate the correct class value of
@@ -480,7 +478,7 @@ class UserPropertiesSoupCatalogFactory(object):
         uuid = NodeAttributeIndexer('uuid')
         catalog['uuid'] = CatalogFieldIndex(uuid)
         return catalog
-provideUtility(UserPropertiesSoupCatalogFactory(), name="uuid_preserver")
+provideUtility(UserPropertiesSoupCatalogFactory(), name='uuid_preserver')
 
 
 class preserveUUIDs(grok.View):
@@ -642,7 +640,7 @@ class utilitats(BrowserView):
 
     def getDirectori(self):
         ue = self._dadesUnitat['codi_upc']
-        return "http://directori.upc.edu/directori/dadesUE.jsp?id=" + ue
+        return 'http://directori.upc.edu/directori/dadesUE.jsp?id=' + ue
 
     def getNomCentre(self):
         """ Retorna el nom del centre segons l'idioma

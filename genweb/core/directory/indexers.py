@@ -66,7 +66,7 @@ class UserPropertiesSoupCatalogFactory(object):
         twitter_username = NodeAttributeIndexer('twitter_username')
         catalog['twitter_username'] = CatalogTextIndex(twitter_username)
         return catalog
-provideUtility(UserPropertiesSoupCatalogFactory(), name="user_properties")
+provideUtility(UserPropertiesSoupCatalogFactory(), name='user_properties')
 
 
 @implementer(ICatalogFactory)
@@ -88,4 +88,4 @@ class GroupsSoupCatalogFactory(object):
         idsearchableindexer = NodeAttributeIndexer('searchable_id')
         catalog['searchable_id'] = CatalogTextIndex(idsearchableindexer)
         return catalog
-provideUtility(GroupsSoupCatalogFactory(), name="ldap_groups")
+provideUtility(GroupsSoupCatalogFactory(), name='ldap_groups')

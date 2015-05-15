@@ -55,7 +55,7 @@ class TemplateList(grok.View):
                 for p in templateDirectories:
                     if p.startswith('/'):
                         p = p[1:]
-                    paths.append("%s/%s" % (portal_path, p,))
+                    paths.append('%s/%s' % (portal_path, p,))
 
                 # Primer les de SCP i després les custom (templates)
                 templatesSCP = portal_catalog.searchResults(Language='',
@@ -72,9 +72,9 @@ class TemplateList(grok.View):
                 results = templatesSCP + templatesCustom
 
                 for r in results:
-                    templates.append([r.Title, "%s/genweb.get.dxdocument.text" % r.getURL(), r.Description])
+                    templates.append([r.Title, '%s/genweb.get.dxdocument.text' % r.getURL(), r.Description])
 
-        return u"var tinyMCETemplateList = %s;" % json.dumps(templates)
+        return u'var tinyMCETemplateList = %s;' % json.dumps(templates)
 
 
 class AjaxUserSearch(grok.View):
@@ -84,7 +84,7 @@ class AjaxUserSearch(grok.View):
     grok.layer(IGenwebLayer)
 
     def render(self):
-        self.request.response.setHeader("Content-type", "application/json")
+        self.request.response.setHeader('Content-type', 'application/json')
         query = self.request.form.get('q', '')
         results = dict(more=False, results=[])
         if query:
@@ -95,7 +95,7 @@ class AjaxUserSearch(grok.View):
             results['results'] = values
             return json.dumps(results)
         else:
-            return json.dumps({"error": "No query found"})
+            return json.dumps({'error': 'No query found'})
 
 
 class SendToFormOverride(grok.View):
@@ -119,10 +119,10 @@ class gwToggleIsImportant(grok.View):
         is_important = IImportant(context).is_important
         if is_important:
             IImportant(context).is_important = False
-            confirm = _(u"L'element s'ha desmarcat com important")
+            confirm = _(u'L\'element s\'ha desmarcat com important')
         else:
             IImportant(context).is_important = True
-            confirm = _(u"L'element s'ha marcat com important")
+            confirm = _(u'L\'element s\'ha marcat com important')
 
         IStatusMessage(self.request).addStatusMessage(confirm, type='info')
         self.request.response.redirect(self.context.absolute_url())

@@ -124,4 +124,4 @@ class FunctionalTest(unittest.TestCase):
 
         self.browser.open(portalURL)
 
-        self.assertTrue("Congratulations! You have successfully installed Plone." in self.browser.contents)
+        self.assertTrue('Congratulations! You have successfully installed Plone.' in self.browser.contents)

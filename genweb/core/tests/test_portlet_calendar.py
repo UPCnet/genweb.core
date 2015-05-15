@@ -5,7 +5,6 @@ from Products.CMFCore.utils import getToolByName
 from genweb.theme.portlets import esdeveniments
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
 from plone.app.testing import login
-from plone.app.testing import logout
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import setRoles
@@ -21,7 +20,7 @@ from plone.app.event.dx.behaviors import EventAccessor
 from datetime import timedelta
 import unittest2 as unittest
 
-TZNAME = "Europe/Vienna"
+TZNAME = 'Europe/Vienna'
 
 
 class RendererTest(unittest.TestCase):
@@ -64,7 +63,7 @@ class RendererTest(unittest.TestCase):
             whole_day=whole_day,
             open_end=open_end
         )
-        acc.location = u"Graz, Austria"
+        acc.location = u'Graz, Austria'
 
         return context[id]
 

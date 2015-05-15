@@ -1,3 +1,4 @@
+from Acquisition import aq_inner
 from pyquery import PyQuery as pq
 from plone import api
 from plone.app.search.browser import quote_chars
@@ -5,8 +6,6 @@ from plone.app.search.browser import EVER
 from plone.memoize.instance import memoize
 
 from Products.PlonePAS.utils import safe_unicode
-from Products.LDAPUserFolder.utils import guid2string
-from Products.LDAPUserFolder.LDAPDelegate import filter_format
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 from Products.PluggableAuthService.PropertiedUser import PropertiedUser
@@ -37,11 +36,11 @@ def getToolbars(self, config):
         TinyMCE configuration.
     """
 
-    config['theme_advanced_blockformats'] = "p,div,h2,h3,h4"
+    config['theme_advanced_blockformats'] = 'p,div,h2,h3,h4'
 
-    return ["fullscreen,|,code,|,save,newdocument,|,plonetemplates,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor",
-            "formatselect,style,|,cleanup,removeformat,|,image,media,|,tablecontrols,styleprops,|,visualaid,|,sub,sup,|,charmap",
-            "", ""]
+    return ['fullscreen,|,code,|,save,newdocument,|,plonetemplates,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor',
+            'formatselect,style,|,cleanup,removeformat,|,image,media,|,tablecontrols,styleprops,|,visualaid,|,sub,sup,|,charmap',
+            '', '']
 
 
 def isStringType(data):
@@ -77,112 +76,6 @@ def testMemberData(self, memberdata, criteria, exact_match=False):
                     return False
 
     return True
-
-# DISABLED UNTIL FURTHER NOTICE
-def searchUsers(self, attrs=(), exact_match=False, **kw):
-    """ Look up matching user records based on one or mmore attributes
-
-    This method takes any passed-in search parameters and values as
-    keyword arguments and will sort out invalid keys automatically. It
-    accepts all three forms an attribute can be known as, its real
-    ldap name, the name an attribute is mapped to explicitly, and the
-    friendly name it is known by.
-    """
-    users = []
-    users_base = self.users_base
-    search_scope = self.users_scope
-    filt_list = []
-
-    if not attrs:
-        attrs = self.getSchemaConfig().keys()
-
-    schema_translator = {}
-    for ldap_key, info in self.getSchemaConfig().items():
-        public_name = info.get('public_name', None)
-        friendly_name = info.get('friendly_name', None)
-
-        if friendly_name:
-            schema_translator[friendly_name] = ldap_key
-
-        if public_name:
-            schema_translator[public_name] = ldap_key
-
-        schema_translator[ldap_key] = ldap_key
-
-    for (search_param, search_term) in kw.items():
-        if search_param == 'dn':
-            users_base = search_term
-            search_scope = self._delegate.BASE
-
-        elif search_param == 'objectGUID':
-            # we can't escape the objectGUID query piece using filter_format
-            # because it replaces backslashes, which we need as a result
-            # of guid2string
-            users_base = self.users_base
-            guid = guid2string(search_term)
-
-            if exact_match:
-                filt_list.append('(objectGUID=%s)' % guid)
-            else:
-                filt_list.append('(objectGUID=*%s*)' % guid)
-
-        else:
-            # If the keyword arguments contain unknown items we will
-            # simply ignore them and continue looking.
-            ldap_param = schema_translator.get(search_param, None)
-            if ldap_param is None:
-                return []
-
-            if search_term and exact_match:
-                filt_list.append(filter_format('(%s=%s)'
-                                               , (ldap_param, search_term)
-                                               ))
-            elif search_term:
-                filt_list.append(filter_format('(%s=*%s*)'
-                                               , (ldap_param, search_term)
-                                               ))
-            else:
-                filt_list.append('(%s=*)' % ldap_param)
-
-    if len(filt_list) == 0 and search_param != 'dn':
-        # We have no useful filter criteria, bail now before bringing the
-        # site down with a search that is overly broad.
-        res = { 'exception' : 'No useful filter criteria given' }
-        res['size'] = 0
-        search_str = ''
-
-    else:
-        search_str = self._getUserFilterString(filters=filt_list)
-        res = self._delegate.search( base=users_base
-                                   , scope=search_scope
-                                   , filter=search_str
-                                   , attrs=attrs
-                                   )
-
-    if res['exception']:
-        logger.debug('findUser Exception (%s)' % res['exception'])
-        msg = 'findUser search filter "%s"' % search_str
-        logger.debug(msg)
-        users = [{ 'dn' : res['exception']
-                 , 'cn' : 'n/a'
-                 , 'sn' : 'Error'
-                 }]
-
-    elif res['size'] > 0:
-        res_dicts = res['results']
-        for i in range(res['size']):
-            dn = res_dicts[i].get('dn')
-            rec_dict = {}
-            rec_dict['sn'] = rec_dict['cn'] = ''
-
-            for key, val in res_dicts[i].items():
-                rec_dict[key] = val[0]
-
-            rec_dict['dn'] = dn
-
-            users.append(rec_dict)
-
-    return users
 
 
 def generate_user_id(self, data):
@@ -246,62 +139,6 @@ def filter_query(self, query):
     return query
 
 
-# TOREMOVE as soon 4.3.4 goes live.
-import transaction
-from Acquisition import aq_inner
-from Acquisition import aq_parent
-from ZODB.POSException import ConflictError
-from plone.app.linkintegrity.exceptions import LinkIntegrityNotificationException
-from Products.CMFPlone.utils import log_exc
-from Products.CMFPlone.utils import transaction_note
-
-
-def deleteObjectsByPaths(self, paths, handle_errors=True, REQUEST=None):
-    failure = {}
-    success = []
-    # use the portal for traversal in case we have relative paths
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    traverse = portal.restrictedTraverse
-    for path in paths:
-        # Skip and note any errors
-        if handle_errors:
-            sp = transaction.savepoint(optimistic=True)
-        try:
-            # To avoid issues with the check for acquisition,
-            # relative paths should not be part of the API anymore.
-            # Plone core itself does not use relative paths.
-            if not path.startswith("/".join(portal.getPhysicalPath())):
-                msg = (
-                    'Path {} does not start '
-                    'with path to portal'.format(path)
-                )
-                raise ValueError(msg)
-            obj = traverse(path)
-            if list(obj.getPhysicalPath()) != path.split('/'):
-                msg = (
-                    'Path {} does not match '
-                    'traversed object physical path. '
-                    'This is likely an acquisition issue.'.format(path)
-                )
-                raise ValueError(msg)
-            obj_parent = aq_parent(aq_inner(obj))
-            obj_parent.manage_delObjects([obj.getId()])
-            success.append('%s (%s)' % (obj.getId(), path))
-        except ConflictError:
-            raise
-        except LinkIntegrityNotificationException:
-            raise
-        except Exception, e:
-            if handle_errors:
-                sp.rollback()
-                failure[path] = e
-                log_exc()
-            else:
-                raise
-    transaction_note('Deleted %s' % (', '.join(success)))
-    return success, failure
-
-
 # TOREMOVE AS SOON AS THIS GOT PROPERLY FIXED
 # This fixes CMFEditions to work with Dexterity combined with five.pt that
 # doesn't exposes "macros" property, also fix bug in retrieving the correct
@@ -347,9 +184,8 @@ def get_macros(self, vdata):
         return versionPreviewTemplate.macros['main']
     except KeyError:
         context.plone_log(
-            "(CMFEditions: @@get_macros) Internal error: Missing TAL "
-            "macros %s in template '%s'." % (', '.join(macro_names),
-                                              versionPreviewMethodName))
+            '(CMFEditions: @@get_macros) Internal error: Missing TAL '
+            'macros %s in template "%s".' % (', '.join(macro_names), versionPreviewMethodName))
         return None
 
 
@@ -377,12 +213,12 @@ class Save(object):
         fieldname = fieldname.split('.')[-1]
         setattr(self.context, fieldname, IRichText['text'].fromUnicode(text))
 
-        return "saved"
+        return 'saved'
 
 
 def setMemberProperties(self, mapping, force_local=0):
-    """PAS-specific method to set the properties of a
-    member. Ignores 'force_local', which is not reliably present.
+    """ PAS-specific method to set the properties of a
+        member. Ignores 'force_local', which is not reliably present.
     """
     sheets = None
 
@@ -408,7 +244,7 @@ def setMemberProperties(self, mapping, force_local=0):
     # property routing?
     modified = False
     for k, v in mapping.items():
-        if v == None:
+        if v is None:
             continue
         for sheet in sheets:
             if not sheet.hasProperty(k):
@@ -437,9 +273,10 @@ WHITELISTED_CALLERS = ['getMemberById/getMemberInfo/author/authorname/__call__/r
                        'getMemberById/getMemberInfo/update/_updateViewlets/update/render_content_provider/render_master/render/render/render/render/__call__/pt_render/render/_render_template/__call__/call_object/mapply/publish/publish_module_standard/publish_module/__init__'
                        ]
 
+
 # from profilehooks import timecall
 # Patch for shout the evidence of using a getMemberById!
-#@timecall
+# @timecall
 def getMemberById(self, id):
     '''
     Returns the given member.
@@ -474,10 +311,10 @@ def getMemberById(self, id):
     return user
 
 
-#TinyMCE install. To remove default values in styles and tablestyles
+# TinyMCE install. To remove default values in styles and tablestyles
 def _importNode(self, node):
     """Import the object from the DOM node"""
-    if self.environ.shouldPurge() or node.getAttribute("purge").lower() == 'true':
+    if self.environ.shouldPurge() or node.getAttribute('purge').lower() == 'true':
         self._purgeAttributes()
 
     for categorynode in node.childNodes:
@@ -492,7 +329,7 @@ def _importNode(self, node):
                             setattr(self.context, fieldnode.nodeName, fieldnode.getAttribute('value'))
                     elif self.attributes[categorynode.nodeName][fieldnode.nodeName]['type'] == 'List':
                         field = getattr(self.context, fieldnode.nodeName)
-                        if field is None or fieldnode.getAttribute("purge").lower() == 'true':
+                        if field is None or fieldnode.getAttribute('purge').lower() == 'true':
                             items = {}
                         else:
                             if fieldnode.nodeName == 'styles' or fieldnode.nodeName == 'tablestyles':
@@ -514,7 +351,7 @@ def _importNode(self, node):
                         if type(string) == str:
                             # On Plone 4.1 this should not be reached
                             # as string is unicode in any case
-                            string = string.decode("utf-8", "ignore")
+                            string = string.decode('utf-8', 'ignore')
 
                         setattr(self.context, fieldnode.nodeName, string)
 
@@ -540,7 +377,6 @@ def author(self):
     return get_safe_member_by_id(self.creator())
 
 
-
 # Add subjects and creators to searchableText Dexterity objects
 def SearchableText(obj, text=False):
     subjList = []
@@ -548,17 +384,16 @@ def SearchableText(obj, text=False):
 
     for sub in obj.subject:
         subjList.append(sub)
-    subjects = ",".join(subjList)
+    subjects = ','.join(subjList)
 
     for creator in obj.creators:
         creatorList.append(creator)
-    creators = ",".join(creatorList)
+    creators = ','.join(creatorList)
 
-    return u" ".join((
+    return u' '.join((
         safe_unicode(obj.id),
-        safe_unicode(obj.title) or u"",
-        safe_unicode(obj.description) or u"",
-        safe_unicode(subjects) or u"",
-        safe_unicode(creators) or u"",
+        safe_unicode(obj.title) or u'',
+        safe_unicode(obj.description) or u'',
+        safe_unicode(subjects) or u'',
+        safe_unicode(creators) or u'',
     ))
-
