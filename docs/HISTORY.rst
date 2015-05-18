@@ -1,11 +1,35 @@
 Changelog
 =========
 
-4.5.9 (unreleased)
-------------------
+4.6 (2015-05-18)
+----------------
 
-- Nothing changed yet.
-
+* Translation view name [hanirok]
+* RAtionalize IGWUUID [Victor Fernandez de Alba]
+* PEP8 [Victor Fernandez de Alba]
+* Adding p.a.lockingbehavior [Victor Fernandez de Alba]
+* Un-grok IGWUUID [Victor Fernandez de Alba]
+* Ungrok IGWUUID adapter [Victor Fernandez de Alba]
+* New contents view translation [hanirok]
+* Fix missing space on searchable_text index [Victor Fernandez de Alba]
+* Better displaying properties on this helper view [Victor Fernandez de Alba]
+* Updated [Victor Fernandez de Alba]
+* Fix previous commint [Victor Fernandez de Alba]
+* New catalog user viewer [Victor Fernandez de Alba]
+* New generic view for directory views [Victor Fernandez de Alba]
+* Updated for complete profile generic enough for not to override it [Victor Fernandez de Alba]
+* Add new test for IFavorite [Victor Fernandez de Alba]
+* Modify script name as it's so similar to 'instance' [Victor Fernandez de Alba]
+* Install/uninstall pre-commit-hooks for code analysis. [Victor Fernandez de Alba]
+* Implement notlegit mark for users created via a non subscriber means, e.g a test or ACL [Victor Fernandez de Alba]
+* Complete changes in searching users when the user properties are extended [Victor Fernandez de Alba]
+* Improve search function by allowing to search through all the fields by introducing the new joined searchable_text. [Victor Fernandez de Alba]
+* Fix favorites remove in case the user we are removing is not really favorited [Victor Fernandez de Alba]
+* New functional CSS grunt-powered viewlet [Victor Fernandez de Alba]
+* New json_request decorator [Victor Fernandez de Alba]
+* Documentation on indexes and its use [Victor Fernandez de Alba]
+* Add json_response method to utils [Victor Fernandez de Alba]
+* Update docs [Victor Fernandez de Alba]
 
 4.5.8 (2015-04-13)
 ------------------
