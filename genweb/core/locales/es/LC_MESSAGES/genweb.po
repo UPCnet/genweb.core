@@ -1845,3 +1845,6 @@ msgstr "No hay elementos"
 
 msgid "contents_pretty_view"
 msgstr "Vista contenidos"
+
+msgid "itemstable_view"
+msgstr "Vista con iconos"

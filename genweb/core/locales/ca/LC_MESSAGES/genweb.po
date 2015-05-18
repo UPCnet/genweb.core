@@ -1894,3 +1894,6 @@ msgstr "A validar valoració"
 
 msgid "contents_pretty_view"
 msgstr "Vista continguts"
+
+msgid "itemstable_view"
+msgstr "Vista amb icones"
