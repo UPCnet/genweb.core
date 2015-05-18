@@ -21,23 +21,14 @@ ATTRIBUTE_NAME = '_gw.uuid'
 
 
 class IGWUUID(Interface):
-    """ The interface of the adapter for getting the gwuuid """
+    """ The interface of the adapter for getting and setting the gwuuid """
 
-
-class IMutableGWUUID(Interface):
-    """ The interface of the adapter for mutate the gwuuid """
     def get():
         """Return the UUID of the context"""
 
     def set(uuid):
         """Set the unique id of the context with the uuid value.
         """
-
-
-@interface.implementer(IGWUUID)
-@component.adapter(IAttributeUUID)
-def attributeUUID(context):
-    return getattr(context, ATTRIBUTE_NAME, None)
 
 
 @grok.subscribe(IAttributeUUID, IObjectCreatedEvent)
@@ -58,7 +49,7 @@ def addAttributeUUID(obj, event):
     setattr(obj, ATTRIBUTE_NAME, uuid)
 
 
-@grok.implementer(IMutableGWUUID)
+@grok.implementer(IGWUUID)
 @grok.adapter(IAttributeUUID)
 class MutableAttributeUUID(object):
 
@@ -75,7 +66,7 @@ class MutableAttributeUUID(object):
 
 @indexer(IUUIDAware)
 def gwUUID(context):
-    return IGWUUID(context, None)
+    return IGWUUID(context, None).get()
 grok.global_adapter(gwUUID, name='gwuuid')
 
 
@@ -83,4 +74,4 @@ class GWUUIDView(grok.View):
     grok.context(Interface)
 
     def render(self):
-        return IGWUUID(self.context)
+        return IGWUUID(self.context).get()

@@ -59,8 +59,6 @@
     <include file="components.zcml" />
     <include file="behaviors.zcml" />
 
-    <adapter factory=".gwuuid.attributeUUID" />
-
     <!-- The utilities browser view (can't be a grok view) -->
     <browser:page
       for="*"

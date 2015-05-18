@@ -1,21 +1,12 @@
 import unittest2 as unittest
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
-from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
-from AccessControl import Unauthorized
-from zope.component import getMultiAdapter, queryUtility
-from zope.interface import alsoProvides
-from Products.CMFCore.utils import getToolByName
 
-from plone.testing.z2 import Browser
-from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
-from plone.app.testing import login, logout
-from plone.app.testing import setRoles
-from plone.app.testing import applyProfile
+from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import login
 
 from plone.uuid.interfaces import IUUID
 from genweb.core.gwuuid import ATTRIBUTE_NAME
 from genweb.core.gwuuid import IGWUUID
-from genweb.core.gwuuid import IMutableGWUUID
 
 
 class IntegrationTest(unittest.TestCase):
@@ -31,22 +22,22 @@ class IntegrationTest(unittest.TestCase):
         self.portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
         folder = self.portal['f1']
 
-        self.assertTrue(IGWUUID(folder))
+        self.assertTrue(IGWUUID(folder).get())
 
     def test_different_from_uuid(self):
         login(self.portal, TEST_USER_NAME)
         self.portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
         folder = self.portal['f1']
 
-        self.assertNotEqual(IGWUUID(folder), IUUID(folder))
+        self.assertNotEqual(IGWUUID(folder).get(), IUUID(folder))
 
     def test_mutable(self):
         login(self.portal, TEST_USER_NAME)
         self.portal.invokeFactory('Folder', 'f1', title=u"Soc una carpeta")
         folder = self.portal['f1']
-        original_uuid = IGWUUID(folder)
+        original_uuid = IGWUUID(folder).get()
 
-        mutated = IMutableGWUUID(folder).set('not equal')
+        mutated = IGWUUID(folder).set('not equal')
 
         self.assertNotEqual(original_uuid, mutated)
 
