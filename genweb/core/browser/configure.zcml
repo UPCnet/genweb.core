@@ -5,6 +5,14 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="genweb">
 
+    <browser:page
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="edit"
+      class=".dxforms.EditForm"
+      permission="cmf.ModifyPortalContent"
+      layer="genweb.core.interfaces.IGenwebLayer"
+    />
+
 <!-- genweb.core with aternatheme GS profile -->
 <!-- Should be in other module than the default GS profile -->
     <genericsetup:registerProfile
