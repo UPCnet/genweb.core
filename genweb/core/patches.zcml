@@ -96,4 +96,11 @@
         replacement=".patches.SearchableText"
         />
 
+    <monkey:patch
+        description="Force to all dexterity types to hide the right portlet on the add form"
+        module="plone.dexterity.browser.add.DefaultAddForm"
+        original="update"
+        replacement=".browser.dxforms.update"
+        />
+
 </configure>
