@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.7 (unreleased)
-----------------
+4.6.1 (2015-05-27)
+------------------
 
-- Nothing changed yet.
-
+* Disable right column in DX add forms [Victor Fernandez de Alba]
+* Edit form right-portlet-less [Victor Fernandez de Alba]
 
 4.6 (2015-05-18)
 ----------------
