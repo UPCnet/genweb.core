@@ -9,6 +9,9 @@ from souper.soup import get_soup
 from souper.soup import Record
 from zope.component import getUtility
 from zope.component import getUtilitiesFor
+from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
+from Products.PluggableAuthService.events import PropertiesUpdated
+from zope.event import notify
 
 from genweb.core import IAMULEARN
 from genweb.core.directory import METADATA_USER_ATTRS
@@ -58,21 +61,18 @@ def add_user_to_catalog(principal, event):
 
     # If uLearn is present, then lookup for a customized set of fields and its
     # related soup. The soup has the form 'user_properties_<client_name>'. This
-    # feature is currently restricted to uLearn as the client name (in fact, we
-    # are reusing the domain name) is stored in MAX settings but should be easy
-    # to backport it to Genweb as long as it gets its own storage for the
-    # <client_name> value.
+    # feature is currently restricted to uLearn but could be easily backported
+    # to Genweb. The setting that makes the extension available lives in:
+    # 'genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender'
     if IAMULEARN:
-        try:
-            client = api.portal.get_registry_record('mrs.max.browser.controlpanel.IMAXUISettings.domain')
-        except:
-            client = ''
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
 
-        if 'user_properties_{}'.format(client) in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
-            extended_soup = get_soup('user_properties_{}'.format(client), portal)
+        # Make sure that, in fact we have such a extender in place
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_soup = get_soup(extender_name, portal)
             exist = []
             exist = [r for r in extended_soup.query(Eq('id', principal.getUserName()))]
-            extended_user_properties_utility = getUtility(ICatalogFactory, name='user_properties_{}'.format(client))
+            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
 
             if exist:
                 extended_user_record = exist[0]
@@ -111,3 +111,27 @@ def add_user_to_catalog(principal, event):
 
             soup.reindex(records=[user_record])
             extended_soup.reindex(records=[extended_user_record])
+
+
+@grok.subscribe(IUserLoggedInEvent)
+def UpdateUserPropertiesOnLogin(event):
+    user = api.user.get_current()
+
+    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+
+    attributes = user_properties_utility.properties + METADATA_USER_ATTRS
+
+    extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+
+    if extender_name:
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
+            attributes = attributes + extended_user_properties_utility.properties
+
+    mapping = {}
+    for attr in attributes:
+        value = user.getProperty(attr)
+        if isinstance(value, str) or isinstance(value, unicode):
+            mapping.update({attr: value})
+
+    notify(PropertiesUpdated(user, mapping))

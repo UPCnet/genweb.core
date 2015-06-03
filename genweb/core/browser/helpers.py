@@ -11,6 +11,8 @@ from zope.component import getUtility
 from zope.interface import alsoProvides
 from zope.event import notify
 
+from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
+
 from plone.dexterity.interfaces import IDexterityContent
 from Products.Archetypes.interfaces import IBaseObject
 
@@ -815,7 +817,12 @@ class ReBuildUserPropertiesCatalog(grok.View):
 
     def render(self):
         context = aq_inner(self.context)
-        all_user_properties = context.acl_users.mutable_properties.enumerateUsers()
+        portal = api.portal.get()
+        plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
+        # We use the most preferent plugin
+        pplugin = plugins[0][1]
+        all_user_properties = pplugin.enumerateUsers()
+
         for user in all_user_properties:
             user.update(dict(username=user['id']))
             user.update(dict(fullname=user['title']))

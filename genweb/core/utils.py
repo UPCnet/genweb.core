@@ -199,21 +199,16 @@ def add_user_to_catalog(user, properties, notlegit=False):
 
     # If uLearn is present, then lookup for a customized set of fields and its
     # related soup. The soup has the form 'user_properties_<client_name>'. This
-    # feature is currently restricted to uLearn as the client name (in fact, we
-    # are reusing the domain name) is stored in MAX settings but should be easy
-    # to backport it to Genweb as long as it gets its own storage for the
-    # <client_name> value.
+    # feature is currently restricted to uLearn but could be easily backported
+    # to Genweb. The setting that makes the extension available lives in:
+    # 'genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender'
     if IAMULEARN:
-        try:
-            client = api.portal.get_registry_record('mrs.max.browser.controlpanel.IMAXUISettings.domain')
-        except:
-            client = ''
-
-        if 'user_properties_{}'.format(client) in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
-            extended_soup = get_soup('user_properties_{}'.format(client), portal)
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_soup = get_soup(extender_name, portal)
             exist = []
             exist = [r for r in extended_soup.query(Eq('id', username))]
-            extended_user_properties_utility = getUtility(ICatalogFactory, name='user_properties_{}'.format(client))
+            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
 
             if exist:
                 extended_user_record = exist[0]
