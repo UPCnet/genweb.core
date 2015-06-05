@@ -825,7 +825,11 @@ class ReBuildUserPropertiesCatalog(grok.View):
 
         for user in all_user_properties:
             user.update(dict(username=user['id']))
-            user.update(dict(fullname=user['title']))
+            if 'title' in user:
+                user.update(dict(fullname=user['title']))
+            else:
+                user.update(dict(fullname=user['fullname']))
+
             user_obj = api.user.get(user['id'])
 
             if user_obj:

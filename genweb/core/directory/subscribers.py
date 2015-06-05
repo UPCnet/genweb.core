@@ -27,7 +27,9 @@ def add_user_to_catalog(principal, event):
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
+
     exist = [r for r in soup.query(Eq('id', principal.getUserName()))]
+
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
 
     if exist:
@@ -66,7 +68,6 @@ def add_user_to_catalog(principal, event):
     # 'genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender'
     if IAMULEARN:
         extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
-
         # Make sure that, in fact we have such a extender in place
         if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
             extended_soup = get_soup(extender_name, portal)
@@ -134,4 +135,4 @@ def UpdateUserPropertiesOnLogin(event):
         if isinstance(value, str) or isinstance(value, unicode):
             mapping.update({attr: value})
 
-    notify(PropertiesUpdated(user, mapping))
+    add_user_to_catalog(user, PropertiesUpdated(user, mapping))
