@@ -15,16 +15,20 @@ ALT_LDAP_PASSWORD = os.environ.get('alt_bindpasswd', '')
 BASEDN = os.environ.get('alt_base_dn', '')
 
 
+def search_ldap_groups():
+    conn = ldap.initialize(ALT_LDAP_URI)
+    conn.simple_bind_s(ALT_LDAP_DN, ALT_LDAP_PASSWORD)
+    return conn.search_s(BASEDN, ldap.SCOPE_SUBTREE, '(objectClass=groupOfNames)', ['cn'])
+
+
 class SyncLDAPGroups(grok.View):
     grok.context(IPloneSiteRoot)
     grok.require('cmf.ManagePortal')
 
     def render(self):
-        conn = ldap.initialize(ALT_LDAP_URI)
-        conn.simple_bind_s(ALT_LDAP_DN, ALT_LDAP_PASSWORD)
 
         try:
-            results = conn.search_s(BASEDN, ldap.SCOPE_SUBTREE, '(objectClass=groupOfNames)', ['cn'])
+            results = search_ldap_groups()
         except:
             # Just in case the user raise a "SIZE_LIMIT_EXCEEDED"
             api.portal.send_email(
