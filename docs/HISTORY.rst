@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.6.2 (unreleased)
+4.6.2 (2015-06-10)
 ------------------
 
-- Nothing changed yet.
-
+* Move out ldap group search code [Carles Bruguera]
+* Add user to catalog [Pilar Marinas]
+* Improve the method of acquiring the current (if enabled) user properties extender, and make the default property backend (IPropertiesPlugin) the more preferent one. [Victor Fernandez de Alba]
 
 4.6.1 (2015-05-27)
 ------------------
