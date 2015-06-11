@@ -122,7 +122,10 @@ def UpdateUserPropertiesOnLogin(event):
 
     attributes = user_properties_utility.properties + METADATA_USER_ATTRS
 
-    extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+    try:
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+    except:
+        extender_name = ''
 
     if extender_name:
         if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
