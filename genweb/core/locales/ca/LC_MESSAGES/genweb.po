@@ -1863,34 +1863,64 @@ msgstr "${startdate} a ${enddate}"
 msgid "event_when_sameday"
 msgstr "${date} de ${starttime} a ${endtime}"
 
+####
 # Objectius workflow
+####
 
+# Estados de los objetivos
+
+# Estado 1
 msgid "enCreacio"
 msgstr "Objectius en creació"
 
+# Estado 2
 msgid "enRevisioInicial"
-msgstr "Objectius en revisió"
+msgstr "Objectius en revisió inicial"
 
-msgid "enRevisioValoracio"
-msgstr "Valoració en revisió"
-
+# Estado 3
 msgid "validatInicial"
-msgstr "Objectius validats"
+msgstr "Objectius acceptats pel treballador i el cap"
 
-msgid "validatValoracio"
-msgstr "Valoració validada"
+# Estado 4
+msgid "enRevisioValoracio"
+msgstr "Valoració dels objectius pendent de revisió"
 
+# Estado 5
+msgid "valoracioValidada"
+msgstr "Valoració acceptada pel treballador"
+
+# Estado Final
+msgid "valoracioTancada"
+msgstr "Valoració tancada pel treballador i el cap"
+
+# Estados de los objetivos
+
+# Transició 1
 msgid "aRevisarInicial"
-msgstr "A revisar objectius"
+msgstr "A revisar pel treballador"
 
-msgid "aRevisarValoracio"
-msgstr "A revisar valoració"
-
+# Transició 2
 msgid "aValidarInicial"
-msgstr "A validar"
+msgstr "Acceptar la proposta d'objectius"
 
+# Transició 3
+msgid "aRevisarValoracio"
+msgstr "Valoració inicial a revisar pel treballador"
+
+
+# Transició 4
 msgid "aValidarValoracio"
-msgstr "A validar valoració"
+msgstr "Acceptar la valoració proposta"
+
+# Transició 5
+msgid "seguimentValoracio"
+msgstr "Valoració de seguiment a revisar pel treballador"
+
+# Transició final
+msgid "tancarValoracio"
+msgstr "Tancar definitivament la valoració d'objectius"
+
+### Fi objectius
 
 msgid "contents_pretty_view"
 msgstr "Vista continguts"
