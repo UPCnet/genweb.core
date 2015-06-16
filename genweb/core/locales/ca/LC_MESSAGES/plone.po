@@ -419,4 +419,11 @@ msgstr "Vista ServeisTIC"
 msgid "label_return_to_page"
 msgstr "Tornar a la pàgina anterior"
 
+#: ./behaviors/leadimage.py:17
+msgid "Lead Image"
+msgstr "Imatge"
+
+#: ./behaviors/leadimage.py:23
+msgid "Lead Image Caption"
+msgstr "Peu de foto"
 
