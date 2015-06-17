@@ -21,12 +21,12 @@ msgstr "Activat"
 
 #: genweb.theme/genweb/theme/portlets/esdeveniments.py:182
 msgid "Add Events Portlet"
-msgstr "Afegeix potlet events"
+msgstr "Afegeix potlet d'Agenda"
 
 #: genweb.theme/genweb/theme/portlets/fullnews.py:128
 #: genweb.theme/genweb/theme/portlets/news.py:117
 msgid "Add Noticies portlet"
-msgstr "Afegeix portlet noticies"
+msgstr "Afegeix portlet de notícies"
 
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:249
 msgid "Add Query Portlet"
@@ -43,7 +43,7 @@ msgstr "Tot el contingut"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:129
 #: genweb.theme/genweb/theme/portlets/news.py:118
 msgid "Aquest portlet mostra noticies"
-msgstr "Aquest portlet mostra noticies"
+msgstr "Aquest portlet mostra notícies"
 
 #. Default: "Pàgina alternativa"
 msgid "Body text"
@@ -52,7 +52,7 @@ msgstr "Pàgina alternativa"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:35
 #: genweb.theme/genweb/theme/portlets/news.py:35
 msgid "Boolea que indica si s'ha de mostrar la data en les noticies"
-msgstr "Boolea que indica si s'ha de mostrar la data en les noticies"
+msgstr "Boolea que indica si s'ha de mostrar la data en les notícies"
 
 #: genweb.controlpanel/genweb/controlpanel/controlpanel.py:138
 msgid "Cancel"
@@ -88,7 +88,7 @@ msgstr "Esborrany"
 
 #: genweb.packets/genweb/packets/browser/views.py:73
 msgid "ERROR: Unknown identifier. This page does not exist."
-msgstr "ERROR: no s'ha trobat el identicador. La pàgina no existeix."
+msgstr "ERROR: no s'ha trobat l'identificador. La pàgina no existeix."
 
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:264
 msgid "Edit Collection Portlet"
@@ -101,7 +101,7 @@ msgstr "Edita portlet d'agenda"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:137
 #: genweb.theme/genweb/theme/portlets/news.py:126
 msgid "Edit News Portlet"
-msgstr "Edita portlet de noticies"
+msgstr "Edita portlet de notícies"
 
 #: genweb.banners/genweb/banners/portlets/bannersportlet.py:114
 msgid "Edit banners portlet"
