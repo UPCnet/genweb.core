@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.6.3 (unreleased)
+4.6.3 (2015-06-17)
 ------------------
 
-- Nothing changed yet.
-
+* Translate portlets [hanirok]
+* Translate leadimage [Pilar Marinas]
+* Tranlate objectius [hanirok]
+* Add icon_blank in genwebtheme_custom [Pilar Marinas]
+* Guard for attribute [Victor Fernandez de Alba]
 
 4.6.2 (2015-06-10)
 ------------------
