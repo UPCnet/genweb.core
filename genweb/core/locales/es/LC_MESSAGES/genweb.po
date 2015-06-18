@@ -1848,3 +1848,6 @@ msgstr "Vista contenidos"
 
 msgid "itemstable_view"
 msgstr "Vista con iconos"
+
+msgid "folder_index_view"
+msgstr "Índice de contenidos"

@@ -1823,3 +1823,6 @@ msgstr "More information"
 
 msgid "No hi ha elements"
 msgstr "No items"
+
+msgid "folder_index_view"
+msgstr "Contents index"
