@@ -42,6 +42,8 @@ from genweb.core.utils import add_user_to_catalog
 from genweb.core.utils import reset_user_catalog
 
 import json
+import os
+
 
 if HAS_PAM:
     from plone.app.multilingual.browser.setup import SetupMultilingualSite
@@ -61,7 +63,7 @@ class debug(grok.View):
     def render(self):
         context = aq_inner(self.context)
         # Magic Victor debug view do not delete!
-        import ipdb; ipdb.set_trace() # Magic! Do not delete!!! :)
+        import ipdb; ipdb.set_trace()  # Magic! Do not delete!!! :)
 
 
 class monitoringView(grok.View):
@@ -98,10 +100,7 @@ class instanceindevelmode(grok.View):
 
 
 def getDorsal():
-    config = getConfiguration()
-    configuration = config.product_config.get('genwebconfig', dict())
-    zeo = configuration.get('zeo')
-    return zeo
+    return os.environ.get('dorsal', False)
 
 
 def listPloneSites(zope):
@@ -117,26 +116,22 @@ def listPloneSites(zope):
 
 
 class getZEO(grok.View):
-    """ Funció que agafa el numero de zeo al que esta assignat la instancia de
-        genweb. Per aixo, el buildout s'ha d'afegir una linea a la zope-conf-
-        additional:
-        zope-conf-additional =
-                <product-config genweb>
-                    zeo 9
-                </product-config>
+    """ This view is used to know the dorsal (the Genweb enviroment) assigned to
+        this instance.
     """
     grok.name('getZEO')
     grok.context(Interface)
     grok.require('zope2.View')
 
     def dorsal(self):
-        config = getConfiguration()
-        configuration = config.product_config.get('genwebconfig', dict())
-        zeo = configuration.get('zeo')
-        return zeo
+        return os.environ.get('dorsal', False)
 
     def nomDorsal(self):
-        return DORSALS[self.dorsal()]
+        dorsal = self.dorsal()
+        if dorsal:
+            return DORSALS[self.dorsal()]
+        else:
+            return 'N/A'
 
 
 class listPloneSitesView(grok.View):
@@ -246,10 +241,13 @@ class configuraSiteCache(grok.View):
         importer.importDocument(cacheprofile)
 
         cachepurginsettings = registry.forInterface(ICachePurgingSettings)
-        cacheserver = 'http://sylar.upc.es:90%02d' % int(getDorsal())
-        cachepurginsettings.cachingProxies = (cacheserver,)
 
-        return 'Configuracio de cache importada correctament.'
+        varnish_url = os.environ.get('varnish_url', False)
+        if varnish_url:
+            cachepurginsettings.cachingProxies = (varnish_url,)
+            return 'Successfully set caching for this site.'
+        else:
+            return 'There aren\'t any varnish_url in the environment, no caching proxy could be configured.'
 
 
 class listLDAPInfo(grok.View):

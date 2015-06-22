@@ -12,6 +12,8 @@ from plone.app.testing import setRoles
 from genweb.core.browser.helpers import getDorsal
 from plone.cachepurging.interfaces import ICachePurgingSettings
 
+import os
+
 
 class HelperViewsIntegrationTest(unittest.TestCase):
 
@@ -34,11 +36,14 @@ class HelperViewsIntegrationTest(unittest.TestCase):
         self.assertRaises(Unauthorized, portal.restrictedTraverse, '@@configuraSiteCache')
 
     def test_getDorsal(self):
-        self.setconfig(product_config={'genwebconfig': {'zeo': '1'}})
-        self.assertEqual(getDorsal(), '1')
+        # self.setconfig(product_config={'genwebconfig': {'zeo': '1'}})
+        os.environ['dorsal'] = '1'
+        self.assertEqual(getDorsal(), os.environ['dorsal'])
 
     def test_configuraSiteCache(self):
-        self.setconfig(product_config={'genwebconfig': {'zeo': '1'}})
+        # old way using Zope product_config:
+        # self.setconfig(product_config={'genwebconfig': {'zeo': '1'}})
+        os.environ['varnish_url'] = 'http://alec.upc.edu:9001'
         portal = self.layer['portal']
         request = self.layer['request']
         setRoles(portal, TEST_USER_ID, ['Manager'])
@@ -47,16 +52,17 @@ class HelperViewsIntegrationTest(unittest.TestCase):
         cachesetup.render()
         registry = queryUtility(IRegistry)
         cachepurginsettings = registry.forInterface(ICachePurgingSettings)
-        self.assertEqual(cachepurginsettings.cachingProxies, ('http://sylar.upc.es:9001', ))
+        self.assertEqual(cachepurginsettings.cachingProxies, (os.environ['varnish_url'], ))
 
-    def test_configuraSiteCache_with_2_digits(self):
-        self.setconfig(product_config={'genwebconfig': {'zeo': '11'}})
-        portal = self.layer['portal']
-        request = self.layer['request']
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        login(portal, TEST_USER_NAME)
-        cachesetup = getMultiAdapter((portal, request), name='configuraSiteCache')
-        cachesetup.render()
-        registry = queryUtility(IRegistry)
-        cachepurginsettings = registry.forInterface(ICachePurgingSettings)
-        self.assertEqual(cachepurginsettings.cachingProxies, ('http://sylar.upc.es:9011', ))
+    # No longer needed.
+    # def test_configuraSiteCache_with_2_digits(self):
+    #     self.setconfig(product_config={'genwebconfig': {'zeo': '11'}})
+    #     portal = self.layer['portal']
+    #     request = self.layer['request']
+    #     setRoles(portal, TEST_USER_ID, ['Manager'])
+    #     login(portal, TEST_USER_NAME)
+    #     cachesetup = getMultiAdapter((portal, request), name='configuraSiteCache')
+    #     cachesetup.render()
+    #     registry = queryUtility(IRegistry)
+    #     cachepurginsettings = registry.forInterface(ICachePurgingSettings)
+    #     self.assertEqual(cachepurginsettings.cachingProxies, ('http://sylar.upc.es:9011', ))
