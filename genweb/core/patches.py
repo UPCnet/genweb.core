@@ -38,9 +38,17 @@ def getToolbars(self, config):
 
     config['theme_advanced_blockformats'] = 'p,div,h2,h3,h4'
 
-    return ['fullscreen,|,code,|,save,newdocument,|,plonetemplates,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor',
-            'formatselect,style,|,cleanup,removeformat,|,image,media,|,tablecontrols,styleprops,|,visualaid,|,sub,sup,|,charmap',
-            '', '']
+    try:
+        custom_icons = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.custom_editor_icons')
+    except:
+        custom_icons = []
+
+    if custom_icons:
+        return custom_icons
+    else:
+        return ['fullscreen,|,code,|,save,newdocument,|,plonetemplates,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor',
+                'formatselect,style,|,cleanup,removeformat,|,image,media,|,tablecontrols,styleprops,|,visualaid,|,sub,sup,|,charmap',
+                '', '']
 
 
 def isStringType(data):
