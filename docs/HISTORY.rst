@@ -1,10 +1,10 @@
 Changelog
 =========
 
-4.7 (unreleased)
+4.7 (2015-06-25)
 ----------------
 
-- Nothing changed yet.
+* Re-released under the new "minor" version.
 
 
 4.6.4 (2015-06-25)
