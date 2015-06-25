@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.6.4 (unreleased)
+4.6.4 (2015-06-25)
 ------------------
 
-- Nothing changed yet.
-
+* genweb.js in place and css and js viewlets. Transferred components to genweb.js [Victor Fernandez de Alba]
+* Add the new environment var for setting the purge cache server and new doral assignation [Victor Fernandez de Alba]
+* Add support for custom icon list on TinyMCE. [Victor Fernandez de Alba]
+* Translations Contents index view [hanirok]
 
 4.6.3 (2015-06-17)
 ------------------
