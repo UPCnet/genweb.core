@@ -1778,3 +1778,15 @@ msgstr ""
 
 msgid "No hi ha elements"
 msgstr "No items"
+
+msgid "see_past_events"
+msgstr "Go to past events"
+
+msgid "back_to_events"
+msgstr "Back to events"
+
+msgid "past_events"
+msgstr "Past events"
+
+msgid "no_events"
+msgstr "There are no events"

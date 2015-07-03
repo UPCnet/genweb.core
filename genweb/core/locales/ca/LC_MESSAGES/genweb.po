@@ -1930,3 +1930,15 @@ msgstr "Vista amb icones"
 
 msgid "folder_index_view"
 msgstr "Índex de contingut"
+
+msgid "see_past_events"
+msgstr "Veure esdeveniments passats"
+
+msgid "back_to_events"
+msgstr "Torna als esdeveniments"
+
+msgid "past_events"
+msgstr "Esdeveniments passats"
+
+msgid "no_events"
+msgstr "No hi han esdeveniments"

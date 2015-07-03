@@ -1851,3 +1851,15 @@ msgstr "Vista con iconos"
 
 msgid "folder_index_view"
 msgstr "Índice de contenidos"
+
+msgid "see_past_events"
+msgstr "Ver eventos pasados"
+
+msgid "back_to_events"
+msgstr "Volver a eventos"
+
+msgid "past_events"
+msgstr "Eventos pasados"
+
+msgid "no_events"
+msgstr "No hay eventos"
