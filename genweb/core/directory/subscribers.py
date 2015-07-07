@@ -103,12 +103,13 @@ def add_user_to_catalog(principal, event):
 
             # Save for free the extended properties in the main user_properties soup
             # for easy access with one query
-            for attr in extended_user_properties_utility.properties:
-                if attr in event.properties:
-                    if isinstance(event.properties[attr], str):
-                        user_record.attrs[attr] = event.properties[attr].decode('utf-8')
-                    else:
-                        user_record.attrs[attr] = event.properties[attr]
+            if IPropertiesUpdatedEvent.providedBy(event):
+                for attr in extended_user_properties_utility.properties:
+                    if attr in event.properties:
+                        if isinstance(event.properties[attr], str):
+                            user_record.attrs[attr] = event.properties[attr].decode('utf-8')
+                        else:
+                            user_record.attrs[attr] = event.properties[attr]
 
             soup.reindex(records=[user_record])
             extended_soup.reindex(records=[extended_user_record])
