@@ -43,6 +43,7 @@ from genweb.core.utils import reset_user_catalog
 
 import json
 import os
+import urllib
 
 
 if HAS_PAM:
@@ -933,3 +934,70 @@ class GetRenderedStylesheets(grok.View):
 
     def skinname(self):
         return aq_inner(self.context).getCurrentSkinName()
+
+
+class BulkExecuteScriptView(grok.View):
+    """
+        Execute one action view in all instances passed as a form parameter
+    """
+    grok.context(IApplication)
+    grok.name('bulk_action')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        args = self.request.form
+        view_name = self.request.form['view']
+        plonesites = listPloneSites(context)
+        output = []
+        for plonesite in plonesites:
+            quoted_args = urllib.urlencode(args)
+            response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
+            output.append(response.getBody())
+
+            output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
+            output.append('-----------------------------------------------')
+        return '\n'.join(output)
+
+
+class ReinstallPloneProduct(grok.View):
+    """ Reinstalls a product passed by form parameter in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('reinstall_product')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        product_name = self.request.form['product_name']
+        output = []
+        qi = getToolByName(portal, 'portal_quickinstaller')
+
+        if qi.isProductInstalled(product_name):
+            qi.uninstallProducts([product_name, ], reinstall=True)
+            qi.installProducts([product_name], reinstall=True)
+            output.append('{}: Successfully reinstalled {}'.format(portal.id, product_name))
+        return '\n'.join(output)
+
+
+class NotSubProcessedBulkExecuteScriptView(grok.View):
+    """
+        Execute one action view in all instances passed as a form parameter used
+        only in case that something does not work making a subrequest!
+    """
+    grok.context(IApplication)
+    grok.name('nsp_bulk_action')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        context = aq_inner(self.context)
+        args = self.request.form
+        view_name = self.request.form['view']
+        plonesites = listPloneSites(context)
+        output = []
+        for plonesite in plonesites:
+            view = plonesite.restrictedTraverse(view_name)
+            view.render(plonesite, **args)
+            output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
+        return '\n'.join(output)

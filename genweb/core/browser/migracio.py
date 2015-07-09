@@ -126,3 +126,28 @@ class ImportGWConfig(grok.View):
 
     def map_gw_property(self, prop, value):
         setattr(self.gw_settings, prop, value)
+
+
+class ChangeEventsView(grok.View):
+    """
+        Execute one action view in all instances
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('change_events_view')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+        if portal.get('en', False):
+            if portal['en'].get('events', False):
+                events = portal['en'].get('events')
+                events.setLayout('event_listing')
+        if portal.get('es', False):
+            if portal['es'].get('eventos', False):
+                eventos = portal['es'].get('eventos')
+                eventos.setLayout('event_listing')
+        if portal.get('ca', False):
+            if portal['ca'].get('esdeveniments', False):
+                esdeveniments = portal['ca'].get('esdeveniments')
+                esdeveniments.setLayout('event_listing')
