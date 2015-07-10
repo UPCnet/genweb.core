@@ -20,3 +20,14 @@ msgstr ""
 msgid "label_related_items"
 msgstr "Contenidos relacionados"
 
+#: ../behaviors/discussion.py:30
+msgid "Allow discussion"
+msgstr "Permite comentarios"
+
+#: ../behaviors/discussion.py:31
+msgid "Allow discussion for this content object."
+msgstr "Permite los comentarios para este tipo de contenido."
+
+#: ../behaviors/discussion.py:16
+msgid "Yes"
+msgstr "Si"
