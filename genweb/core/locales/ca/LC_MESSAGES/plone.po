@@ -405,9 +405,6 @@ msgstr "Si s'activa, la llista no inclourà l'element actual. El portlet es rend
 
 ### portlets assigned
 
-msgid "FullNews"
-msgstr "Notícies amb foto"
-
 #: CMFPlone/skins/plone_login/registered.pt:92
 msgid "label_log_in"
 msgstr "Identificació"
@@ -427,3 +424,8 @@ msgstr "Imatge"
 msgid "Lead Image Caption"
 msgstr "Peu de foto"
 
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir els termes de cerca dels elements que vulgueu a la llista. La llista de resultats s'actualitza de forma dinàmica"
+
+msgid "Number of items that will show up in one batch."
+msgstr "Nombre d'elements que es mostrarà."

@@ -1496,6 +1496,9 @@ msgstr "Contrasenya"
 msgid "label_query"
 msgstr "Termes de cerca"
 
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir els termes de cerca dels elements que vulgueu a la llista. La llista de resultats s'actualitza de forma dinàmica"
+
 #. Default: "RSS"
 #: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:66
 msgid "label_rss"

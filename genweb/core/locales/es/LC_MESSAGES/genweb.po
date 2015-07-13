@@ -1412,7 +1412,7 @@ msgstr "Universitat Politècnica de Catalunya, (Abrir en ventana nueva)"
 #. Default: "Another elusive title of the choose menu"
 #: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:74
 msgid "label_change_default_item"
-msgstr ""
+msgstr "Cambia contenido por defecto ..."
 
 #. Default: "The elusive title of the choose menu"
 #: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:70
@@ -1483,6 +1483,9 @@ msgstr "Contraseña"
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:65
 msgid "label_query"
 msgstr "Términos de búsqueda "
+
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir los términos de búsqueda de los elementos que desee en la lista. La lista de resultados se actualiza de forma dinámica"
 
 #. Default: "RSS"
 #: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:66
