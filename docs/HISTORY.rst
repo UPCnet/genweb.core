@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.8 (unreleased)
+4.8 (2015-07-14)
 ----------------
 
-- Nothing changed yet.
-
+* Traduccions [Pilar Marinas]
+* Tranlations Allow discussion [Pilar Marinas]
+* New helper views for touch instances [Victor Fernandez de Alba]
+* fixed bug to add user+extended with API [Paco Gregori]
+* Update i18n [Victor Fernandez de Alba]
 
 4.7 (2015-06-25)
 ----------------
