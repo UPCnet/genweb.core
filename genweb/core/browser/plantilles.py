@@ -504,18 +504,34 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 
     titol = u"Pestanyes"
     resum = u"Contingut segmentat per pestanyes."
-    cos = u"""<ul class="nav nav-tabs" id="myTab">
-<li class="active"><a href="#primera" data-toggle="tab">Primera</a></li>
-<li><a href="#segona" data-toggle="tab">Segona</a></li>
-<li><a href="#tercera" data-toggle="tab">Tercera</a></li>
-<li><a href="#quarta" data-toggle="tab">Quarta</a></li>
+    cos = u"""<div class="beautytab">
+<ul id="myTab">
+<li class="formTab firstFormTab active"><a href="#primera" data-toggle="tab">Primera</a></li>
+<li class="formTab"><a href="#segona" data-toggle="tab">Segona</a></li>
+<li class="formTab"><a href="#tercera" data-toggle="tab">Tercera</a></li>
+<li class="formTab lastFormTab "><a href="#quarta" data-toggle="tab">Quarta</a></li>
 </ul>
-<div class="tab-content">
-<div class="tab-pane active" id="primera">Contingut de la primera pestanya...</div>
-<div class="tab-pane" id="segona">Contingut de la segona pestanya...</div>
+<div class="tab-content beautytab-content">
+<div class="tab-pane active" id="primera">Contingut de la<br /><br /><br /><br /><br /> primera pestanya...</div>
+<div class="tab-pane" id="segona">Contingut de la <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />segona pestanya...</div>
 <div class="tab-pane" id="tercera">Contingut de la tercera pestanya...</div>
-<div class="tab-pane" id="quarta">Contingut de la quarta pestanya...</div>
-</div><p>&nbsp;</p>"""
+<div class="tab-pane" id="quarta">Contingut <br /><br /><br /><br /><br />de la quarta pestanya...</div>
+</div>
+</div>"""
+
+#     """<ul class="nav nav-tabs" id="myTab">
+# <li class="active"><a href="#primera" data-toggle="tab">Primera</a></li>
+# <li><a href="#segona" data-toggle="tab">Segona</a></li>
+# <li><a href="#tercera" data-toggle="tab">Tercera</a></li>
+# <li><a href="#quarta" data-toggle="tab">Quarta</a></li>
+# </ul>
+# <div class="tab-content">
+# <div class="tab-pane active" id="primera">Contingut de la primera pestanya...</div>
+# <div class="tab-pane" id="segona">Contingut de la segona pestanya...</div>
+# <div class="tab-pane" id="tercera">Contingut de la tercera pestanya...</div>
+# <div class="tab-pane" id="quarta">Contingut de la quarta pestanya...</div>
+# </div><p>&nbsp;</p>"""
+
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
     titol = u"Acordió"
