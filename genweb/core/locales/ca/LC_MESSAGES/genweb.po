@@ -275,6 +275,9 @@ msgstr "Fer un element privat significa que no serà visible per ninguna persona
 msgid "Making an item published to intranet means that it will be visible to the members (readers)."
 msgstr "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
 
+msgid "Puts your item in a review queue, so it can be published on the site."
+msgstr "Envia l'element a una cua de revisió, de manera que pot ser publicat al lloc web."
+
 #: genweb.upc/genweb/upc/browser/viewlets_templates/important.pt:7
 msgid "Marca com a important"
 msgstr "Marca com a important"

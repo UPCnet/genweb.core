@@ -272,6 +272,9 @@ msgstr "Hace un elemento privado significa que no será visible para madie excep
 msgid "Making an item published to intranet means that it will be visible to the members (readers)."
 msgstr "Hacer un elemento publico en la intranet significa que será visible para todos los miembros (lectores)."
 
+msgid "Puts your item in a review queue, so it can be published on the site."
+msgstr "Envía el elemento a una cola de revisión, de forma que pueda ser publicado en el sitio."
+
 #: genweb.upc/genweb/upc/browser/viewlets_templates/important.pt:7
 msgid "Marca com a important"
 msgstr "Marcar como importante"
