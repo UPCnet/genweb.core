@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.9 (unreleased)
+4.9 (2015-07-24)
 ----------------
 
-- Nothing changed yet.
-
+* Traducccions [Pilar Marinas]
+* New template Pestanyes [hanirok]
+* Canvi plantilla Pestanyes [hanirok]
 
 4.8 (2015-07-14)
 ----------------
