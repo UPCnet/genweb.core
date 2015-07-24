@@ -519,18 +519,22 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 </div>
 </div>"""
 
-#     """<ul class="nav nav-tabs" id="myTab">
-# <li class="active"><a href="#primera" data-toggle="tab">Primera</a></li>
-# <li><a href="#segona" data-toggle="tab">Segona</a></li>
-# <li><a href="#tercera" data-toggle="tab">Tercera</a></li>
-# <li><a href="#quarta" data-toggle="tab">Quarta</a></li>
-# </ul>
-# <div class="tab-content">
-# <div class="tab-pane active" id="primera">Contingut de la primera pestanya...</div>
-# <div class="tab-pane" id="segona">Contingut de la segona pestanya...</div>
-# <div class="tab-pane" id="tercera">Contingut de la tercera pestanya...</div>
-# <div class="tab-pane" id="quarta">Contingut de la quarta pestanya...</div>
-# </div><p>&nbsp;</p>"""
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"Pestanyes 2"
+    resum = u"Contingut segmentat per pestanyes amb un altre estil."
+    cos = u"""<ul class="nav nav-tabs" id="myTab">
+<li class="active"><a href="#primera" data-toggle="tab">Primera</a></li>
+<li><a href="#segona" data-toggle="tab">Segona</a></li>
+<li><a href="#tercera" data-toggle="tab">Tercera</a></li>
+<li><a href="#quarta" data-toggle="tab">Quarta</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="primera">Contingut de la primera pestanya...</div>
+<div class="tab-pane" id="segona">Contingut de la segona pestanya...</div>
+<div class="tab-pane" id="tercera">Contingut de la tercera pestanya...</div>
+<div class="tab-pane" id="quarta">Contingut de la quarta pestanya...</div>
+</div><p>&nbsp;</p>"""
 
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
