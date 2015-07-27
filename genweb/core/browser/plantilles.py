@@ -518,7 +518,6 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 <div class="tab-pane" id="quarta">Contingut <br /><br /><br /><br /><br />de la quarta pestanya...</div>
 </div>
 </div>"""
-
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
     titol = u"Pestanyes 2"
@@ -535,7 +534,6 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 <div class="tab-pane" id="tercera">Contingut de la tercera pestanya...</div>
 <div class="tab-pane" id="quarta">Contingut de la quarta pestanya...</div>
 </div><p>&nbsp;</p>"""
-
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
     titol = u"Acordió"

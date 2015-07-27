@@ -511,7 +511,7 @@ msgstr "Enllaç a obrir"
 
 #: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:42
 msgid "Warning"
-msgstr "Warning"
+msgstr "ATENCIÓ"
 
 #########
 # Types #
@@ -1948,3 +1948,6 @@ msgstr "Esdeveniments passats"
 
 msgid "no_events"
 msgstr "No hi han esdeveniments"
+
+msgid "dontcopy_homepage"
+msgstr " la pàgina de benvinguda és necessària per al correcte funcionament del Genweb. No s'ha d'esborrar, copiar o renombrar."

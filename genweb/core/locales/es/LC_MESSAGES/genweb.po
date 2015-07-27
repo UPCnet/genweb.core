@@ -512,7 +512,7 @@ msgstr "URL para abrir"
 
 #: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:42
 msgid "Warning"
-msgstr "Warning"
+msgstr "ATENCIÓN"
 
 #########
 # Types #
@@ -1869,3 +1869,6 @@ msgstr "Eventos pasados"
 
 msgid "no_events"
 msgstr "No hay eventos"
+
+msgid "dontcopy_homepage"
+msgstr " La página de bienvenida es necesaria para el correcto funcionamiento del Genweb. No se tiene que borrar, copiar o renombrar."

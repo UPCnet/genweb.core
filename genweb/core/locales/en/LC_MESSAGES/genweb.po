@@ -1838,3 +1838,6 @@ msgstr "Past events"
 
 msgid "no_events"
 msgstr "There are no events"
+
+msgid "dontcopy_homepage"
+msgstr "Please note that the welcome page is necessary for the proper functioning of Genweb . Don't delete, copy or rename."
