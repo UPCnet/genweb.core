@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.10 (unreleased)
------------------
+4.7 (2015-07-28)
+----------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate pasat [hanirok]
+* Improve boilerplate for genweb.core [Victor Fernandez de Alba]
+* Cambio literales Pestanyes [hanirok]
+* Translation warning message and add new template [hanirok]
 
 4.9 (2015-07-24)
 ----------------
