@@ -1951,3 +1951,6 @@ msgstr "No hi han esdeveniments"
 
 msgid "dontcopy_homepage"
 msgstr " la pàgina de benvinguda és necessària per al correcte funcionament del Genweb. No s'ha d'esborrar, copiar o renombrar."
+
+msgid "mode_past_link"
+msgstr "Passat"
