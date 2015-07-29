@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.7.1 (unreleased)
+4.7.1 (2015-07-29)
 ------------------
 
-- Nothing changed yet.
-
+* Added helper to update the tiny templates [Victor Fernandez de Alba]
 
 4.7 (2015-07-28)
 ----------------
