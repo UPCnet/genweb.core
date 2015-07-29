@@ -8,6 +8,7 @@ from OFS.interfaces import IApplication
 from zope.interface import Interface
 from zope.component import queryUtility
 from zope.component import getUtility
+from zope.component import getMultiAdapter
 from zope.interface import alsoProvides
 from zope.event import notify
 
@@ -15,11 +16,16 @@ from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 
 from plone.dexterity.interfaces import IDexterityContent
 from Products.Archetypes.interfaces import IBaseObject
+from plone.dexterity.utils import createContentInContainer
+from Products.CMFPlone.utils import normalizeString
+from plone.app.contenttypes.behaviors.richtext import IRichText
 
 from plone.dexterity.content import Container
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
+from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletAssignmentMapping
 
 from Products.PluggableAuthService.events import PropertiesUpdated
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -40,6 +46,7 @@ from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
 from genweb.core.utils import add_user_to_catalog
 from genweb.core.utils import reset_user_catalog
+from genweb.core.browser.plantilles import get_plantilles
 
 import json
 import os
@@ -951,6 +958,9 @@ class BulkExecuteScriptView(grok.View):
         plonesites = listPloneSites(context)
         output = []
         for plonesite in plonesites:
+            print('======================')
+            print('Executed view in {}'.format(plonesite.id))
+            print('======================')
             quoted_args = urllib.urlencode(args)
             response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
             output.append(response.getBody())
@@ -1001,3 +1011,77 @@ class NotSubProcessedBulkExecuteScriptView(grok.View):
             view.render(plonesite, **args)
             output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
         return '\n'.join(output)
+
+
+class SetupPAMAgain(grok.View):
+    """ Reinstalls a product passed by form parameter in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('setup_pam_again')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        from plone.app.multilingual.browser.setup import SetupMultilingualSite
+        setupTool = SetupMultilingualSite()
+        setupTool.setupSite(self.context, False)
+
+
+class DeleteNavPortletFromRoot(grok.View):
+    """ Reinstalls a product passed by form parameter in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('delete_nav_portlet_from_root')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        # Delete default Navigation portlet on root
+        target_manager_root = queryUtility(IPortletManager, name='plone.leftcolumn', context=portal)
+        target_manager_root_assignments = getMultiAdapter((portal, target_manager_root), IPortletAssignmentMapping)
+        if 'navigation' in target_manager_root_assignments:
+            del target_manager_root_assignments['navigation']
+
+
+class ReinstallGWTinyTemplates(grok.View):
+    """
+        Reinstalls all TinyMCE Templates
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('reinstall_tiny_templates')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        templates = portal.get('templates', None)
+        if templates:
+            self.delete_templates(templates)
+            for plt in get_plantilles():
+                plantilla = self.create_content(templates, 'Document', normalizeString(plt['titol']), title=plt['titol'], description=plt['resum'])
+                plantilla.text = IRichText['text'].fromUnicode(plt['cos'])
+                plantilla.reindexObject()
+
+    def delete_templates(self, templates):
+        for template in templates.objectIds():
+            api.content.delete(obj=templates[template])
+
+    def create_content(self, container, portal_type, id, publish=True, **kwargs):
+        if not getattr(container, id, False):
+            obj = createContentInContainer(container, portal_type, checkConstraints=False, **kwargs)
+            if publish:
+                self.publish_content(obj)
+        return getattr(container, id)
+
+    def publish_content(self, context):
+        """ Make the content visible either in both possible genweb.simple and
+            genweb.review workflows.
+        """
+        pw = getToolByName(context, "portal_workflow")
+        object_workflow = pw.getWorkflowsFor(context)[0].id
+        object_status = pw.getStatusOf(object_workflow, context)
+        if object_status:
+            api.content.transition(obj=context, transition={'genweb_simple': 'publish', 'genweb_review': 'publicaalaintranet'}[object_workflow])

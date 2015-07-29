@@ -1954,3 +1954,15 @@ msgstr " la pàgina de benvinguda és necessària per al correcte funcionament d
 
 msgid "mode_past_link"
 msgstr "Passat"
+
+msgid "help_static_content_title_ca"
+msgstr "Opcional: títol del portlet"
+
+msgid "help_static_content_url_ca"
+msgstr "La URL completa de la pàgina d'on volem visualitzar el contingut"
+
+msgid "help_static_content_element_ca"
+msgstr "Aquí podeu introduïr un id, class o element html. Per exemple en una pàgina genweb típica, tot el contingut és dins #content, i tot el contingut sense el títol dins #content-core"
+
+msgid "Existing Content"
+msgstr "Contingut existent"
