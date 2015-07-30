@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.7.3 (unreleased)
+4.7.3 (2015-07-30)
 ------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
 
 4.7.2 (2015-07-30)
 ------------------
