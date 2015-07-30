@@ -1884,3 +1884,9 @@ msgstr "Aquí se puede introducir un id, clase o elemento html. Por ejemplo, en 
 
 msgid "Existing Content"
 msgstr "Contenido existente"
+
+msgid "multi_email"
+msgstr "Seleccionar la dirección de envío"
+
+msgid "help_contacte_multi_email"
+msgstr "Se puede seleccionar la dirección de correo que recibe el mensaje de contacto."
