@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.7.2 (unreleased)
+4.7.2 (2015-07-30)
 ------------------
 
-- Nothing changed yet.
-
+* Fix cache [Victor Fernandez de Alba]
+* Fix templates [Victor Fernandez de Alba]
 
 4.7.1 (2015-07-29)
 ------------------
