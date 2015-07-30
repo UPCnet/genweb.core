@@ -38,7 +38,7 @@ cacheprofile = """
       <description>Determine whether GZip compression should be enabled for standard responses</description>
       <title>Enable GZip compression</title>
     </field>
-    <value>True</value>
+    <value>False</value>
   </record>
   <record field="purgedContentTypes" interface="plone.app.caching.interfaces.IPloneCacheSettings" name="plone.app.caching.interfaces.IPloneCacheSettings.purgedContentTypes">
     <field type="plone.registry.field.Tuple">

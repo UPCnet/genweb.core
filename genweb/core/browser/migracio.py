@@ -151,3 +151,19 @@ class ChangeEventsView(grok.View):
             if portal['ca'].get('esdeveniments', False):
                 esdeveniments = portal['ca'].get('esdeveniments')
                 esdeveniments.setLayout('event_listing')
+
+
+class ChangeTinyCSS(grok.View):
+    """
+        Execute one action view in all instances
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('change_tiny_css')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        ptiny = api.portal.get_tool('portal_tinymce')
+        ptiny.content_css = u'++genwebupc++stylesheets/genwebupc.css'
