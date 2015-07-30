@@ -1853,3 +1853,10 @@ msgstr "You can add an id, a class or an html element. For example, in an standa
 
 msgid "Existing Content"
 msgstr "Existing content"
+
+
+msgid "multi_email"
+msgstr "Select shipping address"
+
+msgid "help_contacte_multi_email"
+msgstr "You can select the contact who receives the messages."

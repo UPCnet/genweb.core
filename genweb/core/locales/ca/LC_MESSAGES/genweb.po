@@ -1966,3 +1966,9 @@ msgstr "Aquí podeu introduïr un id, class o element html. Per exemple en una p
 
 msgid "Existing Content"
 msgstr "Contingut existent"
+
+msgid "multi_email"
+msgstr "Seleccionar l'adreça d'enviament"
+
+msgid "help_contacte_multi_email"
+msgstr "Es pot seleccionar a qui s'envia el missatge de contacte."
