@@ -266,7 +266,7 @@ msgstr "Privado"
 
 #. Default: "Fer un element privat significa que no serà visible per ninguna persona excepte el propietari."
 msgid "Making an item private means that it will not be visible to anyone but the owner and the site administrator."
-msgstr "Hace un elemento privado significa que no será visible para madie excepto para el propietario."
+msgstr "Hacer un elemento privado significa que no será visible para nadie excepto para el propietario."
 
 #. Default: "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
 msgid "Making an item published to intranet means that it will be visible to the members (readers)."
