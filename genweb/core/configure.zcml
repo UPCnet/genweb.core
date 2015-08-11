@@ -42,6 +42,7 @@
     <include package="genweb.controlpanel" />
     <include package="genweb.portlets" />
     <include package="genweb.theme" />
+    <include package="genweb.cdn" />
     <include package="genweb.alternatheme" />
     <include package="jarn.jsi18n" />
     <include package="Products.PloneLDAP" />

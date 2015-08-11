@@ -936,7 +936,7 @@ class GetRenderedStylesheets(grok.View):
                         'content': content}
             else:
                 raise ValueError("Unkown rendering method '%s' for style '%s'" % (rendering, style.getId()))
-            result.append(data)
+            result.append(data['src'])
         return result
 
     def skinname(self):
