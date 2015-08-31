@@ -17,7 +17,7 @@ from Products.CMFCore.MemberDataTool import MemberData as BaseMemberData
 from Products.PluggableAuthService.interfaces.authservice import IPluggableAuthService
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
 
-from genweb.core.utils import get_safe_member_by_id
+from genweb.core.utils import get_safe_member_by_id, pref_lang
 
 
 import unicodedata
@@ -105,11 +105,9 @@ def generate_user_id(self, data):
 
 def filter_query(self, query):
     request = self.request
-
     catalog = getToolByName(self.context, 'portal_catalog')
     valid_indexes = tuple(catalog.indexes())
     valid_keys = self.valid_keys + valid_indexes
-
     text = query.get('SearchableText', None)
     if text is None:
         text = request.form.get('SearchableText', '')
@@ -405,3 +403,34 @@ def SearchableText(obj, text=False):
         safe_unicode(subjects) or u'',
         safe_unicode(creators) or u'',
     ))
+
+def getThreads(self, start=0, size=None, root=0, depth=None):
+        """Get threaded comments
+        """
+
+        def recurse(comment_id, d=0):
+            # Yield the current comment before we look for its children
+            yield {'id': comment_id, 'comment': self[comment_id], 'depth': d}
+
+            # Recurse if there are children and we are not out of our depth
+            if depth is None or d + 1 < depth:
+                children = self._children.get(comment_id, None)
+                if children is not None:
+                    for child_id in children:
+                        for value in recurse(child_id, d + 1):
+                            yield value
+
+        # Find top level threads
+        comments = self._children.get(root, None)
+        if comments is not None:
+            count = 0l
+            for comment_id in reversed(comments.keys(min=start)):
+
+                # Abort if we have found all the threads we want
+                count += 1
+                if size and count > size:
+                    return
+
+                # Let the closure recurse
+                for value in recurse(comment_id):
+                    yield value

@@ -103,4 +103,11 @@
         replacement=".browser.dxforms.update"
         />
 
+     <monkey:patch
+        description="Force to the comments portlet to show comments in descending order from most newest to the most older"
+        module="plone.app.discussion.conversation.Conversation"
+        original="getThreads"
+        replacement=".patches.getThreads"
+        />
+
 </configure>
