@@ -241,7 +241,6 @@ def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
         soup.reindex(records=[user_record])
         return
 
-    import ipdb;ipdb.set_trace()
     # Build the searchable_text field for wildcard searchs
     user_record.attrs['searchable_text'] = ' '.join([unicodedata.normalize('NFKD', user_record.attrs[key]).encode('ascii', errors='ignore') for key in user_properties_utility.properties if user_record.attrs.get(key, False)])
 
@@ -293,14 +292,15 @@ def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
             # Save for free the extended properties in the main user_properties soup
             # for easy access with one query
             if properties:
-                # Only update it if user has already not property set or it's empty
-                has_property_definition = attr in properties
-                property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
-                if has_property_definition and (property_empty_or_not_set or overwrite):
-                    if isinstance(properties[attr], str):
-                        user_record.attrs[attr] = properties[attr].decode('utf-8')
-                    else:
-                        user_record.attrs[attr] = properties[attr]
+                for attr in extended_user_properties_utility.properties:
+                    has_property_definition = attr in properties
+                    property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
+                    # Only update it if user has already not property set or it's empty
+                    if has_property_definition and (property_empty_or_not_set or overwrite):
+                        if isinstance(properties[attr], str):
+                            user_record.attrs[attr] = properties[attr].decode('utf-8')
+                        else:
+                            user_record.attrs[attr] = properties[attr]
 
             soup.reindex(records=[user_record])
             extended_soup.reindex(records=[extended_user_record])
