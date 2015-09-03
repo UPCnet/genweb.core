@@ -3,140 +3,32 @@ from plone import api
 from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent
 from Products.PluggableAuthService.interfaces.events import IPropertiesUpdatedEvent
-from repoze.catalog.query import Eq
-from souper.interfaces import ICatalogFactory
-from souper.soup import get_soup
-from souper.soup import Record
-from zope.component import getUtility
-from zope.component import getUtilitiesFor
 from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
-from Products.PluggableAuthService.events import PropertiesUpdated
-from zope.event import notify
 
-from genweb.core import IAMULEARN
-from genweb.core.directory import METADATA_USER_ATTRS
 
-import unicodedata
+from genweb.core.utils import get_all_user_properties
+from genweb.core.utils import add_user_to_catalog
 
 
 @grok.subscribe(IPropertiedUser, IPrincipalCreatedEvent)
-@grok.subscribe(IPropertiedUser, IPropertiesUpdatedEvent)
-def add_user_to_catalog(principal, event):
+def create_user_hook(user, event):
     """ This subscriber hooks on user creation and adds user properties to the
         soup-based catalog for later searches
     """
-    portal = api.portal.get()
-    soup = get_soup('user_properties', portal)
+    add_user_to_catalog(user)
 
-    exist = [r for r in soup.query(Eq('id', principal.getUserName()))]
 
-    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+@grok.subscribe(IPropertiedUser, IPropertiesUpdatedEvent)
+def update_user_properties_hook(user, event):
+    """ This subscriber hooks on user creation and adds user properties to the
+        soup-based catalog for later searches
+    """
 
-    if exist:
-        user_record = exist[0]
-        # Just in case that a user became a legit one and previous was a nonlegit
-        user_record.attrs['notlegit'] = False
-    else:
-        record = Record()
-        record_id = soup.add(record)
-        user_record = soup.get(record_id)
-
-    if isinstance(principal.getUserName(), str):
-        user_record.attrs['username'] = principal.getUserName().decode('utf-8')
-        user_record.attrs['id'] = principal.getUserName().decode('utf-8')
-    else:
-        user_record.attrs['username'] = principal.getUserName()
-        user_record.attrs['id'] = principal.getUserName()
-
-    if IPropertiesUpdatedEvent.providedBy(event):
-        for attr in user_properties_utility.properties + METADATA_USER_ATTRS:
-            if attr in event.properties:
-                if isinstance(event.properties[attr], str):
-                    user_record.attrs[attr] = event.properties[attr].decode('utf-8')
-                else:
-                    user_record.attrs[attr] = event.properties[attr]
-
-    # Build the searchable_text field for wildcard searches
-    user_record.attrs['searchable_text'] = ' '.join([unicodedata.normalize('NFKD', user_record.attrs[key]).encode('ascii', errors='ignore') for key in user_properties_utility.properties if user_record.attrs.get(key, False)])
-
-    soup.reindex(records=[user_record])
-
-    # If uLearn is present, then lookup for a customized set of fields and its
-    # related soup. The soup has the form 'user_properties_<client_name>'. This
-    # feature is currently restricted to uLearn but could be easily backported
-    # to Genweb. The setting that makes the extension available lives in:
-    # 'genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender'
-    if IAMULEARN:
-        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
-        # Make sure that, in fact we have such a extender in place
-        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
-            extended_soup = get_soup(extender_name, portal)
-            exist = []
-            exist = [r for r in extended_soup.query(Eq('id', principal.getUserName()))]
-            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
-
-            if exist:
-                extended_user_record = exist[0]
-            else:
-                record = Record()
-                record_id = extended_soup.add(record)
-                extended_user_record = extended_soup.get(record_id)
-
-            if isinstance(principal.getUserName(), str):
-                extended_user_record.attrs['username'] = principal.getUserName().decode('utf-8')
-                extended_user_record.attrs['id'] = principal.getUserName().decode('utf-8')
-            else:
-                extended_user_record.attrs['username'] = principal.getUserName()
-                extended_user_record.attrs['id'] = principal.getUserName()
-
-            if IPropertiesUpdatedEvent.providedBy(event):
-                for attr in extended_user_properties_utility.properties:
-                    if attr in event.properties:
-                        if isinstance(event.properties[attr], str):
-                            extended_user_record.attrs[attr] = event.properties[attr].decode('utf-8')
-                        else:
-                            extended_user_record.attrs[attr] = event.properties[attr]
-
-            # Update the searchable_text of the standard user record field with
-            # the ones in the extended catalog
-            user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' ' + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.properties if extended_user_record.attrs.get(key, False)])
-
-            # Save for free the extended properties in the main user_properties soup
-            # for easy access with one query
-            if IPropertiesUpdatedEvent.providedBy(event):
-                for attr in extended_user_properties_utility.properties:
-                    if attr in event.properties:
-                        if isinstance(event.properties[attr], str):
-                            user_record.attrs[attr] = event.properties[attr].decode('utf-8')
-                        else:
-                            user_record.attrs[attr] = event.properties[attr]
-
-            soup.reindex(records=[user_record])
-            extended_soup.reindex(records=[extended_user_record])
+    add_user_to_catalog(user, event.properties, overwrite=True)
 
 
 @grok.subscribe(IUserLoggedInEvent)
 def UpdateUserPropertiesOnLogin(event):
     user = api.user.get_current()
-
-    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
-
-    attributes = user_properties_utility.properties + METADATA_USER_ATTRS
-
-    try:
-        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
-    except:
-        extender_name = ''
-
-    if extender_name:
-        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
-            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
-            attributes = attributes + extended_user_properties_utility.properties
-
-    mapping = {}
-    for attr in attributes:
-        value = user.getProperty(attr)
-        if isinstance(value, str) or isinstance(value, unicode):
-            mapping.update({attr: value})
-
-    add_user_to_catalog(user, PropertiesUpdated(user, mapping))
+    properties = get_all_user_properties(user)
+    add_user_to_catalog(user, properties, overwrite=True)

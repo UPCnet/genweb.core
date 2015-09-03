@@ -19,6 +19,7 @@ from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.PlonePAS.tools.memberdata import MemberData
+from Products.PlonePAS.plugins.ufactory import PloneUser
 from souper.interfaces import ICatalogFactory
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
@@ -137,21 +138,65 @@ def get_safe_member_by_id(username):
                 'fullname': ''}
 
 
-def add_user_to_catalog(user, properties, notlegit=False):
-    """ Adds user to the user catalog even if it's a MemberData wrapped one or a
-        new (string) username.
+def get_all_user_properties(user):
+    """
+        Returns a mapping with all the defined user profile properties and its values.
+
+        The properties list includes all properties defined on any profile extension that
+        is currently registered. For each of this properties, the use object is queried to
+        retrieve the value. This may result in a empty value if that property is not set, or
+        the value of the property provided by any properties PAS plugin.
+
+        NOTE: Mapped LDAP atrributes will be retrieved and returned on this mapping if any.
+
+    """
+    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+    attributes = user_properties_utility.properties + METADATA_USER_ATTRS
+
+    try:
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+    except:
+        extender_name = ''
+
+    if extender_name:
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
+            attributes = attributes + extended_user_properties_utility.properties
+
+    mapping = {}
+    for attr in attributes:
+        value = user.getProperty(attr)
+        if isinstance(value, str) or isinstance(value, unicode):
+            mapping.update({attr: value})
+
+    return mapping
+
+
+def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
+    """ Adds a user to the user catalog
+
+        As this method can be called from multiple places, user parameter can be
+        a MemberData wrapped user, a PloneUser object or a plain (string) username.
+
+        If the properties parameter is ommitted, only a basic record identifying the
+        user will be created, with no extra properties.
 
         The 'notlegit' argument is used when you can add the user for its use in
         the ACL user search facility. If so, the user would not have
         'searchable_text' and therefore not searchable. It would have an extra
         'notlegit' index.
 
-        If some parts of this method is modified, you should update the
-        genweb.core.directory.subscriber module twin one.
+        The overwrite argument controls whether an existing attribute value on a user
+        record will be overwritten or not by the incoming value. This is in order to protect
+        user-provided values via the profile page.
+
+
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
     if isinstance(user, MemberData):
+        username = user.getUserName()
+    elif isinstance(user, PloneUser):
         username = user.getUserName()
     else:
         username = user
@@ -160,6 +205,8 @@ def add_user_to_catalog(user, properties, notlegit=False):
 
     if exist:
         user_record = exist[0]
+        # Just in case that a user became a legit one and previous was a nonlegit
+        user_record.attrs['notlegit'] = False
     else:
         record = Record()
         record_id = soup.add(record)
@@ -177,13 +224,15 @@ def add_user_to_catalog(user, properties, notlegit=False):
         user_record.attrs['username'] = username
         user_record.attrs['id'] = username
 
-    for attr in user_properties_utility.properties + METADATA_USER_ATTRS:
-        # Only update it if user has already not property set or it's empty
-        if attr in properties and user_record.attrs.get(attr, u'') == u'':
-            if isinstance(properties[attr], str):
-                user_record.attrs[attr] = properties[attr].decode('utf-8')
-            else:
-                user_record.attrs[attr] = properties[attr]
+    if properties:
+        for attr in user_properties_utility.properties + METADATA_USER_ATTRS:
+            has_property_definition = attr in properties
+            property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
+            if has_property_definition and (property_empty_or_not_set or overwrite):
+                if isinstance(properties[attr], str):
+                    user_record.attrs[attr] = properties[attr].decode('utf-8')
+                else:
+                    user_record.attrs[attr] = properties[attr]
 
     # If notlegit mode, then reindex without setting the 'searchable_text' This
     # is because in non legit mode, maybe existing legit users got unaffected by
@@ -192,6 +241,7 @@ def add_user_to_catalog(user, properties, notlegit=False):
         soup.reindex(records=[user_record])
         return
 
+    import ipdb;ipdb.set_trace()
     # Build the searchable_text field for wildcard searchs
     user_record.attrs['searchable_text'] = ' '.join([unicodedata.normalize('NFKD', user_record.attrs[key]).encode('ascii', errors='ignore') for key in user_properties_utility.properties if user_record.attrs.get(key, False)])
 
@@ -204,6 +254,7 @@ def add_user_to_catalog(user, properties, notlegit=False):
     # 'genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender'
     if IAMULEARN:
         extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+        # Make sure that, in fact we have such a extender in place
         if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
             extended_soup = get_soup(extender_name, portal)
             exist = []
@@ -224,13 +275,16 @@ def add_user_to_catalog(user, properties, notlegit=False):
                 extended_user_record.attrs['username'] = username
                 extended_user_record.attrs['id'] = username
 
-            for attr in extended_user_properties_utility.properties:
-                # Only update it if user has already not property set or it's empty
-                if attr in properties and user_record.attrs.get(attr, u'') == u'':
-                    if isinstance(properties[attr], str):
-                        extended_user_record.attrs[attr] = properties[attr].decode('utf-8')
-                    else:
-                        extended_user_record.attrs[attr] = properties[attr]
+            if properties:
+                for attr in extended_user_properties_utility.properties:
+                    has_property_definition = attr in properties
+                    property_empty_or_not_set = extended_user_record.attrs.get(attr, u'') == u''
+                    # Only update it if user has already not property set or it's empty
+                    if has_property_definition and (property_empty_or_not_set or overwrite):
+                        if isinstance(properties[attr], str):
+                            extended_user_record.attrs[attr] = properties[attr].decode('utf-8')
+                        else:
+                            extended_user_record.attrs[attr] = properties[attr]
 
             # Update the searchable_text of the standard user record field with
             # the ones in the extended catalog
@@ -238,9 +292,11 @@ def add_user_to_catalog(user, properties, notlegit=False):
 
             # Save for free the extended properties in the main user_properties soup
             # for easy access with one query
-            for attr in extended_user_properties_utility.properties:
+            if properties:
                 # Only update it if user has already not property set or it's empty
-                if attr in properties and user_record.attrs.get(attr, u'') == u'':
+                has_property_definition = attr in properties
+                property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
+                if has_property_definition and (property_empty_or_not_set or overwrite):
                     if isinstance(properties[attr], str):
                         user_record.attrs[attr] = properties[attr].decode('utf-8')
                     else:
