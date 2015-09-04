@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.7.4 (unreleased)
+4.7.4 (2015-09-04)
 ------------------
 
-- Nothing changed yet.
-
+* Unify add_user_to_catalog to utils module. [Carles Bruguera]
+* Comments in descending order by date [helena orihuela]
+* Add tests for viewlets [Victor Fernandez de Alba]
+* Adapt to new package genweb.cdn [Victor Fernandez de Alba]
+* Traduccions [Pilar Marinas]
 
 4.7.3 (2015-07-30)
 ------------------
