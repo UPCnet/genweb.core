@@ -55,7 +55,7 @@ class baseResourcesViewlet(grok.Viewlet):
         return resource_file.read()
 
     def get_resources(self):
-        if self.is_devel_mode:
+        if self.is_devel_mode():
             return self.get_development_resources()
         else:
             return self.get_production_resources()
