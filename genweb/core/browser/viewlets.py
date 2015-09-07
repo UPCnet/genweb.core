@@ -45,6 +45,15 @@ class baseResourcesViewlet(grok.Viewlet):
     resource_type = None
     current_egg_name = None
 
+    index_css = ViewPageTemplateFile('viewlets_templates/gwcssviewlet.pt')
+    index_js = ViewPageTemplateFile('viewlets_templates/gwjsviewlet.pt')
+
+    def render(self):
+        if self.resource_type == 'css':
+            return self.index_css()
+        if self.resource_type == 'js':
+            return self.index_js()
+
     def is_devel_mode(self):
         return api.env.debug_mode()
 

@@ -1,0 +1,10 @@
+<tal:jsdefines define="portal_state context/@@plone_portal_state;
+                       portal_url portal_state/portal_url">
+
+<!-- Beginning of the JS compiled resources -->
+<tal:resources repeat="resource view/get_resources">
+    <script tal:attributes="src string:${portal_url}/${resource}"></script>
+</tal:resources>
+<!-- End of the JS compiled resources -->
+
+</tal:jsdefines>

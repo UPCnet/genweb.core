@@ -1,0 +1,10 @@
+<tal:cssdefines define="portal_state context/@@plone_portal_state;
+                       portal_url portal_state/portal_url">
+
+<!-- Beginning of the CSS compiled resources -->
+<tal:resources repeat="resource view/get_resources">
+    <link rel="stylesheet" tal:attributes="href string:${portal_url}/${resource}">
+</tal:resources>
+<!-- End of the CSS compiled resources -->
+
+</tal:cssdefines>
