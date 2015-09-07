@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest2 as unittest
 from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
-from genweb.theme.browser.viewlets import gwCSSDevelViewlet
-from genweb.theme.browser.viewlets import gwCSSProductionViewlet
-from genweb.js.browser.viewlets import gwJSDevelViewlet
-from genweb.js.browser.viewlets import gwJSProductionViewlet
+from genweb.theme.browser.viewlets import gwCSSViewlet
+from genweb.js.browser.viewlets import gwJSViewlet
 
 import json
 import pkg_resources
@@ -21,24 +19,24 @@ class TestExample(unittest.TestCase):
 
         genwebthemeegg = pkg_resources.get_distribution('genweb.theme')
         genwebjsegg = pkg_resources.get_distribution('genweb.js')
-        resource_file_css = open('{}/config.json'.format(genwebthemeegg.location))
-        resource_file_js = open('{}/config.json'.format(genwebjsegg.location))
+        resource_file_css = open('{}/genweb/theme/config.json'.format(genwebthemeegg.location))
+        resource_file_js = open('{}/genweb/js/config.json'.format(genwebjsegg.location))
         self.resources_conf_css = json.loads(resource_file_css.read())
         self.resources_conf_js = json.loads(resource_file_js.read())
 
     def test_css_development_resource_viewlet(self):
 
-        viewlet = gwCSSDevelViewlet(self.portal, self.request, None, None)
+        viewlet = gwCSSViewlet(self.portal, self.request, None, None)
         viewlet.update()
-        resources = viewlet.get_resources()
+        resources = viewlet.get_development_resources()
 
         for resource in resources:
             self.assertTrue('++' in resource)
 
     def test_css_production_resource_viewlet(self):
-        viewlet = gwCSSProductionViewlet(self.portal, self.request, None, None)
+        viewlet = gwCSSViewlet(self.portal, self.request, None, None)
         viewlet.update()
-        resources = viewlet.get_resources()
+        resources = viewlet.get_production_resources()
 
         for resource in resources:
             self.assertTrue('++' in resource)
@@ -47,17 +45,17 @@ class TestExample(unittest.TestCase):
 
     def test_js_development_resource_viewlet(self):
 
-        viewlet = gwJSDevelViewlet(self.portal, self.request, None, None)
+        viewlet = gwJSViewlet(self.portal, self.request, None, None)
         viewlet.update()
-        resources = viewlet.get_resources()
+        resources = viewlet.get_development_resources()
 
         for resource in resources:
             self.assertTrue('++' in resource)
 
     def test_js_production_resource_viewlet(self):
-        viewlet = gwJSProductionViewlet(self.portal, self.request, None, None)
+        viewlet = gwJSViewlet(self.portal, self.request, None, None)
         viewlet.update()
-        resources = viewlet.get_resources()
+        resources = viewlet.get_production_resources()
 
         for resource in resources:
             self.assertTrue('++' in resource)
