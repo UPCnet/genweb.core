@@ -167,3 +167,31 @@ class ChangeTinyCSS(grok.View):
 
         ptiny = api.portal.get_tool('portal_tinymce')
         ptiny.content_css = u'++genwebupc++stylesheets/genwebupc.css'
+
+
+class FixPropertiesAndPortrait(grok.View):
+    """
+        This was used in the Blanquerna instance when changed from userids with
+        upper and lower case to transform it to lowercase.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('fixpropertiesandprotrait')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        pmdata = api.portal.get_tool('portal_memberdata')
+        pmship = api.portal.get_tool('portal_membership')
+
+        for portrait_data in pmdata.portrait.items:
+            userid = portrait_data[0]
+            if userid != userid.lower():
+                if not pmdata._getPortrait(userid.lower()):
+                    pmdata._setPortrait(pmdata._getPortrait(userid), userid.lower())
+                    pmdata._deletePortrait(userid)
+                    logger.error('Transferred photo to {}'.format(userid.lower()))
+
+            pmship._storage.get(userid.lower())['oauth_token'] = pmship._storage.get(userid)['oauth_token']
+            logger.error('Transferred oauth_token to {}'.format(userid.lower()))

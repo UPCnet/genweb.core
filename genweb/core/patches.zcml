@@ -110,4 +110,19 @@
         replacement=".patches.getThreads"
         />
 
+<!-- LDAP and user objects related patches -->
+     <monkey:patch
+        description="Force LDAP plugin authenticate to normalize userids and usernames to lowercase"
+        module="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
+        original="getUserByAttr"
+        replacement=".patches.getUserByAttr"
+        />
+
+     <monkey:patch
+        description="Force LDAP plugin enumerate to normalize userids and usernames to lowercase"
+        module="Products.LDAPMultiPlugins.LDAPMultiPlugin.LDAPMultiPlugin"
+        original="enumerateUsers"
+        replacement=".patches.enumerateUsers"
+        />
+
 </configure>

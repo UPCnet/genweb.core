@@ -1,3 +1,8 @@
+try:
+    from hashlib import sha1 as sha_new
+except ImportError:
+    from sha import new as sha_new
+from urllib import quote_plus
 from Acquisition import aq_inner
 from pyquery import PyQuery as pq
 from plone import api
@@ -9,6 +14,8 @@ from Products.PlonePAS.utils import safe_unicode
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 from Products.PluggableAuthService.PropertiedUser import PropertiedUser
+from Products.LDAPUserFolder.LDAPUser import NonexistingUser
+from Products.LDAPUserFolder.LDAPUser import LDAPUser
 
 from zope.event import notify
 from Products.PluggableAuthService.events import PropertiesUpdated
@@ -404,6 +411,7 @@ def SearchableText(obj, text=False):
         safe_unicode(creators) or u'',
     ))
 
+
 def getThreads(self, start=0, size=None, root=0, depth=None):
         """Get threaded comments
         """
@@ -434,3 +442,197 @@ def getThreads(self, start=0, size=None, root=0, depth=None):
                 # Let the closure recurse
                 for value in recurse(comment_id):
                     yield value
+
+
+def getUserByAttr(self, name, value, pwd=None, cache=0):
+    """
+        Get a user based on a name/value pair representing an
+        LDAP attribute provided to the user.  If cache is True,
+        try to cache the result using 'value' as the key
+    """
+    if not value:
+        return None
+
+    cache_type = pwd and 'authenticated' or 'anonymous'
+    negative_cache_key = '%s:%s:%s' % (name,
+                                      value,
+                                      sha_new(pwd or '').hexdigest())
+    if cache:
+        if self._cache('negative').get(negative_cache_key) is not None:
+            return None
+
+        cached_user = self._cache(cache_type).get(value, pwd)
+
+        if cached_user:
+            msg = 'getUserByAttr: "%s" cached in %s cache' % (value, cache_type)
+            logger.debug(msg)
+            return cached_user
+
+    user_roles, user_dn, user_attrs, ldap_groups = self._lookupuserbyattr(name=name, value=value, pwd=pwd)
+
+    if user_dn is None:
+        logger.debug('getUserByAttr: "%s=%s" not found' % (name, value))
+        self._cache('negative').set(negative_cache_key, NonexistingUser())
+        return None
+
+    if user_attrs is None:
+        msg = 'getUserByAttr: "%s=%s" has no properties, bailing' % (name, value)
+        logger.debug(msg)
+        self._cache('negative').set(negative_cache_key, NonexistingUser())
+        return None
+
+    if user_roles is None or user_roles == self._roles:
+        msg = 'getUserByAttr: "%s=%s" only has roles %s' % (name, value, str(user_roles))
+        logger.debug(msg)
+
+    login_name = user_attrs.get(self._login_attr, '')
+    uid = user_attrs.get(self._uid_attr, '')
+
+    if self._login_attr != 'dn' and len(login_name) > 0:
+        if name == self._login_attr:
+            logins = [x for x in login_name
+                      if value.strip().lower() == x.lower()]
+            login_name = logins[0]
+        else:
+            login_name = login_name[0]
+    elif len(login_name) == 0:
+        msg = 'getUserByAttr: "%s" has no "%s" (Login) value!' % (user_dn, self._login_attr)
+        logger.debug(msg)
+        self._cache('negative').set(negative_cache_key, NonexistingUser())
+        return None
+
+    if self._uid_attr != 'dn' and len(uid) > 0:
+        uid = uid[0]
+    elif len(uid) == 0:
+        msg = 'getUserByAttr: "%s" has no "%s" (UID Attribute) value!' % (user_dn, self._uid_attr)
+        logger.debug(msg)
+        self._cache('negative').set(negative_cache_key, NonexistingUser())
+        return None
+
+    # BEGIN PATCH
+    login_name = login_name.lower()
+    uid = uid.lower()
+    # END PATCH
+
+    user_obj = LDAPUser(uid,
+                       login_name,
+                       pwd or 'undef',
+                       user_roles or [],
+                       [],
+                       user_dn,
+                       user_attrs,
+                       self.getMappedUserAttrs(),
+                       self.getMultivaluedUserAttrs(),
+                       ldap_groups=ldap_groups)
+
+    if cache:
+        self._cache(cache_type).set(value, user_obj)
+
+    return user_obj
+
+
+def enumerateUsers(self,
+                  id=None,
+                  login=None,
+                  exact_match=0,
+                  sort_by=None,
+                  max_results=None,
+                  **kw):
+    """ Fulfill the UserEnumerationPlugin requirements """
+    view_name = self.getId() + '_enumerateUsers'
+    criteria = {'id': id, 'login': login, 'exact_match': exact_match,
+                'sort_by': sort_by, 'max_results': max_results}
+    criteria.update(kw)
+
+    cached_info = self.ZCacheable_get(view_name=view_name,
+                                      keywords=criteria,
+                                      default=None)
+
+    if cached_info is not None:
+        logger.debug('returning cached results from enumerateUsers')
+        return cached_info
+
+    result = []
+    acl = self._getLDAPUserFolder()
+    login_attr = acl.getProperty('_login_attr')
+    uid_attr = acl.getProperty('_uid_attr')
+    rdn_attr = acl.getProperty('_rdnattr')
+    plugin_id = self.getId()
+    edit_url = '%s/%s/manage_userrecords' % (plugin_id, acl.getId())
+
+    if acl is None:
+        return ()
+
+    if exact_match and (id or login):
+        if id:
+            ldap_user = acl.getUserById(id)
+            if ldap_user is not None and ldap_user.getId() != id:
+                ldap_user = None
+        elif login:
+            ldap_user = acl.getUser(login)
+            if ldap_user is not None and ldap_user.getUserName() != login:
+                ldap_user = None
+
+        if ldap_user is not None:
+            qs = 'user_dn=%s' % quote_plus(ldap_user.getUserDN())
+            result.append({'id': ldap_user.getId(),
+                           'login': ldap_user.getProperty(login_attr),
+                           'pluginid': plugin_id,
+                           'editurl': '%s?%s' % (edit_url, qs)})
+    else:
+        l_results = []
+        seen = []
+        ldap_criteria = {}
+
+        if id:
+            if uid_attr == 'dn':
+                # Workaround: Due to the way findUser reacts when a DN
+                # is searched for I need to hack around it... This
+                # limits the usefulness of searching by ID if the user
+                # folder uses the full DN aas user ID.
+                ldap_criteria[rdn_attr] = id
+            else:
+                ldap_criteria[uid_attr] = id
+
+        if login:
+            ldap_criteria[login_attr] = login
+
+        for key, val in kw.items():
+            if key not in (login_attr, uid_attr):
+                ldap_criteria[key] = val
+
+        # If no criteria are given create a criteria set that will
+        # return all users
+        if not login and not id:
+            ldap_criteria[login_attr] = ''
+
+        l_results = acl.searchUsers(exact_match=exact_match, **ldap_criteria)
+
+        for l_res in l_results:
+
+            # If the LDAPUserFolder returns an error, bail
+            if (l_res.get('sn', '') == 'Error' and l_res.get('cn', '') == 'n/a'):
+                return ()
+
+            if l_res['dn'] not in seen:
+                # BEGIN PATCH
+                l_res['id'] = l_res[uid_attr].lower()
+                l_res['login'] = l_res[login_attr].lower()
+                # END PATCH
+                l_res['pluginid'] = plugin_id
+                quoted_dn = quote_plus(l_res['dn'])
+                l_res['editurl'] = '%s?user_dn=%s' % (edit_url, quoted_dn)
+                result.append(l_res)
+                seen.append(l_res['dn'])
+
+        if sort_by is not None:
+            result.sort(lambda a, b: cmp(a.get(sort_by, '').lower(),
+                                         b.get(sort_by, '').lower()))
+
+        if isinstance(max_results, int) and len(result) > max_results:
+            result = result[:max_results - 1]
+
+    result = tuple(result)
+    self.ZCacheable_set(result, view_name=view_name, keywords=criteria)
+
+    return result
