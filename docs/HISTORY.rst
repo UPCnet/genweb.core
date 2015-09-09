@@ -1,11 +1,21 @@
 Changelog
 =========
 
-4.7.5 (unreleased)
+4.7.6 (unreleased)
 ------------------
 
 - Nothing changed yet.
 
+
+4.7.5 (2015-09-08)
+------------------
+
+* Fix tests [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Re-refactor for not have to include template in CSS and JS resource viewlets [Victor Fernandez de Alba]
+* Traducciones repeticion eventos [Pilar Marinas]
+* Fix typo with resources viewlet [Victor Fernandez de Alba]
+* New resource viewlet base class [Victor Fernandez de Alba]
 
 4.7.4 (2015-09-04)
 ------------------
