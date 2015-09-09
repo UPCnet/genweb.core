@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.7.6 (unreleased)
+4.7.6 (2015-09-09)
 ------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* New patch for normalize LDAP usernames to lowercase. This completes the normalization of the full system. [Victor Fernandez de Alba]
 
 4.7.5 (2015-09-08)
 ------------------
