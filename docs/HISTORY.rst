@@ -1,11 +1,16 @@
 Changelog
 =========
 
-4.7.7 (unreleased)
+4.7.8 (unreleased)
 ------------------
 
 - Nothing changed yet.
 
+
+4.7.7 (2015-09-10)
+------------------
+
+* Traduccions [Pilar Marinas]
 
 4.7.6 (2015-09-09)
 ------------------
