@@ -323,6 +323,11 @@ msgstr "Codi de control"
 msgid "genweb_help_type_the_code"
 msgstr "Escriviu les paraules de la imatge inferior"
 
+#. Default: "Recipient"
+#: genweb.theme/genweb/theme/browser/contact.py:92
+msgid "to_address"
+msgstr "Contacta amb"
+
 #########
 # Types #
 #########

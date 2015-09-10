@@ -326,6 +326,11 @@ msgstr "Código de control"
 msgid "genweb_help_type_the_code"
 msgstr "Escriba las palabras de la imagen inferior"
 
+#. Default: "Recipient"
+#: genweb.theme/genweb/theme/browser/contact.py:92
+msgid "to_address"
+msgstr "Contacta con"
+
 msgid "more_news_link"
 msgstr "Más noticias"
 
@@ -334,6 +339,7 @@ msgstr "Quizás estabas buscando..."
 
 msgid "label_full_size"
 msgstr "Tamaño original imagen:"
+
 
 ############
 # portlets #
