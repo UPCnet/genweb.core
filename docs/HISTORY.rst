@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.7.8 (unreleased)
+4.7.8 (2015-09-14)
 ------------------
 
-- Nothing changed yet.
-
+* when add user to catalog, change username to lower [Paco Gregori]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate contact recipient [hanirok]
 
 4.7.7 (2015-09-10)
 ------------------
