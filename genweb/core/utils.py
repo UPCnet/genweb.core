@@ -200,6 +200,8 @@ def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
         username = user.getUserName()
     else:
         username = user
+    # add lower to take correct user_soup
+    username = username.lower()
     exist = [r for r in soup.query(Eq('id', username))]
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
 
