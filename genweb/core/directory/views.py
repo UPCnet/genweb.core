@@ -41,6 +41,7 @@ class SyncLDAPGroups(grok.View):
         if results:
             portal = api.portal.get()
             soup = get_soup('ldap_groups', portal)
+            soup.clear()
             to_print = []
 
             for dn, attrs in results:
@@ -51,7 +52,9 @@ class SyncLDAPGroups(grok.View):
                 else:
                     record = Record()
                     record.attrs['id'] = group_id
-                    record.attrs['searchable_id'] = group_id
+
+                    # Index entries MUST be unicode in order to search using special chars
+                    record.attrs['searchable_id'] = group_id.decode('utf-8')
                     soup.add(record)
                     to_print.append('Added record for group: {}'.format(group_id))
 
