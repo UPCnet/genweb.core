@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.7.9 (unreleased)
+4.7.9 (2015-09-15)
 ------------------
 
-- Nothing changed yet.
-
+* Rebuild always catalog with unicode strings [Carles Bruguera]
 
 4.7.8 (2015-09-14)
 ------------------
