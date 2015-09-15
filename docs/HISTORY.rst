@@ -1,10 +1,10 @@
 Changelog
 =========
 
-4.7.10 (unreleased)
+4.7.10 (2015-09-15)
 -------------------
 
-- Nothing changed yet.
+* Rebuild .mo
 
 
 4.7.9 (2015-09-15)
