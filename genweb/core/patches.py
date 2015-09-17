@@ -598,7 +598,7 @@ def enumerateUsers(self,
             ldap_criteria[login_attr] = login
 
         for key, val in kw.items():
-            if key not in (login_attr, uid_attr):
+            if key not in (login_attr, uid_attr): 
                 ldap_criteria[key] = val
 
         # If no criteria are given create a criteria set that will
