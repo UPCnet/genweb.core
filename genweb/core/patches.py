@@ -636,3 +636,20 @@ def enumerateUsers(self,
     self.ZCacheable_set(result, view_name=view_name, keywords=criteria)
 
     return result
+
+def std_title(self):
+        page_title = safe_unicode(self.context_state.object_title())
+        portal_title = safe_unicode(self.portal_state.portal_title())
+        marca_UPC = u"UPC. Universitat Politècnica de Catalunya"
+        
+        if page_title == portal_title:
+            return u"<title>%s</title>" % (escape(portal_title))
+        else:
+            root_path= '/'.join(self.portal_state.portal().getPhysicalPath())+'/'+ self.portal_state.language()
+            if root_path == '/'.join(self.portal_state.context.getPhysicalPath()):
+                return u"<title>%s &mdash; %s</title>" % (
+                escape(safe_unicode(portal_title)),marca_UPC)
+            else:
+                return u"<title>%s &mdash; %s</title>" % (
+                escape(safe_unicode(page_title)),
+                escape(safe_unicode(portal_title)))
