@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.7.11 (unreleased)
+4.7.11 (2015-09-18)
 -------------------
 
-- Nothing changed yet.
-
+* Method to remove a user entry from soup [Carles Bruguera]
+* title fixed [helena orihuela]
 
 4.7.10 (2015-09-15)
 -------------------
