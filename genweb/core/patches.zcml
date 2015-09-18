@@ -110,13 +110,7 @@
         replacement=".patches.getThreads"
         />
 
-        <monkey:patch
-        description="Force homepage title to include UPC name"
-        module="quintagroup.seoptimizer.browser.viewlets.TitleCommentNoframeViewlet"
-        original="std_title"
-        replacement=".patches.std_title"
-         /> 
-
+        
 <!-- LDAP and user objects related patches -->
      <monkey:patch
         description="Force LDAP plugin authenticate to normalize userids and usernames to lowercase"
