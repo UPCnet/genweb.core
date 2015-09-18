@@ -340,6 +340,13 @@ msgstr "Quizás estabas buscando..."
 msgid "label_full_size"
 msgstr "Tamaño original imagen:"
 
+msgid "upc_heading_send_feedback_confirm"
+msgstr "El correo se ha enviado correctamente"
+
+msgid "upc_message_send_feedback_confirm"
+msgstr "Se ha enviado un correo con sus preguntas y/o comentarios."
+
+
 
 ############
 # portlets #

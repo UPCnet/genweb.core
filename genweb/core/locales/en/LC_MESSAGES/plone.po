@@ -138,3 +138,9 @@ msgstr "Write the massage"
 #: genweb.theme/genweb/theme/browser/contact.py:92
 msgid "to_address"
 msgstr "Contact with"
+
+msgid "upc_heading_send_feedback_confirm"
+msgstr "Your email has been sent"
+
+msgid "upc_message_send_feedback_confirm"
+msgstr "A mail has now been sent regarding your questions and/or comments. "

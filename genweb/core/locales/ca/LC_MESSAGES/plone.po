@@ -328,6 +328,12 @@ msgstr "Escriviu les paraules de la imatge inferior"
 msgid "to_address"
 msgstr "Contacta amb"
 
+msgid "upc_heading_send_feedback_confirm"
+msgstr "El missatge s'ha enviat correctament."
+
+msgid "upc_message_send_feedback_confirm"
+msgstr "S'ha enviat un missatge de correu electrònic amb les seves preguntes i/o comentaris."
+
 #########
 # Types #
 #########
