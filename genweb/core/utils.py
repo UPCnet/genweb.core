@@ -172,6 +172,15 @@ def get_all_user_properties(user):
     return mapping
 
 
+def remove_user_from_catalog(username):
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    exists = [r for r in soup.query(Eq('id', username))]
+    if exists:
+        user_record = exists[0]
+        del soup[user_record]
+
+
 def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
     """ Adds a user to the user catalog
 
