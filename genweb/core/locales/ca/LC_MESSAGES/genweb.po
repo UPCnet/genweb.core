@@ -1934,6 +1934,9 @@ msgstr "Vista continguts"
 msgid "itemstable_view"
 msgstr "Vista amb icones"
 
+msgid "summary_view_news"
+msgstr "Vista notícies"
+
 msgid "folder_index_view"
 msgstr "Índex de contingut"
 

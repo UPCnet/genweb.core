@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 try:
     from hashlib import sha1 as sha_new
 except ImportError:
@@ -30,6 +31,7 @@ from genweb.core.utils import get_safe_member_by_id, pref_lang
 import unicodedata
 import inspect
 import logging
+from cgi import escape
 
 
 logger = logging.getLogger('event.LDAPUserFolder')
@@ -598,7 +600,7 @@ def enumerateUsers(self,
             ldap_criteria[login_attr] = login
 
         for key, val in kw.items():
-            if key not in (login_attr, uid_attr):
+            if key not in (login_attr, uid_attr): 
                 ldap_criteria[key] = val
 
         # If no criteria are given create a criteria set that will

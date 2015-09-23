@@ -114,3 +114,33 @@ msgstr "Back to previous page"
 
 msgid "portlet_static_title"
 msgstr "Static portlet"
+
+############
+# Contacte #
+############
+
+msgid "genweb_sender_fullname"
+msgstr "Name"
+
+msgid "genweb_sender_from_address"
+msgstr "Email address"
+
+msgid "genweb_subject"
+msgstr "Subject"
+
+msgid "genweb_message"
+msgstr "Message"
+
+msgid "genweb_help_message"
+msgstr "Write the massage"
+
+#. Default: "Recipient"
+#: genweb.theme/genweb/theme/browser/contact.py:92
+msgid "to_address"
+msgstr "Contact with"
+
+msgid "upc_heading_send_feedback_confirm"
+msgstr "Your email has been sent"
+
+msgid "upc_message_send_feedback_confirm"
+msgstr "A mail has now been sent regarding your questions and/or comments. "

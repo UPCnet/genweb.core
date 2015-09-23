@@ -110,6 +110,7 @@
         replacement=".patches.getThreads"
         />
 
+        
 <!-- LDAP and user objects related patches -->
      <monkey:patch
         description="Force LDAP plugin authenticate to normalize userids and usernames to lowercase"
@@ -124,5 +125,7 @@
         original="enumerateUsers"
         replacement=".patches.enumerateUsers"
         />
+
+
 
 </configure>

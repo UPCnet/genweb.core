@@ -1,11 +1,40 @@
 Changelog
 =========
 
-4.7.7 (unreleased)
-------------------
+4.7.12 (unreleased)
+-------------------
 
 - Nothing changed yet.
 
+
+4.7.11 (2015-09-18)
+-------------------
+
+* Method to remove a user entry from soup [Carles Bruguera]
+* title fixed [helena orihuela]
+
+4.7.10 (2015-09-15)
+-------------------
+
+* Rebuild .mo
+
+
+4.7.9 (2015-09-15)
+------------------
+
+* Rebuild always catalog with unicode strings [Carles Bruguera]
+
+4.7.8 (2015-09-14)
+------------------
+
+* when add user to catalog, change username to lower [Paco Gregori]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate contact recipient [hanirok]
+
+4.7.7 (2015-09-10)
+------------------
+
+* Traduccions [Pilar Marinas]
 
 4.7.6 (2015-09-09)
 ------------------
