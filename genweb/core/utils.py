@@ -412,45 +412,41 @@ class genwebUtils(BrowserView):
         """ Retorna les dades proporcionades pel WebService del SCP
             per al contacte
         """
-        unitat = genweb_config().contacte_id
-        if unitat:
-            dades = self.getDadesUnitat()
-            if 'error' in dades:
-                return False
-            else:
-                idioma = self.context.Language()
-                dict_contact = {
-                    'ca': {
-                        'adreca_sencera': dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
-                        'nom': dades.get('nom_ca', ''),
-                        'telefon': dades.get('telefon', ''),
-                        'fax': dades.get('fax', ''),
-                        'email': dades.get('email', ''),
-                        'id_scp': dades.get('id', ''),
-                        'codi_upc': dades.get('codi_upc', ''),
-                    },
-                    'es': {
-                        'adreca_sencera': dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
-                        'nom': dades.get('nom_es', ''),
-                        'telefon': dades.get('telefon', ''),
-                        'fax': dades.get('fax', ''),
-                        'email': dades.get('email', ''),
-                        'id_scp': dades.get('id', ''),
-                        'codi_upc': dades.get('codi_upc', ''),
-                    },
-                    'en': {
-                        'adreca_sencera': dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
-                        'nom': dades.get('nom_en', ''),
-                        'telefon': dades.get('telefon', ''),
-                        'fax': dades.get('fax', ''),
-                        'email': dades.get('email', ''),
-                        'id_scp': dades.get('id', ''),
-                        'codi_upc': dades.get('codi_upc', ''),
-                    }
+        dades = self.getDadesUnitat()
+        if dades:
+            idioma = self.context.Language()
+            dict_contact = {
+                'ca': {
+                    'adreca_sencera': dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                    'nom': dades.get('nom_ca', ''),
+                    'telefon': dades.get('telefon', ''),
+                    'fax': dades.get('fax', ''),
+                    'email': dades.get('email', ''),
+                    'id_scp': dades.get('id', ''),
+                    'codi_upc': dades.get('codi_upc', ''),
+                },
+                'es': {
+                    'adreca_sencera': dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                    'nom': dades.get('nom_es', ''),
+                    'telefon': dades.get('telefon', ''),
+                    'fax': dades.get('fax', ''),
+                    'email': dades.get('email', ''),
+                    'id_scp': dades.get('id', ''),
+                    'codi_upc': dades.get('codi_upc', ''),
+                },
+                'en': {
+                    'adreca_sencera': dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                    'nom': dades.get('nom_en', ''),
+                    'telefon': dades.get('telefon', ''),
+                    'fax': dades.get('fax', ''),
+                    'email': dades.get('email', ''),
+                    'id_scp': dades.get('id', ''),
+                    'codi_upc': dades.get('codi_upc', ''),
                 }
-                return dict_contact[idioma]
+            }
+            return dict_contact[idioma]
         else:
-            return False
+            return ""
 
     def getContentClass(self, view=None):
         plone_view = getMultiAdapter((self.context, self.request), name=u'plone')
