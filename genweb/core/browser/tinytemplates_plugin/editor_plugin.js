@@ -6,7 +6,7 @@
 
 (function() {
     var each = tinymce.each;
-
+    
     tinymce.create('tinymce.plugins.PloneTemplatesPlugin', {
         init : function(ed, url) {
             var t = this;
@@ -30,6 +30,8 @@
             ed.addCommand('mcePloneInsertTemplate', t._insertTemplate, t);
 
             // Register buttons
+            ed.addButton('row_props', {title : 'table.row_desc', cmd : 'mceTableRowProps'});
+            ed.addButton('cell_props', {title : 'table.cell_desc', cmd : 'mceTableCellProps'});
             ed.addButton('plonetemplates', {title : 'template.desc', cmd : 'mcePloneTemplates'});
 
             ed.onPreProcess.add(function(ed, o) {
@@ -45,6 +47,32 @@
                         t._replaceVals(e);
                     }
                 });
+            });
+
+            // Handle node change updates
+            ed.onNodeChange.add(function(ed, cm, n) {
+                var p;
+
+                n = ed.selection.getStart();
+                p = ed.dom.getParent(n, 'td,th,caption');
+                cm.setActive('table', n.nodeName === 'TABLE' || !!p);
+
+                // Disable table tools if we are in caption
+                if (p && p.nodeName === 'CAPTION')
+                    p = 0;
+
+                cm.setDisabled('delete_table', !p);
+                cm.setDisabled('delete_col', !p);
+                cm.setDisabled('delete_table', !p);
+                cm.setDisabled('delete_row', !p);
+                cm.setDisabled('col_after', !p);
+                cm.setDisabled('col_before', !p);
+                cm.setDisabled('row_after', !p);
+                cm.setDisabled('row_before', !p);
+                cm.setDisabled('row_props', !p);
+                cm.setDisabled('cell_props', !p);
+                cm.setDisabled('split_cells', !p);
+                cm.setDisabled('merge_cells', !p);
             });
         },
 
