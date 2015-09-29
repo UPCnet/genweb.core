@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.7.12 (unreleased)
+4.7.12 (2015-09-29)
 -------------------
 
-- Nothing changed yet.
-
+* afegeix propietats fila i cel·la a taula [Alberto Duran]
+* Solucionat no hi ha dades al contacte [Alberto Duran]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Fix subjects select2 vocabulary helper view for include as id the title as well. [Victor Fernandez de Alba]
+* Message contact message sent [hanirok]
+* revert title patch [helena orihuela]
 
 4.7.11 (2015-09-18)
 -------------------
