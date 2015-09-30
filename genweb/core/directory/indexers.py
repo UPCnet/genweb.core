@@ -1,3 +1,4 @@
+from five import grok
 from zope.interface import implementer
 from zope.component import provideUtility
 from repoze.catalog.catalog import Catalog
@@ -66,7 +67,7 @@ class UserPropertiesSoupCatalogFactory(object):
         twitter_username = NodeAttributeIndexer('twitter_username')
         catalog['twitter_username'] = CatalogTextIndex(twitter_username)
         return catalog
-provideUtility(UserPropertiesSoupCatalogFactory(), name='user_properties')
+grok.global_utility(UserPropertiesSoupCatalogFactory, name='user_properties')
 
 
 @implementer(ICatalogFactory)
@@ -88,4 +89,4 @@ class GroupsSoupCatalogFactory(object):
         idsearchableindexer = NodeAttributeIndexer('searchable_id')
         catalog['searchable_id'] = CatalogTextIndex(idsearchableindexer)
         return catalog
-provideUtility(GroupsSoupCatalogFactory(), name='ldap_groups')
+grok.global_utility(GroupsSoupCatalogFactory, name='ldap_groups')
