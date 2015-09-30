@@ -1,5 +1,5 @@
 import unittest2 as unittest
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
@@ -17,7 +17,7 @@ import os
 
 class HelperViewsIntegrationTest(unittest.TestCase):
 
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setconfig(self, **kw):
         import App.config

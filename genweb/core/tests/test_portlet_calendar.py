@@ -3,7 +3,7 @@ from plone import api
 from plone.app.event.base import localized_now
 from Products.CMFCore.utils import getToolByName
 from genweb.theme.portlets import esdeveniments
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
 from plone.app.testing import login
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
@@ -24,7 +24,7 @@ TZNAME = 'Europe/Vienna'
 
 
 class RendererTest(unittest.TestCase):
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setUp(self):
         portal = self.layer['portal']

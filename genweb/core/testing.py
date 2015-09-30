@@ -8,9 +8,9 @@ from plone.app.testing import FunctionalTesting
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 
 
-class GenwebUPC(PloneSandboxLayer):
+class Genweb(PloneSandboxLayer):
 
-    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, PLONE_FIXTURE)
 
     def setUpZope(self, app, configurationContext):
         # Load ZCML
@@ -39,13 +39,13 @@ class GenwebUPC(PloneSandboxLayer):
         # Uninstall archetypes-based products
         pass
 
-GENWEBUPC_FIXTURE = GenwebUPC()
-GENWEBUPC_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(GENWEBUPC_FIXTURE,),
-    name='GenwebUPC:Integration')
-GENWEBUPC_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(GENWEBUPC_FIXTURE,),
-    name='GenwebUPC:Functional')
+GENWEB_FIXTURE = Genweb()
+GENWEB_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(GENWEB_FIXTURE,),
+    name='Genweb:Integration')
+GENWEB_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(GENWEB_FIXTURE,),
+    name='Genweb:Functional')
 # Commented as acceptance tests are not needed for this product
 # GENWEBUPC_ACCEPTANCE_TESTING = FunctionalTesting(
 #     bases=(GENWEBUPC_FIXTURE, ZSERVER_FIXTURE),

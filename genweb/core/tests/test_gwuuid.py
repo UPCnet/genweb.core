@@ -1,5 +1,5 @@
 import unittest2 as unittest
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
 
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import login
@@ -11,7 +11,7 @@ from genweb.core.gwuuid import IGWUUID
 
 class IntegrationTest(unittest.TestCase):
 
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

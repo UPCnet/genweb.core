@@ -1,6 +1,6 @@
 import unittest2 as unittest
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
-from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_FUNCTIONAL_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter, queryUtility
 from zope.interface import alsoProvides
@@ -23,7 +23,7 @@ import transaction
 
 class IntegrationTest(unittest.TestCase):
 
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -101,7 +101,7 @@ class IntegrationTest(unittest.TestCase):
 
 class FunctionalTest(unittest.TestCase):
 
-    layer = GENWEBUPC_FUNCTIONAL_TESTING
+    layer = GENWEB_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

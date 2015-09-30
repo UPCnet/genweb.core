@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest2 as unittest
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
 from genweb.theme.browser.viewlets import gwCSSViewlet
 from genweb.js.browser.viewlets import gwJSViewlet
 
@@ -10,7 +10,7 @@ import pkg_resources
 
 class TestExample(unittest.TestCase):
 
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setUp(self):
         self.app = self.layer['app']
