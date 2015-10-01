@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.7.13 (unreleased)
+4.7.13 (2015-10-01)
 -------------------
 
-- Nothing changed yet.
-
+* add helper to remove duplicate genweb settings [Paco Gregori]
+* Bullet proof provideAdapter by refactor it to grok like [Victor Fernandez de Alba]
+* Bullet proof testing boilerplate [Victor Fernandez de Alba]
 
 4.7.12 (2015-09-29)
 -------------------
