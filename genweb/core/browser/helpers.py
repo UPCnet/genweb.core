@@ -1085,3 +1085,16 @@ class ReinstallGWTinyTemplates(grok.View):
         object_status = pw.getStatusOf(object_workflow, context)
         if object_status:
             api.content.transition(obj=context, transition={'genweb_simple': 'publish', 'genweb_review': 'publicaalaintranet'}[object_workflow])
+
+
+class RemoveDuplicatedGenwebSettings(grok.View):
+    """
+        Remove duplicate (old) Genweb UPC settings in Control Panel
+    """
+    grok.context(Interface)
+    grok.name('remove_duplicate_genwebSettings')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        portal_controlpanel = api.portal.get_tool('portal_controlpanel')
+        portal_controlpanel.unregisterApplication('genweb')
