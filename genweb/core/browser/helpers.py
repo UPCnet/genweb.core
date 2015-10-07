@@ -1098,3 +1098,18 @@ class RemoveDuplicatedGenwebSettings(grok.View):
     def render(self):
         portal_controlpanel = api.portal.get_tool('portal_controlpanel')
         portal_controlpanel.unregisterApplication('genweb')
+
+
+class CheckCacheSettings(grok.View):
+    """
+        Check cache settings
+    """
+    grok.context(Interface)
+    grok.name('check_cache_settings')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        return api.portal.get_registry_record(name='plone.app.caching.moderateCaching.etags')
