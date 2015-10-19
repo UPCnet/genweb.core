@@ -11,9 +11,11 @@ from zope.component import getUtility
 from zope.component import getMultiAdapter
 from zope.interface import alsoProvides
 from zope.event import notify
+from zope.interface import alsoProvides
 
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 
+from plone.protect.interfaces import IDisableCSRFProtection
 from plone.dexterity.interfaces import IDexterityContent
 from Products.Archetypes.interfaces import IBaseObject
 from plone.dexterity.utils import createContentInContainer
@@ -63,8 +65,24 @@ DORSALS = {"1": "Ter Stegen", "2": "Montoya", "3": "Piqué",
            "12": "Rafinha", "13": "Bravo", "14": "Mascherano", "15": "Bartra"}
 
 
+def setup_install_profile(profileid, steps=None):
+    """Installs the generic setup profile identified by ``profileid``.
+    If a list step names is passed with ``steps`` (e.g. ['actions']),
+    only those steps are installed. All steps are installed by default.
+    """
+    setup = api.portal.get_tool('portal_setup')
+    if steps is None:
+        setup.runAllImportStepsFromProfile(profileid, purge_old=False)
+    else:
+        for step in steps:
+            setup.runImportStepFromProfile(profileid,
+                                           step,
+                                           run_dependencies=False,
+                                           purge_old=False)
+
+
 class debug(grok.View):
-    """ Convenience view for faster degugging. Needs to be manager. """
+    """ Convenience view for faster debugging. Needs to be manager. """
     grok.context(Interface)
     grok.require('cmf.ManagePortal')
 
@@ -1113,3 +1131,33 @@ class CheckCacheSettings(grok.View):
             portal = api.portal.get()
 
         return api.portal.get_registry_record(name='plone.app.caching.moderateCaching.etags')
+
+
+class ReapplyRegistryProfile(grok.View):
+    """
+        Check cache settings
+    """
+    grok.context(Interface)
+    grok.name('reapply_registry_profile')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        alsoProvides(self.request, IDisableCSRFProtection)
+
+        setup_install_profile('profile-genweb.core:default', ['plone.app.registry'])
+
+        # Should work this better
+        # name = 'genweb.hidden_settings.languages_applied'
+        # from plone.registry.field import Bool
+        # value = True
+        # registry = getUtility(IRegistry)
+        # from plone.registry.record import Record as RegistryRecord
+        # registry.records[name] = RegistryRecord(Bool(), value)
+        # import transaction
+        # transaction.commit()
+
+        api.portal.set_registry_record('genweb.hidden_settings.languages_applied', True)
+        return api.portal.get_registry_record(name='genweb.hidden_settings.languages_applied')
