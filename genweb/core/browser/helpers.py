@@ -15,7 +15,6 @@ from zope.interface import alsoProvides
 
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 
-from plone.protect.interfaces import IDisableCSRFProtection
 from plone.dexterity.interfaces import IDexterityContent
 from Products.Archetypes.interfaces import IBaseObject
 from plone.dexterity.utils import createContentInContainer
@@ -1145,6 +1144,7 @@ class ReapplyRegistryProfile(grok.View):
         if not portal:
             portal = api.portal.get()
 
+        from plone.protect.interfaces import IDisableCSRFProtection
         alsoProvides(self.request, IDisableCSRFProtection)
 
         setup_install_profile('profile-genweb.core:default', ['plone.app.registry'])
