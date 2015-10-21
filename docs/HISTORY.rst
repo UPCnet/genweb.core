@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.7.14 (unreleased)
+4.7.14 (2015-10-21)
 -------------------
 
-- Nothing changed yet.
-
+* Hide in the function the import of the new CSRF helper [Victor Fernandez de Alba]
+* New registry setting for apply default languages [Victor Fernandez de Alba]
+* Add cache helper [Victor Fernandez de Alba]
 
 4.7.13 (2015-10-01)
 -------------------
