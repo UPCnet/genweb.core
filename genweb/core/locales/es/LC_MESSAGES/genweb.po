@@ -1893,3 +1893,47 @@ msgstr "Seleccionar la dirección de envío"
 
 msgid "help_contacte_multi_email"
 msgstr "Se puede seleccionar la dirección de correo que recibe el mensaje de contacto."
+
+# Portlet NewsEventsListing
+
+msgid "mode_future_link"
+msgstr ""
+
+msgid "mode_past_link"
+msgstr ""
+
+msgid "mode_month_link"
+msgstr ""
+
+msgid "mode_week_link"
+msgstr ""
+
+msgid "mode_day_link"
+msgstr ""
+
+msgid "prev_month_link"
+msgstr ""
+
+msgid "this_month_link"
+msgstr ""
+
+msgid "next_month_link"
+msgstr ""
+
+msgid "prev_week_link"
+msgstr ""
+
+msgid "this_week_link"
+msgstr ""
+
+msgid "next_week_link"
+msgstr ""
+
+msgid "prev_day_link"
+msgstr ""
+
+msgid "today_link"
+msgstr ""
+
+msgid "next_day_link"
+msgstr ""
