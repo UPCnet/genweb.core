@@ -25,5 +25,5 @@ class PortraitUploadAdapter(object):
         if portrait and portrait.filename:
             scaled, mimetype = scale_image(portrait)
             portrait = Image(id=safe_id, file=scaled, title='')
-            membertool = getToolByName(self, 'portal_memberdata')
+            membertool = getToolByName(self.context, 'portal_memberdata')
             membertool._setPortrait(portrait, safe_id)
