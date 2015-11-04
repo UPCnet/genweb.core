@@ -600,7 +600,7 @@ def enumerateUsers(self,
             ldap_criteria[login_attr] = login
 
         for key, val in kw.items():
-            if key not in (login_attr, uid_attr): 
+            if key not in (login_attr, uid_attr):
                 ldap_criteria[key] = val
 
         # If no criteria are given create a criteria set that will
@@ -638,3 +638,43 @@ def enumerateUsers(self,
     self.ZCacheable_set(result, view_name=view_name, keywords=criteria)
 
     return result
+
+
+from AccessControl import Unauthorized
+from Products.CMFCore.utils import _checkPermission
+from Products.CMFCore.permissions import ManageUsers
+from zope.component import getMultiAdapter
+from genweb.core.adapters.portrait import IPortraitUploadAdapter
+
+# Extensible member portrait management
+
+def changeMemberPortrait(self, portrait, id=None):
+    """update the portait of a member.
+
+    We URL-quote the member id if needed.
+
+    Note that this method might be called by an anonymous user who
+    is getting registered.  This method will then be called from
+    plone.app.users and this is fine.  When called from restricted
+    python code or with a curl command by a hacker, the
+    declareProtected line will kick in and prevent use of this
+    method.
+    """
+    authenticated_id = self.getAuthenticatedMember().getId()
+    if not id:
+        id = authenticated_id
+    safe_id = self._getSafeMemberId(id)
+
+    # Our LDAP improvements hand the current user id in unicode, but BTree can't
+    # handle unicode keys in inner objects... *sigh*
+    if isinstance(safe_id, unicode):
+        safe_id = str(safe_id)
+
+    if authenticated_id and id != authenticated_id:
+        # Only Managers can change portraits of others.
+        if not _checkPermission(ManageUsers, self):
+            raise Unauthorized
+
+    # The plugable actions for how to handle the portrait.
+    adapter = getMultiAdapter((self, self.REQUEST), IPortraitUploadAdapter)
+    adapter(portrait, safe_id)
