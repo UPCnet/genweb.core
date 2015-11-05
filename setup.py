@@ -56,7 +56,8 @@ setup(name='genweb.core',
           'Products.PloneLDAP',
           'quintagroup.seoptimizer',
           'pyquery',
-          'souper.plone'
+          'souper.plone',
+          'elasticsearch'
       ],
       entry_points="""
       # -*- Entry points: -*-
