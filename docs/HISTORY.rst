@@ -1,11 +1,17 @@
 Changelog
 =========
 
-4.7.15 (unreleased)
+4.7.15 (2015-11-05)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Fix getToolByName self object [Victor Fernandez de Alba]
+* Translate navigation events portlet [hanirok]
+* New pluggable changeMemberPortrait [Victor Fernandez de Alba]
+* Translate new events portlet [hanirok]
+* Tests for new portlet [Victor Fernandez de Alba]
+* Add helper for detect write on reads [Victor Fernandez de Alba]
+* Fix HISTORY [Victor Fernandez de Alba]
 
 4.7.14 (2015-10-21)
 -------------------
