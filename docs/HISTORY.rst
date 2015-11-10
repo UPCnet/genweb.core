@@ -4,13 +4,13 @@ Changelog
 4.7.18 (unreleased)
 -------------------
 
-- Nothing changed yet.
+* Re-release x2.
 
 
 4.7.17 (2015-11-10)
 -------------------
 
-- Re-release.
+* Re-release.
 
 
 4.7.16 (2015-11-10)
