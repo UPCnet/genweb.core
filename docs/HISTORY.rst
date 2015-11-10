@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.7.16 (unreleased)
+4.7.16 (2015-11-10)
 -------------------
 
-- Nothing changed yet.
-
+* Add missing elasticsearch module [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* New utility for elasticsearch connections [Victor Fernandez de Alba]
 
 4.7.15 (2015-11-05)
 -------------------
