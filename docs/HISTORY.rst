@@ -4,7 +4,7 @@ Changelog
 4.7.17 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Re-release.
 
 
 4.7.16 (2015-11-10)
