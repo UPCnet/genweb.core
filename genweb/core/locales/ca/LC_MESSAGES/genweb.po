@@ -2021,3 +2021,6 @@ msgstr "Avui"
 
 msgid "next_day_link"
 msgstr "Dia següent"
+
+msgid "all_news"
+msgstr "Totes les notícies"

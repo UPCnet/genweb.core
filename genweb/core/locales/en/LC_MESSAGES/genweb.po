@@ -1904,3 +1904,6 @@ msgstr ""
 
 msgid "next_day_link"
 msgstr ""
+
+msgid "all_news"
+msgstr "All news"
