@@ -109,6 +109,8 @@ class protectContent(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         alsoProvides(context, IProtectedContent)
 
