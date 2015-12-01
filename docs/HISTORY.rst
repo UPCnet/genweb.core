@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.7.19 (unreleased)
+4.7.19 (2015-12-01)
 -------------------
 
-- Nothing changed yet.
-
+* Traduccions editar fitxer [Pilar Marinas]
+* disable CSRFProtection to protectContent helper [Paco Gregori]
+* All news translation [hanirok]
 
 4.7.18 (2015-11-10)
 -------------------
