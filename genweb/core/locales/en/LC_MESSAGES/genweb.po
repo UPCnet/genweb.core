@@ -753,7 +753,7 @@ msgstr "PDI/PAS Today"
 #. Default: "Agenda"
 #: ."genweb-agenda"
 msgid "genweb-agenda"
-msgstr "Agenda"
+msgstr "Events"
 
 #. "genweb-ajuda"
 #. Default: "Ajuda"
