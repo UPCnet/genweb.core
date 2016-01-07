@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.7.20 (unreleased)
--------------------
+4.8 (2016-01-07)
+----------------
 
-- Nothing changed yet.
-
+* Ditch five.pt use in all Genweb [Victor Fernandez de Alba]
+* Fix wrong API method [Victor Fernandez de Alba]
+* Traduction Events [Alberto Duran]
 
 4.7.19 (2015-12-01)
 -------------------
