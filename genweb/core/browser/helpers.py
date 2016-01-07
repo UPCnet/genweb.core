@@ -1114,9 +1114,12 @@ class RemoveDuplicatedGenwebSettings(grok.View):
     grok.name('remove_duplicate_genwebSettings')
     grok.require('cmf.ManagePortal')
 
-    def render(self):
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
         portal_controlpanel = api.portal.get_tool('portal_controlpanel')
-        portal_controlpanel.unregisterApplication('genweb')
+        portal_controlpanel.unregisterConfiglet('genweb')
 
 
 class CheckCacheSettings(grok.View):
