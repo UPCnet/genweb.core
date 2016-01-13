@@ -86,6 +86,8 @@ class debug(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         # Magic Victor debug view do not delete!
         import ipdb; ipdb.set_trace()  # Magic! Do not delete!!! :)
