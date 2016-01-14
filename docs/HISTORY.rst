@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.9 (unreleased)
-----------------
+4.8.1 (2016-01-14)
+------------------
 
-- Nothing changed yet.
-
+* Add icon_blank image [Corina Riba]
+* Disable CRSF protection for debug helper [Victor Fernandez de Alba]
+* Update compilation problems [Victor Fernandez de Alba]
+* Fix next version to avoid confusions [Victor Fernandez de Alba]
 
 4.8 (2016-01-07)
 ----------------
