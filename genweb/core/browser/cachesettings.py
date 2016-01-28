@@ -151,7 +151,7 @@ cacheprofile = """
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value>Accept-Encoding, User-Agent</value>
+    <value>Accept-Encoding, User-Agent, X-Anonymous</value>
   </record>
   <record name="plone.app.caching.strongCaching.anonOnly">
     <field type="plone.registry.field.Bool">
@@ -256,7 +256,7 @@ cacheprofile = """
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value>Accept-Encoding, User-Agent</value>
+    <value>Accept-Encoding, User-Agent, X-Anonymous</value>
   </record>
   <record field="cachingProxies" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.cachingProxies">
     <field type="plone.registry.field.Tuple">
