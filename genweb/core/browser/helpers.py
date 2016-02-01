@@ -2,21 +2,15 @@
 from five import grok
 from plone import api
 from Acquisition import aq_inner
-from App.config import getConfiguration
 from OFS.interfaces import IFolder
 from OFS.interfaces import IApplication
 from zope.interface import Interface
 from zope.component import queryUtility
-from zope.component import getUtility
 from zope.component import getMultiAdapter
-from zope.interface import alsoProvides
-from zope.event import notify
 from zope.interface import alsoProvides
 
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 
-from plone.dexterity.interfaces import IDexterityContent
-from Products.Archetypes.interfaces import IBaseObject
 from plone.dexterity.utils import createContentInContainer
 from Products.CMFPlone.utils import normalizeString
 from plone.app.contenttypes.behaviors.richtext import IRichText
@@ -28,17 +22,12 @@ from plone.uuid.interfaces import IMutableUUID
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletAssignmentMapping
 
-from Products.PluggableAuthService.events import PropertiesUpdated
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
 from Products.PythonScripts.standard import url_quote
 
-from repoze.catalog.query import Eq
-from souper.interfaces import ICatalogFactory
 from souper.soup import get_soup
-from souper.soup import Record
 
 from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
@@ -1075,6 +1064,8 @@ class ReinstallGWTinyTemplates(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
         if not portal:
             portal = api.portal.get()
 

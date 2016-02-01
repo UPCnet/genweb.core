@@ -574,4 +574,46 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
+    titol = u"Taula amb files destacades"
+    resum = u"Una taula amb vora, diferenciació de primera fila i columna."
+    cos = u"""<h3><span>Taula amb files destacades </span></h3>
+<table class="table table-no-heading-border">
+<thead>
+<tr><th>#</th><th>Columna 1</th><th>Columna 2</th><th>Columna 3</th><th>Columna 4</th></tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="5">Peu de la taula</td>
+</tr>
+</tfoot>
+<tbody>
+<tr><th>Fila 1</th>
+<td>Dolor sum</td>
+<td>Consecuteur est</td>
+<td>Sit amet</td>
+<td>Lorem ipsum</td>
+</tr>
+<tr><th>Fila 2</th>
+<td>Lorem ipsum</td>
+<td>Sit amet</td>
+<td>Dolor sum</td>
+<td>Sit amet</td>
+</tr>
+<tr><th>Fila 3</th>
+<td>Consecuteur est</td>
+<td>Dolor sum</td>
+<td>Lorem ipsum</td>
+<td>Sit amet</td>
+</tr>
+<tr><th>Fila 4</th>
+<td>Consecuteur est</td>
+<td>Dolor sum</td>
+<td>Lorem ipsum</td>
+<td>Sit amet</td>
+</tr>
+</tbody>
+</table>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
     return plantilles
