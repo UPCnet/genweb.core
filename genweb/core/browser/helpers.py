@@ -41,7 +41,15 @@ from genweb.core.browser.plantilles import get_plantilles
 import json
 import os
 import urllib
+import pkg_resources
 
+try:
+    pkg_resources.get_distribution('plone4.csrffixes')
+except pkg_resources.DistributionNotFound:
+    CSRF = False
+else:
+    from plone.protect.interfaces import IDisableCSRFProtection
+    CSRF = True
 
 if HAS_PAM:
     from plone.app.multilingual.browser.setup import SetupMultilingualSite
@@ -75,8 +83,8 @@ class debug(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
-        from plone.protect.interfaces import IDisableCSRFProtection
-        alsoProvides(self.request, IDisableCSRFProtection)
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         # Magic Victor debug view do not delete!
         import ipdb; ipdb.set_trace()  # Magic! Do not delete!!! :)
@@ -999,6 +1007,47 @@ class ReinstallPloneProduct(grok.View):
             qi.installProducts([product_name], reinstall=True)
             output.append('{}: Successfully reinstalled {}'.format(portal.id, product_name))
         return '\n'.join(output)
+
+
+class UninstallPloneProduct(grok.View):
+    """ Uninstall a product passed by form parameter in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('uninstall_product')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        product_name = self.request.form['product_name']
+        output = []
+        qi = getToolByName(portal, 'portal_quickinstaller')
+
+        if qi.isProductInstalled(product_name):
+            qi.uninstallProducts([product_name, ], reinstall=False)
+            output.append('{}: Successfully uninstalled {}'.format(portal.id, product_name))
+        return '\n'.join(output)
+
+
+class UpgradePloneVersion(grok.View):
+    """ Upgrade to the latest Plone version in code """
+    grok.context(IPloneSiteRoot)
+    grok.name('upgrade_plone_version')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        # pm = getattr(self.context, 'portal_migration')
+        pm = api.portal.get_tool('portal_migration')
+        self.request.method = 'POST'
+        report = pm.upgrade(
+            REQUEST=self.request,
+            dry_run=False,
+        )
+        return report
 
 
 class NotSubProcessedBulkExecuteScriptView(grok.View):
