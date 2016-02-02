@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.2 (unreleased)
+4.8.2 (2016-02-02)
 ------------------
 
-- Nothing changed yet.
-
+* New helpers for upgrades [Victor Fernandez de Alba]
+* remove unused import and add new template [Alberto Duran]
+* Add new cache settings [Victor Fernandez de Alba]
 
 4.8.1 (2016-01-14)
 ------------------
