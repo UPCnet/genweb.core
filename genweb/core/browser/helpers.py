@@ -21,7 +21,7 @@ from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletAssignmentMapping
-
+from plone.app.contenttypes.upgrades import use_new_view_names
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
@@ -1208,3 +1208,20 @@ class ReapplyRegistryProfile(grok.View):
 
         api.portal.set_registry_record('genweb.hidden_settings.languages_applied', True)
         return api.portal.get_registry_record(name='genweb.hidden_settings.languages_applied')
+
+
+class PACUseNewViewNames(grok.View):
+    """ Uninstall a product passed by form parameter in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('apply_use_new_view_names')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        output = []
+
+        use_new_view_names(portal)
+
+        return '\n'.join(output)
