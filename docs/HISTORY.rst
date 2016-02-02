@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.3 (unreleased)
+4.8.3 (2016-02-02)
 ------------------
 
-- Nothing changed yet.
-
+* New helpers for update pac view names [Victor Fernandez de Alba]
 
 4.8.2 (2016-02-02)
 ------------------
