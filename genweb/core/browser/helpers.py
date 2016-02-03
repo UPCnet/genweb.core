@@ -1113,8 +1113,8 @@ class ReinstallGWTinyTemplates(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
-        from plone.protect.interfaces import IDisableCSRFProtection
-        alsoProvides(self.request, IDisableCSRFProtection)
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
         if not portal:
             portal = api.portal.get()
 
