@@ -180,6 +180,17 @@ def remove_user_from_catalog(username):
         user_record = exists[0]
         del soup[user_record]
 
+    if IAMULEARN:
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+        # Make sure that, in fact we have such a extender in place
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_soup = get_soup(extender_name, portal)
+            exist = []
+            exist = [r for r in extended_soup.query(Eq('id', username))]
+            if exist:
+                extended_user_record = exist[0]
+                del extended_soup[extended_user_record]
+
 
 def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
     """ Adds a user to the user catalog
