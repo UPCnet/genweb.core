@@ -1907,3 +1907,18 @@ msgstr ""
 
 msgid "all_news"
 msgstr "All news"
+
+msgid "folder_summary_view"
+msgstr "Summary view"
+
+msgid "folder_tabular_view"
+msgstr "Tabular view"
+
+msgid "folder_full_view"
+msgstr "All content"
+
+msgid "atct_album_view"
+msgstr "Album view"
+
+msgid "folder_listing"
+msgstr "Standard view"
