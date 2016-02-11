@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.8.4 (unreleased)
+4.8.4 (2016-02-11)
 ------------------
 
-- Nothing changed yet.
-
+* traduccions per enquesta (poll) [Alberto Duran]
+* traduccions vista carpeta [Alberto Duran]
+* Remove user from catalog extender [Pilar Marinas]
+* SC: join table templates [Alberto Duran]
+* check CSRF for alsoProvides [Alberto Duran]
 
 4.8.3 (2016-02-02)
 ------------------
