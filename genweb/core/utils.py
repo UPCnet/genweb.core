@@ -246,11 +246,14 @@ def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
         user_record.attrs['username'] = username
         user_record.attrs['id'] = username
 
+    property_different_value = False
     if properties:
         for attr in user_properties_utility.properties + METADATA_USER_ATTRS:
             has_property_definition = attr in properties
             property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
-            if has_property_definition and (property_empty_or_not_set or overwrite):
+            if has_property_definition:
+                property_different_value = user_record.attrs.get(attr, u'') != properties[attr]
+            if has_property_definition and (property_empty_or_not_set or overwrite or property_different_value):
                 if isinstance(properties[attr], str):
                     user_record.attrs[attr] = properties[attr].decode('utf-8')
                 else:
