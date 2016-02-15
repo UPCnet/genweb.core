@@ -40,6 +40,7 @@ from genweb.core.browser.plantilles import get_plantilles
 
 import json
 import os
+import re
 import urllib
 import pkg_resources
 
@@ -924,28 +925,38 @@ class GetRenderedStylesheets(grok.View):
         registry = self.context.portal_css
         registry_url = registry.absolute_url()
         context = aq_inner(self.context)
+        portal = api.portal.get()
 
         styles = registry.getEvaluatedResources(context)
         skinname = url_quote(self.skinname())
-        result = []
+        urls = []
+        files = []
         for style in styles:
             rendering = style.getRendering()
             if style.isExternalResource():
                 src = "%s" % style.getId()
             else:
                 src = "%s/%s/%s" % (registry_url, skinname, style.getId())
+
+            try:
+                file_path = portal.restrictedTraverse(re.sub(r'(http://[^\/]+)(.*)', r'\2', src)).context.path
+            except:
+                file_path = 'No path'
+
             if rendering == 'link':
                 data = {'rendering': rendering,
                         'media': style.getMedia(),
                         'rel': style.getRel(),
                         'title': style.getTitle(),
                         'conditionalcomment': style.getConditionalcomment(),
-                        'src': src}
+                        'src': src,
+                        'file': file_path}
             elif rendering == 'import':
                 data = {'rendering': rendering,
                         'media': style.getMedia(),
                         'conditionalcomment': style.getConditionalcomment(),
-                        'src': src}
+                        'src': src,
+                        'file': file_path}
             elif rendering == 'inline':
                 content = registry.getInlineResource(style.getId(), context)
                 data = {'rendering': rendering,
@@ -954,8 +965,9 @@ class GetRenderedStylesheets(grok.View):
                         'content': content}
             else:
                 raise ValueError("Unkown rendering method '%s' for style '%s'" % (rendering, style.getId()))
-            result.append(data['src'])
-        return result
+            urls.append(data['src'])
+            files.append(data['file'])
+        return urls + files
 
     def skinname(self):
         return aq_inner(self.context).getCurrentSkinName()
@@ -973,18 +985,20 @@ class BulkExecuteScriptView(grok.View):
         context = aq_inner(self.context)
         args = self.request.form
         view_name = self.request.form['view']
+        exclude_sites = self.request.form.get('exclude_sites', '').split(',')
         plonesites = listPloneSites(context)
         output = []
         for plonesite in plonesites:
-            print('======================')
-            print('Executed view in {}'.format(plonesite.id))
-            print('======================')
-            quoted_args = urllib.urlencode(args)
-            response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
-            output.append(response.getBody())
+            if plonesite.id not in exclude_sites:
+                print('======================')
+                print('Executing view in {}'.format(plonesite.id))
+                print('======================')
+                quoted_args = urllib.urlencode(args)
+                response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
+                output.append(response.getBody())
 
-            output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
-            output.append('-----------------------------------------------')
+                output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
+                output.append('-----------------------------------------------')
         return '\n'.join(output)
 
 
