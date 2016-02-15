@@ -1937,21 +1937,3 @@ msgstr ""
 
 msgid "next_day_link"
 msgstr ""
-
-msgid "all_news"
-msgstr "Todas las noticias"
-
-msgid "folder_summary_view"
-msgstr "Vista de resumen"
-
-msgid "folder_tabular_view"
-msgstr "Vista tabular"
-
-msgid "folder_full_view"
-msgstr "Todo el contenido"
-
-msgid "atct_album_view"
-msgstr "Album"
-
-msgid "folder_listing"
-msgstr "Vista estándar"

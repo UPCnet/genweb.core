@@ -429,3 +429,6 @@ msgstr "Definir los términos de búsqueda de los elementos que desee en la list
 
 msgid "Number of items that will show up in one batch."
 msgstr "Número de elementos que se mostrará."
+
+msgid "Album view"
+msgstr "Álbum"

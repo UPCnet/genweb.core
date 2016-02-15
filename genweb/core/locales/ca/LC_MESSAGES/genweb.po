@@ -1955,9 +1955,6 @@ msgstr "No hi han esdeveniments"
 msgid "dontcopy_homepage"
 msgstr " la pàgina de benvinguda és necessària per al correcte funcionament del Genweb. No s'ha d'esborrar, copiar o renombrar."
 
-msgid "mode_past_link"
-msgstr "Passat"
-
 msgid "help_static_content_title_ca"
 msgstr "Opcional: títol del portlet"
 
@@ -2021,23 +2018,3 @@ msgstr "Avui"
 
 msgid "next_day_link"
 msgstr "Dia següent"
-
-msgid "all_news"
-msgstr "Totes les notícies"
-
-msgid "folder_summary_view"
-msgstr "Vista resum"
-
-msgid "folder_tabular_view"
-msgstr "Vista tabular"
-
-msgid "folder_full_view"
-msgstr "Tot el contingut"
-
-msgid "atct_album_view"
-msgstr "Album"
-
-msgid "folder_listing"
-msgstr "Vista estàndard"
-
-

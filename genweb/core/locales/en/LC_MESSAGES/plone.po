@@ -54,18 +54,6 @@ msgstr "Wellcome"
 # portlets #
 ############
 
-msgid "FullNews"
-msgstr "News with image"
-
-msgid "NoticiesPropi"
-msgstr "News"
-
-msgid "AgendaGW"
-msgstr "Events"
-
-msgid "portlet_homepage_title"
-msgstr "Welcome"
-
 msgid "portlet_calendar_title"
 msgstr "Calendar"
 
@@ -80,9 +68,6 @@ msgstr "Navigation menu"
 
 msgid "portlet_rss_title"
 msgstr "RSS"
-
-msgid "portlet_poll_title"
-msgstr "Survey"
 
 #: plone/app/event/portlets/portlet_calendar.py:218
 msgid "This portlet displays events in a calendar."
@@ -144,3 +129,6 @@ msgstr "Your email has been sent"
 
 msgid "upc_message_send_feedback_confirm"
 msgstr "A mail has now been sent regarding your questions and/or comments. "
+
+msgid "Album view"
+msgstr "Album view"
