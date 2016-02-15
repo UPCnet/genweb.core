@@ -118,7 +118,7 @@ msgstr "Agenda"
 # Noms de les vistes
 #: genweb.stack/genweb/stack/browser/collage.py:88
 msgid "Extended view"
-msgstr "Estesa"
+msgstr "Vista estesa"
 
 #: genweb.upc/genweb/upc/adapters.py:21
 msgid "Fitxa de grau"
@@ -2024,3 +2024,20 @@ msgstr "Dia següent"
 
 msgid "all_news"
 msgstr "Totes les notícies"
+
+msgid "folder_summary_view"
+msgstr "Vista resum"
+
+msgid "folder_tabular_view"
+msgstr "Vista tabular"
+
+msgid "folder_full_view"
+msgstr "Tot el contingut"
+
+msgid "atct_album_view"
+msgstr "Album"
+
+msgid "folder_listing"
+msgstr "Vista estàndard"
+
+
