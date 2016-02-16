@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.8.5 (unreleased)
+4.8.5 (2016-02-16)
 ------------------
 
-- Nothing changed yet.
-
+* nou tocador per vistes de genwebs [Alberto Duran]
+* reubicacio traduccions vistes carpeta [Alberto Duran]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Update style extractor [Victor Fernandez de Alba]
+* Modify user catalog if property different value [Pilar Marinas]
 
 4.8.4 (2016-02-11)
 ------------------
