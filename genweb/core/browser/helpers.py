@@ -1002,6 +1002,24 @@ class BulkExecuteScriptView(grok.View):
         return '\n'.join(output)
 
 
+class UpdateFolderViews(grok.View):
+    """ Update view methods for folder type in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('update_folder_view')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        output = []
+        portal.portal_types['Folder'].view_methods = ('listing_view', 'folder_extended', 'album_view', 'summary_view', 'tabular_view', 'full_view', 'folder_index_view')
+        import transaction
+        transaction.commit()
+        output.append('{}: Successfully reinstalled'.format(portal.id))
+        return '\n'.join(output)
+
+
 class ReinstallPloneProduct(grok.View):
     """ Reinstalls a product passed by form parameter in the current Plone site. """
     grok.context(IPloneSiteRoot)
