@@ -21,6 +21,8 @@ from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import ILocalPortletAssignmentManager
+from plone.portlets.constants import CONTEXT_CATEGORY
 from plone.app.contenttypes.upgrades import use_new_view_names
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
@@ -1257,3 +1259,71 @@ class PACUseNewViewNames(grok.View):
         use_new_view_names(portal)
 
         return '\n'.join(output)
+
+
+class ChangeNewsEventsPortlets(grok.View):
+    """ Replace navigation portlet by categories portlet from news and events
+    view methods in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('replace_nav_portlet')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        portal_ca = portal['ca']
+        portal_es = portal['es']
+        portal_en = portal['en']
+
+        self.disinherit_from_parent(portal_ca, portal_es, portal_en)
+
+        self.assign_news_events_listing_portlet(portal_ca['noticies'], 'News')
+        self.assign_news_events_listing_portlet(portal_ca['esdeveniments'], 'Events')
+        self.assign_news_events_listing_portlet(portal_es['noticias'], 'News')
+        self.assign_news_events_listing_portlet(portal_es['eventos'], 'Events')
+        self.assign_news_events_listing_portlet(portal_en['news'], 'News')
+        self.assign_news_events_listing_portlet(portal_en['events'], 'Events')
+
+        # Set layout for news folders
+        portal_en['news'].setLayout('news_listing')
+        portal_es['noticias'].setLayout('news_listing')
+        portal_ca['noticies'].setLayout('news_listing')
+
+        # Set layout for events folders
+        portal_en['events'].setLayout('news_listing')
+        portal_es['eventos'].setLayout('news_listing')
+        portal_ca['esdeveniments'].setLayout('news_listing')
+
+        import transaction
+        transaction.commit()
+
+        output.append('{}: Successfully replaced news_events_listing portlet'.format(portal.id))
+        return '\n'.join(output)
+
+    def disinherit_from_parent(self, portal_ca, portal_es, portal_en):
+        # Blacklist the left column on portal_ca['noticies'] and portal_ca['esdeveniments'],
+        # portal_es['noticias'] and portal_es['eventos'],
+        # portal_en['news'] and portal_en['events']
+        left_manager = queryUtility(IPortletManager, name=u'plone.leftcolumn')
+        blacklist_ca = getMultiAdapter((portal_ca['noticies'], left_manager), ILocalPortletAssignmentManager)
+        blacklist_ca.setBlacklistStatus(CONTEXT_CATEGORY, True)
+        blacklist_ca = getMultiAdapter((portal_ca['esdeveniments'], left_manager), ILocalPortletAssignmentManager)
+        blacklist_ca.setBlacklistStatus(CONTEXT_CATEGORY, True)
+        blacklist_es = getMultiAdapter((portal_es['noticias'], left_manager), ILocalPortletAssignmentManager)
+        blacklist_es.setBlacklistStatus(CONTEXT_CATEGORY, True)
+        blacklist_es = getMultiAdapter((portal_es['eventos'], left_manager), ILocalPortletAssignmentManager)
+        blacklist_es.setBlacklistStatus(CONTEXT_CATEGORY, True)
+        blacklist_en = getMultiAdapter((portal_en['news'], left_manager), ILocalPortletAssignmentManager)
+        blacklist_en.setBlacklistStatus(CONTEXT_CATEGORY, True)
+        blacklist_en = getMultiAdapter((portal_en['events'], left_manager), ILocalPortletAssignmentManager)
+        blacklist_en.setBlacklistStatus(CONTEXT_CATEGORY, True)
+
+    def assign_news_events_listing_portlet(self, portal, obj_type):
+        from genweb.theme.portlets.news_events_listing import Assignment as news_events_Assignment
+
+        target_manager_left = queryUtility(IPortletManager, name='plone.leftcolumn', context=portal)
+        target_manager_assignments_left = getMultiAdapter((portal, target_manager_left), IPortletAssignmentMapping)
+        for portlet in target_manager_assignments_left:
+            del target_manager_assignments_left[portlet]
+        if 'news_events_listing' not in target_manager_assignments_left:
+            target_manager_assignments_left['news_events_listing'] = news_events_Assignment([], obj_type)
