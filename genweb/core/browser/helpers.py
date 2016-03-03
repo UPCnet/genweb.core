@@ -1271,6 +1271,10 @@ class ChangeNewsEventsPortlets(grok.View):
     def render(self, portal=None):
         output = []
         portal = api.portal.get()
+
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.theme:default', 'portlets')
+
         portal_ca = portal['ca']
         portal_es = portal['es']
         portal_en = portal['en']
