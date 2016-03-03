@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.6 (unreleased)
+4.8.6 (2016-03-03)
 ------------------
 
-- Nothing changed yet.
-
+* nou tocador portlet news_events_listing [Alberto Duran]
+* traduccions vista esdeveniments (nova) [Alberto Duran]
 
 4.8.5 (2016-02-16)
 ------------------
