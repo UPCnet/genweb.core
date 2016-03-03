@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.8 (unreleased)
+4.8.8 (2016-03-03)
 ------------------
 
-- Nothing changed yet.
-
+* updated i18n [roberto.diaz]
 
 4.8.7 (2016-03-03)
 ------------------
