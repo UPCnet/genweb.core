@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.7 (unreleased)
+4.8.7 (2016-03-03)
 ------------------
 
-- Nothing changed yet.
-
+* register portlets [Alberto Duran]
 
 4.8.6 (2016-03-03)
 ------------------
