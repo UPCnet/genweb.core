@@ -369,17 +369,7 @@ Changelog
 -------------------
 
 * Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
-* added utf codification to py [Roberto Diaz]
-
-4.4.48 (2015-03-04)
--------------------
-
-* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
 * sort order in Tiny Templates [Roberto Diaz]
-
-4.4.48 (2015-03-04)
--------------------
-
 * Change name static portlet [hanirok]
 * TinyMCE. Quitar de style y tablestyle los valores por defecto [Paco Gregori]
 * Translate static portlet [hanirok]
