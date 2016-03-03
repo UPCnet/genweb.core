@@ -1898,6 +1898,9 @@ msgstr "Se puede seleccionar la dirección de correo que recibe el mensaje de co
 # Portlet NewsEventsListing #
 #############################
 
+msgid "all_news"
+msgstr "Todas las notícias"
+
 msgid "mode_future_link"
 msgstr "Próximos"
 

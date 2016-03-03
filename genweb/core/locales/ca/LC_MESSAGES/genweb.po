@@ -1977,6 +1977,9 @@ msgstr "Es pot seleccionar a qui s'envia el missatge de contacte."
 # Portlet NewsEventsListing #
 #############################
 
+msgid "all_news"
+msgstr "Totes les notícies"
+
 msgid "mode_future_link"
 msgstr "Propers"
 
