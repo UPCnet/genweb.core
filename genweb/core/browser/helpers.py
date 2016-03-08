@@ -1261,6 +1261,17 @@ class PACUseNewViewNames(grok.View):
         return '\n'.join(output)
 
 
+class ImportTypesTool(grok.View):
+    """ ImportTypesTool """
+    grok.context(IPloneSiteRoot)
+    grok.name('import_types_tool')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.upc:default', 'typeinfo')
+
+
 class ChangeNewsEventsPortlets(grok.View):
     """ Replace navigation portlet by categories portlet from news and events
     view methods in the current Plone site. """
