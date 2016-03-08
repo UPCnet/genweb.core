@@ -1268,6 +1268,7 @@ class ImportTypesTool(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
+        portal = api.portal.get()
         ps = getToolByName(portal, 'portal_setup')
         ps.runImportStepFromProfile('profile-genweb.upc:default', 'typeinfo')
 
