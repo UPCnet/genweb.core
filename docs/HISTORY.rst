@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.9 (unreleased)
+4.8.9 (2016-03-08)
 ------------------
 
-- Nothing changed yet.
-
+* tocador per types tool [Alberto Duran]
+* updated history [roberto.diaz]
 
 4.8.8 (2016-03-03)
 ------------------
