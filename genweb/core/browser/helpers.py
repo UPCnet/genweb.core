@@ -843,6 +843,8 @@ class ReBuildUserPropertiesCatalog(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         portal = api.portal.get()
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
@@ -871,11 +873,14 @@ class ResetUserPropertiesCatalog(grok.View):
     """
         Reset the OMEGA13 repoze.catalog for user properties data.
     """
+
     grok.context(IPloneSiteRoot)
     grok.name('reset_user_catalog')
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
         reset_user_catalog()
 
 
