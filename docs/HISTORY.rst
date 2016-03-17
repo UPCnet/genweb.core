@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.10 (unreleased)
+4.8.10 (2016-03-17)
 -------------------
 
-- Nothing changed yet.
-
+* add CSRF patch with user_catalog function [Paco Gregori]
+* Solucionado bug permisos dexterity [Pilar Marinas]
+* fix tocador types tool [Alberto Duran]
 
 4.8.9 (2016-03-08)
 ------------------
