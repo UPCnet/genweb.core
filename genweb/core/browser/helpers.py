@@ -1348,3 +1348,20 @@ class ChangeNewsEventsPortlets(grok.View):
             del target_manager_assignments_left[portlet]
         if 'news_events_listing' not in target_manager_assignments_left:
             target_manager_assignments_left['news_events_listing'] = news_events_Assignment([], obj_type)
+
+
+class SetSitemapDepth(grok.View):
+    """ Set 3 levels of sitemap  """
+    grok.context(IPloneSiteRoot)
+    grok.name('sitemapdepth')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        navtree_props = portal.portal_properties.navtree_properties
+        navtree_props.sitemapDepth = 4
+        import transaction
+        transaction.commit()
+        output.append('{}: Successfully setted 3 levels in sitemap'.format(portal.id))
+        return '\n'.join(output)
