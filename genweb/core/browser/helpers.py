@@ -1365,3 +1365,21 @@ class SetSitemapDepth(grok.View):
         transaction.commit()
         output.append('{}: Successfully setted 3 levels in sitemap'.format(portal.id))
         return '\n'.join(output)
+
+
+class RemoveOldIconCollection(grok.View):
+    """ Set 3 levels of sitemap  """
+    grok.context(IPloneSiteRoot)
+    grok.name('removeicon')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        file = '++resource++collection.css'
+        css = api.portal.get_tool('portal_css')
+        css.manage_removeStylesheet(file)
+        import transaction
+        transaction.commit()
+        output.append('{}: Successfully css class removed'.format(portal.id))
+        return '\n'.join(output)
