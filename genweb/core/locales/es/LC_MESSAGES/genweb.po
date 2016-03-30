@@ -1942,3 +1942,11 @@ msgstr "Hoy"
 
 msgid "next_day_link"
 msgstr "Día siguiente"
+
+#########################
+# genweb.upc contact form
+#########################
+
+#: genweb.upc/genweb/upc/browser/contact.py:151
+msgid "The entered text does not match the text in the image"
+msgstr "El texto introducido no coindice con el de la imagen"
