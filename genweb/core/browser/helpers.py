@@ -1311,9 +1311,9 @@ class ChangeNewsEventsPortlets(grok.View):
         portal_ca['noticies'].setLayout('news_listing')
 
         # Set layout for events folders
-        portal_en['events'].setLayout('news_listing')
-        portal_es['eventos'].setLayout('news_listing')
-        portal_ca['esdeveniments'].setLayout('news_listing')
+        portal_en['events'].setLayout('event_listing')
+        portal_es['eventos'].setLayout('event_listing')
+        portal_ca['esdeveniments'].setLayout('event_listing')
 
         import transaction
         transaction.commit()
