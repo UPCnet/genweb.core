@@ -1397,9 +1397,9 @@ class UpdateLIF_LRF(grok.View):
 
         output = []
         portal.portal_types['LIF'].view_methods = ('listing_view', 'summary_view', 'tabular_view', 'full_view', 'album_view')
-        portal.portal_types['LIF'] = 'tabular_view'
+        portal.portal_types['LIF'].default_view = 'tabular_view'
         portal.portal_types['LRF'].view_methods = ('listing_view', 'summary_view', 'tabular_view', 'full_view', 'album_view')
-        portal.portal_types['LRF'] = 'tabular_view'
+        portal.portal_types['LRF'].default_view = 'tabular_view'
         import transaction
         transaction.commit()
         output.append('{}: Successfully reinstalled'.format(portal.id))
