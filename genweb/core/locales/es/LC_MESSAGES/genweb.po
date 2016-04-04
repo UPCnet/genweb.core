@@ -1291,17 +1291,17 @@ msgstr "Es el literal que aparece al pie de la página o en el texto alternativo
 #. Default: "Treu les icones per compartir en xarxes socials ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:206
 msgid "help_treu_icones_xarxes_socials"
-msgstr "Mostrar los iconos para compartir las redes sociales ..."
+msgstr "Oculta los iconos para compartir en redes sociales ..."
 
 #. Default: "Treiem la imatge de la capçalera per ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:188
 msgid "help_treu_imatge_capsalera"
-msgstr "Mostrar la imagen de la cabecera"
+msgstr "Oculta la imagen de la cabecera por ..."
 
 #. Default: "Treu el menú horitzontal ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:197
 msgid "help_treu_menu_horitzontal"
-msgstr "Mostrar el menu horizontal"
+msgstr "Oculta el menú horizontal ..."
 
 #. Default: "Pàgina d'inici"
 msgid "homepage"
@@ -1809,17 +1809,17 @@ msgstr "Pincha en el marcador para ir a UPCmaps"
 #. Default: "Treu les icones per compartir en xarxes socials"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:204
 msgid "treu_icones_xarxes_socials"
-msgstr "Mostrar los iconos para compartir las redes sociales"
+msgstr "Oculta los iconos para compartir en redes sociales"
 
 #. Default: "Treu la imatge de la capçalera"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:186
 msgid "treu_imatge_capsalera"
-msgstr "Mostrar las imagenes de cabecera"
+msgstr "Oculta la imagen de la cabecera"
 
 #. Default: "Treu el menú horitzontal"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:195
 msgid "treu_menu_horitzontal"
-msgstr "Mostrar el menu horizontal"
+msgstr "Oculta el menú horizontal"
 
 #: genweb.banners/genweb/banners/content/banner.py:23
 msgid "url"
