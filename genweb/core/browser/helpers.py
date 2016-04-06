@@ -843,8 +843,11 @@ class ReBuildUserPropertiesCatalog(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
-        from plone.protect.interfaces import IDisableCSRFProtection
-        alsoProvides(self.request, IDisableCSRFProtection)
+        try:
+          from plone.protect.interfaces import IDisableCSRFProtection
+          alsoProvides(self.request, IDisableCSRFProtection)
+	except:
+	  pass
         context = aq_inner(self.context)
         portal = api.portal.get()
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
@@ -879,8 +882,11 @@ class ResetUserPropertiesCatalog(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
-        from plone.protect.interfaces import IDisableCSRFProtection
-        alsoProvides(self.request, IDisableCSRFProtection)
+	try:
+          from plone.protect.interfaces import IDisableCSRFProtection
+          alsoProvides(self.request, IDisableCSRFProtection)
+	except:
+	  pass
         reset_user_catalog()
 
 

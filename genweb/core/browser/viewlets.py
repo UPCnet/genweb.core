@@ -67,7 +67,8 @@ class baseResourcesViewlet(grok.Viewlet):
         if self.is_devel_mode():
             return self.get_development_resources()
         else:
-            return self.get_production_resources()
+            #return self.get_production_resources()
+	    return self.get_development_resources()
 
     @forever.memoize
     def get_development_resources(self):
