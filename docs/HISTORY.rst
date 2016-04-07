@@ -1,11 +1,22 @@
 Changelog
 =========
 
-4.8.11 (unreleased)
+4.8.11 (2016-04-07)
 -------------------
 
-- Nothing changed yet.
-
+* Viewlet production_resources [root@shayla]
+* Try IDisableCSRFProtection [root@shayla]
+* set default view [Alberto Duran]
+* tocador per LIF i LRF [Alberto Duran]
+* Fix i18n messages for control panel [Santiago Cortes]
+*  [Santiago Cortes]
+* See https://gn6.upc.edu/tiquets/control/tiquetDetallDadesGenerals?requirementId=653864 [Santiago Cortes]
+* Add i18n messages for contact form validation [Santiago Cortes]
+*  [Santiago Cortes]
+* Add the invalid captcha message for the form validation in ca, es, en. [Santiago Cortes]
+* correct view for events [Alberto Duran]
+* tocador remove old icon collection [Alberto Duran]
+* tocador per config sitemap a 3 nivells [Alberto Duran]
 
 4.8.10 (2016-03-17)
 -------------------
