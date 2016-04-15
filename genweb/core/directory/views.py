@@ -17,10 +17,10 @@ def get_ldap_config():
     """ return config ldap """
     registry = queryUtility(IRegistry)
     gw_settings = registry.forInterface(IGenwebCoreControlPanelSettings)
-    ALT_LDAP_URI = gw_settings.alt_ldap_uri if gw_settings.alt_ldap_uri != '' else os.environ.get('alt_ldap_uri', '')
-    ALT_LDAP_DN = gw_settings.alt_bind_dn if gw_settings.alt_bind_dn != '' else os.environ.get('alt_bind_dn', '')
-    ALT_LDAP_PASSWORD = gw_settings.alt_bindpasswd if gw_settings.alt_bindpasswd != '' else os.environ.get('alt_bindpasswd', '')
-    BASEDN = gw_settings.alt_base_dn if gw_settings.alt_base_dn != '' else os.environ.get('alt_base_dn', '')
+    ALT_LDAP_URI = gw_settings.alt_ldap_uri if gw_settings.alt_ldap_uri is not None else os.environ.get('alt_ldap_uri', '')
+    ALT_LDAP_DN = gw_settings.alt_bind_dn if gw_settings.alt_bind_dn is not None else os.environ.get('alt_bind_dn', '')
+    ALT_LDAP_PASSWORD = gw_settings.alt_bindpasswd if gw_settings.alt_bindpasswd is not None else os.environ.get('alt_bindpasswd', '')
+    BASEDN = gw_settings.alt_base_dn if gw_settings.alt_base_dn is not None else os.environ.get('alt_base_dn', '')
 
     return ALT_LDAP_URI, ALT_LDAP_DN, ALT_LDAP_PASSWORD, BASEDN
 
