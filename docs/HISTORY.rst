@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.12 (unreleased)
+4.8.12 (2016-04-18)
 -------------------
 
-- Nothing changed yet.
-
+* script modified to take LDAP config from control panel v2 [Alberto Duran]
+* script modified to take LDAP config from control panel [Alberto Duran]
 
 4.8.11 (2016-04-07)
 -------------------
