@@ -132,3 +132,13 @@ msgstr "A mail has now been sent regarding your questions and/or comments. "
 
 msgid "Album view"
 msgstr "Album view"
+
+#############################
+# Subhome type #
+#############################
+
+msgid "Subhome"
+msgstr "Portlet grid"
+
+msgid "Subhome Description"
+msgstr "Element for display a page with various contents from the web"

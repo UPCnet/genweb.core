@@ -2029,3 +2029,13 @@ msgstr "Dia següent"
 #: genweb.upc/genweb/upc/browser/contact.py:151
 msgid "The entered text does not match the text in the image"
 msgstr "El text introduït no coincideix amb el de la imatge"
+
+#############################
+# Subhome type #
+#############################
+
+#. "manage_subhomeportlets_link"
+#. Default: "Manage subhome page"
+#: genweb.upc/genweb/upc/templates/genweb.theme.browser.viewlets_templates.manage_portlets_fallback.pt
+msgid "manage_subhomeportlets_link"
+msgstr "Administra la graella de portlets"
