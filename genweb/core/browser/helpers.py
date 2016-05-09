@@ -1410,3 +1410,25 @@ class UpdateLIF_LRF(grok.View):
         transaction.commit()
         output.append('{}: Successfully reinstalled'.format(portal.id))
         return '\n'.join(output)
+
+
+class ReinstallGenwebUPCWithLanguages(grok.View):
+    """ Reinstalls genweb.upc keeping published languages in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('reinstall_gwupc')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        languages = api.portal.get_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.idiomes_publicats')
+        context = aq_inner(self.context)
+        output = []
+        qi = getToolByName(context, 'portal_quickinstaller')
+
+        if qi.isProductInstalled('genweb.upc'):
+            qi.uninstallProducts(['genweb.upc'], reinstall=True)
+            qi.installProducts(['genweb.upc'], reinstall=True)
+            api.portal.set_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.idiomes_publicats', value=languages)
+            output.append('{}: Successfully reinstalled control panel'.format(context))
+        return '\n'.join(output)
