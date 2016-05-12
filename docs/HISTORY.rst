@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.13 (unreleased)
+4.8.13 (2016-05-12)
 -------------------
 
-- Nothing changed yet.
-
+* tocador per reinistalar genweb.upc conservant idiomes [Alberto Duran]
+* traduccions Subhome [Alberto Duran]
 
 4.8.12 (2016-04-18)
 -------------------
