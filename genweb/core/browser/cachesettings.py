@@ -124,7 +124,7 @@ cacheprofile = """
   <record name="plone.app.caching.moderateCaching.lastModified">
     <field type="plone.registry.field.Bool">
       <description>Turn on Last-Modified headers</description>
-      <required>False</required>
+      <required>True</required>
       <title>Last-modified validation</title>
     </field>
     <value>False</value>

@@ -1421,6 +1421,7 @@ class ReinstallGenwebUPCWithLanguages(grok.View):
     def render(self, portal=None):
         if CSRF:
             alsoProvides(self.request, IDisableCSRFProtection)
+        defaultLanguage = api.portal.get_default_language()
         languages = api.portal.get_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.idiomes_publicats')
         context = aq_inner(self.context)
         output = []
@@ -1430,5 +1431,35 @@ class ReinstallGenwebUPCWithLanguages(grok.View):
             qi.uninstallProducts(['genweb.upc'], reinstall=True)
             qi.installProducts(['genweb.upc'], reinstall=True)
             api.portal.set_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.idiomes_publicats', value=languages)
-            output.append('{}: Successfully reinstalled control panel'.format(context))
+            language = api.portal.get_tool('portal_languages')
+            language.manage_setLanguageSettings(defaultLanguage, languages)
+            output.append('{}: Successfully reinstalled genweb upc'.format(context))
         return '\n'.join(output)
+
+
+class ImportTinyMCE4GenwebUPC(grok.View):
+    """ ImportTinyMCE4GenwebUPC """
+    grok.context(IPloneSiteRoot)
+    grok.name('import_tinymce')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        portal = api.portal.get()
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.upc:default', 'tinymce_settings')
+
+
+class ImportVariousSettings4GenwebCore(grok.View):
+    """ ImportVariousSettings4GenwebCore """
+    grok.context(IPloneSiteRoot)
+    grok.name('import_various')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        portal = api.portal.get()
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.core:default', 'genweb.core.various')
