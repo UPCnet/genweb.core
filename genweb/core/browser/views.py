@@ -19,6 +19,8 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 from genweb.core.interfaces import IGenwebLayer
 from genweb.core.adapters import IImportant
+from genweb.core.adapters import IFlash
+from genweb.core.adapters import IOutOfList
 
 from genweb.core import GenwebMessageFactory as _
 
@@ -72,7 +74,7 @@ class TemplateList(grok.View):
                 results = templatesSCP + templatesCustom
 
                 for r in results:
-                    templates.append([r.Title, '%s/genweb.get.dxdocument.text' % r.getURL(), r.Description])
+                    templates.append([r.Title, '%s/genweb.get.dxdocument.text' % r.getURL(), r.DescFlashription])
 
         return u'var tinyMCETemplateList = %s;' % json.dumps(templates)
 
@@ -123,6 +125,46 @@ class gwToggleIsImportant(grok.View):
         else:
             IImportant(context).is_important = True
             confirm = _(u'L\'element s\'ha marcat com important')
+
+        IStatusMessage(self.request).addStatusMessage(confirm, type='info')
+        self.request.response.redirect(self.context.absolute_url())
+
+
+class gwToggleIsFlash(grok.View):
+    grok.context(IDexterityContent)
+    grok.name('toggle_flash')
+    grok.require('cmf.ModifyPortalContent')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        context = aq_inner(self.context)
+        is_flash = IFlash(context).is_flash
+        if is_flash:
+            IFlash(context).is_flash = False
+            confirm = _(u'L\'element s\'ha desmarcat com flash')
+        else:
+            IFlash(context).is_flash = True
+            confirm = _(u'L\'element s\'ha marcat com flash')
+
+        IStatusMessage(self.request).addStatusMessage(confirm, type='info')
+        self.request.response.redirect(self.context.absolute_url())
+
+
+class gwToggleIsOutoflist(grok.View):
+    grok.context(IDexterityContent)
+    grok.name('toggle_outoflist')
+    grok.require('cmf.ModifyPortalContent')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        context = aq_inner(self.context)
+        is_outoflist = IOutOfList(context).is_outoflist
+        if is_outoflist:
+            IOutOfList(context).is_outoflist = False
+            confirm = _(u'L\'element s\'ha desmarcat de la blacklist')
+        else:
+            IOutOfList(context).is_outoflist = True
+            confirm = _(u'L\'element s\'ha marcat com a blacklist')
 
         IStatusMessage(self.request).addStatusMessage(confirm, type='info')
         self.request.response.redirect(self.context.absolute_url())
