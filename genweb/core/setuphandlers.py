@@ -15,6 +15,8 @@ import transaction
 PROFILE_ID = 'profile-genweb.core:default'
 # Specify the indexes you want, with ('index_name', 'index_type')
 INDEXES = (('is_important', 'BooleanIndex'),
+           ('is_flash', 'BooleanIndex'),
+           ('is_outoflist', 'BooleanIndex'),
            ('favoritedBy', 'KeywordIndex'),
            ('exclude_from_nav', 'FieldIndex'),
            ('news_image_filename', 'FieldIndex'),
