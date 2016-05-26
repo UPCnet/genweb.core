@@ -40,6 +40,8 @@ from genweb.core.utils import add_user_to_catalog
 from genweb.core.utils import reset_user_catalog
 from genweb.core.browser.plantilles import get_plantilles
 
+from plone.app.controlpanel.mail import IMailSchema
+
 import json
 import os
 import re
@@ -172,7 +174,7 @@ class listPloneSitesView(grok.View):
         context = aq_inner(self.context)
         out = []
         for item in context.values():
-            #if IPloneSiteRoot.providedBy(item):
+            # if IPloneSiteRoot.providedBy(item):
             #    out.append(item)
             if IFolder.providedBy(item):
                 for site in item.values():
@@ -580,9 +582,9 @@ class ReinstallGWControlPanel(grok.View):
 
 class BulkReinstallGWControlPanel(grok.View):
     """
-        Reinstall genweb.controlpanel in all the Plone instance of this Zope.
-        Useful when added some parameter to the control panel and you want to
-        apply it at the same time in all the existing Plone sites in the Zope.
+    Reinstall genweb.controlpanel in all the Plone instance of this Zope.
+    Useful when added some parameter to the control panel and you want to
+    apply it at the same time in all the existing Plone sites in the Zope.
     """
     grok.context(IApplication)
     grok.name('bulk_reinstall_gwcontrolpanel')
@@ -600,7 +602,7 @@ class BulkReinstallGWControlPanel(grok.View):
 
 class ResetLanguage(grok.View):
     """
-        Re-set the language of each LRF according to its name. Execute in an LRF.
+    Re-set the language of each LRF according to its name. Execute in an LRF.
     """
     grok.context(Interface)
     grok.name('resetlanguage')
@@ -874,7 +876,7 @@ class ReBuildUserPropertiesCatalog(grok.View):
 
 class ResetUserPropertiesCatalog(grok.View):
     """
-        Reset the OMEGA13 repoze.catalog for user properties data.
+    Reset the OMEGA13 repoze.catalog for user properties data.
     """
 
     grok.context(IPloneSiteRoot)
@@ -1013,6 +1015,25 @@ class BulkExecuteScriptView(grok.View):
                 output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
                 output.append('-----------------------------------------------')
         return '\n'.join(output)
+
+
+class getContactData(grok.View):
+    """ Get Contact data from all instances """
+    grok.context(IPloneSiteRoot)
+    grok.name('getContactData')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+
+        portal = api.portal.get()
+        mail = IMailSchema(portal)
+
+        path = portal.absolute_url()
+        host = mail.smtp_host
+        name = mail.email_from_name
+        email = mail.email_from_address
+
+        return (path, host, name, email)
 
 
 class UpdateFolderViews(grok.View):
