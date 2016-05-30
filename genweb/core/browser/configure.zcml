@@ -13,24 +13,6 @@
       layer="genweb.core.interfaces.IGenwebLayer"
     />
 
-<!-- genweb.core with aternatheme GS profile -->
-<!-- Should be in other module than the default GS profile -->
-    <genericsetup:registerProfile
-      name="alternatheme"
-      title="Genweb Core with AlternaTheme"
-      directory="../profiles/alternatheme"
-      description="Installs the genweb.core package with the alternatheme theme"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-<!--     <browser:page
-      name="getZEO"
-      for="*"
-      class=".helpers.getZEO"
-      permission="zope2.View"
-      template="views_templates/getzeo.pt"
-      /> -->
-
     <browser:resourceDirectory
       name="collective.tinymcetemplates.plugin"
       directory="tinytemplates_plugin"

@@ -1,6 +1,0 @@
-<layers>
- <layer
-     name="GenwebLayer"
-     interface="genweb.core.interfaces.IGenwebLayer"
-     />
-</layers>
