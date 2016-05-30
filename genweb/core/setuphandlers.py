@@ -81,8 +81,6 @@ def setupVarious(context):
     transform = getattr(transforms, 'safe_html')
     valid = transform.get_parameter_value('valid_tags')
     nasty = transform.get_parameter_value('nasty_tags')
-    whitelist = transform.get_parameter_value('style_whitelist')
-    whitelist.append(u'text-decoration')
 
     # GW4 Valid tags
     gw4_valid = ['script', 'object', 'embed', 'param', 'iframe', 'applet', 'button']
@@ -102,7 +100,6 @@ def setupVarious(context):
     kwargs = {}
     kwargs['valid_tags'] = valid
     kwargs['nasty_tags'] = nasty
-    kwargs['style_whitelist'] = whitelist
     kwargs['stripped_attributes'] = stripped
     for k in list(kwargs):
         if isinstance(kwargs[k], dict):
