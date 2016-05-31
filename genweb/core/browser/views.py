@@ -16,11 +16,16 @@ from plone.dexterity.interfaces import IDexterityContent
 from plone.registry.interfaces import IRegistry
 
 from Products.statusmessages.interfaces import IStatusMessage
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from genweb.core.interfaces import IGenwebLayer
 from genweb.core.adapters import IImportant
 from genweb.core.adapters import IFlash
 from genweb.core.adapters import IOutOfList
+
+from souper.soup import get_soup
+from souper.soup import Record
+from repoze.catalog.query import Eq
 
 from genweb.core import GenwebMessageFactory as _
 
@@ -168,3 +173,36 @@ class gwToggleIsOutoflist(grok.View):
 
         IStatusMessage(self.request).addStatusMessage(confirm, type='info')
         self.request.response.redirect(self.context.absolute_url())
+
+
+class gwToggleSubscribedTag(grok.View):
+    grok.context(Interface)
+    grok.name('toggle_subscriptiontag')
+    grok.require('cmf.ModifyPortalContent')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        portal = getSite()
+        current_user = api.user.get_current()
+        userid = current_user.id
+        tag = self.request.form['tag']
+        soup_tags = get_soup('user_subscribed_tags', portal)
+        exist = [r for r in soup_tags.query(Eq('id', userid))]
+
+        if not exist:
+            record = Record()
+            record.attrs['id'] = userid
+            record.attrs['tags'] = [tag]
+            soup_tags.add(record)
+        else:
+            subscribed = [True for utag in exist[0].attrs['tags'] if utag == tag]
+            if subscribed:
+                exist[0].attrs['tags'].remove(tag)
+            else:
+                exist[0].attrs['tags'].append(tag)
+        soup_tags.reindex()
+
+        if IPloneSiteRoot.providedBy(self.context):
+            self.request.response.redirect(self.context.absolute_url()+'/alltags')
+        else:
+            self.request.response.redirect(self.context.absolute_url())
