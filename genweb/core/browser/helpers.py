@@ -1451,18 +1451,37 @@ class ImportTinyMCE4GenwebUPC(grok.View):
         ps.runImportStepFromProfile('profile-genweb.upc:default', 'tinymce_settings')
 
 
-class ImportVariousSettings4GenwebCore(grok.View):
-    """ ImportVariousSettings4GenwebCore """
+class ModifyWhiteListSafeHTML(grok.View):
+    """ ModifyWhitelistSafeHTML """
     grok.context(IPloneSiteRoot)
-    grok.name('import_various')
+    grok.name('modify_whitelist')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
         if CSRF:
             alsoProvides(self.request, IDisableCSRFProtection)
         portal = api.portal.get()
-        ps = getToolByName(portal, 'portal_setup')
-        ps.runImportStepFromProfile('profile-genweb.core:default', 'genweb.core.various')
+        transforms = getToolByName(portal, 'portal_transforms')
+        transform = getattr(transforms, 'safe_html')
+        whitelist = transform.get_parameter_value('style_whitelist')
+        if 'text-decoration' not in whitelist:
+            whitelist.append(u'text-decoration')
+        if 'height' not in whitelist:
+            whitelist.append(u'height')
+        if 'width' not in whitelist:
+            whitelist.append(u'width')
+
+        kwargs = {}
+        kwargs['style_whitelist'] = whitelist
+        for k in list(kwargs):
+            if isinstance(kwargs[k], dict):
+                v = kwargs[k]
+                kwargs[k + '_key'] = v.keys()
+                kwargs[k + '_value'] = [str(s) for s in v.values()]
+                del kwargs[k]
+        transform.set_parameters(**kwargs)
+        transform._p_changed = True
+        transform.reload()
 
 
 class ListDomaninsCache(grok.View):
