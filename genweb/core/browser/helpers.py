@@ -575,6 +575,8 @@ class ReinstallGWControlPanel(grok.View):
             qi.uninstallProducts(['genweb.controlpanel'], reinstall=True)
             qi.installProducts(['genweb.controlpanel'], reinstall=True)
             output.append('{}: Successfully reinstalled control panel'.format(context))
+        import transaction
+        transaction.commit()
         return '\n'.join(output)
 
 
