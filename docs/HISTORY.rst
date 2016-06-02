@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.15 (unreleased)
+4.8.15 (2016-06-02)
 -------------------
 
-- Nothing changed yet.
-
+* retrieve white_list from Tiny again... [roberto.diaz]
+* getContactEmails (Corina) ;) [Alberto Duran]
+* added transaction commit for reinstall GW control panel [roberto.diaz]
 
 4.8.14 (2016-06-02)
 -------------------
