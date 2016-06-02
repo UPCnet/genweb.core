@@ -39,6 +39,7 @@ from genweb.core.interfaces import IProtectedContent
 from genweb.core.utils import add_user_to_catalog
 from genweb.core.utils import reset_user_catalog
 from genweb.core.browser.plantilles import get_plantilles
+from plone.app.controlpanel.mail import IMailSchema
 
 import json
 import os
@@ -1505,3 +1506,32 @@ class ListDomaninsCache(grok.View):
             info['domains_list'] = domains
         output.append('{}'.format(info))
         return '\n'.join(output)
+
+
+class getContactData(grok.View):
+    """ Get Contact data from all instances """
+    grok.context(IPloneSiteRoot)
+    grok.name('getContactData')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        portal = api.portal.get()
+        mail = IMailSchema(portal)
+        path = portal.absolute_url()
+        host = mail.smtp_host
+        name = mail.email_from_name
+        email = mail.email_from_address
+        return (path, host, name, email)
+
+# class SetDomainsCache(grok.View):
+#     """ Set domains from plone.app.caching """
+#     grok.context(IPloneSiteRoot)
+#     grok.name('set_domains_cache')
+#     grok.require('cmf.ManagePortal')
+#
+#     def render(self, portal=None):
+#         output = []
+#         args = self.request.form
+#         quoted_args = urllib.urlencode(args)
+#         output.append('{}'.format(quoted_args))
+#         return '\n'.join(output)
