@@ -1,11 +1,20 @@
 Changelog
 =========
 
-4.8.14 (unreleased)
+4.8.14 (2016-06-02)
 -------------------
 
-- Nothing changed yet.
-
+* Update views.py [Roberto Diaz]
+*  [Roberto Diaz]
+* remove stirng error [Roberto Diaz]
+* tocador estils tiny v2 [Alberto Duran]
+* add soup for user tags and views to toggle [Paco Gregori]
+* remove duplicate text-decoration in new gw [Alberto Duran]
+* tocador domains per purgar cache [Alberto Duran]
+* New bulk_action to obtain contact email [Corina Riba]
+* add is_flash and is_outoflist indexers [Paco Gregori]
+* adapters flash and outoflist to news type [Paco Gregori]
+* props cache, tocador tiny, tocador filtre html [Alberto Duran]
 
 4.8.13 (2016-05-12)
 -------------------
