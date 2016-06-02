@@ -79,7 +79,7 @@ class TemplateList(grok.View):
                 results = templatesSCP + templatesCustom
 
                 for r in results:
-                    templates.append([r.Title, '%s/genweb.get.dxdocument.text' % r.getURL(), r.DescFlashription])
+                    templates.append([r.Title, '%s/genweb.get.dxdocument.text' % r.getURL(), r.Description])
 
         return u'var tinyMCETemplateList = %s;' % json.dumps(templates)
 
