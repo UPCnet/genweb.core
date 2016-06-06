@@ -1454,10 +1454,10 @@ class ImportTinyMCE4GenwebUPC(grok.View):
         ps.runImportStepFromProfile('profile-genweb.upc:default', 'tinymce_settings')
 
 
-class ModifyWhiteListSafeHTML(grok.View):
-    """ ModifyWhitelistSafeHTML """
+class DefaultHtmlConfig(grok.View):
+    """ DefaultHtmlConfig """
     grok.context(IPloneSiteRoot)
-    grok.name('modify_whitelist')
+    grok.name('defaultHtmlConfig')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -1475,17 +1475,25 @@ class ModifyWhiteListSafeHTML(grok.View):
         trans = pt[tid]
 
         tconfig = trans._config
-        tconfig['class_blacklist'] = []
-        tconfig['nasty_tags'] = {'meta': '1'}
-        tconfig['remove_javascript'] = 0
-        tconfig['stripped_attributes'] = ['lang', 'valign', 'halign', 'border',
-                                          'frame', 'rules', 'cellspacing',
-                                          'cellpadding', 'bgcolor']
+        tconfig['remove_javascript'] = 1
+        tconfig['nasty_tags'] = {'meta': '1', 'style': '1'}
+        tconfig['stripped_tags'] = ['fieldset', 'form', 'input', 'label',
+                                    'legend', 'link', 'noscript', 'optgroup',
+                                    'option', 'select', 'style', 'textarea']
+        tconfig['custom_tags'] = ['applet', 'article', 'aside', 'audio',
+                                  'canvas', 'command', 'datalist', 'details',
+                                  'dialog', 'embed', 'figure', 'footer',
+                                  'header', 'hgroup', 'iframe', 'keygen',
+                                  'mark', 'meter', 'nav', 'output', 'progress',
+                                  'rp', 'rt', 'ruby', 'section', 'source',
+                                  'time', 'u', 'video']
+        tconfig['stripped_attributes'] = ['lang', 'halign', 'border',
+                                          'frame', 'rules', 'bgcolor']
         tconfig['stripped_combinations'] = {}
         tconfig['style_whitelist'] = ['text-align', 'list-style-type', 'float',
                                       'width', 'height', 'padding-left',
                                       'padding-right', 'text-decoration']
-
+        tconfig['class_blacklist'] = []
         tconfig['valid_tags'] = {
          'code': '1', 'meter': '1', 'tbody': '1', 'style': '1', 'img': '0',
          'title': '1', 'tt': '1', 'tr': '1', 'param': '1', 'li': '1',
@@ -1505,10 +1513,13 @@ class ModifyWhiteListSafeHTML(grok.View):
          'aside': '1', 'html': '1', 'nav': '1', 'details': '1', 'u': '1',
          'samp': '1', 'map': '1', 'object': '1', 'a': '1', 'footer': '1',
          'i': '1', 'q': '1', 'command': '1', 'time': '1', 'audio': '1',
-         'section': '1', 'abbr': '1'}
+         'section': '1', 'abbr': '1', 'meta': '0', 'applet':'1', 'button': '1'}
         make_config_persistent(tconfig)
         trans._p_changed = True
         trans.reload()
+        output = []
+        output.append('Default HTML Configuration for safe_html applied')
+        return '\n'.join(output)
 
 
 class ListDomaninsCache(grok.View):
@@ -1559,3 +1570,25 @@ class getContactData(grok.View):
 #         quoted_args = urllib.urlencode(args)
 #         output.append('{}'.format(quoted_args))
 #         return '\n'.join(output)
+
+
+class reindexAllPages(grok.View):
+    """ reindexAllPages"""
+    grok.context(IPloneSiteRoot)
+    grok.name('reindexAllPages')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        context = aq_inner(self.context)
+        pc = getToolByName(context, 'portal_catalog')
+        brains = pc.searchResults(portal_type='Document')
+        for result in brains:
+            obj = result.getObject()
+            obj.reindexObject()
+            #import ipdb; ipdb.set_trace()
+        import transaction
+        transaction.commit()
+        output.append('{}: Documents successfully reindexed'.format(portal.id))
+        return '\n'.join(output)
