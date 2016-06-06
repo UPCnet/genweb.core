@@ -127,10 +127,11 @@ def setupVarious(context):
         portal['front-page'].reindexObject()
 
     # Set mailhost
-    mh = getToolByName(portal, 'MailHost')
-    mh.smtp_host = 'localhost'
-    portal.email_from_name = 'Genweb Administrator'
-    portal.email_from_address = 'no-reply@upcnet.es'
+    if portal.email_from_address in ('noreply@upc.edu', 'no-reply@upcnet.es'):
+        mh = getToolByName(portal, 'MailHost')
+        mh.smtp_host = 'localhost'
+        portal.email_from_name = 'Genweb Administrator'
+        portal.email_from_address = 'no-reply@upcnet.es'
 
     # Set default TimeZone (p.a.event)
     api.portal.set_registry_record('plone.app.event.portal_timezone', 'Europe/Madrid')
