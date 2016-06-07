@@ -1592,3 +1592,26 @@ class reindexAllPages(grok.View):
         transaction.commit()
         output.append('{}: Documents successfully reindexed'.format(portal.id))
         return '\n'.join(output)
+
+
+class fixRecord(grok.View):
+    """ Soluciona el problema de KeyError amb el codi d'un mountpoint quan reinstalem un paquet"""
+    grok.context(IPloneSiteRoot)
+    grok.name('fixRecord')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        from zope.component import getUtility
+        from plone.registry.interfaces import IRegistry
+
+        site = self.context.portal_registry
+        registry = getUtility(IRegistry)
+        rec = registry.records
+        keys = [a for a in rec.keys()]
+        for k in keys:
+            try:
+                rec[k]
+            except:
+                del site.portal_registry.records._values[k]
+                del site.portal_registry.records._fields[k]
+        return "S'han purgat les entrades del registre"
