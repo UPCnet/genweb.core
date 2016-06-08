@@ -1011,10 +1011,9 @@ class BulkExecuteScriptView(grok.View):
                 print('======================')
                 quoted_args = urllib.urlencode(args)
                 response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
+                output.append("""--------------------------- Executed view {} in
+                 site {} ---------------------------<br/>""".format(view_name, plonesite.id))
                 output.append(response.getBody())
-
-                output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
-                output.append('-----------------------------------------------')
         return '\n'.join(output)
 
 
@@ -1619,7 +1618,7 @@ class fixRecord(grok.View):
 
 
 class getConfigGenwebControlPanelSettings(grok.View):
-    """"""
+    """Recordar afegir nous camps quan s'actualitzi el genweb upc ctrlpanel"""
     grok.context(IPloneSiteRoot)
     grok.name('getControlPanelSettings')
     grok.require('cmf.ManagePortal')
@@ -1797,7 +1796,7 @@ class getConfigGenwebControlPanelSettings(grok.View):
                      Enllaç per al menú superior: {}<br/>
                      Enllaç per a la icona del menú superior: {}<br/>
                      Obre en una nova finestra: {}<br/>
-                     Publica l'enllaç customitzat: {}<br/>
+                     Publica l'enllaç customitzat: {}<br/><br/>
                      """.format(html_title_ca, html_title_es, html_title_en,
                      signatura_unitat_ca, signatura_unitat_es, signatura_unitat_en,
                      right_logo_enabled, right_logo_alt, meta_author, contacte_id,
