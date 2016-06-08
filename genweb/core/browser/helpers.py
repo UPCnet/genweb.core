@@ -1625,10 +1625,17 @@ class getConfigGenwebControlPanelSettings(grok.View):
 
     def render(self, portal=None):
         from genweb.controlpanel.interface import IGenwebControlPanelSettings
+        from plone.app.controlpanel.site import ISiteSchema
         import unicodedata
         import types
         if CSRF:
             alsoProvides(self.request, IDisableCSRFProtection)
+        portal = api.portal.get()
+        mail = IMailSchema(portal)
+        name = mail.email_from_name
+        email = mail.email_from_address
+        site = ISiteSchema(portal)
+        ga = '\n'.join(site.webstats_js)
         registry = queryUtility(IRegistry)
         gwcps = registry.forInterface(IGenwebControlPanelSettings)
 
@@ -1796,7 +1803,10 @@ class getConfigGenwebControlPanelSettings(grok.View):
                      Enllaç per al menú superior: {}<br/>
                      Enllaç per a la icona del menú superior: {}<br/>
                      Obre en una nova finestra: {}<br/>
-                     Publica l'enllaç customitzat: {}<br/><br/>
+                     Publica l'enllaç customitzat: {}<br/>
+                     Nom 'De' del lloc: {}<br/>
+                     Adreça 'De' del lloc: {}<br/>
+                     Javascript per al suport d'estadístiques web: {}<br/></br>
                      """.format(html_title_ca, html_title_es, html_title_en,
                      signatura_unitat_ca, signatura_unitat_es, signatura_unitat_en,
                      right_logo_enabled, right_logo_alt, meta_author, contacte_id,
@@ -1809,5 +1819,6 @@ class getConfigGenwebControlPanelSettings(grok.View):
                      create_packet, cl_title_ca, cl_url_ca, cl_img_ca,
                      cl_open_new_window_ca, cl_enable_ca, cl_title_es, cl_url_es,
                      cl_img_es, cl_open_new_window_es, cl_enable_es, cl_title_en,
-                     cl_url_en, cl_img_en, cl_open_new_window_en, cl_enable_en)
+                     cl_url_en, cl_img_en, cl_open_new_window_en, cl_enable_en,
+                     name, email, ga)
         return output
