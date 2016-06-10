@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="genweb">
+
+<body style="height: 100%;
+    background: linear-gradient(
+     to bottom,
+     #00529F,
+     #00529F 50%,
+     #A2214B 50%,
+     #A2214B
+    );
+
+    background-size: 100% 250px;">
+
+<h1 style="font-family: sans-serif; color: white; font-size: 110px; text-align: center; margin: 1em 0 0;" tal:content="view/nomDorsal" ></h1>
+<h2 style="font-family: sans-serif; color: white; font-size: 310px; text-align: center;margin: 0;" tal:content="view/dorsal"></h2>
+
+</body>
+</html>
