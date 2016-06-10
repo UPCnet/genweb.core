@@ -24,11 +24,11 @@
       />
 
 <!--     <browser:page
-      name="getZEO"
+      name="getZOPE"
       for="*"
-      class=".helpers.getZEO"
+      class=".helpers.getZOPE"
       permission="zope2.View"
-      template="views_templates/getzeo.pt"
+      template="helpers_templates/getzope.pt"
       /> -->
 
     <browser:resourceDirectory

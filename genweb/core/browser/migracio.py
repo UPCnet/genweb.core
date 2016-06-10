@@ -29,6 +29,7 @@ PROPERTIES_MAP = {'titolespai_ca': 'html_title_ca',
 
 
 class ExportGWConfig(grok.View):
+    """ ExportGWConfig """
     grok.context(IPloneSiteRoot)
     grok.name('export_gw_properties')
     grok.require('cmf.ManagePortal')
@@ -50,6 +51,7 @@ class ExportGWConfig(grok.View):
 
 
 class ImportGWConfig(grok.View):
+    """ ImportGWConfig """
     grok.context(IPloneSiteRoot)
     grok.name('import_gw_properties')
     grok.require('cmf.ManagePortal')

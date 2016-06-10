@@ -64,6 +64,7 @@ class setupDX(grok.View):
 
 
 class setupLDAPUPC(grok.View):
+    """ Configure LDAPUPC for Plone instance """
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -123,6 +124,7 @@ class setupLDAPUPC(grok.View):
 
 
 class setupLDAPExterns(grok.View):
+    """ Configure LDAPExterns for Plone instance """
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -185,6 +187,7 @@ class setupLDAPExterns(grok.View):
 
 
 class setupLDAP(grok.View):
+    """ Configure basic LDAP for Plone instance """
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 

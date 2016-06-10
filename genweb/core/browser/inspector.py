@@ -8,7 +8,9 @@ import importlib
 
 MODULES_TO_INSPECT = ['genweb.core.browser.setup',
                       'genweb.core.browser.migracio',
-                      'genweb.core.browser.helpers', ]
+                      'genweb.core.browser.helpers',
+                      'genweb.core.browser.helpers_getters',
+                      'genweb.core.browser.helpers_touchers', ]
 
 
 class clouseau(grok.View):
