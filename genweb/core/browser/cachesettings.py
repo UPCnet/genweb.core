@@ -184,7 +184,7 @@ cacheprofile = """
       <required>False</required>
       <title>Maximum age</title>
     </field>
-    <value>86400</value>
+    <value>2419200</value>
   </record>
   <record name="plone.app.caching.strongCaching.ramCache">
     <field type="plone.registry.field.Bool">
@@ -208,7 +208,7 @@ cacheprofile = """
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value>Accept-Encoding, User-Agent</value>
+    <value>Accept-Encoding, User-Agent, X-Anonymous</value>
   </record>
   <record name="plone.app.caching.weakCaching.anonOnly">
     <field type="plone.registry.field.Bool">

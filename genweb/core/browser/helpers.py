@@ -31,12 +31,6 @@ else:
     CSRF = True
 
 
-DORSALS = {"1": "Ter Stegen", "2": "Montoya", "3": "Piqué",
-           "4": "Rakitic", "5": "Busquets", "6": "Xavi", "7": "Pedro",
-           "8": "Iniesta", "9": "Suárez", "10": "Messi", "11": "Neymar JR",
-           "12": "Rafinha", "13": "Bravo", "14": "Mascherano", "15": "Bartra"}
-
-
 def setupInstallProfile(profileid, steps=None):
     """Installs the generic setup profile identified by ``profileid``.
     If a list step names is passed with ``steps`` (e.g. ['actions']),
@@ -136,16 +130,14 @@ class getZOPE(grok.View):
     grok.name('getZOPE')
     grok.context(Interface)
     grok.require('zope2.View')
+    grok.template('getzope')
 
     def dorsal(self):
-        return os.environ.get('dorsal', False)
-
-    def nomDorsal(self):
-        dorsal = self.dorsal()
-        if dorsal:
-            return DORSALS[self.dorsal()]
+        dorsal = os.environ.get('dorsal', False)
+        if dorsal == '':
+            return 'NaN'
         else:
-            return 'N/A'
+            return dorsal
 
 
 class listPloneSitesView(grok.View):

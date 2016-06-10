@@ -15,6 +15,7 @@ MODULES_TO_INSPECT = ['genweb.core.browser.setup',
 
 class clouseau(grok.View):
     grok.context(IPloneSiteRoot)
+    grok.require('cmf.ManagePortal')
 
     def get_helpers(self):
         portal = getSite()
