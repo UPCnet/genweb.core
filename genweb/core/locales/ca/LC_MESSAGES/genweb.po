@@ -1609,6 +1609,10 @@ msgstr ""
 msgid "manage_site_permissions"
 msgstr "Concedir permisos"
 
+#. Default: "Undo"
+msgid "undo_form"
+msgstr "Desfés"
+
 #. Default: "Curs"
 msgid "master_curso"
 msgstr "Curs"

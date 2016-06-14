@@ -127,7 +127,7 @@ cacheprofile = """
       <required>True</required>
       <title>Last-modified validation</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.moderateCaching.ramCache">
     <field type="plone.registry.field.Bool">
@@ -159,7 +159,7 @@ cacheprofile = """
       <required>False</required>
       <title>Only cache for anonymous users</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.strongCaching.etags">
     <field type="plone.registry.field.Tuple">

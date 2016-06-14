@@ -1594,6 +1594,10 @@ msgstr "Administrar portlets"
 msgid "manage_site_permissions"
 msgstr "Conceder permisos"
 
+#. Default: "Undo"
+msgid "undo_form"
+msgstr "Deshacer"
+
 #. Default: "Curs"
 msgid "master_curso"
 msgstr "Curso"

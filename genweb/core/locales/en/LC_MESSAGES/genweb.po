@@ -1749,6 +1749,10 @@ msgstr "Send"
 msgid "shared_folder"
 msgstr "Shared files"
 
+#. Default: "Undo"
+msgid "undo_form"
+msgstr "Undo"
+
 #########
 #. "Signatura de la unitat [CA]"
 #. Default: "Signatura de la unitat [CA]"
