@@ -68,12 +68,14 @@
         replacement=".patches.setMemberProperties"
         />
 
+    <!--  Commenting getMember By ID code
     <monkey:patch
         description="getMemberById SHOUT!"
         class="Products.CMFCore.MembershipTool.MembershipTool"
         original="getMemberById"
         replacement=".patches.getMemberById"
         />
+        -->
 
     <monkey:patch
         description="pas_member view override to user the user local catalog"
