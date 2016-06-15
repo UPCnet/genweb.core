@@ -444,9 +444,9 @@ msgstr "Nombre d'elements que es mostrarà."
 msgid "Album view"
 msgstr "Album"
 
-#############################
+################
 # Subhome type #
-#############################
+################
 
 msgid "Subhome"
 msgstr "Graella de portlets"

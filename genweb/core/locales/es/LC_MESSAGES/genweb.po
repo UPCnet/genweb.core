@@ -1955,12 +1955,25 @@ msgstr "Día siguiente"
 msgid "The entered text does not match the text in the image"
 msgstr "El texto introducido no coindice con el de la imagen"
 
-#############################
+################
 # Subhome type #
-#############################
+################
 
 #. "manage_subhomeportlets_link"
 #. Default: "Manage subhome page"
 #: genweb.upc/genweb/upc/templates/genweb.theme.browser.viewlets_templates.manage_portlets_fallback.pt
 msgid "manage_subhomeportlets_link"
 msgstr "Administra el tablero de portlets"
+
+#######################
+# Delete confirmation #
+#######################
+
+msgid "alert_really_delete_contents"
+msgstr "¿Seguro que deseas eliminar estos contenidos?"
+
+msgid "delete"
+msgstr "Eliminar"
+
+msgid "cancel"
+msgstr "Cancelar"

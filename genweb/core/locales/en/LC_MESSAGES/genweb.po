@@ -1921,12 +1921,26 @@ msgid "The entered text does not match the text in the image"
 msgstr "The entered text does not match the text in the image"
 
 
-#############################
+################
 # Subhome type #
-#############################
+################
 
 #. "manage_subhomeportlets_link"
 #. Default: "Manage subhome page"
 #: genweb.upc/genweb/upc/templates/genweb.theme.browser.viewlets_templates.manage_portlets_fallback.pt
 msgid "manage_subhomeportlets_link"
 msgstr "Manage portlet grid"
+
+
+#######################
+# Delete confirmation #
+#######################
+
+msgid "alert_really_delete_contents"
+msgstr "Do you really want to delete those contents?"
+
+msgid "delete"
+msgstr "Delete"
+
+msgid "cancel"
+msgstr "Cancel"
