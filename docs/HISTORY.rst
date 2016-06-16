@@ -1,11 +1,21 @@
 Changelog
 =========
 
-4.8.16 (unreleased)
+4.8.16 (2016-06-16)
 -------------------
 
-- Nothing changed yet.
-
+* commenting unused and bypassed by everyone log messages about GetMemberById :) [roberto.diaz]
+* noves traduccions i demana confirmacio al eliminar [Alberto Duran]
+* actualized cache settings [Alberto Duran]
+* canvis config cache, permisos clouseau [Alberto Duran]
+* refactor touchersv2 [Alberto Duran]
+* refactor touchers [Alberto Duran]
+* tocador refinat per info GW controlpanel i extres [Alberto Duran]
+* tocador refinat per info GW controlpanel [Alberto Duran]
+* tocador per info GW controlpanel [Alberto Duran]
+* tocador arregla mountpoints [Alberto Duran]
+* Protect contact data [Corina Riba]
+* actualizat tocador set default config for safe_html [Alberto Duran]
 
 4.8.15 (2016-06-02)
 -------------------
