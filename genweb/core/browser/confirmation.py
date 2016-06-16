@@ -56,7 +56,6 @@ class FolderDelete(BrowserView):
     def __call__(self):
         """ some documentation """
         if (self.paths is None):
-            import ipdb;ipdb.set_trace()
             if ('@@folder_delete' in self.request['URL']):
                 return self.request.response.redirect(self.context.absolute_url() + '/folder_contents')
             else:
