@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.18 (unreleased)
+4.8.18 (2016-06-16)
 -------------------
 
-- Nothing changed yet.
-
+* without ipdb [Alberto Duran]
 
 4.8.17 (2016-06-16)
 -------------------
