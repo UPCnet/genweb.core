@@ -70,8 +70,8 @@
       allowed_interface=".interfaces.IGenwebUtils"
       />
 
-	<browser:page
-  	  for="OFS.interfaces.IObjectManager"
+	<browser:view
+  	  for="*"
   	  name="folder_delete"
   	  class=".browser.confirmation.FolderDelete"
   	  permission="zope2.DeleteObjects"

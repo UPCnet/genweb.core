@@ -56,9 +56,13 @@ class FolderDelete(BrowserView):
     def __call__(self):
         """ some documentation """
         if (self.paths is None):
-            message = _(u'You must select at least one item.')
-            self.utils.addPortalMessage(message)
-            return self.context().restrictedTraverse('folder_contents')
+            import ipdb;ipdb.set_trace()
+            if ('@@folder_delete' in self.request['URL']):
+                return self.request.response.redirect(self.context.absolute_url() + '/folder_contents')
+            else:
+                message = _(u'You must select at least one item.')
+                self.utils.addPortalMessage(message)
+                return self.request.response.redirect(self.context.absolute_url() + '/folder_contents')
         # if not self submitted, return confirmation screen
         if ('form.button.Delete' not in self.request and 'form.button.Cancel' not in self.request):
             return self.delete_confirmation()
