@@ -139,6 +139,21 @@ msgstr "News with image"
 msgid "FullNews"
 msgstr "News with image"
 
+msgid "Normal: imatge esquerra i text dreta"
+msgstr "Normal: left image and right text"
+msgid "Full: imatge a dalt i text a sota"
+msgstr "Full: full image size and text below"
+msgid "Full a dos columnes: dues columnes amb imatge a dalt i text a sota"
+msgstr "Full 2 columns: two columns of full image size and text below"
+
+msgid "Tipus de vista"
+msgstr "View"
+msgid "Escull com es mostraran les noticies"
+msgstr "How news will be displayed"
+
+msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
+msgstr "Maxim number of news to display (1 to 7)"
+
 ####################
 # Contact settings #
 ####################

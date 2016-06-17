@@ -140,6 +140,21 @@ msgstr "Notícies amb foto"
 msgid "FullNews"
 msgstr "Notícies amb foto"
 
+msgid "Normal: imatge esquerra i text dreta"
+msgstr "Normal: imatge esquerra i text dreta"
+msgid "Full: imatge a dalt i text a sota"
+msgstr "Amplada total: imatge a dalt i text a sota"
+msgid "Full a dos columnes: dues columnes amb imatge a dalt i text a sota"
+msgstr "Amplada total a dues columnes: dues columnes amb imatge a dalt i text a sota"
+
+msgid "Tipus de vista"
+msgstr "Tipus de vista"
+msgid "Escull com es mostraran les noticies"
+msgstr "Escull com es mostraran les notícies"
+
+msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
+msgstr "Màxim número de notícies a mostrar (d'1 a 7)"
+
 #################
 # Control Panel #
 #################
