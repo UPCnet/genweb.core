@@ -372,6 +372,8 @@ class bulkExecuteScriptView(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         args = self.request.form
         view_name = self.request.form['view']
@@ -385,8 +387,7 @@ class bulkExecuteScriptView(grok.View):
                 print('======================')
                 quoted_args = urllib.urlencode(args)
                 response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
-                output.append("""--------------------------- Executed view {} in
-                 site {} ---------------------------<br/>""".format(view_name, plonesite.id))
+                output.append("""-- Executed view {} in site {} --<br/>""".format(view_name, plonesite.id))
                 output.append(response.getBody())
         return '\n'.join(output)
 

@@ -1034,6 +1034,27 @@ class reindexAllPages(grok.View):
         return '\n'.join(output)
 
 
+class addPermissionsContributor(grok.View):
+    """ add permission to folder contentes when rol is Contributor """
+    grok.context(IPloneSiteRoot)
+    grok.name('addPermissionsContributor')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        output = []
+        portal = api.portal.get()
+        roles_of_permission = portal.rolesOfPermission('List folder contents')
+        output.append('PREVIOUS: name = {}, selected = {}'.format(roles_of_permission[2]['name'], roles_of_permission[2]['selected']))
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.core:default', 'rolemap')
+        roles_of_permission = portal.rolesOfPermission('List folder contents')
+        output.append('AFTER: name = {}, selected = {}'.format(roles_of_permission[2]['name'], roles_of_permission[2]['selected']))
+        output.append('{}: Permission added for Contributor'.format(portal.id))
+        return '\n'.join(output)
+
+
 # class SetDomainsCache(grok.View):
 #     """ Set domains from plone.app.caching """
 #     grok.context(IPloneSiteRoot)

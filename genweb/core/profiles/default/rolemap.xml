@@ -219,7 +219,8 @@
       <role name="Owner"/>
     </permission>
     <permission name="List folder contents" acquire="False">
-      <role name="Editor"/>ged_out
+      <role name="Contributor"/>
+      <role name="Editor"/>
       <role name="Manager"/>
       <role name="WebMaster"/>
     </permission>
