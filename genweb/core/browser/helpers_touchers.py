@@ -924,9 +924,10 @@ class reinstallGenwebUPCWithLanguages(grok.View):
         if qi.isProductInstalled('genweb.upc'):
             qi.uninstallProducts(['genweb.upc'], reinstall=True)
             qi.installProducts(['genweb.upc'], reinstall=True)
+            pl = api.portal.get_tool('portal_languages')
+            pl.setDefaultLanguage(defaultLanguage)
+            pl.supported_langs = ['ca', 'es', 'en']
             api.portal.set_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.idiomes_publicats', value=languages)
-            language = api.portal.get_tool('portal_languages')
-            language.manage_setLanguageSettings(defaultLanguage, languages)
             output.append('{}: Successfully reinstalled genweb upc'.format(context))
         return '\n'.join(output)
 

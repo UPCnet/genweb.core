@@ -283,8 +283,6 @@ class getConfigGenwebControlPanelSettings(grok.View):
         if cl_title_ca is not None and type(cl_title_ca) != types.BooleanType:
             cl_title_ca = unicodedata.normalize('NFKD', gwcps.cl_title_ca).encode('utf-8',errors='ignore')
         cl_url_ca = gwcps.cl_url_ca
-        if cl_url_ca is not None and type(cl_url_ca) != types.BooleanType:
-            cl_url_ca = unicodedata.normalize('NFKD', gwcps.cl_url_ca).encode('utf-8',errors='ignore')
         cl_img_ca = gwcps.cl_img_ca
         if cl_img_ca is not None and type(cl_img_ca) != types.BooleanType:
             cl_img_ca = unicodedata.normalize('NFKD', gwcps.cl_img_ca).encode('utf-8',errors='ignore')
@@ -298,8 +296,6 @@ class getConfigGenwebControlPanelSettings(grok.View):
         if cl_title_es is not None and type(cl_title_es) != types.BooleanType:
             cl_title_es = unicodedata.normalize('NFKD', gwcps.cl_title_es).encode('utf-8',errors='ignore')
         cl_url_es = gwcps.cl_url_es
-        if cl_url_es is not None and type(cl_url_es) != types.BooleanType:
-            cl_url_es = unicodedata.normalize('NFKD', gwcps.cl_url_es).encode('utf-8',errors='ignore')
         cl_img_es = gwcps.cl_img_es
         if cl_img_es is not None and type(cl_img_es) != types.BooleanType:
             cl_img_es = unicodedata.normalize('NFKD', gwcps.cl_img_es).encode('utf-8',errors='ignore')
@@ -313,8 +309,6 @@ class getConfigGenwebControlPanelSettings(grok.View):
         if cl_title_en is not None and type(cl_title_en) != types.BooleanType:
             cl_title_en = unicodedata.normalize('NFKD', gwcps.cl_title_en).encode('utf-8',errors='ignore')
         cl_url_en = gwcps.cl_url_en
-        if cl_url_en is not None and type(cl_url_en) != types.BooleanType:
-            cl_url_en = unicodedata.normalize('NFKD', gwcps.cl_url_en).encode('utf-8',errors='ignore')
         cl_img_en = gwcps.cl_img_en
         if cl_img_en is not None and type(cl_img_en) != types.BooleanType:
             cl_img_en = unicodedata.normalize('NFKD', gwcps.cl_img_en).encode('utf-8',errors='ignore')
