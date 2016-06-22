@@ -196,9 +196,13 @@ class getConfigGenwebControlPanelSettings(grok.View):
         portal = api.portal.get()
         mail = IMailSchema(portal)
         name = mail.email_from_name
+        if name is not None:
+            name = unicodedata.normalize('NFKD', name).encode('utf-8',errors='ignore')
         email = mail.email_from_address
         site = ISiteSchema(portal)
         ga = '\n'.join(site.webstats_js)
+        if ga is not '':
+            ga = unicodedata.normalize('NFKD', ga).encode('utf-8',errors='ignore')
         registry = queryUtility(IRegistry)
         gwcps = registry.forInterface(IGenwebControlPanelSettings)
 
