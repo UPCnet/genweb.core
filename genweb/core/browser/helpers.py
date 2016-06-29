@@ -114,20 +114,20 @@ def listPloneSites(zope):
 
 
 class getZEO(grok.View):
-    """ [DEPRECATED] Redirect to getZOPE """
+    """ [DEPRECATED] Redirect to get_zope """
     grok.name('getZEO')
     grok.context(Interface)
     grok.require('zope2.View')
 
     def render(self):
-        self.request.response.redirect('getZOPE')
+        self.request.response.redirect('get_zope')
 
 
 class getZOPE(grok.View):
     """ This view is used to know the dorsal (the Genweb enviroment) assigned to
         this instance.
     """
-    grok.name('getZOPE')
+    grok.name('get_zope')
     grok.context(Interface)
     grok.require('zope2.View')
     grok.template('getzope')
@@ -142,7 +142,7 @@ class getZOPE(grok.View):
 
 class listPloneSitesView(grok.View):
     """ Returns a list with the available plonesites in this Zope """
-    grok.name('listPloneSites')
+    grok.name('list_plone_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -150,8 +150,6 @@ class listPloneSitesView(grok.View):
         context = aq_inner(self.context)
         out = []
         for item in context.values():
-            #if IPloneSiteRoot.providedBy(item):
-            #    out.append(item)
             if IFolder.providedBy(item):
                 for site in item.values():
                     if IPloneSiteRoot.providedBy(site):
@@ -161,7 +159,7 @@ class listPloneSitesView(grok.View):
 
 class getFlavourSitesView(grok.View):
     """ Returns the last layer installed for each plonesite """
-    grok.name('getFlavourSites')
+    grok.name('get_flavour_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -177,7 +175,7 @@ class getFlavourSitesView(grok.View):
 
 class getFlavourSiteView(grok.View):
     """ Returns the last layer installed in this plonesite """
-    grok.name('getFlavourSite')
+    grok.name('get_flavour_site')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.View')
 
@@ -189,7 +187,7 @@ class getFlavourSiteView(grok.View):
 
 class getLanguagesSitesView(grok.View):
     """ Returns the last layer installed in this plonesite """
-    grok.name('getLanguagesSites')
+    grok.name('get_languages_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -205,7 +203,7 @@ class getLanguagesSitesView(grok.View):
 
 class getDefaultLanguageSitesView(grok.View):
     """ Returns default language for each plonesite """
-    grok.name('getDefaultLanguageSites')
+    grok.name('get_default_language_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -221,7 +219,7 @@ class getDefaultLanguageSitesView(grok.View):
 
 class getDefaultWFSitesView(grok.View):
     """ Returns default workflow for each plonesite """
-    grok.name('getDefaultWFSites')
+    grok.name('get_default_wfsites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -236,8 +234,18 @@ class getDefaultWFSitesView(grok.View):
 
 
 class configuraSiteCache(grok.View):
-    """ Vista que configura la caché del site corresponent. """
+    """ [DEPRECATED] Redirect to configure_site_cache """
     grok.name('configuraSiteCache')
+    grok.context(Interface)
+    grok.require('zope2.View')
+
+    def render(self):
+        self.request.response.redirect('configure_site_cache')
+
+
+class configureSiteCache(grok.View):
+    """ Vista que configura la caché del site corresponent. """
+    grok.name('configure_site_cache')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -264,7 +272,7 @@ class configuraSiteCache(grok.View):
 
 class mirrorUIDs(grok.View):
     grok.context(IPloneSiteRoot)
-    grok.name('mirrorUIDs')
+    grok.name('mirror_uids')
     grok.require('cmf.ManagePortal')
 
     def update(self):
@@ -294,7 +302,7 @@ class mirrorUIDs(grok.View):
 
 class mirrorStates(grok.View):
     grok.context(IPloneSiteRoot)
-    grok.name('mirrorStates')
+    grok.name('mirror_states')
     grok.require('cmf.ManagePortal')
     grok.template('mirroruids')
 
@@ -368,7 +376,7 @@ class mirrorStates(grok.View):
 class bulkExecuteScriptView(grok.View):
     """ Execute one action view in all instances passed as a form parameter """
     grok.context(IApplication)
-    grok.name('bulkAction')
+    grok.name('bulk_action')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -398,7 +406,7 @@ class notSubProcessedBulkExecuteScriptView(grok.View):
         only in case that something does not work making a subrequest!
     """
     grok.context(IApplication)
-    grok.name('nspBulkAction')
+    grok.name('nsp_bulk_action')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -417,7 +425,7 @@ class notSubProcessedBulkExecuteScriptView(grok.View):
 class fixRecord(grok.View):
     """ Fix KeyError problem when plonesite is moved from the original Zeo"""
     grok.context(IPloneSiteRoot)
-    grok.name('fixRecord')
+    grok.name('fix_record')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):

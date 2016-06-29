@@ -33,7 +33,7 @@ else:
 
 class listLDAPInfo(grok.View):
     """ List LDAP info for each plonesite """
-    grok.name('listLDAPInfo')
+    grok.name('list_ldap_info')
     grok.context(IApplication)
     grok.require('zope2.ViewManagementScreens')
 
@@ -74,7 +74,7 @@ class listLastLogin(grok.View):
 class getRenderedStylesheets(grok.View):
     """ List the location information for each stylesheet in this site. """
     grok.context(IPloneSiteRoot)
-    grok.name('getRenderedStylesheets')
+    grok.name('get_rendered_stylesheets')
     grok.require('cmf.ManagePortal')
 
     @json_response
@@ -133,7 +133,7 @@ class getRenderedStylesheets(grok.View):
 class checkCacheSettings(grok.View):
     """ Check cache settings """
     grok.context(Interface)
-    grok.name('checkCacheSettings')
+    grok.name('check_cache_settings')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -146,7 +146,7 @@ class checkCacheSettings(grok.View):
 class listDomaninsCache(grok.View):
     """ Get domains from plone.app.caching """
     grok.context(IPloneSiteRoot)
-    grok.name('listDomainsCache')
+    grok.name('list_domains_cache')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -167,7 +167,7 @@ class listDomaninsCache(grok.View):
 class getContactData(grok.View):
     """ Get Contact data from all instances """
     grok.context(IPloneSiteRoot)
-    grok.name('getContactData')
+    grok.name('get_contact_data')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -183,7 +183,7 @@ class getContactData(grok.View):
 class getConfigGenwebControlPanelSettings(grok.View):
     """Recordar afegir nous camps quan s'actualitzi el genweb upc ctrlpanel"""
     grok.context(IPloneSiteRoot)
-    grok.name('getControlPanelSettings')
+    grok.name('get_controlpanel_settings')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -388,7 +388,7 @@ class getConfigGenwebControlPanelSettings(grok.View):
 class getUsedGroups(grok.View):
     """ Return all users from ldap groups that have permissions in any plone object """
     grok.context(IPloneSiteRoot)
-    grok.name('getUsedGroups')
+    grok.name('get_used_groups')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):

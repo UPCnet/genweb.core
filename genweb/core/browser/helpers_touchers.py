@@ -51,7 +51,7 @@ if HAS_PAM:
 class matagetHTTPCacheheaders(grok.View):
     """ Canvia el portal_type dels objectes del PloneSurvey que tinguin espais en el nom del tipus"""
 
-    grok.name('matagetHTTPCacheheaders')
+    grok.name('mata_get_http_cache_headers')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -77,7 +77,7 @@ class matagetHTTPCacheheaders(grok.View):
 class removeBrokenCacheFu(grok.View):
     """ Canvia el portal_type dels objectes del PloneSurvey que tinguin espais en el nom del tipus"""
 
-    grok.name('removeBrokenCacheFu')
+    grok.name('remove_broken_cachefu')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -92,7 +92,7 @@ class removeBrokenCacheFu(grok.View):
 
 class makeMeaHomePage(grok.View):
     """ makeMeaHomePage """
-    grok.name('makeMeaHomePage')
+    grok.name('make_me_a_homepage')
     grok.context(Interface)
     grok.require('zope2.ViewManagementScreens')
 
@@ -107,7 +107,7 @@ class makeMeaHomePage(grok.View):
 
 class makeMeaSubHomePage(grok.View):
     """ makeMeaSubHomePage """
-    grok.name('makeMeaSubHomePage')
+    grok.name('make_me_a_subhome_page')
     grok.context(Interface)
     grok.require('zope2.ViewManagementScreens')
 
@@ -125,7 +125,7 @@ class bulkUserCreator(grok.View):
         Convenience bulk user creator. It requires parametrization in code and
         eventually, run this over a debug instance in production.
     """
-    grok.name('bulkUserCreator')
+    grok.name('bulk_user_creator')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -212,7 +212,7 @@ class bulkUserEraser(grok.View):
         Convenience bulk user eraser. It requires parametrization in code and
         eventually, run this over a debug instance in production.
     """
-    grok.name('bulkUserEraser')
+    grok.name('bulk_user_eraser')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -295,7 +295,7 @@ class bulkUserEraser(grok.View):
 class reinstallGWControlPanel(grok.View):
     """ Reinstalls genweb.controlpanel in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('reinstallGWControlPanel')
+    grok.name('reinstall_gw_controlpanel')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -319,7 +319,7 @@ class bulkReinstallGWControlPanel(grok.View):
         apply it at the same time in all the existing Plone sites in the Zope.
     """
     grok.context(IApplication)
-    grok.name('bulkReinstallGWControlPanel')
+    grok.name('bulk_reinstall_gw_controlpanel')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -337,7 +337,7 @@ class resetLanguage(grok.View):
         Re-set the language of each LRF according to its name. Execute in an LRF
     """
     grok.context(Interface)
-    grok.name('resetLanguage')
+    grok.name('reset_language')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -359,7 +359,7 @@ class oldMigrateRLF(grok.View):
         This is the version as of February 2015
     """
     grok.context(IPloneSiteRoot)
-    grok.name('oldMigrateRLF')
+    grok.name('old_migrate_rlf')
     grok.require('zope2.ViewManagementScreens')
 
     def render(self):
@@ -385,7 +385,7 @@ class migrateRLF2roundFIGHT(grok.View):
         This is the version as of February 2015
     """
     grok.context(IPloneSiteRoot)
-    grok.name('migrateRLF')
+    grok.name('migrate_rlf')
     grok.require('zope2.ViewManagementScreens')
 
     def render(self):
@@ -468,7 +468,7 @@ class migrateRLF2roundFIGHT(grok.View):
 class reBuildUserPropertiesCatalog(grok.View):
     """ Rebuild the OMEGA13 repoze.catalog for user properties data """
     grok.context(IPloneSiteRoot)
-    grok.name('rebuildUserCcatalog')
+    grok.name('rebuild_user_catalog')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -504,7 +504,7 @@ class ResetUserPropertiesCatalog(grok.View):
     """ Reset the OMEGA13 repoze.catalog for user properties data """
 
     grok.context(IPloneSiteRoot)
-    grok.name('resetUserCatalog')
+    grok.name('reset_user_catalog')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -519,7 +519,7 @@ class ResetUserPropertiesCatalog(grok.View):
 class userPropertiesCatalogViewer(grok.View):
     """ Rebuild the OMEGA13 repoze.catalog for user properties data """
     grok.context(IPloneSiteRoot)
-    grok.name('viewUserCatalog')
+    grok.name('view_user_catalog')
     grok.require('cmf.ManagePortal')
 
     @json_response
@@ -542,7 +542,7 @@ class userPropertiesCatalogViewer(grok.View):
 class enablePDFIndexing(grok.View):
     """ Enable PDF indexing """
     grok.context(IPloneSiteRoot)
-    grok.name('enablePDFIndexing')
+    grok.name('enable_pdf_indexing')
     grok.require('cmf.ManagePortal')
 
     def render(self):
@@ -555,7 +555,7 @@ class enablePDFIndexing(grok.View):
 class updateFolderViews(grok.View):
     """ Update view methods for folder type in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('updateFolderViews')
+    grok.name('update_folder_views')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -573,7 +573,7 @@ class updateFolderViews(grok.View):
 class reinstallPloneProduct(grok.View):
     """ Reinstalls a product passed by form parameter in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('reinstallProduct')
+    grok.name('reinstall_product')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -594,7 +594,7 @@ class reinstallPloneProduct(grok.View):
 class uninstallPloneProduct(grok.View):
     """ Uninstall a product passed by form parameter in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('uninstallProduct')
+    grok.name('uninstall_product')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -614,7 +614,7 @@ class uninstallPloneProduct(grok.View):
 class upgradePloneVersion(grok.View):
     """ Upgrade to the latest Plone version in code """
     grok.context(IPloneSiteRoot)
-    grok.name('upgradePloneVersion')
+    grok.name('upgrade_plone_version')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -635,7 +635,7 @@ class upgradePloneVersion(grok.View):
 class setupPAMAgain(grok.View):
     """ Reinstalls a product passed by form parameter in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('setupPAMAgain')
+    grok.name('setup_pam_again')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -650,7 +650,7 @@ class setupPAMAgain(grok.View):
 class deleteNavPortletFromRoot(grok.View):
     """ Reinstalls a product passed by form parameter in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('deleteNavPortletFromRoot')
+    grok.name('delete_navportlet_from_root')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -667,7 +667,7 @@ class deleteNavPortletFromRoot(grok.View):
 class reinstallGWTinyTemplates(grok.View):
     """ Reinstalls all TinyMCE Templates """
     grok.context(IPloneSiteRoot)
-    grok.name('reinstallGWTinyTemplates')
+    grok.name('reinstall_gw_tiny_templates')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -709,7 +709,7 @@ class reinstallGWTinyTemplates(grok.View):
 class removeDuplicatedGenwebSettings(grok.View):
     """ Remove duplicate (old) Genweb UPC settings in Control Panel """
     grok.context(Interface)
-    grok.name('removeDuplicatedGenwebSettings')
+    grok.name('remove_duplicated_genweb_settings')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -723,7 +723,7 @@ class removeDuplicatedGenwebSettings(grok.View):
 class reapplyRegistryProfile(grok.View):
     """ ReapplyRegistryProfile """
     grok.context(Interface)
-    grok.name('reapplyRegistryProfile')
+    grok.name('reapply_registry_profile')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -752,7 +752,7 @@ class reapplyRegistryProfile(grok.View):
 class PACUseNewViewNames(grok.View):
     """ Uninstall a product passed by form parameter in the current Plone site """
     grok.context(IPloneSiteRoot)
-    grok.name('PACUseNewViewNames')
+    grok.name('pac_use_new_view_names')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -769,7 +769,7 @@ class PACUseNewViewNames(grok.View):
 class importTypesTool(grok.View):
     """ ImportTypesTool """
     grok.context(IPloneSiteRoot)
-    grok.name('importTypesTool')
+    grok.name('import_types_tool')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -782,7 +782,7 @@ class changeNewsEventsPortlets(grok.View):
     """ Replace navigation portlet by categories portlet from news and events
     view methods in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('replaceNavPortlet')
+    grok.name('replace_nav_portlet')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -853,7 +853,7 @@ class changeNewsEventsPortlets(grok.View):
 class setSitemapDepth(grok.View):
     """ Set 3 levels of sitemap  """
     grok.context(IPloneSiteRoot)
-    grok.name('setSitemapDepth')
+    grok.name('set_sitemap_depth')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -870,7 +870,7 @@ class setSitemapDepth(grok.View):
 class removeOldIconCollection(grok.View):
     """ Remove old icon collection """
     grok.context(IPloneSiteRoot)
-    grok.name('removeOldIconCollection')
+    grok.name('remove_old_icon_collection')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -888,7 +888,7 @@ class removeOldIconCollection(grok.View):
 class updateLIF_LRF(grok.View):
     """ Update view methods for LIf and LRF types in the current Plone site """
     grok.context(IPloneSiteRoot)
-    grok.name('updateLIF_LRF')
+    grok.name('update_lif_lrf')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -909,7 +909,7 @@ class updateLIF_LRF(grok.View):
 class reinstallGenwebUPCWithLanguages(grok.View):
     """ Reinstalls genweb.upc keeping published languages in the current Plone site. """
     grok.context(IPloneSiteRoot)
-    grok.name('reinstallGenwebUPCWithLanguages')
+    grok.name('reinstall_genweb_upc_with_languages')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -935,7 +935,7 @@ class reinstallGenwebUPCWithLanguages(grok.View):
 class importTinyMCE4GenwebUPC(grok.View):
     """ ImportTinyMCE4GenwebUPC """
     grok.context(IPloneSiteRoot)
-    grok.name('importTinymce')
+    grok.name('import_tinymce')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -949,7 +949,7 @@ class importTinyMCE4GenwebUPC(grok.View):
 class defaultHtmlConfig(grok.View):
     """ DefaultHtmlConfig """
     grok.context(IPloneSiteRoot)
-    grok.name('defaultHtmlConfig')
+    grok.name('default_html_config')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -1017,7 +1017,7 @@ class defaultHtmlConfig(grok.View):
 class reindexAllPages(grok.View):
     """ reindexAllPages """
     grok.context(IPloneSiteRoot)
-    grok.name('reindexAllPages')
+    grok.name('reindex_all_pages')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
@@ -1038,7 +1038,7 @@ class reindexAllPages(grok.View):
 class addPermissionsContributor(grok.View):
     """ add permission to folder contentes when rol is Contributor """
     grok.context(IPloneSiteRoot)
-    grok.name('addPermissionsContributor')
+    grok.name('add_permissions_contributor')
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
