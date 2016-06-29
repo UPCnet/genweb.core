@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.8.19 (unreleased)
+4.8.19 (2016-06-29)
 -------------------
 
-- Nothing changed yet.
-
+* rename touchers according python naming convention [Alberto Duran]
+* refactor toucher [Alberto Duran]
+* refactor toucher getControlPanelSettings & reinstallGenwebUPCWithLanguages [Alberto Duran]
+* toucher folder_contents Contributor role [Alberto Duran]
+* translate new views in fullnews portlet [oscar.albareda]
+* translate new views in fullnews portlet [oscar.albareda]
 
 4.8.18 (2016-06-16)
 -------------------
