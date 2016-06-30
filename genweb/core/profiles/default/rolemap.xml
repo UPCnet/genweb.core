@@ -257,6 +257,8 @@
     </permission>
     <permission name="Portlets: Manage portlets"
                 acquire="True">
+      <role name="Contributor"/>
+      <role name="Editor"/>
       <role name="Manager"/>
       <role name="WebMaster"/>
     </permission>

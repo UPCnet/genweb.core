@@ -1047,12 +1047,16 @@ class addPermissionsContributor(grok.View):
         output = []
         portal = api.portal.get()
         roles_of_permission = portal.rolesOfPermission('List folder contents')
-        output.append('PREVIOUS: name = {}, selected = {}'.format(roles_of_permission[2]['name'], roles_of_permission[2]['selected']))
+        portlets = portal.rolesOfPermission('Manage portlets')
+        output.append('PREVIOUS (List folder contents): name = {}, selected = {}'.format(roles_of_permission[2]['name'], roles_of_permission[2]['selected']))
+        output.append('PREVIOUS (Manage portlets): name = {}, selected = {}'.format(portlets[2]['name'], portlets[2]['selected']))
         ps = getToolByName(portal, 'portal_setup')
         ps.runImportStepFromProfile('profile-genweb.core:default', 'rolemap')
         roles_of_permission = portal.rolesOfPermission('List folder contents')
-        output.append('AFTER: name = {}, selected = {}'.format(roles_of_permission[2]['name'], roles_of_permission[2]['selected']))
-        output.append('{}: Permission added for Contributor'.format(portal.id))
+        portlets = portal.rolesOfPermission('Manage portlets')
+        output.append('AFTER (List folder contents): name = {}, selected = {}'.format(roles_of_permission[2]['name'], roles_of_permission[2]['selected']))
+        output.append('AFTER (Manage portlets): name = {}, selected = {}'.format(portlets[2]['name'], portlets[2]['selected']))
+        output.append('{}: Permissions added'.format(portal.id))
         return '\n'.join(output)
 
 
