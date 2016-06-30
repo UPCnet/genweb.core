@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.20 (unreleased)
+4.8.20 (2016-06-30)
 -------------------
 
-- Nothing changed yet.
-
+* permisos per editar la graella a Editors i Contributors [Alberto Duran]
 
 4.8.19 (2016-06-29)
 -------------------
