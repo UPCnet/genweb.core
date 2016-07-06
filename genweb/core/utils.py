@@ -74,7 +74,6 @@ def portal_url():
     """
     return portal().absolute_url()
 
-
 def portal():
     """Get the Plone portal object out of thin air without importing fancy
        interfaces and doing multi adapter lookups.
@@ -372,6 +371,10 @@ class genwebUtils(BrowserView):
 
     def portal(self):
         return api.portal.get()
+
+    def portal_url_https(self):
+        """Get the Plone portal URL in https mode """
+        return self.portal().absolute_url().replace('http://', 'https://')
 
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
