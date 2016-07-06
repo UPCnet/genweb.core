@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.21 (unreleased)
+4.8.21 (2016-07-06)
 -------------------
 
-- Nothing changed yet.
-
+* force https [Alberto Duran]
+* acces to right rolemap [Alberto Duran]
 
 4.8.20 (2016-06-30)
 -------------------
