@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'fontello';
-  src: url('fontello-genweb/font/fontello.eot');
-  src: url('fontello-genweb/font/fontello.eot#iefix') format('embedded-opentype'),
-       url('fontello-genweb/font/fontello.woff') format('woff'),
-       url('fontello-genweb/font/fontello.ttf') format('truetype'),
-       url('fontello-genweb/font/fontello.svg#fontello') format('svg');
+  src: url('++genweb++static/fontello-genweb/font/fontello.eot');
+  src: url('++genweb++static/fontello-genweb/font/fontello.eot#iefix') format('embedded-opentype'),
+       url('++genweb++static/fontello-genweb/font/fontello.woff') format('woff'),
+       url('++genweb++static/fontello-genweb/font/fontello.ttf') format('truetype'),
+       url('++genweb++static/fontello-genweb/font/fontello.svg#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
