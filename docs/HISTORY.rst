@@ -1,11 +1,18 @@
 Changelog
 =========
 
-4.8.22 (unreleased)
+4.8.22 (2016-07-21)
 -------------------
 
-- Nothing changed yet.
-
+* Fix indicators API tests [Santiago Cortes]
+* Add simplejson, pyyaml dependencies [Santiago Cortes]
+* Add indicators API [Santiago Cortes]
+*  [Santiago Cortes]
+* Indicators API provides Genweb developers with a set of classes that [Santiago Cortes]
+* manage the communication with the "Indicadors TIC" web service [Santiago Cortes]
+* (https://indicadorstic.upc.edu/indicadorstic/). [Santiago Cortes]
+* changed comments to <tal:comment replace="nothing"> [root@peterpre]
+* updating fontello css routes [roberto.diaz]
 
 4.8.21 (2016-07-06)
 -------------------
