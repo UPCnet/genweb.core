@@ -57,7 +57,9 @@ setup(name='genweb.core',
           'quintagroup.seoptimizer',
           'pyquery',
           'souper.plone',
-          'elasticsearch'
+          'elasticsearch',
+          'simplejson',
+          'pyyaml',
       ],
       entry_points="""
       # -*- Entry points: -*-
