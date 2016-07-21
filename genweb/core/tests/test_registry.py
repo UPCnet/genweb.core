@@ -40,7 +40,10 @@ class TestRegistry(unittest.TestCase):
                 os.path.join(
                     os.path.dirname(os.path.realpath(__file__)),
                     'indicators', 'empty'))
-        self.assertEqual(0, mock_from_file_path.call_count)
+        # The folder is not actually empty, it contains a .gitkeep file so that
+        # it can be tracked by Git. Ideally it should be empty but there is no
+        # way to upload an empty folder to Git.
+        self.assertEqual(1, mock_from_file_path.call_count)
 
     def test_load_from_path_should_load_from_file_path_if_files_in_path(self):
         registry = Registry('context')
