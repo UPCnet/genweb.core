@@ -28,12 +28,12 @@ setup(name='genweb.core',
       namespace_packages=['genweb'],
       include_package_data=True,
       zip_safe=False,
-      extras_require={'test': ['plone.app.robotframework', 'plone.app.testing[robot] >= 4.2.4']},
+      extras_require={'test': ['plone.app.robotframework',
+                               'plone.app.testing[robot] >= 4.2.4']},
       install_requires=[
           'setuptools',
           'requests',
           'five.grok',
-#          'five.pt',
           'plone.api',
           'genweb.theme',
           'genweb.cdn',
@@ -60,6 +60,7 @@ setup(name='genweb.core',
           'elasticsearch',
           'simplejson',
           'pyyaml',
+          'ipdb'
       ],
       entry_points="""
       # -*- Entry points: -*-
