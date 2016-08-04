@@ -11,6 +11,7 @@ import json
 import os
 import urllib
 import pkg_resources
+import logging
 
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
@@ -263,11 +264,15 @@ class configureSiteCache(grok.View):
         cachepurginsettings = registry.forInterface(ICachePurgingSettings)
 
         varnish_url = os.environ.get('varnish_url', False)
+        logger = logging.getLogger('Genweb: Executing configure cache on site -')
+        logger.info('%s' % self.context.id)
         if varnish_url:
             cachepurginsettings.cachingProxies = (varnish_url,)
+            logger.info('Successfully set caching for this site')
             return 'Successfully set caching for this site.'
         else:
-            return 'There aren\'t any varnish_url in the environment, no caching proxy could be configured.'
+            logger.info('There are not any varnish_url in the environment. No caching proxy could be configured.')
+            return 'There are not any varnish_url in the environment. No caching proxy could be configured.'
 
 
 class mirrorUIDs(grok.View):
