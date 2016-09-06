@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.23 (unreleased)
+4.8.23 (2016-09-06)
 -------------------
 
-- Nothing changed yet.
-
+* added LOG messages [roberto.diaz]
+* added IPDB to core [Roberto Diaz]
 
 4.8.22 (2016-07-21)
 -------------------
