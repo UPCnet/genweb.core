@@ -1053,6 +1053,9 @@ msgstr "Select default content"
 msgid "genweb_content_actions_vista_de_carpeta"
 msgstr "Folder views"
 
+msgid "genweb_content_actions_vista_de_document"
+msgstr "Document views"
+
 # Direccio
 #. Default: "Direcció"
 msgid "genweb_direccio"

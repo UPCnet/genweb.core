@@ -1074,6 +1074,9 @@ msgstr "contenido como vista"
 msgid "genweb_content_actions_vista_de_carpeta"
 msgstr "Vistas de la carpeta"
 
+msgid "genweb_content_actions_vista_de_document"
+msgstr "Vistas de página"
+
 # Direccio
 #. Default: "Direcció"
 msgid "genweb_direccio"
