@@ -885,6 +885,33 @@ class removeOldIconCollection(grok.View):
         return '\n'.join(output)
 
 
+class removeOldJSCollection(grok.View):
+    """ Remove old js collection: ++resource++plone.formwidget.querystring.querywidget.js"""
+    grok.context(IPloneSiteRoot)
+    grok.name('remove_old_js_collection')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        oldfile = '++resource++plone.formwidget.querystring.querywidget.js'
+        js = api.portal.get_tool('portal_javascripts')
+        js.manage_removeScript(oldfile)
+        newfile = '++genwebupc++js/plone.formwidget.querystring.querywidget.js'
+        if newfile in js.getResourcesDict():
+            jsfile = js.getResource(newfile)
+            if not jsfile.getEnabled():
+                jsfile.setEnabled('True')
+        else:
+            js.manage_addScript(newfile)
+            jsfile = js.getResource(newfile)
+            jsfile.setEnabled('True')
+        import transaction
+        transaction.commit()
+        output.append('{}: Successfully oldjs file removed and newjs added'.format(portal.id))
+        return '\n'.join(output)
+
+
 class updateLIF_LRF(grok.View):
     """ Update view methods for LIf and LRF types in the current Plone site """
     grok.context(IPloneSiteRoot)
