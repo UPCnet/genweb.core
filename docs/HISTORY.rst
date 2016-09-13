@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.24 (unreleased)
+4.8.24 (2016-09-13)
 -------------------
 
-- Nothing changed yet.
-
+* tocador para activar nuevo js colecciones [Alberto Duran]
+* traduccions vista document [Alberto Duran]
 
 4.8.23 (2016-09-06)
 -------------------
