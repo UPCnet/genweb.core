@@ -906,6 +906,7 @@ class removeOldJSCollection(grok.View):
             js.manage_addScript(newfile)
             jsfile = js.getResource(newfile)
             jsfile.setEnabled('True')
+        js.moveResourceAfter(newfile, "kss-bbb.js")
         import transaction
         transaction.commit()
         output.append('{}: Successfully oldjs file removed and newjs added'.format(portal.id))
