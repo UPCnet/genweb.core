@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.25 (unreleased)
+4.8.25 (2016-09-15)
 -------------------
 
-- Nothing changed yet.
-
+* move js to correct position [Alberto Duran]
 
 4.8.24 (2016-09-13)
 -------------------
