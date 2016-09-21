@@ -1088,6 +1088,26 @@ class addPermissionsContributor(grok.View):
         return '\n'.join(output)
 
 
+class setFolderIndexViewasDefault(grok.View):
+    """ Set all folders views of this site with the view passed by param """
+    grok.context(IPloneSiteRoot)
+    grok.name('set_folder_default_view')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        context = aq_inner(self.context)
+        view_method = self.request.form['view_method']
+        pc = getToolByName(context, 'portal_catalog')
+        brains = pc.searchResults(portal_type='Folder')
+        for result in brains:
+            obj = result.getObject()
+            obj.setLayout(view_method)
+        import transaction
+        transaction.commit()
+        output.append('{}: Folder view successfully changed'.format(api.portal.get().id))
+        return '\n'.join(output)
+
 # class SetDomainsCache(grok.View):
 #     """ Set domains from plone.app.caching """
 #     grok.context(IPloneSiteRoot)
