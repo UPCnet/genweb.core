@@ -178,7 +178,7 @@ class gwToggleIsOutoflist(grok.View):
 class gwToggleSubscribedTag(grok.View):
     grok.context(Interface)
     grok.name('toggle_subscriptiontag')
-    grok.require('cmf.ModifyPortalContent')
+    grok.require('genweb.authenticated')
     grok.layer(IGenwebLayer)
 
     def render(self):
