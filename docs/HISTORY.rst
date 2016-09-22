@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.26 (unreleased)
+4.8.26 (2016-09-22)
 -------------------
 
-- Nothing changed yet.
-
+* mantenir vistes per defecte al tocador [Alberto Duran]
+* tocador per seleccionar vista de les carpetes per parametre [Alberto Duran]
+* modifiy require to toggle subscription tag [Paco Gregori]
 
 4.8.25 (2016-09-15)
 -------------------
