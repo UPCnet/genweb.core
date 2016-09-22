@@ -1102,7 +1102,8 @@ class setFolderIndexViewasDefault(grok.View):
         brains = pc.searchResults(portal_type='Folder')
         for result in brains:
             obj = result.getObject()
-            obj.setLayout(view_method)
+            if obj.getDefaultPage() is None:
+                obj.setLayout(view_method)
         import transaction
         transaction.commit()
         output.append('{}: Folder view successfully changed'.format(api.portal.get().id))
