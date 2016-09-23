@@ -8,6 +8,7 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from plone.registry.interfaces import IRegistry
 from zope.component import queryUtility
 from genweb.controlpanel.core import IGenwebCoreControlPanelSettings
+from zope.interface import alsoProvides
 
 import ldap
 import os
@@ -48,6 +49,12 @@ class SyncLDAPGroups(grok.View):
                 subject='[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED',
                 body='The sync view on the uLearn instance has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated',
             )
+
+        try:
+            from plone.protect.interfaces import IDisableCSRFProtection
+            alsoProvides(self.request, IDisableCSRFProtection)
+        except:
+            pass
 
         if results:
             portal = api.portal.get()
