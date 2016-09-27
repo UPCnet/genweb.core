@@ -22,15 +22,17 @@ def get_ldap_config():
     ALT_LDAP_DN = gw_settings.alt_bind_dn if gw_settings.alt_bind_dn is not None else os.environ.get('alt_bind_dn', '')
     ALT_LDAP_PASSWORD = gw_settings.alt_bindpasswd if gw_settings.alt_bindpasswd is not None else os.environ.get('alt_bindpasswd', '')
     BASEDN = gw_settings.alt_base_dn if gw_settings.alt_base_dn is not None else os.environ.get('alt_base_dn', '')
+    GROUPS_QUERY = gw_settings.groups_query if gw_settings.groups_query is not None else os.environ.get('groups_query', '')
+    USER_GROUPS_QUERY = gw_settings.user_groups_query if gw_settings.user_groups_query is not None else os.environ.get('user_groups_query', '')
 
-    return ALT_LDAP_URI, ALT_LDAP_DN, ALT_LDAP_PASSWORD, BASEDN
+    return ALT_LDAP_URI, ALT_LDAP_DN, ALT_LDAP_PASSWORD, BASEDN, GROUPS_QUERY, USER_GROUPS_QUERY
 
 
 def search_ldap_groups():
-    ALT_LDAP_URI, ALT_LDAP_DN, ALT_LDAP_PASSWORD, BASEDN = get_ldap_config()
+    ALT_LDAP_URI, ALT_LDAP_DN, ALT_LDAP_PASSWORD, BASEDN, GROUPS_QUERY, USER_GROUPS_QUERY = get_ldap_config()
     conn = ldap.initialize(ALT_LDAP_URI)
     conn.simple_bind_s(ALT_LDAP_DN, ALT_LDAP_PASSWORD)
-    return conn.search_s(BASEDN, ldap.SCOPE_SUBTREE, '(objectClass=groupOfNames)', ['cn'])
+    return conn.search_s(BASEDN, ldap.SCOPE_SUBTREE, GROUPS_QUERY, ['cn'])
 
 
 class SyncLDAPGroups(grok.View):
