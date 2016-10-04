@@ -2,7 +2,7 @@
 Reports indicators to the Indicators Web Service.
 """
 
-from .model import Indicator, Category
+from .model import Indicator, Category, CalculatorException
 from .registry import Registry
 from .client import Client, ClientException
 
@@ -32,7 +32,11 @@ class WebServiceReporter(object):
         try:
             self._client.update_category(
                 category.indicator.service, category.indicator.id,
-                category.id, category.description, category.value)
+                category.id, category.description, category.type,
+                category.frequency, category.value)
+        except CalculatorException as e:
+            raise ReporterException(
+                "Error when calculating category ({0})".format(e.message))
         except ClientException as e:
             raise ReporterException(
                 "WS client exception ({0})".format(e.message))
@@ -62,4 +66,3 @@ class WebServiceReporter(object):
     def _report_registry(self, registry):
         for indicator_dict in registry.values():
             self._report_indicator_dict(indicator_dict)
-

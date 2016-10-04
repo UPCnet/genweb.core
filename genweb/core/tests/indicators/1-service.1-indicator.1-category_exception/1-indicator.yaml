@@ -9,5 +9,5 @@ categories:
     calculator: genweb.core.tests.test_registry_integration.MockCalculator111
   - id: category-1.2
     description: Category 1.2
-    calculator: genweb.core.tests.test_registry_integration.MockCalculator112
+    calculator: genweb.core.tests.test_registry_integration.MockCalculatorWithException
 

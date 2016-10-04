@@ -4,7 +4,7 @@ from mock import Mock, patch
 from genweb.core.indicators import WebServiceReporter, ReporterException
 from genweb.core.indicators import Indicator, Category
 from genweb.core.indicators import Registry
-from genweb.core.indicators import ClientException
+from genweb.core.indicators import ClientException, CalculatorException
 
 
 class TestReporter(unittest.TestCase):
@@ -37,7 +37,8 @@ class TestReporter(unittest.TestCase):
         with patch(
                 'genweb.core.indicators.reporter.WebServiceReporter._report_category',
                 side_effect=(None,)):
-            reporter.report(Category('id', 'description', 'calculator'))
+            reporter.report(Category(
+                'id', 'description', 'type', 'frequency', 'calculator'))
 
     def test_report_registry_should_report_indicator_dicts(self):
         reporter = WebServiceReporter("url", "api_key")
@@ -103,6 +104,19 @@ class TestReporter(unittest.TestCase):
                    side_effect=ClientException):
             with self.assertRaises(ReporterException):
                 reporter._report_indicator(Mock(), report_categories=False)
+
+    def test_report_indicator_should_raise_reporter_exception_if_calculator_exception(self):
+        reporter = WebServiceReporter("url", "api_key")
+        with patch('genweb.core.indicators.client.Client.update_indicator'):
+            with patch('genweb.core.indicators.client.Client.update_category',
+                       side_effect=CalculatorException('Oh!')):
+                with self.assertRaises(ReporterException) as context:
+                    reporter._report_indicator(
+                        Mock(categories={'c1': Mock(), '2': Mock()}),
+                        report_categories=True)
+                self.assertEqual(
+                    "Error when calculating category (Oh!)",
+                    context.exception.message)
 
     def test_report_indicator_should_raise_reporter_exception_if_reporter_exception(self):
         reporter = WebServiceReporter("url", "api_key")

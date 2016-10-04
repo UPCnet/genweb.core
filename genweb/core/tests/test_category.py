@@ -135,7 +135,31 @@ class TestCategory(unittest.TestCase):
             "'calculator' cannot be empty",
             context.exception.message)
 
-    def test_instance_from_dict_valid_dict(self):
+    def test_instance_from_dict_valid_dict_should_contain_not_none_values(self):
+        category_dict = dict(
+            id="category-id",
+            description='Category description',
+            type='Category type',
+            frequency='Category frequency',
+            calculator='mock.class_name',
+        )
+
+        def mock_instance_from_string(string, context):
+            return Mock(string=string, context=context)
+        with patch(
+                'genweb.core.indicators.model.Calculator.instance_from_string',
+                side_effect=mock_instance_from_string):
+            category = Category.instance_from_dict(category_dict, "context")
+
+        self.assertEqual("category-id", category.id)
+        self.assertEqual("Category description", category.description)
+        self.assertEqual("Category type", category.type)
+        self.assertEqual("Category frequency", category.frequency)
+        self.assertEqual("mock.class_name", category.calculator.string)
+        self.assertEqual("context", category.calculator.context)
+        self.assertEqual(category, category.calculator.category)
+
+    def test_instance_from_dict_valid_dict_should_contain_none_values_if_no_type_and_frequency(self):
         category_dict = dict(
             id="category-id",
             description='Category description',
@@ -151,6 +175,8 @@ class TestCategory(unittest.TestCase):
 
         self.assertEqual("category-id", category.id)
         self.assertEqual("Category description", category.description)
+        self.assertEqual(None, category.type)
+        self.assertEqual(None, category.frequency)
         self.assertEqual("mock.class_name", category.calculator.string)
         self.assertEqual("context", category.calculator.context)
         self.assertEqual(category, category.calculator.category)

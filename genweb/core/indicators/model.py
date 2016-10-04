@@ -62,10 +62,13 @@ class Indicator(object):
 
 
 class Category(object):
-    def __init__(self, id, description, calculator, indicator=None):
+    def __init__(self, id, description, type, frequency, calculator,
+                 indicator=None):
         self.indicator = indicator
         self.id = id
         self.description = description
+        self.type = type
+        self.frequency = frequency
         self.calculator = calculator
 
     @property
@@ -100,13 +103,21 @@ class Category(object):
         Category._validate_category_dict(category)
         calculator = Calculator.instance_from_string(
                 category['calculator'], context)
+        type = category['type'] if 'type' in category else None
+        frequency = category['frequency'] if 'frequency' in category else None
         instance = Category(
             id=category['id'],
             description=category['description'],
+            type=type,
+            frequency=frequency,
             calculator=calculator
         )
         calculator.category = instance
         return instance
+
+
+class CalculatorException(Exception):
+    pass
 
 
 class Calculator(object):

@@ -26,9 +26,12 @@ class Client(object):
             return self.__dict__ == other.__dict__
 
     class Category(object):
-        def __init__(self, identifier, description, value, date_modified):
+        def __init__(self, identifier, description, type, frequency,
+                     value, date_modified):
             self.identifier = identifier
             self.description = description
+            self.type = type
+            self.frequency = frequency
             self.value = value
             self.date_modified = date_modified
 
@@ -44,6 +47,8 @@ class Client(object):
     KEY_CATEGORY_LIST = "categories"
     KEY_CATEGORY_IDENTIFIER = "idCategoria"
     KEY_CATEGORY_DESCRIPTION = "descripcioCategoria"
+    KEY_CATEGORY_TYPE = "tipusIndicador"
+    KEY_CATEGORY_FREQUENCY = "frequencia"
     KEY_CATEGORY_VALUE = "valor"
     KEY_CATEGORY_DATE_MODIFIED = "dataModificacioCategoria"
 
@@ -119,6 +124,10 @@ class Client(object):
                         Client.KEY_CATEGORY_IDENTIFIER, u''),
                     description=category_dict.get(
                         Client.KEY_CATEGORY_DESCRIPTION, u''),
+                    type=category_dict.get(
+                        Client.KEY_CATEGORY_TYPE, u''),
+                    frequency=category_dict.get(
+                        Client.KEY_CATEGORY_FREQUENCY, u''),
                     value=category_dict.get(
                         Client.KEY_CATEGORY_VALUE, u''),
                     date_modified=self._parse_date_modified(
@@ -188,15 +197,24 @@ class Client(object):
             raise ClientException("The connection with '{0}' could not be "
                                   "established".format(self.url_base))
 
-    def _validate_param_is_not_empty(self, name, value):
-        if not value or not str(value).strip():
+    def _validate_param_has_value(self, name, value):
+        try:
+            self._validate_param_is_not_none(name, value)
+            self._validate_param_is_not_empty_string(name, value)
+        except ClientException:
             raise ClientException(
-                "Parameter '{0}' cannot be empty".format(name))
+                "Parameter '{0}' cannot be empty or None".format(name))
 
     def _validate_param_is_not_none(self, name, value):
         if value is None:
             raise ClientException(
                 "Parameter '{0}' cannot be None".format(name))
+
+    def _validate_param_is_not_empty_string(self, name, value):
+        if value is not None and type(value) is str:
+            if not value or not str(value).strip():
+                raise ClientException(
+                    "Parameter '{0}' cannot be empty string".format(name))
 
     def _parse_update_response(self, response):
         if response.status_code != requests.codes.ok:
@@ -205,8 +223,10 @@ class Client(object):
                 try:
                     response_data = json.loads(response.text)
                     if (type(response_data) is dict and
-                            'message' in response_data):
-                        message += ': ' + response_data['message']
+                            'message' in response_data and
+                            response_data['message']):
+                        message += ': ' + response_data['message'].encode(
+                            'utf-8')
                 except ValueError:
                     message = str(response.status_code)
 
@@ -217,10 +237,10 @@ class Client(object):
 
     def _validate_update_indicator_parameters(
                 self, service_id, indicator_id, indicator_description):
-        self._validate_param_is_not_empty('service_id', service_id)
-        self._validate_param_is_not_empty('indicator_id', indicator_id)
-        self._validate_param_is_not_none(
-            'indicator_description', indicator_description)
+        self._validate_param_has_value('service_id', service_id)
+        self._validate_param_has_value('indicator_id', indicator_id)
+        self._validate_param_is_not_none('indicator_description',
+                                         indicator_description)
 
     def _build_update_indicator_url(self, service_id):
         return '{0}/{1}?idServei={2}'.format(
@@ -256,12 +276,13 @@ class Client(object):
 
     def _validate_update_category_parameters(
                 self, service_id, indicator_id,
-                category_id, category_description, category_value):
-        self._validate_param_is_not_empty('service_id', service_id)
-        self._validate_param_is_not_empty('indicator_id', indicator_id)
-        self._validate_param_is_not_empty('category_id', category_id)
-        self._validate_param_is_not_none(
-            'category_description', category_description)
+                category_id, category_description, category_type,
+                category_frequency, category_value):
+        self._validate_param_has_value('service_id', service_id)
+        self._validate_param_has_value('indicator_id', indicator_id)
+        self._validate_param_has_value('category_id', category_id)
+        self._validate_param_is_not_none('category_description',
+                                         category_description)
         self._validate_param_is_not_none('category_value', category_value)
 
     def _build_update_category_url(self, service_id, indicator_id):
@@ -270,15 +291,19 @@ class Client(object):
             service_id, indicator_id)
 
     def update_category(self, service_id, indicator_id,
-                        category_id, category_description, category_value):
+                        category_id, category_description, category_type,
+                        category_frequency, category_value):
         try:
             self._validate_update_category_parameters(
                 service_id, indicator_id,
-                category_id, category_description, category_value)
+                category_id, category_description, category_type,
+                category_frequency, category_value)
 
             data = {
                 Client.KEY_CATEGORY_IDENTIFIER: category_id,
                 Client.KEY_CATEGORY_DESCRIPTION: category_description,
+                Client.KEY_CATEGORY_TYPE: category_type,
+                Client.KEY_CATEGORY_FREQUENCY: category_frequency,
                 Client.KEY_CATEGORY_VALUE: category_value}
 
             return self._parse_update_response(
