@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from genweb.core.indicators import Calculator
+from genweb.core.indicators import Calculator, CalculatorException
 from genweb.core.indicators import Registry, RegistryException
 
 
@@ -33,6 +33,11 @@ class MockCalculator221(Calculator):
 class MockCalculator222(Calculator):
     def calculate(self):
         return 222
+
+
+class MockCalculatorWithException(Calculator):
+    def calculate(self):
+        raise CalculatorException('Oh!')
 
 
 class TestRegistry(unittest.TestCase):
@@ -77,6 +82,12 @@ class TestRegistry(unittest.TestCase):
             'Category 1.1',
             registry['service-1']['indicator-1']['category-1.1'].description)
         self.assertEqual(
+            'type 1.1',
+            registry['service-1']['indicator-1']['category-1.1'].type)
+        self.assertEqual(
+            'frequency 1.1',
+            registry['service-1']['indicator-1']['category-1.1'].frequency)
+        self.assertEqual(
             111,
             registry['service-1']['indicator-1']['category-1.1'].value)
         self.assertEqual(
@@ -85,6 +96,12 @@ class TestRegistry(unittest.TestCase):
         self.assertEqual(
             'Category 1.2',
             registry['service-1']['indicator-1']['category-1.2'].description)
+        self.assertEqual(
+            None,
+            registry['service-1']['indicator-1']['category-1.2'].type)
+        self.assertEqual(
+            None,
+            registry['service-1']['indicator-1']['category-1.2'].frequency)
         self.assertEqual(
             112,
             registry['service-1']['indicator-1']['category-1.2'].value)

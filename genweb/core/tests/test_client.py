@@ -284,12 +284,16 @@ class TestWSClient(unittest.TestCase):
           "dataModificacioCategoria": "2015-12-03T19:15:50.231",
           "descripcioCategoria": "categoria important",
           "idCategoria": "categoria-1",
+          "tipusIndicador": "online",
+          "frequencia": "dia",
           "valor": "578"
        },
        {
           "dataModificacioCategoria": "wrong date",
           "descripcioCategoria": "categoria important 2",
           "idCategoria": "categoria-2",
+          "tipusIndicador": "diferit",
+          "frequencia": "hora",
           "valor": "678"
        },
        {}
@@ -304,6 +308,8 @@ class TestWSClient(unittest.TestCase):
                 date_modified=datetime.datetime(2015, 12, 3, 19, 15, 50),
                 description=u"categoria important",
                 identifier=u"categoria-1",
+                type=u"online",
+                frequency=u"dia",
                 value=u"578"))
 
         self.assertEqual(
@@ -312,6 +318,8 @@ class TestWSClient(unittest.TestCase):
                 date_modified=None,
                 description=u'categoria important 2',
                 identifier=u'categoria-2',
+                type=u"diferit",
+                frequency=u"hora",
                 value=u'678'))
 
         self.assertEqual(
@@ -320,6 +328,8 @@ class TestWSClient(unittest.TestCase):
                 date_modified=None,
                 description=u'',
                 identifier=u'',
+                type=u'',
+                frequency=u'',
                 value=u''))
 
     def test_list_indicators(self):
@@ -530,6 +540,18 @@ class TestWSClient(unittest.TestCase):
         with self.assertRaises(ClientException):
             client.list_categories('service-id', 'indicator-id')
 
+    def test_validate_param_is_not_empty_string_should_raise_when_blanks(self):
+        with self.assertRaises(ClientException) as context:
+            self.client._validate_param_is_not_empty_string(
+                'value', ' \t  \n  ')
+        self.assertEqual(
+            "Parameter 'value' cannot be empty string",
+            context.exception.message)
+
+    def test_validate_param_is_not_empty_string_should_not_raise_when_0(self):
+        self.assertIsNone(
+            self.client._validate_param_is_not_empty_string('value', 0))
+
     def test_validate_update_indicator_parameters_with_correct_params(self):
         self.assertEqual(
             None,
@@ -549,7 +571,7 @@ class TestWSClient(unittest.TestCase):
                 )
             self.assertEqual(
                 context.exception.message,
-                "Parameter 'service_id' cannot be empty")
+                "Parameter 'service_id' cannot be empty or None")
 
     def test_validate_update_indicator_parameters_with_empty_indicator(self):
         for indicator_id in (None, '', '\n\t   \n\t\t'):
@@ -561,7 +583,7 @@ class TestWSClient(unittest.TestCase):
                 )
             self.assertEqual(
                 context.exception.message,
-                "Parameter 'indicator_id' cannot be empty")
+                "Parameter 'indicator_id' cannot be empty or None")
 
     def test_validate_update_indicator_parameters_with_none_indicator_desc(self):
         with self.assertRaises(ClientException) as context:
@@ -582,6 +604,8 @@ class TestWSClient(unittest.TestCase):
                 indicator_id='indicator_id',
                 category_id='category_id',
                 category_description='category_description',
+                category_type='category_type',
+                category_frequency='category_frequency',
                 category_value='category_value',
             ))
 
@@ -593,11 +617,13 @@ class TestWSClient(unittest.TestCase):
                     indicator_id='indicator_id',
                     category_id='category_id',
                     category_description='category_description',
+                    category_type='category_type',
+                    category_frequency='category_frequency',
                     category_value='category_value',
                 )
             self.assertEqual(
                 context.exception.message,
-                "Parameter 'service_id' cannot be empty")
+                "Parameter 'service_id' cannot be empty or None")
 
     def test_validate_update_category_parameters_with_empty_indicator(self):
         for indicator_id in (None, '', '\n\t   \n\t\t'):
@@ -607,11 +633,13 @@ class TestWSClient(unittest.TestCase):
                     indicator_id=indicator_id,
                     category_id='category_id',
                     category_description='category_description',
+                    category_type='category_type',
+                    category_frequency='category_frequency',
                     category_value='category_value',
                 )
             self.assertEqual(
                 context.exception.message,
-                "Parameter 'indicator_id' cannot be empty")
+                "Parameter 'indicator_id' cannot be empty or None")
 
     def test_validate_update_category_parameters_with_empty_category_id(self):
         for category_id in (None, '', '\n\t   \n\t\t'):
@@ -621,11 +649,13 @@ class TestWSClient(unittest.TestCase):
                     indicator_id='indicator_id',
                     category_id=category_id,
                     category_description='category_description',
+                    category_type='category_type',
+                    category_frequency='category_frequency',
                     category_value='category_value',
                 )
             self.assertEqual(
                 context.exception.message,
-                "Parameter 'category_id' cannot be empty")
+                "Parameter 'category_id' cannot be empty or None")
 
     def test_validate_update_category_parameters_with_none_category_desc(self):
         with self.assertRaises(ClientException) as context:
@@ -634,24 +664,110 @@ class TestWSClient(unittest.TestCase):
                 indicator_id='indicator_id',
                 category_id='category_id',
                 category_description=None,
+                category_type='category_type',
+                category_frequency='category_frequency',
                 category_value='category_value',
             )
         self.assertEqual(
             context.exception.message,
             "Parameter 'category_description' cannot be None")
 
-    def test_validate_update_category_parameters_with_none_category_val(self):
+    def test_validate_update_category_parameters_with_empty_category_desc_should_not_raise(self):
+        for category_description in ('', '\n\t   \n\t\t'):
+            self.assertEqual(
+                None,
+                self.client._validate_update_category_parameters(
+                    service_id='service_id',
+                    indicator_id='indicator_id',
+                    category_id='category_id',
+                    category_description=category_description,
+                    category_type='category_type',
+                    category_frequency='category_frequency',
+                    category_value='category_value',
+                    ))
+
+    def test_validate_update_category_parameters_with_empty_category_type_should_not_raise(self):
+        for category_type in ('', '\n\t   \n\t\t'):
+            self.assertEqual(
+                None,
+                self.client._validate_update_category_parameters(
+                    service_id='service_id',
+                    indicator_id='indicator_id',
+                    category_id='category_id',
+                    category_description='category_description',
+                    category_type=category_type,
+                    category_frequency='category_frequency',
+                    category_value='category_value',
+                    ))
+
+    def test_validate_update_category_parameters_with_none_category_type_should_not_raise(self):
+        self.assertEqual(
+            None,
+            self.client._validate_update_category_parameters(
+                service_id='service_id',
+                indicator_id='indicator_id',
+                category_id='category_id',
+                category_description='category_description',
+                category_type=None,
+                category_frequency='category_frequency',
+                category_value='category_value',
+                ))
+
+    def test_validate_update_category_parameters_with_empty_category_frequency_should_not_raise(self):
+        for category_frequency in ('', '\n\t   \n\t\t'):
+            self.assertEqual(
+                None,
+                self.client._validate_update_category_parameters(
+                    service_id='service_id',
+                    indicator_id='indicator_id',
+                    category_id='category_id',
+                    category_description='category_description',
+                    category_type='category_type',
+                    category_frequency=category_frequency,
+                    category_value='category_value',
+                    ))
+
+    def test_validate_update_category_parameters_with_none_category_frequency_should_not_raise(self):
+        self.assertEqual(
+            None,
+            self.client._validate_update_category_parameters(
+                service_id='service_id',
+                indicator_id='indicator_id',
+                category_id='category_id',
+                category_description='category_description',
+                category_type='category_type',
+                category_frequency=None,
+                category_value='category_value',
+                ))
+
+    def test_validate_update_category_parameters_with_none_category_val_should_raise(self):
         with self.assertRaises(ClientException) as context:
             self.client._validate_update_category_parameters(
                 service_id='service_id',
                 indicator_id='indicator_id',
                 category_id='category_id',
                 category_description='category_description',
+                category_type='category_type',
+                category_frequency='category_frequency',
                 category_value=None,
             )
         self.assertEqual(
             context.exception.message,
             "Parameter 'category_value' cannot be None")
+
+    def test_validate_update_category_parameters_with_empty_category_val_should_not_raise(self):
+        for category_value in ('', '\n\t   \n\t\t'):
+            self.assertEqual(
+                None,
+                self.client._validate_update_category_parameters(
+                    service_id='service_id',
+                    indicator_id='indicator_id',
+                    category_id='category_id',
+                    category_description='category_description',
+                    category_type='category_type',
+                    category_frequency='category_frequency',
+                    category_value=category_value,
+                    ))
 
     def test_update_category_should_raise_client_exception_when_url_is_none(self):
         client = Client(
@@ -659,7 +775,8 @@ class TestWSClient(unittest.TestCase):
         with self.assertRaises(ClientException):
             client.update_category(
                 'service-id', 'indicator-id',
-                'category-id', 'category-description', 'category-value')
+                'category-id', 'category-description', 'category-type',
+                'category-frequency', 'category-value')
 
     def test_update_category_should_raise_client_exception_when_url_is_empty(self):
         client = Client(
@@ -667,7 +784,8 @@ class TestWSClient(unittest.TestCase):
         with self.assertRaises(ClientException):
             client.update_category(
                 'service-id', 'indicator-id',
-                'category-id', 'category-description', 'category-value')
+                'category-id', 'category-description', 'category-type',
+                'category-frequency', 'category-value')
 
     def test_update_category_should_raise_client_exception_when_url_is_invalid(self):
         client = Client(
@@ -675,7 +793,8 @@ class TestWSClient(unittest.TestCase):
         with self.assertRaises(ClientException):
             client.update_category(
                 'service-id', 'indicator-id',
-                'category-id', 'category-description', 'category-value')
+                'category-id', 'category-description', 'category-type',
+                'category-frequency', 'category-value')
 
     def test_update_category_should_raise_client_exception_when_url_has_invalid_schema(self):
         client = Client(
@@ -683,7 +802,8 @@ class TestWSClient(unittest.TestCase):
         with self.assertRaises(ClientException):
             client.update_category(
                 'service-id', 'indicator-id',
-                'category-id', 'category-description', 'category-value')
+                'category-id', 'category-description', 'category-type',
+                'category-frequency', 'category-value')
 
     def test_parse_update_response_code_200(self):
         response_mock = MagicMock(status_code=200)
@@ -708,16 +828,39 @@ class TestWSClient(unittest.TestCase):
         self.assertEqual(
             context.exception.message, "Status code is not OK (400)")
 
-    def test_parse_update_response_code_non200_with_json_dict(self):
+    def test_parse_update_response_should_raise_str_message_when_code_non200_and_message_none(self):
         response_mock = MagicMock(
             status_code=400,
             headers={'Content-Type': 'application/json'},
-            text='{"message": "Something went wrong"}')
+            text=u'{"message": null}')
+        with self.assertRaises(ClientException) as context:
+            self.client._parse_update_response(response_mock)
+        self.assertEqual(
+            context.exception.message,
+            "Status code is not OK (400)")
+
+    def test_parse_update_response_should_raise_str_message_when_code_non200_and_message_ascii(self):
+        response_mock = MagicMock(
+            status_code=400,
+            headers={'Content-Type': 'application/json'},
+            text=u'{"message": "Something went wrong"}')
         with self.assertRaises(ClientException) as context:
             self.client._parse_update_response(response_mock)
         self.assertEqual(
             context.exception.message,
             "Status code is not OK (400: Something went wrong)")
+
+    def test_parse_update_response_should_raise_str_message_when_code_non200_and_message_nonascii(self):
+        response_mock = MagicMock(
+            status_code=400,
+            headers={'Content-Type': 'application/json'},
+            text=u'{"message": "Something went wroöòóng"}')
+        with self.assertRaises(ClientException) as context:
+            self.client._parse_update_response(response_mock)
+        self.assertEqual(
+            context.exception.message,
+            u"Status code is not OK (400: Something went wroöòóng)".encode(
+                'utf-8'))
 
     def test_parse_update_response_code_non200_with_json_list(self):
         response_mock = MagicMock(

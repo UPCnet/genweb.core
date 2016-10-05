@@ -55,6 +55,6 @@ class NewsEventsRendererTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         login(self.portal, TEST_USER_NAME)
 
-        portlet = self.renderer(context=self.portal, assignment=news_events_listing.Assignment(('tag1'), ('Events')))
+        portlet = self.renderer(context=self.portal, assignment=news_events_listing.Assignment([], 'News'))
         portlet.update()
         portlet.render()
