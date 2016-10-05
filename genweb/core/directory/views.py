@@ -9,6 +9,9 @@ from plone.registry.interfaces import IRegistry
 from zope.component import queryUtility
 from genweb.controlpanel.core import IGenwebCoreControlPanelSettings
 from zope.interface import alsoProvides
+import logging
+
+logger = logging.getLogger(__name__)
 
 import ldap
 import os
@@ -37,20 +40,29 @@ def search_ldap_groups():
 
 class SyncLDAPGroups(grok.View):
     grok.context(IPloneSiteRoot)
-    grok.require('cmf.ManagePortal')
+    grok.require('zope2.View')
 
     def render(self):
-
+        results = []
         try:
             results = search_ldap_groups()
+        except ldap.SERVER_DOWN:
+            api.portal.send_email(
+                recipient='plone.team@upcnet.es',
+                sender='noreply@ulearn.upcnet.es',
+                subject='[uLearn] No LDAP SERVER found in ' + self.context.absolute_url(),
+                body="Can't contact with ldap_server to syncldapgroups in " + self.context.absolute_url(),
+            )
+            return "Can't connect LDAP_SERVER."
         except:
             # Just in case the user raise a "SIZE_LIMIT_EXCEEDED"
             api.portal.send_email(
                 recipient='plone.team@upcnet.es',
                 sender='noreply@ulearn.upcnet.es',
-                subject='[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED',
-                body='The sync view on the uLearn instance has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated',
+                subject='[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED at ' + self.context.absolute_url(),
+                body='The sync view on the uLearn instance ' + self.context.absolute_url() + ' has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated',
             )
+            return "Error searching groups."
 
         try:
             from plone.protect.interfaces import IDisableCSRFProtection
@@ -66,18 +78,29 @@ class SyncLDAPGroups(grok.View):
 
             for dn, attrs in results:
                 group_id = attrs['cn'][0]
-                exist = [r for r in soup.query(Eq('id', group_id))]
-                if exist:
-                    to_print.append('* Already existing record for group: {}'.format(group_id))
-                else:
-                    record = Record()
-                    record.attrs['id'] = group_id
 
-                    # Index entries MUST be unicode in order to search using special chars
-                    record.attrs['searchable_id'] = group_id.decode('utf-8')
-                    soup.add(record)
-                    to_print.append('Added record for group: {}'.format(group_id))
+                record = Record()
+                record.attrs['id'] = group_id
 
-            return '\n'.join(to_print)
+                # Index entries MUST be unicode in order to search using special chars
+                record.attrs['searchable_id'] = group_id.decode('utf-8')
+                soup.add(record)
+                to_print.append(group_id)
+
+            logger.info('[SYNCLDAPGROUPS]: {}'.format(to_print))
+            api.portal.send_email(
+                recipient='UPCnet.ServOp.WaCS@llistes.upcnet.es',
+                sender='noreply@ulearn.upcnet.es',
+                subject='[uLearn] OK! Import LDAP groups: ' + self.context.absolute_url(),
+                body='OK - Sync LDAP groups to communities. URL: ' + self.context.absolute_url(),
+            )
+
+            return 'Ok, groups imported.'
         else:
-            return 'No results'
+            api.portal.send_email(
+                recipient='UPCnet.ServOp.WaCS@llistes.upcnet.es',
+                sender='noreply@ulearn.upcnet.es',
+                subject='[uLearn] FAIL! Import LDAP groups: ' + self.context.absolute_url(),
+                body='KO - No groups found syncing LDAP groups to communities. URL: ' + self.context.absolute_url(),
+            )
+            return 'KO, no groups found.'
