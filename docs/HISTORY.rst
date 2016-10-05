@@ -1,11 +1,19 @@
 Changelog
 =========
 
-4.8.27 (unreleased)
+4.8.27 (2016-10-05)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [roberto.diaz]
+* changed view syncldapgroups to add BO mails and zope.public view [roberto.diaz]
+* Fix tests [Santi]
+* Improve indicators API [Santi]
+*  [Santi]
+* - Include type and frequency in category definition. [Santi]
+* - Add CalculatorException class. [Santi]
+* changed cfg url [Roberto Diaz]
+* Añadir campos ldap para filtrar grupos [Pilar Marinas]
+* SyncLDAPGroups IDisableCSRFProtection [Pilar Marinas]
 
 4.8.26 (2016-09-22)
 -------------------
