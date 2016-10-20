@@ -107,7 +107,12 @@ def generate_user_id(self, data):
 
     This will update the 'username' key of the data that is passed.
     """
-    default = data.get('username').lower() or data.get('email').lower() or ''
+    if data.get('username'):
+        default = data.get('username').lower()
+    elif data.get('email'):
+        default = data.get('email').lower()
+    else:
+        default = ''
     data['username'] = default
     return default
 
