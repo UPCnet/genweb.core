@@ -782,6 +782,107 @@ class importTypesTool(grok.View):
         ps.runImportStepFromProfile('profile-genweb.upc:default', 'typeinfo')
 
 
+class importJSRegistry(grok.View):
+    """ importJSRegistry """
+    grok.context(IPloneSiteRoot)
+    grok.name('import_js_registry')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
+        portal = api.portal.get()
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.theme:default', 'jsregistry')
+
+        files = ['++resource++plone.app.jquery.js', 'plone_javascript_variables.js', 'collective.js.jqueryui.custom.min.js']
+        js = api.portal.get_tool('portal_javascripts')
+        for f in files:
+            if f in js.getResourcesDict():
+                jsfile = js.getResource(f)
+                if jsfile.getCookable():
+                    jsfile.setCookable(False)
+        import transaction
+        transaction.commit()
+
+
+class applyOldJS(grok.View):
+    """ applyOldJS """
+    grok.context(IPloneSiteRoot)
+    grok.name('apply_old_js')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        oldfiles = ['++resource++plone.app.jquery.js', 'jquery-integration.js',
+                    'insert-after', 'event-registration.js', 'register_function.js',
+                    'plone_javascript_variables.js',
+                    '++resource++plone.app.jquerytools.js',
+                    '++resource++plone.app.jquerytools.form.js',
+                    'collapsibleformfields.js',
+                    '++resource++plone.app.jquerytools.overlayhelpers.js',
+                    '++resource++plone.app.jquerytools.dateinput.js',
+                    '++resource++plone.app.jquerytools.rangeinput.js',
+                    '++resource++plone.app.jquerytools.validator.js',
+                    '++resource++plone.app.jquerytools.plugins.js',
+                    '++resource++plone.app.jquerytools.tooltip.js',
+                    '++resource++plone.app.jquerytools.tooltip.plugins.js',
+                    'nodeutilities.js', 'cookie_functions.js', 'modernizr.js',
+                    '++bootstrap++js/modernizr-2.6.1.min.js', 'livesearch.js',
+                    '++resource++search.js', 'fullscreenmode.js', 'select_all.js',
+                    'dragdropreorder.js', 'mark_special_links.js',
+                    'collapsiblesections.js', 'form_tabbing.js', 'popupforms.js',
+                    'jquery.highlightsearchterms.js', 'first_input_focus.js',
+                    'accessibility.js', 'styleswitcher.js', 'toc.js',
+                    '++resource++plone.app.discussion.javascripts/comments.js',
+                    'dropdown.js', 'inline_validation.js', 'kss-bbb.js',
+                    '++genwebupc++js/plone.formwidget.querystring.querywidget.js',
+                    'collective.js.jqueryui.custom.min.js',
+                    '++resource++collective.polls/js/jquery.flot.js',
+                    '++resource++collective.polls/js/jquery.flot.pie.js',
+                    '++resource++collective.polls/js/polls.js',
+                    '++resource++collective.polls/js/collective.poll.js',
+                    '++resource++plone.formwidget.recaptcha/recaptcha_ajax.js',
+                    '++resource++plone.formwidget.recurrence/jquery.tmpl-beta1.js',
+                    '++resource++plone.formwidget.recurrence/jquery.recurrenceinput.js',
+                    '++resource++plone.app.event/event.js',
+                    '++resource++plone.app.event.portlet_calendar.js',
+                    '++resource++plone.formwidget.autocomplete/jquery.autocomplete.min.js',
+                    '++resource++plone.formwidget.autocomplete/formwidget-autocomplete.js',
+                    '++resource++plone.formwidget.contenttree/contenttree.js',
+                    '++resource++jsi18n.js', 'table_sorter.js', 'calendar_formfield.js',
+                    'formUnload.js', 'formsubmithelpers.js', 'unlockOnFormUnload.js',
+                    'jquery.tinymce.js', 'tiny_mce_gzip.js',
+                    '++resource++collective.polls/js/jquery.tasksplease.js',
+                    '++resource++collage-resources/collage.js',
+                    '++resource++collective.polls/js/excanvas.min.js',
+                    '++resource++collective.z3cform.datagridfield/datagridfield.js',
+                    '++bootstrap++js/bootstrap.min.js']
+        js = api.portal.get_tool('portal_javascripts')
+        for oldfile in oldfiles:
+            if oldfile in js.getResourcesDict():
+                jsfile = js.getResource(oldfile)
+                if not jsfile.getEnabled():
+                    jsfile.setEnabled(True)
+        import transaction
+        transaction.commit()
+        output.append('{}: Applied old js files'.format(portal.id))
+        return '\n'.join(output)
+
+
+class importCSSRegistry(grok.View):
+    """ importCSSRegistry """
+    grok.context(IPloneSiteRoot)
+    grok.name('import_css_registry')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        portal = api.portal.get()
+        ps = getToolByName(portal, 'portal_setup')
+        ps.runImportStepFromProfile('profile-genweb.upc:default', 'cssregistry')
+
+
 class changeNewsEventsPortlets(grok.View):
     """ Replace navigation portlet by categories portlet from news and events
     view methods in the current Plone site. """
