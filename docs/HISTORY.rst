@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.8.28 (unreleased)
+4.8.28 (2016-10-24)
 -------------------
 
-- Nothing changed yet.
-
+* tocadors per actuacio js [Alberto Duran]
+* Solucionar que no pete rebuild_user_catalog [Pilar Marinas]
+* Fix generate_user_id patch [Santi]
+*  [Santi]
+* Check for None values in data dict before invoking str::lower method. [Santi]
 
 4.8.27 (2016-10-05)
 -------------------
