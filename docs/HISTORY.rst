@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.29 (unreleased)
+4.8.29 (2016-11-03)
 -------------------
 
-- Nothing changed yet.
-
+* check CSRF in touchers only when plone.protect is present [Alberto Duran]
 
 4.8.28 (2016-10-24)
 -------------------
