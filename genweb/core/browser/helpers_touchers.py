@@ -131,70 +131,70 @@ class bulkUserCreator(grok.View):
 
     def render(self):
         users = ['joan.giralt',
-                'gemma.baldris',
-                'carme.jimenez',
-                'lluis.malvis',
-                'joaquim.fernandez',
-                'pau.cabanyol',
-                'sandra.franch',
-                'jose.alberola',
-                'pedro.alvarez',
-                'francesc.guasch',
-                'angel.aguilera',
-                'javier.trueba',
-                'jesus.galceran',
-                'merce.oller',
-                'jordi.aguilar',
-                'david.figueres',
-                'josep.maria.jordana',
-                'annibal.manyas',
-                'alfredo.soldevilla',
-                'alex.muntada',
-                'albert.obiols',
-                'boris.martinez',
-                'carles.espadas',
-                'pepe.martinez',
-                'roberto.molina',
-                'raul.pastor',
-                'belen.lalueza',
-                'tonyi.gomez',
-                'rosa.ma.martin',
-                'jordi.enric.martinez',
-                'sandra.marsa',
-                'antoni.mayans',
-                'yolanda.blanc',
-                'susy.tur',
-                'toni.font',
-                'anna.casas',
-                'manoli.cano',
-                'andres.arco',
-                'esther.nadal',
-                'jose.angel.fernandez',
-                'elena.lopez.romera',
-                'eulalia.formenti',
-                'ignasi.mallafre',
-                'amador.alvarez',
-                'josep.m.haro',
-                'jose.luis.roncero',
-                'katty.torla',
-                'cristina.dantart',
-                'sara.perez',
-                'antonio.fernandez',
-                'jesus.otero',
-                'eulalia.font',
-                'rosa.martin',
-                'ruben.menendez',
-                'francesc.bassas',
-                'jordi.bofill',
-                'alicia.ruiz',
-                'cesc.garcia',
-                'manel.campano',
-                'david.ortin',
-                'jose.lazaro',
-                'sofia.pascual',
-                'luisa.vicente',
-                'enric.ribot',
-                'jose.marcos.lopez',]
+                 'gemma.baldris',
+                 'carme.jimenez',
+                 'lluis.malvis',
+                 'joaquim.fernandez',
+                 'pau.cabanyol',
+                 'sandra.franch',
+                 'jose.alberola',
+                 'pedro.alvarez',
+                 'francesc.guasch',
+                 'angel.aguilera',
+                 'javier.trueba',
+                 'jesus.galceran',
+                 'merce.oller',
+                 'jordi.aguilar',
+                 'david.figueres',
+                 'josep.maria.jordana',
+                 'annibal.manyas',
+                 'alfredo.soldevilla',
+                 'alex.muntada',
+                 'albert.obiols',
+                 'boris.martinez',
+                 'carles.espadas',
+                 'pepe.martinez',
+                 'roberto.molina',
+                 'raul.pastor',
+                 'belen.lalueza',
+                 'tonyi.gomez',
+                 'rosa.ma.martin',
+                 'jordi.enric.martinez',
+                 'sandra.marsa',
+                 'antoni.mayans',
+                 'yolanda.blanc',
+                 'susy.tur',
+                 'toni.font',
+                 'anna.casas',
+                 'manoli.cano',
+                 'andres.arco',
+                 'esther.nadal',
+                 'jose.angel.fernandez',
+                 'elena.lopez.romera',
+                 'eulalia.formenti',
+                 'ignasi.mallafre',
+                 'amador.alvarez',
+                 'josep.m.haro',
+                 'jose.luis.roncero',
+                 'katty.torla',
+                 'cristina.dantart',
+                 'sara.perez',
+                 'antonio.fernandez',
+                 'jesus.otero',
+                 'eulalia.font',
+                 'rosa.martin',
+                 'ruben.menendez',
+                 'francesc.bassas',
+                 'jordi.bofill',
+                 'alicia.ruiz',
+                 'cesc.garcia',
+                 'manel.campano',
+                 'david.ortin',
+                 'jose.lazaro',
+                 'sofia.pascual',
+                 'luisa.vicente',
+                 'enric.ribot',
+                 'jose.marcos.lopez']
 
         for user in users:
             # password = user[0].upper() + user.split('.')[1][0].upper() + user.split('.')[1][1:]
@@ -218,70 +218,70 @@ class bulkUserEraser(grok.View):
 
     def render(self):
         users = ['joan.giralt',
-                'gemma.baldris',
-                'carme.jimenez',
-                'lluis.malvis',
-                'joaquim.fernandez',
-                'pau.cabanyol',
-                'sandra.franch',
-                'jose.alberola',
-                'pedro.alvarez',
-                'francesc.guasch',
-                'angel.aguilera',
-                'javier.trueba',
-                'jesus.galceran',
-                'merce.oller',
-                'jordi.aguilar',
-                'david.figueres',
-                'josep.maria.jordana',
-                'annibal.manyas',
-                'alfredo.soldevilla',
-                'alex.muntada',
-                'albert.obiols',
-                'boris.martinez',
-                'carles.espadas',
-                'pepe.martinez',
-                'roberto.molina',
-                'raul.pastor',
-                'belen.lalueza',
-                'tonyi.gomez',
-                'rosa.ma.martin',
-                'jordi.enric.martinez',
-                'sandra.marsa',
-                'antoni.mayans',
-                'yolanda.blanc',
-                'susy.tur',
-                'toni.font',
-                'anna.casas',
-                'manoli.cano',
-                'andres.arco',
-                'esther.nadal',
-                'jose.angel.fernandez',
-                'elena.lopez.romera',
-                'eulalia.formenti',
-                'ignasi.mallafre',
-                'amador.alvarez',
-                'josep.m.haro',
-                'jose.luis.roncero',
-                'katty.torla',
-                'cristina.dantart',
-                'sara.perez',
-                'antonio.fernandez',
-                'jesus.otero',
-                'eulalia.font',
-                'rosa.martin',
-                'ruben.menendez',
-                'francesc.bassas',
-                'jordi.bofill',
-                'alicia.ruiz',
-                'cesc.garcia',
-                'manel.campano',
-                'david.ortin',
-                'jose.lazaro',
-                'sofia.pascual',
-                'luisa.vicente',
-                'enric.ribot',
-                'jose.marcos.lopez',]
+                 'gemma.baldris',
+                 'carme.jimenez',
+                 'lluis.malvis',
+                 'joaquim.fernandez',
+                 'pau.cabanyol',
+                 'sandra.franch',
+                 'jose.alberola',
+                 'pedro.alvarez',
+                 'francesc.guasch',
+                 'angel.aguilera',
+                 'javier.trueba',
+                 'jesus.galceran',
+                 'merce.oller',
+                 'jordi.aguilar',
+                 'david.figueres',
+                 'josep.maria.jordana',
+                 'annibal.manyas',
+                 'alfredo.soldevilla',
+                 'alex.muntada',
+                 'albert.obiols',
+                 'boris.martinez',
+                 'carles.espadas',
+                 'pepe.martinez',
+                 'roberto.molina',
+                 'raul.pastor',
+                 'belen.lalueza',
+                 'tonyi.gomez',
+                 'rosa.ma.martin',
+                 'jordi.enric.martinez',
+                 'sandra.marsa',
+                 'antoni.mayans',
+                 'yolanda.blanc',
+                 'susy.tur',
+                 'toni.font',
+                 'anna.casas',
+                 'manoli.cano',
+                 'andres.arco',
+                 'esther.nadal',
+                 'jose.angel.fernandez',
+                 'elena.lopez.romera',
+                 'eulalia.formenti',
+                 'ignasi.mallafre',
+                 'amador.alvarez',
+                 'josep.m.haro',
+                 'jose.luis.roncero',
+                 'katty.torla',
+                 'cristina.dantart',
+                 'sara.perez',
+                 'antonio.fernandez',
+                 'jesus.otero',
+                 'eulalia.font',
+                 'rosa.martin',
+                 'ruben.menendez',
+                 'francesc.bassas',
+                 'jordi.bofill',
+                 'alicia.ruiz',
+                 'cesc.garcia',
+                 'manel.campano',
+                 'david.ortin',
+                 'jose.lazaro',
+                 'sofia.pascual',
+                 'luisa.vicente',
+                 'enric.ribot',
+                 'jose.marcos.lopez']
 
         for user in users:
 
@@ -472,11 +472,8 @@ class reBuildUserPropertiesCatalog(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
-        try:
-            from plone.protect.interfaces import IDisableCSRFProtection
+        if CSRF:
             alsoProvides(self.request, IDisableCSRFProtection)
-        except:
-            pass
         portal = api.portal.get()
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
         # We use the most preferent plugin
@@ -512,11 +509,8 @@ class ResetUserPropertiesCatalog(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
-        try:
-            from plone.protect.interfaces import IDisableCSRFProtection
+        if CSRF:
             alsoProvides(self.request, IDisableCSRFProtection)
-        except:
-            pass
         reset_user_catalog()
 
 
@@ -734,8 +728,8 @@ class reapplyRegistryProfile(grok.View):
         if not portal:
             portal = api.portal.get()
 
-        from plone.protect.interfaces import IDisableCSRFProtection
-        alsoProvides(self.request, IDisableCSRFProtection)
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
 
         setupInstallProfile('profile-genweb.core:default', ['plone.app.registry'])
 
@@ -789,8 +783,8 @@ class importJSRegistry(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self, portal=None):
-        from plone.protect.interfaces import IDisableCSRFProtection
-        alsoProvides(self.request, IDisableCSRFProtection)
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
         portal = api.portal.get()
         ps = getToolByName(portal, 'portal_setup')
         ps.runImportStepFromProfile('profile-genweb.theme:default', 'jsregistry')
@@ -1095,7 +1089,8 @@ class defaultHtmlConfig(grok.View):
         tid = 'safe_html'
 
         pt = api.portal.get_tool(name='portal_transforms')
-        if not tid in pt.objectIds(): return
+        if not tid in pt.objectIds():
+            return
 
         trans = pt[tid]
 
@@ -1138,7 +1133,7 @@ class defaultHtmlConfig(grok.View):
          'aside': '1', 'html': '1', 'nav': '1', 'details': '1', 'u': '1',
          'samp': '1', 'map': '1', 'object': '1', 'a': '1', 'footer': '1',
          'i': '1', 'q': '1', 'command': '1', 'time': '1', 'audio': '1',
-         'section': '1', 'abbr': '1', 'meta': '0', 'applet':'1', 'button': '1'}
+         'section': '1', 'abbr': '1', 'meta': '0', 'applet': '1', 'button': '1'}
         make_config_persistent(tconfig)
         trans._p_changed = True
         trans.reload()
@@ -1214,15 +1209,57 @@ class setFolderIndexViewasDefault(grok.View):
         output.append('{}: Folder view successfully changed'.format(api.portal.get().id))
         return '\n'.join(output)
 
-# class SetDomainsCache(grok.View):
-#     """ Set domains from plone.app.caching """
-#     grok.context(IPloneSiteRoot)
-#     grok.name('set_domains_cache')
-#     grok.require('cmf.ManagePortal')
-#
-#     def render(self, portal=None):
-#         output = []
-#         args = self.request.form
-#         quoted_args = urllib.urlencode(args)
-#         output.append('{}'.format(quoted_args))
-#         return '\n'.join(output)
+
+class addLinkIntoFolderNews(grok.View):
+    """ addLinkIntoFolderNews """
+    grok.context(IPloneSiteRoot)
+    grok.name('add_link2news')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        noticies = portal['ca']['noticies']
+        noticias = portal['es']['noticias']
+        news = portal['en']['news']
+        from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
+        behavior = ISelectableConstrainTypes(noticies)
+        behavior.setConstrainTypesMode(1)
+        behavior.setLocallyAllowedTypes(('News Item', 'Folder', 'Image', 'Link'))
+        behavior.setImmediatelyAddableTypes(('News Item', 'Folder', 'Image', 'Link'))
+        behavior = ISelectableConstrainTypes(noticias)
+        behavior.setConstrainTypesMode(1)
+        behavior.setLocallyAllowedTypes(('News Item', 'Folder', 'Image', 'Link'))
+        behavior.setImmediatelyAddableTypes(('News Item', 'Folder', 'Image', 'Link'))
+        behavior = ISelectableConstrainTypes(news)
+        behavior.setConstrainTypesMode(1)
+        behavior.setLocallyAllowedTypes(('News Item', 'Folder', 'Image', 'Link'))
+        behavior.setImmediatelyAddableTypes(('News Item', 'Folder', 'Image', 'Link'))
+        import transaction
+        transaction.commit()
+        output.append('{}: Link type added successfully to news folder in'.format(portal.id))
+        return '\n'.join(output)
+
+
+class refactorAggregatorNewsCollection(grok.View):
+    """ refactorAggregatorNewsCollection """
+    grok.context(IPloneSiteRoot)
+    grok.name('refactor_news_collection')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        NEWS_QUERY = [{'i': u'portal_type', 'o': u'plone.app.querystring.operation.selection.is', 'v': [u'News Item', u'Link']},
+                      {'i': u'review_state', 'o': u'plone.app.querystring.operation.selection.is', 'v': [u'published']},
+                      {'i': u'path', 'o': u'plone.app.querystring.operation.string.relativePath', 'v': u'..'}]
+        portal = api.portal.get()
+        noticies = portal['ca']['noticies']['aggregator']
+        noticias = portal['es']['noticias']['aggregator']
+        news = portal['en']['news']['aggregator']
+        noticies.query = NEWS_QUERY
+        noticias.query = NEWS_QUERY
+        news.query = NEWS_QUERY
+        import transaction
+        transaction.commit()
+        output.append('{}: Aggregator News collection successfully updated in'.format(portal.id))
+        return '\n'.join(output)
