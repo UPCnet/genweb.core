@@ -25,12 +25,14 @@ from Products.CMFCore.MemberDataTool import MemberData as BaseMemberData
 from Products.PluggableAuthService.interfaces.authservice import IPluggableAuthService
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
 
-from genweb.core.utils import get_safe_member_by_id, pref_lang
+from genweb.core.utils import get_safe_member_by_id, portal_url
 
 
 import unicodedata
 import inspect
 import logging
+import requests
+from StringIO import StringIO
 from cgi import escape
 
 
@@ -651,8 +653,8 @@ from Products.CMFCore.permissions import ManageUsers
 from zope.component import getMultiAdapter
 from genweb.core.adapters.portrait import IPortraitUploadAdapter
 
-# Extensible member portrait management
 
+# Extensible member portrait management
 def changeMemberPortrait(self, portrait, id=None):
     """update the portait of a member.
 
@@ -683,3 +685,25 @@ def changeMemberPortrait(self, portrait, id=None):
     # The plugable actions for how to handle the portrait.
     adapter = getMultiAdapter((self, self.REQUEST), IPortraitUploadAdapter)
     adapter(portrait, safe_id)
+
+
+def deletePersonalPortrait(self, id=None):
+    """deletes the Portait of a member.
+    """
+    authenticated_id = self.getAuthenticatedMember().getId()
+    if not id:
+        id = authenticated_id
+    safe_id = self._getSafeMemberId(id)
+    if id != authenticated_id and not _checkPermission(
+            ManageUsers, self):
+        raise Unauthorized
+
+    # The plugable actions for how to handle the portrait.
+    portrait_url = portal_url()+'/defaultUser.png'
+    imgData = requests.get(portrait_url).content
+    image = StringIO(imgData)
+    image.filename = 'defaultUser'
+    adapter = getMultiAdapter((self, self.REQUEST), IPortraitUploadAdapter)
+    adapter(image, safe_id)
+    # membertool = getToolByName(self, 'portal_memberdata')
+    # return membertool._deletePortrait(safe_id)
