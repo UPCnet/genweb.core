@@ -13,6 +13,7 @@ from souper.soup import get_soup
 
 from plone.registry.interfaces import IRegistry
 from plone.app.controlpanel.mail import IMailSchema
+from plone.app.layout.navigation.defaultpage import getDefaultPage
 
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
@@ -412,3 +413,62 @@ class getUsedGroups(grok.View):
                 if name in ldap_groups and name not in res:
                     res.append(name)
         return res
+
+
+class getCollectionDefaultPages(grok.View):
+    """
+    List the value of the property 'default_page' (if defined) for contents
+    with type Collection.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('get_collection_default_pages')
+    grok.require('cmf.ManagePortal')
+
+    REPORT_TABLE = """
+    <table>
+       <thead>
+         <tr>
+           <th>url</th>
+           <th>title</th>
+           <th>default_page</th>
+         </tr>
+      </thead>
+      <tbody>{body}</tbody>
+    </table>
+    """
+
+    REPORT_ROW = """
+    <tr>
+      <td><a href="{url}" target="_blank">{url}</a></td>
+      <td>({title})</td>
+      <td>{default_page}</td>
+    </tr>
+    """
+
+    def render(self):
+        collections = []
+        catalog = api.portal.get_tool('portal_catalog')
+        for collection in catalog.searchResults(portal_type='Collection'):
+            collection_obj = collection.getObject()
+            default_page = self._get_default_page(collection_obj)
+            if default_page:
+                collections.append(dict(
+                    url=collection_obj.absolute_url(),
+                    title=collection_obj.title,
+                    default_page=default_page))
+        collections = sorted(collections, key=lambda e: e['url'])
+        return self._compose_report(collections)
+
+    def _get_default_page(self, content):
+        default_page = getDefaultPage(content)
+        if not default_page:
+            default_page = content.getProperty('default_page')
+        return default_page
+
+    def _compose_report(self, collections):
+        if not collections:
+            return "No default pages were found"
+        return getCollectionDefaultPages.REPORT_TABLE.format(
+            **dict(body='\n'.join(
+                [getCollectionDefaultPages.REPORT_ROW.format(**default_page)
+                 for default_page in collections])))
