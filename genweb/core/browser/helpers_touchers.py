@@ -776,30 +776,6 @@ class importTypesTool(grok.View):
         ps.runImportStepFromProfile('profile-genweb.upc:default', 'typeinfo')
 
 
-class importJSRegistry(grok.View):
-    """ importJSRegistry """
-    grok.context(IPloneSiteRoot)
-    grok.name('import_js_registry')
-    grok.require('cmf.ManagePortal')
-
-    def render(self, portal=None):
-        if CSRF:
-            alsoProvides(self.request, IDisableCSRFProtection)
-        portal = api.portal.get()
-        ps = getToolByName(portal, 'portal_setup')
-        ps.runImportStepFromProfile('profile-genweb.theme:default', 'jsregistry')
-
-        files = ['++resource++plone.app.jquery.js', 'plone_javascript_variables.js', 'collective.js.jqueryui.custom.min.js']
-        js = api.portal.get_tool('portal_javascripts')
-        for f in files:
-            if f in js.getResourcesDict():
-                jsfile = js.getResource(f)
-                if jsfile.getCookable():
-                    jsfile.setCookable(False)
-        import transaction
-        transaction.commit()
-
-
 class applyOldJS(grok.View):
     """ applyOldJS """
     grok.context(IPloneSiteRoot)
