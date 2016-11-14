@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.8.30 (unreleased)
+4.8.30 (2016-11-14)
 -------------------
 
-- Nothing changed yet.
-
+* remove incorrect toucher [Alberto Duran]
+* when remove user portrait, set default image [Paco Gregori]
+* Add getCollectionDefaultPages getter [Santi]
+*  [Santi]
+* The getter lists the value of the property 'default_page' (if [Santi]
+* defined) for contents with type Collection. [Santi]
 
 4.8.29 (2016-11-03)
 -------------------
