@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.31 (unreleased)
+4.8.31 (2016-12-15)
 -------------------
 
-- Nothing changed yet.
-
+* Add Multi-view Collection portlet i18n [Santi]
+* tocador traductor noticias [Alberto Duran]
 
 4.8.30 (2016-11-14)
 -------------------
