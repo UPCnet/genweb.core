@@ -1962,3 +1962,55 @@ msgstr "Delete"
 
 msgid "cancel"
 msgstr "Cancel"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:310
+msgid "Add Multi-view Collection Portlet"
+msgstr "Add Multi-view Collection Portlet"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:99
+msgid "Choose how the portlet must be rendered"
+msgstr "Choose how the portlet must be rendered"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:323
+msgid "Edit Multi-view Collection Portlet"
+msgstr "Edit Multi-view Collection Portlet"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:90
+msgid "Exclude the Current Context"
+msgstr "Exclude the Current Context"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:55
+msgid "Find the collection which provides the items to list"
+msgstr "Find the collection which provides the items to list"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:76
+msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+msgstr "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:84
+msgid "If enabled, effective dates will be shown underneath the items listed."
+msgstr "If enabled, effective dates will be shown underneath the items listed."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:91
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:32
+msgid "List view"
+msgstr "List view"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:83
+msgid "Show dates"
+msgstr "Show dates"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:75
+msgid "Show more... link"
+msgstr "Show more... link"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:54
+msgid "Target collection"
+msgstr "Target collection"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
+msgid "View type"
+msgstr "View type"

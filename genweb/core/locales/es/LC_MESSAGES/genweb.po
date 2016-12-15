@@ -1925,7 +1925,7 @@ msgstr "Se puede seleccionar la dirección de correo que recibe el mensaje de co
 #############################
 
 msgid "all_news"
-msgstr "Todas las notícias"
+msgstr "Todas las noticias"
 
 msgid "mode_future_link"
 msgstr "Próximos"
@@ -1999,3 +1999,55 @@ msgstr "Eliminar"
 
 msgid "cancel"
 msgstr "Cancelar"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:310
+msgid "Add Multi-view Collection Portlet"
+msgstr "Agregar un portlet de colección multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:99
+msgid "Choose how the portlet must be rendered"
+msgstr "Elige cómo se debe mostrar el portlet"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:323
+msgid "Edit Multi-view Collection Portlet"
+msgstr "Edita portlet de colección multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:90
+msgid "Exclude the Current Context"
+msgstr "Excluir el contexto actual"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:55
+msgid "Find the collection which provides the items to list"
+msgstr "Busque la colección que proporciona los elementos a listar"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:76
+msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+msgstr "Si está habilitado, todos los enlaces externos en la región de contenido se abrirán en una nueva ventana."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:84
+msgid "If enabled, effective dates will be shown underneath the items listed."
+msgstr "Si está habilitado, las fechas efectivas se mostrarán bajo los elementos listados."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:91
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "Si está habilitado, el listado no incluirá al elemento actual para el que se está mostrando el portlet."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:32
+msgid "List view"
+msgstr "Lista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:83
+msgid "Show dates"
+msgstr "Mostrar fechas"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:75
+msgid "Show more... link"
+msgstr "Mostrar enlace más..."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:54
+msgid "Target collection"
+msgstr "Colección de destino"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
+msgid "View type"
+msgstr "Tipo de vista"

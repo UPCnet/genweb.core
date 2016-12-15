@@ -370,6 +370,9 @@ msgstr "Calendario"
 msgid "portlet_collection_title"
 msgstr "Colección"
 
+msgid "portlet_multiviewcollection_title"
+msgstr "Colección multi-vista"
+
 msgid "portlet_login_title"
 msgstr "Identificación"
 

@@ -363,6 +363,9 @@ msgstr "Calendari"
 msgid "portlet_collection_title"
 msgstr "Col·lecció"
 
+msgid "portlet_multiviewcollection_title"
+msgstr "Col·lecció multi-vista"
+
 msgid "portlet_login_title"
 msgstr "Identificació"
 

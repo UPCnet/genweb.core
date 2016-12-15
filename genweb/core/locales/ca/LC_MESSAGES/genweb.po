@@ -2074,3 +2074,55 @@ msgstr "Suprimeix"
 
 msgid "cancel"
 msgstr "Cancel·la"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:310
+msgid "Add Multi-view Collection Portlet"
+msgstr "Afegeix un portlet de col·lecció multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:99
+msgid "Choose how the portlet must be rendered"
+msgstr "Escull com s'ha de mostrar el portlet"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:323
+msgid "Edit Multi-view Collection Portlet"
+msgstr "Edita portlet de col·lecció multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:90
+msgid "Exclude the Current Context"
+msgstr "Excloure el context actual"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:55
+msgid "Find the collection which provides the items to list"
+msgstr "Cerca la col·lecció que proporciona els elements a llistar"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:76
+msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+msgstr "Si està habilitat, es visualitzarà un enllaç més... al peu del portlet, enllaçant a la Col·lecció subjacent."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:84
+msgid "If enabled, effective dates will be shown underneath the items listed."
+msgstr "Si està activat, les dates efectives es mostraran a sota dels elements."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:91
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "Si està activat, el llistat no inclourà el context actual"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:32
+msgid "List view"
+msgstr "Llista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:83
+msgid "Show dates"
+msgstr "Mostra dates"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:75
+msgid "Show more... link"
+msgstr "Mostra enllaç més..."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:54
+msgid "Target collection"
+msgstr "Col·lecció de destinació"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
+msgid "View type"
+msgstr "Tipus de vista"
