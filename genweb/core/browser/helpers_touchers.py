@@ -1239,3 +1239,21 @@ class refactorAggregatorNewsCollection(grok.View):
         transaction.commit()
         output.append('{}: Aggregator News collection successfully updated in'.format(portal.id))
         return '\n'.join(output)
+
+
+class translateNews(grok.View):
+    """ translate title and description spanish news"""
+    grok.context(IPloneSiteRoot)
+    grok.name('translate_news')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        portal = api.portal.get()
+        newsfolder = portal['es']['noticias']
+        newsfolder.setTitle('Noticias')
+        newsfolder.setDescription('Noticias del sitio')
+        newsfolder.reindexObject()
+
+        output.append('{}: Successfully translated news'.format(portal.id))
+        return '\n'.join(output)

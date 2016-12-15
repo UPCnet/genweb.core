@@ -10,15 +10,12 @@ import json
 import re
 import pkg_resources
 from souper.soup import get_soup
-
 from plone.registry.interfaces import IRegistry
 from plone.app.controlpanel.mail import IMailSchema
 from plone.app.layout.navigation.defaultpage import getDefaultPage
-
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.PythonScripts.standard import url_quote
-
 from genweb.core.browser.helpers import listPloneSites
 from genweb.core.utils import json_response
 
