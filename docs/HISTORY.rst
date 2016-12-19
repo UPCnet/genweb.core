@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.32 (unreleased)
+4.8.32 (2016-12-19)
 -------------------
 
-- Nothing changed yet.
-
+* Add toucher 'portal_setup_import' [Santi]
 
 4.8.31 (2016-12-15)
 -------------------
