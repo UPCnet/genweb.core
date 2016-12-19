@@ -853,6 +853,44 @@ class importCSSRegistry(grok.View):
         ps.runImportStepFromProfile('profile-genweb.upc:default', 'cssregistry')
 
 
+class PortalSetupImport(grok.View):
+    """
+    Go to portal setup, select profile and import step.
+    URL parameters:
+      - step: id of the step to import, e.g. 'portlets'.
+      - profile: id of the profile or snapshot to select, e.g. 'genweb.upc'.
+      - profile_type: type of the selected profile, 'default' by default.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('portal_setup_import')
+    grok.require('cmf.ManagePortal')
+
+    DEFAULT_PROFILE_TYPE = 'default'
+
+    def render(self):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        portal = api.portal.get()
+        ps = getToolByName(portal, 'portal_setup')
+        params = self._parse_params()
+        ps.runImportStepFromProfile(
+            'profile-{profile}:{profile_type}'.format(**params),
+            params['step'])
+        return ('{step} from {profile}:{profile_type} '
+                'successfully imported').format(**params)
+
+    def _parse_params(self):
+        if 'step' not in self.request.form:
+            raise ValueError("Mandatory parameter 'step' was not specified")
+        if 'profile' not in self.request.form:
+            raise ValueError("Mandatory parameter 'profile' was not specified")
+        step = self.request.form['step']
+        profile = self.request.form['profile']
+        profile_type = self.request.form.get(
+            'profile_type', PortalSetupImport.DEFAULT_PROFILE_TYPE)
+        return dict(step=step, profile=profile, profile_type=profile_type)
+
+
 class changeNewsEventsPortlets(grok.View):
     """ Replace navigation portlet by categories portlet from news and events
     view methods in the current Plone site. """
