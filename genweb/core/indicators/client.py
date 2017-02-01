@@ -146,7 +146,7 @@ class Client(object):
             response = requests.get(
                 '{0}/{1}?idServei={2}'.format(
                     self.url_base, Client.ENDPOINT_INDICATORS, service_id),
-                headers=self._get_headers(), verify=False)
+                headers=self._get_headers(), verify=False, timeout=self.timeout)
             if response.status_code != requests.codes.ok:
                 raise ClientException("Status code is not OK ({0})".format(
                     response.status_code))
@@ -163,6 +163,9 @@ class Client(object):
         except ConnectionError:
             raise ClientException("The connection with '{0}' could not be "
                                   "established".format(self.url_base))
+        except ReadTimeout:
+            raise ClientException(
+                "There was a timeout while waiting for server")
 
     def list_categories(self, service_id, indicator_id, count=None):
         """
@@ -179,7 +182,7 @@ class Client(object):
                 '{0}/{1}?idServei={2}&idIndicador={3}'.format(
                     self.url_base, Client.ENDPOINT_CATEGORIES,
                     service_id, indicator_id),
-                headers=self._get_headers(), verify=False)
+                headers=self._get_headers(), verify=False, timeout=self.timeout)
             if response.status_code != requests.codes.ok:
                 raise ClientException("Status code is not OK ({0})".format(
                     response.status_code))
@@ -196,6 +199,9 @@ class Client(object):
         except ConnectionError:
             raise ClientException("The connection with '{0}' could not be "
                                   "established".format(self.url_base))
+        except ReadTimeout:
+            raise ClientException(
+                "There was a timeout while waiting for server")
 
     def _validate_param_has_value(self, name, value):
         try:
