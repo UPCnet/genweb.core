@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.33 (unreleased)
+4.8.33 (2017-02-01)
 -------------------
 
-- Nothing changed yet.
-
+* Set timeout of Serveis TIC WS client GET requests [Santi]
+* error en literal [roberto.diaz]
 
 4.8.32 (2016-12-19)
 -------------------
