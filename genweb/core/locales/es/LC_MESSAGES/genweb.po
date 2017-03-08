@@ -237,6 +237,18 @@ msgstr "El elemento se ha desmarcado como importante"
 msgid "L'element s'ha marcat com important"
 msgstr "El elemento se ha marcado como importante"
 
+#: ./genweb.theme/genweb/theme/templates/plone.app.event.browser.event_summary.pt:100
+msgid "heading_send_event"
+msgstr "Enviar a los asistentes"
+
+#: ./genweb.theme/genweb/theme/templates/plone.app.event.browser.event_summary.pt:106
+msgid "send_invitation_link"
+msgstr "Enviar convocatoria"
+
+#: ./genweb.upc/genweb/upc/templates/plone.app.event.browser.event_summary.pt:111
+msgid "send_invitation_not_attendees"
+msgstr "No hay asistentes para enviar el mensaje"
+
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:114
 msgid "Label the 'Show more link' defined avobe"
 msgstr "Etiquetar el 'Mostrar más enlace' definido anteriormente"
