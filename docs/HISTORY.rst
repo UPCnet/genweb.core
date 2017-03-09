@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.34 (unreleased)
+4.8.34 (2017-03-09)
 -------------------
 
-- Nothing changed yet.
-
+* Literals per afegir convocatòria en els esdeveniments. [Iago López Fernández]
 
 4.8.33 (2017-02-01)
 -------------------
