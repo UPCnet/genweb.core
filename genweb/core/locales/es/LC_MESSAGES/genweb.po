@@ -2063,3 +2063,9 @@ msgstr "Colección de destino"
 #: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
 msgid "View type"
 msgstr "Tipo de vista"
+
+msgid "desc_privacy"
+msgstr "Puedes encontrar las condiciones de uso y privacidad <a href='http://www.upc.edu/aviso-legal/condiciones-de-uso-y-privacidad?set_language=es' target='_blank'>aquí</a>"
+
+msgid "title_privacy"
+msgstr "He leído y acepto las condiciones de uso y privacidad"

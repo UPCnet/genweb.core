@@ -2026,3 +2026,9 @@ msgstr "Target collection"
 #: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
 msgid "View type"
 msgstr "View type"
+
+msgid "desc_privacy"
+msgstr "Please, read the terms of use and privacy policy <a href='http://www.upc.edu/disclaimer/terms-of-use-and-privacy-policy?set_language=en' target='_blank'>here</a>"
+
+msgid "title_privacy"
+msgstr "I accept the terms of use and privacy policy"
