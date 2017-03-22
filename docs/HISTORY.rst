@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.36 (unreleased)
+4.8.36 (2017-03-22)
 -------------------
 
-- Nothing changed yet.
-
+* Translations [Corina Riba]
 
 4.8.35 (2017-03-13)
 -------------------
