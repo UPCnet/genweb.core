@@ -459,3 +459,6 @@ msgstr "Element que permet afegir una pàgina amb continguts de diferents parts 
 
 msgid "ModificationDate"
 msgstr "Modificat"
+
+msgid "label_item_count"
+msgstr "Nombre de elements"

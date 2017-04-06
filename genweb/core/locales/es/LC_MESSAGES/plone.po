@@ -448,3 +448,6 @@ msgstr "Elemento que permite crear una página con contenidos de distintas parte
 
 msgid "ModificationDate"
 msgstr "Modificado"
+
+msgid "label_item_count"
+msgstr "Número de elementos"
