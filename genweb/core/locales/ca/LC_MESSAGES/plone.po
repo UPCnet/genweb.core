@@ -458,4 +458,4 @@ msgid "Subhome Description"
 msgstr "Element que permet afegir una pàgina amb continguts de diferents parts de la web"
 
 msgid "ModificationDate"
-msgstr "Data de modificacio"
+msgstr "Modificat"
