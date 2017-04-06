@@ -445,3 +445,6 @@ msgstr "Tablero de portlets"
 
 msgid "Subhome Description"
 msgstr "Elemento que permite crear una página con contenidos de distintas partes de la web"
+
+msgid "ModificationDate"
+msgstr "Modificado"
