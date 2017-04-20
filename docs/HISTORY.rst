@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.37 (unreleased)
+4.8.37 (2017-04-20)
 -------------------
 
-- Nothing changed yet.
-
+* Traducciones [Corina Riba]
+* Update plone.po [Corina Riba]
+* Translate modification date [Corina Riba]
 
 4.8.36 (2017-03-22)
 -------------------
