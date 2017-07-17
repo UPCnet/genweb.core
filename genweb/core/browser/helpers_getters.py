@@ -506,7 +506,6 @@ class findExistingContentPortlets(grok.View):
 
         portlets_contingut = []
         portlets = ()
-        output = []
 
         for portal_xx in (portal_ca['benvingut'], portal_en['welcome'], portal_es['bienvenido']):
 
@@ -535,13 +534,9 @@ class findExistingContentPortlets(grok.View):
                         # Identify portlet by interface provided by assignment
 
                         if IContentPortlet.providedBy(portlet["assignment"]):
-                            portlets_contingut.append(dict(column=column,portlet=portlet["name"]))
-                            output.append ('{}'.format(dict(Where=portal_xx.title,Column=column, Title=portlet["name"])))
-                            # output = """Where: {}\nColumn: {}\nTitle: {}\n\n""".format(portal_xx.title, column, portlet["name"])
+                            portlets_contingut.append('{}'.format(dict(where=portal_xx.title,column=column,portlet=portlet["name"])))
 
-                    return output
-
-                else:
-                    return 'No hi ha portlets'
-
-            return 'No hi ha portlets de contingut existent'
+        if portlets_contingut:
+            return portlets_contingut
+        else:
+            return 'No hi ha portlets' 
