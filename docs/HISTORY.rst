@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.39 (unreleased)
+4.8.39 (2017-07-17)
 -------------------
 
-- Nothing changed yet.
-
+* Listar portlets contingut existent [Corina Riba]
 
 4.8.38 (2017-07-17)
 -------------------
