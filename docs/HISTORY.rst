@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.38 (unreleased)
+4.8.38 (2017-07-17)
 -------------------
 
-- Nothing changed yet.
-
+* Busca portlets y paquetes [Corina Riba]
 
 4.8.37 (2017-04-20)
 -------------------
