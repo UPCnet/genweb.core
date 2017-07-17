@@ -19,6 +19,13 @@ from Products.PythonScripts.standard import url_quote
 from genweb.core.browser.helpers import listPloneSites
 from genweb.core.utils import json_response
 
+from zope.annotation.interfaces import IAnnotations
+from plone.portlets.interfaces import IPortletManager, IPortletRetriever
+from zope.component import getMultiAdapter, getUtility
+from plone.portlets.interfaces import IPortletAssignmentMapping
+
+import Acquisition
+from genweb.upc.portlets.existing_content import IContentPortlet
 
 try:
     pkg_resources.get_distribution('plone4.csrffixes')
@@ -365,7 +372,7 @@ class getConfigGenwebControlPanelSettings(grok.View):
                      Publica l'enllaç customitzat: {}<br/>
                      Nom 'De' del lloc: {}<br/>
                      Adreça 'De' del lloc: {}<br/>
-                     Javascript per al suport d'estadístiques web: {}<br/></br>
+                     Javascript per al suport d'estadístiques web: {}<br/><br/>
                      """.format(html_title_ca, html_title_es, html_title_en,
                      signatura_unitat_ca, signatura_unitat_es, signatura_unitat_en,
                      right_logo_enabled, right_logo_alt, meta_author, contacte_id,
@@ -469,3 +476,72 @@ class getCollectionDefaultPages(grok.View):
             **dict(body='\n'.join(
                 [getCollectionDefaultPages.REPORT_ROW.format(**default_page)
                  for default_page in collections])))
+
+
+class findPacketbyType(grok.View):
+    """ Return all contents of a content type """
+    grok.context(IPloneSiteRoot)
+    grok.name('find_content_bytype')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        items = []
+        for item in api.content.find(portal_type='packet'):
+            item_obj = item.getObject()
+            annotations = IAnnotations(item_obj)
+            item_type = annotations.get('genweb.packets.type')
+            items.append('{}'.format(dict(url=item.getURL(), packet_type=item_type)))
+        return items
+
+class findExistingContentPortlets(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.name('find_existingcontent_portlet')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        portal = api.portal.get()
+        portal_ca = portal['ca']
+        portal_en = portal['en']
+        portal_es = portal['es']
+
+        portlets_contingut = []
+        portlets = ()
+        output = []
+
+        for portal_xx in (portal_ca['benvingut'], portal_en['welcome'], portal_es['bienvenido']):
+
+            for column in ["genweb.portlets.HomePortletManager1",
+                           "genweb.portlets.HomePortletManager2",
+                           "genweb.portlets.HomePortletManager3",
+                           "genweb.portlets.HomePortletManager4",
+                           "genweb.portlets.HomePortletManager5",
+                           "genweb.portlets.HomePortletManager6",
+                           "genweb.portlets.HomePortletManager7",
+                           "genweb.portlets.HomePortletManager8",
+                           "genweb.portlets.HomePortletManager9",
+                           "genweb.portlets.HomePortletManager10"
+                           ]:
+
+                           # "plone.leftcolumn",
+                           # "plone.rightcolumn"
+
+                manager = getUtility(IPortletManager, name=column, context=portal_xx)
+                retriever = getMultiAdapter((portal_xx, manager), IPortletRetriever)
+                portlets = retriever.getPortlets()
+
+                if portlets:
+                    for portlet in portlets:
+                        # portlet is {'category': 'context', 'assignment': <FacebookLikeBoxAssignment at facebook-like-box>, 'name': u'facebook-like-box', 'key': '/isleofback/sisalto/huvit-ja-harrasteet
+                        # Identify portlet by interface provided by assignment
+
+                        if IContentPortlet.providedBy(portlet["assignment"]):
+                            portlets_contingut.append(dict(column=column,portlet=portlet["name"]))
+                            output.append ('{}'.format(dict(Where=portal_xx.title,Column=column, Title=portlet["name"])))
+                            # output = """Where: {}\nColumn: {}\nTitle: {}\n\n""".format(portal_xx.title, column, portlet["name"])
+
+                    return output
+
+                else:
+                    return 'No hi ha portlets'
+
+            return 'No hi ha portlets de contingut existent'
