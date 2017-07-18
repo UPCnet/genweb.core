@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.40 (unreleased)
+4.8.40 (2017-07-18)
 -------------------
 
-- Nothing changed yet.
-
+* Move helper to genweb.upc [Corina Riba]
 
 4.8.39 (2017-07-17)
 -------------------
