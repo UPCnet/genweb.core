@@ -508,6 +508,11 @@ class genwebUtils(BrowserView):
             'private': 'label-important',
             'pending': 'label-warning',
             'restricted-to-managers': 'label-inverse',
+            'convocada': 'label-convocada',
+            'en_correccio': 'label-en_correccio',
+            'planificada': 'label-planificada',
+            'realitzada': 'label-realitzada',
+            'tancada': 'label-tancada',
         }
 
     def pref_lang_native(self):
