@@ -1,11 +1,26 @@
 Changelog
 =========
 
-4.8.38 (unreleased)
+4.8.41 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.8.40 (2017-07-18)
+-------------------
+
+* Move helper to genweb.upc [Corina Riba]
+
+4.8.39 (2017-07-17)
+-------------------
+
+* Listar portlets contingut existent [Corina Riba]
+
+4.8.38 (2017-07-17)
+-------------------
+
+* Busca portlets y paquetes [Corina Riba]
 
 4.8.37 (2017-04-20)
 -------------------
