@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.41 (unreleased)
+4.8.41 (2017-08-04)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* added new states to dropdown colors [Roberto Diaz]
 
 4.8.40 (2017-07-18)
 -------------------
