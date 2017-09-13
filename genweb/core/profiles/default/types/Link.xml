@@ -7,7 +7,6 @@
   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
   <element value="plone.app.content.interfaces.INameFromTitle"/>
   <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-  <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
   <element value="genweb.core.behaviors.openlinkin.IOpenLinkInNewWindow" />
  </property>
 
