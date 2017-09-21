@@ -55,6 +55,8 @@ class FlashMarker(grok.Adapter):
 def flashIndexer(context):
     """Create a catalogue indexer, registered as an adapter for DX content. """
     return IFlash(context).is_flash
+
+
 grok.global_adapter(flashIndexer, name='is_flash')
 
 
@@ -64,4 +66,6 @@ def flashIndexerAT(context):
     populate the ``is_flash`` index.
     """
     return IFlash(context).is_flash
+
+
 grok.global_adapter(flashIndexerAT, name='is_flash')

@@ -55,6 +55,8 @@ class OutOfListMarker(grok.Adapter):
 def outoflistIndexer(context):
     """Create a catalogue indexer, registered as an adapter for DX content. """
     return IOutOfList(context).is_outoflist
+
+
 grok.global_adapter(outoflistIndexer, name='is_outoflist')
 
 
@@ -64,4 +66,6 @@ def outoflistIndexerAT(context):
     populate the ``is_outoflist`` index.
     """
     return IOutOfList(context).is_outoflist
+
+
 grok.global_adapter(outoflistIndexerAT, name='is_outoflist')

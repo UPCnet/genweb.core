@@ -1,18 +1,14 @@
 from five import grok
 from plone import api
 from zope.interface import Interface
-from urllib import quote
 from ZTUtils import make_query
-
 from plone.memoize import forever
 from plone.uuid.interfaces import IUUID
 from plone.app.i18n.locales.browser.selector import LanguageSelector
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
 from genweb.core.utils import genweb_config, havePermissionAtRoot
-from genweb.core.interfaces import IGenwebLayer
 from genweb.core import GenwebMessageFactory as _
 
 import json

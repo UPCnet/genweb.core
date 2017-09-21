@@ -19,9 +19,11 @@ from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from genweb.core.interfaces import IGenwebLayer
+
 from genweb.core.adapters import IImportant
 from genweb.core.adapters import IFlash
 from genweb.core.adapters import IOutOfList
+from genweb.core.adapters import IShowInApp
 
 from souper.soup import get_soup
 from souper.soup import Record
@@ -175,6 +177,26 @@ class gwToggleIsOutoflist(grok.View):
         self.request.response.redirect(self.context.absolute_url())
 
 
+class gwToggleNewsInApp(grok.View):
+    grok.context(IDexterityContent)
+    grok.name('toggle_news_in_app')
+    grok.require('cmf.ModifyPortalContent')
+    grok.layer(IGenwebLayer)
+
+    def render(self):
+        context = aq_inner(self.context)
+        in_app = IShowInApp(context).in_app
+        if in_app:
+            IShowInApp(context).in_app = False
+            confirm = _(u'L\'element no es mostra a la App')
+        else:
+            IShowInApp(context).in_app = True
+            confirm = _(u'L\'element es mostra a la App')
+
+        IStatusMessage(self.request).addStatusMessage(confirm, type='info')
+        self.request.response.redirect(self.context.absolute_url())
+
+
 class gwToggleSubscribedTag(grok.View):
     grok.context(Interface)
     grok.name('toggle_subscriptiontag')
@@ -203,6 +225,6 @@ class gwToggleSubscribedTag(grok.View):
         soup_tags.reindex()
 
         if IPloneSiteRoot.providedBy(self.context):
-            self.request.response.redirect(self.context.absolute_url()+'/alltags')
+            self.request.response.redirect(self.context.absolute_url() + '/alltags')
         else:
             self.request.response.redirect(self.context.absolute_url())
