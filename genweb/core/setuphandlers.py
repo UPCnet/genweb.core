@@ -17,7 +17,7 @@ PROFILE_ID = 'profile-genweb.core:default'
 INDEXES = (('is_important', 'BooleanIndex'),
            ('is_flash', 'BooleanIndex'),
            ('is_outoflist', 'BooleanIndex'),
-           ('show_new_in_app', 'BooleanIndex'),
+           ('is_inapp', 'BooleanIndex'),
            ('favoritedBy', 'KeywordIndex'),
            ('exclude_from_nav', 'FieldIndex'),
            ('news_image_filename', 'FieldIndex'),

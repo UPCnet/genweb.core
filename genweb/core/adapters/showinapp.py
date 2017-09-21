@@ -11,14 +11,14 @@ from plone.dexterity.interfaces import IDexterityContent
 
 from genweb.core import GenwebMessageFactory as _
 
-SHOW_NEW_IN_APP_KEY = 'genweb.core.show_new_in_app'
+NEWS_IN_APP_KEY = 'genweb.core.show_new_in_app'
 
 
 class IShowInApp(Interface):
     """ An object which can be marked as inapp
     """
 
-    in_app = schema.Bool(
+    is_inapp = schema.Bool(
         title=_(u"Tells if an object is shown in App"),
         default=False
     )
@@ -36,28 +36,28 @@ class inappMarker(grok.Adapter):
         self.context = context
 
         annotations = IAnnotations(context)
-        self._show_new_in_app = annotations.setdefault(SHOW_NEW_IN_APP_KEY, False)
+        self._is_inapp = annotations.setdefault(NEWS_IN_APP_KEY, False)
 
     def get_inapp(self):
         annotations = IAnnotations(self.context)
-        self._show_new_in_app = annotations.setdefault(SHOW_NEW_IN_APP_KEY, '')
-        return self._show_new_in_app
+        self._is_inapp = annotations.setdefault(NEWS_IN_APP_KEY, '')
+        return self._is_inapp
 
     def set_inapp(self, value):
         annotations = IAnnotations(self.context)
-        annotations[SHOW_NEW_IN_APP_KEY] = value
-        self.context.reindexObject(idxs=["in_app"])
+        annotations[NEWS_IN_APP_KEY] = value
+        self.context.reindexObject(idxs=["is_inapp"])
 
-    in_app = property(get_inapp, set_inapp)
+    is_inapp = property(get_inapp, set_inapp)
 
 
 @indexer(IDexterityContent)
 def showinappIndexer(context):
     """Create a catalogue indexer, registered as an adapter for DX content. """
-    return IShowInApp(context).in_app
+    return IShowInApp(context).is_inapp
 
 
-grok.global_adapter(showinappIndexer, name='in_app')
+grok.global_adapter(showinappIndexer, name='is_inapp')
 
 
 @indexer(IBaseObject)
@@ -65,7 +65,7 @@ def showinappIndexer(context):
     """Create a catalogue indexer, registered as an adapter, which can
     populate the ``in_app`` index.
     """
-    return IShowInApp(context).in_app
+    return IShowInApp(context).is_inapp
 
 
-grok.global_adapter(showinappIndexer, name='in_app')
+grok.global_adapter(showinappIndexer, name='is_inapp')

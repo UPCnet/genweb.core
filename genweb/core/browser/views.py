@@ -185,12 +185,12 @@ class gwToggleNewsInApp(grok.View):
 
     def render(self):
         context = aq_inner(self.context)
-        in_app = IShowInApp(context).in_app
-        if in_app:
-            IShowInApp(context).in_app = False
+        is_inapp = IShowInApp(context).is_inapp
+        if is_inapp:
+            IShowInApp(context).is_inapp = False
             confirm = _(u'L\'element no es mostra a la App')
         else:
-            IShowInApp(context).in_app = True
+            IShowInApp(context).is_inapp = True
             confirm = _(u'L\'element es mostra a la App')
 
         IStatusMessage(self.request).addStatusMessage(confirm, type='info')
