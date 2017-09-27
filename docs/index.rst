@@ -28,9 +28,9 @@ ja gaudeixen del servei. Amb més de 8 anys d'història, el servei ha viscut
 moltes actualitzacions a lo llarg d'aquests anys i està activament mantingut per
 UPCnet.
 
-.. _Servei de Comunicació: http://www.upc.edu/comunicacio
+.. _Servei de Comunicació: https://www.upc.edu/ca/comunicacio
 .. _UPCnet: http://www.upcnet.es
-.. _UPC: http://www.upc.edu
+.. _UPC: https://www.upc.edu
 
 Motivació
 =========

@@ -534,17 +534,6 @@ class genwebUtils(BrowserView):
     def redirect_to_root_always_lang_selector(self):
         return genweb_config().languages_link_to_root
 
-    def premsa_url(self):
-        """Funcio que extreu la URL de Sala de Premsa
-        """
-        idioma = pref_lang()
-
-        if idioma == 'zh':
-            url = 'http://www.upc.edu/saladepremsa/?set_language=en'
-        else:
-            url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
-        return url
-
     def is_debug_mode(self):
         return api.env.debug_mode()
 
@@ -774,12 +763,20 @@ class utilitats(BrowserView):
         return portal_skins.getDefaultSkin()
 
     def premsa_PDIPAS_url(self):
-        """Funcio que extreu idioma actiu
-        """
-        lt = getToolByName(self, 'portal_languages')
-        idioma = lt.getPreferredLanguage()
-        if idioma == 'zh':
-            url = 'http://www.upc.edu/saladepremsa/pdi-pas/?set_language=en'
+
+        url = ''
+        idioma = self.pref_lang()
+
+        if idioma == 'ca':
+            url = 'https://upc.edu/ca/sala-de-premsa/pdi-pas'
+
+        elif idioma == 'es':
+            url = 'https://upc.edu/es/sala-de-prensa/pdi-pas'
+
+        elif idioma == 'en':
+            url = 'https://upc.edu/en//pdi-pas'
+
         else:
-            url = 'http://www.upc.edu/saladepremsa/pdi-pas/?set_language=' + idioma
+            url = 'https://upc.edu/ca/press-room/pdi-pas'
+
         return url

@@ -209,7 +209,7 @@ msgstr "Info"
 
 #: genweb.upc/genweb/upc/adapters.py:38
 msgid "Informació sobre el pla d'estudis d'un grau específic"
-msgstr "<p>Curriculum for a bachelor’s degree and access to the course guide.</p><p class=\"muted\"><strong>Parameter:</strong> UPC code of the bachelor’s degree for PRISMA.</p><p class=\"muted\">For example, the UPC code of the bachelor's degree in Engineering Physics is <strong>23010611.</strong></p><p><a target=\"_blank\" href=\"http://www.upc.edu/comunicacio/www/continguts-upc/codis-upc-del-estudis-de-grau\" class=\"external-link\">UPC codes of the bachelor’s degree <img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>UPC code</p>"
+msgstr "<p>Curriculum for a bachelor’s degree and access to the course guide.</p><p class=\"muted\"><strong>Parameter:</strong> UPC code of the bachelor’s degree for PRISMA.</p><p class=\"muted\">For example, the UPC code of the bachelor's degree in Engineering Physics is <strong>23010611.</strong></p><p><a target=\"_blank\" href=\"https://www.upc.edu/ca/comunicacio/www/continguts-upc/codis-upc-del-estudis-de-grau\" class=\"external-link\">UPC codes of the bachelor’s degree <img src=\"++genweb++static/images/blank_blau.png\" class=\"img_blank\" alt=\"(Open new window)\"></a>.</p><p class=\"muted\"><strong>Select: </strong>UPC code</p>"
 
 #: genweb.upc/genweb/upc/adapters.py:22
 msgid "Informació sobre un estudi d'un grau específic"
@@ -2028,7 +2028,7 @@ msgid "View type"
 msgstr "View type"
 
 msgid "desc_privacy"
-msgstr "Please, read the terms of use and privacy policy <a href='http://www.upc.edu/disclaimer/terms-of-use-and-privacy-policy?set_language=en' target='_blank'>here</a>"
+msgstr "Please, read the terms of use and privacy policy <a href='https://www.upc.edu/en/disclaimer/terms-of-use-and-privacy-policy' target='_blank'>here</a>"
 
 msgid "title_privacy"
 msgstr "I accept the terms of use and privacy policy"

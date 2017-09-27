@@ -2140,7 +2140,7 @@ msgid "View type"
 msgstr "Tipus de vista"
 
 msgid "desc_privacy"
-msgstr "Podeu trobar les condicions d'ús i privacitat <a href='http://www.upc.edu/avis-legal/condicions-dus-i-privacitat' target='_blank'>aquí</a>"
+msgstr "Podeu trobar les condicions d'ús i privacitat <a href='https://www.upc.edu/ca/avis-legal/condicions-dus-i-privacitat' target='_blank'>aquí</a>"
 
 msgid "title_privacy"
 msgstr "He llegit i accepto les condicions d'ús i privacitat"
