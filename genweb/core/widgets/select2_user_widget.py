@@ -1,12 +1,10 @@
 from five import grok
 from zope.interface import Interface
-from zope.component import getMultiAdapter
 from zope.component import adapts
 from zope.component.hooks import getSite
 from z3c.form import interfaces
 from z3c.form import widget
 from z3c.form.browser import textarea
-from z3c.form.browser.widget import HTMLInputWidget
 from z3c.form.converter import BaseDataConverter
 from zope.schema.interfaces import IList
 
@@ -26,7 +24,7 @@ import zope.schema
 class Select2UserInputWidget(textarea.TextAreaWidget):
     """Widget for select site users"""
     zope.interface.implementsOnly(IAjaxSelectWidget)
-    klass = u"user-token-input-widget"
+    klass = u'user-token-input-widget'
     display_template = ViewPageTemplateFile('select2_user_display.pt')
     input_template = ViewPageTemplateFile('select2_user_input.pt')
 
@@ -120,7 +118,7 @@ class fromUsername2DisplayName(grok.View):
     grok.layer(IGenwebLayer)
 
     def render(self):
-        self.request.response.setHeader("Content-type", "application/json")
+        self.request.response.setHeader('Content-type', 'application/json')
         query = self.request.form.get('q', '')
 
         if query:
@@ -148,4 +146,4 @@ class fromUsername2DisplayName(grok.View):
                     )
             return json.dumps(to_fullnames)
         else:
-            return json.dumps({"error": "No query found"})
+            return json.dumps({'error': 'No query found'})

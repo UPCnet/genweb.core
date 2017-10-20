@@ -1,23 +1,11 @@
-from five import grok
-from zope.interface import Interface
-from zope.component import getMultiAdapter
-from zope.component import adapts
-from zope.component.hooks import getSite
 from z3c.form import interfaces
 from z3c.form import widget
 from z3c.form.browser import textarea
-from z3c.form.browser.widget import HTMLInputWidget
-from z3c.form.converter import BaseDataConverter
-from zope.schema.interfaces import IList
-
-from Products.CMFCore.utils import getToolByName
 
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 
-from genweb.core.interfaces import IGenwebLayer
 from genweb.core.widgets.interfaces import IAjaxSelectWidget
 
-import json
 import zope.component
 import zope.interface
 import zope.schema
@@ -26,7 +14,7 @@ import zope.schema
 class Select2MAXUserInputWidget(textarea.TextAreaWidget):
     """Widget for select site users"""
     zope.interface.implementsOnly(IAjaxSelectWidget)
-    klass = u"user-token-input-widget"
+    klass = u'user-token-input-widget'
     display_template = ViewPageTemplateFile('templates/select2_maxuser_display.pt')
     input_template = ViewPageTemplateFile('templates/select2_maxuser_input.pt')
 

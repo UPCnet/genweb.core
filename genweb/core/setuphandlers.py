@@ -15,6 +15,9 @@ import transaction
 PROFILE_ID = 'profile-genweb.core:default'
 # Specify the indexes you want, with ('index_name', 'index_type')
 INDEXES = (('is_important', 'BooleanIndex'),
+           ('is_flash', 'BooleanIndex'),
+           ('is_outoflist', 'BooleanIndex'),
+           ('is_inapp', 'BooleanIndex'),
            ('favoritedBy', 'KeywordIndex'),
            ('exclude_from_nav', 'FieldIndex'),
            ('news_image_filename', 'FieldIndex'),
@@ -55,9 +58,9 @@ def add_catalog_indexes(context, logger=None):
         if name not in indexes:
             catalog.addIndex(name, meta_type)
             indexables.append(name)
-            logger.info("Added %s for field %s.", meta_type, name)
+            logger.info('Added %s for field %s.', meta_type, name)
     if len(indexables) > 0:
-        logger.info("Indexing new indexes %s.", ', '.join(indexables))
+        logger.info('Indexing new indexes %s.', ', '.join(indexables))
         catalog.manage_reindexIndex(ids=indexables)
 
 
@@ -125,10 +128,11 @@ def setupVarious(context):
         portal['front-page'].reindexObject()
 
     # Set mailhost
-    mh = getToolByName(portal, 'MailHost')
-    mh.smtp_host = 'localhost'
-    portal.email_from_name = 'Genweb Administrator'
-    portal.email_from_address = 'no-reply@upcnet.es'
+    if portal.email_from_address in ('noreply@upc.edu', 'no-reply@upcnet.es'):
+        mh = getToolByName(portal, 'MailHost')
+        mh.smtp_host = 'localhost'
+        portal.email_from_name = 'Genweb Administrator'
+        portal.email_from_address = 'no-reply@upcnet.es'
 
     # Set default TimeZone (p.a.event)
     api.portal.set_registry_record('plone.app.event.portal_timezone', 'Europe/Madrid')

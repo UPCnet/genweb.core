@@ -1,19 +1,17 @@
 from five import grok
-from urllib import quote
+from plone import api
+from zope.interface import Interface
 from ZTUtils import make_query
-
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
+from plone.memoize import forever
 from plone.uuid.interfaces import IUUID
 from plone.app.i18n.locales.browser.selector import LanguageSelector
-from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
-
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from genweb.core.utils import genweb_config, havePermissionAtRoot
-from genweb.core.interfaces import IGenwebLayer
 from genweb.core import GenwebMessageFactory as _
 
+import json
 import pkg_resources
 
 try:
@@ -24,6 +22,90 @@ except pkg_resources.DistributionNotFound:
 else:
     HAS_LINGUAPLONE = True
     from Products.LinguaPlone.interfaces import ITranslatable
+
+
+class gwCSSViewletManager(grok.ViewletManager):
+    grok.context(Interface)
+    grok.name('genweb.css')
+
+
+class gwJSViewletManager(grok.ViewletManager):
+    grok.context(Interface)
+    grok.name('genweb.js')
+
+
+class baseResourcesViewlet(grok.Viewlet):
+    """ This is the base CSS and JS viewlet. """
+    grok.baseclass()
+
+    resource_type = None
+    current_egg_name = None
+
+    index_css = ViewPageTemplateFile('viewlets_templates/gwcssviewlet.pt')
+    index_js = ViewPageTemplateFile('viewlets_templates/gwjsviewlet.pt')
+
+    def render(self):
+        if self.resource_type == 'css':
+            return self.index_css()
+        if self.resource_type == 'js':
+            return self.index_js()
+
+    def is_devel_mode(self):
+        return api.env.debug_mode()
+
+    def read_resource_config_file(self):
+        egg = pkg_resources.get_distribution(self.current_egg_name)
+        config_path = '{}/{}/config.json'.format(egg.location, self.current_egg_name.replace('.', '/'))
+        resource_file = open(config_path)
+        return resource_file.read()
+
+    def get_resources(self):
+        if self.is_devel_mode():
+            return self.get_development_resources()
+        else:
+            return self.get_production_resources()
+
+    @forever.memoize
+    def get_development_resources(self):
+        true_http_path = []
+        resources_conf = json.loads(self.read_resource_config_file())
+        replace_map = resources_conf['replace_map']
+
+        for kind in resources_conf['order']:
+            devel_resources = resources_conf['resources'][kind][self.resource_type]['development']
+            for resource in devel_resources:
+                found = False
+                for source, destination in replace_map.items():
+                    if source in resource:
+                        true_http_path.append(resource.replace(source, destination))
+                        found = True
+                if not found:
+                    true_http_path.append(resource)
+
+        return true_http_path
+
+    @forever.memoize
+    def get_production_resources(self):
+        true_http_path = []
+        resources_conf = json.loads(self.read_resource_config_file())
+        replace_map = resources_conf['replace_map']
+        for kind in resources_conf['order']:
+            production_resources = resources_conf['resources'][kind][self.resource_type]['production']
+            for resource in production_resources:
+                for res_rev_key in resources_conf['revision_info']:
+                    if resource == res_rev_key:
+                        resource = resources_conf['revision_info'][res_rev_key]
+
+                found = False
+                for source, destination in replace_map.items():
+                    if source in resource:
+                        true_http_path.append(resource.replace(source, destination))
+                        found = True
+                if not found:
+                    true_http_path.append(resource)
+
+        return true_http_path
+
 
 # [DEPRECATED] All this viewlets and associated code are deprecated in favor of
 # the PAM aware viewlet genweb.pamls
@@ -82,7 +164,7 @@ def getPostPath(context, request):
             stop = True
     if append_path:
         append_path.insert(0, '')
-    return "/".join(append_path)
+    return '/'.join(append_path)
 
 
 class gwLanguageSelectorViewletManager(grok.ViewletManager):
@@ -99,26 +181,25 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
         all_languages = super(gwLanguageSelectorBase, self).languages()
 
         if self.context.REQUEST.form.get('set_language'):
-            idiomes_publicats = genweb_config().idiomes_publicats
+            idiomes_publicats = genweb_config().idiomes_publicats  # noqa
 
         return [lang for lang in all_languages if lang['selected']][0]
-
 
     def lang_published(self):
         # show if the selected lang is published or not in language selector
         lang = dict(getToolByName(self, 'portal_languages').listAvailableLanguages())
         published_lang = genweb_config().idiomes_publicats
         params_lang = self.context.REQUEST.form.get('set_language')
-        cookie_lang =  getToolByName(self, 'portal_languages').getPreferredLanguage()
+        cookie_lang = getToolByName(self, 'portal_languages').getPreferredLanguage()
 
         if params_lang:
             if params_lang not in lang:
-                return _(u"not a valid language", default=u"${results} not a valid language", mapping={ u"results" : params_lang})
+                return _(u'not a valid language', default=u'${results} not a valid language', mapping={u'results': params_lang})
             if params_lang not in published_lang:
-                return _(u"Not published")
+                return _(u'Not published')
         else:
             if cookie_lang not in published_lang:
-                return _(u"Not published")
+                return _(u'Not published')
 
     def get_google_translated_langs(self):
         # return dict(ca=genweb_config().idiomes_google_translate_link_ca,
@@ -130,12 +211,11 @@ class gwLanguageSelectorBase(LanguageSelector, grok.Viewlet):
 class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
     grok.context(ITranslatable)
     grok.viewletmanager(gwLanguageSelectorViewletManager)
-    #grok.layer(IGenwebLayer)
 
     def languages(self):
         languages_info = super(gwLanguageSelectorViewlet, self).languages()
 
-        google_translated = self.get_google_translated_langs()
+        google_translated = self.get_google_translated_langs()  # noqa
         idiomes_publicats = genweb_config().idiomes_publicats
         redirect_to_root = genweb_config().languages_link_to_root
 
@@ -171,14 +251,14 @@ class gwLanguageSelectorViewlet(gwLanguageSelectorBase):
 
                 data['url'] = addQuery(
                     self.request,
-                    self.context.absolute_url().rstrip("/") +
-                    "/@@goto/%s/%s" % (
+                    self.context.absolute_url().rstrip('/') +
+                    '/@@goto/%s/%s' % (
                         uuid,
                         lang_info['code']
                     ),
                     **query_extras
                 )
-            else: # Redirect to root when make a language click
+            else:  # Redirect to root when make a language click
                 data['url'] = self.portal_url() + '?set_language=' + data['code']
 
             results.append(data)
@@ -218,14 +298,9 @@ class gwLanguageSelectorForRoot(gwLanguageSelectorBase):
                     self.context.absolute_url(),
                     **query_extras
                 )
-            else: # Redirect to root when make a language click
+            else:  # Redirect to root when make a language click
                 data['url'] = self.portal_url() + '?set_language=' + data['code']
 
             results.append(data)
 
         return results
-
-
-class gwJSViewletManager(grok.ViewletManager):
-    grok.context(Interface)
-    grok.name('genweb.js')

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest2 as unittest
 from plone import api
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
@@ -23,7 +23,7 @@ from souper.soup import Record
 
 class TestOmega13(unittest.TestCase):
 
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setUp(self):
         self.app = self.layer['app']

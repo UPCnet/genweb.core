@@ -23,12 +23,6 @@
       />
 
   <plone:static
-      directory="components"
-      type="components"
-      name="root"
-      />
-
-  <plone:static
       directory="static"
       type="genweb"
       name="static"

@@ -88,7 +88,7 @@
     <element value="header5|h5"/>
     <element value="header6|h6"/>
   </formats> -->
-  
+
   <content_css value="++genweb++stylesheets/genwebupc.css"/>
   <editor_height value="400"/>
   <editor_width value="100%"/>

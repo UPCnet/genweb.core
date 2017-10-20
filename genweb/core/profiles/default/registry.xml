@@ -63,4 +63,12 @@
     </field>
     <value>True</value>
   </record>
+  <record name="genweb.hidden_settings.languages_applied" field="languages_applied">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description>A field that let us know if the site has been set up</description>
+      <title>languages_applied</title>
+    </field>
+    <value>False</value>
+  </record>
 </registry>

@@ -1,23 +1,16 @@
 from zope.configuration import xmlconfig
-
-from plone.testing import z2
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import applyProfile
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 
-import pkg_resources
-import transaction
 
+class Genweb(PloneSandboxLayer):
 
-class GenwebUPC(PloneSandboxLayer):
-
-    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, PLONE_FIXTURE,)
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, PLONE_FIXTURE)
 
     def setUpZope(self, app, configurationContext):
         # Load ZCML
@@ -28,14 +21,14 @@ class GenwebUPC(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         # Needed for PAC not complain about not having one... T_T
-        portal.portal_workflow.setDefaultChain("simple_publication_workflow")
+        portal.portal_workflow.setDefaultChain('simple_publication_workflow')
 
         # Install into Plone site using portal_setup
         applyProfile(portal, 'genweb.core:default')
 
         # Create a document front-page
         # setRoles(portal, TEST_USER_ID, ['Manager'])
-        # portal.invokeFactory('Document', 'front-page', title="Us donem la benvinguda a Genweb")
+        # portal.invokeFactory('Document', 'front-page', title='Us donem la benvinguda a Genweb')
         # transaction.commit()
         # setRoles(portal, TEST_USER_ID, ['Member'])
 
@@ -46,13 +39,13 @@ class GenwebUPC(PloneSandboxLayer):
         # Uninstall archetypes-based products
         pass
 
-GENWEBUPC_FIXTURE = GenwebUPC()
-GENWEBUPC_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(GENWEBUPC_FIXTURE,),
-    name="GenwebUPC:Integration")
-GENWEBUPC_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(GENWEBUPC_FIXTURE,),
-    name="GenwebUPC:Functional")
+GENWEB_FIXTURE = Genweb()
+GENWEB_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(GENWEB_FIXTURE,),
+    name='Genweb:Integration')
+GENWEB_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(GENWEB_FIXTURE,),
+    name='Genweb:Functional')
 # Commented as acceptance tests are not needed for this product
 # GENWEBUPC_ACCEPTANCE_TESTING = FunctionalTesting(
 #     bases=(GENWEBUPC_FIXTURE, ZSERVER_FIXTURE),

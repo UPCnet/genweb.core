@@ -45,9 +45,10 @@ class Favorite(grok.Adapter):
 
     def remove(self, username):
         username = str(username)
-        self.fans.remove(username)
-        setattr(self.context, ATTRIBUTE_NAME, self.fans)
-        self.context.reindexObject(idxs=['favoritedBy'])
+        if username in self.fans:
+            self.fans.remove(username)
+            setattr(self.context, ATTRIBUTE_NAME, self.fans)
+            self.context.reindexObject(idxs=['favoritedBy'])
 
 
 @indexer(IDexterityContent)

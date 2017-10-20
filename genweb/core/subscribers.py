@@ -10,7 +10,7 @@ def preventDeletionOnProtectedContent(content, event):
     """ Community added handler
     """
     try:
-        portal = api.portal.get()
+        api.portal.get()
     except:
         # Most probably we are on Zope root and trying to delete an entire Plone
         # Site so grant it unconditionally
@@ -19,6 +19,6 @@ def preventDeletionOnProtectedContent(content, event):
     # Only (global) site managers can delete packet content from root folder
 
     if 'Manager' not in api.user.get_roles():
-        raise(Unauthorized, u"Cannot delete protected content.")
+        raise(Unauthorized, u'Cannot delete protected content.')
     else:
         return

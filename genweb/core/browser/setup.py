@@ -64,6 +64,7 @@ class setupDX(grok.View):
 
 
 class setupLDAPUPC(grok.View):
+    """ Configure LDAPUPC for Plone instance """
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -72,20 +73,20 @@ class setupLDAPUPC(grok.View):
 
         if HAS_LDAP:
             try:
-                manage_addPloneLDAPMultiPlugin(portal.acl_users, "ldapUPC",
-                    title="ldapUPC", use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
-                    users_base="ou=Users,dc=upc,dc=edu", users_scope=2,
-                    roles="Authenticated", groups_base="ou=Groups,dc=upc,dc=edu",
-                    groups_scope=2, read_only=True, binduid="cn=ldap.serveis,ou=users,dc=upc,dc=edu", bindpwd=LDAP_PASSWORD,
-                    rdn_attr="cn", LDAP_server="ldap.upc.edu", encryption="SSHA")
-                portal.acl_users.ldapUPC.acl_users.manage_edit("ldapUPC", "cn", "cn", "ou=Users,dc=upc,dc=edu", 2, "Authenticated",
-                    "ou=Groups,dc=upc,dc=edu", 2, "cn=ldap.serveis,ou=users,dc=upc,dc=edu", LDAP_PASSWORD, 1, "cn",
-                    "top,person", 0, 0, "SSHA", 1, '')
+                manage_addPloneLDAPMultiPlugin(portal.acl_users, 'ldapUPC',
+                    title='ldapUPC', use_ssl=1, login_attr='cn', uid_attr='cn', local_groups=0,
+                    users_base='ou=Users,dc=upc,dc=edu', users_scope=2,
+                    roles='Authenticated', groups_base='ou=Groups,dc=upc,dc=edu',
+                    groups_scope=2, read_only=True, binduid='cn=ldap.serveis,ou=users,dc=upc,dc=edu', bindpwd=LDAP_PASSWORD,
+                    rdn_attr='cn', LDAP_server='ldap.upc.edu', encryption='SSHA')
+                portal.acl_users.ldapUPC.acl_users.manage_edit('ldapUPC', 'cn', 'cn', 'ou=Users,dc=upc,dc=edu', 2, 'Authenticated',
+                    'ou=Groups,dc=upc,dc=edu', 2, 'cn=ldap.serveis,ou=users,dc=upc,dc=edu', LDAP_PASSWORD, 1, 'cn',
+                    'top,person', 0, 0, 'SSHA', 1, '')
                 plugin = portal.acl_users['ldapUPC']
 
                 plugin.manage_activateInterfaces(['IGroupEnumerationPlugin', 'IGroupsPlugin', 'IGroupIntrospection', 'IAuthenticationPlugin', 'IUserEnumerationPlugin'])
                 # Comentem la linia per a que no afegeixi
-                # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
+                # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, 'ldap.upc.edu', '636', use_ssl=1)
 
                 LDAPUserFolder.manage_deleteLDAPSchemaItems(portal.acl_users.ldapUPC.acl_users, ldap_names=['sn'], REQUEST=None)
                 LDAPUserFolder.manage_addLDAPSchemaItem(portal.acl_users.ldapUPC.acl_users, ldap_name='sn', friendly_name='Last Name', public_name='name')
@@ -97,32 +98,33 @@ class setupLDAPUPC(grok.View):
                 # portal.acl_users.plugins.manage_movePluginsUp('IPropertiesPlugin', ['ldapUPC'], context.REQUEST.RESPONSE)
 
             except:
-                logger.debug("Something bad happened and the LDAP has not been created properly")
+                logger.debug('Something bad happened and the LDAP has not been created properly')
 
             try:
                 plugin = portal.acl_users['ldapUPC']
                 plugin.ZCacheable_setManagerId('RAMCache')
 
                 portal_role_manager = portal.acl_users['portal_role_manager']
-                portal_role_manager.assignRolesToPrincipal(["Manager"], "UPC.Plone.Admins")
-                portal_role_manager.assignRolesToPrincipal(["Manager"], "UPCnet.Plone.Admins")
-                portal_role_manager.assignRolesToPrincipal(["Manager"], "UPCnet.ATIC")
-                portal_role_manager.assignRolesToPrincipal(["Manager"], "UPCNET.Frontoffice.2n.nivell")
+                portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPC.Plone.Admins')
+                portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPCnet.Plone.Admins')
+                portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPCnet.ATIC')
+                portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPCNET.Frontoffice.2n.nivell')
 
             except:
-                logger.debug("Something bad happened and the LDAP has not been configured properly")
+                logger.debug('Something bad happened and the LDAP has not been configured properly')
 
         else:
-            logger.debug("You do not have LDAP libraries in your current buildout configuration. POSOK.")
+            logger.debug('You do not have LDAP libraries in your current buildout configuration. POSOK.')
 
-            #try:
+            # try:
             # Fora el sistema de cookies que fan buscar al LDAP cn=*
-            #    portal.acl_users.manage_delObjects('credentials_cookie_auth')
-            #except:
-            #    pass
+            #     portal.acl_users.manage_delObjects('credentials_cookie_auth')
+            # except:
+            #     pass
 
 
 class setupLDAPExterns(grok.View):
+    """ Configure LDAPExterns for Plone instance """
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -134,15 +136,15 @@ class setupLDAPExterns(grok.View):
             portal.acl_users.manage_delObjects('ldapUPC')
 
         # try:
-        manage_addPloneLDAPMultiPlugin(portal.acl_users, "ldapexterns",
-            title="ldapexterns", use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
-            users_base="ou=users,ou=upcnet,dc=upcnet,dc=es", users_scope=2,
-            roles="Authenticated,Member", groups_base="ou=groups,ou=upcnet,dc=upcnet,dc=es",
-            groups_scope=2, read_only=True, binduid="cn=ldap,ou=upcnet,dc=upcnet,dc=es", bindpwd=LDAP_PASSWORD,
-            rdn_attr="cn", LDAP_server="ldap.upcnet.es", encryption="SSHA")
-        portal.acl_users.ldapexterns.acl_users.manage_edit("ldapexterns", "cn", "cn", "ou=users,ou=upcnet,dc=upcnet,dc=es", 2, "Authenticated,Member",
-            "ou=groups,ou=upcnet,dc=upcnet,dc=es", 2, "cn=ldap,ou=upcnet,dc=upcnet,dc=es", LDAP_PASSWORD, 1, "cn",
-            "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
+        manage_addPloneLDAPMultiPlugin(portal.acl_users, 'ldapexterns',
+            title='ldapexterns', use_ssl=1, login_attr='cn', uid_attr='cn', local_groups=0,
+            users_base='ou=users,ou=upcnet,dc=upcnet,dc=es', users_scope=2,
+            roles='Authenticated,Member', groups_base='ou=groups,ou=upcnet,dc=upcnet,dc=es',
+            groups_scope=2, read_only=True, binduid='cn=ldap,ou=upcnet,dc=upcnet,dc=es', bindpwd=LDAP_PASSWORD,
+            rdn_attr='cn', LDAP_server='ldap.upcnet.es', encryption='SSHA')
+        portal.acl_users.ldapexterns.acl_users.manage_edit('ldapexterns', 'cn', 'cn', 'ou=users,ou=upcnet,dc=upcnet,dc=es', 2, 'Authenticated,Member',
+            'ou=groups,ou=upcnet,dc=upcnet,dc=es', 2, 'cn=ldap,ou=upcnet,dc=upcnet,dc=es', LDAP_PASSWORD, 1, 'cn',
+            'top,person,inetOrgPerson', 0, 0, 'SSHA', 0, '')
 
         plugin = portal.acl_users['ldapexterns']
 
@@ -185,6 +187,7 @@ class setupLDAPExterns(grok.View):
 
 
 class setupLDAP(grok.View):
+    """ Configure basic LDAP for Plone instance """
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -198,9 +201,9 @@ class setupLDAP(grok.View):
         branch_admin_password = self.request.form.get('branch_admin_password')
         allow_manage_users = self.request.form.get('allow_manage_users', False)
 
-        users_base = "ou=users,ou={},{}".format(branch_name, base_dn)
-        groups_base = "ou=groups,ou={},{}".format(branch_name, base_dn)
-        bind_uid = "cn={},ou={},{}".format(branch_admin_cn, branch_name, base_dn)
+        users_base = 'ou=users,ou={},{}'.format(branch_name, base_dn)
+        groups_base = 'ou=groups,ou={},{}'.format(branch_name, base_dn)
+        bind_uid = 'cn={},ou={},{}'.format(branch_admin_cn, branch_name, base_dn)
 
         # Delete if exists
         if getattr(portal.acl_users, ldap_name, None):
@@ -208,9 +211,9 @@ class setupLDAP(grok.View):
 
         manage_addPloneLDAPMultiPlugin(
             portal.acl_users, ldap_name,
-            use_ssl=1, login_attr="cn", uid_attr="cn", local_groups=0,
-            rdn_attr="cn", encryption="SSHA", read_only=True,
-            roles="Authenticated,Member", groups_scope=2, users_scope=2,
+            use_ssl=1, login_attr='cn', uid_attr='cn', local_groups=0,
+            rdn_attr='cn', encryption='SSHA', read_only=True,
+            roles='Authenticated,Member', groups_scope=2, users_scope=2,
             title=ldap_name,
             LDAP_server=ldap_server,
             users_base=users_base,
@@ -220,9 +223,9 @@ class setupLDAP(grok.View):
 
         ldap_acl_users = getattr(portal.acl_users, ldap_name).acl_users
         ldap_acl_users.manage_edit(
-            ldap_name, "cn", "cn", users_base, 2, "Authenticated,Member",
-            groups_base, 2, bind_uid, branch_admin_password, 1, "cn",
-            "top,person,inetOrgPerson", 0, 0, "SSHA", 0, '')
+            ldap_name, 'cn', 'cn', users_base, 2, 'Authenticated,Member',
+            groups_base, 2, bind_uid, branch_admin_password, 1, 'cn',
+            'top,person,inetOrgPerson', 0, 0, 'SSHA', 0, '')
 
         plugin = portal.acl_users[ldap_name]
 

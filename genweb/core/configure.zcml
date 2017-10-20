@@ -42,6 +42,8 @@
     <include package="genweb.controlpanel" />
     <include package="genweb.portlets" />
     <include package="genweb.theme" />
+    <include package="genweb.cdn" />
+    <include package="genweb.js" />
     <include package="genweb.alternatheme" />
     <include package="jarn.jsi18n" />
     <include package="Products.PloneLDAP" />
@@ -67,6 +69,13 @@
       permission="zope2.Public"
       allowed_interface=".interfaces.IGenwebUtils"
       />
+
+	<browser:view
+  	  for="*"
+  	  name="folder_delete"
+  	  class=".browser.confirmation.FolderDelete"
+  	  permission="zope2.DeleteObjects"
+  	  />
 
     <genericsetup:registerProfile
       name="default"
