@@ -616,4 +616,14 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
+    titol = u"Text amb video"
+    resum = u"Per inserir-hi el vostre vídeo heu d'accedir al codi html de la pàgina i substituir l'enllaç al vídeo."
+    cos = u"""<div>Donec in accumsan ex, eget facilisis risus. In id molestie erat. Sed congue ipsum ac consectetur posuere. Vestibulum posuere metus iaculis iaculis suscipit. Praesent pharetra massa eu ullamcorper blandit. Suspendisse consectetur porttitor eros, sed finibus mi posuere a. Donec quis massa eu enim maximus porttitor.</div>
+<p> </p>
+<div><video width="576" height="324" style="" poster="https://tv.upc.edu/contenidos/upc-la-universitat-enginyeria-arquitectura-ciencies-i-tecnologia/miniature_image" controls="controls"><source src="http://tv.upc.es/vod/Video_Grau_UPC_Cast-higher.mp4" type="video/mp4" /></video></div>
+<p> </p>
+<div>Vestibulum laoreet quis erat sed condimentum. Quisque faucibus et risus a gravida. Aliquam diam velit, mattis convallis eleifend sed, iaculis eget tellus. Donec et quam vel libero interdum mollis. Aenean nulla felis, vehicula eget metus eu, cursus scelerisque felis. Duis sem magna, bibendum eu sodales et, dapibus ac mi. Sed ut erat a tortor dictum fringilla sed blandit tortor.</div>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
     return plantilles
