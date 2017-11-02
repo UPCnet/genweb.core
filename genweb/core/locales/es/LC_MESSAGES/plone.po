@@ -451,3 +451,6 @@ msgstr "Modificado"
 
 msgid "label_item_count"
 msgstr "Número de elementos"
+
+msgid "Nou Contingut existent"
+msgstr "Nuevo Contenido existente"
