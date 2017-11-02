@@ -1923,9 +1923,6 @@ msgstr "La URL completa de la página desde dónde queremos visualizar el conten
 msgid "help_static_content_element_ca"
 msgstr "Aquí se puede introducir un id, clase o elemento html. Por ejemplo, en una página genweb típica, todo el contenido está dentro de #content, y todo el contenido sin el título dentro de #content-core"
 
-msgid "Existing Content"
-msgstr "Contenido existente"
-
 msgid "multi_email"
 msgstr "Seleccionar la dirección de envío"
 

@@ -145,3 +145,6 @@ msgstr "Portlet grid"
 
 msgid "Subhome Description"
 msgstr "Element for display a page with various contents from the web"
+
+msgid "Nou Contingut existent"
+msgstr "New Existing content"

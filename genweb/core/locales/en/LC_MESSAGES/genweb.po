@@ -1885,10 +1885,6 @@ msgstr "The complete URL of the content's page."
 msgid "help_static_content_element_ca"
 msgstr "You can add an id, a class or an html element. For example, in an standard Genweb page, all the content is inside #content and all the content without the title lives inside #content-core"
 
-msgid "Existing Content"
-msgstr "Existing content"
-
-
 msgid "multi_email"
 msgstr "Select shipping address"
 
