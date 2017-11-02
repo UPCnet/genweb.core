@@ -1,11 +1,17 @@
 Changelog
 =========
 
-4.8.42 (unreleased)
+4.8.42 (2017-11-02)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Corina Riba]
+* Translate new portlet [Corina Riba]
+* New tiny template [Corina Riba]
+* Merge remote-tracking branch 'origin/develop' [alberto.duran]
+* Change homeupc protocol and links [Corina Riba]
+* renamed value [Roberto Diaz]
+* Show News Items in App code [Roberto Diaz]
+* remove unused versionable behaviour [Roberto Diaz]
 
 4.8.41 (2017-08-04)
 -------------------
