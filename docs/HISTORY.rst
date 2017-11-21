@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.8.42 (unreleased)
+4.8.42 (2017-11-21)
 -------------------
 
-- Nothing changed yet.
-
+* Translate new portlet [Corina Riba]
+* New tiny template [Corina Riba]
+* Change homeupc protocol and links [Corina Riba]
+* renamed value [Roberto Diaz]
+* Show News Items in App code [Roberto Diaz]
+* remove unused versionable behaviour [Roberto Diaz]
 
 4.8.41 (2017-08-04)
 -------------------
