@@ -498,12 +498,18 @@ def getUserByAttr(self, name, value, pwd=None, cache=0):
     uid = user_attrs.get(self._uid_attr, '')
 
     if self._login_attr != 'dn' and len(login_name) > 0:
-        if name == self._login_attr:
-            logins = [x for x in login_name
-                      if value.strip().lower() == x.lower()]
-            login_name = logins[0]
-        else:
-            login_name = login_name[0]
+        try:
+            if name == self._login_attr:
+                logins = [x for x in login_name
+                          if value.strip().lower() == x.lower()]
+                login_name = logins[0]
+            else:
+                login_name = login_name[0]
+        except:
+            msg = ('****getUserByAttr: logins %s and login_name %s' % (logins, login_name))
+            logger.error(msg)
+            pass
+
     elif len(login_name) == 0:
         msg = 'getUserByAttr: "%s" has no "%s" (Login) value!' % (user_dn, self._login_attr)
         logger.debug(msg)
@@ -618,21 +624,25 @@ def enumerateUsers(self,
         l_results = acl.searchUsers(exact_match=exact_match, **ldap_criteria)
 
         for l_res in l_results:
+            try:
+                # If the LDAPUserFolder returns an error, bail
+                if (l_res.get('sn', '') == 'Error' and l_res.get('cn', '') == 'n/a'):
+                    return ()
 
-            # If the LDAPUserFolder returns an error, bail
-            if (l_res.get('sn', '') == 'Error' and l_res.get('cn', '') == 'n/a'):
-                return ()
-
-            if l_res['dn'] not in seen:
-                # BEGIN PATCH
-                l_res['id'] = l_res[uid_attr].lower()
-                l_res['login'] = l_res[login_attr].lower()
-                # END PATCH
-                l_res['pluginid'] = plugin_id
-                quoted_dn = quote_plus(l_res['dn'])
-                l_res['editurl'] = '%s?user_dn=%s' % (edit_url, quoted_dn)
-                result.append(l_res)
-                seen.append(l_res['dn'])
+                if l_res['dn'] not in seen:
+                    # BEGIN PATCH
+                    l_res['id'] = l_res[uid_attr].lower()
+                    l_res['login'] = l_res[login_attr].lower()
+                    # END PATCH
+                    l_res['pluginid'] = plugin_id
+                    quoted_dn = quote_plus(l_res['dn'])
+                    l_res['editurl'] = '%s?user_dn=%s' % (edit_url, quoted_dn)
+                    result.append(l_res)
+                    seen.append(l_res['dn'])
+            except:
+                msg = ('****Result ldap error: l_res %s' % (l_res))
+                logger.error(msg)
+                pass
 
         if sort_by is not None:
             result.sort(lambda a, b: cmp(a.get(sort_by, '').lower(),
