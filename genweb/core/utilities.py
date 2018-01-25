@@ -28,6 +28,7 @@ class ElasticSearch(object):
             self.create_new_connection()
         return self._conn
 
+
 grok.global_utility(ElasticSearch)
 
 

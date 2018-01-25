@@ -126,7 +126,7 @@
          replacement=".patches.deletePersonalPortrait"
          />
 
-<!-- LDAP and user objects related patches -->
+     <!-- LDAP and user objects related patches -->
      <monkey:patch
         description="Force LDAP plugin authenticate to normalize userids and usernames to lowercase"
         module="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"

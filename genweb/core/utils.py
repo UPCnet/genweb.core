@@ -74,6 +74,7 @@ def portal_url():
     """
     return portal().absolute_url()
 
+
 def portal():
     """Get the Plone portal object out of thin air without importing fancy
        interfaces and doing multi adapter lookups.
@@ -151,7 +152,6 @@ def get_all_user_properties(user):
     """
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
     attributes = user_properties_utility.properties + METADATA_USER_ATTRS
-
     try:
         extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
     except:
@@ -547,6 +547,8 @@ class UserPropertiesSoupCatalogFactory(object):
         uuid = NodeAttributeIndexer('uuid')
         catalog['uuid'] = CatalogFieldIndex(uuid)
         return catalog
+
+
 provideUtility(UserPropertiesSoupCatalogFactory(), name='uuid_preserver')
 
 

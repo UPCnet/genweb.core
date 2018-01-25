@@ -1,8 +1,6 @@
 from five import grok
 from zope.interface import Interface
 from zope.component import queryUtility
-from zope import interface
-from zope import component
 
 from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 from zope.lifecycleevent.interfaces import IObjectCopiedEvent
@@ -67,6 +65,8 @@ class MutableAttributeUUID(object):
 @indexer(IUUIDAware)
 def gwUUID(context):
     return IGWUUID(context, None).get()
+
+
 grok.global_adapter(gwUUID, name='gwuuid')
 
 

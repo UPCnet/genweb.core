@@ -1,10 +1,9 @@
-from zope.i18nmessageid import MessageFactory
-_ = GenwebMessageFactory = MessageFactory('genweb')
-
 import pkg_resources
 import os
 import subprocess
 import sys
+from zope.i18nmessageid import MessageFactory
+_ = GenwebMessageFactory = MessageFactory('genweb')
 
 try:
     pkg_resources.get_distribution('upcnet.cas')

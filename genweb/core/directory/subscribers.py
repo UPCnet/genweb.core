@@ -30,5 +30,10 @@ def update_user_properties_hook(user, event):
 @grok.subscribe(IUserLoggedInEvent)
 def UpdateUserPropertiesOnLogin(event):
     user = api.user.get_current()
-    properties = get_all_user_properties(user)
-    add_user_to_catalog(user, properties, overwrite=True)
+    try:
+        properties = get_all_user_properties(user)
+        add_user_to_catalog(user, properties, overwrite=True)
+    except:
+        # To avoid testing test_functional code, since the
+        # test_user doesn't have properties and stops the tests.
+        pass

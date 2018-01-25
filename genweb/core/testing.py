@@ -39,6 +39,7 @@ class Genweb(PloneSandboxLayer):
         # Uninstall archetypes-based products
         pass
 
+
 GENWEB_FIXTURE = Genweb()
 GENWEB_INTEGRATION_TESTING = IntegrationTesting(
     bases=(GENWEB_FIXTURE,),

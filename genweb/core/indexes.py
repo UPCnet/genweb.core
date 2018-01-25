@@ -16,6 +16,8 @@ def newsImageFile(context):
     populate the ``context.filename`` value and index it.
     """
     return context.image.filename
+
+
 grok.global_adapter(newsImageFile, name='news_image_filename')
 
 
@@ -29,4 +31,6 @@ class UserSubscribedTagsSoupCatalog(object):
         catalog['tags'] = CatalogKeywordIndex(hashindex)
 
         return catalog
+
+
 grok.global_utility(UserSubscribedTagsSoupCatalog, name='user_subscribed_tags')
