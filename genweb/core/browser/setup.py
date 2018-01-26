@@ -108,7 +108,6 @@ class setupLDAPUPC(grok.View):
                 portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPC.Plone.Admins')
                 portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPCnet.Plone.Admins')
                 portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPCnet.ATIC')
-                portal_role_manager.assignRolesToPrincipal(['Manager'], 'UPCNET.Frontoffice.2n.nivell')
 
             except:
                 logger.debug('Something bad happened and the LDAP has not been configured properly')
