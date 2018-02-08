@@ -134,9 +134,11 @@ class getZOPE(grok.View):
     grok.template('getzope')
 
     def dorsal(self):
+        import socket
         dorsal = os.environ.get('dorsal', False)
+        serverid = socket.gethostname()
         if dorsal == '':
-            return 'NaN'
+            return '<span style="color:#6b2508; font-size: 12vw;">NaN' + "<br/>[" + str(serverid) + "]</span>"
         else:
             return dorsal
 
