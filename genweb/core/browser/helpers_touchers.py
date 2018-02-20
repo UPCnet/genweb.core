@@ -10,13 +10,15 @@ from zope.interface import alsoProvides
 from souper.soup import get_soup
 import pkg_resources
 
-from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 from Products.CMFPlone.utils import normalizeString
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
 
 from plone.app.contenttypes.behaviors.richtext import IRichText
+from plone.app.contenttypes.interfaces import IFolder
 from plone.app.contenttypes.upgrades import use_new_view_names
 from plone.dexterity.utils import createContentInContainer
 from plone.dexterity.content import Container
@@ -1295,3 +1297,128 @@ class translateNews(grok.View):
 
         output.append('{}: Successfully translated news'.format(portal.id))
         return '\n'.join(output)
+
+
+class bulkChangeCreator(grok.View):
+    """ If the creator of the content is X, change it to Y """
+    grok.context(IFolder)
+    grok.name('bulk_change_creator')
+    grok.require('cmf.ManagePortal')
+
+    STATUS_oldcreators = u"You must select one old creator."
+    STATUS_newcreators = u"You must select one new creator."
+    STATUS_samecreator = u"You must select different creators."
+    STATUS_updated = u"%s objects updated."
+    status = []
+
+    @property
+    def catalog(self):
+        return api.portal.get_tool(name='portal_catalog')
+
+    @property
+    def membership(self):
+        return api.portal.get_tool(name='portal_membership')
+
+    def old_creator(self):
+        return self.request.form.get('old_creator', '')
+
+    def new_creator(self):
+        return self.request.form.get('new_creator', '')
+
+    def change_modification_date(self):
+        return self.request.form.get('change_modification_date', False)
+
+    def get_sorted_list(self, user_list, user_old, user_id_lambda):
+        ret_list = []
+        for user in user_list:
+            if not user:
+                continue
+            userid = user_id_lambda(user)
+            info = self.membership.getMemberInfo(userid)
+            if info and info['fullname']:
+                d = dict(id=userid, name="%s (%s)" % (info['fullname'], userid))
+            else:
+                d = dict(id=userid, name=userid)
+            d['selected'] = 1 if userid in user_old else 0
+            ret_list.append(d)
+        ret_list.sort(lambda a, b: cmp(str(a['id']).lower(), str(b['id']).lower()))
+        return ret_list
+
+    def list_creators(self):
+        creator_list = []
+        for brain in self.catalog(path=self.context.absolute_url_path()):
+            creators = brain.getObject().listCreators()
+            for creator in creators:
+                if creator not in creator_list:
+                    creator_list.append(creator)
+        return self.get_sorted_list(
+            creator_list, # list of creators
+            self.old_creator(), # prev selected creators
+            lambda element: element)
+
+    def list_members(self):
+        return self.get_sorted_list(
+            list(getMultiAdapter((self.context, self.request),
+                                 name=u'pas_search').searchUsers()) #plone users
+          + list(self.context.getPhysicalRoot().acl_users.searchUsers()), # zope users
+            self.new_creator(), # prev selected new creators
+            lambda element: element['userid'])
+
+    def render(self):
+        """ Main method """
+
+        if 'submit' in self.request.form:
+
+            old_creator = self.old_creator()
+            new_creator = self.new_creator()
+            change_modification_date = self.change_modification_date()
+            ret = []
+            self.status = []
+
+            ok = True
+            if old_creator == '':
+                ok = False; self.status.append(self.STATUS_oldcreators)
+            if new_creator == '':
+                ok = False; self.status.append(self.STATUS_newcreators)
+            if old_creator == new_creator:
+                ok = False; self.status.append(self.STATUS_samecreator)
+
+            if ok:
+                self.status.append('')
+                count = 0
+                acl_users = getattr(self.context, 'acl_users')
+                user = acl_users.getUserById(new_creator)
+
+                if user is None:
+                    user = self.membership.getMemberById(new_creator)
+                    if user is None:
+                        raise KeyError('Only retrievable users in this site can be made creators.')
+
+                for brain in self.catalog(path=self.context.absolute_url_path()):
+                    obj = brain.getObject()
+                    creators = list(obj.listCreators())
+                    if old_creator in creators:
+                        obj.changeOwnership(user)
+                        if new_creator in creators:
+                            index1 = creators.index(old_creator)
+                            index2 = creators.index(new_creator)
+                            creators[min(index1, index2)] = new_creator
+                            del creators[max(index1, index2)]
+                        else:
+                            creators[creators.index(old_creator)] = new_creator
+
+                        obj.setCreators(creators)
+                        if change_modification_date:
+                            obj.reindexObject()
+                        else:
+                            old_modification_date = obj.ModificationDate()
+                            obj.reindexObject()
+                            obj.setModificationDate(old_modification_date)
+                            obj.reindexObject(idxs=['modified'])
+
+                        self.status.append(brain.getPath())
+                        count += 1
+
+                self.status[0] = self.STATUS_updated % count
+
+        return ViewPageTemplateFile('helpers_touchers_templates/bulk_change_creator.pt')(self)
