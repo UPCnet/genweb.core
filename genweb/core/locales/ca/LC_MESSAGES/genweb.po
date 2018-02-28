@@ -1111,7 +1111,7 @@ msgstr "Escriviu el missatge que voleu enviar"
 #. Default: "Type the code from the picture shown below"
 #: genweb.theme/genweb/theme/browser/contact.py:77
 msgid "genweb_help_type_the_code"
-msgstr "Escriviu les paraules de la imatge inferior"
+msgstr "Selecciona l'opció de sota per poder fer l'enviament"
 
 #. Default: "Informació General"
 msgid "genweb_info_gral"

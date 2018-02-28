@@ -40,20 +40,24 @@
     <value>text/x-web-intelligent</value>
   </record>
   <!-- plone.formwidget.recaptcha -->
+
   <record field="private_key" interface="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings" name="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.private_key">
     <field type="plone.registry.field.TextLine">
       <default />
       <title>Private Key</title>
     </field>
-    <value>6LeDfboSAAAAAKfEe7S7OSwhy1qie48uRw6D6dMS</value>
+    <value>6LcEtjEUAAAAAFoR3rEORJQTzMdQE0y6prqaC0Ta</value>
   </record>
+
   <record field="public_key" interface="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings" name="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.public_key">
     <field type="plone.registry.field.TextLine">
       <default />
       <title>Public Key</title>
     </field>
-    <value>6LeDfboSAAAAADITjxaiFYjQjsKP4t_2Ddiz-g9_</value>
+    <value>6LcEtjEUAAAAAHVmogdyohPkahy_0MrKsOjKlefn</value>
   </record>
+
+
   <!-- Syndication enabled by default -->
   <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.default_enabled" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="default_enabled">
     <field type="plone.registry.field.Bool">

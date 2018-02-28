@@ -321,7 +321,7 @@ msgid "genweb_type_the_code"
 msgstr "Codi de control"
 
 msgid "genweb_help_type_the_code"
-msgstr "Escriviu les paraules de la imatge inferior"
+msgstr "Selecciona l'opció de sota per fer l'enviament"
 
 #. Default: "Recipient"
 #: genweb.theme/genweb/theme/browser/contact.py:92
