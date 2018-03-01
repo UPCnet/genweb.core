@@ -903,7 +903,7 @@ msgstr "No puedo entrar"
 #: genweb.theme/genweb/theme/portlets/templates/fullnews.pt:10
 #: genweb.theme/genweb/theme/portlets/templates/news.pt:9
 msgid "genweb-noticies"
-msgstr "Noticias <i class=\"icon-news large-icon pull-right\"></i>"
+msgstr "Noticias <span class=\"icon-news large-icon pull-right\"></span>"
 
 #. "genweb-opcionspathbar"
 #. Default: "Opcions:"

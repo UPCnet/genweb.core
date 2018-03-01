@@ -886,7 +886,7 @@ msgstr "I can't enter"
 #: genweb.theme/genweb/theme/portlets/templates/fullnews.pt:10
 #: genweb.theme/genweb/theme/portlets/templates/news.pt:9
 msgid "genweb-noticies"
-msgstr "News <i class=\"icon-news large-icon pull-right\"></i>"
+msgstr "News <span class=\"icon-news large-icon pull-right\"></span>"
 
 #. Default: "Opcions:"
 #. "genweb-opcionspathbar"

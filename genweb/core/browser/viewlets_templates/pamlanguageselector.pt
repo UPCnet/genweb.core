@@ -10,11 +10,11 @@
     tal:condition="python:len(languages)>=2">
 
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    <i class="icon-globe"></i>
+    <span class="icon-globe"></span>
     <tal:selected content="pref_lang">
         Català
     </tal:selected>
-    <b class="caret"></b>
+    <span class="caret"></span>
   </a>
 
   <ul class="dropdown-menu pull-right adjust-langs">
