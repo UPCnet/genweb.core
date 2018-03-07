@@ -1,11 +1,20 @@
 Changelog
 =========
 
-4.8.44 (unreleased)
+4.8.44 (2018-03-07)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Roberto Diaz]
+* Merge remote-tracking branch 'origin/accessibility' [Roberto Diaz]
+* Arreglado traduccion del mensaje en la página de permisos insuficientes [iago.lopez]
+* WGAC: Etiquetas <i> y <b> utilizadas para iconos a <span> [iago.lopez]
+* Upgrade translations for captcha widget and upgrade keys for api v2 [Corina Riba]
+* remove unused plone.app.imagecropping package [Roberto Diaz]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [alaa.moucharrafie]
+* Added a view to change an object's creator from X to Y, given a root path. [alaa.moucharrafie]
+* changed getzope to show servername [Roberto Diaz]
+* Delete UPCNET.Frontoffice.2n.nivell from portal_role_manager [Corina Riba]
+* added try/except to avoid test_functional and PEP8 [Roberto Diaz]
 
 4.8.43 (2018-01-18)
 -------------------
@@ -13,6 +22,7 @@ Changelog
 * Merge remote-tracking branch 'origin/develop' [Pilar Marinas]
 * try-except para solucionar error AD ASPB [Pilar Marinas]
 * Resolve conflict in docs/HISTORY.rst [alberto.duran]
+
 4.8.42 (2017-11-02)
 -------------------
 
