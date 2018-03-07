@@ -1,15 +1,22 @@
 Changelog
 =========
 
-4.8.43 (unreleased)
+4.8.44 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
 
-4.8.42 (2017-11-21)
+4.8.43 (2018-01-18)
 -------------------
 
+* Merge remote-tracking branch 'origin/develop' [Pilar Marinas]
+* try-except para solucionar error AD ASPB [Pilar Marinas]
+* Resolve conflict in docs/HISTORY.rst [alberto.duran]
+4.8.42 (2017-11-02)
+-------------------
+
+* Merge remote-tracking branch 'origin/develop' [Corina Riba]
 * Translate new portlet [Corina Riba]
 * New tiny template [Corina Riba]
 * Change homeupc protocol and links [Corina Riba]
