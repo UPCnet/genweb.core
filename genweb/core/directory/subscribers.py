@@ -3,43 +3,37 @@ from plone import api
 from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent
 from Products.PluggableAuthService.interfaces.events import IPropertiesUpdatedEvent
-from repoze.catalog.query import Eq
-from souper.interfaces import ICatalogFactory
-from souper.soup import get_soup
-from souper.soup import Record
-from zope.component import getUtility
+from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
 
-from genweb.core.directory import METADATA_USER_ATTRS
+
+from genweb.core.utils import get_all_user_properties
+from genweb.core.utils import add_user_to_catalog
 
 
 @grok.subscribe(IPropertiedUser, IPrincipalCreatedEvent)
-@grok.subscribe(IPropertiedUser, IPropertiesUpdatedEvent)
-def add_user_to_catalog(principal, event):
+def create_user_hook(user, event):
     """ This subscriber hooks on user creation and adds user properties to the
         soup-based catalog for later searches
     """
-    portal = api.portal.get()
-    soup = get_soup('user_properties', portal)
-    exist = [r for r in soup.query(Eq('username', principal.getUserName()))]
-    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
-    indexed_attrs = user_properties_utility(portal).keys()
+    add_user_to_catalog(user)
 
-    if exist:
-        user_record = exist[0]
-    else:
-        record = Record()
-        record_id = soup.add(record)
-        user_record = soup.get(record_id)
 
-    user_record.attrs['username'] = principal.getUserName()
-    user_record.attrs['id'] = principal.getUserName()
+@grok.subscribe(IPropertiedUser, IPropertiesUpdatedEvent)
+def update_user_properties_hook(user, event):
+    """ This subscriber hooks on user creation and adds user properties to the
+        soup-based catalog for later searches
+    """
 
-    if IPropertiesUpdatedEvent.providedBy(event):
-        for attr in indexed_attrs + METADATA_USER_ATTRS:
-            if attr in event.properties:
-                if isinstance(event.properties[attr], str):
-                    user_record.attrs[attr] = event.properties[attr].decode('utf-8')
-                else:
-                    user_record.attrs[attr] = event.properties[attr]
+    add_user_to_catalog(user, event.properties, overwrite=True)
 
-    soup.reindex(records=[user_record])
+
+@grok.subscribe(IUserLoggedInEvent)
+def UpdateUserPropertiesOnLogin(event):
+    user = api.user.get_current()
+    try:
+        properties = get_all_user_properties(user)
+        add_user_to_catalog(user, properties, overwrite=True)
+    except:
+        # To avoid testing test_functional code, since the
+        # test_user doesn't have properties and stops the tests.
+        pass

@@ -237,6 +237,18 @@ msgstr "El elemento se ha desmarcado como importante"
 msgid "L'element s'ha marcat com important"
 msgstr "El elemento se ha marcado como importante"
 
+#: ./genweb.theme/genweb/theme/templates/plone.app.event.browser.event_summary.pt:100
+msgid "heading_send_event"
+msgstr "Enviar a los asistentes"
+
+#: ./genweb.theme/genweb/theme/templates/plone.app.event.browser.event_summary.pt:106
+msgid "send_invitation_link"
+msgstr "Enviar convocatoria"
+
+#: ./genweb.upc/genweb/upc/templates/plone.app.event.browser.event_summary.pt:111
+msgid "send_invitation_not_attendees"
+msgstr "No hay asistentes para enviar el mensaje"
+
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:114
 msgid "Label the 'Show more link' defined avobe"
 msgstr "Etiquetar el 'Mostrar más enlace' definido anteriormente"
@@ -266,11 +278,14 @@ msgstr "Privado"
 
 #. Default: "Fer un element privat significa que no serà visible per ninguna persona excepte el propietari."
 msgid "Making an item private means that it will not be visible to anyone but the owner and the site administrator."
-msgstr "Hace un elemento privado significa que no será visible para madie excepto para el propietario."
+msgstr "Hacer un elemento privado significa que no será visible para nadie excepto para el propietario."
 
 #. Default: "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
 msgid "Making an item published to intranet means that it will be visible to the members (readers)."
 msgstr "Hacer un elemento publico en la intranet significa que será visible para todos los miembros (lectores)."
+
+msgid "Puts your item in a review queue, so it can be published on the site."
+msgstr "Envía el elemento a una cola de revisión, de forma que pueda ser publicado en el sitio."
 
 #: genweb.upc/genweb/upc/browser/viewlets_templates/important.pt:7
 msgid "Marca com a important"
@@ -280,10 +295,29 @@ msgstr "Marcar como importante"
 msgid "Master"
 msgstr "Máster"
 
+######################
+# Portlet Full News #
+######################
+
 #: genweb.theme/genweb/theme/portlets/fullnews.py:26
 #: genweb.theme/genweb/theme/portlets/news.py:26
 msgid "Maxim numero de noticies a mostrar (5 o 7)"
 msgstr "Máximo número de noticias a mostrar (5 ó 7)"
+
+msgid "Normal view"
+msgstr "Normal: imagen izquierda y texto derecha"
+msgid "Full view"
+msgstr "Anchura total: imagen arriba y texto debajo"
+msgid "Full2cols view"
+msgstr "Anchura total a dos columnas: dos columnas con imagen arriba y texto debajo"
+
+msgid "Tipus de vista"
+msgstr "Tipo de vista"
+msgid "Escull com es mostraran les noticies"
+msgstr "Cómo se mostrarán las noticias"
+
+msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
+msgstr "Máximo número de noticias a mostrar (d'1 a 7)"
 
 #: genweb.theme/genweb/theme/portlets/fullnews.py:34
 #: genweb.theme/genweb/theme/portlets/news.py:34
@@ -509,7 +543,7 @@ msgstr "URL para abrir"
 
 #: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:42
 msgid "Warning"
-msgstr "Warning"
+msgstr "ATENCIÓN"
 
 #########
 # Types #
@@ -869,7 +903,7 @@ msgstr "No puedo entrar"
 #: genweb.theme/genweb/theme/portlets/templates/fullnews.pt:10
 #: genweb.theme/genweb/theme/portlets/templates/news.pt:9
 msgid "genweb-noticies"
-msgstr "Noticias <i class=\"icon-news large-icon pull-right\"></i>"
+msgstr "Noticias <span class=\"icon-news large-icon pull-right\"></span>"
 
 #. "genweb-opcionspathbar"
 #. Default: "Opcions:"
@@ -1051,6 +1085,9 @@ msgstr "contenido como vista"
 #: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:42
 msgid "genweb_content_actions_vista_de_carpeta"
 msgstr "Vistas de la carpeta"
+
+msgid "genweb_content_actions_vista_de_document"
+msgstr "Vistas de página"
 
 # Direccio
 #. Default: "Direcció"
@@ -1288,17 +1325,17 @@ msgstr "Es el literal que aparece al pie de la página o en el texto alternativo
 #. Default: "Treu les icones per compartir en xarxes socials ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:206
 msgid "help_treu_icones_xarxes_socials"
-msgstr "Mostrar los iconos para compartir las redes sociales ..."
+msgstr "Oculta los iconos para compartir en redes sociales ..."
 
 #. Default: "Treiem la imatge de la capçalera per ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:188
 msgid "help_treu_imatge_capsalera"
-msgstr "Mostrar la imagen de la cabecera"
+msgstr "Oculta la imagen de la cabecera por ..."
 
 #. Default: "Treu el menú horitzontal ..."
 #: genweb.controlpanel/genweb/controlpanel/interface.py:197
 msgid "help_treu_menu_horitzontal"
-msgstr "Mostrar el menu horizontal"
+msgstr "Oculta el menú horizontal ..."
 
 #. Default: "Pàgina d'inici"
 msgid "homepage"
@@ -1412,7 +1449,7 @@ msgstr "Universitat Politècnica de Catalunya, (Abrir en ventana nueva)"
 #. Default: "Another elusive title of the choose menu"
 #: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:74
 msgid "label_change_default_item"
-msgstr ""
+msgstr "Cambia contenido por defecto ..."
 
 #. Default: "The elusive title of the choose menu"
 #: genweb.theme/genweb/theme/templates/plone.app.contentmenu.contentmenu.pt:70
@@ -1483,6 +1520,9 @@ msgstr "Contraseña"
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:65
 msgid "label_query"
 msgstr "Términos de búsqueda "
+
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir los términos de búsqueda de los elementos que desee en la lista. La lista de resultados se actualiza de forma dinámica"
 
 #. Default: "RSS"
 #: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:66
@@ -1587,6 +1627,10 @@ msgstr "Administrar portlets"
 #. Default: "Concedir permisos"
 msgid "manage_site_permissions"
 msgstr "Conceder permisos"
+
+#. Default: "Undo"
+msgid "undo_form"
+msgstr "Deshacer"
 
 #. Default: "Curs"
 msgid "master_curso"
@@ -1803,17 +1847,17 @@ msgstr "Pincha en el marcador para ir a UPCmaps"
 #. Default: "Treu les icones per compartir en xarxes socials"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:204
 msgid "treu_icones_xarxes_socials"
-msgstr "Mostrar los iconos para compartir las redes sociales"
+msgstr "Oculta los iconos para compartir en redes sociales"
 
 #. Default: "Treu la imatge de la capçalera"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:186
 msgid "treu_imatge_capsalera"
-msgstr "Mostrar las imagenes de cabecera"
+msgstr "Oculta la imagen de la cabecera"
 
 #. Default: "Treu el menú horitzontal"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:195
 msgid "treu_menu_horitzontal"
-msgstr "Mostrar el menu horizontal"
+msgstr "Oculta el menú horizontal"
 
 #: genweb.banners/genweb/banners/content/banner.py:23
 msgid "url"
@@ -1842,3 +1886,183 @@ msgstr "Persona de contacto"
 
 msgid "No hi ha elements"
 msgstr "No hay elementos"
+
+msgid "contents_pretty_view"
+msgstr "Vista contenidos"
+
+msgid "itemstable_view"
+msgstr "Vista con iconos"
+
+msgid "summary_view_news"
+msgstr "Vista noticias"
+
+msgid "folder_index_view"
+msgstr "Índice de contenidos"
+
+msgid "see_past_events"
+msgstr "Ver eventos pasados"
+
+msgid "back_to_events"
+msgstr "Volver a eventos"
+
+msgid "past_events"
+msgstr "Eventos pasados"
+
+msgid "no_events"
+msgstr "No hay eventos"
+
+msgid "dontcopy_homepage"
+msgstr " La página de bienvenida es necesaria para el correcto funcionamiento del Genweb. No se tiene que borrar, copiar o renombrar."
+
+msgid "help_static_content_title_ca"
+msgstr "Opcional: título del portlet"
+
+msgid "help_static_content_url_ca"
+msgstr "La URL completa de la página desde dónde queremos visualizar el contenido."
+
+msgid "help_static_content_element_ca"
+msgstr "Aquí se puede introducir un id, clase o elemento html. Por ejemplo, en una página genweb típica, todo el contenido está dentro de #content, y todo el contenido sin el título dentro de #content-core"
+
+msgid "multi_email"
+msgstr "Seleccionar la dirección de envío"
+
+msgid "help_contacte_multi_email"
+msgstr "Se puede seleccionar la dirección de correo que recibe el mensaje de contacto."
+
+#############################
+# Portlet NewsEventsListing #
+#############################
+
+msgid "all_news"
+msgstr "Todas las noticias"
+
+msgid "mode_future_link"
+msgstr "Próximos"
+
+msgid "mode_past_link"
+msgstr "Pasados"
+
+msgid "mode_month_link"
+msgstr "Mes"
+
+msgid "mode_week_link"
+msgstr "Semana"
+
+msgid "mode_day_link"
+msgstr "Día"
+
+msgid "prev_month_link"
+msgstr "Mes anterior"
+
+msgid "this_month_link"
+msgstr "Mes actual"
+
+msgid "next_month_link"
+msgstr "Próximo mes"
+
+msgid "prev_week_link"
+msgstr "Semana anterior"
+
+msgid "this_week_link"
+msgstr "Semana actual"
+
+msgid "next_week_link"
+msgstr "Próxima semana"
+
+msgid "prev_day_link"
+msgstr "Día anterior"
+
+msgid "today_link"
+msgstr "Hoy"
+
+msgid "next_day_link"
+msgstr "Día siguiente"
+
+#########################
+# genweb.upc contact form
+#########################
+
+#: genweb.upc/genweb/upc/browser/contact.py:151
+msgid "The entered text does not match the text in the image"
+msgstr "El texto introducido no coindice con el de la imagen"
+
+################
+# Subhome type #
+################
+
+#. "manage_subhomeportlets_link"
+#. Default: "Manage subhome page"
+#: genweb.upc/genweb/upc/templates/genweb.theme.browser.viewlets_templates.manage_portlets_fallback.pt
+msgid "manage_subhomeportlets_link"
+msgstr "Administra el tablero de portlets"
+
+#######################
+# Delete confirmation #
+#######################
+
+msgid "alert_really_delete_contents"
+msgstr "¿Seguro que deseas eliminar estos contenidos?"
+
+msgid "delete"
+msgstr "Eliminar"
+
+msgid "cancel"
+msgstr "Cancelar"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:310
+msgid "Add Multi-view Collection Portlet"
+msgstr "Agregar un portlet de colección multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:99
+msgid "Choose how the portlet must be rendered"
+msgstr "Elige cómo se debe mostrar el portlet"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:323
+msgid "Edit Multi-view Collection Portlet"
+msgstr "Edita portlet de colección multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:90
+msgid "Exclude the Current Context"
+msgstr "Excluir el contexto actual"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:55
+msgid "Find the collection which provides the items to list"
+msgstr "Busque la colección que proporciona los elementos a listar"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:76
+msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+msgstr "Si está habilitado, todos los enlaces externos en la región de contenido se abrirán en una nueva ventana."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:84
+msgid "If enabled, effective dates will be shown underneath the items listed."
+msgstr "Si está habilitado, las fechas efectivas se mostrarán bajo los elementos listados."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:91
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "Si está habilitado, el listado no incluirá al elemento actual para el que se está mostrando el portlet."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:32
+msgid "List view"
+msgstr "Lista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:83
+msgid "Show dates"
+msgstr "Mostrar fechas"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:75
+msgid "Show more... link"
+msgstr "Mostrar enlace más..."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:54
+msgid "Target collection"
+msgstr "Colección de destino"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
+msgid "View type"
+msgstr "Tipo de vista"
+
+msgid "desc_privacy"
+msgstr "Puedes encontrar las condiciones de uso y privacidad <a href='https://www.upc.edu/es/aviso-legal/condiciones-de-uso-y-privacidad' target='_blank'>aquí</a>"
+
+msgid "title_privacy"
+msgstr "He leído y acepto las condiciones de uso y privacidad"

@@ -2893,12 +2893,12 @@ msgstr ""
 #: src/zope/app/form/browser/itemswidgets.py:445
 #. Default: "(no value)"
 msgid "vocabulary-missing-single-value-for-edit"
-msgstr ""
+msgstr "(nada seleccionado)"
 
 #: src/zope/app/form/browser/itemswidgets.py:484
 #. Default: "(no values)"
 msgid "vocabulary-missing-multiple-value-for-edit"
-msgstr ""
+msgstr "(nada seleccionado)"
 
 #: src/zope/app/form/browser/metaconfigure.py:261
 #: src/zope/app/security/browser/configure.zcml:71
@@ -5714,4 +5714,3 @@ msgstr ""
 #: src/zope/viewlet/metadirectives.py:99
 msgid "view"
 msgstr ""
-

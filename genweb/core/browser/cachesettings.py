@@ -124,10 +124,10 @@ cacheprofile = """
   <record name="plone.app.caching.moderateCaching.lastModified">
     <field type="plone.registry.field.Bool">
       <description>Turn on Last-Modified headers</description>
-      <required>False</required>
+      <required>True</required>
       <title>Last-modified validation</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.moderateCaching.ramCache">
     <field type="plone.registry.field.Bool">
@@ -151,7 +151,7 @@ cacheprofile = """
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value>Accept-Encoding, User-Agent</value>
+    <value>Accept-Encoding, User-Agent, X-Anonymous</value>
   </record>
   <record name="plone.app.caching.strongCaching.anonOnly">
     <field type="plone.registry.field.Bool">
@@ -159,7 +159,7 @@ cacheprofile = """
       <required>False</required>
       <title>Only cache for anonymous users</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.app.caching.strongCaching.etags">
     <field type="plone.registry.field.Tuple">
@@ -184,7 +184,7 @@ cacheprofile = """
       <required>False</required>
       <title>Maximum age</title>
     </field>
-    <value>86400</value>
+    <value>2419200</value>
   </record>
   <record name="plone.app.caching.strongCaching.ramCache">
     <field type="plone.registry.field.Bool">
@@ -208,7 +208,7 @@ cacheprofile = """
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value>Accept-Encoding, User-Agent</value>
+    <value>Accept-Encoding, User-Agent, X-Anonymous</value>
   </record>
   <record name="plone.app.caching.weakCaching.anonOnly">
     <field type="plone.registry.field.Bool">
@@ -256,7 +256,7 @@ cacheprofile = """
       <required>False</required>
       <title>Vary</title>
     </field>
-    <value>Accept-Encoding, User-Agent</value>
+    <value>Accept-Encoding, User-Agent, X-Anonymous</value>
   </record>
   <record field="cachingProxies" interface="plone.cachepurging.interfaces.ICachePurgingSettings" name="plone.cachepurging.interfaces.ICachePurgingSettings.cachingProxies">
     <field type="plone.registry.field.Tuple">

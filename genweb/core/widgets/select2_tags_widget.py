@@ -25,7 +25,7 @@ import zope.schema
 class Select2TagsInputWidget(textarea.TextAreaWidget):
     """Widget for select site tags"""
     zope.interface.implementsOnly(ITagsSelectWidget)
-    klass = u"tags-token-input-widget"
+    klass = u'tags-token-input-widget'
     display_template = ViewPageTemplateFile('select2_user_display.pt')
     input_template = ViewPageTemplateFile('select2_user_input.pt')
 

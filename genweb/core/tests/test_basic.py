@@ -1,6 +1,6 @@
 import unittest2 as unittest
-from genweb.core.testing import GENWEBUPC_INTEGRATION_TESTING
-from genweb.core.testing import GENWEBUPC_FUNCTIONAL_TESTING
+from genweb.core.testing import GENWEB_INTEGRATION_TESTING
+from genweb.core.testing import GENWEB_FUNCTIONAL_TESTING
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter, queryUtility
 from zope.interface import alsoProvides
@@ -23,7 +23,7 @@ import transaction
 
 class IntegrationTest(unittest.TestCase):
 
-    layer = GENWEBUPC_INTEGRATION_TESTING
+    layer = GENWEB_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -72,6 +72,19 @@ class IntegrationTest(unittest.TestCase):
         obj2 = IImportant(self.portal.test_adapter)
         self.assertEqual(obj2.is_important, True)
 
+    def test_favorites(self):
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        self.portal.invokeFactory('Folder', 'prova', title=u"Soc una carpeta")
+        prova = self.portal['prova']
+        prova.invokeFactory('Folder', 'prova', title=u"Soc una carpeta")
+        prova2 = prova['prova']
+
+        from genweb.core.adapters.favorites import IFavorite
+        IFavorite(prova2).add(TEST_USER_NAME)
+        self.assertTrue(TEST_USER_NAME in IFavorite(prova2).get())
+        self.assertTrue(TEST_USER_NAME not in IFavorite(prova).get())
+
     def test_protected_content(self):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         login(self.portal, TEST_USER_NAME)
@@ -88,7 +101,7 @@ class IntegrationTest(unittest.TestCase):
 
 class FunctionalTest(unittest.TestCase):
 
-    layer = GENWEBUPC_FUNCTIONAL_TESTING
+    layer = GENWEB_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -111,4 +124,4 @@ class FunctionalTest(unittest.TestCase):
 
         self.browser.open(portalURL)
 
-        self.assertTrue("Congratulations! You have successfully installed Plone." in self.browser.contents)
+        self.assertTrue('Congratulations! You have successfully installed Plone.' in self.browser.contents)

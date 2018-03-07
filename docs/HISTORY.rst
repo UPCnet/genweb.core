@@ -1,11 +1,601 @@
 Changelog
 =========
 
-4.5.1 (unreleased)
-------------------
+4.8.43 (unreleased)
+-------------------
 
 - Nothing changed yet.
 
+
+4.8.42 (2017-11-21)
+-------------------
+
+* Translate new portlet [Corina Riba]
+* New tiny template [Corina Riba]
+* Change homeupc protocol and links [Corina Riba]
+* renamed value [Roberto Diaz]
+* Show News Items in App code [Roberto Diaz]
+* remove unused versionable behaviour [Roberto Diaz]
+
+4.8.41 (2017-08-04)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* added new states to dropdown colors [Roberto Diaz]
+
+4.8.40 (2017-07-18)
+-------------------
+
+* Move helper to genweb.upc [Corina Riba]
+
+4.8.39 (2017-07-17)
+-------------------
+
+* Listar portlets contingut existent [Corina Riba]
+
+4.8.38 (2017-07-17)
+-------------------
+
+* Busca portlets y paquetes [Corina Riba]
+
+4.8.37 (2017-04-20)
+-------------------
+
+* Traducciones [Corina Riba]
+* Update plone.po [Corina Riba]
+* Translate modification date [Corina Riba]
+
+4.8.36 (2017-03-22)
+-------------------
+
+* Translations [Corina Riba]
+
+4.8.35 (2017-03-13)
+-------------------
+
+* Translations [Corina Riba]
+
+4.8.34 (2017-03-09)
+-------------------
+
+* Literals per afegir convocatòria en els esdeveniments. [Iago López Fernández]
+
+4.8.33 (2017-02-01)
+-------------------
+
+* Set timeout of Serveis TIC WS client GET requests [Santi]
+* error en literal [roberto.diaz]
+
+4.8.32 (2016-12-19)
+-------------------
+
+* Add toucher 'portal_setup_import' [Santi]
+
+4.8.31 (2016-12-15)
+-------------------
+
+* Add Multi-view Collection portlet i18n [Santi]
+* tocador traductor noticias [Alberto Duran]
+
+4.8.30 (2016-11-14)
+-------------------
+
+* remove incorrect toucher [Alberto Duran]
+* when remove user portrait, set default image [Paco Gregori]
+* Add getCollectionDefaultPages getter [Santi]
+*  [Santi]
+* The getter lists the value of the property 'default_page' (if [Santi]
+* defined) for contents with type Collection. [Santi]
+
+4.8.29 (2016-11-03)
+-------------------
+
+* check CSRF in touchers only when plone.protect is present [Alberto Duran]
+
+4.8.28 (2016-10-24)
+-------------------
+
+* tocadors per actuacio js [Alberto Duran]
+* Solucionar que no pete rebuild_user_catalog [Pilar Marinas]
+* Fix generate_user_id patch [Santi]
+*  [Santi]
+* Check for None values in data dict before invoking str::lower method. [Santi]
+
+4.8.27 (2016-10-05)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [roberto.diaz]
+* changed view syncldapgroups to add BO mails and zope.public view [roberto.diaz]
+* Fix tests [Santi]
+* Improve indicators API [Santi]
+*  [Santi]
+* - Include type and frequency in category definition. [Santi]
+* - Add CalculatorException class. [Santi]
+* changed cfg url [Roberto Diaz]
+* Añadir campos ldap para filtrar grupos [Pilar Marinas]
+* SyncLDAPGroups IDisableCSRFProtection [Pilar Marinas]
+
+4.8.26 (2016-09-22)
+-------------------
+
+* mantenir vistes per defecte al tocador [Alberto Duran]
+* tocador per seleccionar vista de les carpetes per parametre [Alberto Duran]
+* modifiy require to toggle subscription tag [Paco Gregori]
+
+4.8.25 (2016-09-15)
+-------------------
+
+* move js to correct position [Alberto Duran]
+
+4.8.24 (2016-09-13)
+-------------------
+
+* tocador para activar nuevo js colecciones [Alberto Duran]
+* traduccions vista document [Alberto Duran]
+
+4.8.23 (2016-09-06)
+-------------------
+
+* added LOG messages [roberto.diaz]
+* added IPDB to core [Roberto Diaz]
+
+4.8.22 (2016-07-21)
+-------------------
+
+* Fix indicators API tests [Santiago Cortes]
+* Add simplejson, pyyaml dependencies [Santiago Cortes]
+* Add indicators API [Santiago Cortes]
+*  [Santiago Cortes]
+* Indicators API provides Genweb developers with a set of classes that [Santiago Cortes]
+* manage the communication with the "Indicadors TIC" web service [Santiago Cortes]
+* (https://indicadorstic.upc.edu/indicadorstic/). [Santiago Cortes]
+* changed comments to <tal:comment replace="nothing"> [root@peterpre]
+* updating fontello css routes [roberto.diaz]
+
+4.8.21 (2016-07-06)
+-------------------
+
+* force https [Alberto Duran]
+* acces to right rolemap [Alberto Duran]
+
+4.8.20 (2016-06-30)
+-------------------
+
+* permisos per editar la graella a Editors i Contributors [Alberto Duran]
+
+4.8.19 (2016-06-29)
+-------------------
+
+* rename touchers according python naming convention [Alberto Duran]
+* refactor toucher [Alberto Duran]
+* refactor toucher getControlPanelSettings & reinstallGenwebUPCWithLanguages [Alberto Duran]
+* toucher folder_contents Contributor role [Alberto Duran]
+* translate new views in fullnews portlet [oscar.albareda]
+* translate new views in fullnews portlet [oscar.albareda]
+
+4.8.18 (2016-06-16)
+-------------------
+
+* without ipdb [Alberto Duran]
+
+4.8.17 (2016-06-16)
+-------------------
+
+* Undo form redirect to actual url context [Alberto Duran]
+
+4.8.16 (2016-06-16)
+-------------------
+
+* commenting unused and bypassed by everyone log messages about GetMemberById :) [roberto.diaz]
+* noves traduccions i demana confirmacio al eliminar [Alberto Duran]
+* actualized cache settings [Alberto Duran]
+* canvis config cache, permisos clouseau [Alberto Duran]
+* refactor touchersv2 [Alberto Duran]
+* refactor touchers [Alberto Duran]
+* tocador refinat per info GW controlpanel i extres [Alberto Duran]
+* tocador refinat per info GW controlpanel [Alberto Duran]
+* tocador per info GW controlpanel [Alberto Duran]
+* tocador arregla mountpoints [Alberto Duran]
+* Protect contact data [Corina Riba]
+* actualizat tocador set default config for safe_html [Alberto Duran]
+
+4.8.15 (2016-06-02)
+-------------------
+
+* retrieve white_list from Tiny again... [roberto.diaz]
+* getContactEmails (Corina) ;) [Alberto Duran]
+* added transaction commit for reinstall GW control panel [roberto.diaz]
+
+4.8.14 (2016-06-02)
+-------------------
+
+* Update views.py [Roberto Diaz]
+*  [Roberto Diaz]
+* remove stirng error [Roberto Diaz]
+* tocador estils tiny v2 [Alberto Duran]
+* add soup for user tags and views to toggle [Paco Gregori]
+* remove duplicate text-decoration in new gw [Alberto Duran]
+* tocador domains per purgar cache [Alberto Duran]
+* New bulk_action to obtain contact email [Corina Riba]
+* add is_flash and is_outoflist indexers [Paco Gregori]
+* adapters flash and outoflist to news type [Paco Gregori]
+* props cache, tocador tiny, tocador filtre html [Alberto Duran]
+
+4.8.13 (2016-05-12)
+-------------------
+
+* tocador per reinistalar genweb.upc conservant idiomes [Alberto Duran]
+* traduccions Subhome [Alberto Duran]
+
+4.8.12 (2016-04-18)
+-------------------
+
+* script modified to take LDAP config from control panel v2 [Alberto Duran]
+* script modified to take LDAP config from control panel [Alberto Duran]
+
+4.8.11 (2016-04-07)
+-------------------
+
+* Viewlet production_resources [root@shayla]
+* Try IDisableCSRFProtection [root@shayla]
+* set default view [Alberto Duran]
+* tocador per LIF i LRF [Alberto Duran]
+* Fix i18n messages for control panel [Santiago Cortes]
+*  [Santiago Cortes]
+* See https://gn6.upc.edu/tiquets/control/tiquetDetallDadesGenerals?requirementId=653864 [Santiago Cortes]
+* Add i18n messages for contact form validation [Santiago Cortes]
+*  [Santiago Cortes]
+* Add the invalid captcha message for the form validation in ca, es, en. [Santiago Cortes]
+* correct view for events [Alberto Duran]
+* tocador remove old icon collection [Alberto Duran]
+* tocador per config sitemap a 3 nivells [Alberto Duran]
+
+4.8.10 (2016-03-17)
+-------------------
+
+* add CSRF patch with user_catalog function [Paco Gregori]
+* Solucionado bug permisos dexterity [Pilar Marinas]
+* fix tocador types tool [Alberto Duran]
+
+4.8.9 (2016-03-08)
+------------------
+
+* tocador per types tool [Alberto Duran]
+* updated history [roberto.diaz]
+
+4.8.8 (2016-03-03)
+------------------
+
+* updated i18n [roberto.diaz]
+
+4.8.7 (2016-03-03)
+------------------
+
+* register portlets [Alberto Duran]
+
+4.8.6 (2016-03-03)
+------------------
+
+* nou tocador portlet news_events_listing [Alberto Duran]
+* traduccions vista esdeveniments (nova) [Alberto Duran]
+
+4.8.5 (2016-02-16)
+------------------
+
+* nou tocador per vistes de genwebs [Alberto Duran]
+* reubicacio traduccions vistes carpeta [Alberto Duran]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Update style extractor [Victor Fernandez de Alba]
+* Modify user catalog if property different value [Pilar Marinas]
+
+4.8.4 (2016-02-11)
+------------------
+
+* traduccions per enquesta (poll) [Alberto Duran]
+* traduccions vista carpeta [Alberto Duran]
+* Remove user from catalog extender [Pilar Marinas]
+* SC: join table templates [Alberto Duran]
+* check CSRF for alsoProvides [Alberto Duran]
+
+4.8.3 (2016-02-02)
+------------------
+
+* New helpers for update pac view names [Victor Fernandez de Alba]
+
+4.8.2 (2016-02-02)
+------------------
+
+* New helpers for upgrades [Victor Fernandez de Alba]
+* remove unused import and add new template [Alberto Duran]
+* Add new cache settings [Victor Fernandez de Alba]
+
+4.8.1 (2016-01-14)
+------------------
+
+* Add icon_blank image [Corina Riba]
+* Disable CRSF protection for debug helper [Victor Fernandez de Alba]
+* Update compilation problems [Victor Fernandez de Alba]
+* Fix next version to avoid confusions [Victor Fernandez de Alba]
+
+4.8 (2016-01-07)
+----------------
+
+* Ditch five.pt use in all Genweb [Victor Fernandez de Alba]
+* Fix wrong API method [Victor Fernandez de Alba]
+* Traduction Events [Alberto Duran]
+
+4.7.19 (2015-12-01)
+-------------------
+
+* Traduccions editar fitxer [Pilar Marinas]
+* disable CSRFProtection to protectContent helper [Paco Gregori]
+* All news translation [hanirok]
+
+4.7.18 (2015-11-10)
+-------------------
+
+* Re-release x2.
+
+
+4.7.17 (2015-11-10)
+-------------------
+
+* Re-release.
+
+
+4.7.16 (2015-11-10)
+-------------------
+
+* Add missing elasticsearch module [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* New utility for elasticsearch connections [Victor Fernandez de Alba]
+
+4.7.15 (2015-11-05)
+-------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Fix getToolByName self object [Victor Fernandez de Alba]
+* Translate navigation events portlet [hanirok]
+* New pluggable changeMemberPortrait [Victor Fernandez de Alba]
+* Translate new events portlet [hanirok]
+* Tests for new portlet [Victor Fernandez de Alba]
+* Add helper for detect write on reads [Victor Fernandez de Alba]
+* Fix HISTORY [Victor Fernandez de Alba]
+
+4.7.14 (2015-10-21)
+-------------------
+
+* Hide in the function the import of the new CSRF helper [Victor Fernandez de Alba]
+* New registry setting for apply default languages [Victor Fernandez de Alba]
+* Add cache helper [Victor Fernandez de Alba]
+
+4.7.13 (2015-10-01)
+-------------------
+
+* add helper to remove duplicate genweb settings [Paco Gregori]
+* Bullet proof provideAdapter by refactor it to grok like [Victor Fernandez de Alba]
+* Bullet proof testing boilerplate [Victor Fernandez de Alba]
+
+4.7.12 (2015-09-29)
+-------------------
+
+* afegeix propietats fila i cel·la a taula [Alberto Duran]
+* Solucionat no hi ha dades al contacte [Alberto Duran]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Fix subjects select2 vocabulary helper view for include as id the title as well. [Victor Fernandez de Alba]
+* Message contact message sent [hanirok]
+* revert title patch [helena orihuela]
+
+4.7.11 (2015-09-18)
+-------------------
+
+* Method to remove a user entry from soup [Carles Bruguera]
+* title fixed [helena orihuela]
+
+4.7.10 (2015-09-15)
+-------------------
+
+* Rebuild .mo
+
+
+4.7.9 (2015-09-15)
+------------------
+
+* Rebuild always catalog with unicode strings [Carles Bruguera]
+
+4.7.8 (2015-09-14)
+------------------
+
+* when add user to catalog, change username to lower [Paco Gregori]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate contact recipient [hanirok]
+
+4.7.7 (2015-09-10)
+------------------
+
+* Traduccions [Pilar Marinas]
+
+4.7.6 (2015-09-09)
+------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* New patch for normalize LDAP usernames to lowercase. This completes the normalization of the full system. [Victor Fernandez de Alba]
+
+4.7.5 (2015-09-08)
+------------------
+
+* Fix tests [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+* Re-refactor for not have to include template in CSS and JS resource viewlets [Victor Fernandez de Alba]
+* Traducciones repeticion eventos [Pilar Marinas]
+* Fix typo with resources viewlet [Victor Fernandez de Alba]
+* New resource viewlet base class [Victor Fernandez de Alba]
+
+4.7.4 (2015-09-04)
+------------------
+
+* Unify add_user_to_catalog to utils module. [Carles Bruguera]
+* Comments in descending order by date [helena orihuela]
+* Add tests for viewlets [Victor Fernandez de Alba]
+* Adapt to new package genweb.cdn [Victor Fernandez de Alba]
+* Traduccions [Pilar Marinas]
+
+4.7.3 (2015-07-30)
+------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Victor Fernandez de Alba]
+
+4.7.2 (2015-07-30)
+------------------
+
+* Fix cache [Victor Fernandez de Alba]
+* Fix templates [Victor Fernandez de Alba]
+
+4.7.1 (2015-07-29)
+------------------
+
+* Added helper to update the tiny templates [Victor Fernandez de Alba]
+
+4.7 (2015-07-28)
+----------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate pasat [hanirok]
+* Improve boilerplate for genweb.core [Victor Fernandez de Alba]
+* Cambio literales Pestanyes [hanirok]
+* Translation warning message and add new template [hanirok]
+
+4.9 (2015-07-24)
+----------------
+
+* Traducccions [Pilar Marinas]
+* New template Pestanyes [hanirok]
+* Canvi plantilla Pestanyes [hanirok]
+
+4.8 (2015-07-14)
+----------------
+
+* Traduccions [Pilar Marinas]
+* Tranlations Allow discussion [Pilar Marinas]
+* New helper views for touch instances [Victor Fernandez de Alba]
+* fixed bug to add user+extended with API [Paco Gregori]
+* Update i18n [Victor Fernandez de Alba]
+
+4.7 (2015-06-25)
+----------------
+
+* Re-released under the new "minor" version.
+
+
+4.6.4 (2015-06-25)
+------------------
+
+* genweb.js in place and css and js viewlets. Transferred components to genweb.js [Victor Fernandez de Alba]
+* Add the new environment var for setting the purge cache server and new doral assignation [Victor Fernandez de Alba]
+* Add support for custom icon list on TinyMCE. [Victor Fernandez de Alba]
+* Translations Contents index view [hanirok]
+
+4.6.3 (2015-06-17)
+------------------
+
+* Translate portlets [hanirok]
+* Translate leadimage [Pilar Marinas]
+* Tranlate objectius [hanirok]
+* Add icon_blank in genwebtheme_custom [Pilar Marinas]
+* Guard for attribute [Victor Fernandez de Alba]
+
+4.6.2 (2015-06-10)
+------------------
+
+* Move out ldap group search code [Carles Bruguera]
+* Add user to catalog [Pilar Marinas]
+* Improve the method of acquiring the current (if enabled) user properties extender, and make the default property backend (IPropertiesPlugin) the more preferent one. [Victor Fernandez de Alba]
+
+4.6.1 (2015-05-27)
+------------------
+
+* Disable right column in DX add forms [Victor Fernandez de Alba]
+* Edit form right-portlet-less [Victor Fernandez de Alba]
+
+4.6 (2015-05-18)
+----------------
+
+* Translation view name [hanirok]
+* RAtionalize IGWUUID [Victor Fernandez de Alba]
+* PEP8 [Victor Fernandez de Alba]
+* Adding p.a.lockingbehavior [Victor Fernandez de Alba]
+* Un-grok IGWUUID [Victor Fernandez de Alba]
+* Ungrok IGWUUID adapter [Victor Fernandez de Alba]
+* New contents view translation [hanirok]
+* Fix missing space on searchable_text index [Victor Fernandez de Alba]
+* Better displaying properties on this helper view [Victor Fernandez de Alba]
+* Updated [Victor Fernandez de Alba]
+* Fix previous commint [Victor Fernandez de Alba]
+* New catalog user viewer [Victor Fernandez de Alba]
+* New generic view for directory views [Victor Fernandez de Alba]
+* Updated for complete profile generic enough for not to override it [Victor Fernandez de Alba]
+* Add new test for IFavorite [Victor Fernandez de Alba]
+* Modify script name as it's so similar to 'instance' [Victor Fernandez de Alba]
+* Install/uninstall pre-commit-hooks for code analysis. [Victor Fernandez de Alba]
+* Implement notlegit mark for users created via a non subscriber means, e.g a test or ACL [Victor Fernandez de Alba]
+* Complete changes in searching users when the user properties are extended [Victor Fernandez de Alba]
+* Improve search function by allowing to search through all the fields by introducing the new joined searchable_text. [Victor Fernandez de Alba]
+* Fix favorites remove in case the user we are removing is not really favorited [Victor Fernandez de Alba]
+* New functional CSS grunt-powered viewlet [Victor Fernandez de Alba]
+* New json_request decorator [Victor Fernandez de Alba]
+* Documentation on indexes and its use [Victor Fernandez de Alba]
+* Add json_response method to utils [Victor Fernandez de Alba]
+* Update docs [Victor Fernandez de Alba]
+
+4.5.8 (2015-04-13)
+------------------
+
+* translate label back to previous page [Paco Gregori]
+* Translate label back to previous page [Paco Gregori]
+* add subject and creator to searchableText [Paco Gregori]
+* add subject and creator to searchableText [Paco Gregori]
+
+4.5.7 (2015-03-31)
+------------------
+
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+*  [hanirok]
+* Traducciones [hanirok]
+* Traucción workflow objectius [hanirok]
+* Fix tests [Victor Fernandez de Alba]
+* Images for content samples [hanirok]
+
+4.5.6 (2015-03-13)
+------------------
+
+* Re-Fix last [Victor Fernandez de Alba]
+
+4.5.5 (2015-03-13)
+------------------
+
+* Fix error introduced due to the new local user catalog index [Victor Fernandez de Alba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [hanirok]
+* Translate ServeisTIC view [hanirok]
+
+4.5.4 (2015-03-12)
+------------------
+
+* Updated for not directly depend on PAM [Victor Fernandez de Alba]
+
+4.5.3 (2015-03-12)
+------------------
+
+* Removed hard dependency on p.a.m. [Victor Fernandez de Alba]
+
+4.5.2 (2015-03-11)
+------------------
+
+* add missing reset user catalog view [Victor Fernandez de Alba]
+
+4.5.1 (2015-03-11)
+------------------
+
+* Fix mixed dependency on mrs.max, transferred to ulearn.core [Victor Fernandez de Alba]
 
 4.5.0 (2015-03-11)
 ------------------
@@ -35,17 +625,7 @@ Changelog
 -------------------
 
 * Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
-* added utf codification to py [Roberto Diaz]
-
-4.4.48 (2015-03-04)
--------------------
-
-* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
 * sort order in Tiny Templates [Roberto Diaz]
-
-4.4.48 (2015-03-04)
--------------------
-
 * Change name static portlet [hanirok]
 * TinyMCE. Quitar de style y tablestyle los valores por defecto [Paco Gregori]
 * Translate static portlet [hanirok]
@@ -369,6 +949,7 @@ Changelog
 -------------------
 
 * Merge [Victor Fernandez de Alba]
+
 4.3.28 (2014-07-24)
 -------------------
 
@@ -602,7 +1183,7 @@ Changelog
   utilities methods.
 
 4.3b1 (unreleased)
-----------------
+------------------
 - New versioning number for the 2013 version of Genweb UPC: "rovelló de pi".
 - New implementation from scratch, base of all the 2013 developments.
 - Traspassada tota la funcionalitat del paquet upc.genwebupc
@@ -629,12 +1210,14 @@ Changelog
 - Actualització a Plone 4.
 
 4.0b2 (dev)
--------------------
-Nova versió del paquet, amb els viewlets updatats.
+-----------
+
+Nova versió del paquet, amb els viewlets updatats:
+
 - Deprecat el viewlet de toolbar, updatant el de per defecte de Plone 4.
 - Afegida l'acció d'usuari 'carpeta arrel'.
 - Updatat el viewlet d'idiomes, utilitzant la estructura del original.
-- Inclusió de la vista de utilitats genweb.utils per *.
+- Inclusió de la vista de utilitats genweb.utils per a tothom.
 - Desconfiguració dels viewlets per a configuració posterior.
 - Update dels arxius .po i canvi al domini 'genweb'
 

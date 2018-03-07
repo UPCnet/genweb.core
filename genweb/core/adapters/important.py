@@ -55,6 +55,8 @@ class ImportantMarker(grok.Adapter):
 def importantIndexer(context):
     """Create a catalogue indexer, registered as an adapter for DX content. """
     return IImportant(context).is_important
+
+
 grok.global_adapter(importantIndexer, name='is_important')
 
 
@@ -64,4 +66,6 @@ def importantIndexerAT(context):
     populate the ``is_important`` index.
     """
     return IImportant(context).is_important
+
+
 grok.global_adapter(importantIndexerAT, name='is_important')

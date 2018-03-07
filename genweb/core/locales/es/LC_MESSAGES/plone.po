@@ -326,6 +326,11 @@ msgstr "Código de control"
 msgid "genweb_help_type_the_code"
 msgstr "Escriba las palabras de la imagen inferior"
 
+#. Default: "Recipient"
+#: genweb.theme/genweb/theme/browser/contact.py:92
+msgid "to_address"
+msgstr "Contacta con"
+
 msgid "more_news_link"
 msgstr "Más noticias"
 
@@ -334,6 +339,14 @@ msgstr "Quizás estabas buscando..."
 
 msgid "label_full_size"
 msgstr "Tamaño original imagen:"
+
+msgid "upc_heading_send_feedback_confirm"
+msgstr "El correo se ha enviado correctamente"
+
+msgid "upc_message_send_feedback_confirm"
+msgstr "Se ha enviado un correo con sus preguntas y/o comentarios."
+
+
 
 ############
 # portlets #
@@ -356,6 +369,9 @@ msgstr "Calendario"
 
 msgid "portlet_collection_title"
 msgstr "Colección"
+
+msgid "portlet_multiviewcollection_title"
+msgstr "Colección multi-vista"
 
 msgid "portlet_login_title"
 msgstr "Identificación"
@@ -398,3 +414,43 @@ msgstr "Si se activa, la lista no incluirá el elemento actual. El portlet se re
 
 msgid "UPCNews"
 msgstr "Actualidad UPC"
+
+#: CMFPlone/skins/plone_login/insufficient_privileges.pt:25
+msgid "label_return_to_page"
+msgstr "Volver a la página anterior"
+
+#: ./behaviors/leadimage.py:17
+msgid "Lead Image"
+msgstr "Imagen"
+
+#: ./behaviors/leadimage.py:23
+msgid "Lead Image Caption"
+msgstr "Pie de foto"
+
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir los términos de búsqueda de los elementos que desee en la lista. La lista de resultados se actualiza de forma dinámica"
+
+msgid "Number of items that will show up in one batch."
+msgstr "Número de elementos que se mostrará."
+
+msgid "Album view"
+msgstr "Álbum"
+
+################
+# Subhome type #
+################
+
+msgid "Subhome"
+msgstr "Tablero de portlets"
+
+msgid "Subhome Description"
+msgstr "Elemento que permite crear una página con contenidos de distintas partes de la web"
+
+msgid "ModificationDate"
+msgstr "Modificado"
+
+msgid "label_item_count"
+msgstr "Número de elementos"
+
+msgid "Nou Contingut existent"
+msgstr "Nuevo Contenido existente"

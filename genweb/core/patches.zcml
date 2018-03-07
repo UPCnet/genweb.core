@@ -17,7 +17,7 @@
         class="Products.TinyMCE.exportimport.TinyMCESettingsXMLAdapter"
         original="_importNode"
         replacement=".patches._importNode"
-        />        
+        />
 
     <monkey:patch
         description="Unicode normalization aware searches"
@@ -47,14 +47,6 @@
         replacement=".patches.filter_query"
         />
 
-<!-- TOREMOVE as soon 4.3.4 goes live. -->
-<!--     <monkey:patch
-        description="wc.fc can't delete the items in the case the site is in a mount point"
-        class="Products.CMFPlone.PloneTool.PloneTool"
-        original="deleteObjectsByPaths"
-        replacement=".patches.deleteObjectsByPaths"
-        /> -->
-
 <!-- TOREMOVE as soon it got fixed -->
     <monkey:patch
         description="CMFEditions versions_history_form doesn't show the preview for DX and five.pt"
@@ -76,12 +68,14 @@
         replacement=".patches.setMemberProperties"
         />
 
+    <!--  Commenting getMember By ID code
     <monkey:patch
         description="getMemberById SHOUT!"
         class="Products.CMFCore.MembershipTool.MembershipTool"
         original="getMemberById"
         replacement=".patches.getMemberById"
         />
+        -->
 
     <monkey:patch
         description="pas_member view override to user the user local catalog"
@@ -96,5 +90,57 @@
         original="author"
         replacement=".patches.author"
         />
+
+    <monkey:patch
+        description="Add subjects to searchableText"
+        module="plone.app.contenttypes.indexers"
+        original="SearchableText"
+        replacement=".patches.SearchableText"
+        />
+
+    <monkey:patch
+        description="Force to all dexterity types to hide the right portlet on the add form"
+        module="plone.dexterity.browser.add.DefaultAddForm"
+        original="update"
+        replacement=".browser.dxforms.update"
+        />
+
+     <monkey:patch
+        description="Force to the comments portlet to show comments in descending order from most newest to the most older"
+        module="plone.app.discussion.conversation.Conversation"
+        original="getThreads"
+        replacement=".patches.getThreads"
+        />
+
+     <monkey:patch
+        description="Patch to extend the features of the changeMemberPortrait"
+        class="Products.PlonePAS.tools.membership.MembershipTool"
+        original="changeMemberPortrait"
+        replacement=".patches.changeMemberPortrait"
+        />
+
+      <monkey:patch
+         description="Patch to extend the features of the deletePersonalPortrait"
+         class="Products.PlonePAS.tools.membership.MembershipTool"
+         original="deletePersonalPortrait"
+         replacement=".patches.deletePersonalPortrait"
+         />
+
+     <!-- LDAP and user objects related patches -->
+     <monkey:patch
+        description="Force LDAP plugin authenticate to normalize userids and usernames to lowercase"
+        module="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
+        original="getUserByAttr"
+        replacement=".patches.getUserByAttr"
+        />
+
+     <monkey:patch
+        description="Force LDAP plugin enumerate to normalize userids and usernames to lowercase"
+        module="Products.LDAPMultiPlugins.LDAPMultiPlugin.LDAPMultiPlugin"
+        original="enumerateUsers"
+        replacement=".patches.enumerateUsers"
+        />
+
+
 
 </configure>

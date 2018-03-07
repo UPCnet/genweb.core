@@ -26,7 +26,7 @@ msgstr "Afegeix ${name}"
 
 #: plone/dexterity/browser/add.py:107
 msgid "Add New Item operation cancelled"
-msgstr "La operació d'afegir un element ha estat cancel·lada"
+msgstr "L'operació d'afegir un element ha estat cancel·lada"
 
 #: plone/dexterity/browser/add.py:105 plone/dexterity/browser/edit.py:32
 msgid "Cancel"

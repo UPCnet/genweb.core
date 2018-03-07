@@ -2893,7 +2893,7 @@ msgstr ""
 #: src/zope/app/form/browser/itemswidgets.py:445
 #. Default: "(no value)"
 msgid "vocabulary-missing-single-value-for-edit"
-msgstr ""
+msgstr "(res seleccionat)"
 
 #: src/zope/app/form/browser/itemswidgets.py:484
 #. Default: "(no values)"
@@ -5714,4 +5714,3 @@ msgstr ""
 #: src/zope/viewlet/metadirectives.py:99
 msgid "view"
 msgstr ""
-

@@ -321,7 +321,18 @@ msgid "genweb_type_the_code"
 msgstr "Codi de control"
 
 msgid "genweb_help_type_the_code"
-msgstr "Escriviu les paraules de la imatge inferior"
+msgstr "Selecciona l'opció de sota per fer l'enviament"
+
+#. Default: "Recipient"
+#: genweb.theme/genweb/theme/browser/contact.py:92
+msgid "to_address"
+msgstr "Contacta amb"
+
+msgid "upc_heading_send_feedback_confirm"
+msgstr "El missatge s'ha enviat correctament."
+
+msgid "upc_message_send_feedback_confirm"
+msgstr "S'ha enviat un missatge de correu electrònic amb les seves preguntes i/o comentaris."
 
 #########
 # Types #
@@ -351,6 +362,9 @@ msgstr "Calendari"
 
 msgid "portlet_collection_title"
 msgstr "Col·lecció"
+
+msgid "portlet_multiviewcollection_title"
+msgstr "Col·lecció multi-vista"
 
 msgid "portlet_login_title"
 msgstr "Identificació"
@@ -405,9 +419,46 @@ msgstr "Si s'activa, la llista no inclourà l'element actual. El portlet es rend
 
 ### portlets assigned
 
-msgid "FullNews"
-msgstr "Notícies amb foto"
-
 #: CMFPlone/skins/plone_login/registered.pt:92
 msgid "label_log_in"
 msgstr "Identificació"
+
+msgid "serveistic_view"
+msgstr "Vista ServeisTIC"
+
+#: CMFPlone/skins/plone_login/insufficient_privileges.pt:25
+msgid "label_return_to_page"
+msgstr "Tornar a la pàgina anterior"
+
+#: ./behaviors/leadimage.py:17
+msgid "Lead Image"
+msgstr "Imatge"
+
+#: ./behaviors/leadimage.py:23
+msgid "Lead Image Caption"
+msgstr "Peu de foto"
+
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir els termes de cerca dels elements que vulgueu a la llista. La llista de resultats s'actualitza de forma dinàmica"
+
+msgid "Number of items that will show up in one batch."
+msgstr "Nombre d'elements que es mostrarà."
+
+msgid "Album view"
+msgstr "Album"
+
+################
+# Subhome type #
+################
+
+msgid "Subhome"
+msgstr "Graella de portlets"
+
+msgid "Subhome Description"
+msgstr "Element que permet afegir una pàgina amb continguts de diferents parts de la web"
+
+msgid "ModificationDate"
+msgstr "Modificat"
+
+msgid "label_item_count"
+msgstr "Nombre de elements"

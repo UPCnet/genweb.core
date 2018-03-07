@@ -32,18 +32,19 @@
     <span i18n:translate="">
     Upgrade this site
     </span>
-    <div class="prominent">
-        <a href="#"
-           target="_new"
-           tal:attributes="href context/absolute_url;
-                           title context/Title;"
-           tal:content="context/Title">
-            Site title
-        </a>
-        <span class="discreet"
-              tal:content="string:– ${context/getId}"/>
-    </div>
   </h1>
+  <div class="prominent">
+      <a href="#"
+         target="_new"
+         tal:attributes="href context/absolute_url;
+                         title context/Title;"
+         tal:content="context/Title">
+          Site title
+      </a>
+      <span class="discreet"
+            tal:content="string:– ${context/getId}"/>
+  </div>
+
   <p class="upgrade-info" i18n:translate="">
     More information about the upgrade procedure can be found in the
     documentation section of plone.org in the

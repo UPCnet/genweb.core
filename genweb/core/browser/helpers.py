@@ -2,59 +2,63 @@
 from five import grok
 from plone import api
 from Acquisition import aq_inner
-from App.config import getConfiguration
 from OFS.interfaces import IFolder
 from OFS.interfaces import IApplication
 from zope.interface import Interface
 from zope.component import queryUtility
-from zope.component import getUtility
 from zope.interface import alsoProvides
-from zope.event import notify
+import json
+import os
+import urllib
+import pkg_resources
+import logging
 
-from plone.dexterity.interfaces import IDexterityContent
-from Products.Archetypes.interfaces import IBaseObject
-
-from plone.dexterity.content import Container
-from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
 
-from Products.PluggableAuthService.events import PropertiesUpdated
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
 
-from repoze.catalog.query import Eq
-from souper.interfaces import ICatalogFactory
-from souper.soup import get_soup
-from souper.soup import Record
-
-from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
-from genweb.core.interfaces import IHomePage
 from genweb.core.interfaces import IProtectedContent
-from genweb.core.utils import add_user_to_catalog
 
-import json
+try:
+    pkg_resources.get_distribution('plone4.csrffixes')
+except pkg_resources.DistributionNotFound:
+    CSRF = False
+else:
+    from plone.protect.interfaces import IDisableCSRFProtection
+    CSRF = True
 
 
-DORSALS = {"1": "Ter Stegen", "2": "Montoya", "3": "Piqué",
-           "4": "Rakitic", "5": "Busquets", "6": "Xavi", "7": "Pedro",
-           "8": "Iniesta", "9": "Suárez", "10": "Messi", "11": "Neymar JR",
-           "12": "Rafinha", "13": "Bravo", "14": "Mascherano", "15": "Bartra"}
+def setupInstallProfile(profileid, steps=None):
+    """Installs the generic setup profile identified by ``profileid``.
+    If a list step names is passed with ``steps`` (e.g. ['actions']),
+    only those steps are installed. All steps are installed by default.
+    """
+    setup = api.portal.get_tool('portal_setup')
+    if steps is None:
+        setup.runAllImportStepsFromProfile(profileid, purge_old=False)
+    else:
+        for step in steps:
+            setup.runImportStepFromProfile(profileid,
+                                           step,
+                                           run_dependencies=False,
+                                           purge_old=False)
 
 
 class debug(grok.View):
-    """ Convenience view for faster degugging. Needs to be manager. """
+    """ Convenience view for faster debugging. Needs to be manager. """
     grok.context(Interface)
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         # Magic Victor debug view do not delete!
-        import ipdb; ipdb.set_trace() # Magic! Do not delete!!! :)
+        import ipdb; ipdb.set_trace()  # Magic! Do not delete!!! :)
 
 
 class monitoringView(grok.View):
@@ -75,6 +79,8 @@ class protectContent(grok.View):
     grok.require('cmf.ManagePortal')
 
     def render(self):
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
         context = aq_inner(self.context)
         alsoProvides(context, IProtectedContent)
 
@@ -91,13 +97,12 @@ class instanceindevelmode(grok.View):
 
 
 def getDorsal():
-    config = getConfiguration()
-    configuration = config.product_config.get('genwebconfig', dict())
-    zeo = configuration.get('zeo')
-    return zeo
+    """ Returns Zeo dorsal """
+    return os.environ.get('dorsal', False)
 
 
 def listPloneSites(zope):
+    """ List the available plonesites to be used by other function """
     out = []
     for item in zope.values():
         if IFolder.providedBy(item) and not IPloneSiteRoot.providedBy(item):
@@ -110,30 +115,37 @@ def listPloneSites(zope):
 
 
 class getZEO(grok.View):
-    """ Funció que agafa el numero de zeo al que esta assignat la instancia de
-        genweb. Per aixo, el buildout s'ha d'afegir una linea a la zope-conf-
-        additional:
-        zope-conf-additional =
-                <product-config genweb>
-                    zeo 9
-                </product-config>
-    """
+    """ [DEPRECATED] Redirect to get_zope """
     grok.name('getZEO')
     grok.context(Interface)
     grok.require('zope2.View')
 
-    def dorsal(self):
-        config = getConfiguration()
-        configuration = config.product_config.get('genwebconfig', dict())
-        zeo = configuration.get('zeo')
-        return zeo
+    def render(self):
+        self.request.response.redirect('get_zope')
 
-    def nomDorsal(self):
-        return DORSALS[self.dorsal()]
+
+class getZOPE(grok.View):
+    """ This view is used to know the dorsal (the Genweb enviroment) assigned to
+        this instance.
+    """
+    grok.name('get_zope')
+    grok.context(Interface)
+    grok.require('zope2.View')
+    grok.template('getzope')
+
+    def dorsal(self):
+        import socket
+        dorsal = os.environ.get('dorsal', False)
+        serverid = socket.gethostname()
+        if dorsal == '':
+            return '<span style="color:#6b2508; font-size: 12vw;">NaN' + "<br/>[" + str(serverid) + "]</span>"
+        else:
+            return dorsal
 
 
 class listPloneSitesView(grok.View):
-    grok.name('listPloneSites')
+    """ Returns a list with the available plonesites in this Zope """
+    grok.name('list_plone_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -141,8 +153,6 @@ class listPloneSitesView(grok.View):
         context = aq_inner(self.context)
         out = []
         for item in context.values():
-            #if IPloneSiteRoot.providedBy(item):
-            #    out.append(item)
             if IFolder.providedBy(item):
                 for site in item.values():
                     if IPloneSiteRoot.providedBy(site):
@@ -151,7 +161,8 @@ class listPloneSitesView(grok.View):
 
 
 class getFlavourSitesView(grok.View):
-    grok.name('getFlavourSites')
+    """ Returns the last layer installed for each plonesite """
+    grok.name('get_flavour_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -166,7 +177,8 @@ class getFlavourSitesView(grok.View):
 
 
 class getFlavourSiteView(grok.View):
-    grok.name('getFlavourSite')
+    """ Returns the last layer installed in this plonesite """
+    grok.name('get_flavour_site')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.View')
 
@@ -177,7 +189,8 @@ class getFlavourSiteView(grok.View):
 
 
 class getLanguagesSitesView(grok.View):
-    grok.name('getLanguagesSites')
+    """ Returns the last layer installed in this plonesite """
+    grok.name('get_languages_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -192,7 +205,8 @@ class getLanguagesSitesView(grok.View):
 
 
 class getDefaultLanguageSitesView(grok.View):
-    grok.name('getDefaultLanguageSites')
+    """ Returns default language for each plonesite """
+    grok.name('get_default_language_sites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -207,7 +221,8 @@ class getDefaultLanguageSitesView(grok.View):
 
 
 class getDefaultWFSitesView(grok.View):
-    grok.name('getDefaultWFSites')
+    """ Returns default workflow for each plonesite """
+    grok.name('get_default_wfsites')
     grok.context(IApplication)
     grok.require('zope2.View')
 
@@ -222,8 +237,18 @@ class getDefaultWFSitesView(grok.View):
 
 
 class configuraSiteCache(grok.View):
-    """ Vista que configura la caché del site corresponent. """
+    """ [DEPRECATED] Redirect to configure_site_cache """
     grok.name('configuraSiteCache')
+    grok.context(Interface)
+    grok.require('zope2.View')
+
+    def render(self):
+        self.request.response.redirect('configure_site_cache')
+
+
+class configureSiteCache(grok.View):
+    """ Vista que configura la caché del site corresponent. """
+    grok.name('configure_site_cache')
     grok.context(IPloneSiteRoot)
     grok.require('zope2.ViewManagementScreens')
 
@@ -239,356 +264,22 @@ class configuraSiteCache(grok.View):
         importer.importDocument(cacheprofile)
 
         cachepurginsettings = registry.forInterface(ICachePurgingSettings)
-        cacheserver = 'http://sylar.upc.es:90%02d' % int(getDorsal())
-        cachepurginsettings.cachingProxies = (cacheserver,)
 
-        return 'Configuracio de cache importada correctament.'
-
-
-class listLDAPInfo(grok.View):
-    grok.name('listLDAPInfo')
-    grok.context(IApplication)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        context = aq_inner(self.context)
-        plonesites = listPloneSites(context)
-        out = {}
-        for plonesite in plonesites:
-            acl_users = getToolByName(plonesite, 'acl_users')
-            try:
-                out[plonesite.id] = acl_users.ldapUPC.acl_users.getServers()
-            except:
-                print "Plonesite %s doesn't have a valid ldapUPC instance." % plonesite.id
-        return json.dumps(out)
+        varnish_url = os.environ.get('varnish_url', False)
+        logger = logging.getLogger('Genweb: Executing configure cache on site -')
+        logger.info('%s' % self.context.id)
+        if varnish_url:
+            cachepurginsettings.cachingProxies = (varnish_url,)
+            logger.info('Successfully set caching for this site')
+            return 'Successfully set caching for this site.'
+        else:
+            logger.info('There are not any varnish_url in the environment. No caching proxy could be configured.')
+            return 'There are not any varnish_url in the environment. No caching proxy could be configured.'
 
 
-class matagetHTTPCacheheaders(grok.View):
-    """ Canvia el portal_type dels objectes del PloneSurvey que tinguin espais en el nom del tipus"""
-
-    grok.name('matagetHTTPCacheheaders')
+class mirrorUIDs(grok.View):
     grok.context(IPloneSiteRoot)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        context = aq_inner(self.context)
-        portal = getToolByName(context, 'portal_url').getPortalObject()
-        ps = getToolByName(context, 'portal_setup')
-        toolset = ps.getToolsetRegistry()
-        required = toolset._required.copy()
-        existing = portal.keys()
-        changed = False
-        for name, info in required.items():
-            if name not in existing:
-                del required[name]
-                changed = True
-        if changed:
-            toolset._required = required
-            print 'Cleaned up the toolset registry.'
-
-        return required
-
-
-class removeBrokenCacheFu(grok.View):
-    """ Canvia el portal_type dels objectes del PloneSurvey que tinguin espais en el nom del tipus"""
-
-    grok.name('removeBrokenCacheFu')
-    grok.context(IPloneSiteRoot)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        from plone.app.upgrade.v40.alphas import removeBrokenCacheFu
-        context = aq_inner(self.context)
-
-        removeBrokenCacheFu(context)
-
-        return 'done'
-
-
-class MakeMeaHomePage(grok.View):
-    grok.name('makemeahomepage')
-    grok.context(Interface)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        alsoProvides(self.context, IHomePage)
-        if HAS_DXCT:
-            from plone.app.contenttypes.interfaces import IFolder
-            if IFolder.providedBy(self.context):
-                self.context.setLayout('homepage')
-        return self.request.response.redirect(self.context.absolute_url())
-
-
-class MakeMeaSubHomePage(grok.View):
-    grok.name('makemeasubhomepage')
-    grok.context(Interface)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        alsoProvides(self.context, IHomePage)
-        if HAS_DXCT:
-            from plone.app.contenttypes.interfaces import IFolder
-            if IFolder.providedBy(self.context):
-                self.context.setLayout('subhomepage')
-        return self.request.response.redirect(self.context.absolute_url())
-
-
-class BulkUserCreator(grok.View):
-    """
-        Convenience bulk user creator. It requires parametrization in code and
-        eventually, run this over a debug instance in production.
-    """
-    grok.name('bulkusercreator')
-    grok.context(IPloneSiteRoot)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        users = ['joan.giralt',
-                'gemma.baldris',
-                'carme.jimenez',
-                'lluis.malvis',
-                'joaquim.fernandez',
-                'pau.cabanyol',
-                'sandra.franch',
-                'jose.alberola',
-                'pedro.alvarez',
-                'francesc.guasch',
-                'angel.aguilera',
-                'javier.trueba',
-                'jesus.galceran',
-                'merce.oller',
-                'jordi.aguilar',
-                'david.figueres',
-                'josep.maria.jordana',
-                'annibal.manyas',
-                'alfredo.soldevilla',
-                'alex.muntada',
-                'albert.obiols',
-                'boris.martinez',
-                'carles.espadas',
-                'pepe.martinez',
-                'roberto.molina',
-                'raul.pastor',
-                'belen.lalueza',
-                'tonyi.gomez',
-                'rosa.ma.martin',
-                'jordi.enric.martinez',
-                'sandra.marsa',
-                'antoni.mayans',
-                'yolanda.blanc',
-                'susy.tur',
-                'toni.font',
-                'anna.casas',
-                'manoli.cano',
-                'andres.arco',
-                'esther.nadal',
-                'jose.angel.fernandez',
-                'elena.lopez.romera',
-                'eulalia.formenti',
-                'ignasi.mallafre',
-                'amador.alvarez',
-                'josep.m.haro',
-                'jose.luis.roncero',
-                'katty.torla',
-                'cristina.dantart',
-                'sara.perez',
-                'antonio.fernandez',
-                'jesus.otero',
-                'eulalia.font',
-                'rosa.martin',
-                'ruben.menendez',
-                'francesc.bassas',
-                'jordi.bofill',
-                'alicia.ruiz',
-                'cesc.garcia',
-                'manel.campano',
-                'david.ortin',
-                'jose.lazaro',
-                'sofia.pascual',
-                'luisa.vicente',
-                'enric.ribot',
-                'jose.marcos.lopez',]
-
-        for user in users:
-            # password = user[0].upper() + user.split('.')[1][0].upper() + user.split('.')[1][1:]
-
-            if not api.user.get(username=user):
-                api.user.create(email=user+'@upc.edu',
-                                username=user,
-                                password='1234')
-
-        return 'Done.'
-
-
-class BulkUserEraser(grok.View):
-    """
-        Convenience bulk user eraser. It requires parametrization in code and
-        eventually, run this over a debug instance in production.
-    """
-    grok.name('bulkusereraser')
-    grok.context(IPloneSiteRoot)
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        users = ['joan.giralt',
-                'gemma.baldris',
-                'carme.jimenez',
-                'lluis.malvis',
-                'joaquim.fernandez',
-                'pau.cabanyol',
-                'sandra.franch',
-                'jose.alberola',
-                'pedro.alvarez',
-                'francesc.guasch',
-                'angel.aguilera',
-                'javier.trueba',
-                'jesus.galceran',
-                'merce.oller',
-                'jordi.aguilar',
-                'david.figueres',
-                'josep.maria.jordana',
-                'annibal.manyas',
-                'alfredo.soldevilla',
-                'alex.muntada',
-                'albert.obiols',
-                'boris.martinez',
-                'carles.espadas',
-                'pepe.martinez',
-                'roberto.molina',
-                'raul.pastor',
-                'belen.lalueza',
-                'tonyi.gomez',
-                'rosa.ma.martin',
-                'jordi.enric.martinez',
-                'sandra.marsa',
-                'antoni.mayans',
-                'yolanda.blanc',
-                'susy.tur',
-                'toni.font',
-                'anna.casas',
-                'manoli.cano',
-                'andres.arco',
-                'esther.nadal',
-                'jose.angel.fernandez',
-                'elena.lopez.romera',
-                'eulalia.formenti',
-                'ignasi.mallafre',
-                'amador.alvarez',
-                'josep.m.haro',
-                'jose.luis.roncero',
-                'katty.torla',
-                'cristina.dantart',
-                'sara.perez',
-                'antonio.fernandez',
-                'jesus.otero',
-                'eulalia.font',
-                'rosa.martin',
-                'ruben.menendez',
-                'francesc.bassas',
-                'jordi.bofill',
-                'alicia.ruiz',
-                'cesc.garcia',
-                'manel.campano',
-                'david.ortin',
-                'jose.lazaro',
-                'sofia.pascual',
-                'luisa.vicente',
-                'enric.ribot',
-                'jose.marcos.lopez',]
-
-        for user in users:
-
-            if api.user.get(username=user):
-                api.user.delete(username=user)
-                print("Deleted user {}".format(user))
-
-        return 'Done.'
-
-
-class ListLastLogin(grok.View):
-    """ List the last_login information for all the users in this site. """
-    grok.context(IPloneSiteRoot)
-    grok.require('genweb.webmaster')
-
-    def render(self):
-        pmd = api.portal.get_tool(name='portal_memberdata')
-        pm = api.portal.get_tool(name='portal_membership')
-
-        output = []
-        for user in pmd._members.items():
-            wrapped_user = pm.getMemberById(user[0])
-            if wrapped_user:
-                fullname = wrapped_user.getProperty('fullname')
-                if not fullname:
-                    fullname = wrapped_user.getProperty('id')
-                last_login = wrapped_user.getProperty('last_login_time')
-                output.append('{}; {}'.format(fullname, last_login))
-        return '\n'.join(output)
-
-
-class ReinstallGWControlPanel(grok.View):
-    """ Reinstalls genweb.controlpanel in the current Plone site. """
-    grok.context(IPloneSiteRoot)
-    grok.name('reinstall_gwcontrolpanel')
-    grok.require('cmf.ManagePortal')
-
-    def render(self):
-        context = aq_inner(self.context)
-        output = []
-        qi = getToolByName(context, 'portal_quickinstaller')
-
-        if qi.isProductInstalled('genweb.controlpanel'):
-            qi.uninstallProducts(['genweb.controlpanel'], reinstall=True)
-            qi.installProducts(['genweb.controlpanel'], reinstall=True)
-            output.append('{}: Successfully reinstalled control panel'.format(context))
-        return '\n'.join(output)
-
-
-class BulkReinstallGWControlPanel(grok.View):
-    """
-        Reinstall genweb.controlpanel in all the Plone instance of this Zope.
-        Useful when added some parameter to the control panel and you want to
-        apply it at the same time in all the existing Plone sites in the Zope.
-    """
-    grok.context(IApplication)
-    grok.name('bulk_reinstall_gwcontrolpanel')
-    grok.require('cmf.ManagePortal')
-
-    def render(self):
-        context = aq_inner(self.context)
-        plonesites = listPloneSites(context)
-        output = []
-        for plonesite in plonesites:
-            response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/reinstall_gwcontrolpanel')
-            output.append(response.getBody())
-        return '\n'.join(output)
-
-
-class ResetLanguage(grok.View):
-    """
-        Re-set the language of each LRF according to its name. Execute in an LRF.
-    """
-    grok.context(Interface)
-    grok.name('resetlanguage')
-    grok.require('cmf.ManagePortal')
-
-    def render(self):
-        from plone.app.multilingual.interfaces import ILanguage
-        context = aq_inner(self.context)
-        pc = api.portal.get_tool('portal_catalog')
-        results = pc.unrestrictedSearchResults(path='/'.join(context.getPhysicalPath()))
-
-        for brain in results:
-            ob = brain._unrestrictedGetObject()
-            language_aware = ILanguage(ob, None)
-            if language_aware is not None:
-                language_aware.set_language(self.context.id)
-                ob.reindexObject(idxs=['Language', 'TranslationGroup'])
-
-
-class MirrorUIDs(grok.View):
-    grok.context(IPloneSiteRoot)
-    grok.name('mirroruids')
+    grok.name('mirror_uids')
     grok.require('cmf.ManagePortal')
 
     def update(self):
@@ -616,9 +307,9 @@ class MirrorUIDs(grok.View):
             self.output = '<br/>'.join(self.output)
 
 
-class MirrorStates(grok.View):
+class mirrorStates(grok.View):
     grok.context(IPloneSiteRoot)
-    grok.name('mirrorstates')
+    grok.name('mirror_states')
     grok.require('cmf.ManagePortal')
     grok.template('mirroruids')
 
@@ -689,148 +380,75 @@ class MirrorStates(grok.View):
             self.output = '<br/>'.join(self.output)
 
 
-class MigrateRLF(grok.View):
-    """ Used to migrate from old PAM sites to the current (Container based) one.
-        This is the version as of February 2015
-    """
-    grok.context(IPloneSiteRoot)
-    grok.name('old_migrate_rlf')
-    grok.require('zope2.ViewManagementScreens')
+class bulkExecuteScriptView(grok.View):
+    """ Execute one action view in all instances passed as a form parameter """
+    grok.context(IApplication)
+    grok.name('bulk_action')
+    grok.require('cmf.ManagePortal')
 
     def render(self):
-        portal = api.portal.get()
-        pc = api.portal.get_tool(name="portal_catalog")
-        lrfs = pc.searchResults(portal_type="LRF")
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        context = aq_inner(self.context)
+        args = self.request.form
+        view_name = self.request.form['view']
+        exclude_sites = self.request.form.get('exclude_sites', '').split(',')
+        plonesites = listPloneSites(context)
+        output = []
+        for plonesite in plonesites:
+            if plonesite.id not in exclude_sites:
+                print('======================')
+                print('Executing view in {}'.format(plonesite.id))
+                print('======================')
+                quoted_args = urllib.urlencode(args)
+                response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
+                output.append("""-- Executed view {} in site {} --<br/>""".format(view_name, plonesite.id))
+                output.append(response.getBody())
+        return '\n'.join(output)
 
-        text = []
-        for brain in lrfs:
-            lrf = portal[brain.id]
-            if lrf.__class__ != Container:
-                portal._delOb(brain.id)
 
-                lrf.__class__ = Container
-                portal._setOb(lrf.id, lrf)
-
-                text.append('Migrated lrf {}\n'.format(lrf.absolute_url()))
-        return ''.join(text) + '\nDone!'
-
-
-class MigrateRLF2roundFIGHT(grok.View):
-    """ Used to migrate from old PAM sites to the current (Container based) one.
-        This is the version as of February 2015
+class notSubProcessedBulkExecuteScriptView(grok.View):
     """
-    grok.context(IPloneSiteRoot)
-    grok.name('migrate_rlf')
-    grok.require('zope2.ViewManagementScreens')
-
-    def render(self):
-        portal = api.portal.get()
-        pc = api.portal.get_tool(name="portal_catalog")
-
-        lrfs = pc.searchResults(portal_type="LRF")
-        original_lrfs_ids = [lang.id for lang in lrfs]
-
-        # Disable constrains
-        pt = api.portal.get_tool('portal_types')
-        pt['Plone Site'].filter_content_types = False
-        PS_ALLOWED = pt['Plone Site'].allowed_content_types
-        pt['Plone Site'].allowed_content_types = PS_ALLOWED + ('LRF',)
-        pt['LRF'].global_allow = True
-        pt['LIF'].global_allow = True
-        LRF_ALLOWED = pt['LRF'].allowed_content_types
-        pt['LRF'].allowed_content_types = LRF_ALLOWED + ('LIF', 'BannerContainer', 'Logos_Container')
-
-        for lrf in lrfs:
-            api.content.rename(obj=lrf.getObject(), new_id='{}_old'.format(lrf.id))
-
-        setupTool = SetupMultilingualSite()
-        setupTool.setupSite(self.context, False)
-
-        for old_lrf in original_lrfs_ids:
-            # If a 'media' folder exists, delete it as we are going to put it
-            # back later
-            if portal[old_lrf + '_old'].get('media', False):
-                api.content.delete(obj=portal[old_lrf + '_old']['media'])
-            if portal[old_lrf].get('media', False):
-                api.content.delete(obj=portal[old_lrf]['media'])
-
-            for obj in portal[old_lrf + '_old'].objectIds():
-                # Only to contentish objects as the original LRF is leaking root
-                # objects
-                if portal[old_lrf + '_old'].get(obj, False):
-                    origin = portal[old_lrf + '_old'][obj].id
-                    api.content.move(source=portal[old_lrf + '_old'][obj], target=portal[old_lrf])
-                    print '{} ==> {}'.format(origin, portal[old_lrf])
-
-        # Assert things are moved correctly and no object remains in old folders
-        for old_lrf in original_lrfs_ids:
-            assert not portal[old_lrf + '_old'].get(obj, False)
-
-        # If so, delete original LRFs
-        for old_lrf in original_lrfs_ids:
-            api.content.delete(obj=portal[old_lrf + '_old'])
-
-        # Rename original 'shared' folder
-        if portal.get('shared', False):
-            api.content.rename(obj=portal['shared'], new_id='shared_old')
-
-        # Put back 'shared' folder
-        # for lrf in lrfs:
-        #     api.content.create(container=portal[lrf.id], type='LIF', id='shared')
-        #     portal[lrf.id]['shared'].title = 'Fitxers compartits'
-        #     if lrf == 'es':
-        #         portal[lrf.id]['shared'].title = 'Ficheros compartidos'
-        #     if lrf == 'en':
-        #         portal[lrf.id]['shared'].title = 'Shared files'
-
-        # Move shared folder content
-        # if portal.get('shared', False):
-        #     for obj_id in portal['shared']:
-        #         api.content.move(source=portal['shared'][obj_id], target=portal['ca']['shared'])
-        #         print '{} ==> {}'.format(obj_id, portal['ca']['shared'].id)
-
-        # Put back constrains
-        pt['Plone Site'].filter_content_types = True
-        pt['Plone Site'].allowed_content_types = PS_ALLOWED
-        pt['LRF'].global_allow = False
-        pt['LIF'].global_allow = False
-        pt['LRF'].allowed_content_types = LRF_ALLOWED
-
-        # Finally, clear and rebuild catalog
-        pc.clearFindAndRebuild()
-
-
-class ReBuildUserPropertiesCatalog(grok.View):
+        Execute one action view in all instances passed as a form parameter used
+        only in case that something does not work making a subrequest!
     """
-        Rebuild the OMEGA13 repoze.catalog for user properties data.
-    """
-    grok.context(IPloneSiteRoot)
-    grok.name('rebuild_user_catalog')
+    grok.context(IApplication)
+    grok.name('nsp_bulk_action')
     grok.require('cmf.ManagePortal')
 
     def render(self):
         context = aq_inner(self.context)
-        all_user_properties = context.acl_users.mutable_properties.enumerateUsers()
-        for user in all_user_properties:
-            user.update(dict(username=user['id']))
-            user.update(dict(fullname=user['title']))
-            user_obj = api.user.get(user['id'])
-
-            if user_obj:
-                add_user_to_catalog(user_obj, user)
-            else:
-                print('No user found in user repository (LDAP) {}'.format(user['id']))
-
-            print('Updated properties catalog for {}'.format(user['id']))
+        args = self.request.form
+        view_name = self.request.form['view']
+        plonesites = listPloneSites(context)
+        output = []
+        for plonesite in plonesites:
+            view = plonesite.restrictedTraverse(view_name)
+            view.render(plonesite, **args)
+            output.append('Executed view {} in site {}'.format(view_name, plonesite.id))
+        return '\n'.join(output)
 
 
-class enablePDFIndexing(grok.View):
+class fixRecord(grok.View):
+    """ Fix KeyError problem when plonesite is moved from the original Zeo"""
     grok.context(IPloneSiteRoot)
-    grok.name('enable_pdf_transform')
+    grok.name('fix_record')
     grok.require('cmf.ManagePortal')
 
-    def render(self):
-        pt = api.portal.get_tool('portal_transforms')
-        pt.registerTransform(pdf_to_text())
-
-        return 'Done'
+    def render(self, portal=None):
+        from zope.component import getUtility
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+        output = []
+        site = self.context.portal_registry
+        registry = getUtility(IRegistry)
+        rec = registry.records
+        keys = [a for a in rec.keys()]
+        for k in keys:
+            try:
+                rec[k]
+            except:
+                output.append('{}, '.format(k))
+                del site.portal_registry.records._values[k]
+                del site.portal_registry.records._fields[k]
+        return "S'han purgat les entrades del registre: {}".format(output)

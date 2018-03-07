@@ -21,12 +21,12 @@ msgstr "Activat"
 
 #: genweb.theme/genweb/theme/portlets/esdeveniments.py:182
 msgid "Add Events Portlet"
-msgstr "Afegeix potlet events"
+msgstr "Afegeix potlet d'Agenda"
 
 #: genweb.theme/genweb/theme/portlets/fullnews.py:128
 #: genweb.theme/genweb/theme/portlets/news.py:117
 msgid "Add Noticies portlet"
-msgstr "Afegeix portlet noticies"
+msgstr "Afegeix portlet de notícies"
 
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:249
 msgid "Add Query Portlet"
@@ -43,7 +43,7 @@ msgstr "Tot el contingut"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:129
 #: genweb.theme/genweb/theme/portlets/news.py:118
 msgid "Aquest portlet mostra noticies"
-msgstr "Aquest portlet mostra noticies"
+msgstr "Aquest portlet mostra notícies"
 
 #. Default: "Pàgina alternativa"
 msgid "Body text"
@@ -52,7 +52,7 @@ msgstr "Pàgina alternativa"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:35
 #: genweb.theme/genweb/theme/portlets/news.py:35
 msgid "Boolea que indica si s'ha de mostrar la data en les noticies"
-msgstr "Boolea que indica si s'ha de mostrar la data en les noticies"
+msgstr "Boolea que indica si s'ha de mostrar la data en les notícies"
 
 #: genweb.controlpanel/genweb/controlpanel/controlpanel.py:138
 msgid "Cancel"
@@ -88,7 +88,7 @@ msgstr "Esborrany"
 
 #: genweb.packets/genweb/packets/browser/views.py:73
 msgid "ERROR: Unknown identifier. This page does not exist."
-msgstr "ERROR: no s'ha trobat el identicador. La pàgina no existeix."
+msgstr "ERROR: no s'ha trobat l'identificador. La pàgina no existeix."
 
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:264
 msgid "Edit Collection Portlet"
@@ -101,7 +101,7 @@ msgstr "Edita portlet d'agenda"
 #: genweb.theme/genweb/theme/portlets/fullnews.py:137
 #: genweb.theme/genweb/theme/portlets/news.py:126
 msgid "Edit News Portlet"
-msgstr "Edita portlet de noticies"
+msgstr "Edita portlet de notícies"
 
 #: genweb.banners/genweb/banners/portlets/bannersportlet.py:114
 msgid "Edit banners portlet"
@@ -118,7 +118,7 @@ msgstr "Agenda"
 # Noms de les vistes
 #: genweb.stack/genweb/stack/browser/collage.py:88
 msgid "Extended view"
-msgstr "Estesa"
+msgstr "Vista estesa"
 
 #: genweb.upc/genweb/upc/adapters.py:21
 msgid "Fitxa de grau"
@@ -139,6 +139,21 @@ msgstr "Notícies amb foto"
 
 msgid "FullNews"
 msgstr "Notícies amb foto"
+
+msgid "Normal view"
+msgstr "Normal: imatge esquerra i text dreta"
+msgid "Full view"
+msgstr "Amplada total: imatge a dalt i text a sota"
+msgid "Full2cols view"
+msgstr "Amplada total a dues columnes: dues columnes amb imatge a dalt i text a sota"
+
+msgid "Tipus de vista"
+msgstr "Tipus de vista"
+msgid "Escull com es mostraran les noticies"
+msgstr "Escull com es mostraran les notícies"
+
+msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
+msgstr "Màxim número de notícies a mostrar (d'1 a 7)"
 
 #################
 # Control Panel #
@@ -240,6 +255,18 @@ msgstr "L'element s'ha desmarcat com important"
 msgid "L'element s'ha marcat com important"
 msgstr "L'element s'ha marcat com important"
 
+#: ./genweb.upc/genweb/upc/templates/plone.app.event.browser.event_summary.pt:100
+msgid "heading_send_event"
+msgstr "Enviar als assistents"
+
+#: ./genweb.upc/genweb/upc/templates/plone.app.event.browser.event_summary.pt:106
+msgid "send_invitation_link"
+msgstr "Enviar convocatòria"
+
+#: ./genweb.upc/genweb/upc/templates/plone.app.event.browser.event_summary.pt:111
+msgid "send_invitation_not_attendees"
+msgstr "No hi ha assistents per enviar el missatge"
+
 #: genweb.smartportlet/genweb/smartportlet/__init__.py:114
 msgid "Label the 'Show more link' defined avobe"
 msgstr "Etiquetar el 'mostrar més enllaços' definit amb anterioritat."
@@ -274,6 +301,9 @@ msgstr "Fer un element privat significa que no serà visible per ninguna persona
 #. Default: "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
 msgid "Making an item published to intranet means that it will be visible to the members (readers)."
 msgstr "Fer un element publicat a la intranet significa que serà visible per tots els membres (lectors)."
+
+msgid "Puts your item in a review queue, so it can be published on the site."
+msgstr "Envia l'element a una cua de revisió, de manera que pot ser publicat al lloc web."
 
 #: genweb.upc/genweb/upc/browser/viewlets_templates/important.pt:7
 msgid "Marca com a important"
@@ -508,7 +538,7 @@ msgstr "Enllaç a obrir"
 
 #: genweb.portlets/genweb/portlets/browser/templates/managehomeportlets.pt:42
 msgid "Warning"
-msgstr "Warning"
+msgstr "ATENCIÓ"
 
 #########
 # Types #
@@ -871,7 +901,7 @@ msgstr "No puc entrar"
 #: genweb.theme/genweb/theme/portlets/templates/fullnews.pt:10
 #: genweb.theme/genweb/theme/portlets/templates/news.pt:9
 msgid "genweb-noticies"
-msgstr "Notícies <i class=\"icon-news large-icon pull-right\"></i>"
+msgstr "Notícies <span class=\"icon-news large-icon pull-right\"></span>"
 
 #. "genweb-opcionspathbar"
 #. Default: "Opcions:"
@@ -1053,6 +1083,9 @@ msgstr "Contingut com a vista"
 msgid "genweb_content_actions_vista_de_carpeta"
 msgstr "Vistes de la carpeta"
 
+msgid "genweb_content_actions_vista_de_document"
+msgstr "Vistes de la pàgina"
+
 # Direccio
 #. Default: "Direcció"
 msgid "genweb_direccio"
@@ -1078,7 +1111,7 @@ msgstr "Escriviu el missatge que voleu enviar"
 #. Default: "Type the code from the picture shown below"
 #: genweb.theme/genweb/theme/browser/contact.py:77
 msgid "genweb_help_type_the_code"
-msgstr "Escriviu les paraules de la imatge inferior"
+msgstr "Selecciona l'opció de sota per poder fer l'enviament"
 
 #. Default: "Informació General"
 msgid "genweb_info_gral"
@@ -1496,6 +1529,9 @@ msgstr "Contrasenya"
 msgid "label_query"
 msgstr "Termes de cerca"
 
+msgid "Define the search terms for the items you want to list by choosing what to match on. The list of results will be dynamically updated"
+msgstr "Definir els termes de cerca dels elements que vulgueu a la llista. La llista de resultats s'actualitza de forma dinàmica"
+
 #. Default: "RSS"
 #: genweb.theme/genweb/theme/templates/Products.CMFPlone.browser.templates.sitemap.pt:66
 msgid "label_rss"
@@ -1602,6 +1638,10 @@ msgstr ""
 #. Default: "Concedir permisos"
 msgid "manage_site_permissions"
 msgstr "Concedir permisos"
+
+#. Default: "Undo"
+msgid "undo_form"
+msgstr "Desfés"
 
 #. Default: "Curs"
 msgid "master_curso"
@@ -1862,3 +1902,242 @@ msgstr "${startdate} a ${enddate}"
 #: plone/app/event/browser/formatted_date.pt:71
 msgid "event_when_sameday"
 msgstr "${date} de ${starttime} a ${endtime}"
+
+####
+# Objectius workflow
+####
+
+# Estados de los objetivos
+
+# Estado 1
+msgid "enCreacio"
+msgstr "Objectius en creació"
+
+# Estado 2
+msgid "enRevisioInicial"
+msgstr "Objectius en revisió inicial"
+
+# Estado 3
+msgid "validatInicial"
+msgstr "Objectius acceptats pel treballador i el cap"
+
+# Estado 4
+msgid "enRevisioValoracio"
+msgstr "Valoració dels objectius pendent de revisió"
+
+# Estado 5
+msgid "valoracioValidada"
+msgstr "Valoració acceptada pel treballador"
+
+# Estado Final
+msgid "valoracioTancada"
+msgstr "Valoració tancada pel treballador i el cap"
+
+# Estados de los objetivos
+
+# Transició 1
+msgid "aRevisarInicial"
+msgstr "A revisar pel treballador"
+
+# Transició 2
+msgid "aValidarInicial"
+msgstr "Acceptar la proposta d'objectius"
+
+# Transició 3
+msgid "aRevisarValoracio"
+msgstr "Valoració inicial a revisar pel treballador"
+
+
+# Transició 4
+msgid "aValidarValoracio"
+msgstr "Acceptar la valoració proposta"
+
+# Transició 5
+msgid "seguimentValoracio"
+msgstr "Valoració de seguiment a revisar pel treballador"
+
+# Transició final
+msgid "tancarValoracio"
+msgstr "Tancar definitivament la valoració d'objectius"
+
+### Fi objectius
+
+msgid "contents_pretty_view"
+msgstr "Vista continguts"
+
+msgid "itemstable_view"
+msgstr "Vista amb icones"
+
+msgid "summary_view_news"
+msgstr "Vista notícies"
+
+msgid "folder_index_view"
+msgstr "Índex de contingut"
+
+msgid "see_past_events"
+msgstr "Veure esdeveniments passats"
+
+msgid "back_to_events"
+msgstr "Torna als esdeveniments"
+
+msgid "past_events"
+msgstr "Esdeveniments passats"
+
+msgid "no_events"
+msgstr "No hi han esdeveniments"
+
+msgid "dontcopy_homepage"
+msgstr " la pàgina de benvinguda és necessària per al correcte funcionament del Genweb. No s'ha d'esborrar, copiar o renombrar."
+
+msgid "help_static_content_title_ca"
+msgstr "Opcional: títol del portlet"
+
+msgid "help_static_content_url_ca"
+msgstr "La URL completa de la pàgina d'on volem visualitzar el contingut"
+
+msgid "help_static_content_element_ca"
+msgstr "Aquí podeu introduïr un id, class o element html. Per exemple en una pàgina genweb típica, tot el contingut és dins #content, i tot el contingut sense el títol dins #content-core"
+
+msgid "multi_email"
+msgstr "Seleccionar l'adreça d'enviament"
+
+msgid "help_contacte_multi_email"
+msgstr "Es pot seleccionar a qui s'envia el missatge de contacte."
+
+#############################
+# Portlet NewsEventsListing #
+#############################
+
+msgid "all_news"
+msgstr "Totes les notícies"
+
+msgid "mode_future_link"
+msgstr "Propers"
+
+msgid "mode_past_link"
+msgstr "Passat"
+
+msgid "mode_month_link"
+msgstr "Mes"
+
+msgid "mode_week_link"
+msgstr "Setmana"
+
+msgid "mode_day_link"
+msgstr "Dia"
+
+msgid "prev_month_link"
+msgstr "Mes anterior"
+
+msgid "this_month_link"
+msgstr "Mes en curs"
+
+msgid "next_month_link"
+msgstr "Pròxim mes"
+
+msgid "prev_week_link"
+msgstr "Setmana anterior"
+
+msgid "this_week_link"
+msgstr "Setmana en curs"
+
+msgid "next_week_link"
+msgstr "Pròxima setmana"
+
+msgid "prev_day_link"
+msgstr "Dia anterior"
+
+msgid "today_link"
+msgstr "Avui"
+
+msgid "next_day_link"
+msgstr "Dia següent"
+
+#########################
+# genweb.upc contact form
+#########################
+
+#: genweb.upc/genweb/upc/browser/contact.py:151
+msgid "The entered text does not match the text in the image"
+msgstr "El text introduït no coincideix amb el de la imatge"
+
+################
+# Subhome type #
+################
+
+#. "manage_subhomeportlets_link"
+#. Default: "Manage subhome page"
+#: genweb.upc/genweb/upc/templates/genweb.theme.browser.viewlets_templates.manage_portlets_fallback.pt
+msgid "manage_subhomeportlets_link"
+msgstr "Administra la graella de portlets"
+
+#######################
+# Delete confirmation #
+#######################
+
+msgid "alert_really_delete_contents"
+msgstr "Segur que vols eliminar aquests continguts?"
+
+msgid "delete"
+msgstr "Suprimeix"
+
+msgid "cancel"
+msgstr "Cancel·la"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:310
+msgid "Add Multi-view Collection Portlet"
+msgstr "Afegeix un portlet de col·lecció multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:99
+msgid "Choose how the portlet must be rendered"
+msgstr "Escull com s'ha de mostrar el portlet"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:323
+msgid "Edit Multi-view Collection Portlet"
+msgstr "Edita portlet de col·lecció multi-vista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:90
+msgid "Exclude the Current Context"
+msgstr "Excloure el context actual"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:55
+msgid "Find the collection which provides the items to list"
+msgstr "Cerca la col·lecció que proporciona els elements a llistar"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:76
+msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+msgstr "Si està habilitat, es visualitzarà un enllaç més... al peu del portlet, enllaçant a la Col·lecció subjacent."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:84
+msgid "If enabled, effective dates will be shown underneath the items listed."
+msgstr "Si està activat, les dates efectives es mostraran a sota dels elements."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:91
+msgid "If enabled, the listing will not include the current item the portlet is rendered for if it otherwise would be."
+msgstr "Si està activat, el llistat no inclourà el context actual"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:32
+msgid "List view"
+msgstr "Llista"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:83
+msgid "Show dates"
+msgstr "Mostra dates"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:75
+msgid "Show more... link"
+msgstr "Mostra enllaç més..."
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:54
+msgid "Target collection"
+msgstr "Col·lecció de destinació"
+
+#: genweb.upc/genweb/upc/portlets/multiviewcollection/multiviewcollection.py:98
+msgid "View type"
+msgstr "Tipus de vista"
+
+msgid "desc_privacy"
+msgstr "Podeu trobar les condicions d'ús i privacitat <a href='https://www.upc.edu/ca/avis-legal/condicions-dus-i-privacitat' target='_blank'>aquí</a>"
+
+msgid "title_privacy"
+msgstr "He llegit i accepto les condicions d'ús i privacitat"

@@ -1,10 +1,11 @@
 import json
 import urllib2
 import requests
+import unicodedata
+
 from five import grok
 from plone import api
 from AccessControl import getSecurityManager
-# from zope.interface import Interface
 from zope.component import getMultiAdapter, queryUtility
 from zope.i18nmessageid import MessageFactory
 from zope.component.hooks import getSite
@@ -12,25 +13,27 @@ from zope.component import getUtility
 
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
-from plone.app.multilingual.interfaces import ITranslationManager
 
 from Products.CMFCore.utils import getToolByName
-# from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.PlonePAS.tools.memberdata import MemberData
+from Products.PlonePAS.plugins.ufactory import PloneUser
 from souper.interfaces import ICatalogFactory
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
 from souper.soup import Record
 from zope.interface import implementer
 from zope.component import provideUtility
+from zope.component import getUtilitiesFor
 from repoze.catalog.catalog import Catalog
 from repoze.catalog.indexes.field import CatalogFieldIndex
 from souper.soup import NodeAttributeIndexer
 from plone.uuid.interfaces import IMutableUUID
 
+from genweb.core import HAS_PAM
+from genweb.core import IAMULEARN
 from genweb.core.directory import METADATA_USER_ATTRS
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 
@@ -39,6 +42,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 PLMF = MessageFactory('plonelocales')
+
+if HAS_PAM:
+    from plone.app.multilingual.interfaces import ITranslationManager
 
 
 def genweb_config():
@@ -132,42 +138,196 @@ def get_safe_member_by_id(username):
                 'fullname': ''}
 
 
-def add_user_to_catalog(user, properties):
-    """ Adds user to the user catalog even if it's a MemberData wrapped one or a
-        new (string) username.
+def get_all_user_properties(user):
+    """
+        Returns a mapping with all the defined user profile properties and its values.
 
-        If some of this method is modified, you should update the
-        genweb.core.directory.subscriber module one.
+        The properties list includes all properties defined on any profile extension that
+        is currently registered. For each of this properties, the use object is queried to
+        retrieve the value. This may result in a empty value if that property is not set, or
+        the value of the property provided by any properties PAS plugin.
+
+        NOTE: Mapped LDAP atrributes will be retrieved and returned on this mapping if any.
+
+    """
+    user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
+    attributes = user_properties_utility.properties + METADATA_USER_ATTRS
+    try:
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+    except:
+        extender_name = ''
+
+    if extender_name:
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
+            attributes = attributes + extended_user_properties_utility.properties
+
+    mapping = {}
+    for attr in attributes:
+        value = user.getProperty(attr)
+        if isinstance(value, str) or isinstance(value, unicode):
+            mapping.update({attr: value})
+
+    return mapping
+
+
+def remove_user_from_catalog(username):
+    portal = api.portal.get()
+    soup = get_soup('user_properties', portal)
+    exists = [r for r in soup.query(Eq('id', username))]
+    if exists:
+        user_record = exists[0]
+        del soup[user_record]
+
+    if IAMULEARN:
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+        # Make sure that, in fact we have such a extender in place
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_soup = get_soup(extender_name, portal)
+            exist = []
+            exist = [r for r in extended_soup.query(Eq('id', username))]
+            if exist:
+                extended_user_record = exist[0]
+                del extended_soup[extended_user_record]
+
+
+def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
+    """ Adds a user to the user catalog
+
+        As this method can be called from multiple places, user parameter can be
+        a MemberData wrapped user, a PloneUser object or a plain (string) username.
+
+        If the properties parameter is ommitted, only a basic record identifying the
+        user will be created, with no extra properties.
+
+        The 'notlegit' argument is used when you can add the user for its use in
+        the ACL user search facility. If so, the user would not have
+        'searchable_text' and therefore not searchable. It would have an extra
+        'notlegit' index.
+
+        The overwrite argument controls whether an existing attribute value on a user
+        record will be overwritten or not by the incoming value. This is in order to protect
+        user-provided values via the profile page.
+
+
     """
     portal = api.portal.get()
     soup = get_soup('user_properties', portal)
     if isinstance(user, MemberData):
         username = user.getUserName()
+    elif isinstance(user, PloneUser):
+        username = user.getUserName()
     else:
         username = user
+    # add lower to take correct user_soup
+    username = username.lower()
     exist = [r for r in soup.query(Eq('id', username))]
     user_properties_utility = getUtility(ICatalogFactory, name='user_properties')
-    indexed_attrs = user_properties_utility(portal).keys()
 
     if exist:
         user_record = exist[0]
+        # Just in case that a user became a legit one and previous was a nonlegit
+        user_record.attrs['notlegit'] = False
     else:
         record = Record()
         record_id = soup.add(record)
         user_record = soup.get(record_id)
+        # If the user do not exist, and the notlegit is set (created by other
+        # means, e.g. a test or ACL) then set notlegit to True This is because
+        # in non legit mode, maybe existing legit users got unaffected by it
+        if notlegit:
+            user_record.attrs['notlegit'] = True
 
-    user_record.attrs['username'] = username
-    user_record.attrs['id'] = username
+    if isinstance(username, str):
+        user_record.attrs['username'] = username.decode('utf-8')
+        user_record.attrs['id'] = username.decode('utf-8')
+    else:
+        user_record.attrs['username'] = username
+        user_record.attrs['id'] = username
 
-    for attr in indexed_attrs + METADATA_USER_ATTRS:
-        # Only update it if user has already not property set or it's empty
-        if attr in properties and user_record.attrs.get(attr, u'') == u'':
-            if isinstance(properties[attr], str):
-                user_record.attrs[attr] = properties[attr].decode('utf-8')
-            else:
-                user_record.attrs[attr] = properties[attr]
+    property_different_value = False
+    if properties:
+        for attr in user_properties_utility.properties + METADATA_USER_ATTRS:
+            has_property_definition = attr in properties
+            property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
+            if has_property_definition:
+                property_different_value = user_record.attrs.get(attr, u'') != properties[attr]
+            if has_property_definition and (property_empty_or_not_set or overwrite or property_different_value):
+                if isinstance(properties[attr], str):
+                    user_record.attrs[attr] = properties[attr].decode('utf-8')
+                else:
+                    user_record.attrs[attr] = properties[attr]
+
+    # If notlegit mode, then reindex without setting the 'searchable_text' This
+    # is because in non legit mode, maybe existing legit users got unaffected by
+    # it
+    if notlegit:
+        soup.reindex(records=[user_record])
+        return
+
+    # Build the searchable_text field for wildcard searchs
+    user_record.attrs['searchable_text'] = ' '.join([unicodedata.normalize('NFKD', user_record.attrs[key]).encode('ascii', errors='ignore') for key in user_properties_utility.properties if user_record.attrs.get(key, False)])
 
     soup.reindex(records=[user_record])
+
+    # If uLearn is present, then lookup for a customized set of fields and its
+    # related soup. The soup has the form 'user_properties_<client_name>'. This
+    # feature is currently restricted to uLearn but could be easily backported
+    # to Genweb. The setting that makes the extension available lives in:
+    # 'genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender'
+    if IAMULEARN:
+        extender_name = api.portal.get_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_properties_extender')
+        # Make sure that, in fact we have such a extender in place
+        if extender_name in [a[0] for a in getUtilitiesFor(ICatalogFactory)]:
+            extended_soup = get_soup(extender_name, portal)
+            exist = []
+            exist = [r for r in extended_soup.query(Eq('id', username))]
+            extended_user_properties_utility = getUtility(ICatalogFactory, name=extender_name)
+
+            if exist:
+                extended_user_record = exist[0]
+            else:
+                record = Record()
+                record_id = extended_soup.add(record)
+                extended_user_record = extended_soup.get(record_id)
+
+            if isinstance(username, str):
+                extended_user_record.attrs['username'] = username.decode('utf-8')
+                extended_user_record.attrs['id'] = username.decode('utf-8')
+            else:
+                extended_user_record.attrs['username'] = username
+                extended_user_record.attrs['id'] = username
+
+            if properties:
+                for attr in extended_user_properties_utility.properties:
+                    has_property_definition = attr in properties
+                    property_empty_or_not_set = extended_user_record.attrs.get(attr, u'') == u''
+                    # Only update it if user has already not property set or it's empty
+                    if has_property_definition and (property_empty_or_not_set or overwrite):
+                        if isinstance(properties[attr], str):
+                            extended_user_record.attrs[attr] = properties[attr].decode('utf-8')
+                        else:
+                            extended_user_record.attrs[attr] = properties[attr]
+
+            # Update the searchable_text of the standard user record field with
+            # the ones in the extended catalog
+            user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' ' + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.properties if extended_user_record.attrs.get(key, False)])
+
+            # Save for free the extended properties in the main user_properties soup
+            # for easy access with one query
+            if properties:
+                for attr in extended_user_properties_utility.properties:
+                    has_property_definition = attr in properties
+                    property_empty_or_not_set = user_record.attrs.get(attr, u'') == u''
+                    # Only update it if user has already not property set or it's empty
+                    if has_property_definition and (property_empty_or_not_set or overwrite):
+                        if isinstance(properties[attr], str):
+                            user_record.attrs[attr] = properties[attr].decode('utf-8')
+                        else:
+                            user_record.attrs[attr] = properties[attr]
+
+            soup.reindex(records=[user_record])
+            extended_soup.reindex(records=[extended_user_record])
 
 
 def reset_user_catalog():
@@ -182,11 +342,39 @@ def reset_group_catalog():
     soup.clear()
 
 
+def json_response(func):
+    """ Decorator to transform the result of the decorated function to json.
+        Expect a list (collection) that it's returned as is with response 200 or
+        a dict with 'data' and 'status_code' as keys that gets extracted and
+        applied the response.
+    """
+    def decorator(*args, **kwargs):
+        instance = args[0]
+        request = getattr(instance, 'request', None)
+        request.response.setHeader(
+            'Content-Type',
+            'application/json; charset=utf-8'
+        )
+        result = func(*args, **kwargs)
+        if isinstance(result, list):
+            request.response.setStatus(200)
+            return json.dumps(result, indent=2, sort_keys=True)
+        else:
+            request.response.setStatus(result.get('status_code', 200))
+            return json.dumps(result.get('data', result), indent=2, sort_keys=True)
+
+    return decorator
+
+
 class genwebUtils(BrowserView):
     """ Convenience methods placeholder genweb.utils view. """
 
     def portal(self):
         return api.portal.get()
+
+    def portal_url_https(self):
+        """Get the Plone portal URL in https mode """
+        return self.portal().absolute_url().replace('http://', 'https://')
 
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
@@ -241,45 +429,41 @@ class genwebUtils(BrowserView):
         """ Retorna les dades proporcionades pel WebService del SCP
             per al contacte
         """
-        unitat = genweb_config().contacte_id
-        if unitat:
-            dades = self.getDadesUnitat()
-            if 'error' in dades:
-                return False
-            else:
-                idioma = self.context.Language()
-                dict_contact = {
-                    "ca": {
-                        "adreca_sencera": dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
-                        "nom": dades.get('nom_ca', ''),
-                        "telefon": dades.get('telefon', ''),
-                        "fax": dades.get('fax', ''),
-                        "email": dades.get('email', ''),
-                        "id_scp": dades.get('id', ''),
-                        "codi_upc": dades.get('codi_upc', ''),
-                    },
-                    "es": {
-                        "adreca_sencera": dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
-                        "nom": dades.get('nom_es', ''),
-                        "telefon": dades.get('telefon', ''),
-                        "fax": dades.get('fax', ''),
-                        "email": dades.get('email', ''),
-                        "id_scp": dades.get('id', ''),
-                        "codi_upc": dades.get('codi_upc', ''),
-                    },
-                    "en": {
-                        "adreca_sencera": dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + " " + dades.get('localitat'),
-                        "nom": dades.get('nom_en', ''),
-                        "telefon": dades.get('telefon', ''),
-                        "fax": dades.get('fax', ''),
-                        "email": dades.get('email', ''),
-                        "id_scp": dades.get('id', ''),
-                        "codi_upc": dades.get('codi_upc', ''),
-                    }
+        dades = self.getDadesUnitat()
+        if dades:
+            idioma = self.context.Language()
+            dict_contact = {
+                'ca': {
+                    'adreca_sencera': dades.get('campus_ca', '') + ', ' + dades.get('edifici_ca') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                    'nom': dades.get('nom_ca', ''),
+                    'telefon': dades.get('telefon', ''),
+                    'fax': dades.get('fax', ''),
+                    'email': dades.get('email', ''),
+                    'id_scp': dades.get('id', ''),
+                    'codi_upc': dades.get('codi_upc', ''),
+                },
+                'es': {
+                    'adreca_sencera': dades.get('campus_es', '') + ', ' + dades.get('edifici_es') + '. ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                    'nom': dades.get('nom_es', ''),
+                    'telefon': dades.get('telefon', ''),
+                    'fax': dades.get('fax', ''),
+                    'email': dades.get('email', ''),
+                    'id_scp': dades.get('id', ''),
+                    'codi_upc': dades.get('codi_upc', ''),
+                },
+                'en': {
+                    'adreca_sencera': dades.get('campus_en', '') + ', ' + dades.get('adreca') + ' ' + dades.get('codi_postal') + ' ' + dades.get('localitat'),
+                    'nom': dades.get('nom_en', ''),
+                    'telefon': dades.get('telefon', ''),
+                    'fax': dades.get('fax', ''),
+                    'email': dades.get('email', ''),
+                    'id_scp': dades.get('id', ''),
+                    'codi_upc': dades.get('codi_upc', ''),
                 }
-                return dict_contact[idioma]
+            }
+            return dict_contact[idioma]
         else:
-            return False
+            return ""
 
     def getContentClass(self, view=None):
         plone_view = getMultiAdapter((self.context, self.request), name=u'plone')
@@ -295,14 +479,14 @@ class genwebUtils(BrowserView):
 
     def getProgressBarName(self, number, view=None):
         if number == 1:
-            return "progress progress-success"
+            return 'progress progress-success'
         elif number == 2:
-            return "progress progress-primary"
+            return 'progress progress-primary'
         elif number == 3:
-            return "progress progress-warning"
+            return 'progress progress-warning'
         elif number == 4:
-            return "progress progress-danger"
-        return "progress progress-info"
+            return 'progress progress-danger'
+        return 'progress progress-info'
 
     def get_proper_menu_list_class(self, subMenuItem):
         """ For use only in the menus to calculate the correct class value of
@@ -324,6 +508,11 @@ class genwebUtils(BrowserView):
             'private': 'label-important',
             'pending': 'label-warning',
             'restricted-to-managers': 'label-inverse',
+            'convocada': 'label-convocada',
+            'en_correccio': 'label-en_correccio',
+            'planificada': 'label-planificada',
+            'realitzada': 'label-realitzada',
+            'tancada': 'label-tancada',
         }
 
     def pref_lang_native(self):
@@ -345,17 +534,6 @@ class genwebUtils(BrowserView):
     def redirect_to_root_always_lang_selector(self):
         return genweb_config().languages_link_to_root
 
-    def premsa_url(self):
-        """Funcio que extreu la URL de Sala de Premsa
-        """
-        idioma = pref_lang()
-
-        if idioma == 'zh':
-            url = 'http://www.upc.edu/saladepremsa/?set_language=en'
-        else:
-            url = 'http://www.upc.edu/saladepremsa/?set_language=' + idioma
-        return url
-
     def is_debug_mode(self):
         return api.env.debug_mode()
 
@@ -369,7 +547,9 @@ class UserPropertiesSoupCatalogFactory(object):
         uuid = NodeAttributeIndexer('uuid')
         catalog['uuid'] = CatalogFieldIndex(uuid)
         return catalog
-provideUtility(UserPropertiesSoupCatalogFactory(), name="uuid_preserver")
+
+
+provideUtility(UserPropertiesSoupCatalogFactory(), name='uuid_preserver')
 
 
 class preserveUUIDs(grok.View):
@@ -531,7 +711,7 @@ class utilitats(BrowserView):
 
     def getDirectori(self):
         ue = self._dadesUnitat['codi_upc']
-        return "http://directori.upc.edu/directori/dadesUE.jsp?id=" + ue
+        return 'http://directori.upc.edu/directori/dadesUE.jsp?id=' + ue
 
     def getNomCentre(self):
         """ Retorna el nom del centre segons l'idioma
@@ -585,12 +765,20 @@ class utilitats(BrowserView):
         return portal_skins.getDefaultSkin()
 
     def premsa_PDIPAS_url(self):
-        """Funcio que extreu idioma actiu
-        """
-        lt = getToolByName(self, 'portal_languages')
-        idioma = lt.getPreferredLanguage()
-        if idioma == 'zh':
-            url = 'http://www.upc.edu/saladepremsa/pdi-pas/?set_language=en'
+
+        url = ''
+        idioma = self.pref_lang()
+
+        if idioma == 'ca':
+            url = 'https://upc.edu/ca/sala-de-premsa/pdi-pas'
+
+        elif idioma == 'es':
+            url = 'https://upc.edu/es/sala-de-prensa/pdi-pas'
+
+        elif idioma == 'en':
+            url = 'https://upc.edu/en//pdi-pas'
+
         else:
-            url = 'http://www.upc.edu/saladepremsa/pdi-pas/?set_language=' + idioma
+            url = 'https://upc.edu/ca/press-room/pdi-pas'
+
         return url

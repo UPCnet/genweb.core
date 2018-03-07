@@ -1,10 +1,14 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="genweb.core">
+
+    <include package="plone.behavior" file="meta.zcml"/>
 
     <!-- XXX This is only needed in the innpass migration situation,
          after that it can be safely removed as the IGenwebLayer will
@@ -64,5 +68,16 @@
       permission="zope.Public"
       template="browser/templates/plone-overview.pt"
       />
+
+    <!-- Constrain container allowed content types -->
+    <plone:behavior
+        title="Folder Addable Constrains"
+        description="Restrict the content types that can be added to folderish content"
+        provides="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes"
+        factory=".overrides.gwConstrainTypesBehavior"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        />
+
+    <!-- BBB -->
 
 </configure>
