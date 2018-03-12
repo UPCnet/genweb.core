@@ -1336,12 +1336,14 @@ class bulkChangeCreator(grok.View):
             userid = user_id_lambda(user)
             info = self.membership.getMemberInfo(userid)
             if info and info['fullname']:
-                d = dict(id=userid, name="%s (%s)" % (info['fullname'], userid))
+                d = dict(id=userid, name="%s (%s)" %
+                         (info['fullname'], userid))
             else:
                 d = dict(id=userid, name=userid)
             d['selected'] = 1 if userid in user_old else 0
             ret_list.append(d)
-        ret_list.sort(lambda a, b: cmp(str(a['id']).lower(), str(b['id']).lower()))
+        ret_list.sort(lambda a, b:
+                      cmp(str(a['id']).lower(), str(b['id']).lower()))
         return ret_list
 
     def list_creators(self):
@@ -1352,17 +1354,9 @@ class bulkChangeCreator(grok.View):
                 if creator not in creator_list:
                     creator_list.append(creator)
         return self.get_sorted_list(
-            creator_list, # list of creators
-            self.old_creator(), # prev selected creators
+            creator_list,  # list of creators
+            self.old_creator(),  # prev selected creators
             lambda element: element)
-
-    def list_members(self):
-        return self.get_sorted_list(
-            list(getMultiAdapter((self.context, self.request),
-                                 name=u'pas_search').searchUsers()) #plone users
-          + list(self.context.getPhysicalRoot().acl_users.searchUsers()), # zope users
-            self.new_creator(), # prev selected new creators
-            lambda element: element['userid'])
 
     def render(self):
         """ Main method """
@@ -1372,33 +1366,41 @@ class bulkChangeCreator(grok.View):
             old_creator = self.old_creator()
             new_creator = self.new_creator()
             change_modification_date = self.change_modification_date()
-            ret = []
             self.status = []
 
             ok = True
             if old_creator == '':
-                ok = False; self.status.append(self.STATUS_oldcreators)
+                self.status.append(self.STATUS_oldcreators)
+                ok = False
             if new_creator == '':
-                ok = False; self.status.append(self.STATUS_newcreators)
+                self.status.append(self.STATUS_newcreators)
+                ok = False
             if old_creator == new_creator:
-                ok = False; self.status.append(self.STATUS_samecreator)
+                self.status.append(self.STATUS_samecreator)
+                ok = False
 
             if ok:
-                self.status.append('')
                 count = 0
                 acl_users = getattr(self.context, 'acl_users')
                 user = acl_users.getUserById(new_creator)
 
+                valid_user = True
                 if user is None:
                     user = self.membership.getMemberById(new_creator)
                     if user is None:
-                        raise KeyError('Only retrievable users in this site can be made creators.')
+                        valid_user = False
+                        self.status.append('WARNING: Could not find '
+                                           'user %s !' % new_creator)
 
-                for brain in self.catalog(path=self.context.absolute_url_path()):
+                header_index = len(self.status)
+                self.status.append('')
+                abspath = self.context.absolute_url_path()
+                for brain in self.catalog(path=abspath):
                     obj = brain.getObject()
                     creators = list(obj.listCreators())
                     if old_creator in creators:
-                        obj.changeOwnership(user)
+                        if valid_user:
+                            obj.changeOwnership(user)
                         if new_creator in creators:
                             index1 = creators.index(old_creator)
                             index2 = creators.index(new_creator)
@@ -1419,6 +1421,7 @@ class bulkChangeCreator(grok.View):
                         self.status.append(brain.getPath())
                         count += 1
 
-                self.status[0] = self.STATUS_updated % count
+                self.status[header_index] = self.STATUS_updated % count
 
-        return ViewPageTemplateFile('helpers_touchers_templates/bulk_change_creator.pt')(self)
+        return ViewPageTemplateFile('helpers_touchers_templates'
+                                    '/bulk_change_creator.pt')(self)

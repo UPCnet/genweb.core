@@ -21,11 +21,11 @@
       </dl>
       <h1 class="documentFirstHeading" i18n:translate="">Change Ownership</h1>
       <div class="documentDescription" i18n:translate="">
-          This form will help you to pass ownership of objects owned by old users to a new user.
+          This form will help you to pass ownership of objects owned by a user to a new one.
       </div>
       <form method="post">
         <div class="field">
-           <label for="old_creator" i18n:translate="">The old creators:</label><br/>
+           <label for="old_creator" i18n:translate="">The old creator:</label><br/>
            <select name="old_creator" id="old_creator">
              <tal:loop tal:repeat="creator view/list_creators">
               <option tal:content="creator/name"
@@ -35,14 +35,8 @@
            </select>
         </div>
         <div class="field">
-          <label for="new_creator" i18n:translate="">The new creators:</label><br/>
-          <select name="new_creator" id="new_creator">
-            <tal:loop tal:repeat="member view/list_members">
-              <option tal:content="member/name"
-                      tal:attributes="value member/id;
-                                      selected member/selected"/>
-             </tal:loop>
-           </select>
+          <label for="new_creator" i18n:translate="">The new creator:</label><br/>
+          <input type="text" name="new_creator" id="new_creator">
         </div>
         <div class="field">
            <input type="checkbox"
