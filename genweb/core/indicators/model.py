@@ -102,7 +102,7 @@ class Category(object):
     def instance_from_dict(category, context):
         Category._validate_category_dict(category)
         calculator = Calculator.instance_from_string(
-                category['calculator'], context)
+            category['calculator'], context)
         type = category['type'] if 'type' in category else None
         frequency = category['frequency'] if 'frequency' in category else None
         instance = Category(
@@ -140,4 +140,3 @@ class Calculator(object):
                 "Class '{0}' could not be instantiated ({1})".format(
                     string, e.message))
         return calculator_class(context)
-

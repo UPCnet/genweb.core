@@ -736,18 +736,18 @@ class utilitats(BrowserView):
         else:
             return falseVal
 
-    def getSectionFromURL(self):
-        context = self.context
-        # portal_url=getToolByName(context, 'portal_url')
-        tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
+    # def getSectionFromURL(self):
+    #     context = self.context
+    #     # portal_url=getToolByName(context, 'portal_url')
+    #     tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        contentPath = tools.url().getRelativeContentPath(context)
-        if not contentPath:
-            return ''
-        else:
-            return portal_state.portal()[contentPath[0]].Title().replace('&nbsp;', '')
+    #     portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+    #     contentPath = tools.url().getRelativeContentPath(context)
+    #     if not contentPath:
+    #         return ''
+    #     else:
+    #         return portal_state.portal()[contentPath[0]].Title().replace('&nbsp;', '')
 
-    def getFlavour(self):
-        portal_skins = getToolByName(self.context, 'portal_skins')
-        return portal_skins.getDefaultSkin()
+    # def getFlavour(self):
+    #     portal_skins = getToolByName(self.context, 'portal_skins')
+    #     return portal_skins.getDefaultSkin()

@@ -63,4 +63,3 @@ class Registry(object):
 
     def values(self):
         return self._indicators.values()
-

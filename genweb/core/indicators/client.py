@@ -67,7 +67,7 @@ class Client(object):
         headers = {
             'Accept': self.header_accept,
             'Content-type': self.header_content_type,
-            }
+        }
         if self.api_key:
             headers['api_key'] = str(self.api_key)
         return headers
@@ -242,7 +242,7 @@ class Client(object):
             return True
 
     def _validate_update_indicator_parameters(
-                self, service_id, indicator_id, indicator_description):
+            self, service_id, indicator_id, indicator_description):
         self._validate_param_has_value('service_id', service_id)
         self._validate_param_has_value('indicator_id', indicator_id)
         self._validate_param_is_not_none('indicator_description',
@@ -281,9 +281,9 @@ class Client(object):
                 "There was a timeout while waiting for server")
 
     def _validate_update_category_parameters(
-                self, service_id, indicator_id,
-                category_id, category_description, category_type,
-                category_frequency, category_value):
+            self, service_id, indicator_id,
+            category_id, category_description, category_type,
+            category_frequency, category_value):
         self._validate_param_has_value('service_id', service_id)
         self._validate_param_has_value('indicator_id', indicator_id)
         self._validate_param_has_value('category_id', category_id)
@@ -329,4 +329,3 @@ class Client(object):
         except ReadTimeout:
             raise ClientException(
                 "There was a timeout while waiting for server")
-

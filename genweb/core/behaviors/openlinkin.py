@@ -24,6 +24,7 @@ class IOpenLinkInNewWindow(form.Schema):
         default=False
     )
 
+
 alsoProvides(IOpenLinkInNewWindow, form.IFormFieldProvider)
 
 
@@ -46,4 +47,6 @@ class OpenLinkInNewWindow(object):
 @indexer(ILink)
 def open_link_in_new_window(obj):
     return obj.open_link_in_new_window
+
+
 grok.global_adapter(open_link_in_new_window, name="open_link_in_new_window")

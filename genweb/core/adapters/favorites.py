@@ -55,6 +55,8 @@ class Favorite(grok.Adapter):
 def favoriteIndexer(context):
     """Create a catalogue indexer, registered as an adapter for DX content. """
     return IFavorite(context).get()
+
+
 grok.global_adapter(favoriteIndexer, name='favoritedBy')
 
 
@@ -62,4 +64,6 @@ grok.global_adapter(favoriteIndexer, name='favoritedBy')
 def favoriteIndexerAT(context):
     """Create a catalogue indexer, registered as an adapter for AT content. """
     return IFavorite(context).get()
+
+
 grok.global_adapter(favoriteIndexerAT, name='favoritedBy')

@@ -140,7 +140,7 @@ class getZOPE(grok.View):
         if dorsal == '':
             return '<span style="color:#6b2508; font-size: 12vw;">NaN' + "<br/>[" + str(serverid) + "]</span>"
         else:
-            return dorsal
+            return '<span style="color:#6b2508; font-size: 12vw;">' + dorsal + "<br/>[" + str(serverid) + "]</span>"
 
 
 class listPloneSitesView(grok.View):
@@ -346,7 +346,6 @@ class mirrorStates(grok.View):
                     self.output.append('{0} -> {1}'.format(destination_obj.absolute_url(), origin_state))
                     print '{0} -> {1}'.format(destination_obj.absolute_url(), origin_state)
             self.output = '<br/>'.join(self.output)
-
 
     def __call__(self):
         portal = self.context
