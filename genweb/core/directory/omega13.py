@@ -12,15 +12,11 @@ from Products.PluggableAuthService import registerMultiPlugin
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 from Products.PluggableAuthService.interfaces.plugins import IUserEnumerationPlugin
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
-
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-
 from souper.interfaces import ICatalogFactory
 from zope.component import getUtility
-
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
-
 import logging
 
 logger = logging.getLogger('Omega13')
@@ -53,6 +49,7 @@ class Omega13Helper(BasePlugin, Cacheable):
         self.title = title
 
     security.declarePrivate('enumerateUsers')
+
     def enumerateUsers(self, id=None, login=None, exact_match=0, sort_by=None, max_results=None, **kw):
         """ Fullfill enumerateUsers requirements """
         # enumerateUsers Boilerplate
@@ -67,7 +64,7 @@ class Omega13Helper(BasePlugin, Cacheable):
                                           default=None)
 
         if cached_info is not None:
-            logger.warning('returning cached results from Omega13 enumerateUsers')
+            logger.warning('Returning cached results from Omega13 enumerateUsers')
             return cached_info
 
         portal = api.portal.get()
@@ -106,6 +103,7 @@ class Omega13Helper(BasePlugin, Cacheable):
         return result
 
     security.declarePrivate('getPropertiesForUser')
+
     def getPropertiesForUser(self, user, request=None):
         """ Fullfill PropertiesPlugin requirements """
         portal = api.portal.get()
@@ -122,6 +120,7 @@ class Omega13Helper(BasePlugin, Cacheable):
             logger.warning('found properties for user: {}'.format(records[0].attrs['username']))
 
         return properties
+
 
 InitializeClass(Omega13Helper)
 
@@ -155,7 +154,7 @@ def register_omega13_plugin_class(context):
                           permission=manage_users,
                           constructors=(manage_add_omega13_form,
                                         manage_add_omega13_helper),
-                          visibility = None,
+                          visibility=None,
                           icon='directory/icon.gif')
 
 

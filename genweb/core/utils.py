@@ -393,18 +393,6 @@ class genwebUtils(BrowserView):
         lt = api.portal.get_tool('portal_languages')
         return lt.getPreferredLanguage()
 
-    # def getDadesUnitat(self):
-    #     """ Retorna les dades proporcionades pel WebService del SCP """
-    #     unitat = genweb_config().contacte_id
-    #     if unitat:
-    #         dades = self._queryInfoUnitatWS(unitat)
-    #         if dades.has_key('error'):
-    #             return False
-    #         else:
-    #             return dades
-    #     else:
-    #         return False
-
     @ram.cache(_contact_ws_cachekey)
     def _queryInfoUnitatWS(self, unitat):
         try:
@@ -763,22 +751,3 @@ class utilitats(BrowserView):
     def getFlavour(self):
         portal_skins = getToolByName(self.context, 'portal_skins')
         return portal_skins.getDefaultSkin()
-
-    def premsa_PDIPAS_url(self):
-
-        url = ''
-        idioma = self.pref_lang()
-
-        if idioma == 'ca':
-            url = 'https://upc.edu/ca/sala-de-premsa/pdi-pas'
-
-        elif idioma == 'es':
-            url = 'https://upc.edu/es/sala-de-prensa/pdi-pas'
-
-        elif idioma == 'en':
-            url = 'https://upc.edu/en//pdi-pas'
-
-        else:
-            url = 'https://upc.edu/ca/press-room/pdi-pas'
-
-        return url

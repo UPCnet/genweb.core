@@ -10,11 +10,10 @@ from zope.component import queryUtility
 from genweb.controlpanel.core import IGenwebCoreControlPanelSettings
 from zope.interface import alsoProvides
 import logging
-
-logger = logging.getLogger(__name__)
-
 import ldap
 import os
+
+logger = logging.getLogger(__name__)
 
 
 def get_ldap_config():
@@ -60,7 +59,7 @@ class SyncLDAPGroups(grok.View):
                 recipient='plone.team@upcnet.es',
                 sender='noreply@ulearn.upcnet.es',
                 subject='[uLearn] Exception raised: SIZE_LIMIT_EXCEEDED at ' + self.context.absolute_url(),
-                body='The sync view on the uLearn instance ' + self.context.absolute_url() + ' has reached the SIZE_LIMIT_EXCEEDED and the groups has not been updated',
+                body='The sync view on the uLearn instance ' + self.context.absolute_url() + ' has reached the SIZE_LIMIT_EXCEEDED and groups have not been updated.',
             )
             return "Error searching groups."
 

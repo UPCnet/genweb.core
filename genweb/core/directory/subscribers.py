@@ -4,8 +4,6 @@ from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent
 from Products.PluggableAuthService.interfaces.events import IPropertiesUpdatedEvent
 from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
-
-
 from genweb.core.utils import get_all_user_properties
 from genweb.core.utils import add_user_to_catalog
 
