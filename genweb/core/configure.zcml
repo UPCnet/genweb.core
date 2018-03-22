@@ -79,7 +79,7 @@
 
     <genericsetup:registerProfile
       name="default"
-      title="Genweb Core standard"
+      title="Genweb Core standard (genweb.core)"
       directory="profiles/default"
       description="Installs the genweb.core package"
       provides="Products.GenericSetup.interfaces.EXTENSION"

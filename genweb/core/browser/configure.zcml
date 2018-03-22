@@ -17,7 +17,7 @@
 <!-- Should be in other module than the default GS profile -->
     <genericsetup:registerProfile
       name="alternatheme"
-      title="Genweb Core with AlternaTheme"
+      title="Genweb Core with AlternaTheme (genweb.core)"
       directory="../profiles/alternatheme"
       description="Installs the genweb.core package with the alternatheme theme"
       provides="Products.GenericSetup.interfaces.EXTENSION"
