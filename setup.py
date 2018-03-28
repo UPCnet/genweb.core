@@ -60,7 +60,8 @@ setup(name='genweb.core',
           'elasticsearch',
           'simplejson',
           'pyyaml',
-          'ipdb'
+          'ipdb',
+          'plone.restapi'
       ],
       entry_points="""
       # -*- Entry points: -*-
