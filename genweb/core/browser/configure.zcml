@@ -15,14 +15,14 @@
 
 <!-- genweb.core with aternatheme GS profile -->
 <!-- Should be in other module than the default GS profile -->
-    <genericsetup:registerProfile
+<!--     <genericsetup:registerProfile
       name="alternatheme"
       title="Genweb Core with AlternaTheme (genweb.core)"
       directory="../profiles/alternatheme"
       description="Installs the genweb.core package with the alternatheme theme"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-
+ -->
 <!--     <browser:page
       name="getZOPE"
       for="*"

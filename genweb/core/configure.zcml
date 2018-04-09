@@ -44,7 +44,7 @@
     <include package="genweb.theme" />
     <include package="genweb.cdn" />
     <include package="genweb.js" />
-    <include package="genweb.alternatheme" />
+    <!-- <include package="genweb.alternatheme" /> -->
     <include package="jarn.jsi18n" />
     <include package="Products.PloneLDAP" />
     <include package="souper.plone" />
