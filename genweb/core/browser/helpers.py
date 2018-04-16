@@ -401,7 +401,7 @@ class bulkExecuteScriptView(grok.View):
                 print('======================')
                 quoted_args = urllib.urlencode(args)
                 response = subrequest('/'.join(plonesite.getPhysicalPath()) + '/{}?{}'.format(view_name, quoted_args))
-                output.append("""-- Executed view {} in site {} --<br/>""".format(view_name, plonesite.id))
+                output.append("""<br/>-- Executed view {} in site {} --""".format(view_name, plonesite.id))
                 output.append(response.getBody())
         return '\n'.join(output)
 

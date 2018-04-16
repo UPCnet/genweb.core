@@ -648,7 +648,7 @@ class setupPAMAgain(grok.View):
 
 
 class deleteNavPortletFromRoot(grok.View):
-    """ Reinstalls a product passed by form parameter in the current Plone site. """
+    """ Delete NavPortlet from Root """
     grok.context(IPloneSiteRoot)
     grok.name('delete_navportlet_from_root')
     grok.require('cmf.ManagePortal')
