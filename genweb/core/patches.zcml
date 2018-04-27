@@ -26,12 +26,12 @@
         replacement=".patches.testMemberData"
         />
 
-    <monkey:patch
+--[[    <monkey:patch
         description="Codificar resultados del adaptador"
         class="Products.PloneFormGen.content.saveDataAdapter.FormSaveDataAdapter"
         original="_addDataRow"
         replacement=".patches._addDataRow"
-        />
+        />--]]
 
 <!--     <monkey:patch
         description="Bug when searching with no standard attributes on LDAPUserFolder"
