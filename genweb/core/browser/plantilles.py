@@ -626,4 +626,56 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
 
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
+    titol = u"Block level button blau"
+    resum = u"Botó standard blau que ocupa el 100% de l'ample del contenidor"
+    cos = u"""<a class="btn btn-block btn-large btn-primary" href="#">Lorem ipsum</a>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"Block level button"
+    resum = u"Botó standard gris que ocupa el 100% de l'ample del contenidor"
+    cos = u"""<a class="btn btn-block btn-large" href="#">Lorem ipsum</a>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"Button blau"
+    resum = u"Botó standard blau"
+    cos = u"""<a class="btn btn-large btn-primary" href="#">Button</a>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"Button"
+    resum = u"Botó standard gris"
+    cos = u"""<a class="btn btn-large" href="#">Button</a>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"Text over image dark"
+    resum = u"Imatge amb text superposat en un bloc inferior fosc amb text blanc"
+    cos = u"""<div class="text-over-image">
+<img alt="" src="++genweb++static/example-images/car2.jpg" alt="" style="width:100%;" />
+<div class="content dark-background">
+    <div class="caption">
+        <h4>Títol</h4>
+        <p>Descripció</p>
+    </div>
+  </div>
+</div>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"Text over image light"
+    resum = u"Imatge amb text superposat en un bloc inferior clar amb text fosc"
+    cos = u"""<div class="text-over-image">
+<img alt="" src="++genweb++static/example-images/car2.jpg" alt="" style="width:100%;" />
+<div class="content light-background">
+    <div class="caption">
+        <h4>Títol</h4>
+        <p>Descripció</p>
+    </div>
+  </div>
+</div>"""
+
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
     return plantilles
