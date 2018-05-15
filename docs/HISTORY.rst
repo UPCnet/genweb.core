@@ -1,11 +1,34 @@
 Changelog
 =========
 
-4.8.45 (unreleased)
+4.8.46 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.8.45 (2018-05-04)
+-------------------
+
+* Add title to new templates [Corina Riba]
+* Add new templates [Corina Riba]
+* Amend helpers messages [Corina Riba]
+* removed alternatheme from configure.zcml dependency [Roberto Diaz]
+* Fix getDadesContact(): No concatenar None con string [iago.lopez]
+* Remove genweb.alternatheme [Corina Riba]
+*  [Corina Riba]
+* Remove genweb.alternatheme from install_requires [Corina Riba]
+* Added plone.restapi plugin. [Francesc Gordillo Cortinez]
+*  [Francesc Gordillo Cortinez]
+* To activate this plugin we need to be ensure that all folders parents of [Francesc Gordillo Cortinez]
+* Plone site have a PlugableAuthService (acl_users with [Francesc Gordillo Cortinez]
+* Products.PluggableAuthService.interfaces.authservice.IPluggableAuthService [Francesc Gordillo Cortinez]
+* interface), including root folder. [Francesc Gordillo Cortinez]
+* solved merge [Roberto Diaz]
+* removed unused code and updated PEP8 [Roberto Diaz]
+* renamed strings [Roberto Diaz]
+* removed unused code premsa_PDIPAS_url [Roberto Diaz]
+* bulk_change_creator: The new owner is now selected via a blank text field [alaa.moucharrafie]
 
 4.8.44 (2018-03-07)
 -------------------
