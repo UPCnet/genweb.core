@@ -114,9 +114,6 @@
   <toolbar_insertdate value="False"/>
   <toolbar_cut value="True"/>
   <toolbar_definitionlist value="False"/>
-<!--   <customtoolbarbuttons>
-   <element value="plonetemplates"/>
-  </customtoolbarbuttons> -->
   <toolbar_paste value="True"/>
   <toolbar_justifycenter value="True"/>
   <toolbar_inserttime value="False"/>
