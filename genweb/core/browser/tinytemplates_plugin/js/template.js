@@ -7,10 +7,6 @@ document: tot el contingut del popup, inclosos els botons
 tinyMCEPopup.requireLangPack();
 
 var TemplateDialog = {
-    preInit : function() {
-       
-    },
-
     init : function() {
         var editor = tinyMCEPopup.editor;
         var body = editor.getBody();
@@ -19,42 +15,29 @@ var TemplateDialog = {
         items = tinyMCE.DOM.select('.item', this.carousel);
         var carousel_items = '';
         this.length = items.length;
+
         for (var x=0; x<this.length; x++) {
-            carousel_items = carousel_items + this.addItem(items[x], x) + '<hr>';
+            carousel_items = carousel_items + addItem(false, x, items[x]);
         }
-                
 
         var popup = document.forms[0];
-        this.popupcontent = window.frames['templatesrc'].document;
-    
+        var popupcontent = window.document.getElementById('templatesrc');
         
-        this.popupcontent.body.innerHTML = carousel_items;
-        //tinyMCE.DOM.bind('add_item', 'click', this.add_item);
-        document.getElementById('add_item').addEventListener('click', this.addNewItem, false);
+        popupcontent.innerHTML = '<table id="carousel-items">' + carousel_items + '</table>';
+        document.getElementById('add_item_before').addEventListener('click', this.addNewItemBefore, false);
+        document.getElementById('add_item_after').addEventListener('click', this.addNewItemAfter, false);
         
-        this.resize();
+        //this.resize();
     },
 
-    addItem : function(item, index) {
-        tag = '<div class="slide" id="slide-' + index + '">';
-        tag = tag + '<a href="#" onclick="document.getElementById(\'slide-' + index + '\').remove();return false;">elimina</a>';
-        tag = tag + '<p>Titol:<input class="titol" id="titol-' + index + '" value="' +      item.getElementsByTagName('h4')[0].innerHTML + '"></input></p>';
-        tag = tag + '<p>Descripció:<input class="descripcio" id="descripcio-' + index + '" value="' + item.getElementsByTagName('p')[0].innerHTML + '"></input></p>';
-        tag = tag + '<p>Imatge:<input class="imatge" id="imatge-' + index + '" value="' +     item.getElementsByTagName('img')[0].getAttribute('src') + '"></input></p>';
-        tag = tag + '<p><img style="max-width:200px" src="' +     item.getElementsByTagName('img')[0].getAttribute('src') + '"></p>';
-        tag = tag + '</div>';
-        return  tag;
+    addNewItemBefore : function() {
+        tag = addItem(true);
+        window.document.getElementById('carousel-items').innerHTML = tag + window.document.getElementById('carousel-items').innerHTML;
     },
 
-    addNewItem : function() {
-        tag = '<div class=\"slide\" id=\"slide-' + this.length + '\">';
-        tag = tag + '<a href=\"#\" onclick=\"document.getElementById(\'slide-' + this.length + '\').remove();return false;\">elimina</a>';
-        tag = tag + '<p>Titol:<input class=\"titol\" id=\"titol-' + this.length + '\" value=\"\"></input></p>';
-        tag = tag + '<p>Descripció:<input class=\"descripcio\" id=\"descripcio-' + this.length + '\" value=\"\"></input></p>';
-        tag = tag + '<p>Imatge:<input class=\"imatge\" id=\"imatge-' + this.length + '\" value=\"\"></input></p>';
-        tag = tag + '<p><img style=\"max-width:200px\" src=\"\"></p>';
-        tag = tag + '</div>';
-        window.frames['templatesrc'].document.body.innerHTML += tag;
+    addNewItemAfter : function() {
+        tag = addItem(true);
+        window.document.getElementById('carousel-items').innerHTML += tag;
     },
 
     loadCSSFiles : function(d) {
@@ -65,22 +48,8 @@ var TemplateDialog = {
         });
     },
 
-    selectTemplate : function(u, ti) {
-        var d = window.frames['templatesrc'].document, x, tsrc = this.tsrc;
-
-        if (!u)
-            return;
-
-        d.body.innerHTML = this.templateHTML = this.getFileContents(u);
-
-        for (x=0; x<tsrc.length; x++) {
-            if (tsrc[x].title == ti)
-                document.getElementById('tmpldesc').innerHTML = tsrc[x].description || '';
-        }
-    },
-
     insert : function() {
-        var body = window.frames['templatesrc'].document.getElementsByTagName('body')[0];
+        var body = window.document.getElementById('templatesrc').getElementsByTagName('body')[0];
         var slides = body.getElementsByClassName('slide');
         var nou_carousel = '';
         for (var x=0; x<slides.length; x++) {
@@ -125,5 +94,27 @@ var TemplateDialog = {
 
 };
 
-TemplateDialog.preInit();
 tinyMCEPopup.onInit.add(TemplateDialog.init, TemplateDialog);
+
+
+function addItem(empty, index=-1, item=null) {
+    var titol = '';
+    var descripcio = '';
+    var imatge = '';
+
+    if (!empty) {
+        titol = item.getElementsByTagName('h4')[0].innerHTML;
+        descripcio = item.getElementsByTagName('p')[0].innerHTML;
+        imatge = item.getElementsByTagName('img')[0].getAttribute('src');
+    } else {
+        index = window.document.getElementsByClassName('slide').length +1;
+    }
+    tag =       '<tr class="slide" id="slide-' + index + '">';
+    tag = tag + '<td><img style="max-width:200px" src="' + imatge + '"></td>';
+    tag = tag + '<td><a class="elimina" href="#" onclick="document.getElementById(\'slide-' + index + '\').remove();return false;">elimina</a>';
+    tag = tag + '<p>Titol:<input class="titol" id="titol-' + index + '" value="' + titol + '"></input></p>';
+    tag = tag + '<p>Descripció:<input class="descripcio" id="descripcio-' + index + '" value="' + descripcio + '"></input></p>';
+    tag = tag + '<p>Imatge:<input class="imatge" id="imatge-' + index + '" value="' + imatge + '"></input></p>';
+    tag = tag + '</td></tr>';
+    return  tag;
+}

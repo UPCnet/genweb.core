@@ -1,26 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" i18n:domain="tinymce">
 <head>
-	<title i18n:translate="template_dlg_title"></title>
+	<title i18n:translate="carousel_dlg_title">Carousel</title>
 	<script type="text/javascript" src="../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="js/template.js"></script>
 	<script type="text/javascript" src="../@@collective.tinymcetemplates.templatelist"></script>
-	<link href="css/template.css" rel="stylesheet" type="text/css" />
+	<style>
+		td {border:1px solid grey;padding:5px;}
+		.elimina {color: red;font-weight:bold;}
+		p {padding:5px 0;}
+	</style>
 </head>
 <body>
 	<div class="dialog-wrapper">
 		<form onsubmit="TemplateDialog.insert();return false;">
 			<div id="frmbody">
-				<div class="title" i18n:translate="TITOL"></div>
-				<div class="frmRow"><label for="tpath" i18n:attributes="title template_dlg_select" i18n:translate="template_dlg_label"></label>
-				<span id="warning"></span></div>
-				<div class="frmRow"><label for="tdesc" i18n:translate="template_dlg_desc_label"></label>
-				<span id="tmpldesc"></span></div>
-				<fieldset>
-					<legend i18n:translate="template_dlg_preview"></legend>
-					<iframe id="templatesrc" name="templatesrc" src="" frameborder="0"></iframe>
-				</fieldset>
-				<input type="button" id="add_item" class="standalone" name="add_item" i18n:attributes="value Afegeix_element_al_final" />
+				<div class="frmRow" i18n:translate="carousel_dlg_desc">Edita els elements carousel seleccionat.</div><br>
+				
+				<input type="button" id="add_item_before" class="standalone" name="add_item_before" i18n:attributes="value Afegeix_element_al_principi" />
+				<div id="templatesrc" name="templatesrc" src="" frameborder="0"></div>
+				<input type="button" id="add_item_after" class="standalone" name="add_item_after" i18n:attributes="value Afegeix_element_al_final" />
 			</div>
 
 			<div class="visualClear"><!-- --></div>
