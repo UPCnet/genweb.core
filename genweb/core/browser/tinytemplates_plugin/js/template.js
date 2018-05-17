@@ -73,25 +73,6 @@ var TemplateDialog = {
         return tag;
     },
 
-    resize : function() {
-        var w, h, e;
-
-        if (!self.innerWidth) {
-            w = document.body.clientWidth - 50;
-            h = document.body.clientHeight - 160;
-        } else {
-            w = self.innerWidth - 50;
-            h = self.innerHeight - 170;
-        }
-        
-        e = document.getElementById('templatesrc');
-
-        if (e) {
-            e.style.height = Math.abs(h - 80) + 'px';
-            e.style.width  = Math.abs(w - 100) + 'px';
-        }
-    },
-
 };
 
 tinyMCEPopup.onInit.add(TemplateDialog.init, TemplateDialog);
@@ -110,11 +91,11 @@ function addItem(empty, index=-1, item=null) {
         index = window.document.getElementsByClassName('slide').length +1;
     }
     tag =       '<tr class="slide" id="slide-' + index + '">';
-    tag = tag + '<td><img style="max-width:200px" src="' + imatge + '"></td>';
-    tag = tag + '<td><a class="elimina" href="#" onclick="document.getElementById(\'slide-' + index + '\').remove();return false;">elimina</a>';
-    tag = tag + '<p>Titol:<input class="titol" id="titol-' + index + '" value="' + titol + '"></input></p>';
-    tag = tag + '<p>Descripció:<input class="descripcio" id="descripcio-' + index + '" value="' + descripcio + '"></input></p>';
-    tag = tag + '<p>Imatge:<input class="imatge" id="imatge-' + index + '" value="' + imatge + '"></input></p>';
+    tag = tag + '<td><img src="' + tinyMCEPopup.editor.documentBaseURI.toAbsolute(imatge) + '"></td>';
+    tag = tag + '<td><a class="elimina" href="#" onclick="document.getElementById(\'slide-' + index + '\').remove();return false;">Elimina</a>';
+    tag = tag + '<p>Titol:</p><p><input class="titol" id="titol-' + index + '" value="' + titol + '"></input></p>';
+    tag = tag + '<p>Descripció:</p><p><input class="descripcio" id="descripcio-' + index + '" value="' + descripcio + '"></input></p>';
+    tag = tag + '<p>Imatge:</p><p><input class="imatge" id="imatge-' + index + '" value="' + imatge + '"></input></p>';
     tag = tag + '</td></tr>';
     return  tag;
 }

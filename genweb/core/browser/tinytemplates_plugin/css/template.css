@@ -22,10 +22,19 @@ td {
 }
 
 .elimina {
-	color: red;
+	text-decoration: underline;
 	font-weight:bold;
+	float: right;
+}
+.elimina:hover {
+	color: red;
 }
 
 p {
 	padding:5px 0;
+}
+
+img {
+	max-height: 150px;
+	max-width: 200px;
 }
