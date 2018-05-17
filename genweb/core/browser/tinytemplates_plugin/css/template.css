@@ -8,16 +8,24 @@
 	margin-bottom: 10px;
 }
 
-#templatesrc {
-	border: none;
-	width: 320px;
-	height: 240px;
-}
-
 .title {
 	padding-bottom: 5px;
 }
 
 .mceActionPanel {
 	padding-top: 5px;
+}
+
+td {
+	border:1px solid grey;
+	padding:5px;
+}
+
+.elimina {
+	color: red;
+	font-weight:bold;
+}
+
+p {
+	padding:5px 0;
 }

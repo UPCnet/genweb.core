@@ -10,6 +10,7 @@ var TemplateDialog = {
     init : function() {
         var editor = tinyMCEPopup.editor;
         var body = editor.getBody();
+
         // busquem el carousel seleccionat en l'editor
         this.carousel = tinyMCE.DOM.getParent(editor.selection.getNode(), function(p){ if (tinyMCE.DOM.hasClass(p,'carousel-inner')) return p; }, body);
         items = tinyMCE.DOM.select('.item', this.carousel);
@@ -49,8 +50,7 @@ var TemplateDialog = {
     },
 
     insert : function() {
-        var body = window.document.getElementById('templatesrc').getElementsByTagName('body')[0];
-        var slides = body.getElementsByClassName('slide');
+        var slides = window.document.getElementsByClassName('slide');
         var nou_carousel = '';
         for (var x=0; x<slides.length; x++) {
             nou_carousel = nou_carousel + this.insertSlide(slides[x], x);
