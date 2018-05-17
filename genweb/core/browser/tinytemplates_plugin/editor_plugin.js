@@ -87,9 +87,22 @@
         },
 
         _insertTemplate : function(ui, v) {
-            var t = this, ed = t.editor, h, el, dom = ed.dom, sel = ed.selection.getContent();
+            var t = this;
+            var ed = t.editor; 
+            var h, el; 
+            var dom = ed.dom;  
+            var sel = ed.selection.getContent();
 
-            h = v.content;
+            // Elimina els items del carousel
+            var items = v['carousel'].getElementsByClassName('item');
+            var length = items.length;
+            for (var x=length-1; x>=0; x--) {
+                items[x].remove();
+            }
+
+            // i substitueix pel nou
+
+            v['carousel'].innerHTML=v.content;
 
             each(t.editor.getParam('template_replace_values'), function(v, k) {
                 if (typeof(v) != 'function')
