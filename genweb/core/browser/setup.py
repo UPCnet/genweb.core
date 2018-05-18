@@ -8,6 +8,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.PluggableAuthService.interfaces.plugins import IUserAdderPlugin
 from Products.PlonePAS.interfaces.group import IGroupManagement
 
+from plone import api
+
 from genweb.core.interfaces import IHomePage
 
 import pkg_resources
@@ -156,7 +158,10 @@ class setupLDAPExterns(grok.View):
                                           'IGroupsPlugin',
                                           'IUserAdderPlugin',
                                           'IUserEnumerationPlugin',
-                                          'IUserManagement'])
+                                          'IUserManagement',
+                                          'IPropertiesPlugin',
+                                          'IRoleEnumerationPlugin',
+                                          'IRolesPlugin'])
 
         # In case to have more than one server for fault tolerance
         # LDAPUserFolder.manage_addServer(portal.acl_users.ldapUPC.acl_users, "ldap.upc.edu", '636', use_ssl=1)
@@ -182,7 +187,13 @@ class setupLDAPExterns(grok.View):
         # Add LDAP plugin cache
         plugin = portal.acl_users['ldapexterns']
         plugin.ZCacheable_setManagerId('RAMCache')
-        return 'Done.'
+
+        #Configuracion por defecto de los grupos de LDAP de externs
+        groups_query = u'(&(objectClass=groupOfUniqueNames))'
+        user_groups_query = u'(&(objectClass=groupOfUniqueNames)(uniqueMember=%s))'
+        api.portal.set_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.groups_query', groups_query)
+        api.portal.set_registry_record('genweb.controlpanel.core.IGenwebCoreControlPanelSettings.user_groups_query', user_groups_query)
+        return 'Done. groupOfUniqueNames in LDAP Controlpanel Search'
 
 
 class setupLDAP(grok.View):
