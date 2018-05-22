@@ -1,11 +1,16 @@
 Changelog
 =========
 
-4.8.46 (unreleased)
+4.8.47 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.8.46 (2018-05-22)
+-------------------
+
+* Configuracion setupldapexterns grupos [Pilar Marinas]
 
 4.8.45 (2018-05-04)
 -------------------
