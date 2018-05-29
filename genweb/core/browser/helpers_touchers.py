@@ -468,7 +468,9 @@ class migrateRLF2roundFIGHT(grok.View):
 
 
 class reBuildUserPropertiesCatalog(grok.View):
-    """ Rebuild the OMEGA13 repoze.catalog for user properties data """
+    """ Rebuild the OMEGA13 repoze.catalog for user properties data
+        We use the mutable_properties (users who have entered into communities)
+    """
     grok.context(IPloneSiteRoot)
     grok.name('rebuild_user_catalog')
     grok.require('cmf.ManagePortal')
@@ -478,7 +480,8 @@ class reBuildUserPropertiesCatalog(grok.View):
             alsoProvides(self.request, IDisableCSRFProtection)
         portal = api.portal.get()
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
-        # We use the most preferent plugin
+
+        # We use the mutable_properties (users who have entered into communities)
         pplugin = plugins[0][1]
         all_user_properties = pplugin.enumerateUsers()
 
@@ -538,7 +541,6 @@ class userPropertiesCatalogViewer(grok.View):
 
         return result
 
-
 class DeleteUserPropertiesCatalog(grok.View):
     """ Delete users in catalog not in LDAP """
     grok.context(IPloneSiteRoot)
@@ -551,29 +553,27 @@ class DeleteUserPropertiesCatalog(grok.View):
 
         portal = api.portal.get()
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
-
-        # Select ldap plugin
+        # We use the ldap plugin
         pplugin = plugins[2][1]
 
-        # Invalido la cache porque si acaban de borrar el usuario del LDAP el enumerateUSers
-        # me lo devuelve porque esta en cache
-        pplugin.ZCacheable_invalidate()
-
-        # Busco todos los usuarios del LDAP
-        all_users_ldap = pplugin.enumerateUsers()
+        acl = pplugin._getLDAPUserFolder()
 
         soup = get_soup('user_properties', portal)
         records = [r for r in soup.data.items()]
+        results = []
 
         for record in records:
             # For each user in catalog search user in ldap
-            user_obj = [item for item in all_users_ldap if item['id'] == record[1].attrs['id']]
+            user_obj = acl.getUserById(record[1].attrs['id'])
             if not user_obj:
                 print('No user found in user repository (LDAP) {}'.format(record[1].attrs['id']))
                 soup.__delitem__(record[1])
                 print('User delete soup {}'.format(record[1].attrs['id']))
+                results.append('User delete soup: {}'.format(record[1].attrs['id']))
 
-
+        print('Finish rebuild_user_catalog')
+        results.append('Finish rebuild_user_catalog')
+        return '\n'.join([str(item) for item in results])
 
 class enablePDFIndexing(grok.View):
     """ Enable PDF indexing """
