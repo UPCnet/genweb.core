@@ -539,6 +539,42 @@ class userPropertiesCatalogViewer(grok.View):
         return result
 
 
+class DeleteUserPropertiesCatalog(grok.View):
+    """ Delete users in catalog not in LDAP """
+    grok.context(IPloneSiteRoot)
+    grok.name('delete_user_catalog')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+
+        portal = api.portal.get()
+        plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
+
+        # Select ldap plugin
+        pplugin = plugins[2][1]
+
+        # Invalido la cache porque si acaban de borrar el usuario del LDAP el enumerateUSers
+        # me lo devuelve porque esta en cache
+        pplugin.ZCacheable_invalidate()
+
+        # Busco todos los usuarios del LDAP
+        all_users_ldap = pplugin.enumerateUsers()
+
+        soup = get_soup('user_properties', portal)
+        records = [r for r in soup.data.items()]
+
+        for record in records:
+            # For each user in catalog search user in ldap
+            user_obj = [item for item in all_users_ldap if item['id'] == record[1].attrs['id']]
+            if not user_obj:
+                print('No user found in user repository (LDAP) {}'.format(record[1].attrs['id']))
+                soup.__delitem__(record[1])
+                print('User delete soup {}'.format(record[1].attrs['id']))
+
+
+
 class enablePDFIndexing(grok.View):
     """ Enable PDF indexing """
     grok.context(IPloneSiteRoot)
