@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.47 (unreleased)
+4.8.47 (2018-05-29)
 -------------------
 
-- Nothing changed yet.
-
+* Delete user catalog not in LDAP [Pilar Marinas]
 
 4.8.46 (2018-05-22)
 -------------------
