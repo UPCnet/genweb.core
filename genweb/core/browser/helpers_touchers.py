@@ -469,7 +469,19 @@ class migrateRLF2roundFIGHT(grok.View):
 
 class reBuildUserPropertiesCatalog(grok.View):
     """ Rebuild the OMEGA13 repoze.catalog for user properties data
-        We use the mutable_properties (users who have entered into communities)
+
+        For default, we use the mutable_properties (users who have entered into communities)
+
+        Path directo del plugin:
+        acl_users/plugins/manage_plugins?plugin_type=IPropertiesPlugin
+
+        En ACL_USERS / LDAP / Properties / Active Plugins ha de estar ordenado así:
+          mutable_properties / auto_group / ldapaspb
+
+        But really, we use the most preferent plugin
+        If the most preferent plugin is:
+           mutable_properties --> users who have entered into communities
+           ldap --> users in LDAP
     """
     grok.context(IPloneSiteRoot)
     grok.name('rebuild_user_catalog')
@@ -481,7 +493,10 @@ class reBuildUserPropertiesCatalog(grok.View):
         portal = api.portal.get()
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
 
-        # We use the mutable_properties (users who have entered into communities)
+        # We use the most preferent plugin
+        # If the most preferent plugin is:
+        #    mutable_properties --> users who have entered into communities
+        #    ldap --> users in LDAP
         pplugin = plugins[0][1]
         all_user_properties = pplugin.enumerateUsers()
 
@@ -542,7 +557,15 @@ class userPropertiesCatalogViewer(grok.View):
         return result
 
 class DeleteUserPropertiesCatalog(grok.View):
-    """ Delete users in catalog not in LDAP """
+    """ Delete users in catalog not in LDAP.
+
+        Path directo del plugin:
+        acl_users/plugins/manage_plugins?plugin_type=IPropertiesPlugin
+
+        En ACL_USERS / LDAP / Properties / Active Plugins ha de estar ordenado así:
+          mutable_properties / auto_group / ldapaspb
+
+    """
     grok.context(IPloneSiteRoot)
     grok.name('delete_user_catalog')
     grok.require('cmf.ManagePortal')
@@ -555,25 +578,29 @@ class DeleteUserPropertiesCatalog(grok.View):
         plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
         # We use the ldap plugin
         pplugin = plugins[2][1]
-
-        acl = pplugin._getLDAPUserFolder()
-
-        soup = get_soup('user_properties', portal)
-        records = [r for r in soup.data.items()]
         results = []
+        try:
+            acl = pplugin._getLDAPUserFolder()
 
-        for record in records:
-            # For each user in catalog search user in ldap
-            user_obj = acl.getUserById(record[1].attrs['id'])
-            if not user_obj:
-                print('No user found in user repository (LDAP) {}'.format(record[1].attrs['id']))
-                soup.__delitem__(record[1])
-                print('User delete soup {}'.format(record[1].attrs['id']))
-                results.append('User delete soup: {}'.format(record[1].attrs['id']))
+            soup = get_soup('user_properties', portal)
+            records = [r for r in soup.data.items()]
 
-        print('Finish rebuild_user_catalog')
-        results.append('Finish rebuild_user_catalog')
-        return '\n'.join([str(item) for item in results])
+            for record in records:
+                # For each user in catalog search user in ldap
+                user_obj = acl.getUserById(record[1].attrs['id'])
+                if not user_obj:
+                    print('No user found in user repository (LDAP) {}'.format(record[1].attrs['id']))
+                    soup.__delitem__(record[1])
+                    print('User delete soup {}'.format(record[1].attrs['id']))
+                    results.append('User delete soup: {}'.format(record[1].attrs['id']))
+
+            print('Finish rebuild_user_catalog')
+            results.append('Finish rebuild_user_catalog')
+            return '\n'.join([str(item) for item in results])
+        except:
+            print('The order to the plugins in En ACL_USERS / LDAP / Properties / Active Plugins : mutable_properties / auto_group / ldapaspb')
+            results.append('The order to the plugins in En ACL_USERS / LDAP / Properties / Active Plugins : mutable_properties / auto_group / ldapaspb')
+            return '\n'.join([str(item) for item in results])
 
 class enablePDFIndexing(grok.View):
     """ Enable PDF indexing """
