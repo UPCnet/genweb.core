@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.49 (unreleased)
+4.8.49 (2018-05-31)
 -------------------
 
-- Nothing changed yet.
-
+* Modify delete_user_catalog [Pilar Marinas]
 
 4.8.48 (2018-05-29)
 -------------------
