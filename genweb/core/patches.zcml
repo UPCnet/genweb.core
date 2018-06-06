@@ -141,6 +141,11 @@
         replacement=".patches.enumerateUsers"
         />
 
-
+   <monkey:patch
+        description="In the massive upload of files change the condition of getImmediatelyAddableTypes to getLocallyAllowedTypes"
+        module="wildcard.foldercontents.views.JUpload"
+        original="__call__"
+        replacement=".patches.jupload__call__"
+        />
 
 </configure>
