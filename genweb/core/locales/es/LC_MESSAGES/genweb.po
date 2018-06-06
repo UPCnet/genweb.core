@@ -1982,9 +1982,13 @@ msgstr "Día siguiente"
 # genweb.upc contact form
 #########################
 
-#: genweb.upc/genweb/upc/browser/contact.py:151
+#: genweb.upc/genweb/upc/browser/contact.py:167
 msgid "The entered text does not match the text in the image"
 msgstr "El texto introducido no coindice con el de la imagen"
+
+#: genweb.upc/genweb/upc/browser/contact.py:220
+msgid "The contact has not been selected. It was sent to the site administrator."
+msgstr "El contacto no ha sido seleccionado. Ha sido enviado al administrador del sitio."
 
 ################
 # Subhome type #

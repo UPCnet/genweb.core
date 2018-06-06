@@ -1942,10 +1942,13 @@ msgstr ""
 # genweb.upc contact form
 #########################
 
-#: genweb.upc/genweb/upc/browser/contact.py:151
+#: genweb.upc/genweb/upc/browser/contact.py:167
 msgid "The entered text does not match the text in the image"
 msgstr "The entered text does not match the text in the image"
 
+#: genweb.upc/genweb/upc/browser/contact.py:220
+msgid "The contact has not been selected. It was sent to the site administrator."
+msgstr "The contact has not been selected. It was sent to the site administrator."
 
 ################
 # Subhome type #
