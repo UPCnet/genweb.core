@@ -422,7 +422,12 @@ class genwebUtils(BrowserView):
             idioma = self.context.Language()
             dict_contact = {
                 'ca': {
-                    'adreca_sencera': dades.get('campus_ca', '') or '' + ', ' + dades.get('edifici_ca') or '' + '. ' + dades.get('adreca') or '' + ' ' + dades.get('codi_postal') or '' + ' ' + dades.get('localitat') or '',
+                    'adreca_sencera': ((dades.get('campus_ca', '') and
+                                        dades.get('campus_ca') + ', ') +
+                                        dades.get('edifici_ca', '') + '. ' +
+                                        dades.get('adreca', '') + ' ' +
+                                        dades.get('codi_postal', '') + ' ' +
+                                        dades.get('localitat', '')),
                     'nom': dades.get('nom_ca', ''),
                     'telefon': dades.get('telefon', ''),
                     'fax': dades.get('fax', ''),
@@ -431,7 +436,12 @@ class genwebUtils(BrowserView):
                     'codi_upc': dades.get('codi_upc', ''),
                 },
                 'es': {
-                    'adreca_sencera': dades.get('campus_es', '') or '' + ', ' + dades.get('edifici_es') or '' + '. ' + dades.get('adreca') or '' + ' ' + dades.get('codi_postal') or '' + ' ' + dades.get('localitat') or '',
+                    'adreca_sencera': ((dades.get('campus_es', '') and
+                                        dades.get('campus_es') + ', ') +
+                                        dades.get('edifici_es', '') + '. ' +
+                                        dades.get('adreca', '') + ' ' +
+                                        dades.get('codi_postal', '') + ' ' +
+                                        dades.get('localitat', '')),
                     'nom': dades.get('nom_es', ''),
                     'telefon': dades.get('telefon', ''),
                     'fax': dades.get('fax', ''),
@@ -440,7 +450,12 @@ class genwebUtils(BrowserView):
                     'codi_upc': dades.get('codi_upc', ''),
                 },
                 'en': {
-                    'adreca_sencera': dades.get('campus_en', '') or '' + ', ' + dades.get('edifici_en') or '' + '. ' + dades.get('adreca') or '' + ' ' + dades.get('codi_postal') or '' + ' ' + dades.get('localitat') or '',
+                    'adreca_sencera': ((dades.get('campus_en', '') and
+                                        dades.get('campus_en') + ', ') +
+                                        dades.get('edifici_en', '') + '. ' +
+                                        dades.get('adreca', '') + ' ' +
+                                        dades.get('codi_postal', '') + ' ' +
+                                        dades.get('localitat', '')),
                     'nom': dades.get('nom_en', ''),
                     'telefon': dades.get('telefon', ''),
                     'fax': dades.get('fax', ''),
