@@ -7,43 +7,38 @@ from urllib import quote_plus
 from Acquisition import aq_inner
 from pyquery import PyQuery as pq
 from plone import api
+from plone.app.content.browser.folderfactories import _allowedTypes
 from plone.app.search.browser import quote_chars
 from plone.app.search.browser import EVER
 from plone.memoize.instance import memoize
+from wildcard.foldercontents import wcfcMessageFactory as _WF
+from wildcard.foldercontents.interfaces import IATCTFileFactory
+from wildcard.foldercontents.interfaces import IDXFileFactory
+from zope.i18n import translate
+from zope.event import notify
 
 from Products.PlonePAS.utils import safe_unicode
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 from Products.PluggableAuthService.PropertiedUser import PropertiedUser
 from Products.LDAPUserFolder.LDAPUser import NonexistingUser
 from Products.LDAPUserFolder.LDAPUser import LDAPUser
-
-from zope.event import notify
 from Products.PluggableAuthService.events import PropertiesUpdated
-
 from Products.CMFCore.MemberDataTool import MemberData as BaseMemberData
 from Products.PluggableAuthService.interfaces.authservice import IPluggableAuthService
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
+from StringIO import StringIO
 
 from genweb.core.utils import get_safe_member_by_id, portal_url
 
-
+import json
+import mimetypes
+import pkg_resources
 import unicodedata
 import inspect
 import logging
 import requests
-from StringIO import StringIO
-from cgi import escape
-
-from BTrees.IOBTree import IOBTree
-try:
-    from BTrees.LOBTree import LOBTree
-    SavedDataBTree = LOBTree
-except ImportError:
-    SavedDataBTree = IOBTree
-
-import time
-
 
 
 logger = logging.getLogger('event.LDAPUserFolder')
@@ -729,24 +724,103 @@ def deletePersonalPortrait(self, id=None):
     # return membertool._deletePortrait(safe_id)
 
 
-def _addDataRow(self, value):
-    self._migrateStorage()
+try:
+    pkg_resources.get_distribution('plone.dexterity')
+except pkg_resources.DistributionNotFound:
+    HAS_DEXTERITY = False
+else:
+    from plone.dexterity.interfaces import IDexterityFTI
+    HAS_DEXTERITY = True
 
-    if isinstance(self._inputStorage, IOBTree):
-        # 32-bit IOBTree; use a key which is more likely to conflict
-        # but which won't overflow the key's bits
 
-        id = self._inputItems
-        self._inputItems += 1
+def jupload__call__(self):
+    authenticator = getMultiAdapter((self.context, self.request),
+                                    name=u"authenticator")
+    if not authenticator.verify() or \
+            self.request['REQUEST_METHOD'] != 'POST':
+        raise Unauthorized
+    filedata = self.request.form.get("files[]", None)
+    if filedata is None:
+        return
+    filename = filedata.filename
+    content_type = mimetypes.guess_type(filename)[0] or ""
+
+    if not filedata:
+        return
+
+    ctr = getToolByName(self.context, 'content_type_registry')
+    type_ = ctr.findTypeName(filename.lower(), '', '') or 'File'
+
+    # Determine if the default file/image types are DX or AT based
+    DX_BASED = False
+    context_state = getMultiAdapter((self.context, self.request), name=u'plone_context_state')
+    if HAS_DEXTERITY:
+        pt = getToolByName(self.context, 'portal_types')
+        if IDexterityFTI.providedBy(getattr(pt, type_)):
+            factory = IDXFileFactory(self.context)
+            DX_BASED = True
+        else:
+            factory = IATCTFileFactory(self.context)
+        # if the container is a DX type, get the available types from the behavior
+        if IDexterityFTI.providedBy(getattr(pt, self.context.portal_type)):
+            addable_types = ISelectableConstrainTypes(
+                self.context).getLocallyAllowedTypes()
+        elif context_state.is_portal_root():
+            allowed_types = _allowedTypes(self.request, self.context)
+            addable_types = [fti.getId() for fti in allowed_types]
+        else:
+            addable_types = self.context.getLocallyAllowedTypes()
     else:
-        # 64-bit LOBTree
-        id = int(time.time() * 1000)
-        while id in self._inputStorage:  # avoid collisions during testing
-            id += 1
+        factory = IATCTFileFactory(self.context)
+        if context_state.is_portal_root():
+            allowed_types = _allowedTypes(self.request, self.context)
+            addable_types = [fti.getId() for fti in allowed_types]
+        else:
+            addable_types = self.context.getLocallyAllowedTypes()
 
-    for i in range(len(value)):
-        value[i] = value[i].decode('string_escape')
+    #if the type_ is disallowed in this folder, return an error
+    if type_ not in addable_types:
+        msg = translate(
+            _WF('disallowed_type_error',
+                default='${filename}: adding of "${type}" \
+                         type is disabled in this folder',
+                mapping={'filename': filename, 'type': type_}),
+            context=self.request
+        )
+        return json.dumps({'files': [{'error': msg}]})
 
-    self._inputStorage[id] = value
-    self._length.change(1)
+    obj = factory(filename, content_type, filedata)
 
+    if DX_BASED:
+        if 'File' in obj.portal_type:
+            size = obj.file.getSize()
+            content_type = obj.file.contentType
+        elif 'Image' in obj.portal_type:
+            size = obj.image.getSize()
+            content_type = obj.image.contentType
+
+        result = {
+            "url": obj.absolute_url(),
+            "name": obj.getId(),
+            "type": content_type,
+            "size": size
+        }
+    else:
+        try:
+            size = obj.getSize()
+        except AttributeError:
+            size = obj.getObjSize()
+
+        result = {
+            "url": obj.absolute_url(),
+            "name": obj.getId(),
+            "type": obj.getContentType(),
+            "size": size
+        }
+
+    if 'Image' in obj.portal_type:
+        result['thumbnail_url'] = result['url'] + '/@@images/image/tile'
+
+    return json.dumps({
+        'files': [result]
+    })

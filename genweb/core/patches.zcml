@@ -26,13 +26,6 @@
         replacement=".patches.testMemberData"
         />
 
---[[    <monkey:patch
-        description="Codificar resultados del adaptador"
-        class="Products.PloneFormGen.content.saveDataAdapter.FormSaveDataAdapter"
-        original="_addDataRow"
-        replacement=".patches._addDataRow"
-        />--]]
-
 <!--     <monkey:patch
         description="Bug when searching with no standard attributes on LDAPUserFolder"
         class="Products.LDAPUserFolder.LDAPUserFolder.LDAPUserFolder"
@@ -146,6 +139,13 @@
         module="Products.LDAPMultiPlugins.LDAPMultiPlugin.LDAPMultiPlugin"
         original="enumerateUsers"
         replacement=".patches.enumerateUsers"
+        />
+
+   <monkey:patch
+        description="In the massive upload of files change the condition of getImmediatelyAddableTypes to getLocallyAllowedTypes"
+        module="wildcard.foldercontents.views.JUpload"
+        original="__call__"
+        replacement=".patches.jupload__call__"
         />
 
 </configure>
