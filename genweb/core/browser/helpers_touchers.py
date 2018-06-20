@@ -531,7 +531,11 @@ class ResetUserPropertiesCatalog(grok.View):
     def render(self):
         if CSRF:
             alsoProvides(self.request, IDisableCSRFProtection)
-        reset_user_catalog()
+
+        if 'force' in self.request.form:
+            reset_user_catalog()
+        else:
+            return 'Error, you have to add the force parameter'
 
 
 class userPropertiesCatalogViewer(grok.View):
