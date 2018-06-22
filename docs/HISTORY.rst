@@ -1,11 +1,19 @@
 Changelog
 =========
 
-4.8.50 (unreleased)
+4.8.50 (2018-06-22)
 -------------------
 
-- Nothing changed yet.
-
+* Add new styles for Tiny Editor [Corina Riba]
+* Ver solo campos publicos en el searchable_text [iago.lopez]
+* Obligar a utilizar el paramentro force cuando se llama a la vista reset_user_catalog [iago.lopez]
+* Transferred EPSEVG migration to genweb.upc [alaa.moucharrafie]
+* EPSEVG migration w/ comments [alaa.moucharrafie]
+* Vista para exportar contenidos dexterity en json [alberto.duran]
+* some changes [Roberto Diaz]
+* Fix address dict. [Francesc Gordillo Cortinez]
+* Cambiar condicion para la subida de fichero de forma masiva de getImmediatelyAddableTypes a getLocallyAllowedTypes [iago.lopez]
+* Traduccion genweb.upc -> Contacte [iago.lopez]
 
 4.8.49 (2018-05-31)
 -------------------
