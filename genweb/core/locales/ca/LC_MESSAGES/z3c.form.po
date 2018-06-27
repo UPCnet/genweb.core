@@ -34,7 +34,7 @@ msgstr "Eliminar selecció"
 
 #: src/z3c/form/browser/select.py:39
 msgid "No value"
-msgstr "No hi ha valor"
+msgstr "Escull una opció"
 
 #: src/z3c/form/browser/select.py:40
 msgid "Select a value ..."

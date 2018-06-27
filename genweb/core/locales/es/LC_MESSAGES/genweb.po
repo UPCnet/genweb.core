@@ -2070,3 +2070,7 @@ msgstr "Puedes encontrar las condiciones de uso y privacidad <a href='https://ww
 
 msgid "title_privacy"
 msgstr "He leído y acepto las condiciones de uso y privacidad"
+
+#: src/z3c/form/browser/select.py:39
+msgid "No value"
+msgstr "Escoge una opción"
