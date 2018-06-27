@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.51 (unreleased)
+4.8.51 (2018-06-27)
 -------------------
 
-- Nothing changed yet.
-
+* Add translations for contact [Corina Riba]
 
 4.8.50 (2018-06-22)
 -------------------
