@@ -76,15 +76,16 @@ class SyncLDAPGroups(grok.View):
             to_print = []
 
             for dn, attrs in results:
-                group_id = attrs['cn'][0]
+                if 'cn' in attrs:
+                    group_id = attrs['cn'][0]
 
-                record = Record()
-                record.attrs['id'] = group_id
+                    record = Record()
+                    record.attrs['id'] = group_id
 
-                # Index entries MUST be unicode in order to search using special chars
-                record.attrs['searchable_id'] = group_id.decode('utf-8')
-                soup.add(record)
-                to_print.append(group_id)
+                    # Index entries MUST be unicode in order to search using special chars
+                    record.attrs['searchable_id'] = group_id.decode('utf-8')
+                    soup.add(record)
+                    to_print.append(group_id)
 
             logger.info('[SYNCLDAPGROUPS]: {}'.format(to_print))
             api.portal.send_email(
