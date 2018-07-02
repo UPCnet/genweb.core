@@ -47,7 +47,7 @@
         replacement=".patches.filter_query"
         />
 
-<!-- TOREMOVE as soon it got fixed -->
+<!-- TO REMOVE as soon it got fixed -->
     <monkey:patch
         description="CMFEditions versions_history_form doesn't show the preview for DX and five.pt"
         class="Products.CMFEditions.browser.utils.GetMacros"
@@ -146,6 +146,13 @@
         module="wildcard.foldercontents.views.JUpload"
         original="__call__"
         replacement=".patches.jupload__call__"
+        />
+
+    <monkey:patch
+        description="Avoid error with names beginning with _"
+        module="plone.app.content.namechooser.NormalizingNameChooser"
+        original="chooseName"
+        replacement=".patches.chooseName"
         />
 
 </configure>

@@ -32,6 +32,12 @@ from StringIO import StringIO
 
 from genweb.core.utils import get_safe_member_by_id, portal_url
 
+from plone.app.content.interfaces import INameFromTitle
+from Acquisition import aq_base
+from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
+from plone.i18n.normalizer.interfaces import IURLNormalizer
+from zope.component import getUtility
+
 import json
 import mimetypes
 import pkg_resources
@@ -166,7 +172,7 @@ def filter_query(self, query):
     return query
 
 
-# TOREMOVE AS SOON AS THIS GOT PROPERLY FIXED
+# TO REMOVE AS SOON AS THIS GOT PROPERLY FIXED
 # This fixes CMFEditions to work with Dexterity combined with five.pt that
 # doesn't exposes "macros" property, also fix bug in retrieving the correct
 # version
@@ -216,10 +222,11 @@ def get_macros(self, vdata):
         return None
 
 
-# TOREMOVE AS SOON AS THIS GOT PROPERLY FIXED
+# TO REMOVE AS SOON AS THIS GOT PROPERLY FIXED
 # This fixes the save button on TinyMCE for dexterity content types with
 # Richtext fields. This should be solved on Plone 5 or with the new version of
 # TinyMCE
+
 from zope.interface import implements
 from Products.TinyMCE.adapters.interfaces.Save import ISave
 from plone.app.contenttypes.behaviors.richtext import IRichText
@@ -469,8 +476,8 @@ def getUserByAttr(self, name, value, pwd=None, cache=0):
 
     cache_type = pwd and 'authenticated' or 'anonymous'
     negative_cache_key = '%s:%s:%s' % (name,
-                                      value,
-                                      sha_new(pwd or '').hexdigest())
+                                       value,
+                                       sha_new(pwd or '').hexdigest())
     if cache:
         if self._cache('negative').get(negative_cache_key) is not None:
             return None
@@ -535,15 +542,15 @@ def getUserByAttr(self, name, value, pwd=None, cache=0):
     # END PATCH
 
     user_obj = LDAPUser(uid,
-                       login_name,
-                       pwd or 'undef',
-                       user_roles or [],
-                       [],
-                       user_dn,
-                       user_attrs,
-                       self.getMappedUserAttrs(),
-                       self.getMultivaluedUserAttrs(),
-                       ldap_groups=ldap_groups)
+                        login_name,
+                        pwd or 'undef',
+                        user_roles or [],
+                        [],
+                        user_dn,
+                        user_attrs,
+                        self.getMappedUserAttrs(),
+                        self.getMultivaluedUserAttrs(),
+                        ldap_groups=ldap_groups)
 
     if cache:
         self._cache(cache_type).set(value, user_obj)
@@ -552,12 +559,12 @@ def getUserByAttr(self, name, value, pwd=None, cache=0):
 
 
 def enumerateUsers(self,
-                  id=None,
-                  login=None,
-                  exact_match=0,
-                  sort_by=None,
-                  max_results=None,
-                  **kw):
+                   id=None,
+                   login=None,
+                   exact_match=0,
+                   sort_by=None,
+                   max_results=None,
+                   **kw):
     """ Fulfill the UserEnumerationPlugin requirements """
     view_name = self.getId() + '_enumerateUsers'
     criteria = {'id': id, 'login': login, 'exact_match': exact_match,
@@ -714,7 +721,7 @@ def deletePersonalPortrait(self, id=None):
         raise Unauthorized
 
     # The plugable actions for how to handle the portrait.
-    portrait_url = portal_url()+'/defaultUser.png'
+    portrait_url = portal_url() + '/defaultUser.png'
     imgData = requests.get(portrait_url).content
     image = StringIO(imgData)
     image.filename = 'defaultUser'
@@ -778,7 +785,7 @@ def jupload__call__(self):
         else:
             addable_types = self.context.getLocallyAllowedTypes()
 
-    #if the type_ is disallowed in this folder, return an error
+    # if the type_ is disallowed in this folder, return an error
     if type_ not in addable_types:
         msg = translate(
             _WF('disallowed_type_error',
@@ -824,3 +831,31 @@ def jupload__call__(self):
     return json.dumps({
         'files': [result]
     })
+
+
+def chooseName(self, name, object):
+    container = aq_inner(self.context)
+    if not name:
+        nameFromTitle = INameFromTitle(object, None)
+        if nameFromTitle is not None:
+            name = nameFromTitle.title
+        if not name:
+            name = getattr(aq_base(object), 'id', None)
+        if not name:
+            name = getattr(aq_base(object), 'portal_type', None)
+        if not name:
+            name = object.__class__.__name__
+
+    if not isinstance(name, unicode):
+        name = unicode(name, 'utf-8')
+
+    request = getattr(object.__of__(container), 'REQUEST', None)
+    if request is not None:
+        name = IUserPreferredURLNormalizer(request).normalize(name)
+    else:
+        name = getUtility(IURLNormalizer).normalize(name)
+
+    if name[:1] == '_':
+        name = name[1:]
+
+    return self._findUniqueName(name, object)
