@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.52 (unreleased)
+4.8.52 (2018-07-02)
 -------------------
 
-- Nothing changed yet.
-
+* Override chooseName to avoid error of names beginnig with _ [Corina Riba]
+* added try to check sync_groups [Roberto Diaz]
 
 4.8.51 (2018-06-27)
 -------------------
