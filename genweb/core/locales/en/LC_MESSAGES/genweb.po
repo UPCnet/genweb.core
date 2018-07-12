@@ -2031,3 +2031,6 @@ msgstr "Please, read the terms of use and privacy policy <a href='https://www.up
 
 msgid "title_privacy"
 msgstr "I accept the terms of use and privacy policy"
+
+msgid "custom message"
+msgstr "Choose an option"

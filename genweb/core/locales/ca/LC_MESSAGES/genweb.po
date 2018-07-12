@@ -2150,3 +2150,6 @@ msgstr "He llegit i accepto les condicions d'ús i privacitat"
 #: CMFPlone/skins/plone_login/insufficient_privileges.pt:19
 msgid "description_no_privileges_for_page"
 msgstr "No teniu permisos suficients per a visualitzar aquesta pàgina. Si creieu que es tracta d'un error, contacteu amb"
+
+msgid "custom message"
+msgstr "Escull una opció"
