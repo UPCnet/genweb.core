@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.53 (unreleased)
+4.8.53 (2018-07-17)
 -------------------
 
-- Nothing changed yet.
-
+* Add "No value" translation for multicontact [Corina Riba]
 
 4.8.52 (2018-07-02)
 -------------------
