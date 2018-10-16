@@ -521,6 +521,66 @@ class reBuildUserPropertiesCatalog(grok.View):
             print('Updated properties catalog for {}'.format(user['id']))
 
 
+class addUserPropertiesCatalog(grok.View):
+    """ Rebuild the OMEGA13 repoze.catalog for specific user properties data
+
+        For default, we use the mutable_properties (users who have entered into communities)
+
+        Path directo del plugin:
+        acl_users/plugins/manage_plugins?plugin_type=IPropertiesPlugin
+
+        En ACL_USERS / LDAP / Properties / Active Plugins ha de estar ordenado así:
+          mutable_properties / auto_group / ldapaspb
+
+        But really, we use the most preferent plugin
+        If the most preferent plugin is:
+           mutable_properties --> users who have entered into communities
+           ldap --> users in LDAP
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('add_user_catalog')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+
+        if 'user' in self.request.form:
+            portal = api.portal.get()
+            plugins = portal.acl_users.plugins.listPlugins(IPropertiesPlugin)
+
+            # We use the most preferent plugin
+            # If the most preferent plugin is:
+            #    mutable_properties --> users who have entered into communities
+            #    ldap --> users in LDAP
+            pplugin = plugins[-1][1]
+            userid = self.request.form['user']
+            user_properties = pplugin.enumerateUsers(id=userid)
+
+            for user in user_properties:
+                if user['id'] == userid:
+                    user.update(dict(username=user['id']))
+                    if 'title' in user:
+                        user.update(dict(fullname=user['title']))
+                    elif 'fullname' in user:
+                        user.update(dict(fullname=user['fullname']))
+                    elif 'sn' in user:
+                        user.update(dict(fullname=user['sn']))
+                    else:
+                        user.update(dict(fullname=user['cn']))
+
+                    user_obj = api.user.get(user['id'])
+
+                    if user_obj:
+                        add_user_to_catalog(user_obj, user)
+                    else:
+                        print('No user found in user repository (LDAP) {}'.format(user['id']))
+
+                    print('Updated properties catalog for {}'.format(user['id']))
+        else:
+            return 'Error, you have to add the user parameter.'
+
+
 class ResetUserPropertiesCatalog(grok.View):
     """ Reset the OMEGA13 repoze.catalog for user properties data """
 
@@ -559,6 +619,7 @@ class userPropertiesCatalogViewer(grok.View):
             result[record[1].attrs['id']] = item
 
         return result
+
 
 class DeleteUserPropertiesCatalog(grok.View):
     """ Delete users in catalog not in LDAP.
@@ -605,6 +666,37 @@ class DeleteUserPropertiesCatalog(grok.View):
             print('The order to the plugins in En ACL_USERS / LDAP / Properties / Active Plugins : mutable_properties / auto_group / ldapaspb')
             results.append('The order to the plugins in En ACL_USERS / LDAP / Properties / Active Plugins : mutable_properties / auto_group / ldapaspb')
             return '\n'.join([str(item) for item in results])
+
+
+class RemoveUserPropertiesCatalog(grok.View):
+    """ Remove specific user in catalog.
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('remove_user_catalog')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        if CSRF:
+            alsoProvides(self.request, IDisableCSRFProtection)
+
+        if 'user' in self.request.form:
+            portal = api.portal.get()
+            results = []
+            soup = get_soup('user_properties', portal)
+            records = [r for r in soup.data.items() if r[1].attrs['id'] == self.request.form['user']]
+
+            for record in records:
+                # For each user in catalog search user in ldap
+                soup.__delitem__(record[1])
+                print('User delete soup {}'.format(record[1].attrs['id']))
+                results.append('User delete soup: {}'.format(record[1].attrs['id']))
+
+            print('Finish remove_user_catalog')
+            results.append('Finish remove_user_catalog')
+            return '\n'.join([str(item) for item in results])
+        else:
+            return 'Error, you have to add the user parameter.'
+
 
 class enablePDFIndexing(grok.View):
     """ Enable PDF indexing """
