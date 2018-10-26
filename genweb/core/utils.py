@@ -312,7 +312,17 @@ def add_user_to_catalog(user, properties={}, notlegit=False, overwrite=False):
             # Update the searchable_text of the standard user record field with
             # the ones in the extended catalog
             if hasattr(extended_user_properties_utility, 'public_properties'):
-                user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' ' + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.public_properties if extended_user_record.attrs.get(key, False)])
+                user_record.attrs['searchable_text'] = ''
+                for key in extended_user_properties_utility.public_properties:
+                    if extended_user_record.attrs.get(key, False):
+                        value = extended_user_record.attrs[key]
+                        if isinstance(value, list) or isinstance(value, tuple):
+                            value = ' '.join(value)
+
+                        if isinstance(value, unicode):
+                            user_record.attrs['searchable_text'] += ' ' + unicodedata.normalize('NFKD', value).encode('ascii', errors='ignore')
+                        else:
+                            user_record.attrs['searchable_text'] += ' ' + value
             else:
                 user_record.attrs['searchable_text'] = user_record.attrs['searchable_text'] + ' ' + ' '.join([unicodedata.normalize('NFKD', extended_user_record.attrs[key]).encode('ascii', errors='ignore') for key in extended_user_properties_utility.properties if extended_user_record.attrs.get(key, False)])
 

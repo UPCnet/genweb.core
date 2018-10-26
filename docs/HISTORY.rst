@@ -1,11 +1,17 @@
 Changelog
 =========
 
-4.8.54 (unreleased)
+4.8.55 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.8.54 (2018-10-23)
+-------------------
+
+* Cambios add_user_to_catalog public_properties [iago.lopez]
+* Add helpers add_user_catalog and remove_user_catalog: Add and remove a specific user in catalog [iago.lopez]
 
 4.8.53 (2018-07-17)
 -------------------
