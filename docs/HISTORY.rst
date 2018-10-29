@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.55 (unreleased)
+4.8.55 (2018-10-29)
 -------------------
 
-- Nothing changed yet.
-
+* Delete Spanish translations [Corina Riba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [Roberto Diaz]
+* updated travis config to pass tests [Roberto Diaz]
 
 4.8.54 (2018-10-23)
 -------------------
