@@ -18,6 +18,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.PythonScripts.standard import url_quote
 from genweb.core.browser.helpers import listPloneSites
 from genweb.core.utils import json_response
+from plone.app.contenttypes.interfaces import IFolder
 
 
 try:
@@ -472,12 +473,15 @@ class getCollectionDefaultPages(grok.View):
 
 try:
     from collective.jsonify.export import export_content as export_content_orig
+    import os
+    import shutil
+
 
     class ExportDexterity(grok.View):
         """Returns a list of paths of all items found by the catalog.
            This view return all elements from context called
         """
-        grok.context(Interface)
+        grok.context(IFolder)
         grok.name('export_dexterity')
         grok.require('cmf.ManagePortal')
 
@@ -485,6 +489,8 @@ try:
             if 'dir' not in self.request.form:
                 raise ValueError("Mandatory parameter 'dir' was not specified")
             directory = self.request.form['dir']
+            if os.path.exists(directory + '/content_documents'):
+                shutil.rmtree(directory + '/content_documents')
             return export_content_orig(
                 self.context,
                 basedir=directory,  # export directory
