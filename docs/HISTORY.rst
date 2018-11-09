@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.56 (unreleased)
+4.8.56 (2018-11-09)
 -------------------
 
-- Nothing changed yet.
-
+* Modify export_dexterity for IFolder [Pilar Marinas]
 
 4.8.55 (2018-10-29)
 -------------------
