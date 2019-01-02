@@ -25,7 +25,7 @@ sino també el hosting de totes les instancies que actualment es troben en
 producció. Qualsevol unitat, departament, servei i facultat de la UPC pot gaudir
 del servei via petició al Servei de Comunicació de la UPC. Més de 450 entitats
 ja gaudeixen del servei. Amb més de 8 anys d'història, el servei ha viscut
-moltes actualitzacions a lo llarg d'aquests anys i està activament mantingut per
+moltes actualitzacions al llarg d'aquests anys i està activament mantingut per
 UPCnet.
 
 .. _Servei de Comunicació: https://www.upc.edu/ca/comunicacio
