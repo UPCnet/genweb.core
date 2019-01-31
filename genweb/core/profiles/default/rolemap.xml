@@ -346,11 +346,13 @@
     </permission>
     <permission name="plone.portlet.collection: Add collection portlet"
                 acquire="False">
+      <role name="Editor"/>
       <role name="Manager"/>
       <role name="WebMaster"/>
     </permission>
     <permission name="plone.portlet.static: Add static portlet"
                 acquire="False">
+      <role name="Editor"/>
       <role name="Manager"/>
       <role name="WebMaster"/>
     </permission>
