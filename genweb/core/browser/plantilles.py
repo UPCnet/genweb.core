@@ -244,7 +244,7 @@ def get_plantilles():
     titol = u"Taula de registres per files"
     resum = u"Per definir una taula de registres estructurada per columnes. Es pot ampliar en files i columnes."
     cos = u"""<h3>Taula registres</h3>
-<table class="taulaRegistres" summary="Detall d'estructura de la taula de registres"><caption>Subtítol taula</caption>
+<table class="table taulaRegistres" summary="Detall d'estructura de la taula de registres"><caption>Subtítol taula</caption>
 <tbody>
 <tr class="cap">
 <td></td>
