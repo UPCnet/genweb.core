@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.8.57 (unreleased)
+4.8.57 (2019-02-14)
 -------------------
 
-- Nothing changed yet.
-
+* Add class table to Taula Registre template [Corina Riba]
+* Delete table styles Tiny [Corina Riba]
+* Add table styles [Corina Riba]
+* Delete table styles [Corina Riba]
+* permission editor to collection and static portlets [r.ventura]
+* first day calendar month OK [r.ventura]
 
 4.8.56 (2018-11-09)
 -------------------
