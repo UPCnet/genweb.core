@@ -5,23 +5,13 @@ from datetime import timedelta
 from plone.event.interfaces import IEventAccessor
 
 def custom_construct_calendar(events, start=None, end=None):
-    """Return a dictionary with dates in a given timeframe as keys and the
-    actual occurrences for that date for building calendars.
-    Long lasting events will occur on every day until their end.
+    """Patch to plone.app.event
+    The first day of the calendar is not marked even if the event happens in that day
+    We use this method instead of the original one in plone.app.event.base.py
+    to fix this issue. 
 
-    :param events: List of IEvent and/or IOccurrence objects, to construct a
-                   calendar data structure from.
-    :type events: list
-
-    :param start: An optional start range date.
-    :type start: Python datetime or date
-
-    :param end: An optional start range date.
-    :type end: Python datetime or date
-
-    :returns: Dictionary with isoformat date strings as keys and event
-              occurrences as values.
-    :rtype: dict
+    The same issue is fixed in higher versions of plone.app.event, but these versions 
+    does not support plone 4, so we have to fix it by overwriten the method
 
     """
     if start:
