@@ -859,3 +859,16 @@ def chooseName(self, name, object):
         name = name[1:]
 
     return self._findUniqueName(name, object)
+
+def html_results(self, query):
+    """html results, used for in the edit screen of a collection,
+       used in the live update results"""
+    options = dict(original_context=self.context)
+    results = self(query, sort_on=self.request.get('sort_on', None),
+                   sort_order=self.request.get('sort_order', None),
+                   limit=self.context.item_count)
+
+    return getMultiAdapter(
+        (results, self.request),
+        name='display_query_results'
+    )(**options)

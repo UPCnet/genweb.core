@@ -155,4 +155,10 @@
         replacement=".patches.chooseName"
         />
 
+    <monkey:patch
+        description="Collection previwer the number of elements choosed"
+        module="plone.app.querystring.querybuilder.QueryBuilder"
+        original="html_results"
+        replacement=".patches.html_results"
+        />
 </configure>
