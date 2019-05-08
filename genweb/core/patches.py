@@ -46,6 +46,9 @@ import inspect
 import logging
 import requests
 
+from genweb.core.utils import pref_lang
+from plone.app.contentlisting.interfaces import IContentListing
+
 
 logger = logging.getLogger('event.LDAPUserFolder')
 genweb_log = logging.getLogger('genweb.core')
@@ -863,10 +866,27 @@ def chooseName(self, name, object):
 def html_results(self, query):
     """html results, used for in the edit screen of a collection,
        used in the live update results"""
+    item_count = 30
+    if hasattr(self.context, 'item_count'):
+        item_count = self.context.item_count
+
     options = dict(original_context=self.context)
     results = self(query, sort_on=self.request.get('sort_on', None),
                    sort_order=self.request.get('sort_order', None),
-                   limit=self.context.item_count)
+                   limit=self.request.get('limit', 1000))
+
+    lang_res = []
+    for res in results:
+        if hasattr(res, 'language'):
+            if res.language == pref_lang():
+                lang_res.append(res)
+        else:
+            if res.Language() == pref_lang():
+                lang_res.append(res)
+        if len(lang_res) == item_count:
+            break
+
+    results = IContentListing(lang_res)
 
     return getMultiAdapter(
         (results, self.request),
