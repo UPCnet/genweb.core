@@ -1,11 +1,17 @@
 Changelog
 =========
 
-4.8.58 (unreleased)
+4.8.59 (unreleased)
 -------------------
 
 - Nothing changed yet.
 
+
+4.8.58 (2019-05-02)
+-------------------
+
+* [Collection] previsualizar el mismo numero de elementos que se muestran [r.ventura]
+* first day of the calendar comment added [r.ventura]
 
 4.8.57 (2019-02-14)
 -------------------
