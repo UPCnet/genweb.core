@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.59 (unreleased)
+4.8.59 (2019-05-08)
 -------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.core into develop [r.ventura]
+* collections previsualization fixed [r.ventura]
 
 4.8.58 (2019-05-02)
 -------------------
