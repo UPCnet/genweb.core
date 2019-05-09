@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.60 (unreleased)
+4.8.60 (2019-05-09)
 -------------------
 
-- Nothing changed yet.
-
+* collection done and traductions field [r.ventura]
 
 4.8.59 (2019-05-08)
 -------------------
