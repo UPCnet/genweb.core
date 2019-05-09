@@ -431,7 +431,7 @@ msgid "Define the search terms for the items you want to list by choosing what t
 msgstr "Definir los términos de búsqueda de los elementos que desee en la lista. La lista de resultados se actualiza de forma dinámica"
 
 msgid "Number of items that will show up in one batch."
-msgstr "Número de elementos que se mostrará."
+msgstr "Número de elementos por página."
 
 msgid "Album view"
 msgstr "Álbum"
@@ -450,7 +450,7 @@ msgid "ModificationDate"
 msgstr "Modificado"
 
 msgid "label_item_count"
-msgstr "Número de elementos"
+msgstr "Paginación"
 
 msgid "Nou Contingut existent"
 msgstr "Nuevo Contenido existente"

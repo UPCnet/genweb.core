@@ -883,11 +883,8 @@ def html_results(self, query):
         else:
             if res.Language() == pref_lang():
                 lang_res.append(res)
-        if len(lang_res) == item_count:
-            break
 
     results = IContentListing(lang_res)
-
     return getMultiAdapter(
         (results, self.request),
         name='display_query_results'

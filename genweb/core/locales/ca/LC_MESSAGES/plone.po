@@ -442,7 +442,7 @@ msgid "Define the search terms for the items you want to list by choosing what t
 msgstr "Definir els termes de cerca dels elements que vulgueu a la llista. La llista de resultats s'actualitza de forma dinàmica"
 
 msgid "Number of items that will show up in one batch."
-msgstr "Nombre d'elements que es mostrarà."
+msgstr "Nombre d'elements per pàgina."
 
 msgid "Album view"
 msgstr "Album"
@@ -461,4 +461,4 @@ msgid "ModificationDate"
 msgstr "Modificat"
 
 msgid "label_item_count"
-msgstr "Nombre de elements"
+msgstr "Paginació"
