@@ -98,6 +98,10 @@
 
   <tablestyles>
    <element value="Taula bàsica|table"/>
+   <element value="Taula amb hover|table table-hover" />
+   <element value="Taula amb vora|table table-bordered" />
+   <element value="Taula comprimida|table table-condensed" />
+   <element value="Taula ratllada|table table-striped" />
   </tablestyles>
 
 <!--   <formats>
