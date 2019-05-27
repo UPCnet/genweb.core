@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.61 (unreleased)
+4.8.61 (2019-05-27)
 -------------------
 
-- Nothing changed yet.
-
+* Tiny: Recuperar estilos tablas [Iago López Fernández]
 
 4.8.60 (2019-05-09)
 -------------------
