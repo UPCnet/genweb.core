@@ -310,6 +310,10 @@ msgid "Full view"
 msgstr "Anchura total: imagen arriba y texto debajo"
 msgid "Full2cols view"
 msgstr "Anchura total a dos columnas: dos columnas con imagen arriba y texto debajo"
+msgid "Full3cols view"
+msgstr "Anchura total a tres columnas: tres columnas con imagen arriba y texto debajo"
+msgid "Full4cols view"
+msgstr "Anchura total a cuatro columnas: cuatro columnas con imagen arriba y texto debajo"
 
 msgid "Tipus de vista"
 msgstr "Tipo de vista"
@@ -318,6 +322,37 @@ msgstr "Cómo se mostrarán las noticias"
 
 msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
 msgstr "Máximo número de noticias a mostrar (d'1 a 7)"
+
+######################
+# Portlet Grid Events #
+######################
+
+msgid "Numero de esdeveniments a mostrar"
+msgstr "Número de eventos a mostrar"
+
+msgid "Maxim numero de esdeveniments a mostrar (d'1 a 16)"
+msgstr "Máximo número de eventos a mostrar (de 1 a 16)"
+
+msgid "Numero de columnes"
+msgstr "Número de columnas"
+
+msgid "Numero de columnes (d'1 a 4)"
+msgstr "Número de columnas (de 1 a 4)"
+
+msgid "Grid events"
+msgstr "Grid agenda"
+
+msgid "Add Grid Events portlet"
+msgstr "Añadir portlet Grid Agenda"
+
+msgid "Edit Grid Events Portlet"
+msgstr "Editar portlet Grid Agenda"
+
+msgid "This portlet displays recent Events."
+msgstr "Este portlet muestra acontecimientos recientes."
+
+msgid "Més esdeveniments"
+msgstr "Más eventos"
 
 #: genweb.theme/genweb/theme/portlets/fullnews.py:34
 #: genweb.theme/genweb/theme/portlets/news.py:34

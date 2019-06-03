@@ -145,6 +145,10 @@ msgid "Full view"
 msgstr "Full: full image size and text below"
 msgid "Full2cols view"
 msgstr "Full 2 columns: two columns of full image size and text below"
+msgid "Full3cols view"
+msgstr "Full 3 columns: three columns of full image size and text below"
+msgid "Full4cols view"
+msgstr "Full 4 columns: four columns of full image size and text below"
 
 msgid "Tipus de vista"
 msgstr "View"
@@ -153,6 +157,37 @@ msgstr "How news will be displayed"
 
 msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
 msgstr "Maxim number of news to display (1 to 7)"
+
+######################
+# Portlet Grid Events #
+######################
+
+msgid "Numero de esdeveniments a mostrar"
+msgstr "Number of events to show"
+
+msgid "Maxim numero de esdeveniments a mostrar (d'1 a 16)"
+msgstr "Maximum number of events to show (from 1 to 16)"
+
+msgid "Numero de columnes"
+msgstr "Number of columns"
+
+msgid "Numero de columnes (d'1 a 4)"
+msgstr "Number of columns (from 1 to 4)"
+
+msgid "Grid events"
+msgstr "Grid events"
+
+msgid "Add Grid Events portlet"
+msgstr "Add Grid Events portlet"
+
+msgid "Edit Grid Events Portlet"
+msgstr "Edit Grid Events Portlet"
+
+msgid "This portlet displays recent Events."
+msgstr "This portlet shows recent events."
+
+msgid "Més esdeveniments"
+msgstr "More events"
 
 ####################
 # Contact settings #

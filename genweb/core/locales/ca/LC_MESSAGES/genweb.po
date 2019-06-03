@@ -146,6 +146,10 @@ msgid "Full view"
 msgstr "Amplada total: imatge a dalt i text a sota"
 msgid "Full2cols view"
 msgstr "Amplada total a dues columnes: dues columnes amb imatge a dalt i text a sota"
+msgid "Full3cols view"
+msgstr "Amplada total a tres columnes: tres columnes amb imatge a dalt i text a sota"
+msgid "Full4cols view"
+msgstr "Amplada total a quatre columnes: quatre columnes amb imatge a dalt i text a sota"
 
 msgid "Tipus de vista"
 msgstr "Tipus de vista"
@@ -154,6 +158,37 @@ msgstr "Escull com es mostraran les notícies"
 
 msgid "Maxim numero de noticies a mostrar (d'1 a 7)"
 msgstr "Màxim número de notícies a mostrar (d'1 a 7)"
+
+######################
+# Portlet Grid Events #
+######################
+
+msgid "Numero de esdeveniments a mostrar"
+msgstr "Número d'esdeveniments a mostrar"
+
+msgid "Maxim numero de esdeveniments a mostrar (d'1 a 16)"
+msgstr "Màxim número d'esdeveniments a mostrar (d'1 a 16)"
+
+msgid "Numero de columnes"
+msgstr "Número de columnes"
+
+msgid "Numero de columnes (d'1 a 4)"
+msgstr "Número de columnes (d'1 a 4)"
+
+msgid "Grid events"
+msgstr "Grid agenda"
+
+msgid "Add Grid Events portlet"
+msgstr "Afegir portlet Grid Agenda"
+
+msgid "Edit Grid Events Portlet"
+msgstr "Editar portlet Grid Agenda"
+
+msgid "This portlet displays recent Events."
+msgstr "Aquest portlet mostra esdeveniments recents."
+
+msgid "Més esdeveniments"
+msgstr "Més esdeveniments"
 
 #################
 # Control Panel #

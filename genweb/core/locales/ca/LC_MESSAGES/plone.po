@@ -351,6 +351,9 @@ msgstr "Notícies amb foto"
 msgid "NoticiesPropi"
 msgstr "Notícies"
 
+msgid "GridEvents"
+msgstr "Grid agenda"
+
 msgid "AgendaGW"
 msgstr "Agenda"
 

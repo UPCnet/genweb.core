@@ -41,6 +41,9 @@ msgstr "News with image"
 msgid "NoticiesPropi"
 msgstr "News"
 
+msgid "GridEvents"
+msgstr "Grid events"
+
 msgid "AgendaGW"
 msgstr "Agenda"
 
