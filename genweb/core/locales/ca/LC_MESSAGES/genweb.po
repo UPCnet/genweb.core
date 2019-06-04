@@ -190,6 +190,9 @@ msgstr "Aquest portlet mostra esdeveniments recents."
 msgid "Més esdeveniments"
 msgstr "Més esdeveniments"
 
+msgid "a"
+msgstr ""
+
 #################
 # Control Panel #
 #################

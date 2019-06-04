@@ -354,6 +354,9 @@ msgstr "Este portlet muestra acontecimientos recientes."
 msgid "Més esdeveniments"
 msgstr "Más eventos"
 
+msgid "a"
+msgstr "a"
+
 #: genweb.theme/genweb/theme/portlets/fullnews.py:34
 #: genweb.theme/genweb/theme/portlets/news.py:34
 msgid "Mostra data?"

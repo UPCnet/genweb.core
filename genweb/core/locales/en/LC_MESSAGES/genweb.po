@@ -189,6 +189,9 @@ msgstr "This portlet shows recent events."
 msgid "Més esdeveniments"
 msgstr "More events"
 
+msgid "a"
+msgstr "to"
+
 ####################
 # Contact settings #
 ####################
