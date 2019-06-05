@@ -2191,3 +2191,25 @@ msgstr "No teniu permisos suficients per a visualitzar aquesta pàgina. Si creie
 
 msgid "custom message"
 msgstr "Escull una opció"
+
+####################################
+# Tiny MCE - Interactive templates #
+####################################
+
+msgid "interactive_template_dlg_title"
+msgstr "Plantilles interactives"
+
+msgid "interactive_template_dlg_desc"
+msgstr "Insereix y configura el contingut de la plantilla"
+
+msgid "interactive_template_dlg_select"
+msgstr "Seleccioneu una plantilla"
+
+msgid "interactive_template_dlg_label"
+msgstr "Plantilla"
+
+msgid "interactive_template_dlg_desc_label"
+msgstr "Descripció"
+
+msgid "interactive_template_dlg_example"
+msgstr "Exemple"

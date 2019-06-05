@@ -2112,3 +2112,25 @@ msgstr "He leído y acepto las condiciones de uso y privacidad"
 msgid "custom message"
 msgstr "Escoge una opción"
 
+#################################
+# Tiny MCE - Interactive templates #
+####################################
+
+msgid "interactive_template_dlg_title"
+msgstr "Plantillas interactivas"
+
+msgid "interactive_template_dlg_desc"
+msgstr "Inserta y configura el contenido de la plantilla"
+
+msgid "interactive_template_dlg_select"
+msgstr "Selecciona una plantilla"
+
+msgid "interactive_template_dlg_label"
+msgstr "Plantilla"
+
+msgid "interactive_template_dlg_desc_label"
+msgstr "Descripción"
+
+msgid "interactive_template_dlg_example"
+msgstr "Ejemplo"
+

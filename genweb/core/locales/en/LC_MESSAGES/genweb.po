@@ -2072,3 +2072,25 @@ msgstr "I accept the terms of use and privacy policy"
 
 msgid "custom message"
 msgstr "Choose an option"
+
+####################################
+# Tiny MCE - Interactive templates #
+####################################
+
+msgid "interactive_template_dlg_title"
+msgstr "Interactive templates"
+
+msgid "interactive_template_dlg_desc"
+msgstr "Insert and configure the content of template"
+
+msgid "interactive_template_dlg_select"
+msgstr "Insert the template"
+
+msgid "interactive_template_dlg_label"
+msgstr "Template"
+
+msgid "interactive_template_dlg_desc_label"
+msgstr "Description"
+
+msgid "interactive_template_dlg_example"
+msgstr "Example"
