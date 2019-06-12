@@ -24,11 +24,11 @@ var TemplateDialog = {
         // Use external template list as a fallback
         if (!tsrc && typeof(tinyMCETemplateList) != 'undefined') {
             for (x=0, tsrc = []; x<tinyMCETemplateList.length; x++)
-                tsrc.push({title : tinyMCETemplateList[x][0], src : tinyMCETemplateList[x][1], description : tinyMCETemplateList[x][2]});
+                tsrc.push({id : tinyMCETemplateList[x][0], title : tinyMCETemplateList[x][1], src : tinyMCETemplateList[x][2], description : tinyMCETemplateList[x][3]});
         }
 
         for (x=0; x<tsrc.length; x++)
-            sel.options[sel.options.length] = new Option(tsrc[x].title, tinyMCEPopup.editor.documentBaseURI.toAbsolute(tsrc[x].src));
+            sel.options[sel.options.length] = new Option(tsrc[x].title, tsrc[x].id);
 
         this.resize();
         this.tsrc = tsrc;
@@ -61,21 +61,132 @@ var TemplateDialog = {
     },
 
     selectTemplate : function(u, ti) {
-        var d = window.frames['templatesrc'].document, x, tsrc = this.tsrc;
+        value = document.getElementById("tpath").value;
+        if(value.length > 0){
+            document.getElementById("templateOptions").style.display = 'block';
+            document.getElementById("conf").innerHTML = '';
 
-        if (!u)
-            return;
+            if (value.includes('carousel')) {
+                document.getElementById("templateOptionsCarousel").style.display = 'block';
+            } else {
+                document.getElementById("templateOptionsCarousel").style.display = 'none';
+            }
 
-        d.body.innerHTML = this.templateHTML = this.getFileContents(u);
+            document.getElementById('add_item_before').addEventListener('click', this.addNewItemBefore, false);
+            document.getElementById('add_item_after').addEventListener('click', this.addNewItemAfter, false);
+
+            var d = window.frames['templatesrc'].document, x, tsrc = this.tsrc;
+
+            if (!u)
+                return;
+
+            for (x=0; x<tsrc.length; x++) {
+                if (tsrc[x].title == ti)
+                    document.getElementById('tmpldesc').innerHTML = tsrc[x].description || '';
+
+                if (tsrc[x].id == u)
+                    d.body.innerHTML = this.templateHTML = this.getFileContents(tsrc[x].src);
+            }
+        }else{
+            document.getElementById("templateOptions").style.display = 'none';
+            document.getElementById("conf").innerHTML = '';
+            document.getElementById('tmpldesc').innerHTML = '';
+            window.frames['templatesrc'].document.body.innerHTML = '';
+        }
+    },
+
+    addNewItemBefore : function() {
+        document.getElementById('conf').insertAdjacentHTML('afterbegin', addItem());
+    },
+
+    addNewItemAfter : function() {
+        document.getElementById('conf').insertAdjacentHTML('beforeend', addItem());
     },
 
     insert : function() {
         tinyMCEPopup.execCommand('mcePloneInsertTemplate', false, {
-            content : this.templateHTML,
+            content : this.getContentTemplate(),
             selection : tinyMCEPopup.editor.selection.getContent()
         });
 
         tinyMCEPopup.close();
+    },
+
+    getContentTemplate : function() {
+        switch (document.getElementById("tpath").value) {
+            case 'carousel-dimatges':
+                return this.getCarouselHTML();
+                break;
+
+            case 'acordio':
+                return this.getAcordioHTML();
+                break;
+
+            case 'pestanyes':
+                return this.getPestanyesHTML();
+                break;
+
+            default:
+                return '';
+        }
+    },
+
+    getCarouselHTML : function() {
+        var template = '';
+        var seconds = document.getElementById("seconds").value * 1000
+        var random = (Math.random() * 1000000) + 1
+
+        /* JS */
+        if (document.getElementById("autojs").checked) {
+            template += '<script type="text/javascript">';
+            template +=     '$(document).ready(function(event) {';
+            template +=         '$(".carousel").carousel({';
+            template +=             'interval: $("#myCarousel' + random + '").attr("data-interval"),';
+            template +=             'ride: true';
+            template +=         '});';
+            template +=     '});';
+            template += '</script>';
+        }
+
+        /* INICIO */
+        template += '<div id="myCarousel' + random + '" class="carousel slide" data-interval="' + seconds + '">';
+        template +=     '<div class="carousel-inner">';
+
+        /* CONTENIDO */
+        var slides = window.document.getElementsByClassName('slide');
+        for (var x=0; x<slides.length; x++) {
+            title = slides[x].getElementsByClassName('title')[0].value
+            description = slides[x].getElementsByClassName('description')[0].value
+            image = slides[x].getElementsByClassName('image')[0].value
+
+            if (x == 0) {
+                template += '<div class="active item">';
+            } else {
+                template += '<div class="item">';
+            }
+            template +=         '<img src="' + image + '" alt="' + title + '">';
+            template +=         '<div class="carousel-caption">';
+            template +=             '<h4>' + title + '</h4>'
+            template +=             '<p>' + description + '</p>'
+            template +=         '</div>'
+            template +=     '</div>'
+        }
+
+        /* FIN */
+        template +=     '</div>';
+        template +=     '<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>';
+        template +=     '<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>';
+        template += '</div>';
+
+        return template;
+    },
+
+    getAcordioHTML : function() {
+        return '';
+    },
+
+    getPestanyesHTML : function() {
+        return '';
     },
 
     getFileContents : function(u) {
@@ -101,7 +212,24 @@ var TemplateDialog = {
 
         return x.responseText;
     }
+
 };
 
 TemplateDialog.preInit();
 tinyMCEPopup.onInit.add(TemplateDialog.init, TemplateDialog);
+
+
+function addItem() {
+
+    index = window.document.getElementsByClassName('slide').length +1;
+
+    tag =       '<tr class="slide" id="slide-' + index + '">';
+    tag = tag + '<td><a class="elimina" href="#" onclick="document.getElementById(\'slide-' + index + '\').remove();return false;">Elimina</a>';
+    tag = tag + '<p>Titol:</p><p><input type="text" name="title" class="title" id="title-' + index + '" value=""></input></p>';
+    if (document.getElementById("tpath").value.includes('carousel')){
+        tag = tag + '<p>Imatge:</p><p><input type="text" name="image" class="image" id="image-' + index + '" value=""></input></p>';
+    }
+    tag = tag + '<p>Descripció:</p><p><textarea name="description" class="description" id="description-' + index + '" value=""></textarea></p>';
+    tag = tag + '</td></tr>';
+    return  tag;
+}

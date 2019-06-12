@@ -2094,3 +2094,21 @@ msgstr "Description"
 
 msgid "interactive_template_dlg_example"
 msgstr "Example"
+
+msgid "Afegeix_element_al_inici"
+msgstr "Add element at the beginning"
+
+msgid "Afegeix_element_al_final"
+msgstr "Add element at the end"
+
+msgid "Segons_entre_elements"
+msgstr "Seconds between elements:"
+
+msgid "Automatitzar_el_carousel"
+msgstr "Automate the carousel"
+
+msgid "Important_TinyMCE"
+msgstr "IMPORTANT !!"
+
+msgid "Scripts_TinyMCE"
+msgstr "The TinyMCE editor does not allow adding scripts, by enabling automation this adds a script but TinyMCE does what it does by commenting it by adding a code // &lt;![CDATA [content //]]&gt; which causes it can not be used. A solution is to go to the top menu of the genweb, click on the name of your user and go to preferences and select Editor Wysiwyg = CAP. In this way we do not have any visual editor and we can edit it in pure html and we can remove this // &lt;![CDATA [content //]]&gt;. Once we have finished, we can re-activate the visual editor, but we must keep in mind that each page update where there are scripts, if we have the visual editor activated, will be discussed again."

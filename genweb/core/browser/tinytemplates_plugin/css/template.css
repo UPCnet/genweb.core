@@ -21,3 +21,31 @@
 .mceActionPanel {
 	padding-top: 5px;
 }
+
+
+#templateOptions table {
+    margin-top: 10px;
+}
+
+#templateOptions table tbody#conf tr {
+    display: block;
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+#templateOptions table tbody#conf td {
+    display: block;
+    width: 100%;
+}
+
+#templateOptions table tbody#conf .elimina {
+    position: absolute;
+    right: 10px;
+}
+
+#templateOptions table input {
+    margin-bottom: 10px;
+    width: 98%;
+    max-width: none !important;
+}

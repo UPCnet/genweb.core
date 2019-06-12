@@ -7,20 +7,23 @@
     <script type="text/javascript">
         var tinyMCETemplateList = [
             [
-                "Carousel",
-                "http://localhost:8080/plantillas/interactive-templates/carousel/genweb.get.dxdocument.text",
-                ['title', 'text', 'image']
+                "carousel-dimatges",
+                "Carousel d'imatges",
+                "http://localhost:8080/plantillas/interactive-templates/carousel-dimatges/genweb.get.dxdocument.text",
+                "Carousel d'imatges navegables."
             ],
-            [
+            /*[
+                "acordio",
                 "Acordió",
                 "http://localhost:8080/plantillas/interactive-templates/acordio/genweb.get.dxdocument.text",
-                ['title', 'text']
+                "Acordió d'opcions."
             ],
             [
+                "pestanyes",
                 "Pestanyes",
                 "http://localhost:8080/plantillas/interactive-templates/pestanyes/genweb.get.dxdocument.text",
-                ['title', 'text']
-            ]];
+                "Contingut segmentat per pestanyes amb un altre estil."
+            ]*/];
     </script>
     <link href="css/template.css" rel="stylesheet" type="text/css" />
 </head>
@@ -34,10 +37,34 @@
                     <option value="" i18n:translate="interactive_template_dlg_select"></option>
                 </select>
                 <span id="warning"></span></div>
+                <div class="frmRow"><label for="tdesc" i18n:translate="interactive_template_dlg_desc_label"></label>
+                <span id="tmpldesc"></span></div>
+
+                <div id="templateOptions" style="display: none;">
+                    <div id="templateOptionsCarousel">
+                        <p>
+                            <span i18n:translate="Segons_entre_elements">Segons entre elements:</span>
+                            <input type="number" class="seconds" id="seconds" name="seconds"
+                                   min="1" max="60" value="10" />
+                        </p>
+
+                        <input type="checkbox" class="autojs" id="autojs" name="autojs"/>
+                        <span i18n:translate="Automatitzar_el_carousel">Automatitzar el carousel</span>
+                        <p></p>
+                        <div class="destacatQuadres"><b i18n:translate="Important_TinyMCE">IMPORTANT!!</b> <span i18n:translate="Scripts_TinyMCE">L'editor TinyMCE no permet afegir scripts, al habilitar l'automatizació aquest afegeix un script pero TinyMCE el que fa es comentar-ho afegint un codi // &lt;![CDATA[ contingut // ]]&gt; que fa que no es pugui utilitzar. Una solució és anar al menú superior del genweb, fer clic al nom del teu usuari i anar a preferències i seleccionar Editor Wysiwyg = CAP. D'aquesta forma no tenim cap editor visual i podem editar en html pur i podrem treuere aquest // &lt;![CDATA[ contingut // ]]&gt;. Un cop desem, podem tornar a activar l'editor visual, però hem de tenir molt en compte que cada actualització de pàgines on hi hagin scripts, si tenim activat l'editor visual, tornaran a comentar-se.</span></div>
+                    </div>
+                    <input type="button" id="add_item_before" class="btn" name="add_item_before" i18n:attributes="value Afegeix_element_al_inici" />
+                    <table><tbody id="conf"></tbody></table>
+                    <input type="button" id="add_item_after" class="btn" name="add_item_after" i18n:attributes="value Afegeix_element_al_final" />
+                    <br/>
+                    <br/>
+                </div>
+
                 <fieldset>
                     <legend i18n:translate="interactive_template_dlg_example"></legend>
                     <iframe id="templatesrc" name="templatesrc" src="blank.htm" frameborder="0"></iframe>
                 </fieldset>
+
             </div>
 
             <div class="visualClear"><!-- --></div>
