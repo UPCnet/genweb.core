@@ -133,8 +133,8 @@ var TemplateDialog = {
 
     getCarouselHTML : function() {
         var template = '';
-        var seconds = document.getElementById("seconds").value * 1000
-        var random = (Math.random() * 1000000) + 1
+        var seconds = document.getElementById("seconds").value * 1000;
+        var random = Math.floor((Math.random() * 1000000)) + 1;
 
         /* JS */
         if (document.getElementById("autojs").checked) {
@@ -155,9 +155,9 @@ var TemplateDialog = {
         /* CONTENIDO */
         var slides = window.document.getElementsByClassName('slide');
         for (var x=0; x<slides.length; x++) {
-            title = slides[x].getElementsByClassName('title')[0].value
-            description = slides[x].getElementsByClassName('description')[0].value
-            image = slides[x].getElementsByClassName('image')[0].value
+            title = slides[x].getElementsByClassName('title')[0].value;
+            description = slides[x].getElementsByClassName('description')[0].value;
+            image = slides[x].getElementsByClassName('image')[0].value;
 
             if (x == 0) {
                 template += '<div class="active item">';
@@ -166,10 +166,10 @@ var TemplateDialog = {
             }
             template +=         '<img src="' + image + '" alt="' + title + '">';
             template +=         '<div class="carousel-caption">';
-            template +=             '<h4>' + title + '</h4>'
-            template +=             '<p>' + description + '</p>'
-            template +=         '</div>'
-            template +=     '</div>'
+            template +=             '<h4>' + title + '</h4>';
+            template +=             '<p>' + description + '</p>';
+            template +=         '</div>';
+            template +=     '</div>';
         }
 
         /* FIN */
@@ -177,12 +177,43 @@ var TemplateDialog = {
         template +=     '<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>';
         template +=     '<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>';
         template += '</div>';
+        template += '<p></p>';
 
         return template;
     },
 
     getAcordioHTML : function() {
-        return '';
+        var template = '';
+        var random = Math.floor((Math.random() * 1000000)) + 1;
+
+        /* INICIO */
+        template += '<div class="accordion" id="accordion' + random + '">';
+
+        /* CONTENIDO */
+        var slides = window.document.getElementsByClassName('slide');
+        for (var x=0; x<slides.length; x++) {
+            title = slides[x].getElementsByClassName('title')[0].value;
+            description = slides[x].getElementsByClassName('description')[0].value;
+
+            template += '<div class="accordion-group">';
+            template +=     '<div class="accordion-heading">';
+            if (x == 0) {
+                template +=     '<a class="accordion-toggle collapsed" href="#collapse' + x + '' + random + '" data-toggle="collapse" data-parent="#accordion' + random + '">' + title + '</a>';
+            } else {
+                template +=     '<a class="accordion-toggle" href="#collapse' + x + '' + random + '" data-toggle="collapse" data-parent="#accordion' + random + '">' + title + '</a>';
+            }
+            template +=     '</div>';
+            template +=     '<div class="accordion-body collapse" id="collapse' + x + '' + random + '">';
+            template +=         '<div class="accordion-inner">' + description + '</div>';
+            template +=     '</div>';
+            template += '</div>';
+        }
+
+        /* FIN */
+        template += '</div>';
+        template += '<p></p>';
+
+        return template;
     },
 
     getPestanyesHTML : function() {
