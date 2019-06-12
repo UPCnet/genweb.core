@@ -126,6 +126,10 @@ var TemplateDialog = {
                 return this.getPestanyesHTML();
                 break;
 
+            case 'pestanyes-caixa':
+                return this.getPestanyesCaixaHTML();
+                break;
+
             default:
                 return '';
         }
@@ -217,7 +221,91 @@ var TemplateDialog = {
     },
 
     getPestanyesHTML : function() {
-        return '';
+        var template = '';
+        var random = Math.floor((Math.random() * 1000000)) + 1;
+
+        /* INICIO */
+        template += '<ul class="nav nav-tabs" id="myTab">';
+
+        /* CONTENIDO */
+        var slides = window.document.getElementsByClassName('slide');
+        for (var x=0; x<slides.length; x++) {
+            title = slides[x].getElementsByClassName('title')[0].value;
+
+            if (x == 0) {
+                template += '<li class="active">';
+            } else {
+                template += '<li>';
+            }
+            template +=         '<a href="#tab' + x + '' + random + '" data-toggle="tab">' + title + '</a>';
+            template +=     '</li>';
+        }
+
+        /* FIN + INICIO */
+        template += '</ul>';
+        template += '<div class="tab-content">';
+
+        /* CONTENIDO */
+        for (var x=0; x<slides.length; x++) {
+            description = slides[x].getElementsByClassName('description')[0].value;
+
+            if (x == 0) {
+                template += '<div class="tab-pane active" id="tab' + x + '' + random + '">' + description + '</div>';
+            } else {
+                template += '<div class="tab-pane" id="tab' + x + '' + random + '">' + description + '</div>';
+            }
+        }
+
+        /* FIN */
+        template += '</div>';
+        template += '<p></p>';
+
+        return template;
+    },
+
+    getPestanyesCaixaHTML : function() {
+        var template = '';
+        var random = Math.floor((Math.random() * 1000000)) + 1;
+
+        /* INICIO */
+        template += '<div class="beautytab">';
+        template +=     '<ul id="myTab">';
+
+        /* CONTENIDO */
+        var slides = window.document.getElementsByClassName('slide');
+        for (var x=0; x<slides.length; x++) {
+            title = slides[x].getElementsByClassName('title')[0].value;
+
+            if (x == 0) {
+                template += '<li class="formTab firstFormTab active">';
+            } else {
+                template += '<li class="formTab firstFormTab">';
+            }
+            template +=         '<a href="#tabBox' + x + '' + random + '" data-toggle="tab">' + title + '</a>';
+            template +=     '</li>';
+        }
+
+        /* FIN + INICIO */
+        template +=     '</ul>';
+        template +=     '<div class="tab-content beautytab-content">';
+
+        /* CONTENIDO */
+        for (var x=0; x<slides.length; x++) {
+            description = slides[x].getElementsByClassName('description')[0].value;
+
+            if (x == 0) {
+                template += '<div class="tab-pane active" id="tabBox' + x + '' + random + '">' + description + '</div>';
+            } else {
+                template += '<div class="tab-pane" id="tabBox' + x + '' + random + '">' + description + '</div>';
+            }
+        }
+
+        /* FIN */
+        template +=     '</div>';
+        template += '</div>';
+        template += '<p></p>';
+
+        return template;
     },
 
     getFileContents : function(u) {
