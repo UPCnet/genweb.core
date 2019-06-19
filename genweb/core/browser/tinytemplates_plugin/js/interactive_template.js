@@ -22,9 +22,10 @@ var TemplateDialog = {
         sel = document.getElementById('tpath');
 
         // Use external template list as a fallback
+        urlTemplates = ed.contentCSS[0].replace('/themes/advanced/skins/plone/content.css', '')
         if (!tsrc && typeof(tinyMCETemplateList) != 'undefined') {
             for (x=0, tsrc = []; x<tinyMCETemplateList.length; x++)
-                tsrc.push({id : tinyMCETemplateList[x][0], title : tinyMCETemplateList[x][1], src : tinyMCETemplateList[x][2], description : tinyMCETemplateList[x][3]});
+                tsrc.push({id : tinyMCETemplateList[x][0], title : tinyMCETemplateList[x][1], src : urlTemplates + tinyMCETemplateList[x][2], description : tinyMCETemplateList[x][3]});
         }
 
         for (x=0; x<tsrc.length; x++)
