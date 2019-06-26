@@ -17,10 +17,11 @@ import socket
 @grok.subscribe(IPloneSiteRoot, ILocalrolesModifiedEvent)
 def addedPermissionsPloneSiteRoot(content, event):
     portal = api.portal.get()
-    sender_email = portal.getProperty('email_from_address')
-    sender_name = portal.getProperty('email_from_name').encode('utf-8')
+    # sender_email = portal.getProperty('email_from_address')
+    # sender_name = portal.getProperty('email_from_name').encode('utf-8')
     email_charset = portal.getProperty('email_charset')
-    fromMsg = sender_name + ' ' + '<' + sender_email + '>'
+    # fromMsg = sender_name + ' ' + '<' + sender_email + '>'
+    fromMsg = 'Cristina Dantart <cristina.dantart@upc.edu>'
 
     serverid = socket.gethostname()
     mountpoint = '/'.join(content.getPhysicalPath())
