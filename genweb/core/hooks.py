@@ -22,18 +22,20 @@ def addedPermissionsPloneSiteRoot(content, event):
     email_charset = portal.getProperty('email_charset')
     fromMsg = sender_name + ' ' + '<' + sender_email + '>'
 
+    serverid = socket.gethostname()
+    mountpoint = '/'.join(content.getPhysicalPath())
+    plone = content.absolute_url()
+
     # TODO Enviar correo para abrir tiquet
     context = aq_inner(content)
     mailhost = getToolByName(context, 'MailHost')
     msg = MIMEMultipart()
     msg['From'] = fromMsg
-    msg['To'] = 'noreply@upcnet.es'
-    msg['Subject'] = escape(safe_unicode('Modificació de permisos'))
+    msg['To'] = 'mailtoticket.genesis@upc.edu'
+    msg['Subject'] = escape(safe_unicode('Recatalogar el genweb ' + plone))
     msg['charset'] = email_charset
 
-    serverid = socket.gethostname()
-    plone = '/'.join(content.getPhysicalPath())
-    message = "Server: " + serverid + "\nPlone: " + plone
+    message = "Màquina: " + serverid + "\nMontpoint: " + mountpoint + "\nURL: " + plone
 
     msg.attach(MIMEText(message, 'plain', email_charset))
     mailhost.send(msg)
