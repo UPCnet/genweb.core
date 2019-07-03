@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.63 (unreleased)
+4.8.63 (2019-07-03)
 -------------------
 
-- Nothing changed yet.
-
+* Traducciones portlet Grid events [Iago López Fernández]
+* Traducciones portlets [Iago López Fernández]
 
 4.8.62 (2019-05-27)
 -------------------
