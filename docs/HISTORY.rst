@@ -1,11 +1,13 @@
 Changelog
 =========
 
-4.8.64 (unreleased)
+4.8.64 (2019-07-08)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/permisos_arrel' into develop [Iago López Fernández]
+* Cambiar FROM del correo para abrir tiquet al guardar permisos
+* Añadir correo para abrir tiquet al guardar permisos
+* Enviar correo (noreply) al guardar permisos en la raiz del site
 
 4.8.63 (2019-07-03)
 -------------------
