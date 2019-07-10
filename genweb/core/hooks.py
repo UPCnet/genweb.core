@@ -21,7 +21,7 @@ def addedPermissionsPloneSiteRoot(content, event):
     # sender_name = portal.getProperty('email_from_name').encode('utf-8')
     email_charset = portal.getProperty('email_charset')
     # fromMsg = sender_name + ' ' + '<' + sender_email + '>'
-    fromMsg = 'Cristina Dantart <cristina.dantart@upc.edu>'
+    fromMsg = 'atic@upc.edu'
 
     serverid = socket.gethostname()
     mountpoint = '/'.join(content.getPhysicalPath())
@@ -32,7 +32,7 @@ def addedPermissionsPloneSiteRoot(content, event):
     mailhost = getToolByName(context, 'MailHost')
     msg = MIMEMultipart()
     msg['From'] = fromMsg
-    msg['To'] = 'mailtoticket.genesis@upc.edu'
+    msg['To'] = 'mailtoticket.areatic@upc.edu'
     msg['Subject'] = escape(safe_unicode('Recatalogar el genweb ' + plone))
     msg['charset'] = email_charset
 
