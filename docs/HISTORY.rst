@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.65 (unreleased)
+4.8.65 (2019-07-10)
 -------------------
 
-- Nothing changed yet.
-
+* Cambiar FROM y TO del correo para abrir tiquet al guardar permisos [Iago López Fernández]
 
 4.8.64 (2019-07-08)
 -------------------
