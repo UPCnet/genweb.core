@@ -21,7 +21,7 @@ def addedPermissionsPloneSiteRoot(content, event):
     # sender_name = portal.getProperty('email_from_name').encode('utf-8')
     email_charset = portal.getProperty('email_charset')
     # fromMsg = sender_name + ' ' + '<' + sender_email + '>'
-    fromMsg = 'atic@upc.edu'
+    fromMsg = 'gestio.genweb@upc.edu'
 
     serverid = socket.gethostname()
     mountpoint = '/'.join(content.getPhysicalPath())
