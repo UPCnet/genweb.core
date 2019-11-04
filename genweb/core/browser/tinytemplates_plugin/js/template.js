@@ -1,8 +1,26 @@
 tinyMCEPopup.requireLangPack();
 
+function decode_utf8( s ){ return decodeURIComponent( escape( s ) ); }
+
+function sortOnKeys(dict) {
+
+    var sorted = [];
+    for(var key in dict) {
+        sorted[sorted.length] = key;
+    }
+    sorted.sort();
+
+    var tempDict = {};
+    for(var i = 0; i < sorted.length; i++) {
+        tempDict[sorted[i]] = dict[sorted[i]];
+    }
+
+    return tempDict;
+}
+
 var TemplateDialog = {
     preInit : function() {
-        
+
         // Use this parameter to load another JavaScript file with template
         // definitions. By default, we load our own list using the semantics
         // described in the README.
@@ -14,8 +32,8 @@ var TemplateDialog = {
 
     init : function() {
         var ed = tinyMCEPopup.editor, tsrc, sel, x, u;
-        
-        
+
+
         // Load templates from an explicit parameter. By default, we don't
         // use this
         tsrc = ed.getParam("template_templates", false);
@@ -23,12 +41,25 @@ var TemplateDialog = {
 
         // Use external template list as a fallback
         if (!tsrc && typeof(tinyMCETemplateList) != 'undefined') {
-            for (x=0, tsrc = []; x<tinyMCETemplateList.length; x++)
-                tsrc.push({title : tinyMCETemplateList[x][0], src : tinyMCETemplateList[x][1], description : tinyMCETemplateList[x][2]});
+            var key;
+            var tsrc = []
+            for (key in sortOnKeys(tinyMCETemplateList)) {
+                tsrc.push({title : decode_utf8(key), src : '', description : '', disabled : true});
+                for (x=0; x<tinyMCETemplateList[key].length; x++) {
+                    tsrc.push({title : decode_utf8(tinyMCETemplateList[key][x][0]), src : tinyMCETemplateList[key][x][1], description : decode_utf8(tinyMCETemplateList[key][x][2]), disabled : false});
+                }
+            }
         }
 
-        for (x=0; x<tsrc.length; x++)
-            sel.options[sel.options.length] = new Option(tsrc[x].title, tinyMCEPopup.editor.documentBaseURI.toAbsolute(tsrc[x].src));
+        for (x=0; x<tsrc.length; x++) {
+            if (!tsrc[x].disabled) {
+                sel.options[sel.options.length] = new Option(tsrc[x].title, tinyMCEPopup.editor.documentBaseURI.toAbsolute(tsrc[x].src));
+            } else {
+                var option = new Option(tsrc[x].title, tinyMCEPopup.editor.documentBaseURI.toAbsolute(tsrc[x].src));
+                option.disabled = true
+                sel.options[sel.options.length] = option;
+            }
+        }
 
         this.resize();
         this.tsrc = tsrc;
@@ -44,7 +75,7 @@ var TemplateDialog = {
             w = self.innerWidth - 50;
             h = self.innerHeight - 170;
         }
-        
+
         e = document.getElementById('templatesrc');
 
         if (e) {
