@@ -148,7 +148,7 @@ class TemplateList(grok.View):
                                                                                     ['Rob Theme - Conjunt Imatge amb llista opcions - 3 cols', absolute_url + '/templates/rob-theme-conjunt-imatge-amb-llista-opcions-3-cols/genweb.get.dxdocument.text', '']]
 
                     templates['5. Composicions'] += [['Rob Theme - Dades num\xc3\xa8riques', absolute_url + '/templates/rob-theme-dades-numeriques/genweb.get.dxdocument.text', ''],
-                                                     ['Rob Theme - Graella d\x27imatges amb enllaços', absolute_url + '/templates/rob-theme-graella-imatges/genweb.get.dxdocument.text', '']]
+                                                     ['Rob Theme - Graella imatges amb enllaços', absolute_url + '/templates/rob-theme-graella-imatges-amb-enllacos/genweb.get.dxdocument.text', '']]
 
                     templates['6. Avançades'] += [['Rob Theme - Acordi\xc3\xb3', absolute_url + '/templates/rob-theme-acordio/genweb.get.dxdocument.text', '']]
 
