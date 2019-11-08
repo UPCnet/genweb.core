@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+
 def get_plantilles():
     """
     Declaració de les pàgines que es faràn servir com plantilles
@@ -50,12 +52,51 @@ def get_plantilles():
 <p>&nbsp;</p>"""
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
-    titol = u"Dues columnes de text"
+    titol = u"2 columnes de text"
     resum = u"A cada columna s'hi poden afegir altres plantilles."
-    cos = u"""<h2>Dues columnes de text</h2>
+    cos = u"""<h2>2 columnes de text</h2>
 <div class="row-fluid">
 <div class="span6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
 <div class="span6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+</div><p>&nbsp;</p>"""
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"3 columnes de text"
+    resum = u"A cada columna s'hi poden afegir altres plantilles."
+    cos = u"""<h2>3 columnes de text</h2>
+<div class="row-fluid">
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+</div><p>&nbsp;</p>"""
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"4 columnes de text"
+    resum = u"A cada columna s'hi poden afegir altres plantilles."
+    cos = u"""<h2>4 columnes de text</h2>
+<div class="row-fluid">
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+</div><p>&nbsp;</p>"""
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"2/3 vs 1/3 columnes de text"
+    resum = u"A cada columna s'hi poden afegir altres plantilles."
+    cos = u"""<h2>2/3 vs 1/3 columnes de text</h2>
+<div class="row-fluid">
+<div class="span8">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+</div><p>&nbsp;</p>"""
+    plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
+
+    titol = u"3/4 vs 1/4 columnes de text"
+    resum = u"A cada columna s'hi poden afegir altres plantilles."
+    cos = u"""<h2>3/4 vs 1/4 columnes de text</h2>
+<div class="row-fluid">
+<div class="span9">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+<div class="span3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
 </div><p>&nbsp;</p>"""
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})
 
@@ -242,7 +283,7 @@ def get_plantilles():
     titol = u"Taula de registres per files"
     resum = u"Per definir una taula de registres estructurada per columnes. Es pot ampliar en files i columnes."
     cos = u"""<h3>Taula registres</h3>
-<table class="table taulaRegistres" summary="Detall d'estructura de la taula de registres"><caption>Subtítol taula</caption>
+<table class="taulaRegistres" summary="Detall d'estructura de la taula de registres"><caption>Subtítol taula</caption>
 <tbody>
 <tr class="cap">
 <td></td>
@@ -339,7 +380,7 @@ def get_plantilles():
 
     titol = u"Taula amb files destacades"
     resum = u"Una taula amb vora, diferenciació de primera fila i columna."
-    cos = u"""<h3><span>Taula amb files destacades </span></h3>
+    cos = u"""<h3><span>Taula amb files destacades </span></h3>
 <table class="table table-no-heading-border">
 <thead>
 <tr><th>#</th><th>Columna 1</th><th>Columna 2</th><th>Columna 3</th><th>Columna 4</th></tr>
@@ -390,7 +431,7 @@ def get_plantilles():
 </tfoot>
 <tbody>
 <tr>
-<td> </td>
+<td> </td>
 <td>1</td>
 <td>2</td>
 <td>3</td>
@@ -430,9 +471,9 @@ def get_plantilles():
 <td>29</td>
 <td>30</td>
 <td>31</td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
 </tr>
 </tbody>
 </table><p>&nbsp;</p>"""
@@ -617,9 +658,9 @@ Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi
     titol = u"Text amb video"
     resum = u"Per inserir-hi el vostre vídeo heu d'accedir al codi html de la pàgina i substituir l'enllaç al vídeo."
     cos = u"""<div>Donec in accumsan ex, eget facilisis risus. In id molestie erat. Sed congue ipsum ac consectetur posuere. Vestibulum posuere metus iaculis iaculis suscipit. Praesent pharetra massa eu ullamcorper blandit. Suspendisse consectetur porttitor eros, sed finibus mi posuere a. Donec quis massa eu enim maximus porttitor.</div>
-<p> </p>
+<p>&nbsp;</p>
 <div><video width="576" height="324" style="" poster="https://tv.upc.edu/contenidos/upc-la-universitat-enginyeria-arquitectura-ciencies-i-tecnologia/miniature_image" controls="controls"><source src="http://tv.upc.es/vod/Video_Grau_UPC_Cast-higher.mp4" type="video/mp4" /></video></div>
-<p> </p>
+<p>&nbsp;</p>
 <div>Vestibulum laoreet quis erat sed condimentum. Quisque faucibus et risus a gravida. Aliquam diam velit, mattis convallis eleifend sed, iaculis eget tellus. Donec et quam vel libero interdum mollis. Aenean nulla felis, vehicula eget metus eu, cursus scelerisque felis. Duis sem magna, bibendum eu sodales et, dapibus ac mi. Sed ut erat a tortor dictum fringilla sed blandit tortor.</div><p>&nbsp;</p>"""
 
     plantilles.append({'titol': titol, 'resum': resum, 'cos': cos})

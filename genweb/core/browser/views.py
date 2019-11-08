@@ -72,7 +72,11 @@ class TemplateList(grok.View):
                                              ['Caixa', absolute_url + '/templates/caixa/genweb.get.dxdocument.text', 'Contenidor de caixa per encabir elements i limitar-los visualment.'],
                                              ['Caixa degradat', absolute_url + '/templates/caixa-degradat/genweb.get.dxdocument.text', 'Contenidor de caixa per encabir elements i limitar-los visualment amb fons degradat.']]
 
-                templates['2. Columnes'] = [['Dues columnes de text', absolute_url + '/templates/dues-columnes-de-text/genweb.get.dxdocument.text', "A cada columna s'hi poden afegir altres plantilles."],
+                templates['2. Columnes'] = [['2 columnes de text', absolute_url + '/templates/2-columnes-de-text/genweb.get.dxdocument.text', "A cada columna s'hi poden afegir altres plantilles."],
+                                            ['3 columnes de text', absolute_url + '/templates/3-columnes-de-text/genweb.get.dxdocument.text', "A cada columna s'hi poden afegir altres plantilles."],
+                                            ['4 columnes de text', absolute_url + '/templates/4-columnes-de-text/genweb.get.dxdocument.text', "A cada columna s'hi poden afegir altres plantilles."],
+                                            ['2/3 vs 1/3 columnes de text', absolute_url + '/templates/2-3-vs-1-3-columnes-de-text/genweb.get.dxdocument.text', "A cada columna s'hi poden afegir altres plantilles."],
+                                            ['3/4 vs 1/4 columnes de text', absolute_url + '/templates/3-4-vs-1-4-columnes-de-text/genweb.get.dxdocument.text', "A cada columna s'hi poden afegir altres plantilles."],
                                             ['Combinacions de columnes', absolute_url + '/templates/combinacions-de-columnes/genweb.get.dxdocument.text', "Podeu fer d'1 a 4 columnes i fusionar-les entre elles. Elimineu les combinacions que no us interessin i treballeu amb el columnat que us agradi m\xc3\xa9s."]]
 
                 templates['3. Continguts (Text, botons, bàners, Llistats)'] = [['Llistat \xc3\xadndex', absolute_url + '/templates/llistat-index/genweb.get.dxdocument.text', '\xc3\x8dndex de continguts.'],
@@ -124,16 +128,16 @@ class TemplateList(grok.View):
                                                   ['Rob Theme - Frase destacada', absolute_url + '/templates/rob-theme-frase-destacada/genweb.get.dxdocument.text', ''],
                                                   ['Rob Theme - Destacat amb imatge', absolute_url + '/templates/rob-theme-destacat-amb-imatge/genweb.get.dxdocument.text', '']]
 
-                    templates['3. Continguts (Text, botons, bàners, Llistats)'] += [['Rob Theme - Banner Text Link - Icona Info - GRIS', absolute_url + '/templates/rob-theme-banner-text-link-icona-info-gris/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text Link - Icona Arxiu - GRIS', absolute_url + '/templates/rob-theme-banner-text-link-icona-arxiu-gris/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text Link - Icona Info - BLAU', absolute_url + '/templates/rob-theme-banner-text-link-icona-info-blau/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text Link - Icona Arxiu - BLAU', absolute_url + '/templates/rob-theme-banner-text-link-icona-arxiu-blau/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text No Link - Icona Info - GRIS', absolute_url + '/templates/rob-theme-banner-text-no-link-icona-info-gris/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text No Link - Icona Arxiu - GRIS', absolute_url + '/templates/rob-theme-banner-text-no-link-icona-arxiu-gris/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text No Link - Icona Info - BLAU', absolute_url + '/templates/rob-theme-banner-text-no-link-icona-info-blau/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text No Link - Icona Arxiu - BLAU', absolute_url + '/templates/rob-theme-banner-text-no-link-icona-arxiu-blau/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text Link - Imatge', absolute_url + '/templates/rob-theme-banner-text-link-imatge/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Banner Text No Link - Imatge', absolute_url + '/templates/rob-theme-banner-text-no-link-imatge/genweb.get.dxdocument.text', ''],
+                    templates['3. Continguts (Text, botons, bàners, Llistats)'] += [['Rob Theme - Banner Text Enlla\xc3\xa7os - Icona Info - GRIS', absolute_url + '/templates/rob-theme-banner-text-enllacos-icona-info-gris/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text Enlla\xc3\xa7os - Icona Arxiu - GRIS', absolute_url + '/templates/rob-theme-banner-text-enllacos-icona-arxiu-gris/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text Enlla\xc3\xa7os - Icona Info - BLAU', absolute_url + '/templates/rob-theme-banner-text-enllacos-icona-info-blau/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text Enlla\xc3\xa7os - Icona Arxiu - BLAU', absolute_url + '/templates/rob-theme-banner-text-enllacos-icona-arxiu-blau/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Icona Info - GRIS', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-icona-info-gris/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Icona Arxiu - GRIS', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-icona-arxiu-gris/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Icona Info - BLAU', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-icona-info-blau/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Icona Arxiu - BLAU', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-icona-arxiu-blau/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text Enlla\xc3\xa7os - Imatge', absolute_url + '/templates/rob-theme-banner-text-enllacos-imatge/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Imatge', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-imatge/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Bot\xc3\xb3 Destacat BLAU', absolute_url + '/templates/rob-theme-boto-destacat-blau/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Bot\xc3\xb3 Destacat GRIS', absolute_url + '/templates/rob-theme-boto-destacat-gris/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Bot\xc3\xb3 Destacat DANGER', absolute_url + '/templates/rob-theme-boto-destacat-danger/genweb.get.dxdocument.text', ''],
@@ -144,7 +148,7 @@ class TemplateList(grok.View):
                                                                                     ['Rob Theme - Conjunt Imatge amb llista opcions - 3 cols', absolute_url + '/templates/rob-theme-conjunt-imatge-amb-llista-opcions-3-cols/genweb.get.dxdocument.text', '']]
 
                     templates['5. Composicions'] += [['Rob Theme - Dades num\xc3\xa8riques', absolute_url + '/templates/rob-theme-dades-numeriques/genweb.get.dxdocument.text', ''],
-                                                     ['Rob Theme - Graella imatges', absolute_url + '/templates/rob-theme-graella-imatges/genweb.get.dxdocument.text', '']]
+                                                     ['Rob Theme - Graella d\x27imatges amb enllaços', absolute_url + '/templates/rob-theme-graella-imatges/genweb.get.dxdocument.text', '']]
 
                     templates['6. Avançades'] += [['Rob Theme - Acordi\xc3\xb3', absolute_url + '/templates/rob-theme-acordio/genweb.get.dxdocument.text', '']]
 
