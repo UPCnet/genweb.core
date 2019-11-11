@@ -138,16 +138,18 @@ class TemplateList(grok.View):
                                                                                     ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Icona Arxiu - BLAU', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-icona-arxiu-blau/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Banner Text Enlla\xc3\xa7os - Imatge', absolute_url + '/templates/rob-theme-banner-text-enllacos-imatge/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Banner Text No Enlla\xc3\xa7os - Imatge', absolute_url + '/templates/rob-theme-banner-text-no-enllacos-imatge/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Bot\xc3\xb3 Destacat BLAU', absolute_url + '/templates/rob-theme-boto-destacat-blau/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Bot\xc3\xb3 Destacat GRIS', absolute_url + '/templates/rob-theme-boto-destacat-gris/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Bot\xc3\xb3 Destacat DANGER', absolute_url + '/templates/rob-theme-boto-destacat-danger/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Bot\xc3\xb3 Destacat WARNING', absolute_url + '/templates/rob-theme-boto-destacat-warning/genweb.get.dxdocument.text', ''],
-                                                                                    ['Rob Theme - Bot\xc3\xb3 Destacat SUCCESS', absolute_url + '/templates/rob-theme-boto-destacat-success/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Destacat BLAU', absolute_url + '/templates/rob-theme-banner-destacat-blau/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Destacat GRIS', absolute_url + '/templates/rob-theme-banner-destacat-gris/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Destacat DANGER', absolute_url + '/templates/rob-theme-banner-destacat-danger/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Destacat WARNING', absolute_url + '/templates/rob-theme-banner-destacat-warning/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Destacat SUCCESS', absolute_url + '/templates/rob-theme-banner-destacat-success/genweb.get.dxdocument.text', ''],
+                                                                                    ['Rob Theme - Banner Destacat IMATGE', absolute_url + '/templates/rob-theme-banner-destacat-imatge/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Llista amb subllista UPC', absolute_url + '/templates/rob-theme-llista-amb-subllista-upc/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Listat opcions - icones lletres - 2 cols', absolute_url + '/templates/rob-theme-llistat-opcions-icones-lletres-2-cols/genweb.get.dxdocument.text', ''],
                                                                                     ['Rob Theme - Conjunt Imatge amb llista opcions - 3 cols', absolute_url + '/templates/rob-theme-conjunt-imatge-amb-llista-opcions-3-cols/genweb.get.dxdocument.text', '']]
 
-                    templates['5. Composicions'] += [['Rob Theme - Dades num\xc3\xa8riques', absolute_url + '/templates/rob-theme-dades-numeriques/genweb.get.dxdocument.text', ''],
+                    templates['5. Composicions'] += [['Rob Theme - Columna de support', absolute_url + '/templates/rob-theme-columna-de-support/genweb.get.dxdocument.text', ''],
+                                                     ['Rob Theme - Dades num\xc3\xa8riques', absolute_url + '/templates/rob-theme-dades-numeriques/genweb.get.dxdocument.text', ''],
                                                      ['Rob Theme - Graella imatges amb enllaços', absolute_url + '/templates/rob-theme-graella-imatges-amb-enllacos/genweb.get.dxdocument.text', '']]
 
                     templates['6. Avançades'] += [['Rob Theme - Acordi\xc3\xb3', absolute_url + '/templates/rob-theme-acordio/genweb.get.dxdocument.text', '']]
