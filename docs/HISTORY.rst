@@ -1,11 +1,16 @@
 Changelog
 =========
 
-4.8.67 (unreleased)
+4.8.67 (2019-11-14)
 -------------------
 
-- Nothing changed yet.
-
+* Modificar listado de plantillas [Iago López Fernández]
+* Renombrar plantillas y añadir nueva [Iago López Fernández]
+* Renombrar plantilla [Iago López Fernández]
+* Afegir i renombrar plantilles [Iago López Fernández]
+* Arreglar urls clasificación plantillas [Iago López Fernández]
+* Clasificación de plantillas [Iago López Fernández]
+* Añadir párrafo al final de todas las plantillas [Iago López Fernández]
 
 4.8.66 (2019-07-17)
 -------------------
