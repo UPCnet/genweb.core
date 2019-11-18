@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.68 (unreleased)
+4.8.68 (2019-11-18)
 -------------------
 
-- Nothing changed yet.
-
+* Categorización plantillas TinyMCE en majúsculas [Iago López Fernández]
 
 4.8.67 (2019-11-14)
 -------------------
