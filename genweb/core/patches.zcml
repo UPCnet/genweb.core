@@ -161,4 +161,12 @@
         original="html_results"
         replacement=".patches.html_results"
         />
+
+    <monkey:patch
+        description="Codificar resultados del adaptador"
+        class="Products.PloneFormGen.content.saveDataAdapter.FormSaveDataAdapter"
+        original="_addDataRow"
+        replacement=".patches._addDataRow"
+        />
+
 </configure>
