@@ -729,6 +729,23 @@ class updateFolderViews(grok.View):
         return '\n'.join(output)
 
 
+class checkPloneProductIsInstalled(grok.View):
+    """ Check is installed a product passed by form parameter in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('check_product_is_installed')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if not portal:
+            portal = api.portal.get()
+
+        product_name = self.request.form['product_name']
+        qi = getToolByName(portal, 'portal_quickinstaller')
+
+        if qi.isProductInstalled(product_name):
+            return 'OK\n'
+
+
 class reinstallPloneProduct(grok.View):
     """ Reinstalls a product passed by form parameter in the current Plone site. """
     grok.context(IPloneSiteRoot)
