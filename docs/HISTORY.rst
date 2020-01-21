@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.69 (unreleased)
+4.8.69 (2020-01-21)
 -------------------
 
-- Nothing changed yet.
-
+* Afegir nova vista /check_product_is_installed [Iago López Fernández]
+* Codificar resultados del adaptador de guardado de datos del ploneformgen [Iago López Fernández]
 
 4.8.68 (2019-11-18)
 -------------------
