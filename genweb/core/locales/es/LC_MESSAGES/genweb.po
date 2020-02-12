@@ -743,7 +743,7 @@ msgstr "política de <em>cookies</em>"
 #. Default: "Aquest web utilitza cookies pròpies per oferir-li una millor experiència i servei. En continuar amb la navegació entenem que accepta la nostra"
 #: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:11
 msgid "cookie_policy_this_site"
-msgstr "Esta web utiliza <em>cookies</em> propias para ofrecerle una mejor experiencia y servicio. Si continúa la navegación, entendemos que acepta nuestra "
+msgstr "Esta web utiliza <em>cookies</em> propias y de terceros para medir y gestionar visitas a la web así como para ofrecer una mejor experiencia y servicio a partir de los hábitos de navegación de los usuarios. Al continuar con la navegación entendemos que acepta nuestra "
 
 #. Default: "Create packet UPC at root"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:253
