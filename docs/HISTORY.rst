@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.70 (unreleased)
+4.8.70 (2020-02-13)
 -------------------
 
-- Nothing changed yet.
-
+* Literal cookies footer [Iago López Fernández]
 
 4.8.69 (2020-01-21)
 -------------------
