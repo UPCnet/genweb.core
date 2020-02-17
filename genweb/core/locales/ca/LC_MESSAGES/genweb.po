@@ -2187,7 +2187,7 @@ msgstr "He llegit i accepto les condicions d'ús i privacitat"
 #. Default: "You do not have sufficient privileges to view this page. If you believe you are receiving this message in error, contact the ${site_admin}."
 #: CMFPlone/skins/plone_login/insufficient_privileges.pt:19
 msgid "description_no_privileges_for_page"
-msgstr "No teniu permisos suficients per a visualitzar aquesta pàgina. Si creieu que es tracta d'un error, contacteu amb"
+msgstr "No teniu permisos suficients per a visualitzar aquesta pàgina. Si creieu que es tracta d'un error, contacteu amb ${site_admin}."
 
 msgid "custom message"
 msgstr "Escull una opció"
