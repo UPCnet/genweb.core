@@ -2065,10 +2065,10 @@ msgid "View type"
 msgstr "View type"
 
 msgid "desc_privacy"
-msgstr "Please, read the terms of use and privacy policy <a href='https://www.upc.edu/en/disclaimer/terms-of-use-and-privacy-policy' target='_blank'>here</a>"
+msgstr "The data collected will be treated as described in the <a href='https://upc.edu/en/disclaimer/information-and-access-to-personal-data' target='_blank'>information and access to personal data table</a>"
 
 msgid "title_privacy"
-msgstr "I accept the terms of use and privacy policy"
+msgstr "I consent to the UPC processing the personal data"
 
 msgid "custom message"
 msgstr "Choose an option"

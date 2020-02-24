@@ -2104,10 +2104,10 @@ msgid "View type"
 msgstr "Tipo de vista"
 
 msgid "desc_privacy"
-msgstr "Puedes encontrar las condiciones de uso y privacidad <a href='https://www.upc.edu/es/aviso-legal/condiciones-de-uso-y-privacidad' target='_blank'>aquí</a>"
+msgstr "Los datos recogidos se tratarán tal como se describe en la <a href='https://upc.edu/es/aviso-legal/informacion-y-acceso-a-los-datos-personales' target='_blank'>tabla de información y acceso a los datos personales</a>"
 
 msgid "title_privacy"
-msgstr "He leído y acepto las condiciones de uso y privacidad"
+msgstr "Doy mi consentimiento a la UPC para el tratamiento de los datos de carácter personal"
 
 msgid "custom message"
 msgstr "Escoge una opción"

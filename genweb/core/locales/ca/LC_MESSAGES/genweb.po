@@ -2179,10 +2179,10 @@ msgid "View type"
 msgstr "Tipus de vista"
 
 msgid "desc_privacy"
-msgstr "Podeu trobar les condicions d'ús i privacitat <a href='https://www.upc.edu/ca/avis-legal/condicions-dus-i-privacitat' target='_blank'>aquí</a>"
+msgstr "Les dades recollides es tractaran tal com es descriu a la <a href='https://upc.edu/ca/avis-legal/informacio-i-acces-a-les-dades-personals' target='_blank'>taula de informació i accés a les dades personals</a>"
 
 msgid "title_privacy"
-msgstr "He llegit i accepto les condicions d'ús i privacitat"
+msgstr "Dono el meu consentiment a la UPC per al tractament de les dades de caràcter personal"
 
 #. Default: "You do not have sufficient privileges to view this page. If you believe you are receiving this message in error, contact the ${site_admin}."
 #: CMFPlone/skins/plone_login/insufficient_privileges.pt:19
