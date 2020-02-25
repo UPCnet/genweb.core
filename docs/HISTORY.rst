@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.71 (unreleased)
+4.8.71 (2020-02-25)
 -------------------
 
-- Nothing changed yet.
-
+* Literal contacto [Iago López Fernández]
+* Arreglado traduccion del mensaje en la página de permisos insuficientes [Iago López Fernández]
 
 4.8.70 (2020-02-13)
 -------------------
