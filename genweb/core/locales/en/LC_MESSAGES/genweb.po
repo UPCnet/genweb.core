@@ -2072,3 +2072,10 @@ msgstr "I consent to the UPC processing the personal data"
 
 msgid "custom message"
 msgstr "Choose an option"
+
+#########
+# Views #
+#########
+
+msgid "filtered_contents_search_pretty_view"
+msgstr "View filter tags"
