@@ -722,10 +722,62 @@ class updateFolderViews(grok.View):
             portal = api.portal.get()
 
         output = []
-        portal.portal_types['Folder'].view_methods = ('listing_view', 'folder_extended', 'album_view', 'summary_view', 'tabular_view', 'full_view', 'folder_index_view')
+        portal.portal_types['Folder'].view_methods = ('listing_view', 'folder_extended', 'album_view', 'summary_view', 'tabular_view', 'full_view', 'folder_index_view', 'filtered_contents_search_pretty_view')
         import transaction
         transaction.commit()
         output.append('{}: Successfully reinstalled'.format(portal.id))
+        return '\n'.join(output)
+
+
+class addFolderView(grok.View):
+    """ Add view method for folder type in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('add_folder_view')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        if 'view' in self.request.form:
+            if not portal:
+                portal = api.portal.get()
+
+            views = list(portal.portal_types['Folder'].view_methods)
+            view = self.request.form['view']
+            if view not in views:
+                views.append(view)
+            portal.portal_types['Folder'].view_methods = tuple(views)
+            import transaction
+            transaction.commit()
+            output.append('{}: Successfully added view'.format(portal.id))
+            return '\n'.join(output)
+
+        output.append('{}: Error added view, not defined view'.format(portal.id))
+        return '\n'.join(output)
+
+
+class removeFolderView(grok.View):
+    """ Remove view method for folder type in the current Plone site. """
+    grok.context(IPloneSiteRoot)
+    grok.name('remove_folder_view')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        output = []
+        if 'view' in self.request.form:
+            if not portal:
+                portal = api.portal.get()
+
+            views = list(portal.portal_types['Folder'].view_methods)
+            view = self.request.form['view']
+            if view in views:
+                views.remove(view)
+            portal.portal_types['Folder'].view_methods = tuple(views)
+            import transaction
+            transaction.commit()
+            output.append('{}: Successfully removed view'.format(portal.id))
+            return '\n'.join(output)
+
+        output.append('{}: Error removed view, not defined view'.format(portal.id))
         return '\n'.join(output)
 
 
