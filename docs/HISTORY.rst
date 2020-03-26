@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.72 (unreleased)
+4.8.72 (2020-03-26)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Iago López Fernández]
+* Literales vista filtro etiquetas [Iago López Fernández]
+* Añadir nuevos helpers para añadir o quitar una vista en las carpetas [Iago López Fernández]
 
 4.8.71 (2020-02-25)
 -------------------
