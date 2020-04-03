@@ -2117,4 +2117,4 @@ msgstr "Escoge una opción"
 #########
 
 msgid "filtered_contents_search_pretty_view"
-msgstr "Vista filtro etiquetas"
+msgstr "Vista con filtros"
