@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.73 (unreleased)
+4.8.73 (2020-04-06)
 -------------------
 
-- Nothing changed yet.
-
+* Traducciones [Iago López Fernández]
 
 4.8.72 (2020-03-26)
 -------------------
