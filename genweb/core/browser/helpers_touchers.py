@@ -737,12 +737,12 @@ class addFolderView(grok.View):
 
     def render(self, portal=None):
         output = []
-        if 'view' in self.request.form:
+        if 'addview' in self.request.form:
             if not portal:
                 portal = api.portal.get()
 
             views = list(portal.portal_types['Folder'].view_methods)
-            view = self.request.form['view']
+            view = self.request.form['addview']
             if view not in views:
                 views.append(view)
             portal.portal_types['Folder'].view_methods = tuple(views)
@@ -763,12 +763,12 @@ class removeFolderView(grok.View):
 
     def render(self, portal=None):
         output = []
-        if 'view' in self.request.form:
+        if 'removeview' in self.request.form:
             if not portal:
                 portal = api.portal.get()
 
             views = list(portal.portal_types['Folder'].view_methods)
-            view = self.request.form['view']
+            view = self.request.form['removeview']
             if view in views:
                 views.remove(view)
             portal.portal_types['Folder'].view_methods = tuple(views)
