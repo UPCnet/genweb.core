@@ -12,6 +12,7 @@ import os
 import urllib
 import pkg_resources
 import logging
+import transaction
 
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
@@ -451,3 +452,25 @@ class fixRecord(grok.View):
                 del site.portal_registry.records._values[k]
                 del site.portal_registry.records._fields[k]
         return "S'han purgat les entrades del registre: {}".format(output)
+
+
+class addPacketInDefaultPageTypes(grok.View):
+    """ Add type packet in default_page_types > site_properties"""
+    grok.context(IPloneSiteRoot)
+    grok.name('add_packet_in_default_page_types')
+    grok.require('cmf.ManagePortal')
+
+    def render(self):
+        propsTool = getToolByName(self, 'portal_properties')
+        siteProperties = getattr(propsTool, 'site_properties')
+        defaultPageTypes = siteProperties.getProperty('default_page_types')
+        try:
+            types = [typ for typ in defaultPageTypes]
+            if 'packet' not in types:
+                types.append('packet')
+                siteProperties.default_page_types = tuple(types)
+                transaction.commit()
+                return 'OK'
+            return 'KO'
+        except:
+            return 'KO'
