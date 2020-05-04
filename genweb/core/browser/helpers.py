@@ -14,6 +14,12 @@ import pkg_resources
 import logging
 import transaction
 
+from zope.component import getUtility
+from plone.uuid.interfaces import IUUIDGenerator
+from plone.uuid.interfaces import IUUID
+from plone.app.uuid.utils import uuidToObject
+from plone.uuid import interfaces
+
 from plone.subrequest import subrequest
 from plone.registry.interfaces import IRegistry
 from plone.uuid.interfaces import IMutableUUID
@@ -276,6 +282,29 @@ class configureSiteCache(grok.View):
         else:
             logger.info('There are not any varnish_url in the environment. No caching proxy could be configured.')
             return 'There are not any varnish_url in the environment. No caching proxy could be configured.'
+
+
+class refreshUIDs(grok.View):
+    grok.context(IPloneSiteRoot)
+    grok.name('refresh_uids')
+    grok.template('refreshuids')
+    grok.require('cmf.ManagePortal')
+
+    def update(self):
+        form = self.request.form
+        self.output = []
+        if self.request['method'] == 'POST' and form.get('origin_root_path', False):
+            generator = getUtility(IUUIDGenerator)
+            origin_root_path = form.get('origin_root_path')
+            all_objects = api.content.find(path=origin_root_path)
+            for obj in all_objects:
+                obj = obj.getObject()
+                setattr(obj, interfaces.ATTRIBUTE_NAME, generator())
+                setattr(obj, '_gw.uuid', generator())
+                obj.reindexObject()
+                self.output.append(obj.absolute_url())
+                print obj.absolute_url()
+            self.output = '<br/>'.join(self.output)
 
 
 class mirrorUIDs(grok.View):
