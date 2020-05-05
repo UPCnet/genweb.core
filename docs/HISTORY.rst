@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.74 (unreleased)
+4.8.74 (2020-05-05)
 -------------------
 
-- Nothing changed yet.
-
+* Añadir vista para actualizar uid y gwuuid [Iago López Fernández]
+* Añadir Contingut UPC en los elementos disponibles de Escull un contingut per defecte [Iago López Fernández]
+* Cambiar nombre parametro vistas add_folder_view y remove_folder_view [Iago López Fernández]
 
 4.8.73 (2020-04-06)
 -------------------
