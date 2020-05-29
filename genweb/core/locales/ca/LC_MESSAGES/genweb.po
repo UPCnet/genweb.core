@@ -738,6 +738,9 @@ msgstr "política de <em>cookies</em>"
 msgid "cookie_policy_this_site"
 msgstr "Aquest web utilitza <em>cookies</em> pròpies i de tercers per mesurar i gestionar visites al web així com per oferir una millor experiència i servei a partir dels hàbits de navegació dels usuaris. En continuar amb la navegació entenem que s'accepta la nostra "
 
+msgid "cookie_policy_this_site_2"
+msgstr "."
+
 #. Default: "Create packet UPC at root"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:253
 msgid "create_packet"

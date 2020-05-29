@@ -657,6 +657,9 @@ msgstr ""
 msgid "cookie_policy_this_site"
 msgstr ""
 
+msgid "cookie_policy_this_site_2"
+msgstr ""
+
 #. Default: "Create packet UPC at root"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:253
 msgid "create_packet"
