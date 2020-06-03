@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.75 (unreleased)
+4.8.75 (2020-06-03)
 -------------------
 
-- Nothing changed yet.
-
+* Traduccion cookies pie [Iago López Fernández]
 
 4.8.74 (2020-05-05)
 -------------------
