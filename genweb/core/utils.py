@@ -553,6 +553,38 @@ class genwebUtils(BrowserView):
     def is_debug_mode(self):
         return api.env.debug_mode()
 
+    def link_redirect_blink(self, item, isObject=False):
+        ptool = getToolByName(self.context, 'portal_properties')
+        mtool = getToolByName(self.context, 'portal_membership')
+
+        redirect_links = getattr(
+            ptool.site_properties,
+            'redirect_links',
+            False
+        )
+
+        if not isObject:
+            item = item.getObject()
+
+        can_edit = mtool.checkPermission('Modify portal content', item)
+
+        def _url_uses_scheme(self, schemes, url=None):
+            url = url or self.remoteUrl
+            for scheme in schemes:
+                if url.startswith(scheme):
+                    return True
+            return False
+
+        redirect_links = redirect_links and not _url_uses_scheme(item, [
+            'mailto:',
+            'tel:',
+            'callto:',
+            'webdav:',
+            'caldav:'
+        ])
+
+        return redirect_links and not can_edit and getattr(item, 'open_link_in_new_window', False)
+
 
 @implementer(ICatalogFactory)
 class UserPropertiesSoupCatalogFactory(object):
