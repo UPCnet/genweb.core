@@ -553,7 +553,17 @@ class genwebUtils(BrowserView):
     def is_debug_mode(self):
         return api.env.debug_mode()
 
-    def link_redirect_blink(self, item, isObject=False):
+    def isAnonymous(self):
+        return api.user.is_anonymous()
+
+    def isEditor(self):
+        if self.isAnonymous():
+            return False
+
+        current = api.user.get_current().id
+        return api.user.has_permission('Modify portal content', username=current, obj=self.context)
+
+    def link_redirect_blank(self, item, isObject=False):
         ptool = getToolByName(self.context, 'portal_properties')
         mtool = getToolByName(self.context, 'portal_membership')
 
