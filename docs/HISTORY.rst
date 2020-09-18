@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.77 (unreleased)
+4.8.77 (2020-09-18)
 -------------------
 
-- Nothing changed yet.
-
+* Deshacer: Añadir nuevo logo UPC [Iago López Fernández]
 
 4.8.76 (2020-09-18)
 -------------------
