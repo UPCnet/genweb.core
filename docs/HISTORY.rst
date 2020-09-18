@@ -1,11 +1,12 @@
 Changelog
 =========
 
-4.8.76 (unreleased)
+4.8.76 (2020-09-18)
 -------------------
 
-- Nothing changed yet.
-
+* Añadir nuevo logo UPC [Iago López Fernández]
+* Fix _blink a _blank y añadir nuevas utils [Iago López Fernández]
+* Tratar enlaces con _blink en las vistas de las carpetas [Iago López Fernández]
 
 4.8.75 (2020-06-03)
 -------------------
