@@ -1666,9 +1666,9 @@ class addPermissionsPlantilles(grok.View):
         try:
             portal = api.portal.get()
             plantilles = portal['plantilles']
-            plantilles.manage_permission('Add portal content', ['Contributor', 'Manager', 'Owner', 'WebMaster'], acquire=0)
-            plantilles.manage_permission('plone.app.contenttypes: Add Document', ['Contributor', 'Manager', 'Owner', 'Site Administrator', 'WebMaster'], acquire=0)
-            plantilles.manage_permission('plone.app.contenttypes: Add Folder', ['Contributor', 'Manager', 'Owner', 'Site Administrator', 'WebMaster'], acquire=0)
+            plantilles.manage_permission('Add portal content', ['Contributor', 'Manager', 'Owner', 'WebMaster', 'Editor'], acquire=0)
+            plantilles.manage_permission('plone.app.contenttypes: Add Document', ['Contributor', 'Manager', 'Owner', 'Site Administrator', 'WebMaster', 'Editor'], acquire=0)
+            plantilles.manage_permission('plone.app.contenttypes: Add Folder', ['Contributor', 'Manager', 'Owner', 'Site Administrator', 'WebMaster', 'Editor'], acquire=0)
             transaction.commit()
             return 'OK'
         except:
