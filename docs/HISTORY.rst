@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.79 (unreleased)
+4.8.79 (2021-01-12)
 -------------------
 
-- Nothing changed yet.
-
+* Tocador para añadir permisos a los WebMaster para añadir plantillas personalizadas [Iago López Fernández]
 
 4.8.78 (2020-09-28)
 -------------------
