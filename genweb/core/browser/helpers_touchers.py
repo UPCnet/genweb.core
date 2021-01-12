@@ -9,6 +9,7 @@ from zope.component import getMultiAdapter
 from zope.interface import alsoProvides
 from souper.soup import get_soup
 import pkg_resources
+import transaction
 
 from Products.CMFPlone.utils import normalizeString
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -1653,3 +1654,22 @@ class bulkChangeCreator(grok.View):
 
         return ViewPageTemplateFile('helpers_touchers_templates'
                                     '/bulk_change_creator.pt')(self)
+
+
+class addPermissionsPlantilles(grok.View):
+    """ add permissions in plantilles folder """
+    grok.context(IPloneSiteRoot)
+    grok.name('add_permissions_plantilles')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        try:
+            portal = api.portal.get()
+            plantilles = portal['plantilles']
+            plantilles.manage_permission('Add portal content', ['Contributor', 'Manager', 'Owner', 'WebMaster'], acquire=0)
+            plantilles.manage_permission('plone.app.contenttypes: Add Document', ['Contributor', 'Manager', 'Owner', 'Site Administrator', 'WebMaster'], acquire=0)
+            plantilles.manage_permission('plone.app.contenttypes: Add Folder', ['Contributor', 'Manager', 'Owner', 'Site Administrator', 'WebMaster'], acquire=0)
+            transaction.commit()
+            return 'OK'
+        except:
+            return 'KO'
