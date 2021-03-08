@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.81 (unreleased)
+4.8.81 (2021-03-08)
 -------------------
 
-- Nothing changed yet.
-
+* Add plone.app.changeownership as a dependency [alberto.duran]
 
 4.8.80 (2021-01-13)
 -------------------
