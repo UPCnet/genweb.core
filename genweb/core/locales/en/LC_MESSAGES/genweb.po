@@ -2085,3 +2085,10 @@ msgstr "Filters"
 
 msgid "filtered_contents_search_pretty_view"
 msgstr "View with filters"
+
+##########
+# Others #
+##########
+
+msgid "menu"
+msgstr "Menu"

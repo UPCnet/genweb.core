@@ -2121,3 +2121,10 @@ msgstr "Escoge una opción"
 
 msgid "filtered_contents_search_pretty_view"
 msgstr "Vista con filtros"
+
+##########
+# Others #
+##########
+
+msgid "menu"
+msgstr "Menú"

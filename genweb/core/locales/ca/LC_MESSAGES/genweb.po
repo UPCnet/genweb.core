@@ -2204,3 +2204,10 @@ msgstr "Filtres"
 
 msgid "filtered_contents_search_pretty_view"
 msgstr "Vista amb filtres"
+
+##########
+# Others #
+##########
+
+msgid "menu"
+msgstr "Menú"
