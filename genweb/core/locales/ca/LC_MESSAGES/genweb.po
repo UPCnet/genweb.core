@@ -736,10 +736,10 @@ msgstr "política de <em>cookies</em>"
 #. Default: "Aquest web utilitza cookies pròpies per oferir-li una millor experiència i servei. En continuar amb la navegació entenem que accepta la nostra"
 #: genweb.theme/genweb/theme/browser/viewlets_templates/footer.pt:11
 msgid "cookie_policy_this_site"
-msgstr "Aquest web utilitza <em>cookies</em> pròpies i de tercers per mesurar i gestionar visites al web així com per oferir una millor experiència i servei a partir dels hàbits de navegació dels usuaris. En continuar amb la navegació entenem que s'accepta la nostra "
+msgstr "El lloc web de la Universitat Politècnica de Catalunya utilitza cookies pròpies i de tercers per millorar l’experiència de navegació i amb finalitats estadístiques. No recull ni cedeix dades de caràcter personal dels usuaris sense el seu coneixement. Per obtenir més informació sobre l'ús de les cookies podeu consultar la <a href=\"https://genweb.upc.edu/ca/politica_de_cookies\" target=\"_blank\"> Política de cookies </a>."
 
-msgid "cookie_policy_this_site_2"
-msgstr "."
+msgid "cookie_policy_button1"
+msgstr "Acceptar"
 
 #. Default: "Create packet UPC at root"
 #: genweb.controlpanel/genweb/controlpanel/interface.py:253
