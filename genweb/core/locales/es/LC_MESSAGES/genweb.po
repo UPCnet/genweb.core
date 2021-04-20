@@ -2115,12 +2115,22 @@ msgstr "Doy mi consentimiento a la UPC para el tratamiento de los datos de cará
 msgid "custom message"
 msgstr "Escoge una opción"
 
+
 #########
 # Views #
 #########
 
 msgid "filtered_contents_search_pretty_view"
 msgstr "Vista con filtros"
+
+
+################
+# New contents #
+################
+
+msgid "Document Image"
+msgstr "Página con imagen"
+
 
 ##########
 # Others #

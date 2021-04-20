@@ -2079,12 +2079,22 @@ msgstr "Choose an option"
 msgid "label_filters"
 msgstr "Filters"
 
+
 #########
 # Views #
 #########
 
 msgid "filtered_contents_search_pretty_view"
 msgstr "View with filters"
+
+
+################
+# New contents #
+################
+
+msgid "Document Image"
+msgstr "Document with image"
+
 
 ##########
 # Others #

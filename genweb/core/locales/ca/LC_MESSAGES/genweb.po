@@ -2198,12 +2198,22 @@ msgstr "Escull una opció"
 msgid "label_filters"
 msgstr "Filtres"
 
+
 #########
 # Views #
 #########
 
 msgid "filtered_contents_search_pretty_view"
 msgstr "Vista amb filtres"
+
+
+################
+# New contents #
+################
+
+msgid "Document Image"
+msgstr "Pàgina amb imatge"
+
 
 ##########
 # Others #
