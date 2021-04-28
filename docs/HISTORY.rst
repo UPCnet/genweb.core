@@ -1,11 +1,15 @@
 Changelog
 =========
 
-4.8.82 (unreleased)
+4.8.82 (2021-04-28)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/cookies' into develop [Iago López Fernández]
+* Traducciones popup cookies [Iago López Fernández]
+* Traducció Document amb imatge [Iago López Fernández]
+* Traduccion popup cookies [Iago López Fernández]
+* Traducciones banner cookies [Iago López Fernández]
+* Traducción [Iago López Fernández]
 
 4.8.81 (2021-03-08)
 -------------------
