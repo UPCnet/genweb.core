@@ -2131,6 +2131,9 @@ msgstr "Vista con filtros"
 msgid "Document Image"
 msgstr "Página con imagen"
 
+msgid "not_show_image"
+msgstr "No mostrar la imagen en la página, pero sí en los portlets y vistas"
+
 
 ##########
 # Others #

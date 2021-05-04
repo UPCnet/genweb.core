@@ -2095,6 +2095,9 @@ msgstr "View with filters"
 msgid "Document Image"
 msgstr "Document with image"
 
+msgid "not_show_image"
+msgstr "Do not display the image on the page, but do in the portlets and views"
+
 
 ##########
 # Others #
