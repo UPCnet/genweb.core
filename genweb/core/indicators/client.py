@@ -1,6 +1,6 @@
 """
 Web client for the API specified on
-https://entornjavapre2.upc.edu/indicadorstic/swagger-ui.html
+https://indicadorstic.upc.edu/indicadorstic/
 """
 
 import requests
@@ -56,7 +56,7 @@ class Client(object):
                  api_key=None,
                  header_accept='application/json',
                  header_content_type='application/json',
-                 timeout=5):
+                 timeout=25):
         self.url_base = url_base.rstrip('/') if url_base else url_base
         self.api_key = api_key
         self.header_accept = header_accept

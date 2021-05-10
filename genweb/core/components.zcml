@@ -22,6 +22,7 @@
       factory=".traversal.GenwebTraverser"
       />
 
+  <!--++genweb++static-->
   <plone:static
       directory="static"
       type="genweb"
