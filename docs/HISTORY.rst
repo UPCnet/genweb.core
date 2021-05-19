@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.83 (unreleased)
+4.8.83 (2021-05-19)
 -------------------
 
-- Nothing changed yet.
-
+* Higher timeout for all requests.put [alberto.duran]
+* Traducción [Iago López Fernández]
 
 4.8.82 (2021-04-28)
 -------------------
