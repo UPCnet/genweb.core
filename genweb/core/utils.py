@@ -389,6 +389,9 @@ class genwebUtils(BrowserView):
         """Get the Plone portal URL in https mode """
         return self.portal().absolute_url().replace('http://', 'https://')
 
+    def isEnableCookiebot(self):
+        return genweb_config().enable_cookiebot
+
     def havePermissionAtRoot(self):
         """Funcio que retorna si es Editor a l'arrel"""
         pm = getToolByName(self, 'portal_membership')
