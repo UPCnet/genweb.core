@@ -769,7 +769,7 @@ class utilitats(BrowserView):
 
     def getDirectori(self):
         ue = self._dadesUnitat['codi_upc']
-        return 'http://directori.upc.edu/directori/dadesUE.jsp?id=' + ue
+        return 'https://directori.upc.edu/directori/dadesUE.jsp?id=' + ue
 
     def getNomCentre(self):
         """ Retorna el nom del centre segons l'idioma
