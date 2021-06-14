@@ -922,3 +922,67 @@ def _addDataRow(self, value):
 
     self._inputStorage[id] = value
     self._length.change(1)
+
+
+from BTrees.OOBTree import OOBTree
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+
+
+def sitemapObjects(self):
+    """Returns the data to create the sitemap."""
+    catalog = getToolByName(self.context, 'portal_catalog')
+    query = {}
+    utils = getToolByName(self.context, 'plone_utils')
+    query['portal_type'] = utils.getUserFriendlyTypes()
+    ptool = getToolByName(self, 'portal_properties')
+    siteProperties = getattr(ptool, 'site_properties')
+    typesUseViewActionInListings = frozenset(
+        siteProperties.getProperty('typesUseViewActionInListings', [])
+    )
+
+    is_plone_site_root = IPloneSiteRoot.providedBy(self.context)
+    if not is_plone_site_root:
+        query['path'] = '/'.join(self.context.getPhysicalPath())
+
+    query['is_default_page'] = True
+    default_page_modified = OOBTree()
+    for item in catalog.searchResults(query):
+        key = item.getURL().rsplit('/', 1)[0]
+        value = (item.modified.micros(), item.modified.ISO8601())
+        default_page_modified[key] = value
+
+    # The plone site root is not catalogued.
+    if is_plone_site_root:
+        loc = self.context.absolute_url()
+        date = self.context.modified()
+        # Comparison must be on GMT value
+        modified = (date.micros(), date.ISO8601())
+        default_modified = default_page_modified.get(loc, None)
+        if default_modified is not None:
+            modified = max(modified, default_modified)
+        lastmod = modified[1]
+        yield {
+            'loc': loc,
+            'lastmod': lastmod,
+            #'changefreq': 'always', # hourly/daily/weekly/monthly/yearly/never
+            #'prioriy': 0.5, # 0.0 to 1.0
+        }
+
+    query['is_default_page'] = False
+    for item in catalog.searchResults(query):
+        loc = item.getURL()
+        date = item.modified
+        # Comparison must be on GMT value
+        modified = (date.micros(), date.ISO8601())
+        default_modified = default_page_modified.get(loc, None)
+        if default_modified is not None:
+            modified = max(modified, default_modified)
+        lastmod = modified[1]
+        if item.portal_type in typesUseViewActionInListings:
+            loc += '/view'
+        yield {
+            'loc': loc,
+            'lastmod': lastmod,
+            #'changefreq': 'always', # hourly/daily/weekly/monthly/yearly/never
+            #'prioriy': 0.5, # 0.0 to 1.0
+        }

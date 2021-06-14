@@ -169,4 +169,11 @@
         replacement=".patches._addDataRow"
         />
 
+    <monkey:patch
+        description="Fix sitemap.xml.gz"
+        class="plone.app.layout.sitemap.sitemap.SiteMapView"
+        original="objects"
+        replacement=".patches.sitemapObjects"
+        />
+
 </configure>
