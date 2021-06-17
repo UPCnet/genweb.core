@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.84 (unreleased)
+4.8.84 (2021-06-17)
 -------------------
 
-- Nothing changed yet.
-
+* Fix sitemap.xml.gz [Iago López Fernández]
+* http -> https [Iago López Fernández]
 
 4.8.83 (2021-05-19)
 -------------------
