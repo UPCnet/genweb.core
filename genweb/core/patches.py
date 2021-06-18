@@ -978,8 +978,7 @@ def sitemapObjects(self):
         if default_modified is not None:
             modified = max(modified, default_modified)
         lastmod = modified[1]
-        if item.portal_type in typesUseViewActionInListings:
-            loc += '/view'
+
         yield {
             'loc': loc,
             'lastmod': lastmod,
