@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.8.85 (unreleased)
+4.8.85 (2021-06-30)
 -------------------
 
-- Nothing changed yet.
-
+* Quitar /view sitemap.xml.gz [Iago López Fernández]
 
 4.8.84 (2021-06-17)
 -------------------
