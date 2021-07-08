@@ -18,7 +18,7 @@ Vistes
 
 Genweb disposa del framework de desenvolupament Grok, que permet declarar vistes i viewlets de manera imperativa via Python sense necessitat de declarar-los via ZCML. Així es manté unificat el codi i la declaració de la vista.
 
-En la mida de lo possible, utilitzarem Grok per totes les vistes i viewlets. En cas de haver de fer overrides, es farà via ZCML.
+En la mesura que es pugui, utilitzarem Grok per totes les vistes i viewlets. En cas de haver de fer overrides, es farà via ZCML.
 
 Editor / IDE
 ------------
