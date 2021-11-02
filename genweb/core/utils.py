@@ -661,19 +661,19 @@ class utilitats(BrowserView):
 
         return sm.checkPermission('Modify portal content', portal()) or ('WebMaster' in user.getRoles())
 
-    def _getDadesUnitat(self):
-        """ Retorna les dades proporcionades pel WebService del SCP
-        """
-        id = self.getGWConfig().contacteid
-        if id:
-            if self._dadesUnitat is None:
-                try:
-                    url = urllib2.urlopen('https://bus-soa.upc.edu/SCP/InfoUnitatv1?id=' + id, timeout=10)
-                    respuesta = url.read()
-                    self._dadesUnitat = json.loads(respuesta)
-                except:
-                    pass
-        return self._dadesUnitat
+    # def _getDadesUnitat(self):
+    #     """ Retorna les dades proporcionades pel WebService del SCP
+    #     """
+    #     id = self.getGWConfig().contacteid
+    #     if id:
+    #         if self._dadesUnitat is None:
+    #             try:
+    #                 url = urllib2.urlopen('https://bus-soa.upc.edu/SCP/InfoUnitatv1?id=' + id, timeout=10)
+    #                 respuesta = url.read()
+    #                 self._dadesUnitat = json.loads(respuesta)
+    #             except:
+    #                 pass
+    #     return self._dadesUnitat
 
     def getTitol(self):
         lt = getToolByName(self, 'portal_languages')
