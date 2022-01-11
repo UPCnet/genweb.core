@@ -1,11 +1,11 @@
 Changelog
 =========
 
-4.8.86 (unreleased)
--------------------
+4.9.0 (2022-01-11)
+------------------
 
-- Nothing changed yet.
-
+* Quitar logo 50 aniversari UPC [Iago López]
+* Comment unused utils function [alberto.duran]
 
 4.8.85 (2021-06-30)
 -------------------
