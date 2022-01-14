@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.9.1 (unreleased)
+4.9.1 (2022-01-14)
 ------------------
 
-- Nothing changed yet.
-
+* Logo UPC [ilopezsmx]
 
 4.9.0 (2022-01-11)
 ------------------
