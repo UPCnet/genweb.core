@@ -2124,7 +2124,7 @@ msgid "filtered_contents_search_pretty_view"
 msgstr "Vista con filtros"
 
 msgid "filtered_contents_search_complete_pretty_view"
-msgstr "Vista con filtros"
+msgstr "Vista con filtros 2"
 
 
 ################
