@@ -2206,6 +2206,9 @@ msgstr "Filtres"
 msgid "filtered_contents_search_pretty_view"
 msgstr "Vista amb filtres"
 
+msgid "filtered_contents_search_complete_pretty_view"
+msgstr "Vista amb filtres"
+
 
 ################
 # New contents #
