@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.9.2 (unreleased)
+4.9.2 (2022-03-14)
 ------------------
 
-- Nothing changed yet.
-
+* Literales [Iago López]
 
 4.9.1 (2022-01-14)
 ------------------
