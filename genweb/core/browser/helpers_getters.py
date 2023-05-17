@@ -503,7 +503,7 @@ except:
 class getContentsType(grok.View):
     """ Returns all the contents of the types passed by parameter
         Ex: get_contents_type?portal_type=Document
-            get_contents_type?portal_type=Document&portal_type=Link
+            get_contents_type?portal_type=Documen,Link
     """
     grok.context(IPloneSiteRoot)
     grok.name('get_contents_type')
