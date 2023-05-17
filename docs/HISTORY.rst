@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.9.3 (unreleased)
+4.9.3 (2023-05-17)
 ------------------
 
-- Nothing changed yet.
-
+* [Add] Crear vista get_contents_type [Iago López]
 
 4.9.2 (2022-03-14)
 ------------------
