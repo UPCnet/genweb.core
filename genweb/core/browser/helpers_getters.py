@@ -498,3 +498,42 @@ try:
             )
 except:
     pass
+
+
+class getContentsType(grok.View):
+    """ Returns all the contents of the types passed by parameter
+        Ex: get_contents_type?portal_type=Document
+            get_contents_type?portal_type=Document&portal_type=Link
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('get_contents_type')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        if 'portal_type' not in self.request.form:
+            return "Mandatory parameter 'portal_type' was not specified"
+
+        pt = self.request.form['portal_type']
+
+        catalog = api.portal.get_tool('portal_catalog')
+        pw =  api.portal.get_tool('portal_workflow')
+
+        results_dict = {}
+
+        for ct in pt:
+            results_dict[ct] = {}
+            results = catalog.searchResults(portal_type=ct)
+            results_dict[ct].update({'total': len(results)})
+
+            if results:
+                results_dict[ct].update({'state': {}})
+
+            for content in results:
+                obj = content.getObject()
+                rs = pw.getInfoFor(obj, 'review_state')
+                if rs not in results_dict[ct]['state']:
+                    results_dict[ct]['state'][rs] = []
+
+                results_dict[ct]['state'][rs].append(obj.absolute_url())
+
+        return json.dumps(results_dict)
