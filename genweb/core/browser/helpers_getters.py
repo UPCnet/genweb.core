@@ -513,7 +513,7 @@ class getContentsType(grok.View):
         if 'portal_type' not in self.request.form:
             return "Mandatory parameter 'portal_type' was not specified"
 
-        pt = self.request.form['portal_type']
+        pt = self.request.form['portal_type'].split(',')
 
         catalog = api.portal.get_tool('portal_catalog')
         pw =  api.portal.get_tool('portal_workflow')
