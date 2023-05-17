@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.9.4 (unreleased)
+4.9.4 (2023-05-17)
 ------------------
 
-- Nothing changed yet.
-
+* [FIX] Vista get_contents_type, usar split , para multiples portal_type [Iago López]
 
 4.9.3 (2023-05-17)
 ------------------
