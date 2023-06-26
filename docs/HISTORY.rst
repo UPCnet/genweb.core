@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.9.6 (unreleased)
+4.9.6 (2023-06-26)
 ------------------
 
-- Nothing changed yet.
-
+* Cambio logo UPC [Iago López]
 
 4.9.5 (2023-06-26)
 ------------------
