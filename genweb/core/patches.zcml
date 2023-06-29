@@ -176,4 +176,20 @@
         replacement=".patches.sitemapObjects"
         />
 
+    <!-- Migration patches -->
+
+    <monkey:patch
+        description="Fix migrate ploneformgen to easyform"
+        class="Products.contentmigration.basemigrator.walker.CatalogWalker"
+        original="walk"
+        replacement=".patches.walk"
+        />
+
+    <monkey:patch
+        description="Fix migrate ploneformgen to easyform"
+        class="collective.easyform.migration.data"
+        original="migrate_saved_data"
+        replacement=".patches.migrate_saved_data"
+        />
+
 </configure>
