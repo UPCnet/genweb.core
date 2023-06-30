@@ -1,11 +1,10 @@
 Changelog
 =========
 
-4.9.7 (unreleased)
+4.9.7 (2023-06-30)
 ------------------
 
-- Nothing changed yet.
-
+* Fix migrate ploneformgen to easyform [Pilar Marinas]
 
 4.9.6 (2023-06-26)
 ------------------
