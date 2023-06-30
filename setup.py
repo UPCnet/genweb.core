@@ -61,7 +61,8 @@ setup(name='genweb.core',
           'simplejson',
           'pyyaml',
           'ipdb',
-          'plone.restapi'
+          'plone.restapi',
+          'collective.easyform'
       ],
       entry_points="""
       # -*- Entry points: -*-
