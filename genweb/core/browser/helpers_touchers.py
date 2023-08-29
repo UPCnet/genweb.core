@@ -10,6 +10,7 @@ from zope.interface import alsoProvides
 from souper.soup import get_soup
 import pkg_resources
 import transaction
+import logging
 
 from Products.CMFPlone.utils import normalizeString
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -28,6 +29,7 @@ from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import ILocalPortletAssignmentManager
 from plone.portlets.constants import CONTEXT_CATEGORY
+from Products.CMFPlone.utils import _createObjectByType
 
 from genweb.core import HAS_DXCT
 from genweb.core import HAS_PAM
@@ -38,6 +40,7 @@ from genweb.core.utils import reset_user_catalog
 from genweb.core.browser.plantilles import get_plantilles
 from genweb.core.browser.helpers import listPloneSites
 from genweb.core.browser.helpers import setupInstallProfile
+
 
 try:
     pkg_resources.get_distribution('plone4.csrffixes')
@@ -1673,3 +1676,50 @@ class addPermissionsPlantilles(grok.View):
             return 'OK'
         except:
             return 'KO'
+        
+
+class MemberList(grok.View):
+
+    grok.context(IPloneSiteRoot)
+    grok.name('addmembers-links')
+    grok.require('cmf.ManagePortal')
+
+
+    def render(self):
+        base_url = 'https://wwwdfen.webs.upc.edu/php_pagina_web/web_personal_id.php?id='
+        container_obj = self.get_container()
+        workflow_tool = api.portal.get_tool('portal_workflow')
+        lines = []
+
+        if self.context.id != 'member-list':
+            logging.error('Wrong Path! Must be executed at member-list')
+            return
+
+        file = self.context.getFile()
+        lines = file.data.split('\n')
+        lines = filter(None, lines)
+        
+        for line in lines:
+            if line in container_obj.objectIds():
+                continue
+
+            url = base_url + line
+
+            try:
+                obj = _createObjectByType(
+                    'Link',
+                    container_obj, line, title=line,
+                    remoteUrl=url)
+                workflow_tool.doActionFor(obj, 'publish')
+                obj.processForm()
+
+                logging.info('Link {} created successfully!'.format(line))
+            except Exception as e:
+                logging.error('An error occured: {}'.format(e))
+                
+    def get_container(self):
+        container_id = 'members'
+        pc = api.portal.get_tool('portal_catalog')
+        params = {'id': container_id}
+        container_brains = pc.searchResults(**params)
+        return container_brains[0].getObject()
