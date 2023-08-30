@@ -1717,7 +1717,7 @@ class MemberList(grok.View):
 
                 try:
                     obj = _createObjectByType(
-                        'Link',
+                        'Window',
                         container_obj, line, title=line,
                         remoteUrl=url)
                     workflow_tool.doActionFor(obj, 'publish')
