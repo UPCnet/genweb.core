@@ -20,7 +20,8 @@ from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 from Products.PortalTransforms.transforms.pdf_to_text import pdf_to_text
 
 from plone.app.contenttypes.behaviors.richtext import IRichText
-from plone.app.contenttypes.interfaces import IFolder
+from plone.app.contenttypes.interfaces import IFolder, IFile
+from Products.ATContentTypes.interfaces.file import IATFile
 from plone.app.contenttypes.upgrades import use_new_view_names
 from plone.dexterity.utils import createContentInContainer
 from plone.dexterity.content import Container
@@ -1680,46 +1681,55 @@ class addPermissionsPlantilles(grok.View):
 
 class MemberList(grok.View):
 
-    grok.context(IPloneSiteRoot)
+    grok.context(Interface)
     grok.name('addmembers-links')
     grok.require('cmf.ManagePortal')
 
 
     def render(self):
         base_url = 'https://wwwdfen.webs.upc.edu/php_pagina_web/web_personal_id.php?id='
-        container_obj = self.get_container()
         workflow_tool = api.portal.get_tool('portal_workflow')
-        lines = []
 
-        if self.context.id != 'member-list':
-            logging.error('Wrong Path! Must be executed at member-list')
+        """ Check if File is DX or AT """
+        if IFile.providedBy(self.context):
+            file = getattr(self.context, 'file')
+        elif IATFile.providedBy(self.context):
+            file = self.context.getFile()
+        
+        filename = file.filename
+
+        if filename != 'memberlist.txt':
+            logging.error('Wrong filename! It must be named memberlist.txt')
             return
 
-        file = self.context.getFile()
         lines = file.data.split('\n')
         lines = filter(None, lines)
-        
-        for line in lines:
-            if line in container_obj.objectIds():
-                continue
 
-            url = base_url + line
+        containers = self.get_containers()
+        for brain in containers:
+            container_obj = brain.getObject()
 
-            try:
-                obj = _createObjectByType(
-                    'Link',
-                    container_obj, line, title=line,
-                    remoteUrl=url)
-                workflow_tool.doActionFor(obj, 'publish')
-                obj.processForm()
+            for line in lines:
+                if line in container_obj.objectIds():
+                    continue
 
-                logging.info('Link {} created successfully!'.format(line))
-            except Exception as e:
-                logging.error('An error occured: {}'.format(e))
+                url = base_url + line
+
+                try:
+                    obj = _createObjectByType(
+                        'Link',
+                        container_obj, line, title=line,
+                        remoteUrl=url)
+                    workflow_tool.doActionFor(obj, 'publish')
+                    obj.processForm()
+
+                    logging.info('Link {} created successfully!'.format(line))
+                except Exception as e:
+                    logging.error('An error occured: {}'.format(e))
                 
-    def get_container(self):
+    def get_containers(self):
         container_id = 'members'
         pc = api.portal.get_tool('portal_catalog')
         params = {'id': container_id}
         container_brains = pc.searchResults(**params)
-        return container_brains[0].getObject()
+        return container_brains
