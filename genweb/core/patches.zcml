@@ -185,11 +185,11 @@
         replacement=".patches.walk"
         />
 
-    <monkey:patch
+    <!-- <monkey:patch
         description="Fix migrate ploneformgen to easyform"
         class="collective.easyform.migration.data"
         original="migrate_saved_data"
         replacement=".patches.migrate_saved_data"
-        />
+        /> -->
 
 </configure>
