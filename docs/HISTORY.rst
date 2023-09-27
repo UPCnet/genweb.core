@@ -1,11 +1,14 @@
 Changelog
 =========
 
-4.9.8 (unreleased)
+4.9.8 (2023-09-27)
 ------------------
 
-- Nothing changed yet.
-
+* Add view get_all_error_ihomepage [Iago López]
+* Commentar monkeypatch easyform [Iago López]
+* Replace Link for Window [Ruben Padilla Mateu]
+* Fixed for DX Files [Ruben Padilla Mateu]
+* Added view for member-link creation [Ruben Padilla Mateu]
 
 4.9.7 (2023-06-30)
 ------------------
