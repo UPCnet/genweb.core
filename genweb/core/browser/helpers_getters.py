@@ -19,7 +19,7 @@ from Products.PythonScripts.standard import url_quote
 from genweb.core.browser.helpers import listPloneSites
 from genweb.core.utils import json_response
 from plone.app.contenttypes.interfaces import IFolder
-
+from genweb.core.interfaces import IHomePage
 
 try:
     pkg_resources.get_distribution('plone4.csrffixes')
@@ -537,3 +537,23 @@ class getContentsType(grok.View):
                 results_dict[ct]['state'][rs].append(obj.absolute_url())
 
         return json.dumps(results_dict)
+
+
+class getAllErrorIHomePage(grok.View):
+    """ Returns all pages with interface IHomePage that should not exist
+    """
+    grok.context(IPloneSiteRoot)
+    grok.name('get_all_error_ihomepage')
+    grok.require('cmf.ManagePortal')
+
+    def render(self, portal=None):
+        pc = api.portal.get_tool('portal_catalog')
+        pages = pc.searchResults(object_provides=IHomePage.__identifier__)
+
+        results = []
+        for page in pages:
+            path = '/'.join(page.getPath().split('/')[-2:])
+            if path not in ['ca/benvingut', 'es/bienvenido', 'en/welcome']:
+                results.append(page.getURL())
+
+        return json.dumps(results)
